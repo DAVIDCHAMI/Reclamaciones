@@ -1,0 +1,55 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.sura.bdd'
+version = '1.0-SNAPSHOT'
+
+description = """BDDCoreSuraEmpresariales"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    maven { url "http://jcenter.bintray.com" }
+}
+
+dependencies {
+    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.7.0'
+    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '1.7.0'
+    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.6.4'
+    compile group: 'io.rest-assured', name: 'json-path', version:'3.0.2'
+    compile group: 'io.rest-assured', name: 'xml-path', version:'3.0.2'
+    compile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version:'1.8.3'
+    compile group: 'net.serenity-bdd', name: 'serenity-core', version:'1.8.3'
+    compile group: 'net.serenity-bdd', name: 'serenity-junit', version:'1.8.3'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version:'1.7.7'
+    compile group: 'com.googlecode.lambdaj', name: 'lambdaj', version:'2.3.3'
+    compile group: 'org.assertj', name: 'assertj-core', version:'3.4.0'
+    compile group: 'com.google.code.gson', name: 'gson', version:'2.6.2'
+    compile group: 'org.apache.poi', name: 'poi', version:'3.16'
+    compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version:'3.16'
+    compile group: 'org.apache.pdfbox', name: 'pdfbox', version:'2.0.6'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version:'3.16'
+    testCompile group: 'net.serenity-bdd', name: 'serenity-jbehave', version:'1.30.0'
+    testCompile group: 'junit', name: 'junit', version:'4.12'
+    testCompile 'junit:junit:4.12'
+}
+
+/*test {
+    include
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+    maxParallelForks = Runtime.runtime.availableProcessors()
+}*/
+// En el include se coloca nombre del runner -> '**/*NombreRunner.class*'
+
+/*task runAllTests(type: Test) {
+    maxParallelForks = 2
+    systemProperties['browser'] = 'chrome'
+    systemProperties['webdriver.chrome.driver'] = project.projectDir.absolutePath + 'C:\\chromedriver.exe'
+    include
+}*/
+// En el include se colocan el nombre de la carpeta del runners para ejecutarlos todos  '**/runners*.class'
