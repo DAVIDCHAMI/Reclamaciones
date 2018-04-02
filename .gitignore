@@ -1,0 +1,27 @@
+# Eclipse
+
+.classpath
+
+.project
+
+.settings/
+
+
+
+# Intellij
+
+.idea/
+
+.gradle/
+
+*.iml
+
+*.iws
+
+
+# Gradle
+
+log/
+gradle/
+target/
+hooks/pre-push
