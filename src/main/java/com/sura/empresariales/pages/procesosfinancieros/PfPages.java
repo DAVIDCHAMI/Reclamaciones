@@ -1,4 +1,3 @@
 package com.sura.empresariales.pages.procesosfinancieros;
 
-public class PfPages {
-}
+public class PfPages {}

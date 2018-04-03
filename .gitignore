@@ -25,3 +25,14 @@ log/
 gradle/
 target/
 hooks/pre-push
+
+# Java
+build/
+*.class
+*.jar
+*.war
+*.ear
+
+
+# Log file
+*.log

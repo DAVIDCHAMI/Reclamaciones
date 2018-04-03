@@ -1,4 +1,3 @@
 package com.sura.empresariales.transformers;
 
-public class DataTransformer {
-}
+public class DataTransformer {}

@@ -1,4 +1,3 @@
 package com.sura.empresariales.definitions.procesosfinancieros;
 
-public class PfDefinitions {
-}
+public class PfDefinitions {}

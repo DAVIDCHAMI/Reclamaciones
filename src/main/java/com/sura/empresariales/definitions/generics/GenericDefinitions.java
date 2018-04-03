@@ -1,4 +1,3 @@
 package com.sura.empresariales.definitions.generics;
 
-public class GenericDefinitions {
-}
+public class GenericDefinitions {}

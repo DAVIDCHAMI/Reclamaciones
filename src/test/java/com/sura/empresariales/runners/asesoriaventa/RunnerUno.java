@@ -1,4 +1,3 @@
 package com.sura.empresariales.runners.asesoriaventa;
 
-public class RunnerUno {
-}
+public class RunnerUno {}
