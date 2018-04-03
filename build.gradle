@@ -1,67 +1,42 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:1.9.4")
+    }
+}
 plugins {
     id "com.github.sherter.google-java-format" version "0.6"
+    id "org.sonarqube" version "2.6.2"
 }
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'net.serenity-bdd.aggregator' 
+apply plugin: 'net.serenity-bdd.aggregator'
 
-group = 'com.sura.bdd'
-version = '1.0-SNAPSHOT'
-
-description = """BDDCoreSuraEmpresariales"""
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
+def serenityVersion = "1.9.4"
 
 repositories {
-    maven { url "http://jcenter.bintray.com" }
+    jcenter()
 }
 
 dependencies {
-    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.7.0'
-    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '1.7.0'
-    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.6.4'
-    compile group: 'io.rest-assured', name: 'json-path', version:'3.0.2'
-    compile group: 'io.rest-assured', name: 'xml-path', version:'3.0.2'
-    compile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version:'1.8.3'
-    compile group: 'net.serenity-bdd', name: 'serenity-core', version:'1.8.3'
-    compile group: 'net.serenity-bdd', name: 'serenity-junit', version:'1.8.3'
-    compile group: 'org.slf4j', name: 'slf4j-simple', version:'1.7.7'
-    compile group: 'com.googlecode.lambdaj', name: 'lambdaj', version:'2.3.3'
-    compile group: 'org.assertj', name: 'assertj-core', version:'3.4.0'
-    compile group: 'com.google.code.gson', name: 'gson', version:'2.6.2'
-    compile group: 'org.apache.poi', name: 'poi', version:'3.16'
-    compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version:'3.16'
-    compile group: 'org.apache.pdfbox', name: 'pdfbox', version:'2.0.6'
-    compile group: 'org.apache.poi', name: 'poi-ooxml', version:'3.16'
-    testCompile group: 'net.serenity-bdd', name: 'serenity-jbehave', version:'1.30.0'
-    testCompile group: 'junit', name: 'junit', version:'4.12'
-    testCompile 'junit:junit:4.12'
-    
-    
-    testCompile 'net.serenity-bdd:serenity-core:1.1.1'                  
-    testCompile 'net.serenity-bdd:serenity-junit:1.1.1'  
+    compile "net.serenity-bdd:serenity-core:$serenityVersion"
+    compile "net.serenity-bdd:serenity-cucumber:$serenityVersion"
+    compile "org.assertj:assertj-core:1.7.0"
+    testCompile "junit:junit:4.12"
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "BDDCoreSuraEmpresariales"
+        property "sonar.projectName", "BDDCoreSuraEmpresariales"
+        property "sonar.projectVersion", "1.0"
+        property "sonar.sources", ["src/main", "src/test"]
+        property "sonar.java.binaries", "build"
+        property "sonar.test", "src/test"
+    }
 }
 
 compileJava.dependsOn 'googleJavaFormat'
-
-gradle.startParameter.continueOnFailure = true 
-
-/*test {
-    include
-    testLogging.showStandardStreams = true
-    systemProperties System.getProperties()
-    maxParallelForks = Runtime.runtime.availableProcessors()
-}*/
-// En el include se coloca nombre del runner -> '**/*NombreRunner.class*'
-
-/*task runAllTests(type: Test) {
-    maxParallelForks = 2
-    systemProperties['browser'] = 'chrome'
-    systemProperties['webdriver.chrome.driver'] = project.projectDir.absolutePath + 'C:\\chromedriver.exe'
-    include
-}*/
-// En el include se colocan el nombre de la carpeta del runners para ejecutarlos todos  '**/runners*.class'
+gradle.startParameter.continueOnFailure = true
