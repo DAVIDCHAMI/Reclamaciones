@@ -17,7 +17,7 @@ apply plugin: 'net.serenity-bdd.aggregator'
 def serenityVersion = "1.9.4"
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
