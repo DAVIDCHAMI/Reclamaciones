@@ -43,5 +43,5 @@ sonarqube {
     }
 }
 
-compileJava.dependsOn 'googleJavaFormat'
+//compileJava.dependsOn 'googleJavaFormat'
 gradle.startParameter.continueOnFailure = true
