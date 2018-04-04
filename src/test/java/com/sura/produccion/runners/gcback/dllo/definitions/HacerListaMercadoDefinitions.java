@@ -1,4 +1,4 @@
-package com.sura.produccion.runners.mrcback.dllo.definitions;
+package com.sura.produccion.runners.gcback.dllo.definitions;
 
 import com.sura.produccion.steps.ejemplos.UnUsuarioSteps;
 import cucumber.api.java.en.Given;
