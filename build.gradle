@@ -43,6 +43,18 @@ sonarqube {
     }
 }
 
+test {
+    testLogging {
+        // showStandardStreams = true
+    }
+    systemProperties System.getProperties()
+    maxParallelForks = Runtime.runtime.availableProcessors()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.6'
+}
+
 compileJava.dependsOn 'googleJavaFormat'
 compileJava.mustRunAfter 'sonarqube'
 gradle.startParameter.continueOnFailure = true
