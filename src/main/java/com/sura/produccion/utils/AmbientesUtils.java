@@ -5,16 +5,17 @@ import java.util.Arrays;
 import java.util.List;
 import net.thucydides.core.util.EnvironmentVariables;
 import net.thucydides.core.util.SystemEnvironmentVariables;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AmbientesUtils {
+  final Logger logger = LoggerFactory.getLogger(AmbientesUtils.class);
+
   public String getAmbiente() {
-    String ambiente = "local";
     EnvironmentVariables variables = SystemEnvironmentVariables.createEnvironmentVariables();
-    String envVariable = variables.getProperty("env");
-    if (envVariable != null && envVariable.isEmpty()) {
-      ambiente = envVariable;
-    }
-    String ambienteValidado = ambientesValidos(ambiente);
+    String envVariable = variables.getProperty("ENV");
+    logger.info("Ambiente en que corre el proceso. $ENV: " + envVariable);
+    String ambienteValidado = ambientesValidos(envVariable);
     return ambienteValidado;
   }
 

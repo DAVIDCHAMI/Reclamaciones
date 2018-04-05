@@ -29,6 +29,8 @@ dependencies {
     compile "net.serenity-bdd:serenity-core:$serenityVersion"
     compile "net.serenity-bdd:serenity-cucumber:$serenityVersion"
     compile "org.assertj:assertj-core:1.7.0"
+    compile group: 'org.slf4j', name:'slf4j-api', version: '1.7.2'
+    compile group: 'org.slf4j', name:'slf4j-log4j12', version: '1.7.2'
     testCompile "junit:junit:4.12"
 }
 
@@ -44,15 +46,30 @@ sonarqube {
 }
 
 test {
-    testLogging {
-        // showStandardStreams = true
-    }
-    systemProperties System.getProperties()
     maxParallelForks = Runtime.runtime.availableProcessors()
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '4.6'
+}
+
+task icTest(type: Test) {
+    def env = (System.getenv('ENV') ?: "dllo").trim()
+    def app = (System.getenv('APP') ?: "ejemplos").trim()
+    def propertyValue = project.property("${app}TestFilter").toString().trim()
+    def filterRute = "${propertyValue}.${env}.*"
+
+    logger.lifecycle("Variables de ejecucion para icTest")
+    logger.lifecycle("env:$env, app:$app, propertyValue:$propertyValue, filterRute:$filterRute")
+
+    // Si ENV está vacio se hace el set en el valor por defecto
+    systemProperties = ['ENV': env]
+
+    filter {
+        includeTestsMatching filterRute
+        failOnNoMatchingTests = false
+    }
+    maxParallelForks = Runtime.runtime.availableProcessors()
 }
 
 compileJava.dependsOn 'googleJavaFormat'
