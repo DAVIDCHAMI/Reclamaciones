@@ -1,13 +1,18 @@
 package com.sura.produccion.runners.ejemplos.dllo.definitions;
 
+import com.sura.produccion.models.Vehiculo;
 import com.sura.produccion.steps.ejemplos.BuyerSteps;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
+import java.util.List;
+
 public class SearchByKeywordStepDefinitions {
   @Steps BuyerSteps buyer;
+
 
   @Given("I want to buy (.*)")
   public void buyerWantsToBuy(String article) {
@@ -23,4 +28,10 @@ public class SearchByKeywordStepDefinitions {
   public void resultsForACategoryAndKeywordInARegion(String keyword) {
     buyer.should_see_items_related_to(keyword);
   }
+
+    @Then("agrego el siguiente vehiculo$")
+    public void resultsForACategoryAndKeywordInARegion(DataTable datosVehiculo) {
+        List<Vehiculo> miVehiculo = datosVehiculo.asList(Vehiculo.class);
+        System.out.println(miVehiculo.get(0).getPlaca());
+    }
 }
