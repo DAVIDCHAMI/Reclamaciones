@@ -8,3 +8,6 @@ Feature: Searching by keyword
     Given I want to buy a wool scarf
     When I search for items containing 'wool'
     Then I should only see items related to 'wool'
+    And agrego el siguiente vehiculo
+    | placa  | modelo | fasecolda | clase | marca | linea | ciudadCirculacion | tipoServicio | motor | chasis | uso      |  remolque |  combustible |  importado |  ceroKM |
+    | ABC123 | 2008   | fasecolda | clase | marca | linea | ciudadCirculacion | tipoServicio | motor | chasis | familiar |  false    |  true        |  false     |  false  |
