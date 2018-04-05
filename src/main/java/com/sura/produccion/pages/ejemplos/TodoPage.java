@@ -8,9 +8,17 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.annotations.NamedUrl;
+import net.thucydides.core.annotations.NamedUrls;
 import org.openqa.selenium.Keys;
 
-@DefaultUrl("http://todomvc.com/examples/angularjs/#/")
+@DefaultUrl("http://local-todomvc.com/examples/angularjs/#")
+@NamedUrls({
+  @NamedUrl(name = "local", url = "http://todomvc.com/examples/angularjs/#"),
+  @NamedUrl(name = "dllo", url = "http://todomvc.com/examples/angularjs/#"),
+  @NamedUrl(name = "lab", url = "http://todomvc.com/examples/angularjs/#"),
+  @NamedUrl(name = "pdn", url = "http://todomvc.com/examples/angularjs/#"),
+})
 public class TodoPage extends PageObject {
 
   public static final String FILA_ELEMENTO = "//div[@class='view' and contains(.,'%s')]";

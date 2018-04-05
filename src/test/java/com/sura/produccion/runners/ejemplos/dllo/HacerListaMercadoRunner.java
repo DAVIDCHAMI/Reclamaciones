@@ -1,4 +1,4 @@
-package com.sura.produccion.runners.gcback.dllo;
+package com.sura.produccion.runners.ejemplos.dllo;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
