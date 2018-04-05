@@ -1,10 +1,12 @@
 package com.sura.produccion.steps.ejemplos;
 
+import static net.serenitybdd.core.pages.PageObject.withParameters;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
 import com.sura.produccion.pages.ejemplos.HomePage;
 import com.sura.produccion.pages.ejemplos.SearchResultsPage;
+import com.sura.produccion.utils.AmbientesUtils;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 
@@ -15,7 +17,8 @@ public class BuyerSteps {
 
   @Step
   public void opens_etsy_home_page() {
-    homePage.open();
+    AmbientesUtils ambienteUtils = new AmbientesUtils();
+    homePage.open(ambienteUtils.getAmbiente(), withParameters(""));
   }
 
   @Step
