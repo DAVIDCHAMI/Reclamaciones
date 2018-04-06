@@ -41,3 +41,16 @@ Para hacer esta configuración, se deben seguir los siguientes pasos:
 1. Descargar el siguiente archivo [intellij-java-google-style.xml](http://code.google.com/p/google-styleguide/)
 2. Guardar el archivo en una ruta de tu maquina (EJ: C:\\config\codestyles)
 3. Entrar a Intellij e importar el archivo, usando las siguientes opciones: File -> Settings -> Editor -> Code Style
+
+## Configurar IntelliJ para que navegar de los pasos del .Feature a su respectivo Definition
+
+1. Ir a las siguietes opciones FILE -> SETTINGS -> PLUGINS
+2. Ubicar el campo de busqueda y en la opción Show seleccionar "All Plugins" 
+2.1 en la lupa Buscar: "Cucumber for Java" y verificar que este instalado.
+2.2 Buscar el plugin "Gherkin" y verificar que este instalado.
+2.3 Buscar el plugin Substeps IntellIj Plugin, si este se encuentra instalado. DESINSTALAR
+
+3. Si el plugin de "Cucumber for Java" o "Gherkin" falta, Seleccionar en la parte inferior la opcion "Browse Repositories" e instalar ambos plugins.
+4. Reiniciar IntelliJ y probar desde un .feature navegar al paso en el Definition.
+
+
