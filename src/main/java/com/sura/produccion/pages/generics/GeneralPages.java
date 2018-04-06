@@ -19,7 +19,7 @@ public class GeneralPages extends PageObject {
 
   protected void escribirDato(WebElementFacade elemento, String dato) {
 
-      elemento.type(dato);
+    elemento.type(dato);
   }
 
   protected void clickEnElemento(WebElementFacade elemento) {

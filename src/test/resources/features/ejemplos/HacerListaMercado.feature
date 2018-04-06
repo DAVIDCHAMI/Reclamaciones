@@ -1,14 +1,16 @@
-Feature: Hacer lista de mercado
+# language: es
+Característica: Hacer lista de mercado
 
     Como Ama de casa
     Quiero crear articulos en la lista de TODO
     Para crear una lista de mercado
     
-    Scenario Outline: Crear un nuevo artico para gestionarlo posteriormente
-        Given necesito <necesidad>
-        When agrego el articulo <articulo>
-        Then el articulo <articulo>, debe ser agregado a mi lista de TODO
-        Examples:
+    Esquema del escenario: Crear un nuevo artico para gestionarlo posteriormente
+        Dado necesito <necesidad>
+        Cuando agrego el articulo <articulo>
+        Entonces el articulo <articulo>, debe ser agregado a mi lista de TODO
+
+        Ejemplos:
         |necesidad|articulo|
         |comprar Leche|Comprar Leche|
         |comprar Azucar|Comprar Azucar|

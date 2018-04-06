@@ -23,22 +23,20 @@ public class LoginPages extends GeneralPages {
   @FindBy(xpath = "//input[@value='Iniciar sesión']")
   WebElementFacade btnIniciarSesion;
 
-  public void seleccionarPais(String pais){
-      seleccionarElemento(s, pais);
+  public void seleccionarPais(String pais) {
+    seleccionarElemento(s, pais);
   }
 
   public void escribirUsuario(String usuario) {
 
-      escribirDato(txtUsuario, usuario);
+    escribirDato(txtUsuario, usuario);
   }
 
-  public void escribirPassword(String password){
-      escribirDato(txtPassword, password);
+  public void escribirPassword(String password) {
+    escribirDato(txtPassword, password);
   }
 
-  public void clicIniciarSesion(){
-      clickEnElemento(btnIniciarSesion);
+  public void clicIniciarSesion() {
+    clickEnElemento(btnIniciarSesion);
   }
-
-
 }

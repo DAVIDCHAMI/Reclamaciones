@@ -1,25 +1,25 @@
 package com.sura.produccion.runners.ejemplos.dllo.definitions;
 
 import com.sura.produccion.steps.ejemplos.UnUsuarioSteps;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import cucumber.api.java.es.Cuando;
+import cucumber.api.java.es.Dado;
+import cucumber.api.java.es.Entonces;
 import net.thucydides.core.annotations.Steps;
 
 public class HacerListaMercadoDefinitions {
   @Steps UnUsuarioSteps jane;
 
-  @Given("^necesito (.*)$")
+  @Dado("^necesito (.*)$")
   public void hacerAlgo(String necesidad) throws Throwable {
     jane.abrirAplicacionTodo();
   }
 
-  @When("^agrego el articulo (.*)$")
+  @Cuando("^agrego el articulo (.*)$")
   public void agregarElemento(String articulo) throws Throwable {
     jane.agregarElemento(articulo);
   }
 
-  @Then("^el articulo (.*), debe ser agregado a mi lista de TODO$")
+  @Entonces("^el articulo (.*), debe ser agregado a mi lista de TODO$")
   public void articuloAgregadoATodo(String articulo) throws Throwable {
     jane.debeVerElElemento(articulo);
   }
