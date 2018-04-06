@@ -36,3 +36,8 @@ gradle icTest -Denv=dllo -Dapp=pc -Dwebdriver.chrome.driver=C://chromedriver.exe
 **-Denv**: Para este caso la variable indica tanto el ambiente en el que corren las pruebas como el filtro 
 para indicar que test ejecutar
 **-Dapp**: Puede tomar los siguientes valores [pc, bc, gc, ejemplos].
+## Configurar en Intellij el codestyle de google (Con el que se formatea por defecto este proyecto)
+Para hacer esta configuración, se deben seguir los siguientes pasos:
+1. Descargar el siguiente archivo [intellij-java-google-style.xml](http://code.google.com/p/google-styleguide/)
+2. Guardar el archivo en una ruta de tu maquina (EJ: C:\\config\codestyles)
+3. Entrar a Intellij e importar el archivo, usando las siguientes opciones: File -> Settings -> Editor -> Code Style
