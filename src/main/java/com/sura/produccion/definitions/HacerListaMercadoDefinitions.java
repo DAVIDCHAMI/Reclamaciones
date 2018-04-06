@@ -1,4 +1,4 @@
-package com.sura.produccion.runners.ejemplos.dllo.definitions;
+package com.sura.produccion.definitions;
 
 import com.sura.produccion.steps.ejemplos.UnUsuarioSteps;
 import cucumber.api.java.es.Cuando;
