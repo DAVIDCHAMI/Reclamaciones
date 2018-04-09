@@ -1,4 +1,3 @@
 package com.sura.produccion.pages.billingcenter;
 
-public class BcCenter {
-}
+public class BcCenter {}

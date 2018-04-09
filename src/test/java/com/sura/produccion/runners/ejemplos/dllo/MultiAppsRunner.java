@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-  features = "src/test/resources/features/ejemplos/SearchingByKeyword.feature",
+  features = "src/test/resources/features/ejemplos/MultiApps.feature",
   glue = {"com.sura.produccion.definitions"}
 )
-public class SearchingByKeywordRunner {}
+public class MultiAppsRunner {}
