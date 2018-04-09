@@ -19,6 +19,7 @@ hooks/pre-push
 
 # Java
 build/
+out/
 *.class
 *.jar
 *.war
