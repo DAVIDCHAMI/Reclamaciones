@@ -20,7 +20,7 @@ public class AmbientesUtils {
 
   protected String getEnv() {
     EnvironmentVariables variables = SystemEnvironmentVariables.createEnvironmentVariables();
-    return variables.getProperty("ENV");
+    return variables.getProperty("env");
   }
 
   public String ambientesValidos(String ambiente) {

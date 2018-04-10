@@ -71,8 +71,8 @@ task wrapper(type: Wrapper) {
 }
 
 task icTest(type: Test) {
-    def env = (System.getenv('ENV') ?: "dllo").trim()
-    def app = (System.getenv('APP') ?: "ejemplos").trim()
+    def env = (System.getProperty('env') ?: "dllo").trim()
+    def app = (System.getProperty('app') ?: "ejemplos").trim()
     def propertyValue = project.property("${app}TestFilter").toString().trim()
     def filterRute = "${propertyValue}.${env}.*"
 
