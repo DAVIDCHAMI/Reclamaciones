@@ -3,6 +3,7 @@ package com.sura.reclamaciones.steps.smocktest;
 import com.sura.reclamaciones.pages.smocktest.CambiarIdiomaPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
 
 public class CambiarIdiomaStep {
 
@@ -13,11 +14,11 @@ public class CambiarIdiomaStep {
     cambiarIdiomaPage.cliquearBtnConfiguraciones();
     cambiarIdiomaPage.cliquearLinkInternacional();
     cambiarIdiomaPage.cliquearLinkIdioma();
-    cambiarIdiomaPage.cliquearlinkIngles();
   }
 
   @Step
   public void comprobarTextoPantalla() {
-    cambiarIdiomaPage.comprobarTextoPantalla();
+    String tipoIdioma = cambiarIdiomaPage.seleccionarIdioma();
+    MatcherAssert.assertThat("No cambio el idioma en la aplicacion",tipoIdioma.equals("Actividades") || tipoIdioma.equals("Activities"));
   }
 }

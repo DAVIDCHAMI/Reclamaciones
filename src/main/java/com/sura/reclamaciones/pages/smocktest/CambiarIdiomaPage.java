@@ -12,6 +12,8 @@ public class CambiarIdiomaPage extends GeneralPage {
     super(driver);
   }
 
+  private String tipoIdioma = "//div/a/span[contains(.,'COMODIN')]/../..";
+
   @FindBy(id = ":TabLinkMenuButton")
   private WebElementFacade btnAjuste;
 
@@ -21,11 +23,11 @@ public class CambiarIdiomaPage extends GeneralPage {
   @FindBy(id = "TabBar:LanguageTabBarLink:languageSwitcher-textEl")
   private WebElementFacade linkIdioma;
 
-  @FindBy(xpath = "//div/a/span[contains(.,'Inglés (US)')]/../..")
-  private WebElementFacade linkIngles;
-
-  @FindBy(xpath = "//div/span/span[contains(.,'Activities')]")
+  @FindBy(xpath = "//div[@class='x-component x-header-text-container x-container-text-container x-container-text-container-default x-box-item x-component-default']")
   private WebElementFacade letraComprobante;
+
+  @FindBy(xpath = "//span[@id ='TabBar:LanguageTabBarLink:languageSwitcher:0:langs-textEl']")
+  private WebElementFacade linkSeleccionarLenguaje;
 
   public void cliquearBtnConfiguraciones() {
     clickElemento(btnAjuste);
@@ -39,12 +41,14 @@ public class CambiarIdiomaPage extends GeneralPage {
     clickElemento(linkIdioma);
   }
 
-  public void cliquearlinkIngles() {
-    clickElemento(linkIngles);
-  }
-
-  public void comprobarTextoPantalla() {
-    MatcherAssert.assertThat(
-        "No se encontro el texto a verificar", letraComprobante.getText().equals("Activities"));
+  public String seleccionarIdioma() {
+    if(linkSeleccionarLenguaje.getText().equals("English (US)")){
+      tipoIdioma = tipoIdioma.replace("COMODIN", "Spanish (CO)");
+      clickElemento($(tipoIdioma));
+    }if(linkSeleccionarLenguaje.getText().equals("Español (CO)")){
+      tipoIdioma = tipoIdioma.replace("COMODIN","Inglés (US)");
+      clickElemento($(tipoIdioma));
+    }
+    return letraComprobante.getText();
   }
 }
