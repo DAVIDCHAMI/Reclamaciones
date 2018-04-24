@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class AmbientesUtilsTest {
+public class AmbientesUtilTest {
   @Test
   public void getAmbienteDebeRetornarUnLocalPorDefectoSiNoEncuentraVariableEntorno() {
     AmbientesUtil utils = Mockito.spy(new AmbientesUtil());

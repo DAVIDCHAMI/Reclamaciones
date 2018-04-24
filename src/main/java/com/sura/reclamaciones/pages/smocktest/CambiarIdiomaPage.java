@@ -8,43 +8,43 @@ import org.openqa.selenium.WebDriver;
 
 public class CambiarIdiomaPage extends GeneralPage {
 
-    public CambiarIdiomaPage(WebDriver driver) {
-        super(driver);
-    }
+  public CambiarIdiomaPage(WebDriver driver) {
+    super(driver);
+  }
 
-    @FindBy(id = ":TabLinkMenuButton")
-    private WebElementFacade btnAjuste;
+  @FindBy(id = ":TabLinkMenuButton")
+  private WebElementFacade btnAjuste;
 
-    @FindBy(id = "TabBar:LanguageTabBarLink-textEl")
-    private WebElementFacade linkInternacional;
+  @FindBy(id = "TabBar:LanguageTabBarLink-textEl")
+  private WebElementFacade linkInternacional;
 
-    @FindBy(id = "TabBar:LanguageTabBarLink:languageSwitcher-textEl")
-    private WebElementFacade linkIdioma;
+  @FindBy(id = "TabBar:LanguageTabBarLink:languageSwitcher-textEl")
+  private WebElementFacade linkIdioma;
 
-    @FindBy(xpath = "//div/a/span[contains(.,'Inglés (US)')]")
-    private WebElementFacade linkIngles;
+  @FindBy(xpath = "//div/a/span[contains(.,'Inglés (US)')]")
+  private WebElementFacade linkIngles;
 
-    @FindBy(xpath = "//div/span/span[contains(.,'Activities')]")
-    private WebElementFacade letraComprobante;
+  @FindBy(xpath = "//div/span/span[contains(.,'Activities')]")
+  private WebElementFacade letraComprobante;
 
-    public void cliquearBtnConfiguraciones() {
-        clickElemento(btnAjuste);
-    }
+  public void cliquearBtnConfiguraciones() {
+    clickElemento(btnAjuste);
+  }
 
-    public void cliquearLinkInternacional() {
-        clickElemento(linkInternacional);
-    }
+  public void cliquearLinkInternacional() {
+    clickElemento(linkInternacional);
+  }
 
-    public void cliquearLinkIdioma() {
-        clickElemento(linkIdioma);
-    }
+  public void cliquearLinkIdioma() {
+    clickElemento(linkIdioma);
+  }
 
-    public void cliquearlinkIngles() {
-        clickElemento(linkIngles);
-    }
+  public void cliquearlinkIngles() {
+    clickElemento(linkIngles);
+  }
 
-    public void comprobarTextoPantalla() {
-        MatcherAssert.assertThat(
-                "No se encontro el texto a verificar", letraComprobante.getText().equals("Activities"));
-    }
+  public void comprobarTextoPantalla() {
+    MatcherAssert.assertThat(
+        "No se encontro el texto a verificar", letraComprobante.getText().equals("Activities"));
+  }
 }

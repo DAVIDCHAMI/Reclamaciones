@@ -10,11 +10,10 @@ import org.fluentlenium.core.annotation.Page;
 
 public class LoginClaimStep {
 
-
   @Page LoginClaimPage loginClaimPage;
 
   @Step
-  public void abrirClaims(){
+  public void abrirClaims() {
     AmbientesUtil ambientesUtil = new AmbientesUtil();
     loginClaimPage.open(ambientesUtil.getAmbiente(), withParameters(""));
   }
@@ -30,16 +29,16 @@ public class LoginClaimStep {
   }
 
   @Step
-  public void iniciarSesionLab(){
+  public void iniciarSesionLab() {
     UsuarioVO usuarioVO = new UsuarioVO("suragwsu", "sura2017");
     abrirClaims();
-    iniciarSesionUAT(usuarioVO.getUsuario() , usuarioVO.getContrasena());
+    iniciarSesionUAT(usuarioVO.getUsuario(), usuarioVO.getContrasena());
   }
 
   @Step
-  public void iniciarSesionAmbienteDllo(){
+  public void iniciarSesionAmbienteDllo() {
     UsuarioVO usuarioVO = new UsuarioVO("su", "gw");
     abrirClaims();
-    iniciarSesionDllo(usuarioVO.getUsuario(),usuarioVO.getContrasena());
+    iniciarSesionDllo(usuarioVO.getUsuario(), usuarioVO.getContrasena());
   }
 }
