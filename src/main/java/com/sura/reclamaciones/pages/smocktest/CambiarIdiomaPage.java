@@ -21,7 +21,7 @@ public class CambiarIdiomaPage extends GeneralPage {
   @FindBy(id = "TabBar:LanguageTabBarLink:languageSwitcher-textEl")
   private WebElementFacade linkIdioma;
 
-  @FindBy(xpath = "//div/a/span[contains(.,'Inglés (US)')]")
+  @FindBy(xpath = "//div/a/span[contains(.,'Inglés (US)')]/../..")
   private WebElementFacade linkIngles;
 
   @FindBy(xpath = "//div/span/span[contains(.,'Activities')]")
