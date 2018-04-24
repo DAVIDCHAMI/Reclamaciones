@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 public class AmbientesUtilsTest {
   @Test
   public void getAmbienteDebeRetornarUnLocalPorDefectoSiNoEncuentraVariableEntorno() {
-    AmbientesUtils utils = Mockito.spy(new AmbientesUtils());
+    AmbientesUtil utils = Mockito.spy(new AmbientesUtil());
     Mockito.when(utils.ambientesValidos(Mockito.anyString())).thenReturn("local");
 
     String resultado = utils.getAmbiente();
@@ -23,7 +23,7 @@ public class AmbientesUtilsTest {
   @Test
   public void getAmbienteDebeRetornarElValorEnLaVariableDeEntorno() {
     String valorEnv = "Test";
-    AmbientesUtils utils = Mockito.spy(new AmbientesUtils());
+    AmbientesUtil utils = Mockito.spy(new AmbientesUtil());
     Mockito.when(utils.ambientesValidos(valorEnv)).thenReturn(valorEnv);
     Mockito.when(utils.getEnv()).thenReturn(valorEnv);
 
@@ -35,7 +35,7 @@ public class AmbientesUtilsTest {
   @Test
   public void ambientesValidosDebeRetornarLocalSiSeIngresaAmbienteInvalido() {
     String valorEnv = "Invalido";
-    AmbientesUtils utils = new AmbientesUtils();
+    AmbientesUtil utils = new AmbientesUtil();
 
     String resultado = utils.ambientesValidos(valorEnv);
 
@@ -45,7 +45,7 @@ public class AmbientesUtilsTest {
   @Test
   public void ambientesValidosDebeRetornarElAmbienteEnviadoSiSeIngresaAmbienteValido() {
     List<String> valorEnvs = new ArrayList<String>(Arrays.asList("local", "dllo", "lab", "pdn"));
-    AmbientesUtils utils = new AmbientesUtils();
+    AmbientesUtil utils = new AmbientesUtil();
 
     for (String valorEnv : valorEnvs) {
       String resultado = utils.ambientesValidos(valorEnv);
