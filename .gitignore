@@ -3,13 +3,12 @@
 .project
 .settings/
 
-
-
 # Intellij
 .idea/
 .gradle/
 *.iml
 *.iws
+*.classes
 
 # Gradle
 log/
@@ -24,7 +23,6 @@ out/
 *.jar
 *.war
 *.ear
-
 
 # Log file
 *.log
