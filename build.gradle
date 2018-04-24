@@ -41,7 +41,7 @@ repositories {
 }
 
 dependencies {
-    compile         group: 'net.serenity-bdd',  name: 'serenity-core',       version: '1.9.4'
+    compile         group: 'net.serenity-bdd',  name: 'serenity-core',       version: '1.9.6'
     compile         group: 'net.serenity-bdd',  name: 'serenity-cucumber',   version: '1.9.4'
     compile         group: 'org.assertj',       name: 'assertj-core',        version: '1.7.0'
     compile         group: 'org.slf4j',         name: 'slf4j-api',           version: '1.7.2'

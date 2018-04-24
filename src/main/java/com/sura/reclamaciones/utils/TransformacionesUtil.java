@@ -1,3 +1,3 @@
 package com.sura.reclamaciones.utils;
 
-public class Util {}
+public class TransformacionesUtil {}

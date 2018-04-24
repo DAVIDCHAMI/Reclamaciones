@@ -8,8 +8,8 @@ import net.thucydides.core.util.SystemEnvironmentVariables;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AmbientesUtils {
-  private final Logger logger = LoggerFactory.getLogger(AmbientesUtils.class);
+public class AmbientesUtil {
+  final Logger logger = LoggerFactory.getLogger(AmbientesUtil.class);
 
   public String getAmbiente() {
     String envVariable = getEnv();
