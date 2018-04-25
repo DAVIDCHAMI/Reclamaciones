@@ -21,9 +21,11 @@ public class CambiarIdiomaStep {
     public void comprobarTextoPantalla() {
         String tipoIdioma = cambiarIdiomaPage.seleccionarIdioma();
         if (tipoIdioma.equals("Actividades")) {
-            MatcherAssert.assertThat("No cambio el idioma en la aplicacion", tipoIdioma.equals("Actividades"));
+            MatcherAssert.assertThat(
+                    "No cambio el idioma en la aplicacion", tipoIdioma.equals("Actividades"));
         } else {
-            MatcherAssert.assertThat("No cambio el idioma en la aplicacion", tipoIdioma.equals("Activities"));
+            MatcherAssert.assertThat(
+                    "No cambio el idioma en la aplicacion", tipoIdioma.equals("Activities"));
         }
     }
 }
