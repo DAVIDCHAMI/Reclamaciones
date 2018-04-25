@@ -3,48 +3,52 @@ package com.sura.reclamaciones.pages.smocktest;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 public class CambiarIdiomaPage extends GeneralPage {
 
-  public CambiarIdiomaPage(WebDriver driver) {
-    super(driver);
-  }
+    public CambiarIdiomaPage(WebDriver driver) {
+        super(driver);
+    }
 
-  @FindBy(id = ":TabLinkMenuButton")
-  private WebElementFacade btnAjuste;
+    private String tipoIdioma = "//div/a/span[contains(.,'COMODIN')]/../..";
 
-  @FindBy(id = "TabBar:LanguageTabBarLink-textEl")
-  private WebElementFacade linkInternacional;
+    @FindBy(id = ":TabLinkMenuButton")
+    private WebElementFacade btnAjuste;
 
-  @FindBy(id = "TabBar:LanguageTabBarLink:languageSwitcher-textEl")
-  private WebElementFacade linkIdioma;
+    @FindBy(id = "TabBar:LanguageTabBarLink-textEl")
+    private WebElementFacade linkInternacional;
 
-  @FindBy(xpath = "//div/a/span[contains(.,'Inglés (US)')]/../..")
-  private WebElementFacade linkIngles;
+    @FindBy(id = "TabBar:LanguageTabBarLink:languageSwitcher-textEl")
+    private WebElementFacade linkIdioma;
 
-  @FindBy(xpath = "//div/span/span[contains(.,'Activities')]")
-  private WebElementFacade letraComprobante;
+    @FindBy(xpath = "//div[@class='x-component x-header-text-container x-container-text-container x-container-text-container-default x-box-item x-component-default']/span/span")
+    private WebElementFacade letraComprobante;
 
-  public void cliquearBtnConfiguraciones() {
-    clickElemento(btnAjuste);
-  }
+    @FindBy(xpath = "//span[@id ='TabBar:LanguageTabBarLink:languageSwitcher:0:langs-textEl']")
+    private WebElementFacade linkSeleccionarLenguaje;
 
-  public void cliquearLinkInternacional() {
-    clickElemento(linkInternacional);
-  }
+    public void cliquearBtnConfiguraciones() {
+        clickElemento(btnAjuste);
+    }
 
-  public void cliquearLinkIdioma() {
-    clickElemento(linkIdioma);
-  }
+    public void cliquearLinkInternacional() {
+        clickElemento(linkInternacional);
+    }
 
-  public void cliquearlinkIngles() {
-    clickElemento(linkIngles);
-  }
+    public void cliquearLinkIdioma() {
+        clickElemento(linkIdioma);
+    }
 
-  public void comprobarTextoPantalla() {
-    MatcherAssert.assertThat(
-        "No se encontro el texto a verificar", letraComprobante.getText().equals("Activities"));
-  }
+    public String seleccionarIdioma() {
+        if (linkSeleccionarLenguaje.getText().equals("English (US)")) {
+            tipoIdioma = tipoIdioma.replace("COMODIN", "Spanish (CO)");
+            clickElemento($(tipoIdioma));
+        } else {
+            tipoIdioma = tipoIdioma.replace("COMODIN", "Inglés (US)");
+            clickElemento($(tipoIdioma));
+        }
+        return letraComprobante.waitUntilVisible()
+                .getText();
+    }
 }
