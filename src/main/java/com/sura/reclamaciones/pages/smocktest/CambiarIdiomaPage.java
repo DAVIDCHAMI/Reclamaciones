@@ -22,7 +22,10 @@ public class CambiarIdiomaPage extends GeneralPage {
     @FindBy(id = "TabBar:LanguageTabBarLink:languageSwitcher-textEl")
     private WebElementFacade linkIdioma;
 
-    @FindBy(xpath = "//div[@class='x-component x-header-text-container x-container-text-container x-container-text-container-default x-box-item x-component-default']/span/span")
+    @FindBy(
+            xpath =
+                    "//div[@class='x-component x-header-text-container x-container-text-container x-container-text-container-default x-box-item x-component-default']/span/span"
+    )
     private WebElementFacade letraComprobante;
 
     @FindBy(xpath = "//span[@id ='TabBar:LanguageTabBarLink:languageSwitcher:0:langs-textEl']")
@@ -45,10 +48,9 @@ public class CambiarIdiomaPage extends GeneralPage {
             tipoIdioma = tipoIdioma.replace("COMODIN", "Spanish (CO)");
             clickElemento($(tipoIdioma));
         } else {
-            tipoIdioma = tipoIdioma.replace("COMODIN", "Inglés (US)");
+            tipoIdioma = tipoIdioma.replace("COMODIN", "(US)");
             clickElemento($(tipoIdioma));
         }
-        return letraComprobante.waitUntilVisible()
-                .getText();
+        return letraComprobante.waitUntilVisible().getText();
     }
 }

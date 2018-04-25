@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-  features = "src/test/resources/features/smocktest/CambioIdioma.feature",
-  glue = {"com.sura.reclamaciones.definitions"}
+        features = "src/test/resources/features/smocktest/CambioIdioma.feature",
+        glue = {"com.sura.reclamaciones.definitions"}
 )
-public class CambioIdiomaRunner {}
+public class CambioIdiomaRunner {
+}
