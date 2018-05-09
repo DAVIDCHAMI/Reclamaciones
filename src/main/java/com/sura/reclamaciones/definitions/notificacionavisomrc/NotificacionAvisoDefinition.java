@@ -15,7 +15,7 @@ public class NotificacionAvisoDefinition {
   @Steps
   CSVStep CSVStep;
 
-  @Dado("que se recibe un reclamo por parte de un afectado")
+  @Dado("^que se recibe un reclamo por parte de un afectado\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"$")
   public void queSeRecibeUnReclamoPorParteDeUnAfectado(
       String poliza, String numPoliza, String tipDocumento, String numDocumento, String fecha) {
     BuscarPolizaStep.seleccionarTipoPoliza(poliza, numPoliza);
@@ -28,7 +28,6 @@ public class NotificacionAvisoDefinition {
 
   @Cuando("se tomen los datos del siniestro")
   public void seTomenLosDatosDelSiniestro() {
-
     SeleccionarPropiedadesImplicadasStep.seleccionarPropiedadImplicada();
   }
 
