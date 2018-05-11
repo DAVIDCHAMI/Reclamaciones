@@ -9,10 +9,13 @@ public class BuscarPolizaStep {
   @Page BuscarPolizaPage BuscarPolizaPage;
 
   @Step
-  public void seleccionarTipoPoliza(String poliza, String numPoliza) {
-    BuscarPolizaPage.cliquearBuscarPoliza();
-    BuscarPolizaPage.seleccionarPoliza(poliza);
-    BuscarPolizaPage.escribirNumeroPoliza(numPoliza);
+  public void seleccionarTipoPoliza(String tipoPoliza, String numeroPoliza, String numeroPlaca) {
+    BuscarPolizaPage.seleccionarTipoPoliza(tipoPoliza);
+    if ( numeroPlaca != ""){
+      BuscarPolizaPage.escribirPlaca(numeroPlaca);
+    }else{
+      BuscarPolizaPage.escribirNumeroPoliza(numeroPoliza);
+    }
   }
 
   @Step

@@ -18,7 +18,7 @@ public class NotificacionAvisoDefinition {
   @Dado("^que se recibe un reclamo por parte de un afectado\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"$")
   public void queSeRecibeUnReclamoPorParteDeUnAfectado(
       String poliza, String numPoliza, String tipDocumento, String numDocumento, String fecha) {
-    BuscarPolizaStep.seleccionarTipoPoliza(poliza, numPoliza);
+    //BuscarPolizaStep.seleccionarTipoPoliza(poliza, numPoliza);
     BuscarPolizaStep.seleccionarDocumento(tipDocumento, numDocumento);
     BuscarPolizaStep.seleccionarFecha(fecha);
     BuscarPolizaStep.seleccionarUbicacion();

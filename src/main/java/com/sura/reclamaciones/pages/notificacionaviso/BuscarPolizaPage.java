@@ -6,12 +6,13 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
+
 public class BuscarPolizaPage extends PageObject {
 
     public BuscarPolizaPage(WebDriver driver) {
         super(driver);
     }
-
 
     private String selectTipoDocumento = "//li[.='COMODIN']";
     private String selectTipoPoliza = "//li[.='COMODIN']";
@@ -89,7 +90,7 @@ public class BuscarPolizaPage extends PageObject {
         rbtBuscarPoliza.click();
     }
 
-    public void seleccionarPoliza(String poliza) {
+    public void seleccionarTipoPoliza(String poliza) {
         waitForPresenceOf(XpathMnuTipoDePoliza);
         mnuTipoDePoliza.click();
            selectTipoPoliza = selectTipoPoliza.replace("COMODIN", poliza);
@@ -161,4 +162,12 @@ public class BuscarPolizaPage extends PageObject {
         waitForPresenceOf(XpathBtnSiguiente);
         btnSiguiente.click();
     }
+
+    public void escribirPlaca(String numeroPlaca) {
+
+    }
+
+    /** public List<String> traerObjetosLista() {
+        List<WebElementFacade> elementosLista = findAll("//ul[@class='x-list-plain']");
+    }**/
 }
