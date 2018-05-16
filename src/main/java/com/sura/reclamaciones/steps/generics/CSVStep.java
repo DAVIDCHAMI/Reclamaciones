@@ -13,7 +13,7 @@ public class CSVStep {
 
     public List<Map<String, String>> getFilasModelo(
             String nombreCSV, String columnaFiltro, String filtro) throws IOException {
-        TestDataSource testData = new CSVTestDataSource("/data/" + nombreCSV + ".csv", ';');
+        TestDataSource testData = new CSVTestDataSource("/data/data_" + nombreCSV + ".csv", ';');
         return getDataCSVEnList(testData, columnaFiltro, filtro);
     }
 
