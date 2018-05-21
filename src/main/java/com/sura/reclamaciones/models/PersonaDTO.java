@@ -2,7 +2,7 @@ package com.sura.reclamaciones.models;
 
 import java.util.Map;
 
-public abstract class Persona {
+public abstract class PersonaDTO {
 
   private String tipoDocumento;
   private String nroDocumento;
@@ -230,9 +230,9 @@ public abstract class Persona {
     this.tipoDireccionOtra = tipoDireccionOtra;
   }
 
-  public Persona() {}
+  public PersonaDTO() {}
 
-  public Persona(Map<String, String> datosPersona) {
+  public PersonaDTO(Map<String, String> datosPersona) {
     setTipoDocumento(datosPersona.get("tipoDocumento"));
     setNroDocumento(datosPersona.get("nroDocumento"));
     setNombre1(datosPersona.get("nombre1"));

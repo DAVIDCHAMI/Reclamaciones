@@ -3,12 +3,15 @@ package com.sura.reclamaciones.definitions.autos;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.LugarDTO;
 import com.sura.reclamaciones.models.ReclamacionDTO;
+import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.steps.generics.CSVStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ReclamacionStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
+import cucumber.api.java.es.Entonces;
+import cucumber.api.java.es.Y;
 import net.thucydides.core.annotations.Steps;
 
 import java.io.IOException;
@@ -21,23 +24,37 @@ public class ReclamacionDefinition {
     @Steps ReclamacionStep reclamacionStep;
     ReclamacionDTO reclamacion;
     LugarDTO lugarDTO;
+    Vehiculo vehiculo;
 
-    @Dado("que se recibe un reclamo con causa de siniestro por danos")
-    public void recibirReclamo(){
+
+    @Dado("^que se recibe (auto|multi Riesgo) con causa de siniestro por danos$")
+    public void recibirReclamo(String tipoPoliza) throws Exception {
+        vehiculo ejemplo = vehiculo.llamarPlaca("DFX003");
         menuClaimPage.seleccionarOpcionMenuSegundoNivel(MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
-        buscarPolizaStep.seleccionarTipoPoliza("Autos","","DFX003");
+        buscarPolizaStep.seleccionarTipoPoliza(tipoPoliza,"","");
         buscarPolizaStep.seleccionarFecha("");
         buscarPolizaStep.buscarPoliza();
-        //buscarPolizaStep.
+            //buscarPolizaSte
     }
 
-    @Cuando("se tomen los datos del siniestro")
+    @Cuando("se toman los datos del siniestro")
     public void ingresarDatosSiniestro() throws IOException {
-        reclamacionStep.seleccionarNombreAutorReporte();
-        reclamacionStep.seleccionarRelacionAsegurado();
         reclamacion = new ReclamacionDTO(csvStep.getFilasModelo("reclamacion", "sucedido", "ejemplouno"));
         lugarDTO = new LugarDTO(csvStep.getFilasModelo("lugar","pais", "Colombia"));
+        //reclamacionStep.seleccionarNombreAutorReporte();
+        //reclamacionStep.seleccionarRelacionAsegurado();
         reclamacionStep.completarDetalleSiniestro(reclamacion.getReclamaciones());
         reclamacionStep.completarLugar(lugarDTO.getLugares());
+        reclamacionStep.completarCulpabilidad(reclamacion.getCulpabilidad());
+    }
+
+    @Entonces("se le brindara al reclamante un numero de reclamacion")
+    public void generarReclamacion(){
+
+    }
+
+    @Y("se valida el encabezado en STAR")
+    public void validarStar(){
+
     }
 }

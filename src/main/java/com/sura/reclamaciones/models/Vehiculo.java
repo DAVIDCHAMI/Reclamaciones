@@ -1,71 +1,34 @@
 package com.sura.reclamaciones.models;
 
 public class Vehiculo {
-  private String placa;
-  private String modelo;
-  private String fasecolda;
-  private String clase;
-  private String marca;
-  private String linea;
-  private String ciudadCirculacion;
-  private String tipoServicio;
-  private String motor;
-  private String chasis;
-  private String uso;
-  private boolean remolque;
-  private boolean combustible;
-  private boolean importado;
-  private boolean ceroKM;
+  private final String placa;
+  private final String clase;
+  private final String modelo;
+  private final String marca;
+  private final String linea;
+  private final String motor;
+  private final String chasis;
 
-  public Vehiculo(
-      String placa,
-      String modelo,
-      String fasecolda,
-      String clase,
-      String marca,
-      String linea,
-      String ciudadCirculacion,
-      String tipoServicio,
-      String motor,
-      String chasis,
-      String uso,
-      String remolque,
-      String combustible,
-      String importado,
-      String ceroKM) {
+  public Vehiculo(String placa, String clase, String modelo, String marca, String linea, String motor, String chasis) {
     this.placa = placa;
-    this.modelo = modelo;
-    this.fasecolda = fasecolda;
     this.clase = clase;
+    this.modelo = modelo;
     this.marca = marca;
     this.linea = linea;
-    this.ciudadCirculacion = ciudadCirculacion;
-    this.tipoServicio = tipoServicio;
     this.motor = motor;
     this.chasis = chasis;
-    this.uso = uso;
-
-    this.remolque = Boolean.parseBoolean(remolque);
-    this.combustible = Boolean.parseBoolean(combustible);
-    this.importado = Boolean.parseBoolean(importado);
-    this.ceroKM = Boolean.parseBoolean(ceroKM);
   }
 
-  //region propiedades_GET
   public String getPlaca() {
     return placa;
   }
 
-  public String getModelo() {
-    return modelo;
-  }
-
-  public String getFasecolda() {
-    return fasecolda;
-  }
-
   public String getClase() {
     return clase;
+  }
+
+  public String getModelo() {
+    return modelo;
   }
 
   public String getMarca() {
@@ -76,14 +39,6 @@ public class Vehiculo {
     return linea;
   }
 
-  public String getCiudadCirculacion() {
-    return ciudadCirculacion;
-  }
-
-  public String getTipoServicio() {
-    return tipoServicio;
-  }
-
   public String getMotor() {
     return motor;
   }
@@ -92,25 +47,16 @@ public class Vehiculo {
     return chasis;
   }
 
-  public String getUso() {
-    return uso;
+  public static VehiculoBuilder llamarPlaca(String placa) {
+    return new VehiculoBuilder(placa);
   }
 
-  public boolean isRemolque() {
-    return remolque;
-  }
+  public static class VehiculoBuilder {
 
-  public boolean isCombustible() {
-    return combustible;
-  }
+    private String placa;
 
-  public boolean isImportado() {
-    return importado;
+    public VehiculoBuilder(String placa) {
+      this.placa = placa;
+    }
   }
-
-  public boolean isCeroKM() {
-    return ceroKM;
-  }
-  //endregion propiedades_GET
-
 }

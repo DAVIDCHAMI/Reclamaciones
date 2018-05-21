@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Tomador extends Persona {
+public class Tomador extends PersonaDTO {
 
   private double porcentajeParticipacion;
   private List<Tomador> lstTomadores = new ArrayList<>();

@@ -15,8 +15,14 @@ public class ReclamacionDTO {
     private String culpabilidad;
     private List<ReclamacionDTO> reclamaciones = new ArrayList<>();
 
-    public ReclamacionDTO(){
-
+    public ReclamacionDTO(String sucedido, String causa, String origen, String valorPredeterminado, String vehiculoRetenido, String autoridad, String culpabilidad) {
+        this.sucedido = sucedido;
+        this.causa = causa;
+        this.origen = origen;
+        this.valorPredeterminado = valorPredeterminado;
+        this.vehiculoRetenido = vehiculoRetenido;
+        this.autoridad = autoridad;
+        this.culpabilidad = culpabilidad;
     }
 
     public ReclamacionDTO(Map<String, String> datosReclamaciones){
