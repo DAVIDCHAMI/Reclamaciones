@@ -29,7 +29,9 @@ public class ReclamacionDefinition {
 
     @Dado("^que se recibe (auto|multi Riesgo) con causa de siniestro por danos$")
     public void recibirReclamo(String tipoPoliza) throws Exception {
-        vehiculo ejemplo = vehiculo.llamarPlaca("DFX003");
+        vehiculo = Vehiculo.dePlaca("asd123")
+                            .conModelo("2014")
+                            .deMarca("Mazda");
         menuClaimPage.seleccionarOpcionMenuSegundoNivel(MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
         buscarPolizaStep.seleccionarTipoPoliza(tipoPoliza,"","");
         buscarPolizaStep.seleccionarFecha("");

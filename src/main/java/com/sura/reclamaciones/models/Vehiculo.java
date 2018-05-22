@@ -47,16 +47,4 @@ public class Vehiculo {
     return chasis;
   }
 
-  public static VehiculoBuilder llamarPlaca(String placa) {
-    return new VehiculoBuilder(placa);
-  }
-
-  public static class VehiculoBuilder {
-
-    private String placa;
-
-    public VehiculoBuilder(String placa) {
-      this.placa = placa;
-    }
-  }
 }
