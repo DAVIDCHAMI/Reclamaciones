@@ -1,2 +1,2 @@
-id;sucedido;causa;origen;valorpredeterminado;vehiculoretenido;autoridad;culpabilidad
-1;ejemplouno;daño;distraccion;123145;;Municipal;Archivo
+id;fechasiniestro;sucedido;causa;origen;valorpredeterminado;vehiculoretenido;autoridad;culpabilidad
+1;05/06/2018;ejemplouno;dano;distraccion;123145;;Municipal;Archivo
