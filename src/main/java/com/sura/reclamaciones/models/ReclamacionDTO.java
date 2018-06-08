@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class ReclamacionDTO {
 
+    private String fechaSiniestro;
     private String sucedido;
     private String causa;
     private String origen;
@@ -15,7 +16,7 @@ public class ReclamacionDTO {
     private String culpabilidad;
     private List<ReclamacionDTO> reclamaciones = new ArrayList<>();
 
-    public ReclamacionDTO(String sucedido, String causa, String origen, String valorPredeterminado, String vehiculoRetenido, String autoridad, String culpabilidad) {
+    public ReclamacionDTO(String fechaSiniestro,String sucedido, String causa, String origen, String valorPredeterminado, String vehiculoRetenido, String autoridad, String culpabilidad) {
         this.sucedido = sucedido;
         this.causa = causa;
         this.origen = origen;
@@ -41,6 +42,10 @@ public class ReclamacionDTO {
 
     public List<ReclamacionDTO> getReclamaciones() {
         return reclamaciones;
+    }
+
+    public String getFechaSiniestro() {
+        return fechaSiniestro;
     }
 
     public String getSucedido() {

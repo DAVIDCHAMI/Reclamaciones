@@ -22,19 +22,17 @@ public class ReclamacionDefinition {
     @Steps CSVStep csvStep;
     @Steps BuscarPolizaStep buscarPolizaStep;
     @Steps ReclamacionStep reclamacionStep;
-    ReclamacionDTO reclamacion;
+    private ReclamacionDTO reclamacion;
     LugarDTO lugarDTO;
     Vehiculo vehiculo;
 
 
     @Dado("^que se recibe (auto|multi Riesgo) con causa de siniestro por danos$")
     public void recibirReclamo(String tipoPoliza) throws Exception {
-        vehiculo = Vehiculo.dePlaca("asd123")
-                            .conModelo("2014")
-                            .deMarca("Mazda");
+        reclamacion = new ReclamacionDTO(csvStep.getFilasModelo("reclamacion", "sucedido", "ejemplouno"));
         menuClaimPage.seleccionarOpcionMenuSegundoNivel(MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
-        buscarPolizaStep.seleccionarTipoPoliza(tipoPoliza,"","");
-        buscarPolizaStep.seleccionarFecha("");
+        buscarPolizaStep.seleccionarTipoPoliza(tipoPoliza,"",vehiculo.getPlaca());
+        buscarPolizaStep.seleccionarFecha(reclamacion.getFechaSiniestro());
         buscarPolizaStep.buscarPoliza();
             //buscarPolizaSte
     }
@@ -44,11 +42,11 @@ public class ReclamacionDefinition {
         reclamacion = new ReclamacionDTO(csvStep.getFilasModelo("reclamacion", "sucedido", "ejemplouno"));
         lugarDTO = new LugarDTO(csvStep.getFilasModelo("lugar","pais", "Colombia"));
         //reclamacionStep.seleccionarNombreAutorReporte();
-        //reclamacionStep.seleccionarRelacionAsegurado();
         reclamacionStep.completarDetalleSiniestro(reclamacion.getReclamaciones());
         reclamacionStep.completarLugar(lugarDTO.getLugares());
         reclamacionStep.completarCulpabilidad(reclamacion.getCulpabilidad());
     }
+
 
     @Entonces("se le brindara al reclamante un numero de reclamacion")
     public void generarReclamacion(){

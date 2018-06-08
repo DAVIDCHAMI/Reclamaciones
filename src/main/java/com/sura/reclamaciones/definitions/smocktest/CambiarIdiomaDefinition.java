@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.definitions.smocktest;
 
 import com.sura.reclamaciones.steps.smocktest.CambiarIdiomaStep;
-
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -22,7 +21,7 @@ public class CambiarIdiomaDefinition {
     }
 
     @Entonces("el idioma de reclamaciones debe ser us")
-    public void verPantallaIdiomaDiferenta() {
+    public void verPantallaIdiomaDiferente() {
         cambiarIdiomaStep.comprobarTextoPantalla();
     }
 }

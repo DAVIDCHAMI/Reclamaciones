@@ -46,5 +46,4 @@ public class Vehiculo {
   public String getChasis() {
     return chasis;
   }
-
 }
