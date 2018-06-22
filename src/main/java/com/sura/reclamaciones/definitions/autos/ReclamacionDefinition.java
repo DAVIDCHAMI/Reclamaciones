@@ -18,43 +18,51 @@ import java.io.IOException;
 
 public class ReclamacionDefinition {
 
-    @Steps MenuClaimPage menuClaimPage;
-    @Steps CSVStep csvStep;
-    @Steps BuscarPolizaStep buscarPolizaStep;
-    @Steps ReclamacionStep reclamacionStep;
+    private MenuClaimPage menuClaimPage;
+
+    @Steps
+    private CSVStep csvStep;
+
+    @Steps
+    private BuscarPolizaStep buscarPolizaStep;
+
+    @Steps
+    private ReclamacionStep reclamacionStep;
+
     private ReclamacionDTO reclamacion;
-    LugarDTO lugarDTO;
-    Vehiculo vehiculo;
+    private LugarDTO lugarDTO;
+    private Vehiculo vehiculo;
 
-
-    @Dado("^que se recibe (auto|multi Riesgo) con causa de siniestro por danos$")
+    @Dado("^que se recibe (auto|multiRiesgo) con causa de siniestro por danos$")
     public void recibirReclamo(String tipoPoliza) throws Exception {
         reclamacion = new ReclamacionDTO(csvStep.getFilasModelo("reclamacion", "sucedido", "ejemplouno"));
         menuClaimPage.seleccionarOpcionMenuSegundoNivel(MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
-        buscarPolizaStep.seleccionarTipoPoliza(tipoPoliza,"",vehiculo.getPlaca());
+        //System.out.println("hola");
+        buscarPolizaStep.seleccionarTipoPoliza(tipoPoliza, "", vehiculo.getPlaca());
         buscarPolizaStep.seleccionarFecha(reclamacion.getFechaSiniestro());
         buscarPolizaStep.buscarPoliza();
-            //buscarPolizaSte
+        //buscarPolizaSte
     }
 
     @Cuando("se toman los datos del siniestro")
     public void ingresarDatosSiniestro() throws IOException {
         reclamacion = new ReclamacionDTO(csvStep.getFilasModelo("reclamacion", "sucedido", "ejemplouno"));
-        lugarDTO = new LugarDTO(csvStep.getFilasModelo("lugar","pais", "Colombia"));
+        lugarDTO = new LugarDTO(csvStep.getFilasModelo("lugar", "pais", "Colombia"));
         //reclamacionStep.seleccionarNombreAutorReporte();
         reclamacionStep.completarDetalleSiniestro(reclamacion.getReclamaciones());
         reclamacionStep.completarLugar(lugarDTO.getLugares());
-        reclamacionStep.completarCulpabilidad(reclamacion.getCulpabilidad());
+        reclamacionStep.completarCategorizacion(reclamacion.getCulpabilidad());
+        reclamacionStep.editarVehiculo();
     }
 
 
     @Entonces("se le brindara al reclamante un numero de reclamacion")
-    public void generarReclamacion(){
+    public void generarReclamacion() {
 
     }
 
     @Y("se valida el encabezado en STAR")
-    public void validarStar(){
+    public void validarStar() {
 
     }
 }

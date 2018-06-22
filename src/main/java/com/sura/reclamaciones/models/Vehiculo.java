@@ -1,22 +1,34 @@
 package com.sura.reclamaciones.models;
 
-public class Vehiculo {
-  private final String placa;
-  private final String clase;
-  private final String modelo;
-  private final String marca;
-  private final String linea;
-  private final String motor;
-  private final String chasis;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-  public Vehiculo(String placa, String clase, String modelo, String marca, String linea, String motor, String chasis) {
-    this.placa = placa;
-    this.clase = clase;
-    this.modelo = modelo;
-    this.marca = marca;
-    this.linea = linea;
-    this.motor = motor;
-    this.chasis = chasis;
+public class Vehiculo {
+  private String placa;
+  private String clase;
+  private String modelo;
+  private String marca;
+  private String linea;
+  private String motor;
+  private String chasis;
+  private List<Vehiculo> vehiculos = new ArrayList<>();
+
+  public Vehiculo(){}
+
+  public Vehiculo(Map<String, String> datosVehiculos) {
+    this.placa = datosVehiculos.get("placa");
+    this.clase = datosVehiculos.get("clase");
+    this.modelo = datosVehiculos.get("modelo");
+    this.marca = datosVehiculos.get("marca");
+    this.linea = datosVehiculos.get("linea");
+    this.motor = datosVehiculos.get("motor");
+    this.chasis = datosVehiculos.get("chasis");
+  }
+
+  public Vehiculo(List<Map<String, String>> datoVehiculo){
+    super();
+    asignarDatos(datoVehiculo);
   }
 
   public String getPlaca() {
@@ -45,5 +57,11 @@ public class Vehiculo {
 
   public String getChasis() {
     return chasis;
+  }
+
+  public void asignarDatos(List<Map<String, String>> datoVehiculo){
+    for(Map<String, String> dato : datoVehiculo){
+      vehiculos.add(new Vehiculo(dato));
+    }
   }
 }

@@ -11,10 +11,7 @@ public class MenuClaimPage extends GeneralPage {
     @FindBy(xpath = ".//*[@id=':tabs-innerCt']")
     WebElementFacade mnuPrimerNivel;
 
-    @FindBy(
-            xpath =
-                    ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
-    )
+    @FindBy(xpath =".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']")
     WebElementFacade mnuSegundoNivel;
 
     @FindBy(xpath = "//input[@id='QuickJump-inputEl']")

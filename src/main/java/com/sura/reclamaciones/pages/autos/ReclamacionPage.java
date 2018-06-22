@@ -10,6 +10,9 @@ public class ReclamacionPage extends PageObject {
     @FindBy(xpath = ".//td[@class='x-input-cell']/input")
     WebElementFacade txtPretension;
 
+    @FindBy(xpath = "//span[@class='x-btn-button']/span[@class='x-btn-inner x-btn-inner-center' and contains(.,'conductor')]")
+    WebElementFacade btnAgregarConductor;
+
     public void diligenciarFormulario(String label, String tipoCampo, String palabraAEscribir) {
         String formularioInformacionReclamacion = ".//div[contains(@id,'LossDetailsAddressDV')]/table//label[contains(.,'" + label + "')]/../following-sibling::td//" + tipoCampo;
         $(formularioInformacionReclamacion).sendKeys(palabraAEscribir);
@@ -54,4 +57,23 @@ public class ReclamacionPage extends PageObject {
     public void escribirDireccion(String direccion) {
         diligenciarFormulario(ReclamacionConstante.DIRRECCION, "input", direccion);
     }
+
+    public void agregarConductor() {
+        cliquearBtnAgregarConductor();
+       // seleccionarConductor();
+    }
+
+    private void cliquearBtnAgregarConductor() {
+        btnAgregarConductor.waitUntilVisible()
+                .click();
+    }
+
+    public void seleccionarTaller() {
+       /** seleccionarServicios();
+        cliquearBtnAgregarTaller();
+        cliquearBtnNuscarProveedor();**/
+        
+    }
+
+
 }

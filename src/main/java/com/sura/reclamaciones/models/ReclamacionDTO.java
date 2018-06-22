@@ -16,27 +16,22 @@ public class ReclamacionDTO {
     private String culpabilidad;
     private List<ReclamacionDTO> reclamaciones = new ArrayList<>();
 
-    public ReclamacionDTO(String fechaSiniestro,String sucedido, String causa, String origen, String valorPredeterminado, String vehiculoRetenido, String autoridad, String culpabilidad) {
-        this.sucedido = sucedido;
-        this.causa = causa;
-        this.origen = origen;
-        this.valorPredeterminado = valorPredeterminado;
-        this.vehiculoRetenido = vehiculoRetenido;
-        this.autoridad = autoridad;
-        this.culpabilidad = culpabilidad;
+    public ReclamacionDTO(){
     }
 
     public ReclamacionDTO(Map<String, String> datosReclamaciones){
+        this.fechaSiniestro = datosReclamaciones.get("fechaSiniestro");
         this.sucedido = datosReclamaciones.get("sucedido");
-        this.sucedido = datosReclamaciones.get("causa");
-        this.sucedido = datosReclamaciones.get("origen");
-        this.sucedido = datosReclamaciones.get("valorpredeterminado");
-        this.sucedido = datosReclamaciones.get("vehiculoretenido");
-        this.sucedido = datosReclamaciones.get("autoridad");
-        this.sucedido = datosReclamaciones.get("culpabilidad");
+        this.causa = datosReclamaciones.get("causa");
+        this.origen = datosReclamaciones.get("origen");
+        this.valorPredeterminado = datosReclamaciones.get("valorpredeterminado");
+        this.vehiculoRetenido = datosReclamaciones.get("vehiculoretenido");
+        this.autoridad = datosReclamaciones.get("autoridad");
+        this.culpabilidad = datosReclamaciones.get("culpabilidad");
     }
 
     public ReclamacionDTO(List<Map<String, String>> datosReclamacion){
+        super();
         asignarDatos(datosReclamacion);
     }
 
