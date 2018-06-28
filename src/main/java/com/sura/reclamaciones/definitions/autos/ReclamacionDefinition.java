@@ -33,12 +33,13 @@ public class ReclamacionDefinition {
     private LugarDTO lugarDTO;
     private Vehiculo vehiculo;
 
-    @Dado("^que se recibe (auto|multiRiesgo) con causa de siniestro por danos$")
+    @Dado("^que se recibe (autos|multiRiesgo) con causa de siniestro por danos$")
     public void recibirReclamo(String tipoPoliza) throws Exception {
         reclamacion = new ReclamacionDTO(csvStep.getFilasModelo("reclamacion", "sucedido", "ejemplouno"));
+        vehiculo = new Vehiculo(csvStep.getFilasModelo("vehiculo","identificador","COL001"));
         menuClaimPage.seleccionarOpcionMenuSegundoNivel(MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
         //System.out.println("hola");
-        buscarPolizaStep.seleccionarTipoPoliza(tipoPoliza, "", vehiculo.getPlaca());
+        buscarPolizaStep.seleccionarTipoPoliza(tipoPoliza, "", vehiculo.getVehiculos());
         buscarPolizaStep.seleccionarFecha(reclamacion.getFechaSiniestro());
         buscarPolizaStep.buscarPoliza();
         //buscarPolizaSte

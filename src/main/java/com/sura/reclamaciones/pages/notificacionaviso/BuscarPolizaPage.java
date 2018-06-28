@@ -4,8 +4,11 @@ import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BuscarPolizaPage extends PageObject {
@@ -15,6 +18,7 @@ public class BuscarPolizaPage extends PageObject {
     }
 
     private String selectTipoDocumento = "//li[.='COMODIN']";
+    private String comodinTxt = "//td[.='COMODIN']//input";
     private String selectTipoPoliza = "//li[.='COMODIN']";
     private String XpathRbtBuscarPoliza = "//td[.='Buscar póliza']//input";
     private String XpathMnuTipoDePoliza = "//td[.='Tipo de póliza']//div";
@@ -91,10 +95,19 @@ public class BuscarPolizaPage extends PageObject {
     }
 
     public void seleccionarTipoPoliza(String poliza) {
-        waitForPresenceOf(XpathMnuTipoDePoliza);
+        $(".//label[contains(.,'Tipo de')]/../following-sibling::td//following-sibling::td").waitUntilVisible()
+                .click();
+        List<WebElement> elementosLista = getDriver().findElements(By.xpath("//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']/div/ul/li"));
+        List<String> elemento = new ArrayList<>();
+        for(WebElement elementoLista : elementosLista){
+            elemento.add(elementoLista.getText());
+        }
+
+        //elementosLista.forEach();
+        /**waitForPresenceOf(XpathMnuTipoDePoliza);
         mnuTipoDePoliza.click();
            selectTipoPoliza = selectTipoPoliza.replace("COMODIN", poliza);
-           $(selectTipoPoliza).click();
+           $(selectTipoPoliza).click();**/
     }
 
     public void escribirNumeroPoliza(String numPoliza) {
@@ -164,10 +177,8 @@ public class BuscarPolizaPage extends PageObject {
     }
 
     public void escribirPlaca(String numeroPlaca) {
-
+        comodinTxt = comodinTxt.replace("COMODIN","Placa");
+        $(comodinTxt).type(numeroPlaca);
     }
 
-    /** public List<String> traerObjetosLista() {
-        List<WebElementFacade> elementosLista = findAll("//ul[@class='x-list-plain']");
-    }**/
 }
