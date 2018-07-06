@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
+import com.sura.reclamaciones.models.Reclamacion;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import net.thucydides.core.annotations.Step;
@@ -13,18 +14,23 @@ public class BuscarPolizaStep {
     BuscarPolizaPage buscarPolizaPage;
 
     @Step
-    public void seleccionarTipoPoliza(String tipoPoliza, String numeroPoliza, List<Vehiculo> datoVehiculo) {
-        datoVehiculo.forEach(
-                dato -> {
-                    buscarPolizaPage.seleccionarTipoPoliza(tipoPoliza);
-                    switch (tipoPoliza) {
-                        case "autos":
-                            buscarPolizaPage.escribirPlaca(dato.getPlaca());
-                            break;
-                        case "multi riesgo":
-                            buscarPolizaPage.escribirNumeroPoliza(numeroPoliza);
-                            break;
-                    }
+    public void completarFormularioBuscarPoliza(String tipoPoliza, List<Reclamacion> datosReclamacion, List<Vehiculo> datosVehiculo) {
+        buscarPolizaPage.seleccionarTipoPoliza(tipoPoliza);
+        switch (tipoPoliza) {
+            case "Autos":
+                datosVehiculo.stream().forEach(
+                        datoVehiculo -> {
+                            buscarPolizaPage.escribirPlaca(datoVehiculo.getPlaca());
+                        }
+                );
+                break;
+            case "multi riesgo":
+                buscarPolizaPage.escribirNumeroPoliza("");
+                break;
+        }
+        datosReclamacion.stream().forEach(
+                datoReclamacion -> {
+                    seleccionarFecha(datoReclamacion.getFechaSiniestro());
                 });
     }
 
@@ -36,7 +42,7 @@ public class BuscarPolizaStep {
 
     @Step
     public void seleccionarFecha(String fecha) {
-        if (fecha == "Hoy") {
+        if (fecha.equals("Hoy")) {
             buscarPolizaPage.seleccionarFechaHoySiniestro();
         } else {
             buscarPolizaPage.escribirFechaSiniestro(fecha);
@@ -53,6 +59,7 @@ public class BuscarPolizaStep {
     @Step
     public void buscarPoliza() {
         buscarPolizaPage.cliquearBuscar();
+        buscarPolizaPage.cliquearSiguiente();
     }
 
     @Step

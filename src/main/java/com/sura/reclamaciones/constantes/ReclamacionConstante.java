@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.constantes;
 
-import com.sura.reclamaciones.pages.autos.ReclamacionPage;
-
 public class ReclamacionConstante {
     public static final String SUCEDIDO = "¿Qu";
     public static final String CAUSA_SINIESTRO = "Causa";

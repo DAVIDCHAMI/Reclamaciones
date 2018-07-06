@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.autos;
+package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import net.serenitybdd.core.annotations.findby.FindBy;

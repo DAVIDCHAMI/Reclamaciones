@@ -23,7 +23,7 @@ public class MenuClaimPage extends GeneralPage {
 
     public void seleccionarOpcionMenuPrimerNivel(String nombreOpcion) {
         mnuPrimerNivel.findElement(By.xpath("//span[contains(text(), '" + nombreOpcion + "')]"));
-        clickElemento(mnuPrimerNivel);
+        mnuPrimerNivel.click();
     }
 
     public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
@@ -33,7 +33,7 @@ public class MenuClaimPage extends GeneralPage {
         mnuSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
     }
 
-    public void ingresarComandoPolicy(String comando) {
+    public void ingresarComandoClaim(String comando) {
         txtComandoPolicy.type(comando).sendKeys(Keys.ENTER);
     }
 }

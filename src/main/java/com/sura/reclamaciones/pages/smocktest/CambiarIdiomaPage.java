@@ -32,24 +32,24 @@ public class CambiarIdiomaPage extends GeneralPage {
     private WebElementFacade linkSeleccionarLenguaje;
 
     public void cliquearBtnConfiguraciones() {
-        clickElemento(btnAjuste);
+        btnAjuste.click();
     }
 
     public void cliquearLinkInternacional() {
-        clickElemento(linkInternacional);
+        linkInternacional.click();
     }
 
     public void cliquearLinkIdioma() {
-        clickElemento(linkIdioma);
+        linkIdioma.click();
     }
 
     public String seleccionarIdioma() {
         if (linkSeleccionarLenguaje.getText().equals("English (US)")) {
             tipoIdioma = tipoIdioma.replace("COMODIN", "Spanish (CO)");
-            clickElemento($(tipoIdioma));
+            $(tipoIdioma).click();
         } else {
             tipoIdioma = tipoIdioma.replace("COMODIN", "(US)");
-            clickElemento($(tipoIdioma));
+            $(tipoIdioma).click();
         }
         return letraComprobante.waitUntilVisible().getText();
     }

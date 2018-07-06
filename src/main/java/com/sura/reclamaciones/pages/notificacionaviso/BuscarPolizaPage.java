@@ -1,17 +1,12 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class BuscarPolizaPage extends PageObject {
+public class BuscarPolizaPage extends GeneralPage {
 
     public BuscarPolizaPage(WebDriver driver) {
         super(driver);
@@ -89,25 +84,20 @@ public class BuscarPolizaPage extends PageObject {
     @FindBy(xpath = "//span[.='Siguiente >']/span/span")
     private WebElementFacade btnSiguiente;
 
+    @FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:PolicyType-inputEl")
+    private WebElementFacade cmbTipoPoliza;
+
+    @FindBy(xpath = ".//a[@class='g-actionable miniButton' and contains(.,'Deseleccionar')]")
+    private WebElementFacade elementoEspera;
+
     public void cliquearBuscarPoliza() {
         waitForPresenceOf(XpathRbtBuscarPoliza);
         rbtBuscarPoliza.click();
     }
 
-    public void seleccionarTipoPoliza(String poliza) {
-        $(".//label[contains(.,'Tipo de')]/../following-sibling::td//following-sibling::td").waitUntilVisible()
-                .click();
-        List<WebElement> elementosLista = getDriver().findElements(By.xpath("//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']/div/ul/li"));
-        List<String> elemento = new ArrayList<>();
-        for(WebElement elementoLista : elementosLista){
-            elemento.add(elementoLista.getText());
-        }
-
-        //elementosLista.forEach();
-        /**waitForPresenceOf(XpathMnuTipoDePoliza);
-        mnuTipoDePoliza.click();
-           selectTipoPoliza = selectTipoPoliza.replace("COMODIN", poliza);
-           $(selectTipoPoliza).click();**/
+    public void seleccionarTipoPoliza(String opcion) {
+        cmbTipoPoliza.waitUntilVisible().click();
+        seleccionarOpcionCombobox(opcion);
     }
 
     public void escribirNumeroPoliza(String numPoliza) {
@@ -164,6 +154,8 @@ public class BuscarPolizaPage extends PageObject {
     public void cliquearBuscar() {
         waitForPresenceOf(XpathBtnBuscar);
         btnBuscar.click();
+        realizarEsperaCarga();
+        //elementoEspera.waitUntilVisible();
     }
 
     public void tomarAsegurado() {

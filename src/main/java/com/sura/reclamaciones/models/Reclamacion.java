@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ReclamacionDTO {
+public class Reclamacion {
 
     private String fechaSiniestro;
     private String sucedido;
@@ -14,12 +14,12 @@ public class ReclamacionDTO {
     private String vehiculoRetenido;
     private String autoridad;
     private String culpabilidad;
-    private List<ReclamacionDTO> reclamaciones = new ArrayList<>();
+    private List<Reclamacion> reclamaciones = new ArrayList<>();
 
-    public ReclamacionDTO(){
+    public Reclamacion(){
     }
 
-    public ReclamacionDTO(Map<String, String> datosReclamaciones){
+    public Reclamacion(Map<String, String> datosReclamaciones){
         this.fechaSiniestro = datosReclamaciones.get("fechaSiniestro");
         this.sucedido = datosReclamaciones.get("sucedido");
         this.causa = datosReclamaciones.get("causa");
@@ -30,12 +30,12 @@ public class ReclamacionDTO {
         this.culpabilidad = datosReclamaciones.get("culpabilidad");
     }
 
-    public ReclamacionDTO(List<Map<String, String>> datosReclamacion){
+    public Reclamacion(List<Map<String, String>> datosReclamacion){
         super();
         asignarDatos(datosReclamacion);
     }
 
-    public List<ReclamacionDTO> getReclamaciones() {
+    public List<Reclamacion> getReclamaciones() {
         return reclamaciones;
     }
 
@@ -73,7 +73,7 @@ public class ReclamacionDTO {
 
     public void asignarDatos(List<Map<String, String>> datosReclamacion) {
         for (Map<String, String> dato : datosReclamacion){
-            reclamaciones.add(new ReclamacionDTO(dato));
+            reclamaciones.add(new Reclamacion(dato));
         }
     }
 

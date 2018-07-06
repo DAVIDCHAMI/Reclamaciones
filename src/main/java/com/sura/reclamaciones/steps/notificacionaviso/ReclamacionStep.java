@@ -1,8 +1,9 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.models.LugarDTO;
-import com.sura.reclamaciones.models.ReclamacionDTO;
-import com.sura.reclamaciones.pages.autos.ReclamacionPage;
+import com.sura.reclamaciones.models.Reclamacion;
+import com.sura.reclamaciones.pages.autos.reclamacion.ReclamacionPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
@@ -13,8 +14,11 @@ public class ReclamacionStep {
     @Page
     private ReclamacionPage reclamacionPage;
 
+    @Page
+    private InformacionBasicaPage informacionBasicaPage;
+
     @Step
-    public void completarDetalleSiniestro(List<ReclamacionDTO> datosReclamacion) {
+    public void completarDetalleSiniestro(List<Reclamacion> datosReclamacion) {
         datosReclamacion.forEach(
                 dato -> {
                     reclamacionPage.escribirSucedido(dato.getSucedido());
@@ -45,5 +49,9 @@ public class ReclamacionStep {
         reclamacionPage.agregarConductor();
         reclamacionPage.seleccionarTaller();
 
+    }
+
+    public void seleccionarNombreAutorReporte() {
+        informacionBasicaPage.seleccionarNombre();
     }
 }
