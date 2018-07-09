@@ -4,6 +4,7 @@ import com.sura.reclamaciones.models.LugarDTO;
 import com.sura.reclamaciones.models.Reclamacion;
 import com.sura.reclamaciones.pages.autos.reclamacion.ReclamacionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
+import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
@@ -16,6 +17,9 @@ public class ReclamacionStep {
 
     @Page
     private InformacionBasicaPage informacionBasicaPage;
+
+    @Page
+    private BuscarPolizaPage buscarPolizaPage;
 
     @Step
     public void completarDetalleSiniestro(List<Reclamacion> datosReclamacion) {
@@ -53,5 +57,6 @@ public class ReclamacionStep {
 
     public void seleccionarNombreAutorReporte() {
         informacionBasicaPage.seleccionarNombre();
+        buscarPolizaPage.cliquearSiguiente();
     }
 }

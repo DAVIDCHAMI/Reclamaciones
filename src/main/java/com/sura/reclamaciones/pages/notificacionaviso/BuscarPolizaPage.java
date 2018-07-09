@@ -81,7 +81,7 @@ public class BuscarPolizaPage extends GeneralPage {
     @FindBy(xpath = "//td[.='Deseleccionar']/following-sibling::td[3]/div")
     private WebElementFacade lblAsegurado;
 
-    @FindBy(xpath = "//span[.='Siguiente >']/span/span")
+    @FindBy(id = "FNOLWizard:Next-btnInnerEl")
     private WebElementFacade btnSiguiente;
 
     @FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:PolicyType-inputEl")
@@ -164,8 +164,8 @@ public class BuscarPolizaPage extends GeneralPage {
     }
 
     public void cliquearSiguiente() {
-        waitForPresenceOf(XpathBtnSiguiente);
         btnSiguiente.click();
+        realizarEsperaCarga();
     }
 
     public void escribirPlaca(String numeroPlaca) {

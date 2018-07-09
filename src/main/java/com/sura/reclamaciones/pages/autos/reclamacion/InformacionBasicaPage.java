@@ -21,5 +21,6 @@ public class InformacionBasicaPage extends GeneralPage {
     public void seleccionarNombre() {
         txtnombre.click();
         lstNombreAutor.click();
+        realizarEsperaCarga();
     }
 }
