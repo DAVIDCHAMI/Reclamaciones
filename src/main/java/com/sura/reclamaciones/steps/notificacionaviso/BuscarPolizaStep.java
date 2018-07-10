@@ -1,6 +1,12 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
+import static net.serenitybdd.core.pages.PageObject.withParameters;
+
+import com.sura.reclamaciones.models.Persona;
+import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
+import com.sura.reclamaciones.utils.AmbientesUtil;
+import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
@@ -9,42 +15,56 @@ public class BuscarPolizaStep {
   @Page BuscarPolizaPage BuscarPolizaPage;
 
   @Step
-  public void seleccionarTipoPoliza(String poliza, String numPoliza) {
-    BuscarPolizaPage.cliquearBuscarPoliza();
-    BuscarPolizaPage.seleccionarPoliza(poliza);
-    BuscarPolizaPage.escribirNumeroPoliza(numPoliza);
+  public void openCC() {
+    AmbientesUtil ambienteUtils = new AmbientesUtil();
+    BuscarPolizaPage.open(ambienteUtils.getAmbiente(), withParameters(""));
   }
 
   @Step
-  public void seleccionarDocumento(String tipDocumento, String numDocumento) {
-    BuscarPolizaPage.seleccionarTipoDocumento(tipDocumento);
-    BuscarPolizaPage.escribirNumeroDocumento(numDocumento);
+  public void seleccionarTipoPoliza(List<ReclamacionEmpresariales> datosPoliza) {
+    datosPoliza.forEach(
+        poliza -> {
+          BuscarPolizaPage.seleccionarPoliza(poliza.getTipoPoliza());
+          BuscarPolizaPage.escribirNumeroPoliza(poliza.getNumPoliza());
+          BuscarPolizaPage.cliquearBuscarPoliza();
+        });
   }
 
   @Step
-  public void seleccionarFecha(String fecha) {
-    if (fecha == "Hoy") {
-      BuscarPolizaPage.seleccionarFechaHoySiniestro();
-    } else {
-      BuscarPolizaPage.escribirFechaSiniestro(fecha);
-    }
+  public void seleccionarDocumento(List<Persona> datosDocumento) {
+    datosDocumento.forEach(
+        documento -> {
+          BuscarPolizaPage.seleccionarTipoDocumento(documento.getTipoDocumento());
+          BuscarPolizaPage.escribirNumeroDocumento(documento.getNumDocumento());
+        });
   }
 
   @Step
-  public void seleccionarUbicacion() {
-    BuscarPolizaPage.seleccionarPais();
-    BuscarPolizaPage.seleccionarDepartamento();
-    BuscarPolizaPage.seleccionarCiudad();
+  public void seleccionarFecha(List<ReclamacionEmpresariales> datosFecha) {
+    datosFecha
+        .stream()
+        .forEach(
+            fecha -> {
+              if (fecha.getFechaSiniestro().equals("Hoy")) {
+                BuscarPolizaPage.seleccionarFechaHoySiniestro();
+              } else {
+                BuscarPolizaPage.escribirFechaSiniestro(fecha.getFechaSiniestro());
+              }
+            });
+  }
+
+  @Step
+  public void seleccionarUbicacion(List<ReclamacionEmpresariales> datosUbicacion) {
+    datosUbicacion.forEach(
+        ubicacion -> {
+          BuscarPolizaPage.seleccionarPais(ubicacion.getPais());
+          BuscarPolizaPage.seleccionarDepartamento(ubicacion.getDepartamento());
+          BuscarPolizaPage.seleccionarCiudad(ubicacion.getCiudad());
+        });
   }
 
   @Step
   public void buscarPoliza() {
     BuscarPolizaPage.cliquearBuscar();
-  }
-
-  @Step
-  public void tomarAseguradoAutorReporte(){
-    BuscarPolizaPage.tomarAsegurado();
-    BuscarPolizaPage.cliquearSiguiente();
   }
 }

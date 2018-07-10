@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.steps.generics;
 
+import com.sura.reclamaciones.utils.Utilidades;
+import com.sura.reclamaciones.utils.Variables;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -9,40 +11,29 @@ import net.thucydides.core.steps.stepdata.TestDataSource;
 
 public class CSVStep {
 
-  public List<Map<String, String>> getRowsDatos(String columnaFiltro, String filtro)
-      throws IOException {
-    TestDataSource testData = new CSVTestDataSource("/data/datosReclamacion.csv", ';');
-    return getDataCSVEnExampleTable(testData, columnaFiltro, filtro);
+  public List<Map<String, String>> getFilasModelo(String nombreCSV, String filtro)
+          throws IOException {
+    TestDataSource testData = new CSVTestDataSource("/data/datos_" + nombreCSV + ".csv", ';');
+    return getDataCSVEnList(testData, filtro);
   }
 
-  public static List<Map<String, String>> getDataCSVEnExampleTable(
-      TestDataSource testData, String columnaFiltro, String filtro) {
+  public static List<Map<String, String>> getDataCSVEnList(TestDataSource testData, String filtro) {
     List<Map<String, String>> loadedData = testData.getData();
-    List<String> cabeceras = testData.getHeaders();
     String[] arrayDatosParaFiltrar = filtro.split(",");
     List<Map<String, String>> loadedDataFiltrada =
-        filtrarDataCSV(columnaFiltro, arrayDatosParaFiltrar, loadedData);
+            filtrarDataCSV(arrayDatosParaFiltrar, loadedData);
     return loadedDataFiltrada;
   }
 
   public static List<Map<String, String>> filtrarDataCSV(
-      String columnaFiltro, String[] arr, List<Map<String, String>> loadedData) {
+          String[] arr, List<Map<String, String>> loadedData) {
+    Utilidades utilidades = new Utilidades();
     List<Map<String, String>> loadedDataFiltered =
-        loadedData
-            .stream()
-            .filter(fila -> inArray(arr, fila.get(columnaFiltro)))
-            .collect(Collectors.toList());
+            loadedData
+                    .stream()
+                    .filter(
+                            fila -> Utilidades.inArray(arr, fila.get(Variables.COLUMNA_FILTRO_CSV.getValor())))
+                    .collect(Collectors.toList());
     return loadedDataFiltered;
-  }
-
-  public static boolean inArray(String[] arr, String item) {
-    if (arr.length > 0) {
-      for (String n : arr) {
-        if (item.equals(n)) {
-          return true;
-        }
-      }
-    }
-    return false;
   }
 }

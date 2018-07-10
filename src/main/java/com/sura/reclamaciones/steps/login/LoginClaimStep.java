@@ -10,36 +10,35 @@ import org.fluentlenium.core.annotation.Page;
 
 public class LoginClaimStep {
 
-    @Page
-    LoginClaimPage loginClaimPage;
+  @Page LoginClaimPage loginClaimPage;
 
-    @Step
-    public void abrirClaims() {
-        AmbientesUtil ambientesUtil = new AmbientesUtil();
-        loginClaimPage.open(ambientesUtil.getAmbiente(), withParameters(""));
-    }
+  @Step
+  public void abrirClaims() {
+    AmbientesUtil ambientesUtil = new AmbientesUtil();
+    loginClaimPage.open(ambientesUtil.getAmbiente(), withParameters(""));
+  }
 
-    @Step
-    public void iniciarSesionUAT(String usuario, String pass) {
-        loginClaimPage.inisiarSesionLAB(usuario, pass);
-    }
+  @Step
+  public void iniciarSesionUAT(String usuario, String pass) {
+    loginClaimPage.inisiarSesionLAB(usuario, pass);
+  }
 
-    @Step
-    public void iniciarSesionDllo(String usuario, String contrasena) {
-        loginClaimPage.iniciarSesionDLLO(usuario, contrasena);
-    }
+  @Step
+  public void iniciarSesionDllo(String usuario, String contrasena) {
+    loginClaimPage.iniciarSesionDLLO(usuario, contrasena);
+  }
 
-    @Step
-    public void iniciarSesionLab() {
-        UsuarioVO usuarioVO = new UsuarioVO("suragwsu", "sura2017");
-        abrirClaims();
-        iniciarSesionUAT(usuarioVO.getUsuario(), usuarioVO.getContrasena());
-    }
+  @Step
+  public void iniciarSesionLab() {
+    UsuarioVO usuarioVO = new UsuarioVO("suragwsu", "sura2017");
+    abrirClaims();
+    iniciarSesionUAT(usuarioVO.getUsuario(), usuarioVO.getContrasena());
+  }
 
-    @Step
-    public void iniciarSesionAmbienteDllo() {
-        UsuarioVO usuarioVO = new UsuarioVO("su", "gw");
-        abrirClaims();
-        iniciarSesionDllo(usuarioVO.getUsuario(), usuarioVO.getContrasena());
-    }
+  @Step
+  public void iniciarSesionAmbienteDllo() {
+    UsuarioVO usuarioVO = new UsuarioVO("su", "gw");
+    abrirClaims();
+    iniciarSesionDllo(usuarioVO.getUsuario(), usuarioVO.getContrasena());
+  }
 }

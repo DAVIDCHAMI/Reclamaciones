@@ -9,7 +9,7 @@ public class NuevaReclamacionStep {
   @Page NuevaReclamacionPage NuevaReclamacionPage;
 
   @Step
-  public void seleccionarNuevaReclamacion() {
-    NuevaReclamacionPage.cliquearReclamacion();
+  public void seleccionarNuevaReclamacion(String nombreOpcion, String subItem) {
+    NuevaReclamacionPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
   }
 }
