@@ -9,8 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 public class GeneralPage extends PageObject {
 
-
-  @FindBy(xpath = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']/div/ul")
+  @FindBy(xpath = "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul")
   private WebElementFacade lstOpcionesCombobox;
 
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")

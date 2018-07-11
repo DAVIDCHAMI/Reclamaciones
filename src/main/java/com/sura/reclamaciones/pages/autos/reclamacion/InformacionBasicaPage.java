@@ -12,14 +12,14 @@ public class InformacionBasicaPage extends GeneralPage {
     }
 
     @FindBy(xpath = "//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']/../following-sibling::td")
-    private WebElementFacade txtnombre;
+    private WebElementFacade cmbnombre;
 
     @FindBy(xpath = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li/following-sibling::li")
     private WebElementFacade lstNombreAutor;
 
 
     public void seleccionarNombre() {
-        txtnombre.click();
+        cmbnombre.click();
         lstNombreAutor.click();
         realizarEsperaCarga();
     }

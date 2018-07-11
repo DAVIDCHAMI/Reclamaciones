@@ -1,17 +1,17 @@
 package com.sura.reclamaciones.models.Usuario;
 
-import com.sura.reclamaciones.models.PersonaDTO;
+import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.Vehiculo;
 
 public class PolizaDTO {
 
-    private PersonaDTO personaDTO;
+    private Persona persona;
     private Vehiculo vehiculoDTO;
     private String fechaSiniestro;
 
 
-    public PersonaDTO getPersonaDTO() {
-        return personaDTO;
+    public Persona getPersona() {
+        return persona;
     }
 
     public Vehiculo getVehiculoDTO() {

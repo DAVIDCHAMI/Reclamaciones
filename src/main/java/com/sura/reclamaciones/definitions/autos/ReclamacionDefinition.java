@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.definitions.autos;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.models.LugarDTO;
+import com.sura.reclamaciones.models.Lugar;
 import com.sura.reclamaciones.models.Reclamacion;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -30,7 +30,7 @@ public class ReclamacionDefinition {
     private ReclamacionStep reclamacionStep;
 
     private Reclamacion reclamacion;
-    private LugarDTO lugarDTO;
+    private Lugar lugarDTO;
     private Vehiculo vehiculo;
 
     @Dado("^que se recibe (Autos|multiRiesgo) con causa de siniestro por danos$")
@@ -45,7 +45,7 @@ public class ReclamacionDefinition {
     @Cuando("se toman los datos del siniestro")
     public void ingresarDatosSiniestro() throws IOException {
         reclamacion = new Reclamacion(csvStep.getFilasModelo("reclamacion", "identificador", "COL001"));
-        lugarDTO = new LugarDTO(csvStep.getFilasModelo("lugar", "pais", "Colombia"));
+        lugarDTO = new Lugar(csvStep.getFilasModelo("lugar", "pais", "Colombia"));
         reclamacionStep.seleccionarNombreAutorReporte();
         reclamacionStep.completarDetalleSiniestro(reclamacion.getReclamaciones());
         reclamacionStep.completarLugar(lugarDTO.getLugares());

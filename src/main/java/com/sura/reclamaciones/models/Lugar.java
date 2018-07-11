@@ -1,25 +1,23 @@
 package com.sura.reclamaciones.models;
 
-import cucumber.api.java.it.Ma;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class LugarDTO {
+public class Lugar {
 
     private String lugar;
     private String pais;
     private String departamento;
     private String ciudad;
     private String direccion;
-    private List<LugarDTO> lugares = new ArrayList<>();
+    private List<Lugar> lugares = new ArrayList<>();
 
-    public LugarDTO(){
+    public Lugar(){
 
     }
 
-    public LugarDTO(Map<String, String> datoLugares){
+    public Lugar(Map<String, String> datoLugares){
         this.lugar = datoLugares.get("lugar");
         this.lugar = datoLugares.get("pais");
         this.lugar = datoLugares.get("departamento");
@@ -27,11 +25,11 @@ public class LugarDTO {
         this.lugar = datoLugares.get("direccion");
     }
 
-    public LugarDTO(List<Map<String, String>> datosLugar){
+    public Lugar(List<Map<String, String>> datosLugar){
         asignarDatos(datosLugar);
     }
 
-    public List<LugarDTO> getLugares() {
+    public List<Lugar> getLugares() {
         return lugares;
     }
 
@@ -57,7 +55,7 @@ public class LugarDTO {
 
     public void asignarDatos(List<Map<String, String>> datosLugares){
         for (Map<String, String> dato : datosLugares){
-            lugares.add(new LugarDTO(dato));
+            lugares.add(new Lugar(dato));
         }
     }
 }

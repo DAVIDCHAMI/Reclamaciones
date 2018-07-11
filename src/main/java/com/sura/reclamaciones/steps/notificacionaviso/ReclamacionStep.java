@@ -1,8 +1,9 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import com.sura.reclamaciones.models.LugarDTO;
+import com.sura.reclamaciones.models.Lugar;
 import com.sura.reclamaciones.models.Reclamacion;
-import com.sura.reclamaciones.pages.autos.reclamacion.ReclamacionPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import net.thucydides.core.annotations.Step;
@@ -13,46 +14,53 @@ import java.util.List;
 public class ReclamacionStep {
 
     @Page
-    private ReclamacionPage reclamacionPage;
-
-    @Page
     private InformacionBasicaPage informacionBasicaPage;
 
     @Page
     private BuscarPolizaPage buscarPolizaPage;
 
+    @Page
+    private AgregarInformacionPage agregarInformacionPage;
+
+    @Page
+    private DetalleVehiculoPage detalleVehiculoPage;
+
     @Step
     public void completarDetalleSiniestro(List<Reclamacion> datosReclamacion) {
         datosReclamacion.forEach(
                 dato -> {
-                    reclamacionPage.escribirSucedido(dato.getSucedido());
-                    reclamacionPage.seleccionarCausa(dato.getCausa());
-                    reclamacionPage.seleccionarOrigen(dato.getOrigen());
-                    reclamacionPage.escribirValorPretension(dato.getValorPredeterminado());
-                    reclamacionPage.seleccionarIntervinoAutoridad(dato.getAutoridad());
+                    if (agregarInformacionPage.getBtnCerrarVentanaEmergente().isVisible()) {
+                        agregarInformacionPage.cliquearBotonCerrar();
+                    }
+                    agregarInformacionPage.escribirSucedido(dato.getSucedido());
+                    agregarInformacionPage.seleccionarCausa(dato.getCausa());
+                    agregarInformacionPage.seleccionarOrigen(dato.getOrigen());
+                    agregarInformacionPage.escribirValorPretension(dato.getValorPredeterminado());
+                    agregarInformacionPage.seleccionarIntervinoAutoridad(dato.getAutoridad());
                 });
     }
 
     @Step
-    public void completarLugar(List<LugarDTO> datosLugar) {
-        for (LugarDTO dato : datosLugar) {
-            reclamacionPage.seleccionarPais(dato.getPais());
-            reclamacionPage.seleccionarDepartamento(dato.getDepartamento());
-            reclamacionPage.seleccionarCiudad(dato.getCiudad());
-            reclamacionPage.escribirDireccion(dato.getDireccion());
+    public void completarLugar(List<Lugar> datosLugar) {
+        for (Lugar dato : datosLugar) {
+            agregarInformacionPage.seleccionarLugar(dato.getLugar());
+            agregarInformacionPage.seleccionarPais(dato.getPais());
+            agregarInformacionPage.seleccionarDepartamento(dato.getDepartamento());
+            agregarInformacionPage.seleccionarCiudad(dato.getCiudad());
+            agregarInformacionPage.escribirDireccion(dato.getDireccion());
         }
     }
 
     @Step
     public void completarCategorizacion(String culpabilidad) {
-        reclamacionPage.seleccionarCulpabilidad(culpabilidad);
+        agregarInformacionPage.seleccionarCulpabilidad(culpabilidad);
     }
 
     @Step
     public void editarVehiculo() {
-        reclamacionPage.agregarConductor();
-        reclamacionPage.seleccionarTaller();
-
+        agregarInformacionPage.cliquearBotonEditarVehiculo();
+        detalleVehiculoPage.agregarConductor();
+        detalleVehiculoPage.seleccionarTaller();
     }
 
     public void seleccionarNombreAutorReporte() {
