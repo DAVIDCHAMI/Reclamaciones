@@ -32,6 +32,7 @@ public class ReclamacionStep {
                     if (agregarInformacionPage.getBtnCerrarVentanaEmergente().isVisible()) {
                         agregarInformacionPage.cliquearBotonCerrar();
                     }
+                    agregarInformacionPage.seleccionarLugar();
                     agregarInformacionPage.escribirSucedido(dato.getSucedido());
                     agregarInformacionPage.seleccionarCausa(dato.getCausa());
                     agregarInformacionPage.seleccionarOrigen(dato.getOrigen());
@@ -43,11 +44,11 @@ public class ReclamacionStep {
     @Step
     public void completarLugar(List<Lugar> datosLugar) {
         for (Lugar dato : datosLugar) {
-            agregarInformacionPage.seleccionarLugar(dato.getLugar());
-            agregarInformacionPage.seleccionarPais(dato.getPais());
-            agregarInformacionPage.seleccionarDepartamento(dato.getDepartamento());
-            agregarInformacionPage.seleccionarCiudad(dato.getCiudad());
-            agregarInformacionPage.escribirDireccion(dato.getDireccion());
+
+            //agregarInformacionPage.seleccionarPais(dato.getPais());
+            //agregarInformacionPage.seleccionarDepartamento(dato.getDepartamento());
+            //agregarInformacionPage.seleccionarCiudad(dato.getCiudad());
+            //agregarInformacionPage.escribirDireccion(dato.getDireccion());
         }
     }
 

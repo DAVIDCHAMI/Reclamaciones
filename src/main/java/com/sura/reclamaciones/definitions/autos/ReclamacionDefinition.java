@@ -48,8 +48,8 @@ public class ReclamacionDefinition {
         lugarDTO = new Lugar(csvStep.getFilasModelo("lugar", "pais", "Colombia"));
         reclamacionStep.seleccionarNombreAutorReporte();
         reclamacionStep.completarDetalleSiniestro(reclamacion.getReclamaciones());
-        reclamacionStep.completarLugar(lugarDTO.getLugares());
-        reclamacionStep.completarCategorizacion(reclamacion.getCulpabilidad());
+        //reclamacionStep.completarLugar(lugarDTO.getLugares());
+        //reclamacionStep.completarCategorizacion(reclamacion.getCulpabilidad());
         reclamacionStep.editarVehiculo();
     }
 

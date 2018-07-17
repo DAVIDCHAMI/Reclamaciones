@@ -11,6 +11,8 @@ public class DetalleVehiculoPage extends GeneralPage {
         super(wdriver);
     }
 
+    CrearServicioPage crearServicioPage;
+
     @FindBy(xpath = "//span[@class='x-btn-button']/span[@class='x-btn-inner x-btn-inner-center' and contains(.,'conductor')]")
     WebElementFacade btnAgregarConductor;
 
@@ -28,6 +30,9 @@ public class DetalleVehiculoPage extends GeneralPage {
 
     @FindBy(xpath = "//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Agregar Taller')]")
     WebElementFacade btnAgregarTaller;
+
+    @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
+    WebElementFacade btnBuscarProveedor;
 
     public void agregarConductor() {
         cliquearBtnAgregarConductor();
@@ -50,7 +55,14 @@ public class DetalleVehiculoPage extends GeneralPage {
     public void seleccionarTaller() {
          seleccionarServicios();
          cliquearBtnAgregarTaller();
-         cliquearBtnNuscarProveedor();
+         cliquearBtnBuscarProveedor();
+         crearServicioPage.seleccionarProveedor("ANDAR S.A.");
+
+    }
+
+    private void cliquearBtnBuscarProveedor() {
+        btnBuscarProveedor.waitUntilVisible().click();
+        realizarEsperaCarga();
     }
 
     private void cliquearBtnAgregarTaller() {
