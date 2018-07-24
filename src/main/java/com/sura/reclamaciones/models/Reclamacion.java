@@ -14,6 +14,7 @@ public class Reclamacion {
     private String vehiculoRetenido;
     private String autoridad;
     private String culpabilidad;
+    private String mensajeValidar;
     private List<Reclamacion> reclamaciones = new ArrayList<>();
 
     public Reclamacion(){
@@ -28,6 +29,7 @@ public class Reclamacion {
         this.vehiculoRetenido = datosReclamaciones.get("vehiculoretenido");
         this.autoridad = datosReclamaciones.get("autoridad");
         this.culpabilidad = datosReclamaciones.get("culpabilidad");
+        this.mensajeValidar = datosReclamaciones.get("culpabilidad");
     }
 
     public Reclamacion(List<Map<String, String>> datosReclamacion){
@@ -69,6 +71,10 @@ public class Reclamacion {
 
     public String getCulpabilidad() {
         return culpabilidad;
+    }
+
+    public String getMensajeValidar() {
+        return mensajeValidar;
     }
 
     public void asignarDatos(List<Map<String, String>> datosReclamacion) {

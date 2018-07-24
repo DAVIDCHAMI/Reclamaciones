@@ -85,8 +85,9 @@ public class AgregarInformacionPage extends GeneralPage {
     }
 
     public void seleccionarIntervinoAutoridad(String autoridad) {
-            txtIntervinoAutoridad.type(autoridad);
-        cmbCausaSiniestro.sendKeys(Keys.TAB);
+        txtIntervinoAutoridad.type(autoridad);
+        cmbCausaSiniestro.sendKeys(Keys.ENTER);
+        realizarEsperaCarga();
     }
 
     public void cliquearBotonCerrar() {
@@ -97,8 +98,10 @@ public class AgregarInformacionPage extends GeneralPage {
     }
 
     public void seleccionarCulpabilidad(String culpabilidad) {
+        cmbCulpabilidad.waitUntilDisabled();
         cmbCulpabilidad.click();
         seleccionarOpcionCombobox(culpabilidad);
+
     }
 
     public void seleccionarLugar() {
@@ -106,22 +109,6 @@ public class AgregarInformacionPage extends GeneralPage {
                 .click();
         seleccionarOpcionCombobox("Medellin");
         realizarEsperaCarga();
-    }
-
-    public void seleccionarPais(String pais) {
-        diligenciarFormulario(ReclamacionConstante.CULPABILIDAD, "input", pais);
-    }
-
-    public void seleccionarDepartamento(String departamento) {
-        diligenciarFormulario(ReclamacionConstante.DEPARTAMENTO, "input", departamento);
-    }
-
-    public void seleccionarCiudad(String ciudad) {
-        diligenciarFormulario(ReclamacionConstante.CIUDAD, "input", ciudad);
-    }
-
-    public void escribirDireccion(String direccion) {
-        diligenciarFormulario(ReclamacionConstante.DIRRECCION, "input", direccion);
     }
 
     public void cliquearBotonEditarVehiculo() {

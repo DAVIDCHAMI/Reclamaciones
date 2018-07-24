@@ -1,3 +1,3 @@
-id;identificador;fechaSiniestro;sucedido;causa;origen;valorpredeterminado;vehiculoretenido;autoridad;culpabilidad
-1;COL001;Hoy;ejemplouno;Colisión con vehículo;Embriaguez;123145;;Nacional;Archivo
+id;identificador;fechaSiniestro;sucedido;causa;origen;valorpredeterminado;vehiculoretenido;autoridad;culpabilidad;mensajevalidador
+1;COL001;Hoy;ejemplouno;Colisión con vehículo;Embriaguez;123145;;Nacional;Archivo;Nueva reclamación guardada
 2;blasf;fsdf;asd;as;dasfd;;;

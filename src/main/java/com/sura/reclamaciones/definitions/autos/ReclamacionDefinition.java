@@ -29,33 +29,31 @@ public class ReclamacionDefinition {
     @Steps
     private ReclamacionStep reclamacionStep;
 
-    private Reclamacion reclamacion;
-    private Lugar lugarDTO;
+    private Reclamacion reclamacion  ;
     private Vehiculo vehiculo;
 
     @Dado("^que se recibe (Autos|multiRiesgo) con causa de siniestro por danos$")
     public void recibirReclamo(String tipoPoliza) throws Exception {
         reclamacion = new Reclamacion(csvStep.getFilasModelo("reclamacion", "identificador", "COL001"));
         vehiculo = new Vehiculo(csvStep.getFilasModelo("vehiculo","identificador","COL001"));
-        menuClaimPage.seleccionarOpcionMenuSegundoNivel(MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
+        menuClaimPage.seleccionarOpcionMenuSegundoNivel(MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);//QUITAR
         buscarPolizaStep.completarFormularioBuscarPoliza(tipoPoliza, reclamacion.getReclamaciones(), vehiculo.getVehiculos());
         buscarPolizaStep.buscarPoliza();
     }
 
     @Cuando("se toman los datos del siniestro")
     public void ingresarDatosSiniestro() throws IOException {
-        reclamacion = new Reclamacion(csvStep.getFilasModelo("reclamacion", "identificador", "COL001"));
-        lugarDTO = new Lugar(csvStep.getFilasModelo("lugar", "pais", "Colombia"));
+        //reclamacion = new Reclamacion(csvStep.getFilasModelo("reclamacion", "identificador", "COL001"));
         reclamacionStep.seleccionarNombreAutorReporte();
         reclamacionStep.completarDetalleSiniestro(reclamacion.getReclamaciones());
-        //reclamacionStep.completarLugar(lugarDTO.getLugares());
-        //reclamacionStep.completarCategorizacion(reclamacion.getCulpabilidad());
+        reclamacionStep.completarCategorizacion(reclamacion.getReclamaciones());
         reclamacionStep.editarVehiculo();
     }
 
     @Entonces("se le brindara al reclamante un numero de reclamacion")
-    public void generarReclamacion() {
-
+    public void generarReclamacion() throws IOException {
+        //reclamacion = new Reclamacion(csvStep.getFilasModelo("reclamacion", "identificador", "COL001"));
+        reclamacionStep.validarReclamacion(reclamacion.getReclamaciones());
     }
 
     @Y("se valida el encabezado en STAR")
