@@ -7,14 +7,14 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
 public class InformacionBasicaStep {
-  @Page InformacionBasicaPage InformacionBasicaPage;
+  @Page InformacionBasicaPage informacionBasicaPage;
 
   @Step
   public void informacionPersonal(List<ReclamacionEmpresariales> datosAutor) {
     datosAutor.forEach(
         Autor -> {
-          InformacionBasicaPage.seleccionarAutorDelReporte();
-          InformacionBasicaPage.escribirDetallehechos(Autor.getDetalleHechos());
+          informacionBasicaPage.seleccionarAutorReporte();
+          informacionBasicaPage.escribirDetallehechos(Autor.getDetalleHechos());
         });
   }
 }

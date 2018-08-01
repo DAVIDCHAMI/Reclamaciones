@@ -7,7 +7,6 @@ import java.util.Map;
 public class Cuenta {
 
   private List<Cuenta> lstCuenta = new ArrayList<>();
-
   private String titularCuenta;
   private String nombreBanco;
   private String numeroCuenta;
@@ -16,7 +15,6 @@ public class Cuenta {
   public Cuenta() {}
 
   private Cuenta(Map<String, String> datosCuenta) {
-
     this.titularCuenta = datosCuenta.get("titularCuenta");
     this.nombreBanco = datosCuenta.get("nombreBanco");
     this.numeroCuenta = datosCuenta.get("numeroCuenta");

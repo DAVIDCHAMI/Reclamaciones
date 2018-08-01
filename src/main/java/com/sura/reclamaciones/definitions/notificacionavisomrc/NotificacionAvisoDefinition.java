@@ -1,8 +1,6 @@
 package com.sura.reclamaciones.definitions.notificacionavisomrc;
 
-import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
-
 import com.sura.reclamaciones.steps.generics.CSVStep;
 import com.sura.reclamaciones.steps.notificacionaviso.*;
 import cucumber.api.java.es.Cuando;
@@ -13,14 +11,11 @@ import net.thucydides.core.annotations.Steps;
 public class NotificacionAvisoDefinition {
 
   ReclamacionEmpresariales reclamo;
-  ReclamacionEmpresariales detalleHechos;
-  ReclamacionEmpresariales incidente;
-  Persona persona;
-  @Steps BuscarPolizaStep BuscarPolizaStep;
-  @Steps NuevaReclamacionStep NuevaReclamacionStep;
-  @Steps SeleccionarPropiedadesImplicadasStep SeleccionarPropiedadesImplicadasStep;
-  @Steps InformacionBasicaStep InformacionBasicaStep;
-  @Steps InformacionReclamacionStep InformacionReclamacionStep;
+  @Steps BuscarPolizaStep buscarPolizaStep;
+  @Steps NuevaReclamacionStep nuevaReclamacionStep;
+  @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
+  @Steps InformacionBasicaStep informacionBasicaStep;
+  @Steps InformacionReclamacionStep informacionReclamacionStep;
   @Steps CSVStep CSVStep;
 
   @Dado("que se recibe un reclamo por parte de un afectado")
@@ -28,27 +23,20 @@ public class NotificacionAvisoDefinition {
     reclamo =
         new ReclamacionEmpresariales(
             CSVStep.getFilasModelo("ReclamacionEmpresarial", "escenarioEmpresariales"));
-    NuevaReclamacionStep.seleccionarNuevaReclamacion("Re", "Nueva");
-    BuscarPolizaStep.seleccionarTipoPoliza(reclamo.getLstReclamo());
-    BuscarPolizaStep.seleccionarFecha(reclamo.getLstReclamo());
-    BuscarPolizaStep.seleccionarUbicacion(reclamo.getLstReclamo());
-    BuscarPolizaStep.buscarPoliza();
+    nuevaReclamacionStep.seleccionarNuevaReclamacion("Re", "Nueva");
+    buscarPolizaStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
   }
 
   @Cuando("se tomen los datos del siniestro")
   public void seTomenLosDatosDelSiniestro() throws Throwable {
-    detalleHechos =
-        new ReclamacionEmpresariales(
-            CSVStep.getFilasModelo("ReclamacionEmpresarial", "escenarioEmpresariales"));
-    SeleccionarPropiedadesImplicadasStep.seleccionarPropiedadImplicada();
-    InformacionBasicaStep.informacionPersonal(detalleHechos.getLstReclamo());
+    reclamo.getLstReclamo();
+    propiedadesImplicadasStep.seleccionarPropiedadImplicada();
+    informacionBasicaStep.informacionPersonal(reclamo.getLstReclamo());
   }
 
   @Entonces("^se le brindara al reclamante un numero de reclamacion radicada")
   public void seLeBrindaraAlReclamanteUnNumeroDeReclamacionRadicada() throws Throwable {
-    incidente =
-        new ReclamacionEmpresariales(
-            CSVStep.getFilasModelo("ReclamacionEmpresarial", "escenarioEmpresariales"));
-    InformacionReclamacionStep.informacionIncidente(incidente.getLstReclamo());
+    reclamo.getLstReclamo();
+    informacionReclamacionStep.informacionIncidente(reclamo.getLstReclamo());
   }
 }

@@ -6,10 +6,10 @@ import org.fluentlenium.core.annotation.Page;
 
 public class NuevaReclamacionStep {
 
-  @Page NuevaReclamacionPage NuevaReclamacionPage;
+  @Page NuevaReclamacionPage nuevaReclamacionPage;
 
   @Step
   public void seleccionarNuevaReclamacion(String nombreOpcion, String subItem) {
-    NuevaReclamacionPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
+    nuevaReclamacionPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
   }
 }

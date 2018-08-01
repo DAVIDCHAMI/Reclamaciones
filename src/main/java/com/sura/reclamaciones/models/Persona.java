@@ -7,7 +7,6 @@ import java.util.Map;
 public class Persona {
 
   private List<Persona> lstPersona = new ArrayList<>();
-
   private String primerNombre;
   private String segundoNombre;
   private String primerApellido;
@@ -21,7 +20,6 @@ public class Persona {
   public Persona() {}
 
   private Persona(Map<String, String> datosPersona) {
-
     this.primerNombre = datosPersona.get("primerNombre");
     this.segundoNombre = datosPersona.get("segundoNombre");
     this.primerApellido = datosPersona.get("primerApellido");

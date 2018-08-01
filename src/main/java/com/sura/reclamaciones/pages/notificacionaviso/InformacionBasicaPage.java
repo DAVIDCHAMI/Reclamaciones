@@ -10,23 +10,15 @@ public class InformacionBasicaPage extends GeneralPage {
   public InformacionBasicaPage(WebDriver driver) {
     super(driver);
   }
-
-  private String XpathTxtNombreAutor =
-      "//td[.='Nombre']/following-sibling::td//table//table//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputCell']/following-sibling::td/div";
-
+  //td[.='Nombre']/following-sibling::td//table//table//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputCell']/following-sibling::td/div
   @FindBy(
     xpath =
-        "//td[.='Nombre']/following-sibling::td//table//table//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputCell']/following-sibling::td/div"
+        "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputEl']"
   )
   private WebElementFacade txtNombreAutor;
 
-  private String XpathAutorDelReporte = "//li[.='<ninguno>']/following-sibling::li";
-
   @FindBy(xpath = "//li[.='<ninguno>']/following-sibling::li")
-  private WebElementFacade autorDelReporte;
-
-  private String XpathTxtDetalleHechos =
-      "//textarea[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Description-inputEl']";
+  private WebElementFacade autorReporte;
 
   @FindBy(
     xpath =
@@ -34,17 +26,17 @@ public class InformacionBasicaPage extends GeneralPage {
   )
   private WebElementFacade txtDetalleHechos;
 
-  public void seleccionarAutorDelReporte() {
-    waitForPresenceOf(XpathTxtNombreAutor);
+  public void seleccionarAutorReporte() {
+    txtNombreAutor.waitUntilVisible();
     txtNombreAutor.click();
-    waitForPresenceOf(XpathAutorDelReporte);
-    autorDelReporte.click();
+    autorReporte.waitUntilVisible();
+    autorReporte.click();
     realizarEsperaCarga();
   }
 
   public void escribirDetallehechos(String detalle) {
-    waitForPresenceOf(XpathTxtDetalleHechos);
+    txtDetalleHechos.waitUntilVisible();
     txtDetalleHechos.type(detalle);
-    cliquearSiguiente();
+    continuarSiguientePantalla();
   }
 }

@@ -2,7 +2,7 @@ package com.sura.reclamaciones.models;
 
 import java.util.Map;
 
-public class Reclamacion {
+public abstract class Reclamacion {
   private String origen;
   private String valorPretension;
   private String tipoPoliza;
@@ -12,7 +12,7 @@ public class Reclamacion {
 
   public Reclamacion() {}
 
-  private Reclamacion(Map<String, String> datosReclamacion) {
+  public Reclamacion(Map<String, String> datosReclamacion) {
     this.origen = datosReclamacion.get("origen");
     this.valorPretension = datosReclamacion.get("valorPretension");
     this.fechaSiniestro = datosReclamacion.get("fechaSiniestro");

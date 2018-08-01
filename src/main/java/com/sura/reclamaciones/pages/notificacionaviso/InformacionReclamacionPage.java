@@ -6,27 +6,20 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class InformacionReclamacionPage extends GeneralPage {
-  String resumen;
 
-  public InformacionReclamacionPage(WebDriver driver) {
-    super(driver);
-  }
+  private String selectOpcion = "//li[.='COMODIN']";
 
   @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'e')]")
   private WebElementFacade btnCerrar;
 
-  private String XpathBtnCerrar = "//span[@class='g-underlined'][contains(text(),'e')]";
-
   @FindBy(xpath = "//td[.='Causa del siniestro']//input")
   private WebElementFacade txtCausaSiniestro;
 
-  private String XpathTxtCausaSiniestro = "//td[.='Causa del siniestro']//input";
-
-  @FindBy(xpath = "//td[.='Valor de la pretensión']//following-sibling::td//input")
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:LossEstimate-inputEl']"
+  )
   private WebElementFacade txtValorPretension;
-
-  private String XpathTxtValorPretension =
-      "//td[.='Valor de la pretensión']//following-sibling::td//input";
 
   @FindBy(
     xpath =
@@ -34,17 +27,11 @@ public class InformacionReclamacionPage extends GeneralPage {
   )
   private WebElementFacade btnIncidentePropiedad;
 
-  private String XpathBtnIncidentePropiedad =
-      "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableFixedPropertyIncidentsLV_tb:Add-btnInnerEl']";
-
   @FindBy(
     xpath =
         "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:FNOLSuraEditableContentPropertyIncidentsLV_tb:Add-btnInnerEl']"
   )
   private WebElementFacade btnIncidenteContenido;
-
-  private String XpathBtnIncidenteContenido =
-      "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:FNOLSuraEditableContentPropertyIncidentsLV_tb:Add-btnInnerEl']";
 
   @FindBy(
     xpath =
@@ -52,17 +39,11 @@ public class InformacionReclamacionPage extends GeneralPage {
   )
   private WebElementFacade btnIncidenteLesiones;
 
-  private String XpathBtnIncidenteLesiones =
-      "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableInjuryIncidentsLV_tb:Add-btnInnerEl']";
-
   @FindBy(
     xpath =
         "//span[.='Aceptar']/span[@id='NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Update-btnInnerEl']"
   )
   private WebElementFacade btnAceptarIncPropiedad;
-
-  private String XpathBtnAceptarIncPropiedad =
-      "//span[.='Aceptar']/span[@id='NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Update-btnInnerEl']";
 
   @FindBy(
     xpath =
@@ -70,97 +51,80 @@ public class InformacionReclamacionPage extends GeneralPage {
   )
   private WebElementFacade btnAceptarIncContenido;
 
-  private String XpathBtnAceptarIncContenido =
-      "//span[.='Aceptar']/span[@id='NewPropertyContentsIncidentPopup:NewPropertyContentsIncidentScreen:Update-btnInnerEl']";
-
   @FindBy(
     xpath =
         "//span[.='Aceptar']/span[@id='NewInjuryIncidentPopup:NewInjuryIncidentScreen:Update-btnInnerEl']"
   )
   private WebElementFacade btnAceptarIncLesion;
 
-  private String XpathBtnAceptarIncLesion =
-      "//span[.='Aceptar']/span[@id='NewInjuryIncidentPopup:NewInjuryIncidentScreen:Update-btnInnerEl']";
-
   @FindBy(xpath = "//span[.='Finalizar']/span[@id='FNOLWizard:Finish-btnInnerEl']")
   private WebElementFacade btnFinalizar;
 
-  private String XpathBtnFinalizar =
-      "//span[.='Finalizar']/span[@id='FNOLWizard:Finish-btnInnerEl']";
-
   @FindBy(
-    xpath =
-        "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li"
+    xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
   )
-  private WebElementFacade mnuCausa;
-
-  private String XpathMnuCausa =
-      "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li";
-
-  @FindBy(xpath = " //tr[.='Ahora puede:']/following-sibling::tr//div")
   private WebElementFacade divNumeroReclamacion;
 
-  private String XpathDivNumeroReclamacion = " //tr[.='Ahora puede:']/following-sibling::tr//div";
+  public InformacionReclamacionPage(WebDriver driver) {
+    super(driver);
+  }
 
   public void cerrarReclamosDuplicados() {
     if (btnCerrar.isPresent()) {
-      waitForPresenceOf(XpathBtnCerrar);
+      btnCerrar.waitUntilVisible();
       btnCerrar.click();
+      realizarEsperaCarga();
     }
   }
 
   public void seleccionarCausaSiniestro(String causa) {
-    waitForPresenceOf(XpathTxtCausaSiniestro);
-    realizarEsperaCarga();
+    txtCausaSiniestro.waitUntilVisible();
     txtCausaSiniestro.clear();
     txtCausaSiniestro.type(causa);
-    waitForPresenceOf(XpathMnuCausa);
-    mnuCausa.click();
+    selectOpcion = selectOpcion.replace("COMODIN", causa);
+    $(selectOpcion).waitUntilVisible();
+    $(selectOpcion).click();
   }
 
   public void escribirValorPretension(String valor) {
-    waitForPresenceOf(XpathTxtValorPretension);
+    txtValorPretension.waitUntilVisible();
     realizarEsperaCarga();
     txtValorPretension.type(valor);
   }
 
   public void seleccionarTipoIncidente(String tipoIncidente) {
-    if (tipoIncidente.equals("Propiedad")) {
-      waitForPresenceOf(XpathBtnIncidentePropiedad);
+    if ("Propiedad".equals(tipoIncidente)) {
+      btnIncidentePropiedad.waitUntilVisible();
       btnIncidentePropiedad.click();
-      waitForPresenceOf(XpathBtnAceptarIncPropiedad);
+      btnAceptarIncPropiedad.waitUntilVisible();
       btnAceptarIncPropiedad.click();
       realizarEsperaCarga();
     }
-    if (tipoIncidente.equals("Contenido")) {
-      waitForPresenceOf(XpathBtnIncidenteContenido);
+    if ("Contenido".equals(tipoIncidente)) {
+      btnIncidenteContenido.waitUntilVisible();
       btnIncidenteContenido.click();
-      waitForPresenceOf(XpathBtnAceptarIncContenido);
+      btnAceptarIncContenido.waitUntilVisible();
       btnAceptarIncContenido.click();
       realizarEsperaCarga();
     }
-    if (tipoIncidente.equals("Lesiones")) {
-      waitForPresenceOf(XpathBtnIncidenteLesiones);
+    if ("Lesiones".equals(tipoIncidente)) {
+      btnIncidenteLesiones.waitUntilVisible();
       btnIncidenteLesiones.click();
-      waitForPresenceOf(XpathBtnAceptarIncLesion);
+      btnIncidenteLesiones.waitUntilVisible();
       btnIncidenteLesiones.click();
       realizarEsperaCarga();
-    } else {
-      System.out.println(
-          "No se ha indicado un tipo de Incidente. Se genera Reclamción sin Incidente asociado");
     }
   }
 
   public void finalizarSiniestro() {
-    waitForPresenceOf(XpathBtnFinalizar);
+    btnFinalizar.waitUntilVisible();
     btnFinalizar.click();
     realizarEsperaCarga();
   }
 
   public void resumenReclamacion() {
-    waitForPresenceOf(XpathDivNumeroReclamacion);
-    resumen = divNumeroReclamacion.getText();
+    realizarEsperaCarga();
+    divNumeroReclamacion.waitUntilVisible();
     divNumeroReclamacion.click();
-    System.out.println(resumen);
   }
 }

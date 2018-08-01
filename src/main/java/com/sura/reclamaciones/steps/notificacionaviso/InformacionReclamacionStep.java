@@ -7,18 +7,18 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
 public class InformacionReclamacionStep {
-  @Page InformacionReclamacionPage InformacionReclamacionPage;
+  @Page InformacionReclamacionPage informacionReclamacionPage;
 
   @Step
   public void informacionIncidente(List<ReclamacionEmpresariales> datosIncidente) {
     datosIncidente.forEach(
         Incidente -> {
-          InformacionReclamacionPage.cerrarReclamosDuplicados();
-          InformacionReclamacionPage.seleccionarCausaSiniestro(Incidente.getCausaDelSiniestro());
-          InformacionReclamacionPage.escribirValorPretension(Incidente.getValorPretension());
-          InformacionReclamacionPage.seleccionarTipoIncidente(Incidente.getTipoIncidente());
-          InformacionReclamacionPage.finalizarSiniestro();
-          InformacionReclamacionPage.resumenReclamacion();
+          informacionReclamacionPage.cerrarReclamosDuplicados();
+          informacionReclamacionPage.seleccionarCausaSiniestro(Incidente.getCausaDelSiniestro());
+          informacionReclamacionPage.escribirValorPretension(Incidente.getValorPretension());
+          informacionReclamacionPage.seleccionarTipoIncidente(Incidente.getTipoIncidente());
+          informacionReclamacionPage.finalizarSiniestro();
+          informacionReclamacionPage.resumenReclamacion();
         });
   }
 }

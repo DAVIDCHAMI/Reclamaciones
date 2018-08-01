@@ -30,7 +30,7 @@ public class LoginClaimStep {
 
   @Step
   public void iniciarSesionLab() {
-    UsuarioVO usuarioVO = new UsuarioVO("suragwsu", "sura2017");
+    UsuarioVO usuarioVO = new UsuarioVO("ruthgrar", "sura2016");
     abrirClaims();
     iniciarSesionUAT(usuarioVO.getUsuario(), usuarioVO.getContrasena());
   }

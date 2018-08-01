@@ -14,17 +14,14 @@ public class ReclamacionEmpresariales extends Reclamacion {
   private String ciudad;
   private String direccion;
   private String tipoIncidente;
-  private String tipoPoliza;
-  private String numPoliza;
-  private String origen;
-  private String valorPretension;
-  private String fechaSiniestro;
-  private String lugar;
   private String causaDelSiniestro;
 
-  public ReclamacionEmpresariales() {}
+  public ReclamacionEmpresariales() {
+    super();
+  }
 
   private ReclamacionEmpresariales(Map<String, String> datosReclamacionEmp) {
+    super(datosReclamacionEmp);
     this.numeroContrato = datosReclamacionEmp.get("numeroContrato");
     this.detalleHechos = datosReclamacionEmp.get("detalleHechos");
     this.pais = datosReclamacionEmp.get("pais");
@@ -32,12 +29,6 @@ public class ReclamacionEmpresariales extends Reclamacion {
     this.ciudad = datosReclamacionEmp.get("ciudad");
     this.direccion = datosReclamacionEmp.get("direccion");
     this.tipoIncidente = datosReclamacionEmp.get("tipoIncidente");
-    this.tipoPoliza = datosReclamacionEmp.get("tipoPoliza");
-    this.numPoliza = datosReclamacionEmp.get("numPoliza");
-    this.origen = datosReclamacionEmp.get("origen");
-    this.valorPretension = datosReclamacionEmp.get("valorPretension");
-    this.fechaSiniestro = datosReclamacionEmp.get("fechaSiniestro");
-    this.lugar = datosReclamacionEmp.get("lugar");
     this.causaDelSiniestro = datosReclamacionEmp.get("causaDelSiniestro");
   }
 
@@ -75,30 +66,6 @@ public class ReclamacionEmpresariales extends Reclamacion {
 
   public String getCausaDelSiniestro() {
     return causaDelSiniestro;
-  }
-
-  public String getTipoPoliza() {
-    return tipoPoliza;
-  }
-
-  public String getNumPoliza() {
-    return numPoliza;
-  }
-
-  public String getOrigen() {
-    return origen;
-  }
-
-  public String getValorPretension() {
-    return valorPretension;
-  }
-
-  public String getFechaSiniestro() {
-    return fechaSiniestro;
-  }
-
-  public String getLugar() {
-    return lugar;
   }
 
   public List<ReclamacionEmpresariales> getLstReclamo() {

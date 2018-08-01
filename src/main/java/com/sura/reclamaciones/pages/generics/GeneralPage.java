@@ -14,10 +14,8 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
   WebElementFacade pruebaLoader;
 
-  @FindBy(xpath = "//span[.='Siguiente >']/span/span")
+  @FindBy(xpath = "//span[@id='FNOLWizard:Next-btnInnerEl']")
   private WebElementFacade btnSiguiente;
-
-  private String XpathBtnSiguiente = "//span[.='Siguiente >']/span/span";
 
   WebDriver driver;
 
@@ -59,8 +57,8 @@ public class GeneralPage extends PageObject {
     pruebaLoader.waitUntilPresent().waitUntilNotVisible();
   }
 
-  public void cliquearSiguiente() {
-    waitForPresenceOf(XpathBtnSiguiente);
+  public void continuarSiguientePantalla() {
+    btnSiguiente.waitUntilClickable();
     btnSiguiente.click();
     realizarEsperaCarga();
   }

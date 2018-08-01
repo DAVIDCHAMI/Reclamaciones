@@ -4,11 +4,12 @@ import com.sura.reclamaciones.pages.notificacionaviso.PropiedadesImplicadasPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
-public class SeleccionarPropiedadesImplicadasStep {
+public class PropiedadesImplicadasStep {
 
   @Page PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
 
   @Step
-  public void seleccionarPropiedadImplicada() { seleccionarPropiedadesImplicadasPage.seleccionarPropiedad();
+  public void seleccionarPropiedadImplicada() {
+    seleccionarPropiedadesImplicadasPage.seleccionarPropiedad();
   }
 }
