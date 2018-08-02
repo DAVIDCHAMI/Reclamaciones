@@ -7,18 +7,17 @@ import org.openqa.selenium.WebDriver;
 
 public class NuevaReclamacionGuardadaPage extends GeneralPage {
 
-    public NuevaReclamacionGuardadaPage(WebDriver wdriver) {
-        super(wdriver);
-    }
+  public NuevaReclamacionGuardadaPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
-    @FindBy(id = "NewClaimSaved:NewClaimSavedScreen:ttlBar")
-    private WebElementFacade lblMensajeValidar;
+  @FindBy(id = "NewClaimSaved:NewClaimSavedScreen:ttlBar")
+  private WebElementFacade lblMensajeValidar;
 
-
-    public String obtenerMensajeValidador() {
-        String valorMensaje;
-        lblMensajeValidar.waitUntilVisible();
-        valorMensaje = lblMensajeValidar.getText();
-        return valorMensaje;
-    }
+  public String obtenerMensajeValidador() {
+    String valorMensaje;
+    lblMensajeValidar.waitUntilVisible();
+    valorMensaje = lblMensajeValidar.getText();
+    return valorMensaje;
+  }
 }

@@ -2,44 +2,54 @@ package com.sura.reclamaciones.steps.login;
 
 import static net.serenitybdd.core.pages.PageObject.withParameters;
 
-import com.sura.reclamaciones.models.Usuario.UsuarioVO;
+import com.sura.reclamaciones.models.Usuario;
 import com.sura.reclamaciones.pages.login.LoginClaimPage;
+import com.sura.reclamaciones.steps.generics.CSVStep;
 import com.sura.reclamaciones.utils.AmbientesUtil;
+import java.util.List;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import org.fluentlenium.core.annotation.Page;
 
 public class LoginClaimStep {
 
-    @Page
-    LoginClaimPage loginClaimPage;
+  @Page LoginClaimPage loginClaimPage;
 
-    @Step
-    public void abrirClaims() {
-        AmbientesUtil ambientesUtil = new AmbientesUtil();
-        loginClaimPage.open(ambientesUtil.getAmbiente(), withParameters(""));
-    }
+  Usuario usuario;
+  @Steps CSVStep csvStep;
 
-    @Step
-    public void iniciarSesionUAT(String usuario, String pass) {
-        loginClaimPage.inisiarSesionLAB(usuario, pass);
-    }
+  @Step
+  public void abrirClaims() {
+    AmbientesUtil ambientesUtil = new AmbientesUtil();
+    loginClaimPage.open(ambientesUtil.getAmbiente(), withParameters(""));
+  }
 
-    @Step
-    public void iniciarSesionDllo(String usuario, String contrasena) {
-        loginClaimPage.iniciarSesionDLLO(usuario, contrasena);
-    }
+  @Step
+  public void iniciarSesionUAT(List<Usuario> datosUsuario) {
+    datosUsuario.forEach(
+        dato -> {
+          loginClaimPage.inisiarSesionLAB(dato.getUsuario(), dato.getContrasena());
+        });
+  }
 
-    @Step
-    public void iniciarSesionLab() {
-        UsuarioVO usuarioVO = new UsuarioVO("suragwsu", "sura2017");
-        abrirClaims();
-        iniciarSesionUAT(usuarioVO.getUsuario(), usuarioVO.getContrasena());
-    }
+  @Step
+  public void iniciarSesionDllo(List<Usuario> datosUsuario) {
+    datosUsuario.forEach(
+        dato -> {
+          loginClaimPage.iniciarSesionDLLO(dato.getUsuario(), dato.getContrasena());
+        });
+  }
 
-    @Step
-    public void iniciarSesionAmbienteDllo() {
-        UsuarioVO usuarioVO = new UsuarioVO("su", "gw");
-        abrirClaims();
-        iniciarSesionDllo(usuarioVO.getUsuario(), usuarioVO.getContrasena());
-    }
+  @Step
+  public void iniciarSesionLab() throws Exception {
+    usuario = new Usuario(csvStep.getFilasModelo("credencial", "identificador", "COL001"));
+    abrirClaims();
+    iniciarSesionUAT(usuario.getUsuarios());
+  }
+
+  @Step
+  public void iniciarSesionAmbienteDllo() {
+    abrirClaims();
+    iniciarSesionDllo(usuario.getUsuarios());
+  }
 }

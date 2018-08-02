@@ -10,19 +10,20 @@ import org.openqa.selenium.WebElement;
 
 public class CrearServicioPage extends GeneralPage {
 
-    @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
-    private WebElementFacade btnBuscarProveedor;
+  @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
+  private WebElementFacade btnBuscarProveedor;
 
-    @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:concesionarios")
-    private WebElementFacade tblProveedores;
+  @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:concesionarios")
+  private WebElementFacade tblProveedores;
 
-    public CrearServicioPage(WebDriver wdriver) {
-        super(wdriver);
-    }
+  public CrearServicioPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
-
-    public void seleccionarProveedor(String nombreProveedor){
-        WebElement btnSeleccionar = obtenerElementoEnListado(tblProveedores, Tablas.CABECERAS_CC, Tablas.REGISTROS_CC,nombreProveedor,"");
-        btnSeleccionar.findElement(By.tagName("a")).click();
-    }
+  public void seleccionarProveedor(String nombreProveedor) {
+    WebElement btnSeleccionar =
+        obtenerElementoEnListado(
+            tblProveedores, Tablas.CABECERAS_CC, Tablas.REGISTROS_CC, nombreProveedor, "");
+    btnSeleccionar.findElement(By.tagName("a")).click();
+  }
 }

@@ -7,20 +7,25 @@ import org.openqa.selenium.WebDriver;
 
 public class InformacionBasicaPage extends GeneralPage {
 
-    public InformacionBasicaPage(WebDriver wdriver) {
-        super(wdriver);
-    }
+  public InformacionBasicaPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
-    @FindBy(xpath = "//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']/../following-sibling::td")
-    private WebElementFacade cmbnombre;
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']/../following-sibling::td"
+  )
+  private WebElementFacade cmbnombre;
 
-    @FindBy(xpath = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li/following-sibling::li")
-    private WebElementFacade lstNombreAutor;
+  @FindBy(
+    xpath =
+        "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li/following-sibling::li"
+  )
+  private WebElementFacade lstNombreAutor;
 
-
-    public void seleccionarNombre() {
-        cmbnombre.click();
-        lstNombreAutor.click();
-        realizarEsperaCarga();
-    }
+  public void seleccionarNombre() {
+    cmbnombre.click();
+    lstNombreAutor.click();
+    realizarEsperaCarga();
+  }
 }
