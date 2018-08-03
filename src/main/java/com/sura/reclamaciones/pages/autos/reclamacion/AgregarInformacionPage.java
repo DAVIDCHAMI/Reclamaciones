@@ -121,9 +121,9 @@ public class AgregarInformacionPage extends GeneralPage {
     cmbCulpabilidad.sendKeys(Keys.ENTER);
   }
 
-  public void seleccionarLugar() {
+  public void seleccionarLugar(String lugar) {
     cmbLugar.waitUntilClickable().click();
-    seleccionarOpcionCombobox("Medellin");
+    seleccionarOpcionCombobox(lugar);
     realizarEsperaCarga();
   }
 

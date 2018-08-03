@@ -30,13 +30,12 @@ public class ReclamacionStep {
           if (agregarInformacionPage.getBtnCerrarVentanaEmergente().isVisible()) {
             agregarInformacionPage.cliquearBotonCerrar();
           }
-          agregarInformacionPage.seleccionarLugar();
+          agregarInformacionPage.seleccionarLugar(dato.getLugar());
           agregarInformacionPage.escribirSucedido(dato.getSucedido());
           agregarInformacionPage.seleccionarCausa(dato.getCausa());
           agregarInformacionPage.seleccionarOrigen(dato.getOrigen());
           agregarInformacionPage.escribirValorPretension(dato.getValorPredeterminado());
           agregarInformacionPage.seleccionarIntervinoAutoridad(dato.getAutoridad());
-          // agregarInformacionPage.seleccionarCulpabilidad(dato.getCulpabilidad());
         });
   }
 

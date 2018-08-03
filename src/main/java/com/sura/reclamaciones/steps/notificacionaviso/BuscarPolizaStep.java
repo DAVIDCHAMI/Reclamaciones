@@ -1,7 +1,9 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Reclamacion;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
@@ -10,6 +12,8 @@ import org.fluentlenium.core.annotation.Page;
 public class BuscarPolizaStep {
 
   @Page BuscarPolizaPage buscarPolizaPage;
+
+  MenuClaimPage menuClaimPage;
 
   @Step
   public void completarFormularioBuscarPoliza(
@@ -69,4 +73,9 @@ public class BuscarPolizaStep {
     buscarPolizaPage.tomarAsegurado();
     buscarPolizaPage.cliquearSiguiente();
   }
+
+    public void seleccionarMenu() {
+      menuClaimPage.seleccionarOpcionMenuSegundoNivel(
+              MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
+    }
 }

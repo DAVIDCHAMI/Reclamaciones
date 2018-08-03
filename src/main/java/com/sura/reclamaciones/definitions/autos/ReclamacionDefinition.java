@@ -31,8 +31,7 @@ public class ReclamacionDefinition {
   public void recibirReclamo(String tipoPoliza) throws Exception {
     reclamacion = new Reclamacion(csvStep.getFilasModelo("reclamacion", "identificador", "COL001"));
     vehiculo = new Vehiculo(csvStep.getFilasModelo("vehiculo", "identificador", "COL001"));
-    menuClaimPage.seleccionarOpcionMenuSegundoNivel(
-        MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU); //QUITAR
+    buscarPolizaStep.seleccionarMenu();
     buscarPolizaStep.completarFormularioBuscarPoliza(
         tipoPoliza, reclamacion.getReclamaciones(), vehiculo.getVehiculos());
     buscarPolizaStep.buscarPoliza();
@@ -48,10 +47,7 @@ public class ReclamacionDefinition {
   }
 
   @Entonces("se le brindara al reclamante un numero de reclamacion")
-  public void generarReclamacion() throws IOException {
+  public void generarReclamacion()  {
     reclamacionStep.validarReclamacion(reclamacion.getReclamaciones());
   }
-
-  @Y("se valida el encabezado en STAR")
-  public void validarStar() {}
 }
