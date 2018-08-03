@@ -1,50 +1,39 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
+import static net.serenitybdd.core.pages.PageObject.withParameters;
+
+import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
+import com.sura.reclamaciones.utils.AmbientesUtil;
+import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
 public class BuscarPolizaStep {
 
-  @Page BuscarPolizaPage BuscarPolizaPage;
+  @Page BuscarPolizaPage buscarPolizaPage;
 
   @Step
-  public void seleccionarTipoPoliza(String poliza, String numPoliza) {
-    BuscarPolizaPage.cliquearBuscarPoliza();
-    BuscarPolizaPage.seleccionarPoliza(poliza);
-    BuscarPolizaPage.escribirNumeroPoliza(numPoliza);
+  public void openCC() {
+    AmbientesUtil ambienteUtils = new AmbientesUtil();
+    buscarPolizaPage.open(ambienteUtils.getAmbiente(), withParameters(""));
   }
 
   @Step
-  public void seleccionarDocumento(String tipDocumento, String numDocumento) {
-    BuscarPolizaPage.seleccionarTipoDocumento(tipDocumento);
-    BuscarPolizaPage.escribirNumeroDocumento(numDocumento);
-  }
-
-  @Step
-  public void seleccionarFecha(String fecha) {
-    if (fecha == "Hoy") {
-      BuscarPolizaPage.seleccionarFechaHoySiniestro();
-    } else {
-      BuscarPolizaPage.escribirFechaSiniestro(fecha);
-    }
-  }
-
-  @Step
-  public void seleccionarUbicacion() {
-    BuscarPolizaPage.seleccionarPais();
-    BuscarPolizaPage.seleccionarDepartamento();
-    BuscarPolizaPage.seleccionarCiudad();
-  }
-
-  @Step
-  public void buscarPoliza() {
-    BuscarPolizaPage.cliquearBuscar();
-  }
-
-  @Step
-  public void tomarAseguradoAutorReporte(){
-    BuscarPolizaPage.tomarAsegurado();
-    BuscarPolizaPage.cliquearSiguiente();
+  public void buscarPolizaEmpresarial(List<ReclamacionEmpresariales> datosPolizaEmpresarial) {
+    datosPolizaEmpresarial.forEach(
+        poliza -> {
+          buscarPolizaPage.opcionBuscarPoliza();
+          buscarPolizaPage.escribirNumeroPoliza(poliza.getNumPoliza());
+          if (poliza.getFechaSiniestro().equals("Hoy")) {
+            buscarPolizaPage.seleccionarFechaHoySiniestro();
+          } else {
+            buscarPolizaPage.escribirFechaSiniestro(poliza.getFechaSiniestro());
+          }
+          buscarPolizaPage.seleccionarPais(poliza.getPais());
+          buscarPolizaPage.seleccionarDepartamento(poliza.getDepartamento());
+          buscarPolizaPage.seleccionarCiudad(poliza.getCiudad());
+          buscarPolizaPage.buscarPoliza();
+        });
   }
 }

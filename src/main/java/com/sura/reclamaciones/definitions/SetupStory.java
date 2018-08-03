@@ -7,17 +7,16 @@ import net.thucydides.core.annotations.Steps;
 
 public class SetupStory {
 
-    @Steps
-    LoginClaimStep loginClaimStep;
+  @Steps LoginClaimStep loginClaimStep;
 
-    AmbientesUtil ambientesUtil = new AmbientesUtil();
+  AmbientesUtil ambientesUtil = new AmbientesUtil();
 
-    @Before("@claims")
-    public void seleccionarAmbiente() {
-        if (ambientesUtil.getAmbiente().equals("lab")) {
-            loginClaimStep.iniciarSesionLab();
-        } else if (ambientesUtil.getAmbiente().equals("dllo")) {
-            loginClaimStep.iniciarSesionAmbienteDllo();
-        }
+  @Before("@claims")
+  public void seleccionarAmbiente() {
+    if (ambientesUtil.getAmbiente().equals("lab")) {
+      loginClaimStep.iniciarSesionLab();
+    } else if (ambientesUtil.getAmbiente().equals("dllo")) {
+      loginClaimStep.iniciarSesionAmbienteDllo();
     }
+  }
 }
