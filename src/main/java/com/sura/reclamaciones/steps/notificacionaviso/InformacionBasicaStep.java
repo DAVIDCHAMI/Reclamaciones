@@ -12,9 +12,9 @@ public class InformacionBasicaStep {
   @Step
   public void informacionPersonal(List<ReclamacionEmpresariales> datosAutor) {
     datosAutor.forEach(
-        Autor -> {
+        autor -> {
           informacionBasicaPage.seleccionarAutorReporte();
-          informacionBasicaPage.escribirDetallehechos(Autor.getDetalleHechos());
+          informacionBasicaPage.escribirDetallehechos(autor.getDetalleHechos());
         });
   }
 }

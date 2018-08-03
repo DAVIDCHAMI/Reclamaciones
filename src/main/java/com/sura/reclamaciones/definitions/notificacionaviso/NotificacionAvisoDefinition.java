@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.notificacionavisomrc;
+package com.sura.reclamaciones.definitions.notificacionaviso;
 
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.steps.generics.CSVStep;
@@ -22,20 +22,20 @@ public class NotificacionAvisoDefinition {
   public void queSeRecibeUnReclamoPorParteDeUnAfectado() throws Throwable {
     reclamo =
         new ReclamacionEmpresariales(
-            CSVStep.getFilasModelo("ReclamacionEmpresarial", "escenarioEmpresariales"));
+            CSVStep.getFilasModelo("reclamacion_empresarial", "escenarioEmpresariales"));
     nuevaReclamacionStep.seleccionarNuevaReclamacion("Re", "Nueva");
     buscarPolizaStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
   }
 
   @Cuando("se tomen los datos del siniestro")
-  public void seTomenLosDatosDelSiniestro() throws Throwable {
+  public void seTomenLosDatosDelSiniestro() {
     reclamo.getLstReclamo();
     propiedadesImplicadasStep.seleccionarPropiedadImplicada();
     informacionBasicaStep.informacionPersonal(reclamo.getLstReclamo());
   }
 
   @Entonces("^se le brindara al reclamante un numero de reclamacion radicada")
-  public void seLeBrindaraAlReclamanteUnNumeroDeReclamacionRadicada() throws Throwable {
+  public void seLeBrindaraAlReclamanteUnNumeroDeReclamacionRadicada() {
     reclamo.getLstReclamo();
     informacionReclamacionStep.informacionIncidente(reclamo.getLstReclamo());
   }

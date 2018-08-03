@@ -12,11 +12,11 @@ public class InformacionReclamacionStep {
   @Step
   public void informacionIncidente(List<ReclamacionEmpresariales> datosIncidente) {
     datosIncidente.forEach(
-        Incidente -> {
+        incidente -> {
           informacionReclamacionPage.cerrarReclamosDuplicados();
-          informacionReclamacionPage.seleccionarCausaSiniestro(Incidente.getCausaDelSiniestro());
-          informacionReclamacionPage.escribirValorPretension(Incidente.getValorPretension());
-          informacionReclamacionPage.seleccionarTipoIncidente(Incidente.getTipoIncidente());
+          informacionReclamacionPage.seleccionarCausaSiniestro(incidente.getCausaDelSiniestro());
+          informacionReclamacionPage.escribirValorPretension(incidente.getValorPretension());
+          informacionReclamacionPage.seleccionarTipoIncidente(incidente.getTipoIncidente());
           informacionReclamacionPage.finalizarSiniestro();
           informacionReclamacionPage.resumenReclamacion();
         });
