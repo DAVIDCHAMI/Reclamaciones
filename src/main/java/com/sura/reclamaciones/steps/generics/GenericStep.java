@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import net.thucydides.core.steps.stepdata.CSVTestDataSource;
 import net.thucydides.core.steps.stepdata.TestDataSource;
 
-public class CSVStep {
+public class GenericStep {
 
   public List<Map<String, String>> getFilasModelo(String nombreCSV, String filtro)
       throws IOException {
