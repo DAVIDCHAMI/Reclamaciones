@@ -20,7 +20,7 @@ public class NotificacionAvisoDefinition {
   GenericStep genericStep;
 
   @Dado("que se recibe un reclamo por parte de un afectado")
-  public void RecibirReclamoAfectado() throws Throwable {
+  public void recibirReclamoAfectado() throws Throwable {
     reclamo =
         new ReclamacionEmpresariales(
             genericStep.getFilasModelo("reclamacion_empresarial", "escenarioEmpresariales"));
@@ -29,14 +29,14 @@ public class NotificacionAvisoDefinition {
   }
 
   @Cuando("se tomen los datos del siniestro")
-  public void TomarDatosSiniestro() {
+  public void tomarDatosSiniestro() {
     reclamo.getLstReclamo();
     propiedadesImplicadasStep.seleccionarPropiedadImplicada();
     informacionBasicaStep.informacionPersonal(reclamo.getLstReclamo());
   }
 
   @Entonces("^se le brindara al reclamante un numero de reclamacion radicada")
-  public void ObtenerNumeroReclamacion() {
+  public void obtenerNumeroReclamacion() {
     reclamo.getLstReclamo();
     informacionReclamacionStep.informacionIncidente(reclamo.getLstReclamo());
   }
