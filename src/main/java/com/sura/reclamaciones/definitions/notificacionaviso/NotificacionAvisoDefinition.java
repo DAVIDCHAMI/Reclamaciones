@@ -16,8 +16,7 @@ public class NotificacionAvisoDefinition {
   @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
   @Steps InformacionBasicaStep informacionBasicaStep;
   @Steps InformacionReclamacionStep informacionReclamacionStep;
-  @Steps
-  GenericStep genericStep;
+  @Steps GenericStep genericStep;
 
   @Dado("que se recibe un reclamo por parte de un afectado")
   public void recibirReclamoAfectado() throws Throwable {
