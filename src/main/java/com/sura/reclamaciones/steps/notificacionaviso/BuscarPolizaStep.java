@@ -1,13 +1,18 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.models.Reclamacion;
+import com.sura.reclamaciones.models.ReclamacionAuto;
+import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import java.util.List;
+
+import com.sura.reclamaciones.utils.AmbientesUtil;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+
+import static net.serenitybdd.core.pages.PageObject.withParameters;
 
 public class BuscarPolizaStep {
 
@@ -17,27 +22,15 @@ public class BuscarPolizaStep {
 
   @Step
   public void completarFormularioBuscarPoliza(
-      String tipoPoliza, List<Reclamacion> datosReclamacion, List<Vehiculo> datosVehiculo) {
-    buscarPolizaPage.seleccionarTipoPoliza(tipoPoliza);
-    switch (tipoPoliza) {
-      case "Autos":
-        datosVehiculo
-            .stream()
-            .forEach(
-                datoVehiculo -> {
-                  buscarPolizaPage.escribirPlaca(datoVehiculo.getPlaca());
-                });
-        break;
-      case "multi riesgo":
-        buscarPolizaPage.escribirNumeroPoliza("");
-        break;
-    }
-    datosReclamacion
-        .stream()
-        .forEach(
-            datoReclamacion -> {
-              seleccionarFecha(datoReclamacion.getFechaSiniestro());
-            });
+      List<ReclamacionAuto> datosReclamacion, List<Vehiculo> datosVehiculo) {
+    datosVehiculo.forEach(
+        datoReclamacion -> {
+          buscarPolizaPage.escribirPlaca(datoReclamacion.getPlaca());
+        });
+    datosReclamacion.forEach(
+        dato -> {
+          seleccionarFecha(dato.getFechaSiniestro());
+        });
   }
 
   @Step
@@ -56,26 +49,30 @@ public class BuscarPolizaStep {
   }
 
   @Step
-  public void seleccionarUbicacion() {
-    buscarPolizaPage.seleccionarPais();
-    buscarPolizaPage.seleccionarDepartamento();
-    buscarPolizaPage.seleccionarCiudad();
-  }
-
-  @Step
   public void buscarPoliza() {
-    buscarPolizaPage.cliquearBuscar();
-    buscarPolizaPage.cliquearSiguiente();
+    buscarPolizaPage.buscarPoliza();
+  }
+
+  public void seleccionarMenu() {
+    menuClaimPage.seleccionarOpcionMenuSegundoNivel(
+        MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
   }
 
   @Step
-  public void tomarAseguradoAutorReporte() {
-    buscarPolizaPage.tomarAsegurado();
-    buscarPolizaPage.cliquearSiguiente();
+  public void buscarPolizaEmpresarial(List<ReclamacionEmpresariales> datosPolizaEmpresarial) {
+    datosPolizaEmpresarial.forEach(
+        poliza -> {
+          buscarPolizaPage.opcionBuscarPoliza();
+          buscarPolizaPage.escribirNumeroPoliza(poliza.getNumPoliza());
+          if (poliza.getFechaSiniestro().equals("Hoy")) {
+            buscarPolizaPage.seleccionarFechaHoySiniestro();
+          } else {
+            buscarPolizaPage.escribirFechaSiniestro(poliza.getFechaSiniestro());
+          }
+          buscarPolizaPage.seleccionarPais(poliza.getPais());
+          buscarPolizaPage.seleccionarDepartamento(poliza.getDepartamento());
+          buscarPolizaPage.seleccionarCiudad(poliza.getCiudad());
+          buscarPolizaPage.buscarPoliza();
+        });
   }
-
-    public void seleccionarMenu() {
-      menuClaimPage.seleccionarOpcionMenuSegundoNivel(
-              MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
-    }
 }

@@ -7,6 +7,6 @@ Característica: Notificacion de aviso de una notificacion de autos
 
   @claims
   Escenario:ds
-    Dado que se recibe Autos con causa de siniestro por danos
+    Dado que se recibe un auto con causa de siniestro por danos
     Cuando se toman los datos del siniestro
     Entonces se le brindara al reclamante un numero de reclamacion

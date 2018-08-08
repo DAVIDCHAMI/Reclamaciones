@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import com.sura.reclamaciones.models.Reclamacion;
+import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
@@ -24,7 +24,7 @@ public class ReclamacionStep {
   @Page private NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
 
   @Step
-  public void completarDetalleSiniestro(List<Reclamacion> datosReclamacion) {
+  public void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
     datosReclamacion.forEach(
         dato -> {
           if (agregarInformacionPage.getBtnCerrarVentanaEmergente().isVisible()) {
@@ -34,13 +34,13 @@ public class ReclamacionStep {
           agregarInformacionPage.escribirSucedido(dato.getSucedido());
           agregarInformacionPage.seleccionarCausa(dato.getCausa());
           agregarInformacionPage.seleccionarOrigen(dato.getOrigen());
-          agregarInformacionPage.escribirValorPretension(dato.getValorPredeterminado());
+          agregarInformacionPage.escribirValorPretension(dato.getValorPretension());
           agregarInformacionPage.seleccionarIntervinoAutoridad(dato.getAutoridad());
         });
   }
 
   @Step
-  public void completarCategorizacion(List<Reclamacion> datosReclamacion) {
+  public void completarCategorizacion(List<ReclamacionAuto> datosReclamacion) {
     datosReclamacion.forEach(
         dato -> {
           agregarInformacionPage.seleccionarCulpabilidad(dato.getCulpabilidad());
@@ -48,7 +48,7 @@ public class ReclamacionStep {
   }
 
   @Step
-  public void editarVehiculo(List<Reclamacion> datosReclamacion) {
+  public void editarVehiculo(List<ReclamacionAuto> datosReclamacion) {
     agregarInformacionPage.ingresarEditarVehiculo();
     detalleVehiculoPage.agregarConductor();
     datosReclamacion.forEach(
@@ -61,10 +61,9 @@ public class ReclamacionStep {
 
   public void seleccionarNombreAutorReporte() {
     informacionBasicaPage.seleccionarNombre();
-    buscarPolizaPage.cliquearSiguiente();
   }
 
-  public void validarReclamacion(List<Reclamacion> reclamaciones) {
+  public void validarReclamacion(List<ReclamacionAuto> reclamaciones) {
     reclamaciones.forEach(
         dato -> {
           String mensajeValidado = nuevaReclamacionGuardadaPage.obtenerMensajeValidador();

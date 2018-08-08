@@ -21,6 +21,9 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
   WebElementFacade pruebaLoader;
 
+  @FindBy(xpath = "//span[@id='FNOLWizard:Next-btnInnerEl']")
+  private WebElementFacade btnSiguiente;
+
   WebDriver driver;
 
   public GeneralPage(WebDriver wdriver) {
@@ -35,8 +38,8 @@ public class GeneralPage extends PageObject {
         .click();
   }
 
-  public void realizarEsperaCarga() {
-    pruebaLoader.waitUntilPresent().waitUntilNotVisible();
+  public void clickElemento(WebElementFacade elemento) {
+    elemento.click();
   }
 
   public List<String> obtenerCabecerasDeUnaTabla(
@@ -80,5 +83,15 @@ public class GeneralPage extends PageObject {
     int posicionDatoADevolver = cabeceraFacturarCargos.indexOf(columnaADevolver) + 1;
     return obtenerElementoDeColumnaEnTabla(
         elemento, registros, datoEnFilaABuscar, posicionDatoADevolver);
+  }
+
+  public void realizarEsperaCarga() {
+    pruebaLoader.waitUntilPresent().waitUntilNotVisible();
+  }
+
+  public void continuarSiguientePantalla() {
+    btnSiguiente.waitUntilClickable();
+    btnSiguiente.click();
+    realizarEsperaCarga();
   }
 }

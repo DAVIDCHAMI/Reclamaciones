@@ -27,5 +27,7 @@ public class InformacionBasicaPage extends GeneralPage {
     cmbnombre.click();
     lstNombreAutor.click();
     realizarEsperaCarga();
+    continuarSiguientePantalla();
+    realizarEsperaCarga();
   }
 }

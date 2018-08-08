@@ -1,88 +1,83 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class BuscarPolizaPage extends GeneralPage {
+  private String selectOpcion = "//li[.='COMODIN']";
+  private String auxSelectOpcion = "";
 
-  public BuscarPolizaPage(WebDriver driver) {
-    super(driver);
-  }
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:licensePlate-inputEl']"
+  )
+  private WebElementFacade txtPlaca;
 
-  private String selectTipoDocumento = "//li[.='COMODIN']";
-  private String comodinTxt = "//td[.='COMODIN']//input";
-  private String selectTipoPoliza = "//li[.='COMODIN']";
-  private String XpathRbtBuscarPoliza = "//td[.='Buscar póliza']//input";
-  private String XpathMnuTipoDePoliza = "//td[.='Tipo de póliza']//div";
-  private String XpathTxtNumeroDePoliza = "//td[.='N.º de póliza']//input";
-  private String XpatMnuTipoDeDocumento = "//tr[.='Tipo documento del asegurado']//div";
-  private String XpathTxtNumeroDeDocumento = "//td[.='Número de documento del asegurado']//input";
-  private String XpathMnuFechaDelSiniestro = "//td[.='Fecha del siniestro']//div";
-  private String XpathBtnFechaDeHoy = "//span[.='Hoy']//span[@class='x-btn-button']";
-  private String XpathTxtFecha = "//td[.='Fecha del siniestro']//input";
-  private String XpathMnuPais = "//td[.='País']//div";
-  private String XpathBtnColombia = "//li[.='Colombia']";
-  private String XpathMnuDepartamento = "//td[.='Departamento']//div";
-  private String XpathBtnAntioquia = "//li[.='Antioquia']";
-  private String XpathMnuCiudad = "//td[.='Ciudad']//div";
-  private String XpathBtnMedellin = "//li[.='Medellin']";
-  private String XpathBtnBuscar = "//td[.='Buscar']//a";
-  private String XpathLblAsegurado = "//td[.='Deseleccionar']/following-sibling::td[3]/div";
-  private String XpathBtnSiguiente = "//span[.='Siguiente >']/span/span";
-
-  @FindBy(xpath = "//td[.='Buscar póliza']//input")
+  @FindBy(xpath = "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_true-inputEl']")
   private WebElementFacade rbtBuscarPoliza;
 
-  @FindBy(xpath = "//td[.='Tipo de póliza']//div")
+  @FindBy(
+    xpath =
+        "//*[@id=\"FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:PolicyType-inputEl\"]"
+  )
   private WebElementFacade mnuTipoDePoliza;
 
-  @FindBy(xpath = "//td[.='N.º de póliza']//input")
-  private WebElementFacade txtNumeroDePoliza;
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:policyNumber-inputEl']"
+  )
+  private WebElementFacade txtNumeroPoliza;
 
-  @FindBy(xpath = "//tr[.='Tipo documento del asegurado']//div")
-  private WebElementFacade mnuTipoDeDocumento;
+  @FindBy(
+    xpath =
+        "//td[.='Tipo documento del asegurado']//div[@class='x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first']"
+  )
+  private WebElementFacade mnuTipoDocumento;
 
-  @FindBy(xpath = "//td[.='Número de documento del asegurado']//input")
-  private WebElementFacade txtNumeroDeDocumento;
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:ssn-inputEl']"
+  )
+  private WebElementFacade txtNumeroDocumento;
 
   @FindBy(xpath = "//td[.='Fecha del siniestro']//div")
-  private WebElementFacade mnuFechaDelSiniestro;
+  private WebElementFacade mnuFechaSiniestro;
 
   @FindBy(xpath = "//span[.='Hoy']//span[@class='x-btn-button']")
-  private WebElementFacade btnFechaDeHoy;
+  private WebElementFacade btnFechaHoy;
 
-  @FindBy(xpath = "//td[.='Fecha del siniestro']//input")
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:date-inputEl']"
+  )
   private WebElementFacade txtFecha;
 
-  @FindBy(xpath = "//td[.='País']//div")
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:locationSearchSura:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Country-inputEl']"
+  )
   private WebElementFacade mnuPais;
 
-  @FindBy(xpath = "//li[.='Colombia']")
-  private WebElementFacade btnColombia;
-
-  @FindBy(xpath = "//td[.='Departamento']//div")
+  @FindBy(
+    xpath =
+        "//td[.='Departamento']//div[@class='x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first']"
+  )
   private WebElementFacade mnuDepartamento;
 
-  @FindBy(xpath = "//li[.='Antioquia']")
-  private WebElementFacade btnAntioquia;
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:locationSearchSura:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Sura_Colombian_City-inputEl']"
+  )
+  private WebElementFacade txtCiudad;
 
-  @FindBy(xpath = "//td[.='Ciudad']//div")
-  private WebElementFacade mnuCiudad;
-
-  @FindBy(xpath = "//li[.='Medellin']")
-  private WebElementFacade btnMedellin;
-
-  @FindBy(xpath = "//td[.='Buscar']//a")
+  @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'s')]")
   private WebElementFacade btnBuscar;
 
   @FindBy(xpath = "//td[.='Deseleccionar']/following-sibling::td[3]/div")
   private WebElementFacade lblAsegurado;
-
-  @FindBy(id = "FNOLWizard:Next-btnInnerEl")
-  private WebElementFacade btnSiguiente;
 
   @FindBy(
     id =
@@ -93,86 +88,78 @@ public class BuscarPolizaPage extends GeneralPage {
   @FindBy(xpath = ".//a[@class='g-actionable miniButton' and contains(.,'Deseleccionar')]")
   private WebElementFacade elementoEspera;
 
-  public void cliquearBuscarPoliza() {
-    waitForPresenceOf(XpathRbtBuscarPoliza);
+  public BuscarPolizaPage(WebDriver driver) {
+    super(driver);
+  }
+
+  public void elemento(String nombreElemento) {
+    $("#new-todo").type(nombreElemento).then().sendKeys(Keys.ENTER);
+  }
+
+  public void opcionBuscarPoliza() {
+    rbtBuscarPoliza.waitUntilVisible();
     rbtBuscarPoliza.click();
   }
 
-  public void seleccionarTipoPoliza(String opcion) {
-    cmbTipoPoliza.waitUntilVisible().click();
-    seleccionarOpcionCombobox(opcion);
-  }
-
   public void escribirNumeroPoliza(String numPoliza) {
-    waitForPresenceOf(XpathTxtNumeroDePoliza);
-    txtNumeroDePoliza.type(numPoliza);
+    txtNumeroPoliza.waitUntilVisible();
+    txtNumeroPoliza.type(numPoliza);
   }
 
   public void seleccionarTipoDocumento(String tipoDocumento) {
-    waitForPresenceOf(XpatMnuTipoDeDocumento);
-    mnuTipoDeDocumento.click();
-    selectTipoDocumento = selectTipoDocumento.replace("COMODIN", tipoDocumento);
-    $(selectTipoDocumento).click();
+    mnuTipoDocumento.waitUntilVisible();
+    mnuTipoDocumento.click();
+    auxSelectOpcion = selectOpcion.replace("COMODIN", tipoDocumento);
+    $(auxSelectOpcion).click();
   }
 
   public void escribirNumeroDocumento(String numDocumento) {
-    waitForPresenceOf(XpathTxtNumeroDeDocumento);
-    txtNumeroDeDocumento.type(numDocumento);
+    txtNumeroDocumento.waitUntilVisible();
+    txtNumeroDocumento.type(numDocumento);
   }
 
-  //dd/mm/yyyy
   public void seleccionarFechaHoySiniestro() {
-    waitForPresenceOf(XpathMnuFechaDelSiniestro);
-    mnuFechaDelSiniestro.click();
-    waitForPresenceOf(XpathBtnFechaDeHoy);
-    btnFechaDeHoy.click();
+    mnuFechaSiniestro.waitUntilVisible();
+    mnuFechaSiniestro.click();
+    btnFechaHoy.waitUntilVisible();
+    btnFechaHoy.click();
   }
 
   public void escribirFechaSiniestro(String fecha) {
-    waitForPresenceOf(XpathTxtFecha);
+    txtFecha.waitUntilVisible();
     txtFecha.type(fecha);
   }
 
-  public void seleccionarPais() {
-    waitForPresenceOf(XpathMnuPais);
+  public void seleccionarPais(String pais) {
+    mnuPais.waitUntilVisible();
     mnuPais.click();
-    waitForPresenceOf(XpathBtnColombia);
-    btnColombia.click();
+    auxSelectOpcion = selectOpcion.replace("COMODIN", pais);
+    $(auxSelectOpcion).click();
   }
 
-  public void seleccionarDepartamento() {
-    waitForPresenceOf(XpathMnuDepartamento);
+  public void seleccionarDepartamento(String departamento) {
+    mnuDepartamento.waitUntilVisible();
     mnuDepartamento.click();
-    waitForPresenceOf(XpathBtnAntioquia);
-    btnAntioquia.click();
+    auxSelectOpcion = selectOpcion.replace("COMODIN", departamento);
+    $(auxSelectOpcion).click();
   }
 
-  public void seleccionarCiudad() {
-    waitForPresenceOf(XpathMnuCiudad);
-    mnuCiudad.click();
-    waitForPresenceOf(XpathBtnMedellin);
-    btnMedellin.click();
+  public void seleccionarCiudad(String ciudad) {
+    txtCiudad.waitUntilVisible();
+    realizarEsperaCarga();
+    txtCiudad.clear();
+    txtCiudad.type(ciudad);
   }
 
-  public void cliquearBuscar() {
-    waitForPresenceOf(XpathBtnBuscar);
+  public void buscarPoliza() {
+    btnBuscar.waitUntilClickable();
     btnBuscar.click();
     realizarEsperaCarga();
-    //elementoEspera.waitUntilVisible();
+    continuarSiguientePantalla();
   }
 
-  public void tomarAsegurado() {
-    waitForPresenceOf(XpathLblAsegurado);
-    Serenity.setSessionVariable("autorReporte".toLowerCase().trim()).to(lblAsegurado.getText());
-  }
-
-  public void cliquearSiguiente() {
-    btnSiguiente.click();
-    realizarEsperaCarga();
-  }
-
-  public void escribirPlaca(String numeroPlaca) {
-    comodinTxt = comodinTxt.replace("COMODIN", "Placa");
-    $(comodinTxt).type(numeroPlaca);
+  public void escribirPlaca(String placa) {
+    txtPlaca.waitUntilPresent();
+    txtPlaca.type(placa);
   }
 }
