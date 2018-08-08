@@ -11,11 +11,16 @@ import net.thucydides.core.annotations.Steps;
 public class NotificacionAvisoDefinition {
 
   ReclamacionEmpresariales reclamo;
-  @Steps BuscarPolizaStep buscarPolizaStep;
-  @Steps NuevaReclamacionStep nuevaReclamacionStep;
-  @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
-  @Steps InformacionBasicaStep informacionBasicaStep;
-  @Steps InformacionReclamacionStep informacionReclamacionStep;
+  @Steps
+  BuscarPolizaStep buscarPolizaStep;
+  @Steps
+  NuevaReclamacionStep nuevaReclamacionStep;
+  @Steps
+  PropiedadesImplicadasStep propiedadesImplicadasStep;
+  @Steps
+  InformacionBasicaStep informacionBasicaStep;
+  @Steps
+  InformacionReclamacionStep informacionReclamacionStep;
   @Steps
   GenericStep genericStep;
 

@@ -29,7 +29,7 @@ public class AmbientesUtil {
     if (ambientesValidos.contains(ambiente)) {
       return ambiente;
     } else {
-      return "lab";
+      return "local";
     }
   }
 }
