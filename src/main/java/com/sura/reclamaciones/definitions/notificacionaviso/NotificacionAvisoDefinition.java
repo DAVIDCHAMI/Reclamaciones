@@ -34,7 +34,7 @@ public class NotificacionAvisoDefinition {
     informacionBasicaStep.informacionPersonal(reclamo.getLstReclamo());
   }
 
-  @Entonces("^se le brindara al reclamante un numero de reclamacion radicada")
+  @Entonces("^se le brindara al reclamante un numero de reclamacion radicada$")
   public void obtenerNumeroReclamacion() {
     reclamo.getLstReclamo();
     informacionReclamacionStep.informacionIncidente(reclamo.getLstReclamo());

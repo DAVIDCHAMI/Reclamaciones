@@ -13,9 +13,9 @@ public class SetupStory {
 
   @Before("@claims")
   public void seleccionarAmbiente() throws Exception {
-    if (ambientesUtil.getAmbiente().equals("lab")) {
+    if ("lab".equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionLab();
-    } else if (ambientesUtil.getAmbiente().equals("dllo")) {
+    } else if ("dllo".equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionAmbienteDllo();
     }
   }

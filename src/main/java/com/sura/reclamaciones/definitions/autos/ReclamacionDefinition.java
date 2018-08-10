@@ -17,11 +17,8 @@ public class ReclamacionDefinition {
   private MenuClaimPage menuClaimPage;
 
   @Steps private GenericStep genericStep;
-
   @Steps private BuscarPolizaStep buscarPolizaStep;
-
   @Steps private ReclamacionStep reclamacionStep;
-
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
 
@@ -45,7 +42,7 @@ public class ReclamacionDefinition {
     reclamacionStep.finilizarReclamacion();
   }
 
-  @Entonces("se le brindara al reclamante un numero de reclamacion")
+  @Entonces("^se le brindara al reclamante un numero de reclamacion$")
   public void generarReclamacion() {
     reclamacionStep.validarReclamacion(reclamacionAuto.getLstReclamacionAuto());
   }

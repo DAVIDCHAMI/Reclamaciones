@@ -10,10 +10,6 @@ import org.openqa.selenium.WebDriver;
 
 public class AgregarInformacionPage extends GeneralPage {
 
-  public AgregarInformacionPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   @FindBy(
     id =
         "NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl"
@@ -71,17 +67,16 @@ public class AgregarInformacionPage extends GeneralPage {
   @FindBy(xpath = ".//span[@class='g-underlined' and contains(.,'F')]")
   private WebElementFacade btnFinalizar;
 
-  public WebElementFacade getBtnCerrarVentanaEmergente() {
-    return btnCerrarVentanaEmergente;
+  public AgregarInformacionPage(WebDriver wdriver) {
+    super(wdriver);
   }
 
-  public void diligenciarFormulario(String label, String tipoCampo, String palabraAEscribir) {
-    String formularioInformacionReclamacion =
-        ".//div[contains(@id,'LossDetailsAddressDV')]/table//label[contains(.,'"
-            + label
-            + "')]/../following-sibling::td//"
-            + tipoCampo;
-    $(formularioInformacionReclamacion).sendKeys(palabraAEscribir);
+  public void cerrarVentanaEmergente() {
+    if (btnCerrarVentanaEmergente.isPresent()) {
+      btnCerrarVentanaEmergente.waitUntilVisible();
+      btnCerrarVentanaEmergente.click();
+      realizarEsperaCarga();
+    }
   }
 
   public void escribirSucedido(String sucedido) {
@@ -111,11 +106,6 @@ public class AgregarInformacionPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void cliquearBotonCerrar() {
-    btnCerrarVentanaEmergente.waitUntilVisible().waitUntilClickable().click();
-    realizarEsperaCarga();
-  }
-
   public void seleccionarCulpabilidad(String culpabilidad) {
     cmbCulpabilidad.type(culpabilidad);
     cmbCulpabilidad.sendKeys(Keys.ENTER);
@@ -127,7 +117,7 @@ public class AgregarInformacionPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void ingresarEditarVehiculo() {
+  public void ingresarEdicionVehiculo() {
     btnAbajoVehiculo.click();
     btnEditarVehiculo.click();
     realizarEsperaCarga();
