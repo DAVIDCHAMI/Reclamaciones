@@ -54,7 +54,7 @@ public class ReclamacionStep {
           detalleVehiculoPage.seleccionarTaller(dato.getTaller());
         });
 
-    detalleVehiculoPage.agregarInformacion();
+    detalleVehiculoPage.volverPasoAnterior();
   }
 
   public void seleccionarNombreAutorReporte() {

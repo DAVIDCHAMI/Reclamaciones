@@ -38,9 +38,6 @@ public class DetalleVehiculoPage extends GeneralPage {
   @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
   WebElementFacade btnBuscarProveedor;
 
-  @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
-  WebElementFacade btnAceptar;
-
   public DetalleVehiculoPage(WebDriver wdriver) {
     super(wdriver);
   }
@@ -54,7 +51,7 @@ public class DetalleVehiculoPage extends GeneralPage {
     cmbPersona.waitUntilVisible().click();
     lstNombrePersona.click();
     realizarEsperaCarga();
-    btnAceptar.click();
+    aceptarOpcion();
     realizarEsperaCarga();
   }
 
@@ -64,7 +61,7 @@ public class DetalleVehiculoPage extends GeneralPage {
     buscarProveedor();
     crearServicioPage.seleccionarProveedor(taller);
     realizarEsperaCarga();
-    btnAceptar.click();
+    aceptarOpcion();
     realizarEsperaCarga();
   }
 
@@ -81,8 +78,8 @@ public class DetalleVehiculoPage extends GeneralPage {
     chkServicio.waitUntilVisible().click();
   }
 
-  public void agregarInformacion() {
-    btnAceptar.click();
+  public void volverPasoAnterior() {
+    aceptarOpcion();
     realizarEsperaCarga();
   }
 }

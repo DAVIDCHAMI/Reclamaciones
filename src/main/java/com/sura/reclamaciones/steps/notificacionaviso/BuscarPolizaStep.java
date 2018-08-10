@@ -7,12 +7,8 @@ import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import java.util.List;
-
-import com.sura.reclamaciones.utils.AmbientesUtil;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
-
-import static net.serenitybdd.core.pages.PageObject.withParameters;
 
 public class BuscarPolizaStep {
 
@@ -64,7 +60,7 @@ public class BuscarPolizaStep {
         poliza -> {
           buscarPolizaPage.opcionBuscarPoliza();
           buscarPolizaPage.escribirNumeroPoliza(poliza.getNumPoliza());
-          if (poliza.getFechaSiniestro().equals("Hoy")) {
+          if ("Hoy".equals(poliza.getFechaSiniestro())) {
             buscarPolizaPage.seleccionarFechaHoySiniestro();
           } else {
             buscarPolizaPage.escribirFechaSiniestro(poliza.getFechaSiniestro());

@@ -122,9 +122,10 @@ public class InformacionReclamacionPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void resumenReclamacion() {
+  public String resumenReclamacion() {
     realizarEsperaCarga();
-    divNumeroReclamacion.waitUntilVisible();
+    String texto = divNumeroReclamacion.waitUntilVisible().getText();
     divNumeroReclamacion.click();
+    return texto;
   }
 }
