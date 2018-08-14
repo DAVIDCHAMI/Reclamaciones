@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
-import static org.openqa.selenium.Keys.ENTER;
-
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -31,12 +29,6 @@ public class AgregarInformacionPage extends GeneralPage {
         "//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:OriginCause-inputEl']"
   )
   private WebElementFacade cmbOrigenSiniestro;
-
-  @FindBy(
-    xpath =
-        ".//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AuthorityTransit-inputCell']/following-sibling::td"
-  )
-  private WebElementFacade cmbIntervinoAutoridad;
 
   @FindBy(
     xpath =

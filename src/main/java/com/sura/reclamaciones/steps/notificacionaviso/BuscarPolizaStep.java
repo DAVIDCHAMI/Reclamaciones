@@ -7,18 +7,13 @@ import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import java.util.List;
-
-import com.sura.reclamaciones.utils.AmbientesUtil;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
-import static net.serenitybdd.core.pages.PageObject.withParameters;
-
 public class BuscarPolizaStep {
-
   @Page BuscarPolizaPage buscarPolizaPage;
 
-  MenuClaimPage menuClaimPage;
+  @Page MenuClaimPage menuClaimPage;
 
   @Step
   public void completarFormularioBuscarPoliza(
@@ -34,14 +29,8 @@ public class BuscarPolizaStep {
   }
 
   @Step
-  public void seleccionarDocumento(String tipDocumento, String numDocumento) {
-    buscarPolizaPage.seleccionarTipoDocumento(tipDocumento);
-    buscarPolizaPage.escribirNumeroDocumento(numDocumento);
-  }
-
-  @Step
   public void seleccionarFecha(String fecha) {
-    if (fecha.equals("Hoy")) {
+    if ("Hoy".equals(fecha)) {
       buscarPolizaPage.seleccionarFechaHoySiniestro();
     } else {
       buscarPolizaPage.escribirFechaSiniestro(fecha);
@@ -64,7 +53,7 @@ public class BuscarPolizaStep {
         poliza -> {
           buscarPolizaPage.opcionBuscarPoliza();
           buscarPolizaPage.escribirNumeroPoliza(poliza.getNumPoliza());
-          if (poliza.getFechaSiniestro().equals("Hoy")) {
+          if ("Hoy".equals(poliza.getFechaSiniestro())) {
             buscarPolizaPage.seleccionarFechaHoySiniestro();
           } else {
             buscarPolizaPage.escribirFechaSiniestro(poliza.getFechaSiniestro());

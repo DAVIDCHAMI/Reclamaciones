@@ -73,7 +73,7 @@ public class ReclamacionStep {
         });
   }
 
-  public void finilizarReclamacion() {
+  public void finalizarReclamacion() {
     agregarInformacionPage.concluirReclamacion();
   }
 }
