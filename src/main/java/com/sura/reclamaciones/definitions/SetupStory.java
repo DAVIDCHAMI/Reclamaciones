@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.definitions;
 
-import com.sura.reclamaciones.constantes.ConstanteGlabal;
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.steps.login.LoginClaimStep;
 import com.sura.reclamaciones.utils.AmbientesUtil;
 import cucumber.api.java.Before;
@@ -15,9 +15,9 @@ public class SetupStory {
 
   @Before("@claims")
   public void seleccionarAmbiente() throws IOException {
-    if (ConstanteGlabal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
+    if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionLab();
-    } else if (ConstanteGlabal.DESARROLLO.equals(ambientesUtil.getAmbiente())) {
+    } else if (ConstanteGlobal.DESARROLLO.equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionAmbienteDllo();
     }
   }

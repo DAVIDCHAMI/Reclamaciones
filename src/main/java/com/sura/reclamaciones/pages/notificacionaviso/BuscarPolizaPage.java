@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlabal;
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -92,7 +92,7 @@ public class BuscarPolizaPage extends GeneralPage {
   public void seleccionarTipoDocumento(String tipoDocumento) {
     mnuTipoDocumento.waitUntilVisible();
     mnuTipoDocumento.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlabal.COMODIN, tipoDocumento);
+    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, tipoDocumento);
     $(auxSelectOpcion).click();
   }
 
@@ -116,14 +116,14 @@ public class BuscarPolizaPage extends GeneralPage {
   public void seleccionarPais(String pais) {
     mnuPais.waitUntilVisible();
     mnuPais.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlabal.COMODIN, pais);
+    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, pais);
     $(auxSelectOpcion).click();
   }
 
   public void seleccionarDepartamento(String departamento) {
     mnuDepartamento.waitUntilVisible();
     mnuDepartamento.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlabal.COMODIN, departamento);
+    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, departamento);
     $(auxSelectOpcion).click();
   }
 

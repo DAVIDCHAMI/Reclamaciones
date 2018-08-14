@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlabal;
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -76,7 +76,7 @@ public class InformacionReclamacionPage extends GeneralPage {
     txtCausaSiniestro.waitUntilVisible();
     txtCausaSiniestro.clear();
     txtCausaSiniestro.type(causa);
-    selectOpcion = selectOpcion.replace(ConstanteGlabal.COMODIN, causa);
+    selectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, causa);
     $(selectOpcion).waitUntilVisible();
     $(selectOpcion).click();
   }
