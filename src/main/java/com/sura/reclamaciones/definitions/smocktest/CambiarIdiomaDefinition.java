@@ -19,7 +19,7 @@ public class CambiarIdiomaDefinition {
   }
 
   @Entonces("el idioma de reclamaciones debe ser us")
-  public void verPantallaIdiomaDiferenta() {
+  public void verPantallaIdiomaDiferente() {
     cambiarIdiomaStep.comprobarTextoPantalla();
   }
 }

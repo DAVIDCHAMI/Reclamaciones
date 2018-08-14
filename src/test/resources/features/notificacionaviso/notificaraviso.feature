@@ -10,5 +10,3 @@ Característica: Notificacion de aviso de una reclamacion MRC
     Dado que se recibe un reclamo por parte de un afectado
     Cuando se tomen los datos del siniestro
     Entonces se le brindara al reclamante un numero de reclamacion radicada
-
-

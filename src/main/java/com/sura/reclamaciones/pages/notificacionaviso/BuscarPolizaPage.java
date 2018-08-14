@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -7,20 +8,17 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class BuscarPolizaPage extends GeneralPage {
-
-  GeneralPage generalPage;
-
   private String selectOpcion = "//li[.='COMODIN']";
   private String auxSelectOpcion = "";
 
-  @FindBy(xpath = "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_true-inputEl']")
-  private WebElementFacade rbtBuscarPoliza;
-
   @FindBy(
     xpath =
-        "//*[@id=\"FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:PolicyType-inputEl\"]"
+        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:licensePlate-inputEl']"
   )
-  private WebElementFacade mnuTipoDePoliza;
+  private WebElementFacade txtPlaca;
+
+  @FindBy(xpath = "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_true-inputEl']")
+  private WebElementFacade rbtBuscarPoliza;
 
   @FindBy(
     xpath =
@@ -73,9 +71,6 @@ public class BuscarPolizaPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'s')]")
   private WebElementFacade btnBuscar;
 
-  @FindBy(xpath = "//td[.='Deseleccionar']/following-sibling::td[3]/div")
-  private WebElementFacade lblAsegurado;
-
   public BuscarPolizaPage(WebDriver driver) {
     super(driver);
   }
@@ -97,7 +92,7 @@ public class BuscarPolizaPage extends GeneralPage {
   public void seleccionarTipoDocumento(String tipoDocumento) {
     mnuTipoDocumento.waitUntilVisible();
     mnuTipoDocumento.click();
-    auxSelectOpcion = selectOpcion.replace("COMODIN", tipoDocumento);
+    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, tipoDocumento);
     $(auxSelectOpcion).click();
   }
 
@@ -121,14 +116,14 @@ public class BuscarPolizaPage extends GeneralPage {
   public void seleccionarPais(String pais) {
     mnuPais.waitUntilVisible();
     mnuPais.click();
-    auxSelectOpcion = selectOpcion.replace("COMODIN", pais);
+    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, pais);
     $(auxSelectOpcion).click();
   }
 
   public void seleccionarDepartamento(String departamento) {
     mnuDepartamento.waitUntilVisible();
     mnuDepartamento.click();
-    auxSelectOpcion = selectOpcion.replace("COMODIN", departamento);
+    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, departamento);
     $(auxSelectOpcion).click();
   }
 
@@ -144,5 +139,10 @@ public class BuscarPolizaPage extends GeneralPage {
     btnBuscar.click();
     realizarEsperaCarga();
     continuarSiguientePantalla();
+  }
+
+  public void escribirPlaca(String placa) {
+    txtPlaca.waitUntilPresent();
+    txtPlaca.type(placa);
   }
 }
