@@ -24,6 +24,9 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//span[@id='FNOLWizard:Next-btnInnerEl']")
   private WebElementFacade btnSiguiente;
 
+  @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
+  WebElementFacade btnAceptar;
+
   WebDriver driver;
 
   public GeneralPage(WebDriver wdriver) {
@@ -87,6 +90,11 @@ public class GeneralPage extends PageObject {
 
   public void realizarEsperaCarga() {
     pruebaLoader.waitUntilPresent().waitUntilNotVisible();
+  }
+
+  public void aceptarOpcion() {
+    btnAceptar.waitUntilVisible();
+    btnAceptar.click();
   }
 
   public void continuarSiguientePantalla() {

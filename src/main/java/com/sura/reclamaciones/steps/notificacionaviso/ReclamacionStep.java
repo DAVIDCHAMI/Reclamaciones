@@ -27,9 +27,7 @@ public class ReclamacionStep {
   public void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
     datosReclamacion.forEach(
         dato -> {
-          if (agregarInformacionPage.getBtnCerrarVentanaEmergente().isVisible()) {
-            agregarInformacionPage.cliquearBotonCerrar();
-          }
+          agregarInformacionPage.cerrarVentanaEmergente();
           agregarInformacionPage.seleccionarLugar(dato.getLugar());
           agregarInformacionPage.escribirSucedido(dato.getSucedido());
           agregarInformacionPage.seleccionarCausa(dato.getCausa());
@@ -49,14 +47,14 @@ public class ReclamacionStep {
 
   @Step
   public void editarVehiculo(List<ReclamacionAuto> datosReclamacion) {
-    agregarInformacionPage.ingresarEditarVehiculo();
+    agregarInformacionPage.ingresarEdicionVehiculo();
     detalleVehiculoPage.agregarConductor();
     datosReclamacion.forEach(
         dato -> {
           detalleVehiculoPage.seleccionarTaller(dato.getTaller());
         });
 
-    detalleVehiculoPage.volverAgregarInformacion();
+    detalleVehiculoPage.volverPasoAnterior();
   }
 
   public void seleccionarNombreAutorReporte() {

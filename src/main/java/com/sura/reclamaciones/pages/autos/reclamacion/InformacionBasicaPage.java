@@ -7,15 +7,11 @@ import org.openqa.selenium.WebDriver;
 
 public class InformacionBasicaPage extends GeneralPage {
 
-  public InformacionBasicaPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   @FindBy(
     xpath =
         "//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']/../following-sibling::td"
   )
-  private WebElementFacade cmbnombre;
+  private WebElementFacade cmbNombre;
 
   @FindBy(
     xpath =
@@ -23,8 +19,12 @@ public class InformacionBasicaPage extends GeneralPage {
   )
   private WebElementFacade lstNombreAutor;
 
+  public InformacionBasicaPage(WebDriver wdriver) {
+    super(wdriver);
+  }
+
   public void seleccionarNombre() {
-    cmbnombre.click();
+    cmbNombre.click();
     lstNombreAutor.click();
     realizarEsperaCarga();
     continuarSiguientePantalla();

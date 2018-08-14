@@ -7,10 +7,6 @@ import org.openqa.selenium.WebDriver;
 
 public class DetalleVehiculoPage extends GeneralPage {
 
-  public DetalleVehiculoPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   CrearServicioPage crearServicioPage;
 
   @FindBy(
@@ -31,9 +27,6 @@ public class DetalleVehiculoPage extends GeneralPage {
   )
   WebElementFacade lstNombrePersona;
 
-  @FindBy(id = "FNOLContactPopup:FNOLContactScreen:Update-btnInnerEl")
-  WebElementFacade btnAceptar;
-
   @FindBy(xpath = "//input[@class='x-form-field x-form-checkbox x-form-cb']")
   WebElementFacade chkServicio;
 
@@ -45,42 +38,39 @@ public class DetalleVehiculoPage extends GeneralPage {
   @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
   WebElementFacade btnBuscarProveedor;
 
-  @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
-  WebElementFacade btnAceptarDos;
-
-  public void agregarConductor() {
-    cliquearBtnAgregarConductor();
-    seleccionarConductor();
+  public DetalleVehiculoPage(WebDriver wdriver) {
+    super(wdriver);
   }
 
-  private void cliquearBtnAgregarConductor() {
+  public void agregarConductor() {
     btnAgregarConductor.waitUntilVisible().click();
+    seleccionarConductor();
   }
 
   private void seleccionarConductor() {
     cmbPersona.waitUntilVisible().click();
     lstNombrePersona.click();
     realizarEsperaCarga();
-    btnAceptar.click();
+    aceptarOpcion();
     realizarEsperaCarga();
   }
 
   public void seleccionarTaller(String taller) {
     seleccionarServicios();
-    cliquearBtnAgregarTaller();
-    cliquearBtnBuscarProveedor();
+    agregarTaller();
+    buscarProveedor();
     crearServicioPage.seleccionarProveedor(taller);
     realizarEsperaCarga();
-    btnAceptarDos.click();
+    aceptarOpcion();
     realizarEsperaCarga();
   }
 
-  private void cliquearBtnBuscarProveedor() {
+  private void buscarProveedor() {
     btnBuscarProveedor.waitUntilVisible().click();
     realizarEsperaCarga();
   }
 
-  private void cliquearBtnAgregarTaller() {
+  private void agregarTaller() {
     btnAgregarTaller.waitUntilVisible().click();
   }
 
@@ -88,8 +78,8 @@ public class DetalleVehiculoPage extends GeneralPage {
     chkServicio.waitUntilVisible().click();
   }
 
-  public void volverAgregarInformacion() {
-    btnAceptarDos.click();
+  public void volverPasoAnterior() {
+    aceptarOpcion();
     realizarEsperaCarga();
   }
 }
