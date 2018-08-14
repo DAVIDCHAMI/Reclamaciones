@@ -3,9 +3,11 @@ package com.sura.reclamaciones.definitions.notificacionaviso;
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.*;
+import cucumber.api.PendingException;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import cucumber.api.java.es.Y;
 import net.thucydides.core.annotations.Steps;
 
 public class NotificacionAvisoDefinition {
@@ -16,10 +18,11 @@ public class NotificacionAvisoDefinition {
   @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
   @Steps InformacionBasicaStep informacionBasicaStep;
   @Steps InformacionReclamacionStep informacionReclamacionStep;
+  @Steps ResumenReclamacionStep resumenReclamacionStep;
   @Steps GenericStep genericStep;
 
-  @Dado("que se recibe un reclamo por parte de un afectado")
-  public void recibirReclamoAfectado() throws Throwable {
+  @Dado("^que se tiene una poliza de (.*)$")
+  public void queSeTieneUnaPolizaDeTipoCobertura(String tipoCobertura) throws Throwable {
     reclamo =
         new ReclamacionEmpresariales(
             genericStep.getFilasModelo("reclamacion_empresarial", "escenarioEmpresariales"));
@@ -27,16 +30,30 @@ public class NotificacionAvisoDefinition {
     buscarPolizaStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
   }
 
-  @Cuando("se tomen los datos del siniestro")
-  public void tomarDatosSiniestro() {
+  @Cuando("^se genere un siniestro por causal (.*) con un valor de pretension de (.*)$")
+  public void tomarDatosSiniestro(String causa, String valorPretension) {
     reclamo.getLstReclamo();
     propiedadesImplicadasStep.seleccionarPropiedadImplicada();
     informacionBasicaStep.informacionPersonal(reclamo.getLstReclamo());
+    informacionReclamacionStep.causalIncidente(causa, valorPretension);
   }
 
-  @Entonces("^se le brindara al reclamante un numero de reclamacion radicada$")
-  public void obtenerNumeroReclamacion() {
+  @Y("^un incidente de tipo (.*)$")
+  public void tomarTipoIncidente(String tipoIncidente) {
     reclamo.getLstReclamo();
-    informacionReclamacionStep.informacionIncidente(reclamo.getLstReclamo());
+    informacionReclamacionStep.informacionIncidente(reclamo.getLstReclamo(), tipoIncidente);
+  }
+
+  @Entonces("^se obtiene una reclamacion que (.*) genera exposicion$")
+  public void verificarExposicion(String exposicion) {
+    reclamo.getLstReclamo();
+    informacionReclamacionStep.validarReclamacion(reclamo.getLstReclamo());
+    resumenReclamacionStep.visualizarResumenReclamacion();
+    resumenReclamacionStep.validarExposicionVisualizada(exposicion);
+  }
+
+  @Entonces("^que (.*) genera reserva con un monto (.*), envia correo y se asigna a un analista$")
+  public void verificarReserva(String reserva, String monto) {
+    resumenReclamacionStep.validarReservaVisualizada(monto);
   }
 }

@@ -60,10 +60,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   @FindBy(xpath = "//span[.='Finalizar']/span[@id='FNOLWizard:Finish-btnInnerEl']")
   private WebElementFacade btnFinalizar;
 
-  @FindBy(
-    xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
-  )
-  private WebElementFacade divNumeroReclamacion;
+  @FindBy(xpath = "//span[@id='NewClaimSaved:NewClaimSavedScreen:ttlBar']")
+  private WebElementFacade spanNuevaReclamacion;
 
   public InformacionReclamacionPage(WebDriver driver) {
     super(driver);
@@ -122,10 +120,8 @@ public class InformacionReclamacionPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public String resumenReclamacion() {
-    realizarEsperaCarga();
-    String texto = divNumeroReclamacion.waitUntilVisible().getText();
-    divNumeroReclamacion.click();
+  public String validarReclamacionGenerada() {
+    String texto = spanNuevaReclamacion.waitUntilVisible().getText();
     return texto;
   }
 }
