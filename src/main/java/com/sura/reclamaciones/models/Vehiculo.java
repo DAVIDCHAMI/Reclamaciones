@@ -16,7 +16,7 @@ public class Vehiculo {
 
   public Vehiculo() {}
 
-  public Vehiculo(Map<String, String> datosVehiculos) {
+  private Vehiculo(Map<String, String> datosVehiculos) {
     this.placa = datosVehiculos.get("placa");
     this.clase = datosVehiculos.get("clase");
     this.modelo = datosVehiculos.get("modelo");

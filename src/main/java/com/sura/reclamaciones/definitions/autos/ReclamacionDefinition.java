@@ -2,7 +2,6 @@ package com.sura.reclamaciones.definitions.autos;
 
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ReclamacionStep;
@@ -14,8 +13,6 @@ import net.thucydides.core.annotations.Steps;
 
 public class ReclamacionDefinition {
 
-  private MenuClaimPage menuClaimPage;
-
   @Steps private GenericStep genericStep;
   @Steps private BuscarPolizaStep buscarPolizaStep;
   @Steps private ReclamacionStep reclamacionStep;
@@ -23,7 +20,7 @@ public class ReclamacionDefinition {
   private Vehiculo vehiculo;
 
   @Dado("^que se recibe un auto con causa de siniestro por danos$")
-  public void recibirReclamo() throws Exception {
+  public void recibirReclamo() throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion", "reclamacionSimple"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "COL001"));
@@ -39,7 +36,7 @@ public class ReclamacionDefinition {
     reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.editarVehiculo(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarCategorizacion(reclamacionAuto.getLstReclamacionAuto());
-    reclamacionStep.finilizarReclamacion();
+    reclamacionStep.finalizarReclamacion();
   }
 
   @Entonces("^se le brindara al reclamante un numero de reclamacion$")

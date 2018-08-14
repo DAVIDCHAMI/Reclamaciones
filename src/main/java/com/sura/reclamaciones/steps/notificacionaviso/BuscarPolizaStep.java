@@ -11,10 +11,9 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
 public class BuscarPolizaStep {
-
   @Page BuscarPolizaPage buscarPolizaPage;
 
-  MenuClaimPage menuClaimPage;
+  @Page MenuClaimPage menuClaimPage;
 
   @Step
   public void completarFormularioBuscarPoliza(
@@ -30,14 +29,8 @@ public class BuscarPolizaStep {
   }
 
   @Step
-  public void seleccionarDocumento(String tipDocumento, String numDocumento) {
-    buscarPolizaPage.seleccionarTipoDocumento(tipDocumento);
-    buscarPolizaPage.escribirNumeroDocumento(numDocumento);
-  }
-
-  @Step
   public void seleccionarFecha(String fecha) {
-    if (fecha.equals("Hoy")) {
+    if ("Hoy".equals(fecha)) {
       buscarPolizaPage.seleccionarFechaHoySiniestro();
     } else {
       buscarPolizaPage.escribirFechaSiniestro(fecha);

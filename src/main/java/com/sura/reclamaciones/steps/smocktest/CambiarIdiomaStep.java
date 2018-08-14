@@ -11,9 +11,9 @@ public class CambiarIdiomaStep {
 
   @Step
   public void seleccionarIdioma() {
-    cambiarIdiomaPage.cliquearBtnConfiguraciones();
-    cambiarIdiomaPage.cliquearLinkInternacional();
-    cambiarIdiomaPage.cliquearLinkIdioma();
+    cambiarIdiomaPage.ingresarConfiguraciones();
+    cambiarIdiomaPage.elegirOpcionInternacional();
+    cambiarIdiomaPage.elegirIdioma();
   }
 
   @Step

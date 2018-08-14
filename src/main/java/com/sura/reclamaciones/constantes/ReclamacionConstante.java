@@ -9,6 +9,6 @@ public class ReclamacionConstante {
   public static final String PAIS = "Pa";
   public static final String DEPARTAMENTO = "Departamento";
   public static final String CIUDAD = "Ciudad";
-  public static final String DIRRECCION = "Direcci";
+  public static final String DIRECCION = "Direcci";
   public static final String TIPO_POLIZA = "Tipo de";
 }

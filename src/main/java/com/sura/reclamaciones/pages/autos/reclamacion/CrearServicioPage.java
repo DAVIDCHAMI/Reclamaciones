@@ -10,9 +10,6 @@ import org.openqa.selenium.WebElement;
 
 public class CrearServicioPage extends GeneralPage {
 
-  @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
-  private WebElementFacade btnBuscarProveedor;
-
   @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:concesionarios")
   private WebElementFacade tblProveedores;
 

@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Usuario {
+public class Credencial {
 
   private String usuario;
   private String contrasena;
-  private List<Usuario> usuarios = new ArrayList<>();
+  private List<Credencial> credencials = new ArrayList<>();
 
-  public Usuario() {}
+  public Credencial() {}
 
-  private Usuario(Map<String, String> datosUsuario) {
+  private Credencial(Map<String, String> datosUsuario) {
     this.usuario = datosUsuario.get("usuario");
     this.contrasena = datosUsuario.get("contrasena");
   }
 
-  public Usuario(List<Map<String, String>> datosUsuario) {
+  public Credencial(List<Map<String, String>> datosUsuario) {
     asignarDatos(datosUsuario);
   }
 
@@ -29,13 +29,13 @@ public class Usuario {
     return contrasena;
   }
 
-  public List<Usuario> getUsuarios() {
-    return usuarios;
+  public List<Credencial> getCredencials() {
+    return credencials;
   }
 
   public void asignarDatos(List<Map<String, String>> datosUsuario) {
     for (Map<String, String> dato : datosUsuario) {
-      usuarios.add(new Usuario(dato));
+      credencials.add(new Credencial(dato));
     }
   }
 }

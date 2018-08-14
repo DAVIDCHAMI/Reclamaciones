@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.smocktest;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -7,20 +8,16 @@ import org.openqa.selenium.WebDriver;
 
 public class CambiarIdiomaPage extends GeneralPage {
 
-  public CambiarIdiomaPage(WebDriver driver) {
-    super(driver);
-  }
-
   private String tipoIdioma = "//div/a/span[contains(.,'COMODIN')]/../..";
 
   @FindBy(id = ":TabLinkMenuButton")
   private WebElementFacade btnAjuste;
 
   @FindBy(id = "TabBar:LanguageTabBarLink-textEl")
-  private WebElementFacade linkInternacional;
+  private WebElementFacade lnkInternacional;
 
   @FindBy(id = "TabBar:LanguageTabBarLink:languageSwitcher-textEl")
-  private WebElementFacade linkIdioma;
+  private WebElementFacade lnkIdioma;
 
   @FindBy(
     xpath =
@@ -31,24 +28,28 @@ public class CambiarIdiomaPage extends GeneralPage {
   @FindBy(xpath = "//span[@id ='TabBar:LanguageTabBarLink:languageSwitcher:0:langs-textEl']")
   private WebElementFacade linkSeleccionarLenguaje;
 
-  public void cliquearBtnConfiguraciones() {
+  public CambiarIdiomaPage(WebDriver driver) {
+    super(driver);
+  }
+
+  public void ingresarConfiguraciones() {
     btnAjuste.click();
   }
 
-  public void cliquearLinkInternacional() {
-    linkInternacional.click();
+  public void elegirOpcionInternacional() {
+    lnkInternacional.click();
   }
 
-  public void cliquearLinkIdioma() {
-    linkIdioma.click();
+  public void elegirIdioma() {
+    lnkIdioma.click();
   }
 
   public String seleccionarIdioma() {
     if (linkSeleccionarLenguaje.getText().equals("English (US)")) {
-      tipoIdioma = tipoIdioma.replace("COMODIN", "Spanish (CO)");
+      tipoIdioma = tipoIdioma.replace(ConstanteGlobal.COMODIN, "Spanish (CO)");
       $(tipoIdioma).click();
     } else {
-      tipoIdioma = tipoIdioma.replace("COMODIN", "(US)");
+      tipoIdioma = tipoIdioma.replace(ConstanteGlobal.COMODIN, "(US)");
       $(tipoIdioma).click();
     }
     return letraComprobante.waitUntilVisible().getText();
