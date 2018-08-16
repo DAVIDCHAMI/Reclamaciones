@@ -1,2 +1,2 @@
-id;idFiltro;numeroContrato;detalleHechos;pais;departamento;ciudad;direccion;tipoIncidente;origen;valorPretension;fechaSiniestro;tipoPoliza;numPoliza;lugar;causaDelSiniestro;validadorNumReclamacion
-1;escenarioEmpresariales;;Esta es una prueba automatizada;Colombia;Antioquia;Medellin;;Propiedad;;2000000;10/05/2018;Multiriesgo corporativo;030001014345;;Rotura de Vidrios;Nueva reclamación guardada
+id;idFiltro;numeroContrato;detalleHechos;pais;departamento;ciudad;direccion;origen;fechaSiniestro;numPoliza;lugar;validadorNumReclamacion
+1;escenarioEmpresariales;;Esta es una regresión de pruebas automatizada ;Colombia;Antioquia;Medellin;;;10/05/2018;030001014345;;Nueva reclamación guardada

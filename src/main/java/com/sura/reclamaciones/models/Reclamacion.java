@@ -4,7 +4,6 @@ import java.util.Map;
 
 public abstract class Reclamacion {
   private String origen;
-  private String valorPretension;
   private String tipoPoliza;
   private String numPoliza;
   private String fechaSiniestro;
@@ -14,7 +13,6 @@ public abstract class Reclamacion {
 
   public Reclamacion(Map<String, String> datosReclamacion) {
     this.origen = datosReclamacion.get("origen");
-    this.valorPretension = datosReclamacion.get("valorPretension");
     this.fechaSiniestro = datosReclamacion.get("fechaSiniestro");
     this.tipoPoliza = datosReclamacion.get("tipoPoliza");
     this.numPoliza = datosReclamacion.get("numPoliza");
@@ -23,10 +21,6 @@ public abstract class Reclamacion {
 
   public String getOrigen() {
     return origen;
-  }
-
-  public String getValorPretension() {
-    return valorPretension;
   }
 
   public String getTipoPoliza() {

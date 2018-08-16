@@ -13,8 +13,6 @@ public class ReclamacionEmpresariales extends Reclamacion {
   private String departamento;
   private String ciudad;
   private String direccion;
-  private String tipoIncidente;
-  private String causaDelSiniestro;
   private String validarNumeroReclamacion;
 
   public ReclamacionEmpresariales() {
@@ -29,8 +27,6 @@ public class ReclamacionEmpresariales extends Reclamacion {
     this.departamento = datosReclamacionEmp.get("departamento");
     this.ciudad = datosReclamacionEmp.get("ciudad");
     this.direccion = datosReclamacionEmp.get("direccion");
-    this.tipoIncidente = datosReclamacionEmp.get("tipoIncidente");
-    this.causaDelSiniestro = datosReclamacionEmp.get("causaDelSiniestro");
     this.validarNumeroReclamacion = datosReclamacionEmp.get("validadorNumReclamacion");
   }
 
@@ -54,20 +50,12 @@ public class ReclamacionEmpresariales extends Reclamacion {
     return direccion;
   }
 
-  public String getTipoIncidente() {
-    return tipoIncidente;
-  }
-
   public String getNumeroContrato() {
     return numeroContrato;
   }
 
   public String getDetalleHechos() {
     return detalleHechos;
-  }
-
-  public String getCausaDelSiniestro() {
-    return causaDelSiniestro;
   }
 
   public String getValidarNumeroReclamacion() {

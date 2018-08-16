@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -13,11 +15,12 @@ public class ResumenReclamacionPage extends GeneralPage {
   )
   private WebElementFacade divNumeroReclamacion;
 
-  @FindBy(id = "ClaimSummary:ClaimSummaryScreen:ClaimSummaryExposuresLV:0:Type")
-  private WebElementFacade linkTipoExposicion;
+  @FindBy(xpath = "//a[@id='ClaimSummary:ClaimSummaryScreen:ClaimSummaryExposuresLV:0:Type']")
+  private WebElementFacade lnkTipoExposicion;
 
   @FindBy(
-    id = "ClaimSummary:ClaimSummaryScreen:ClaimSummaryHeadlinePanelSet:TotalGrossIncurred-inputEl"
+    xpath =
+        "//div[@id='ClaimSummary:ClaimSummaryScreen:ClaimSummaryHeadlinePanelSet:TotalGrossIncurred-inputEl']"
   )
   private WebElementFacade divReserva;
 
@@ -26,18 +29,28 @@ public class ResumenReclamacionPage extends GeneralPage {
   }
 
   public void resumenReclamacion() {
+    String numeroReclamacion;
     divNumeroReclamacion.waitUntilVisible();
+    numeroReclamacion = divNumeroReclamacion.getText();
+    numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    LOGGER.info("el número de reclamación generado es: " + numeroReclamacion);
     divNumeroReclamacion.click();
   }
 
   public String validarExposicion() {
     String validadorExposicion;
-    if ("Contenido".equals(linkTipoExposicion.waitUntilVisible().getText())) {
-      validadorExposicion = "Si";
-    } else if ("Propiedad".equals(linkTipoExposicion.waitUntilVisible().getText())) {
-      validadorExposicion = "Si";
+    if (lnkTipoExposicion.isVisible()) {
+      if (ReclamacionConstante.EXPOSICION_CONTENIDO.equals(
+          lnkTipoExposicion.waitUntilVisible().getText())) {
+        validadorExposicion = ConstanteGlobal.SI;
+      } else if (ReclamacionConstante.EXPOSICION_PROPIEDAD.equals(
+          lnkTipoExposicion.waitUntilVisible().getText())) {
+        validadorExposicion = ConstanteGlobal.SI;
+      } else {
+        validadorExposicion = ConstanteGlobal.NO;
+      }
     } else {
-      validadorExposicion = "No";
+      validadorExposicion = ConstanteGlobal.NO;
     }
     return validadorExposicion;
   }
