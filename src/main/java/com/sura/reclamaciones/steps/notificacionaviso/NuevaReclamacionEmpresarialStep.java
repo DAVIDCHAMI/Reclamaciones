@@ -2,10 +2,10 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
+import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionReclamacionPage;
-import com.sura.reclamaciones.pages.notificacionaviso.NuevaReclamacionPage;
 import com.sura.reclamaciones.pages.notificacionaviso.PropiedadesImplicadasPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.steps.generics.UbicacionStep;
@@ -16,15 +16,22 @@ import org.hamcrest.MatcherAssert;
 
 public class NuevaReclamacionEmpresarialStep {
 
-  @Page BuscarPolizaPage buscarPolizaPage;
-  @Page NuevaReclamacionPage nuevaReclamacionPage;
-  @Page InformacionReclamacionPage informacionReclamacionPage;
-  @Page InformacionBasicaPage informacionBasicaPage;
-  @Page PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
-  @Page ResumenReclamacionPage resumenReclamacionPage;
-  @Steps UbicacionStep ubicacionStep;
+  @Page
+  BuscarPolizaPage buscarPolizaPage;
+  @Page
+  MenuClaimPage menuClaimPage;
+  @Page
+  InformacionReclamacionPage informacionReclamacionPage;
+  @Page
+  InformacionBasicaPage informacionBasicaPage;
+  @Page
+  PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
+  @Page
+  ResumenReclamacionPage resumenReclamacionPage;
+  @Steps
+  UbicacionStep ubicacionStep;
 
-  public void informacionIncidente(
+  public void diligenciarInformacionIncidente(
       List<ReclamacionEmpresariales> datosIncidente, String incidente) {
     datosIncidente.forEach(
         datos -> {
@@ -34,7 +41,7 @@ public class NuevaReclamacionEmpresarialStep {
         });
   }
 
-  public void causalIncidente(String causa, String valorPretension) {
+  public void seleccionarCausalIncidente(String causa, String valorPretension) {
     informacionReclamacionPage.seleccionarCausaSiniestro(causa);
     informacionReclamacionPage.escribirValorPretension(valorPretension);
   }
@@ -51,10 +58,10 @@ public class NuevaReclamacionEmpresarialStep {
   }
 
   public void seleccionarNuevaReclamacion(String nombreOpcion, String subItem) {
-    nuevaReclamacionPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
+    menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
   }
 
-  public void informacionPersonal(List<ReclamacionEmpresariales> datosAutor) {
+  public void diligenciarInformacionPersonal(List<ReclamacionEmpresariales> datosAutor) {
     datosAutor.forEach(
         autor -> {
           informacionBasicaPage.seleccionarAutorReporte();
@@ -82,6 +89,19 @@ public class NuevaReclamacionEmpresarialStep {
     MatcherAssert.assertThat(
         "No generó reserva, verificar las reglas de administración de reserva o data ingresada",
         validar.equals(monto));
+  }
+
+  public void validarReservaTransaccion(String nombreOpcion, String subItem,
+      List<ReclamacionEmpresariales> datoReserva) {
+    datoReserva.forEach(
+        reserva -> {
+          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(nombreOpcion, subItem);
+          String validar = resumenReclamacionPage.validarReservaTransaccion();
+          MatcherAssert.assertThat(
+              "Se esperaba una reserva de: " + reserva.getReservaTransaccion()
+                  + ", pero se ha obtenido una reserva de: "
+                  + validar, reserva.getReservaTransaccion().equals(validar));
+        });
   }
 
   public void buscarPolizaEmpresarial(List<ReclamacionEmpresariales> datosPolizaEmpresarial) {

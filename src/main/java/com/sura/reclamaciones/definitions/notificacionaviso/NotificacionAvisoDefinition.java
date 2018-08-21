@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.definitions.notificacionaviso;
 
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.*;
@@ -15,7 +16,7 @@ public class NotificacionAvisoDefinition {
   @Steps GenericStep genericStep;
 
   @Dado("^que se tiene una poliza de (.*)$")
-  public void queSeTieneUnaPolizaDeTipoCobertura(String tipoCobertura) throws Throwable {
+  public void buscarPoliza(String tipoCobertura) throws Throwable {
     reclamo =
         new ReclamacionEmpresariales(
             genericStep.getFilasModelo("reclamacion_empresarial", "escenarioEmpresariales"));
@@ -27,14 +28,14 @@ public class NotificacionAvisoDefinition {
   public void tomarDatosSiniestro(String causa, String valorPretension) {
     reclamo.getLstReclamo();
     nuevaReclamacionStep.seleccionarPropiedadImplicada();
-    nuevaReclamacionStep.informacionPersonal(reclamo.getLstReclamo());
-    nuevaReclamacionStep.causalIncidente(causa, valorPretension);
+    nuevaReclamacionStep.diligenciarInformacionPersonal(reclamo.getLstReclamo());
+    nuevaReclamacionStep.seleccionarCausalIncidente(causa, valorPretension);
   }
 
   @Cuando("^un incidente de tipo (.*)$")
   public void tomarTipoIncidente(String tipoIncidente) {
     reclamo.getLstReclamo();
-    nuevaReclamacionStep.informacionIncidente(reclamo.getLstReclamo(), tipoIncidente);
+    nuevaReclamacionStep.diligenciarInformacionIncidente(reclamo.getLstReclamo(), tipoIncidente);
   }
 
   @Entonces("^se obtiene una reclamacion que (.*) genera exposicion$")
@@ -47,6 +48,8 @@ public class NotificacionAvisoDefinition {
 
   @Entonces("^que (.*) genera reserva con un monto (.*), envia correo y se asigna a un analista$")
   public void verificarReserva(String reserva, String monto) {
+    reclamo.getLstReclamo();
     nuevaReclamacionStep.validarReservaVisualizada(monto);
+    nuevaReclamacionStep.validarReservaTransaccion(ReclamacionConstante.DATOS_FINANCIEROS,ReclamacionConstante.TRANSACCIONES,reclamo.getLstReclamo());
   }
 }
