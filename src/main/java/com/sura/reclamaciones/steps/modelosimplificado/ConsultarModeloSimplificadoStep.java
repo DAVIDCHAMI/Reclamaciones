@@ -38,19 +38,14 @@ public class ConsultarModeloSimplificadoStep {
 
   @Step
   public void verficarConsulta(ResultSet rs) throws SQLException {
-    //Map<Integer, ArrayList<String>> datos = new HashMap<Integer, ArrayList<String>>();
     ArrayList<String> datosConsulta = new ArrayList<String>(4);
-    //int z=1;
     while(rs.next()) {
         for (int y = 1; y <= rs.getMetaData().getColumnCount(); y++) {
           String dato = rs.getString(y);
           datosConsulta.add(y - 1, dato);
+          System.out.println(dato);
         }
-        //datos.put(z,fila);
-        //z++;
      System.out.println(datosConsulta + " ");
-        //System.out.println (" dato " + y + " "+ rs.getString(y)+ "\t");
     }
-    //System.out.println(datos + " ");
   }
   }

@@ -36,8 +36,7 @@ public class ConsultaModeloSimplificadoDefinition {
   }
 
   @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
-  public void obtenerDatosModeloSimplificado()
-      throws SQLException {
+  public void obtenerDatosModeloSimplificado() throws SQLException {
     conexionBDSteps.verficarConsulta(rs);
   }
 
