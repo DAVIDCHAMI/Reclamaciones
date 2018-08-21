@@ -31,8 +31,8 @@ public class ConsultaModeloSimplificadoDefinition {
   @Cuando("^la transaccion se ha efectuado$")
   public void la_transaccion_se_ha_efectuado() throws SQLException, IOException {
     modeloSimplificado.getlstModeloSimplificado();
-    conexionBDSteps.consultar()
-    rs = conexionBDSteps.consultar(conexion,numeroTransaccion);
+    rs = conexionBDSteps.consultar(conexion,modeloSimplificado.getlstModeloSimplificado());
+    //rs = conexionBDSteps.consultar(conexion,numeroTransaccion);
     System.out.println("Se ejecuto la consulta");
   }
 

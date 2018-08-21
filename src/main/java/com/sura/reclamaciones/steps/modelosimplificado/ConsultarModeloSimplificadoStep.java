@@ -1,19 +1,22 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
+import com.sura.reclamaciones.models.ModeloSimplificado;
 import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificadoPage;
-import com.sura.reclamaciones.querys.Query;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import net.thucydides.core.annotations.Step;
+import org.fluentlenium.core.annotation.Page;
 
 public class ConsultarModeloSimplificadoStep {
 
+  @Page
+  ConsultarModeloSimplificadoPage consultarModeloSimplificado;
 
   @Step
   public Connection connection () throws SQLException {
@@ -22,9 +25,14 @@ public class ConsultarModeloSimplificadoStep {
 
   }
 
-  public  ResultSet consultar (Connection bd, String transaccion) throws SQLException {
-    ConsultarModeloSimplificadoPage consultarModeloSimplificado=null ;
-    ResultSet resultSet= consultarModeloSimplificado.consultaModeloSimplificado(bd,transaccion);
+  public  ResultSet consultar (Connection bd, List<ModeloSimplificado> datosTransaccion) throws SQLException {
+    final String[] transaccionConsulta = {String.valueOf(new Object[1])};
+    datosTransaccion.forEach(
+        transaccion->
+           transaccionConsulta[0] = transaccion.getTransaccion()
+        );
+    ResultSet resultSet = consultarModeloSimplificado.consultaModeloSimplificado(bd,
+        transaccionConsulta[0]);
     return resultSet;
   }
 
