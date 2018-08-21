@@ -24,6 +24,7 @@ public class ConsultarModeloSimplificadoStep {
     return conexion= ConexionBaseDatosUtil.conectar();
   }
 
+  @Step
   public  ResultSet consultar (Connection bd, List<ModeloSimplificado> datosTransaccion) throws SQLException {
     final String[] transaccionConsulta = {String.valueOf(new Object[1])};
     datosTransaccion.forEach(
@@ -35,22 +36,21 @@ public class ConsultarModeloSimplificadoStep {
     return resultSet;
   }
 
+  @Step
   public void verficarConsulta(ResultSet rs) throws SQLException {
-    Map<Integer, ArrayList<String>> datos = new HashMap<Integer, ArrayList<String>>();
-    ArrayList<String> fila = new ArrayList<String>();
-    int z=1;
+    //Map<Integer, ArrayList<String>> datos = new HashMap<Integer, ArrayList<String>>();
+    ArrayList<String> datosConsulta = new ArrayList<String>(4);
+    //int z=1;
     while(rs.next()) {
         for (int y = 1; y <= rs.getMetaData().getColumnCount(); y++) {
           String dato = rs.getString(y);
-          fila.add(y - 1, dato);
+          datosConsulta.add(y - 1, dato);
         }
-        datos.put(z,fila);
-        z++;
-     System.out.println(datos + " ");
+        //datos.put(z,fila);
+        //z++;
+     System.out.println(datosConsulta + " ");
         //System.out.println (" dato " + y + " "+ rs.getString(y)+ "\t");
     }
-
     //System.out.println(datos + " ");
   }
   }
-
