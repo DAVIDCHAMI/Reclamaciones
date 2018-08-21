@@ -17,7 +17,6 @@ public class ConsultarModeloSimplificadoStep {
   public Connection connection () throws SQLException {
     Connection conexion=null;
     return conexion= ConexionBaseDatosUtil.conectar();
-
   }
 
   public  ResultSet consulta (Connection bd, String transaccion) throws SQLException {
