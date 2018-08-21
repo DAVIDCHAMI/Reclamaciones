@@ -13,6 +13,6 @@ Característica: Consulta a modelo simplificado
 
     Ejemplos:
       | tipoTransaccion  |
+      | Reserva          |
       | Pago             |
       | Recupero         |
-      | Reserva          |

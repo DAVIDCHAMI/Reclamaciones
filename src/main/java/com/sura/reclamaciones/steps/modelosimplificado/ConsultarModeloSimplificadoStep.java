@@ -1,17 +1,22 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
+import com.sura.reclamaciones.models.ModeloSimplificado;
+import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificadoPage;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import net.thucydides.core.annotations.Step;
+import org.fluentlenium.core.annotation.Page;
 
 public class ConsultarModeloSimplificadoStep {
 
+  @Page
+  ConsultarModeloSimplificadoPage consultarModeloSimplificado;
 
   @Step
   public Connection connection () throws SQLException {
@@ -19,14 +24,15 @@ public class ConsultarModeloSimplificadoStep {
     return conexion= ConexionBaseDatosUtil.conectar();
   }
 
-  public  ResultSet consulta (Connection bd, String transaccion) throws SQLException {
-    String sSQL;
-    PreparedStatement stmt = null;
-    sSQL= "select CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT,AMOUNT from ADM_GWCC.CCX_CHECKDENORM_EXT where reference = ?";
-    stmt = bd.prepareStatement(sSQL);
-    stmt.setString(1, transaccion);
-    ResultSet rs = stmt.executeQuery();
-    return rs;
+  public  ResultSet consultar (Connection bd, List<ModeloSimplificado> datosTransaccion) throws SQLException {
+    final String[] transaccionConsulta = {String.valueOf(new Object[1])};
+    datosTransaccion.forEach(
+        transaccion->
+           transaccionConsulta[0] = transaccion.getTransaccion()
+        );
+    ResultSet resultSet = consultarModeloSimplificado.consultaModeloSimplificado(bd,
+        transaccionConsulta[0]);
+    return resultSet;
   }
 
   public void verficarConsulta(ResultSet rs) throws SQLException {
