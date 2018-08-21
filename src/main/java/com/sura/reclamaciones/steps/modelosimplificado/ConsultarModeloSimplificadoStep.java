@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
+import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificadoPage;
+import com.sura.reclamaciones.querys.Query;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,14 +22,10 @@ public class ConsultarModeloSimplificadoStep {
 
   }
 
-  public  ResultSet consulta (Connection bd, String transaccion) throws SQLException {
-    String sSQL;
-    PreparedStatement stmt = null;
-    sSQL= "select CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT,AMOUNT from ADM_GWCC.CCX_CHECKDENORM_EXT where reference = ?";
-    stmt = bd.prepareStatement(sSQL);
-    stmt.setString(1, transaccion);
-    ResultSet rs = stmt.executeQuery();
-    return rs;
+  public  ResultSet consultar (Connection bd, String transaccion) throws SQLException {
+    ConsultarModeloSimplificadoPage consultarModeloSimplificado=null ;
+    ResultSet resultSet= consultarModeloSimplificado.consultaModeloSimplificado(bd,transaccion);
+    return resultSet;
   }
 
   public void verficarConsulta(ResultSet rs) throws SQLException {
