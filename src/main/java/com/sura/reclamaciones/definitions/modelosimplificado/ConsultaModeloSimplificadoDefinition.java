@@ -32,19 +32,18 @@ public class ConsultaModeloSimplificadoDefinition {
   @Cuando("^la transaccion se ha efectuado$")
   public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
     List<ModeloSimplificado> datosTransaccion= modeloSimplificado.getlstModeloSimplificado();
-    final String[] transaccionConsulta = {String.valueOf(new Object[1])};
+   /* final String[] transaccionConsulta = {String.valueOf(new Object[1])};
     datosTransaccion.forEach(
         transaccion->
             transaccionConsulta[0] = transaccion.getTransaccion()
-    );
-    rs = conexionBDSteps.consultar(conexion, transaccionConsulta[0]);
-    System.out.println(rs);
-    System.out.println("Se ejecuto la consulta");
+    );*/
+    rs = conexionBDSteps.consultar(conexion, datosTransaccion);
   }
 
   @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
   public void obtenerDatosModeloSimplificado() throws SQLException {
-    conexionBDSteps.verficarConsulta(rs);
+    List<ModeloSimplificado> datosTransaccion= modeloSimplificado.getlstModeloSimplificado();
+    conexionBDSteps.verficarConsulta(rs, datosTransaccion);
   }
 
 }
