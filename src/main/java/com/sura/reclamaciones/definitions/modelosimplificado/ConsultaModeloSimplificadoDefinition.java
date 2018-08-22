@@ -10,16 +10,18 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import net.thucydides.core.annotations.Steps;
 
 
 public class ConsultaModeloSimplificadoDefinition {
 
+  @Steps ConsultarModeloSimplificadoStep conexionBDSteps;
   ModeloSimplificado modeloSimplificado;
   Connection conexion=null;
   ResultSet rs;
   @Steps private GenericStep genericStep;
-  @Steps ConsultarModeloSimplificadoStep conexionBDSteps;
+
 
   @Dado("^que se realiza un (.*)$")
   public void realizarConexionModeloSimplificado(String transaccionFinanciera) throws SQLException, IOException {
@@ -29,8 +31,13 @@ public class ConsultaModeloSimplificadoDefinition {
 
   @Cuando("^la transaccion se ha efectuado$")
   public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
-    modeloSimplificado.getlstModeloSimplificado();
-    rs = conexionBDSteps.consultar(conexion,modeloSimplificado.getlstModeloSimplificado());
+    List<ModeloSimplificado> datosTransaccion= modeloSimplificado.getlstModeloSimplificado();
+    final String[] transaccionConsulta = {String.valueOf(new Object[1])};
+    datosTransaccion.forEach(
+        transaccion->
+            transaccionConsulta[0] = transaccion.getTransaccion()
+    );
+    rs = conexionBDSteps.consultar(conexion, transaccionConsulta[0]);
     System.out.println(rs);
     System.out.println("Se ejecuto la consulta");
   }

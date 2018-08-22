@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.openqa.selenium.WebDriver;
 
-public class ConsultarModeloSimplificadoPage extends GeneralPage {
+public class ConsultarModeloSimplificadoPage {
 
-  public ConsultarModeloSimplificadoPage(WebDriver wdriver) {
+  /*public ConsultarModeloSimplificadoPage(WebDriver wdriver) {
     super(wdriver);
-  }
+  }*/
 
   public ResultSet consultaModeloSimplificado (Connection bd, String transaccion) throws SQLException {
     Query sqlConsulta= Query.SqlModeloSimplificadoReserva;

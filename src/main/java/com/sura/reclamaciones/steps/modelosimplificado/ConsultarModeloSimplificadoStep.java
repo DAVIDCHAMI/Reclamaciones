@@ -16,7 +16,7 @@ import org.fluentlenium.core.annotation.Page;
 public class ConsultarModeloSimplificadoStep {
 
   @Page
-  ConsultarModeloSimplificadoPage consultarModeloSimplificado;
+  ConsultarModeloSimplificadoPage consultarModeloSimplificadoPage = new ConsultarModeloSimplificadoPage();
 
   @Step
   public Connection connection () throws SQLException {
@@ -24,28 +24,28 @@ public class ConsultarModeloSimplificadoStep {
     return conexion= ConexionBaseDatosUtil.conectar();
   }
 
-  @Step
-  public  ResultSet consultar (Connection bd, List<ModeloSimplificado> datosTransaccion) throws SQLException {
-    final String[] transaccionConsulta = {String.valueOf(new Object[1])};
-    datosTransaccion.forEach(
-        transaccion->
-           transaccionConsulta[0] = transaccion.getTransaccion()
-        );
-    ResultSet resultSet = consultarModeloSimplificado.consultaModeloSimplificado(bd,
-        transaccionConsulta[0]);
+
+  public  ResultSet consultar (Connection bd, String transaccionConsulta) throws SQLException {
+    ResultSet resultSet = consultarModeloSimplificadoPage.consultaModeloSimplificado(bd, transaccionConsulta);
     return resultSet;
   }
 
-  @Step
+
   public void verficarConsulta(ResultSet rs) throws SQLException {
-    ArrayList<String> datosConsulta = new ArrayList<String>(4);
+    Map<Integer, ArrayList<String>> datos = new HashMap<Integer, ArrayList<String>>();
+    ArrayList<String> fila = new ArrayList<String>();
+    int z=1;
     while(rs.next()) {
-        for (int y = 1; y <= rs.getMetaData().getColumnCount(); y++) {
-          String dato = rs.getString(y);
-          datosConsulta.add(y - 1, dato);
-          System.out.println(dato);
-        }
-     System.out.println(datosConsulta + " ");
+      for (int y = 1; y <= rs.getMetaData().getColumnCount(); y++) {
+        String dato = rs.getString(y);
+        fila.add(y - 1, dato);
+      }
+      datos.put(z,fila);
+      z++;
+      System.out.println(datos + " ");
+      //System.out.println (" dato " + y + " "+ rs.getString(y)+ "\t");
     }
+
+    //System.out.println(datos + " ");
   }
   }
