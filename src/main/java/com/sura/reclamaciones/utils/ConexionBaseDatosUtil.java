@@ -3,26 +3,21 @@ package com.sura.reclamaciones.utils;
 import com.sura.reclamaciones.constantes.ConexionBDConstante;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 
 public class ConexionBaseDatosUtil {
 
-  public static Connection conectar() throws SQLException {
-    Connection conexion=null;
+  public static Connection conectarBaseDatos(){
+    Connection conexion = null;
     try {
-      String url= ConexionBDConstante.URL;
-      String usuario= ConexionBDConstante.USUARIO;
-      String clave= ConexionBDConstante.CLAVE;
+      String url = ConexionBDConstante.URL;
+      String usuario = ConexionBDConstante.USUARIO;
+      String clave = ConexionBDConstante.CLAVE;
       Class.forName(ConexionBDConstante.DRIVER).newInstance();
-      conexion= DriverManager
-          .getConnection(url, usuario, clave);
-      if (conexion != null) {
-        System.out.println("Conexion exitosa");
-      }
-    }catch (Exception e) {
+      conexion = DriverManager.getConnection(url, usuario, clave);
+    } catch (Exception e) {
       e.printStackTrace();
-    }finally {
+    } finally {
       return conexion;
     }
   }

@@ -13,37 +13,34 @@ import java.sql.SQLException;
 import java.util.List;
 import net.thucydides.core.annotations.Steps;
 
-
 public class ConsultaModeloSimplificadoDefinition {
 
   @Steps ConsultarModeloSimplificadoStep conexionBDSteps;
-  ModeloSimplificado modeloSimplificado;
-  Connection conexion=null;
-  ResultSet rs;
+
   @Steps private GenericStep genericStep;
 
+  ModeloSimplificado modeloSimplificado;
+  Connection conexion = null;
+  ResultSet rs;
 
   @Dado("^que se realiza un (.*)$")
-  public void realizarConexionModeloSimplificado(String transaccionFinanciera) throws SQLException, IOException {
-    modeloSimplificado = new ModeloSimplificado(genericStep.getFilasModelo("reaseguro_modelo_simplificado", "escenarioCPExcReserva") );
-    conexion = conexionBDSteps.connection();
+  public void realizarConexionModeloSimplificado(String transaccionFinanciera)
+      throws SQLException, IOException {
+    modeloSimplificado =
+        new ModeloSimplificado(
+            genericStep.getFilasModelo("reaseguro_modelo_simplificado", "escenarioCPExcReserva"));
+    conexion = conexionBDSteps.conectarBaseDatos();
   }
 
   @Cuando("^la transaccion se ha efectuado$")
-  public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
-    List<ModeloSimplificado> datosTransaccion= modeloSimplificado.getlstModeloSimplificado();
-   /* final String[] transaccionConsulta = {String.valueOf(new Object[1])};
-    datosTransaccion.forEach(
-        transaccion->
-            transaccionConsulta[0] = transaccion.getTransaccion()
-    );*/
-    rs = conexionBDSteps.consultar(conexion, datosTransaccion);
+  public void ejecutarConsultaModeloSimplificado() throws SQLException {
+    List<ModeloSimplificado> datosTransaccion = modeloSimplificado.getlstModeloSimplificado();
+    rs = conexionBDSteps.consultarModeloSimplificado(conexion, datosTransaccion);
   }
 
   @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
   public void obtenerDatosModeloSimplificado() throws SQLException {
-    List<ModeloSimplificado> datosTransaccion= modeloSimplificado.getlstModeloSimplificado();
-    conexionBDSteps.verficarConsulta(rs, datosTransaccion);
+    List<ModeloSimplificado> datosTransaccion = modeloSimplificado.getlstModeloSimplificado();
+    conexionBDSteps.verficarConsultaModeloSimplificado(rs, datosTransaccion);
   }
-
 }

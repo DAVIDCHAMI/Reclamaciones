@@ -8,9 +8,14 @@ import java.sql.SQLException;
 
 public class ConsultarModeloSimplificadoPage {
 
-  public ResultSet consultaModeloSimplificado (Connection bd, String transaccion) throws SQLException {
-    Query sqlConsulta= Query.SqlModeloSimplificadoReserva;
-    String sql=sqlConsulta.getConsultaSql();
+  public ConsultarModeloSimplificadoPage() {
+    super();
+  }
+
+  public ResultSet consultarModeloSimplificado(Connection bd, String transaccion)
+      throws SQLException {
+    Query sqlConsulta = Query.SqlModeloSimplificadoReserva;
+    String sql = sqlConsulta.getConsultaSql();
     PreparedStatement stmt = null;
     stmt = bd.prepareStatement(sql);
     stmt.setString(1, transaccion);
