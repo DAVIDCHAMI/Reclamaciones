@@ -25,8 +25,8 @@ public class UbicacionPage extends GeneralPage {
   )
   private WebElementFacade txtCiudad;
 
-  private String selectOpcion = "//li[.='COMODIN']";
-  private String auxSelectOpcion = "";
+  private String seleccionOpcion = "//li[.='COMODIN']";
+  private String lblSeleccionOpcion = "";
 
   public UbicacionPage(WebDriver driver) {
     super(driver);
@@ -35,15 +35,15 @@ public class UbicacionPage extends GeneralPage {
   public void seleccionarPais(String pais) {
     mnuPais.waitUntilVisible();
     mnuPais.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, pais);
-    $(auxSelectOpcion).click();
+    lblSeleccionOpcion = seleccionOpcion.replace(ConstanteGlobal.COMODIN, pais);
+    $(lblSeleccionOpcion).click();
   }
 
   public void seleccionarDepartamento(String departamento) {
     mnuDepartamento.waitUntilVisible();
     mnuDepartamento.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, departamento);
-    $(auxSelectOpcion).click();
+    lblSeleccionOpcion = seleccionOpcion.replace(ConstanteGlobal.COMODIN, departamento);
+    $(lblSeleccionOpcion).click();
   }
 
   public void seleccionarCiudad(String ciudad) {
