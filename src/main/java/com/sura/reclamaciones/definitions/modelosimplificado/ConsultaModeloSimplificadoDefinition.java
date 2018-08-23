@@ -17,32 +17,28 @@ import net.thucydides.core.annotations.Steps;
 
 public class ConsultaModeloSimplificadoDefinition {
 
-    ModeloSimplificado modeloSimplificado;
-    Connection conexion = null;
-    ResultSet rs;
-    String numeroTransaccion;
-    @Steps
-    private GenericStep genericStep;
-    @Steps
-    ConsultarModeloSimplificadoStep conexionBDSteps;
+  ModeloSimplificado modeloSimplificado;
+  Connection conexion=null;
+  ResultSet rs;
+  @Steps private GenericStep genericStep;
+  @Steps ConsultarModeloSimplificadoStep conexionBDSteps;
 
-    @Dado("^que se realiza un (.*)$")
-    public void que_se_realiza_un_Pago(String transaccionFinanciera) throws SQLException, IOException {
-        modeloSimplificado = new ModeloSimplificado(genericStep.getFilasModelo("reaseguro_modelo_simplificado", "escenarioCPExcReserva"));
-        conexion = conexionBDSteps.connection();
-    }
+  @Dado("^que se realiza un (.*)$")
+  public void realizarConexionModeloSimplificado(String transaccionFinanciera) throws SQLException, IOException {
+    modeloSimplificado = new ModeloSimplificado(genericStep.getFilasModelo("reaseguro_modelo_simplificado", "escenarioCPExcReserva") );
+    conexion = conexionBDSteps.connection();
+  }
 
-    @Cuando("^la transaccion se ha efectuado$")
-    public void la_transaccion_se_ha_efectuado() throws SQLException, IOException {
-        modeloSimplificado.getlstModeloSimplificado();
-        rs = conexionBDSteps.consultar(conexion, modeloSimplificado.getlstModeloSimplificado());
-        //rs = conexionBDSteps.consultar(conexion,numeroTransaccion);
-        System.out.println("Se ejecuto la consulta");
-    }
+  @Cuando("^la transaccion se ha efectuado$")
+  public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
+    modeloSimplificado.getlstModeloSimplificado();
+    rs = conexionBDSteps.consultar(conexion,modeloSimplificado.getlstModeloSimplificado());
+    System.out.println(rs);
+    System.out.println("Se ejecuto la consulta");
+  }
 
-    @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
-    public void en_las_fuentes_del_tablero_deben_quedar_correctos_los_valores_de_reaseguro()
-            throws SQLException {
-        conexionBDSteps.verficarConsulta(rs);
-    }
+  @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
+  public void obtenerDatosModeloSimplificado() throws SQLException {
+    conexionBDSteps.verficarConsulta(rs);
+  }
 }
