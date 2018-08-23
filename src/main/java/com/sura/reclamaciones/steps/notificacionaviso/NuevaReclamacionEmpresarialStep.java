@@ -16,20 +16,13 @@ import org.hamcrest.MatcherAssert;
 
 public class NuevaReclamacionEmpresarialStep {
 
-  @Page
-  BuscarPolizaPage buscarPolizaPage;
-  @Page
-  MenuClaimPage menuClaimPage;
-  @Page
-  InformacionReclamacionPage informacionReclamacionPage;
-  @Page
-  InformacionBasicaPage informacionBasicaPage;
-  @Page
-  PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
-  @Page
-  ResumenReclamacionPage resumenReclamacionPage;
-  @Steps
-  UbicacionStep ubicacionStep;
+  @Page BuscarPolizaPage buscarPolizaPage;
+  @Page MenuClaimPage menuClaimPage;
+  @Page InformacionReclamacionPage informacionReclamacionPage;
+  @Page InformacionBasicaPage informacionBasicaPage;
+  @Page PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
+  @Page ResumenReclamacionPage resumenReclamacionPage;
+  @Steps UbicacionStep ubicacionStep;
 
   public void diligenciarInformacionIncidente(
       List<ReclamacionEmpresariales> datosIncidente, String incidente) {
@@ -89,19 +82,6 @@ public class NuevaReclamacionEmpresarialStep {
     MatcherAssert.assertThat(
         "No generó reserva, verificar las reglas de administración de reserva o data ingresada",
         validar.equals(monto));
-  }
-
-  public void validarReservaTransaccion(String nombreOpcion, String subItem,
-      List<ReclamacionEmpresariales> datoReserva) {
-    datoReserva.forEach(
-        reserva -> {
-          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(nombreOpcion, subItem);
-          String validar = resumenReclamacionPage.validarReservaTransaccion();
-          MatcherAssert.assertThat(
-              "Se esperaba una reserva de: " + reserva.getReservaTransaccion()
-                  + ", pero se ha obtenido una reserva de: "
-                  + validar, reserva.getReservaTransaccion().equals(validar));
-        });
   }
 
   public void buscarPolizaEmpresarial(List<ReclamacionEmpresariales> datosPolizaEmpresarial) {
