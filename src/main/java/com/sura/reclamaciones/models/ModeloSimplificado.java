@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class ModeloSimplificado {
 
-  private String transaccion;
+  private String numeroTransaccion;
   private String valorTransaccion;
   private String valorCedidoReaseguradoras;
   private String valorNeto;
@@ -14,21 +14,24 @@ public class ModeloSimplificado {
 
   public ModeloSimplificado(Map<String, String> datosModeloSimplificado) {
     super();
-    this.transaccion= datosModeloSimplificado.get("numeroTransaccion");
-    this.valorTransaccion= datosModeloSimplificado.get("valorTransaccion");
-    this.valorCedidoReaseguradoras= datosModeloSimplificado.get("valorCedidoReaseguradoras");
-    this.valorNeto= datosModeloSimplificado.get("valorNeto");
+    this.numeroTransaccion = datosModeloSimplificado.get("numeroTransaccion");
+    this.valorTransaccion = datosModeloSimplificado.get("valorTransaccion");
+    this.valorCedidoReaseguradoras = datosModeloSimplificado.get("valorCedidoReaseguradoras");
+    this.valorNeto = datosModeloSimplificado.get("valorNeto");
   }
 
   public ModeloSimplificado(List<Map<String, String>> datosModeloSimplificado) {
     asignarDatos(datosModeloSimplificado);
   }
 
+  public ModeloSimplificado() {}
+
   public String getTransaccion() {
-    return transaccion; }
+    return numeroTransaccion;
+  }
 
   public void setTransaccion(String transaccion) {
-    this.transaccion = transaccion;
+    this.numeroTransaccion = transaccion;
   }
 
   public String getValorTransaccion() {

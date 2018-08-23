@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.List;
 import net.thucydides.core.annotations.Steps;
 
 
@@ -24,21 +24,23 @@ public class ConsultaModeloSimplificadoDefinition {
   @Steps ConsultarModeloSimplificadoStep conexionBDSteps;
 
   @Dado("^que se realiza un (.*)$")
-  public void realizarConexionModeloSimplificado(String transaccionFinanciera) throws SQLException, IOException {
-    modeloSimplificado = new ModeloSimplificado(genericStep.getFilasModelo("reaseguro_modelo_simplificado", "escenarioCPExcReserva") );
-    conexion = conexionBDSteps.connection();
+  public void realizarConexionModeloSimplificado(String transaccionFinanciera)
+      throws SQLException, IOException {
+    modeloSimplificado =
+        new ModeloSimplificado(
+            genericStep.getFilasModelo("reaseguro_modelo_simplificado", "escenarioCPExcReserva"));
+    conexion = conexionBDSteps.conectarBaseDatos();
   }
 
   @Cuando("^la transaccion se ha efectuado$")
-  public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
-    modeloSimplificado.getlstModeloSimplificado();
-    rs = conexionBDSteps.consultar(conexion,modeloSimplificado.getlstModeloSimplificado());
-    System.out.println(rs);
-    System.out.println("Se ejecuto la consulta");
+  public void ejecutarConsultaModeloSimplificado() throws SQLException {
+    List<ModeloSimplificado> datosTransaccion = modeloSimplificado.getlstModeloSimplificado();
+    rs = conexionBDSteps.consultarModeloSimplificado(conexion, datosTransaccion);
   }
 
   @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
   public void obtenerDatosModeloSimplificado() throws SQLException {
-    conexionBDSteps.verficarConsulta(rs);
+    List<ModeloSimplificado> datosTransaccion = modeloSimplificado.getlstModeloSimplificado();
+    conexionBDSteps.verficarConsultaModeloSimplificado(rs, datosTransaccion);
   }
 }
