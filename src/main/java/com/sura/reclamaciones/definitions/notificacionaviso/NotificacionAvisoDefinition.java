@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.definitions.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.*;
@@ -50,6 +49,6 @@ public class NotificacionAvisoDefinition {
   public void verificarReserva(String reserva, String monto) {
     reclamo.getLstReclamo();
     nuevaReclamacionStep.validarReservaVisualizada(monto);
-    nuevaReclamacionStep.validarReservaTransaccion(ReclamacionConstante.DATOS_FINANCIEROS,ReclamacionConstante.TRANSACCIONES,reclamo.getLstReclamo());
+    //nuevaReclamacionStep.validarReservaTransaccion(ReclamacionConstante.DATOS_FINANCIEROS,ReclamacionConstante.TRANSACCIONES,reclamo.getLstReclamo());
   }
 }

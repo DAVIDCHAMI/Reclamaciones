@@ -26,11 +26,12 @@ public class ConsultarModeloSimplificadoStep {
   }
 
   public ResultSet consultarModeloSimplificado(
-      Connection bd, List<ModeloSimplificado> datosTransaccion) throws SQLException {
+      Connection conexionBD, List<ModeloSimplificado> datosTransaccion) throws SQLException {
     final String[] transaccionConsulta = {String.valueOf(new Object[1])};
     datosTransaccion.forEach(transaccion -> transaccionConsulta[0] = transaccion.getTransaccion());
     ResultSet resultSet =
-        consultarModeloSimplificadoPage.consultarModeloSimplificado(bd, transaccionConsulta[0]);
+        consultarModeloSimplificadoPage.consultarModeloSimplificado(
+            conexionBD, transaccionConsulta[0]);
     return resultSet;
   }
 
