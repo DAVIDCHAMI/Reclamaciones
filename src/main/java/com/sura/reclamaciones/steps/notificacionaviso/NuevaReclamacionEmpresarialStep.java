@@ -98,4 +98,29 @@ public class NuevaReclamacionEmpresarialStep {
           buscarPolizaPage.buscarPoliza();
         });
   }
+  public void validarReservaDatosFinancieros(
+      List<ReclamacionEmpresariales> datoReserva, String monto) {
+    datoReserva.forEach(
+        reserva -> {
+          menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(
+              ReclamacionConstante.DATOS_FINANCIEROS);
+          String validar = resumenReclamacionPage.validarReservaResumen(monto);
+          MatcherAssert.assertThat(
+              "Se esperaba una reserva de: "
+                  + monto
+                  + ", pero se ha obtenido una reserva de: "
+                  + validar,
+              monto.equals(validar));
+          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
+              ReclamacionConstante.DATOS_FINANCIEROS, ReclamacionConstante.TRANSACCIONES);
+          validar =
+              resumenReclamacionPage.validarReservaTransaccion(reserva.getReservaTransaccion());
+          MatcherAssert.assertThat(
+              "Se esperaba una reserva de: "
+                  + reserva.getReservaTransaccion()
+                  + ", pero se ha obtenido una reserva de: "
+                  + validar,
+              reserva.getReservaTransaccion().equals(validar));
+        });
+  }
 }
