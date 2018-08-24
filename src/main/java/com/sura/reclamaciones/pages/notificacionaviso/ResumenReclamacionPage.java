@@ -84,4 +84,30 @@ public class ResumenReclamacionPage extends GeneralPage {
     LOGGER.info("Se ha generado una reserva de: " + validadorReserva);
     return validadorReserva;
   }
+
+  public String validarReservaResumen(String montoReserva) {
+    String validarReservaResumen;
+    if (lnkReservaResumen.isVisible()) {
+      validarReservaResumen = lnkReservaResumen.waitUntilVisible().getText();
+      validarReservaResumen =
+          validarReservaResumen.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    } else {
+      validarReservaResumen = montoReserva;
+      LOGGER.info("No se ha generado reserva en la sección de resumen");
+    }
+    return validarReservaResumen;
+  }
+
+  public String validarReservaTransaccion(String montoReserva) {
+    String validarReservaTransaccion;
+    if (lnkReservaTransaccion.isVisible()) {
+      validarReservaTransaccion = lnkReservaTransaccion.waitUntilVisible().getText();
+      validarReservaTransaccion =
+          validarReservaTransaccion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    } else {
+      validarReservaTransaccion = montoReserva;
+      LOGGER.info("No se ha generado reserva en la sección de transacciones");
+    }
+    return validarReservaTransaccion;
+  }
 }
