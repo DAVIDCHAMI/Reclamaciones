@@ -38,23 +38,17 @@ public class ConsultarModeloSimplificadoStep {
   public void verficarConsultaModeloSimplificado(
       ResultSet rs, List<ModeloSimplificado> datosTransaccion) throws SQLException {
     List<String> registroTransaccion = llenarLista(rs);
-    String valorPagarALosReaseguradoresModeloSimplificado = registroTransaccion.get(1);
+    String valorPagarReaseguradoresModeloSimplificado = registroTransaccion.get(1);
     String valorNetoTransaccionConsultaModeloSimplificado = registroTransaccion.get(2);
     String valorTransaccionConsultaModeloSimplificado = registroTransaccion.get(3);
     datosTransaccion.forEach(
         dato -> {
           String valorTransaccionCalculado = dato.getValorTransaccion();
           String valorNetoTransaccionCalculado = dato.getValorNeto();
-          String valorPagarALosReaseguradoresCalculado = dato.getValorCedidoReaseguradoras();
-          MatcherAssert.assertThat(
-              valorTransaccionConsultaModeloSimplificado,
-              new StringContains(valorTransaccionCalculado));
-          MatcherAssert.assertThat(
-              valorNetoTransaccionConsultaModeloSimplificado,
-              new StringContains(valorNetoTransaccionCalculado));
-          MatcherAssert.assertThat(
-              valorPagarALosReaseguradoresModeloSimplificado,
-              new StringContains(valorPagarALosReaseguradoresCalculado));
+          String valorPagarReaseguradoresCalculado = dato.getValorCedidoReaseguradoras();
+          MatcherAssert.assertThat("No coninciden los datos del valor de la transacción",valorTransaccionConsultaModeloSimplificado.equals(valorTransaccionCalculado));
+          MatcherAssert.assertThat("No coninciden los datos del valor neto de la transacción",valorNetoTransaccionConsultaModeloSimplificado.equals(valorNetoTransaccionCalculado));
+          MatcherAssert.assertThat("No coninciden los datos del valor a pagar a los reaseguradores",valorPagarReaseguradoresModeloSimplificado.equals(valorPagarReaseguradoresCalculado));
         });
   }
 

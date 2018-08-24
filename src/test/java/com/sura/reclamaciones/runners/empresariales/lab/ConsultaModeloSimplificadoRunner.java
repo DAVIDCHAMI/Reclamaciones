@@ -9,4 +9,4 @@ import org.junit.runner.RunWith;
   features = "src/test/resources/features/modelosimplificado/consultar_modelo_simplificado.feature",
   glue = {"com.sura.reclamaciones.definitions"}
 )
-public class  ConsultaModeloSimplificadoRunner {}
+public class ConsultaModeloSimplificadoRunner {}

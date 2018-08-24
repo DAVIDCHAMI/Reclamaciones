@@ -12,11 +12,19 @@ buildscript {
     }
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+tasks.withType(Test) {
+    systemProperty "file.encoding", "UTF-8"
+}
+
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'
 apply plugin: 'org.sonarqube'
 apply plugin: 'com.github.sherter.google-java-format'
+
 
 // Configuraciones para Pruebas unitarias
 sourceSets {
