@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
 import com.sura.reclamaciones.models.ModeloSimplificado;
-import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificadoPage;
+import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificado;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,13 +11,10 @@ import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
-import org.hamcrest.core.StringContains;
 
 public class ConsultarModeloSimplificadoStep {
 
-  @Page
-  ConsultarModeloSimplificadoPage consultarModeloSimplificadoPage =
-      new ConsultarModeloSimplificadoPage();
+  @Page ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
 
   @Step
   public Connection conectarBaseDatos() throws SQLException {
@@ -30,8 +27,7 @@ public class ConsultarModeloSimplificadoStep {
     final String[] transaccionConsulta = {String.valueOf(new Object[1])};
     datosTransaccion.forEach(transaccion -> transaccionConsulta[0] = transaccion.getTransaccion());
     ResultSet resultSet =
-        consultarModeloSimplificadoPage.consultarModeloSimplificado(
-            conexionBD, transaccionConsulta[0]);
+        consultarModeloSimplificado.consultarModeloSimplificado(conexionBD, transaccionConsulta[0]);
     return resultSet;
   }
 
@@ -46,9 +42,15 @@ public class ConsultarModeloSimplificadoStep {
           String valorTransaccionCalculado = dato.getValorTransaccion();
           String valorNetoTransaccionCalculado = dato.getValorNeto();
           String valorPagarReaseguradoresCalculado = dato.getValorCedidoReaseguradoras();
-          MatcherAssert.assertThat("No coninciden los datos del valor de la transacción",valorTransaccionConsultaModeloSimplificado.equals(valorTransaccionCalculado));
-          MatcherAssert.assertThat("No coninciden los datos del valor neto de la transacción",valorNetoTransaccionConsultaModeloSimplificado.equals(valorNetoTransaccionCalculado));
-          MatcherAssert.assertThat("No coninciden los datos del valor a pagar a los reaseguradores",valorPagarReaseguradoresModeloSimplificado.equals(valorPagarReaseguradoresCalculado));
+          MatcherAssert.assertThat(
+              "No coninciden los datos del valor de la transacción",
+              valorTransaccionConsultaModeloSimplificado.equals(valorTransaccionCalculado));
+          MatcherAssert.assertThat(
+              "No coninciden los datos del valor neto de la transacción",
+              valorNetoTransaccionConsultaModeloSimplificado.equals(valorNetoTransaccionCalculado));
+          MatcherAssert.assertThat(
+              "No coninciden los datos del valor a pagar a los reaseguradores",
+              valorPagarReaseguradoresModeloSimplificado.equals(valorPagarReaseguradoresCalculado));
         });
   }
 

@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ConsultarModeloSimplificadoPage {
+public class ConsultarModeloSimplificado {
 
-  public ConsultarModeloSimplificadoPage() {
+  public ConsultarModeloSimplificado() {
     super();
   }
 
