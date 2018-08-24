@@ -3,6 +3,7 @@ package com.sura.reclamaciones.definitions.notificacionaviso;
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.*;
+import cucumber.api.java.ContinueNextStepsOnException;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -37,6 +38,7 @@ public class NotificacionAvisoDefinition {
     nuevaReclamacionStep.diligenciarInformacionIncidente(reclamo.getLstReclamo(), tipoIncidente);
   }
 
+  @ContinueNextStepsOnException
   @Entonces("^se obtiene una reclamacion que (.*) genera exposicion$")
   public void verificarExposicion(String exposicion) {
     reclamo.getLstReclamo();

@@ -1,2 +1,2 @@
-id;idFiltro;numeroContrato;detalleHechos;pais;departamento;ciudad;direccion;origen;fechaSiniestro;numPoliza;lugar;validadorNumReclamacion
-1;escenarioEmpresariales;;Esta es una regresión de pruebas automatizada ;Colombia;Antioquia;Medellin;;;10/05/2018;030001014345;;Nueva reclamación guardada
+id;idFiltro;numeroContrato;detalleHechos;pais;departamento;ciudad;direccion;origen;fechaSiniestro;numPoliza;lugar;validadorNumReclamacion;reservaTransaccion
+1;escenarioAvisoEmpresariales;;Esta es una regresión de pruebas automatizada ;Colombia;Antioquia;Medellin;;;10/05/2018;030001014345;;Nueva reclamación guardada;2000000

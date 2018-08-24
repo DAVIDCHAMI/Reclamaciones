@@ -47,7 +47,7 @@ public class NuevaReclamacionEmpresarialStep {
     verificar = informacionReclamacionPage.obtenerTituloReclamacionGenerada();
     MatcherAssert.assertThat(
         "No se ha obtenido el número de reclamación",
-        verificar.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
+        verificar.equalsIgnoreCase(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
   }
 
   public void seleccionarNuevaReclamacion(String nombreOpcion, String subItem) {
@@ -82,6 +82,32 @@ public class NuevaReclamacionEmpresarialStep {
     MatcherAssert.assertThat(
         "No generó reserva, verificar las reglas de administración de reserva o data ingresada",
         validar.equals(monto));
+  }
+
+  public void validarReservaDatosFinancieros(
+      List<ReclamacionEmpresariales> datoReserva, String monto) {
+    datoReserva.forEach(
+        reserva -> {
+          menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(
+              ReclamacionConstante.DATOS_FINANCIEROS);
+          String validar = resumenReclamacionPage.validarReservaResumen(monto);
+          MatcherAssert.assertThat(
+              "Se esperaba una reserva de: "
+                  + monto
+                  + ", pero se ha obtenido una reserva de: "
+                  + validar,
+              monto.equals(validar));
+          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
+              ReclamacionConstante.DATOS_FINANCIEROS, ReclamacionConstante.TRANSACCIONES);
+          validar =
+              resumenReclamacionPage.validarReservaTransaccion(reserva.getReservaTransaccion());
+          MatcherAssert.assertThat(
+              "Se esperaba una reserva de: "
+                  + reserva.getReservaTransaccion()
+                  + ", pero se ha obtenido una reserva de: "
+                  + validar,
+              reserva.getReservaTransaccion().equals(validar));
+        });
   }
 
   public void buscarPolizaEmpresarial(List<ReclamacionEmpresariales> datosPolizaEmpresarial) {
