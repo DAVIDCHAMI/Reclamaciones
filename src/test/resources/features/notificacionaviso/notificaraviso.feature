@@ -1,12 +1,21 @@
 # language: es
-Característica: Notificacion de aviso de una reclamacion MRC
+Característica: Notificacion de aviso de una reclamacion
 
-  Como analista de reclamacion
-  Quiero registrar los datos de un afectado en un siniestro
-  Para recibir la notificacion de aviso
+  Como Analista reclamaciones, coordinador atención reclamaciones, call_center
+  quiero que se generen avisos internos de los diferentes productos que tiene la compañía en empresariales
+  para permitir la afectación de las pólizas que han adquirido los usuarios.
 
   @claims
-  Escenario:
-    Dado que se recibe un reclamo por parte de un afectado
-    Cuando se tomen los datos del siniestro
-    Entonces se le brindara al reclamante un numero de reclamacion radicada
+  Esquema del escenario: aviso
+    Dado que se tiene una poliza de <Tipo y Cobertura>
+    Cuando se genere un siniestro por causal <Causa> con un valor de pretension de <Valor de Pretensión>
+    Y un incidente de tipo <Tipo de incidente>
+    Entonces se obtiene una reclamacion que <¿Genera exposición?> genera exposicion
+    Y que <¿Genera reserva?> genera reserva con un monto <Monto de la reserva>, envia correo y se asigna a un analista
+
+    Ejemplos:
+      | Tipo y Cobertura                             | Causa             | Valor de Pretensión | Tipo de incidente | ¿Genera exposición? | ¿Genera reserva? | Monto de la reserva |
+      | Multiriesgo corporativo con cobertura basica | Rotura de Vidrios | 2000000             | Propiedad         | si                  | si               | 1218758             |
+      | Multiriesgo corporativo con cobertura basica | Rotura de Vidrios | 2000000             | ""                | no                  | no               | 0                   |
+
+

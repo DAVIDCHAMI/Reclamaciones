@@ -12,7 +12,7 @@ public class ReclamacionAuto extends Reclamacion {
   private String autoridad;
   private String culpabilidad;
   private String taller;
-  private String mensajeValidar;
+  private String valorPretension;
   private List<ReclamacionAuto> lstReclamacionAuto = new ArrayList<>();
 
   public ReclamacionAuto() {
@@ -27,7 +27,7 @@ public class ReclamacionAuto extends Reclamacion {
     this.autoridad = datosReclamacionAut.get("autoridad");
     this.culpabilidad = datosReclamacionAut.get("culpabilidad");
     this.taller = datosReclamacionAut.get("taller");
-    this.mensajeValidar = datosReclamacionAut.get("mensajeValidar");
+    this.valorPretension = datosReclamacionAut.get("valorPretension");
   }
 
   public ReclamacionAuto(List<Map<String, String>> datosReclamacionAut) {
@@ -58,8 +58,8 @@ public class ReclamacionAuto extends Reclamacion {
     return taller;
   }
 
-  public String getMensajeValidar() {
-    return mensajeValidar;
+  public String getValorPretension() {
+    return valorPretension;
   }
 
   public List<ReclamacionAuto> getLstReclamacionAuto() {

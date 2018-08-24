@@ -7,8 +7,10 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.LoggerFactory;
 
 public class GeneralPage extends PageObject {
 
@@ -19,13 +21,15 @@ public class GeneralPage extends PageObject {
   private WebElementFacade lstOpcionesCombobox;
 
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
-  WebElementFacade pruebaLoader;
+  WebElementFacade pgrBarCarga;
 
   @FindBy(xpath = "//span[@id='FNOLWizard:Next-btnInnerEl']")
   private WebElementFacade btnSiguiente;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
   WebElementFacade btnAceptar;
+
+  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   WebDriver driver;
 
@@ -89,7 +93,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void realizarEsperaCarga() {
-    pruebaLoader.waitUntilPresent().waitUntilNotVisible();
+    pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
   }
 
   public void aceptarOpcion() {

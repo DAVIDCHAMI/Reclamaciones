@@ -3,8 +3,7 @@ package com.sura.reclamaciones.definitions.autos;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
-import com.sura.reclamaciones.steps.notificacionaviso.ReclamacionStep;
+import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAutoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -14,8 +13,7 @@ import net.thucydides.core.annotations.Steps;
 public class ReclamacionDefinition {
 
   @Steps private GenericStep genericStep;
-  @Steps private BuscarPolizaStep buscarPolizaStep;
-  @Steps private ReclamacionStep reclamacionStep;
+  @Steps private NuevaReclamacionAutoStep reclamacionStep;
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
 
@@ -24,10 +22,10 @@ public class ReclamacionDefinition {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion", "reclamacionSimple"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "COL001"));
-    buscarPolizaStep.seleccionarMenu();
-    buscarPolizaStep.completarFormularioBuscarPoliza(
+    reclamacionStep.seleccionarMenu();
+    reclamacionStep.completarFormularioBuscarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
-    buscarPolizaStep.buscarPoliza();
+    reclamacionStep.buscarPoliza();
   }
 
   @Cuando("se toman los datos del siniestro")

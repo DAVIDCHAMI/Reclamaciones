@@ -4,12 +4,11 @@ import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class BuscarPolizaPage extends GeneralPage {
-  private String selectOpcion = "//li[.='COMODIN']";
-  private String auxSelectOpcion = "";
+  private String lstTipoDocumento = "//li[.='COMODIN']";
+  private String auxTipoDocumento = "";
 
   @FindBy(
     xpath =
@@ -50,24 +49,6 @@ public class BuscarPolizaPage extends GeneralPage {
   )
   private WebElementFacade txtFecha;
 
-  @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:locationSearchSura:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Country-inputEl']"
-  )
-  private WebElementFacade mnuPais;
-
-  @FindBy(
-    xpath =
-        "//td[.='Departamento']//div[@class='x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first']"
-  )
-  private WebElementFacade mnuDepartamento;
-
-  @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:locationSearchSura:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Sura_Colombian_City-inputEl']"
-  )
-  private WebElementFacade txtCiudad;
-
   @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'s')]")
   private WebElementFacade btnBuscar;
 
@@ -75,11 +56,7 @@ public class BuscarPolizaPage extends GeneralPage {
     super(driver);
   }
 
-  public void elemento(String nombreElemento) {
-    $("#new-todo").type(nombreElemento).then().sendKeys(Keys.ENTER);
-  }
-
-  public void opcionBuscarPoliza() {
+  public void seleccionarOpcionBuscarPoliza() {
     rbtBuscarPoliza.waitUntilVisible();
     rbtBuscarPoliza.click();
   }
@@ -92,8 +69,8 @@ public class BuscarPolizaPage extends GeneralPage {
   public void seleccionarTipoDocumento(String tipoDocumento) {
     mnuTipoDocumento.waitUntilVisible();
     mnuTipoDocumento.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, tipoDocumento);
-    $(auxSelectOpcion).click();
+    auxTipoDocumento = lstTipoDocumento.replace(ConstanteGlobal.COMODIN, tipoDocumento);
+    $(auxTipoDocumento).click();
   }
 
   public void escribirNumeroDocumento(String numDocumento) {
@@ -111,27 +88,6 @@ public class BuscarPolizaPage extends GeneralPage {
   public void escribirFechaSiniestro(String fecha) {
     txtFecha.waitUntilVisible();
     txtFecha.type(fecha);
-  }
-
-  public void seleccionarPais(String pais) {
-    mnuPais.waitUntilVisible();
-    mnuPais.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, pais);
-    $(auxSelectOpcion).click();
-  }
-
-  public void seleccionarDepartamento(String departamento) {
-    mnuDepartamento.waitUntilVisible();
-    mnuDepartamento.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, departamento);
-    $(auxSelectOpcion).click();
-  }
-
-  public void seleccionarCiudad(String ciudad) {
-    txtCiudad.waitUntilVisible();
-    realizarEsperaCarga();
-    txtCiudad.clear();
-    txtCiudad.type(ciudad);
   }
 
   public void buscarPoliza() {

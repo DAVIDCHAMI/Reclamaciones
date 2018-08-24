@@ -11,32 +11,44 @@ import net.thucydides.core.annotations.Steps;
 public class NotificacionAvisoDefinition {
 
   ReclamacionEmpresariales reclamo;
-  @Steps BuscarPolizaStep buscarPolizaStep;
-  @Steps NuevaReclamacionStep nuevaReclamacionStep;
-  @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
-  @Steps InformacionBasicaStep informacionBasicaStep;
-  @Steps InformacionReclamacionStep informacionReclamacionStep;
+  @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionStep;
   @Steps GenericStep genericStep;
 
-  @Dado("que se recibe un reclamo por parte de un afectado")
-  public void recibirReclamoAfectado() throws Throwable {
+  @Dado("^que se tiene una poliza de (.*)$")
+  public void buscarPoliza(String tipoCobertura) throws Throwable {
     reclamo =
         new ReclamacionEmpresariales(
-            genericStep.getFilasModelo("reclamacion_empresarial", "escenarioEmpresariales"));
+            genericStep.getFilasModelo("reclamacion_empresarial", "escenarioAvisoEmpresariales"));
     nuevaReclamacionStep.seleccionarNuevaReclamacion("Re", "Nueva");
-    buscarPolizaStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
+    nuevaReclamacionStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
   }
 
-  @Cuando("se tomen los datos del siniestro")
-  public void tomarDatosSiniestro() {
+  @Cuando("^se genere un siniestro por causal (.*) con un valor de pretension de (.*)$")
+  public void tomarDatosSiniestro(String causa, String valorPretension) {
     reclamo.getLstReclamo();
-    propiedadesImplicadasStep.seleccionarPropiedadImplicada();
-    informacionBasicaStep.informacionPersonal(reclamo.getLstReclamo());
+    nuevaReclamacionStep.seleccionarPropiedadImplicada();
+    nuevaReclamacionStep.diligenciarInformacionPersonal(reclamo.getLstReclamo());
+    nuevaReclamacionStep.seleccionarCausalIncidente(causa, valorPretension);
   }
 
-  @Entonces("^se le brindara al reclamante un numero de reclamacion radicada$")
-  public void obtenerNumeroReclamacion() {
+  @Cuando("^un incidente de tipo (.*)$")
+  public void tomarTipoIncidente(String tipoIncidente) {
     reclamo.getLstReclamo();
-    informacionReclamacionStep.informacionIncidente(reclamo.getLstReclamo());
+    nuevaReclamacionStep.diligenciarInformacionIncidente(reclamo.getLstReclamo(), tipoIncidente);
+  }
+
+  @Entonces("^se obtiene una reclamacion que (.*) genera exposicion$")
+  public void verificarExposicion(String exposicion) {
+    reclamo.getLstReclamo();
+    nuevaReclamacionStep.validarReclamacion();
+    nuevaReclamacionStep.visualizarResumenReclamacion();
+    nuevaReclamacionStep.validarExposicionVisualizada(exposicion);
+  }
+
+  @Entonces("^que (.*) genera reserva con un monto (.*), envia correo y se asigna a un analista$")
+  public void verificarReserva(String reserva, String monto) {
+    reclamo.getLstReclamo();
+    nuevaReclamacionStep.validarReservaVisualizada(monto);
+    nuevaReclamacionStep.validarReservaDatosFinancieros(reclamo.getLstReclamo(), monto);
   }
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class InformacionReclamacionPage extends GeneralPage {
 
-  private String selectOpcion = "//li[.='COMODIN']";
+  private String lstCausaSiniestro = "//li[.='COMODIN']";
 
   @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'e')]")
   private WebElementFacade btnCerrar;
@@ -55,10 +55,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   @FindBy(xpath = "//span[.='Finalizar']/span[@id='FNOLWizard:Finish-btnInnerEl']")
   private WebElementFacade btnFinalizar;
 
-  @FindBy(
-    xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
-  )
-  private WebElementFacade divNumeroReclamacion;
+  @FindBy(xpath = "//span[@id='NewClaimSaved:NewClaimSavedScreen:ttlBar']")
+  private WebElementFacade spanNuevaReclamacion;
 
   public InformacionReclamacionPage(WebDriver driver) {
     super(driver);
@@ -76,9 +74,9 @@ public class InformacionReclamacionPage extends GeneralPage {
     txtCausaSiniestro.waitUntilVisible();
     txtCausaSiniestro.clear();
     txtCausaSiniestro.type(causa);
-    selectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, causa);
-    $(selectOpcion).waitUntilVisible();
-    $(selectOpcion).click();
+    lstCausaSiniestro = lstCausaSiniestro.replace(ConstanteGlobal.COMODIN, causa);
+    $(lstCausaSiniestro).waitUntilVisible();
+    $(lstCausaSiniestro).click();
   }
 
   public void escribirValorPretension(String valor) {
@@ -88,21 +86,21 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarTipoIncidente(String tipoIncidente) {
-    if ("Propiedad".equals(tipoIncidente)) {
+    if ("Propiedad".equalsIgnoreCase(tipoIncidente)) {
       btnIncidentePropiedad.waitUntilVisible();
       btnIncidentePropiedad.click();
       btnAceptarIncPropiedad.waitUntilVisible();
       btnAceptarIncPropiedad.click();
       realizarEsperaCarga();
     }
-    if ("Contenido".equals(tipoIncidente)) {
+    if ("Contenido".equalsIgnoreCase(tipoIncidente)) {
       btnIncidenteContenido.waitUntilVisible();
       btnIncidenteContenido.click();
       btnAceptarIncContenido.waitUntilVisible();
       btnAceptarIncContenido.click();
       realizarEsperaCarga();
     }
-    if ("Lesiones".equals(tipoIncidente)) {
+    if ("Lesiones".equalsIgnoreCase(tipoIncidente)) {
       btnIncidenteLesiones.waitUntilVisible();
       btnIncidenteLesiones.click();
       btnIncidenteLesiones.waitUntilVisible();
@@ -117,10 +115,8 @@ public class InformacionReclamacionPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public String resumenReclamacion() {
-    realizarEsperaCarga();
-    String texto = divNumeroReclamacion.waitUntilVisible().getText();
-    divNumeroReclamacion.click();
+  public String obtenerTituloReclamacionGenerada() {
+    String texto = spanNuevaReclamacion.waitUntilVisible().getText();
     return texto;
   }
 }
