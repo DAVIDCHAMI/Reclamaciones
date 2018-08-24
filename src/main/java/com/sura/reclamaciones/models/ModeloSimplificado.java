@@ -30,32 +30,16 @@ public class ModeloSimplificado {
     return numeroTransaccion;
   }
 
-  public void setTransaccion(String transaccion) {
-    this.numeroTransaccion = transaccion;
-  }
-
   public String getValorTransaccion() {
     return valorTransaccion;
-  }
-
-  public void setValorTransaccion(String valorTransaccion) {
-    this.valorTransaccion = valorTransaccion;
   }
 
   public String getValorCedidoReaseguradoras() {
     return valorCedidoReaseguradoras;
   }
 
-  public void setValorCedidoReaseguradoras(String valorCedidoReaseguradoras) {
-    this.valorCedidoReaseguradoras = valorCedidoReaseguradoras;
-  }
-
   public String getValorNeto() {
     return valorNeto;
-  }
-
-  public void setValorNeto(String valorNeto) {
-    this.valorNeto = valorNeto;
   }
 
   public List<ModeloSimplificado> getlstModeloSimplificado() {

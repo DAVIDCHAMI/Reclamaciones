@@ -4,10 +4,9 @@ import com.sura.reclamaciones.constantes.ConexionBDConstante;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-
 public class ConexionBaseDatosUtil {
 
-  public static Connection conectarBaseDatos(){
+  public static Connection conectarBaseDatos() {
     Connection conexion = null;
     try {
       String url = ConexionBDConstante.URL;

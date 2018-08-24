@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
 import com.sura.reclamaciones.models.ModeloSimplificado;
-import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificadoPage;
+import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificado;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,13 +11,10 @@ import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
-import org.hamcrest.core.StringContains;
 
 public class ConsultarModeloSimplificadoStep {
 
-  @Page
-  ConsultarModeloSimplificadoPage consultarModeloSimplificadoPage =
-      new ConsultarModeloSimplificadoPage();
+  @Page ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
 
   @Step
   public Connection conectarBaseDatos() throws SQLException {
@@ -26,34 +23,34 @@ public class ConsultarModeloSimplificadoStep {
   }
 
   public ResultSet consultarModeloSimplificado(
-      Connection bd, List<ModeloSimplificado> datosTransaccion) throws SQLException {
+      Connection conexionBD, List<ModeloSimplificado> datosTransaccion) throws SQLException {
     final String[] transaccionConsulta = {String.valueOf(new Object[1])};
     datosTransaccion.forEach(transaccion -> transaccionConsulta[0] = transaccion.getTransaccion());
     ResultSet resultSet =
-        consultarModeloSimplificadoPage.consultarModeloSimplificado(bd, transaccionConsulta[0]);
+        consultarModeloSimplificado.consultarModeloSimplificado(conexionBD, transaccionConsulta[0]);
     return resultSet;
   }
 
   public void verficarConsultaModeloSimplificado(
       ResultSet rs, List<ModeloSimplificado> datosTransaccion) throws SQLException {
     List<String> registroTransaccion = llenarLista(rs);
-    String valorPagarALosReaseguradoresModeloSimplificado = registroTransaccion.get(1);
+    String valorPagarReaseguradoresModeloSimplificado = registroTransaccion.get(1);
     String valorNetoTransaccionConsultaModeloSimplificado = registroTransaccion.get(2);
     String valorTransaccionConsultaModeloSimplificado = registroTransaccion.get(3);
     datosTransaccion.forEach(
         dato -> {
           String valorTransaccionCalculado = dato.getValorTransaccion();
           String valorNetoTransaccionCalculado = dato.getValorNeto();
-          String valorPagarALosReaseguradoresCalculado = dato.getValorCedidoReaseguradoras();
+          String valorPagarReaseguradoresCalculado = dato.getValorCedidoReaseguradoras();
           MatcherAssert.assertThat(
-              valorTransaccionConsultaModeloSimplificado,
-              new StringContains(valorTransaccionCalculado));
+              "No coninciden los datos del valor de la transacción",
+              valorTransaccionConsultaModeloSimplificado.equals(valorTransaccionCalculado));
           MatcherAssert.assertThat(
-              valorNetoTransaccionConsultaModeloSimplificado,
-              new StringContains(valorNetoTransaccionCalculado));
+              "No coninciden los datos del valor neto de la transacción",
+              valorNetoTransaccionConsultaModeloSimplificado.equals(valorNetoTransaccionCalculado));
           MatcherAssert.assertThat(
-              valorPagarALosReaseguradoresModeloSimplificado,
-              new StringContains(valorPagarALosReaseguradoresCalculado));
+              "No coninciden los datos del valor a pagar a los reaseguradores",
+              valorPagarReaseguradoresModeloSimplificado.equals(valorPagarReaseguradoresCalculado));
         });
   }
 
