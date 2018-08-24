@@ -98,6 +98,7 @@ public class NuevaReclamacionEmpresarialStep {
           buscarPolizaPage.buscarPoliza();
         });
   }
+
   public void validarReservaDatosFinancieros(
       List<ReclamacionEmpresariales> datoReserva, String monto) {
     datoReserva.forEach(

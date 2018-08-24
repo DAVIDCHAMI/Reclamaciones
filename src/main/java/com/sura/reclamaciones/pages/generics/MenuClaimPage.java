@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.generics;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -20,6 +21,13 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = "//input[@id='QuickJump-inputEl']")
   WebElementFacade txtComandoPolicy;
 
+  @FindBy(xpath = " //div[@id='westPanel-innerCt']")
+  WebElementFacade mnuLateralPrimerNivel;
+
+  private String selectOpcion =
+      "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
+  private String auxSelectOpcion = "";
+
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);
   }
@@ -36,9 +44,6 @@ public class MenuClaimPage extends GeneralPage {
     mnuSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
   }
 
-  public void ingresarComandoClaim(String comando) {
-    txtComandoPolicy.type(comando).sendKeys(Keys.ENTER);
-  }
   public void seleecionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
     mnuLateralPrimerNivel
         .findElement(
@@ -54,8 +59,6 @@ public class MenuClaimPage extends GeneralPage {
     txtComandoPolicy.type(comando).sendKeys(Keys.ENTER);
   }
 
-
-
   public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
     mnuLateralPrimerNivel
         .findElement(
@@ -68,5 +71,4 @@ public class MenuClaimPage extends GeneralPage {
     auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, subItem);
     $(auxSelectOpcion).waitUntilVisible().click();
   }
-
 }
