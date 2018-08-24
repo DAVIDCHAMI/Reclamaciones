@@ -50,6 +50,6 @@ public class NotificacionAvisoDefinition {
   public void verificarReserva(String reserva, String monto) {
     reclamo.getLstReclamo();
     nuevaReclamacionStep.validarReservaVisualizada(monto);
-    nuevaReclamacionStep.validarReservaTransaccion(ReclamacionConstante.DATOS_FINANCIEROS,ReclamacionConstante.TRANSACCIONES,reclamo.getLstReclamo());
+   // nuevaReclamacionStep.validarReservaTransaccion(ReclamacionConstante.DATOS_FINANCIEROS,ReclamacionConstante.TRANSACCIONES,reclamo.getLstReclamo());
   }
 }
