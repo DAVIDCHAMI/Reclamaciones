@@ -7,6 +7,7 @@ import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
 
 public class RecuperoStep {
 
@@ -39,15 +40,17 @@ public class RecuperoStep {
           creacionRecuperoPage.seleccionarDepartamento(autor.getDepartamento());
           creacionRecuperoPage.seleccionarCiudad(autor.getCiudad());
           creacionRecuperoPage.seleccionarCategoriaRecuperacion(categoriaRecupero);
-          creacionRecuperoPage.diligenciarCodigoRetencion(codigoRetencion);
+          creacionRecuperoPage.diligenciarComboboxTabla(codigoRetencion, "Código de retención");
           creacionRecuperoPage.diligenciarCantidadRecupero(autor.getCantidad());
           creacionRecuperoPage.actualizarRecupero();
         });
   }
 
   @Step
-  public void validarCreacionRecupero(String estadoRecupero) {
+  public void validarCreacionRecupero(String estadoRecupero, String categoriaRecupero) {
     boolean estado = verificacionRecuperoPage.validarRecupero(estadoRecupero);
-    assert estado;
+    boolean recupero = verificacionRecuperoPage.validarRecupero(categoriaRecupero);
+    MatcherAssert.assertThat(estadoRecupero, estado);
+    MatcherAssert.assertThat(estadoRecupero, recupero);
   }
 }

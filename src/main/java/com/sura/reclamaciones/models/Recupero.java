@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Recupero {
-
   private List<Recupero> lstRecupero = new ArrayList<>();
   private String numeroReclamacion;
   private String pagador;
@@ -15,6 +14,8 @@ public class Recupero {
   private String departamento;
   private String ciudad;
   private String cantidad;
+  private String categoriaRecupero;
+  private String estadoRecupero;
 
   public Recupero() {}
 
@@ -27,6 +28,8 @@ public class Recupero {
     this.departamento = datosRecupero.get("departamento");
     this.ciudad = datosRecupero.get("ciudad");
     this.cantidad = datosRecupero.get("cantidad");
+    this.categoriaRecupero = datosRecupero.get("categoriaRecupero");
+    this.estadoRecupero = datosRecupero.get ("estadoRecupero");
   }
 
   public Recupero(List<Map<String, String>> datosRecupero) {
@@ -64,6 +67,12 @@ public class Recupero {
   public String getCantidad() {
     return cantidad;
   }
+
+  public String getCategoriaRecupero() {
+    return categoriaRecupero;
+  }
+
+  public String getEstadoRecupero () {return  estadoRecupero; }
 
   public List<Recupero> getLstRecupero() {
     return lstRecupero;

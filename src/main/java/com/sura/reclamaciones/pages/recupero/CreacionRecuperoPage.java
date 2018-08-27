@@ -2,9 +2,11 @@ package com.sura.reclamaciones.pages.recupero;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class CreacionRecuperoPage extends GeneralPage {
 
@@ -32,7 +34,7 @@ public class CreacionRecuperoPage extends GeneralPage {
     xpath =
         "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Country-inputEl']"
   )
-  private WebElementFacade txtPais;
+  private WebElement txtPais;
 
   @FindBy(
     xpath =
@@ -55,13 +57,19 @@ public class CreacionRecuperoPage extends GeneralPage {
   @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:dateTransaction-inputEl")
   private WebElementFacade txtFechaComprobante;
 
-  @FindBy(xpath = "//*[@id=\"gridview-1143-record-ext-record-5564\"]/td[2]/div")
-  private WebElementFacade txtCodigoRetencion;
+  @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:SuraEditableRecoveryLineItemsLV")
+  private WebElementFacade tblElementoLinea;
 
-  @FindBy(xpath = "//div[@class='altVal']")
+  @FindBy(
+    xpath =
+        "//td[@class='x-grid-cell x-grid-td x-grid-cell-headerId-gridcolumn-1304  g-cell-edit gw-currency-positive']"
+  )
   private WebElementFacade txtCantidad;
 
-  @FindBy(id = "NewRecoverySet:NewRecoveryScreen:Update-btnInnerEl")
+  @FindBy(
+    xpath =
+        "//a[@class='x-btn x-unselectable x-btn-toolbar x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']/span[@id='NewRecoverySet:NewRecoveryScreen:Update-btnWrap']"
+  )
   private WebElementFacade btnActualizar;
 
   private String selectOpcion = "//li[.='COMODIN']";
@@ -70,25 +78,23 @@ public class CreacionRecuperoPage extends GeneralPage {
   public void seleccionarPagador(String pagador) {
     txtPagador.waitUntilClickable();
     txtPagador.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, pagador);
-    $(auxSelectOpcion).click();
+    seleccionarOpcionCombobox(pagador);
+    realizarEsperaCarga();
   }
 
   public void seleccionarLineaReserva(String lineaReserva) {
-    realizarEsperaCarga();
     txtLineaReserva.click();
     seleccionarOpcionCombobox(lineaReserva);
+    realizarEsperaCarga();
   }
 
   public void seleccionarMoneda(String moneda) {
-    realizarEsperaCarga();
     cbxMoneda.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, moneda);
-    $(auxSelectOpcion).click();
+    seleccionarOpcionCombobox(moneda);
+    realizarEsperaCarga();
   }
 
   public void seleccionarPais(String pais) {
-    realizarEsperaCarga();
     txtPais.click();
     auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, pais);
     $(auxSelectOpcion).click();
@@ -99,38 +105,44 @@ public class CreacionRecuperoPage extends GeneralPage {
     txtDepartamento.click();
     auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, departamento);
     $(auxSelectOpcion).click();
+    realizarEsperaCarga();
   }
 
   public void seleccionarCiudad(String ciudad) {
-    realizarEsperaCarga();
     cbxCiudad.click();
     auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, ciudad);
     $(auxSelectOpcion).click();
+    realizarEsperaCarga();
   }
 
   public void seleccionarCategoriaRecuperacion(String recupero) {
-    realizarEsperaCarga();
     cbxCategoriaRecuperacion.click();
     auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, recupero);
     $(auxSelectOpcion).click();
-  }
-
-  public void diligenciarCodigoRetencion(String codigoRetencion) {
     realizarEsperaCarga();
-    txtCodigoRetencion.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, codigoRetencion);
-    $(auxSelectOpcion).click();
   }
 
-  public void diligenciarCantidadRecupero(String cantidad) {
-    txtCantidad.waitUntilClickable();
+  public void diligenciarComboboxTabla(String elementoEscribir, String encabezadoColumnaDevolver) {
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaSinConocerDatoBuscar(
+            tblElementoLinea, elementoEscribir, encabezadoColumnaDevolver);
+    elementoEncontrado.forEach(
+        elemento -> {
+          elemento.click();
+          lstOpcionesCombobox.waitUntilVisible();
+          seleccionarOpcionCombobox(elementoEscribir);
+        });
+    realizarEsperaCarga();
+  }
+
+  public void diligenciarCantidadRecupero(String montoRecupero) {
     txtCantidad.click();
-    txtCantidad.sendKeys(cantidad);
-    txtCantidad.click();
+    evaluateJavascript(String.format("$('input[name|=\"Amount\"]').val('%s')", montoRecupero));
   }
 
   public void actualizarRecupero() {
     btnActualizar.waitUntilClickable();
+    btnActualizar.click();
     btnActualizar.click();
   }
 }

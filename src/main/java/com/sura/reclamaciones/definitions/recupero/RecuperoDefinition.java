@@ -15,21 +15,21 @@ public class RecuperoDefinition {
   @Steps RecuperoStep recuperoStep;
   @Steps GenericStep genericStep;
 
-  @Dado("^que (.*) se cuenta con una reserva de (.*)$")
-  public void navegarMenuRecupero(String condicionReserva, String tipoReserva) throws IOException {
+  @Dado("^que se tiene un siniestro con una reserva por (.*)$")
+  public void navegarMenuRecupero(String tipoReserva) throws IOException {
     recupero = new Recupero(genericStep.getFilasModelo("recupero", "escenarioRecupero"));
     recuperoStep.seleccionarNumeroReclamacion("Re", recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();
   }
 
-  @Cuando("^se genere un recupero de categoria (.*), con un codigo de retencion (.*)$")
-  public void diligenciarRecupero(String categoriaRecupero, String codigoRetencion) {
+  @Cuando("^se genere un recupero de tipo (.*) con un código de retención (.*)$")
+    public void diligenciarRecupero(String tipoRecupero, String codigoRetencion) {
     recuperoStep.diligenciarCreacionRecupero(
-        recupero.getLstRecupero(), categoriaRecupero, codigoRetencion);
+            recupero.getLstRecupero(),tipoRecupero, codigoRetencion);
   }
 
-  @Entonces("^se obtiene un recupero en estado (.*)$")
-  public void verificarEstadoSolicitud(String estadoRecupero) {
-    recuperoStep.validarCreacionRecupero(estadoRecupero);
+  @Entonces("^se obtiene un reintegro de dinero al siniestro$")
+  public void verificarEstadoSolicitud() {
+    recuperoStep.validarCreacionRecupero(recupero.getEstadoRecupero(), recupero.getCategoriaRecupero());
   }
 }

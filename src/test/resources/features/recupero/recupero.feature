@@ -7,11 +7,11 @@ Característica:Recupero de una reclamacion
 
   @claims
   Esquema del escenario: recupero
-    Dado que <condicionReserva> se cuenta con una reserva de <tipoReserva>
-    Cuando se genere un recupero de categoria <categoriaRecupero>, con un codigo de retencion <codigoRetencion>
-    Entonces se obtiene un recupero en estado <estadoRecupero>
+    Dado que se tiene un siniestro con una reserva por <tipo reserva>
+    Cuando se genere un recupero de tipo <tipo recupero> con un código de retención <codigoRetencion>
+    Entonces se obtiene un reintegro de dinero al siniestro
 
     Ejemplos:
 
-   |condicionReserva | tipoReserva | categoriaRecupero | codigoRetencion| estadoRecupero  |
-   |si               | Propiedad   | Salvamento        | 0001           |  Solicitado     |
+      |tipo reserva|tipo recupero|codigoRetencion|
+      |daños       |salvamento   |0099           |
