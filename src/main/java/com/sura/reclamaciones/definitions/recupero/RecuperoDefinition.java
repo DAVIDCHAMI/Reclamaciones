@@ -6,30 +6,30 @@ import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
-import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
+
+import java.util.List;
 
 public class RecuperoDefinition {
   Recupero recupero;
-
   @Steps RecuperoStep recuperoStep;
   @Steps GenericStep genericStep;
 
   @Dado("^que se tiene un siniestro con una reserva por (.*)$")
-  public void navegarMenuRecupero(String tipoReserva) throws IOException {
+  public void navegarMenuRecupero(String tipoReserva) throws Throwable {
     recupero = new Recupero(genericStep.getFilasModelo("recupero", "escenarioRecupero"));
     recuperoStep.seleccionarNumeroReclamacion("Re", recupero.getLstRecupero());
-    recuperoStep.seleccionarRecupero();
+    recuperoStep.seleccionarRecupero(tipoReserva);
   }
 
   @Cuando("^se genere un recupero de tipo (.*) con un código de retención (.*)$")
-    public void diligenciarRecupero(String tipoRecupero, String codigoRetencion) {
+  public void diligenciarRecupero(String tipoRecupero, String codigoRetencion) {
     recuperoStep.diligenciarCreacionRecupero(
-            recupero.getLstRecupero(),tipoRecupero, codigoRetencion);
+        recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
   }
 
   @Entonces("^se obtiene un reintegro de dinero al siniestro$")
   public void verificarEstadoSolicitud() {
-    recuperoStep.validarCreacionRecupero(recupero.getEstadoRecupero(), recupero.getCategoriaRecupero());
+   recuperoStep.validarCreacionRecupero(recupero.getLstRecupero());
   }
 }

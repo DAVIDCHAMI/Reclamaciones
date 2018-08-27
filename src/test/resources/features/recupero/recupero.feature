@@ -13,5 +13,6 @@ Característica:Recupero de una reclamacion
 
     Ejemplos:
 
-      |tipo reserva|tipo recupero|codigoRetencion|
-      |daños       |salvamento   |0099           |
+      |tipo reserva         |tipo recupero|codigoRetencion|
+      |Daños materiales     |Salvamento   |0001           |
+      |Daños materiales     |Subrogación  |0099           |

@@ -24,13 +24,13 @@ public class RecuperoStep {
   }
 
   @Step
-  public void seleccionarRecupero() {
-    menuRecuperoPage.irMenuRecupero();
+  public void seleccionarRecupero(String tipoReserva) {
+    menuRecuperoPage.irMenuRecupero(tipoReserva);
   }
 
   @Step
   public void diligenciarCreacionRecupero(
-      List<Recupero> lstRecupero, String categoriaRecupero, String codigoRetencion) {
+      List<Recupero> lstRecupero, String tipoRecupero, String codigoRetencion) {
     lstRecupero.forEach(
         autor -> {
           creacionRecuperoPage.seleccionarPagador(autor.getPagador());
@@ -39,18 +39,22 @@ public class RecuperoStep {
           creacionRecuperoPage.seleccionarPais(autor.getPais());
           creacionRecuperoPage.seleccionarDepartamento(autor.getDepartamento());
           creacionRecuperoPage.seleccionarCiudad(autor.getCiudad());
-          creacionRecuperoPage.seleccionarCategoriaRecuperacion(categoriaRecupero);
+          creacionRecuperoPage.seleccionarCategoriaRecuperacion(tipoRecupero);
           creacionRecuperoPage.diligenciarComboboxTabla(codigoRetencion, "Código de retención");
-          creacionRecuperoPage.diligenciarCantidadRecupero(autor.getCantidad());
+          creacionRecuperoPage.diligenciarCantidadRecupero(autor.getCantidad(), "Cantidad");
           creacionRecuperoPage.actualizarRecupero();
         });
   }
 
   @Step
-  public void validarCreacionRecupero(String estadoRecupero, String categoriaRecupero) {
-    boolean estado = verificacionRecuperoPage.validarRecupero(estadoRecupero);
-    boolean recupero = verificacionRecuperoPage.validarRecupero(categoriaRecupero);
-    MatcherAssert.assertThat(estadoRecupero, estado);
-    MatcherAssert.assertThat(estadoRecupero, recupero);
+  public void validarCreacionRecupero( List<Recupero> lstValidacion) {
+      lstValidacion.forEach(
+              validador->{
+                  boolean estado = verificacionRecuperoPage.validarRecupero(validador.getEstadoRecupero());
+                  boolean recupero = verificacionRecuperoPage.validarRecupero(validador.getCategoriaRecupero());
+                  MatcherAssert.assertThat(validador.getCategoriaRecupero(), estado);
+                  MatcherAssert.assertThat(validador.getCategoriaRecupero(), recupero);
+              }
+      );
   }
 }

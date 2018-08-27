@@ -21,7 +21,7 @@ public class CreacionRecuperoPage extends GeneralPage {
   private WebElementFacade txtPagador;
 
   @FindBy(
-    id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:ReserveLineInputSet:ReserveLine-inputEl"
+    xpath = "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:ReserveLineInputSet:ReserveLine-inputEl']"
   )
   private WebElementFacade txtLineaReserva;
 
@@ -54,17 +54,15 @@ public class CreacionRecuperoPage extends GeneralPage {
   @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:idIngresoSAP-inputEl")
   private WebElementFacade txtComprobanteBancario;
 
-  @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:dateTransaction-inputEl")
-  private WebElementFacade txtFechaComprobante;
-
-  @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:SuraEditableRecoveryLineItemsLV")
+ @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:SuraEditableRecoveryLineItemsLV")
   private WebElementFacade tblElementoLinea;
 
   @FindBy(
-    xpath =
-        "//td[@class='x-grid-cell x-grid-td x-grid-cell-headerId-gridcolumn-1304  g-cell-edit gw-currency-positive']"
-  )
+    xpath ="//div[@class='x-column-header g-header-sort requiredcolumnindicator x-column-header-align-left x-box-item x-column-header-default x-unselectable']//*[text()='Cantidad']/following::div[1]")
   private WebElementFacade txtCantidad;
+
+  @FindBy (xpath = "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:dateTransaction-inputEl']")
+  private WebElementFacade txtFechaComprobante;
 
   @FindBy(
     xpath =
@@ -91,7 +89,6 @@ public class CreacionRecuperoPage extends GeneralPage {
   public void seleccionarMoneda(String moneda) {
     cbxMoneda.click();
     seleccionarOpcionCombobox(moneda);
-    realizarEsperaCarga();
   }
 
   public void seleccionarPais(String pais) {
@@ -135,14 +132,20 @@ public class CreacionRecuperoPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void diligenciarCantidadRecupero(String montoRecupero) {
-    txtCantidad.click();
-    evaluateJavascript(String.format("$('input[name|=\"Amount\"]').val('%s')", montoRecupero));
-  }
+  public void diligenciarCantidadRecupero(String montoRecupero, String encabezadoColumnaDevolver) {
+      List<WebElement> elementoEncontrado =
+              obtenerElementoTablaSinConocerDatoBuscar(
+                      tblElementoLinea, montoRecupero, encabezadoColumnaDevolver);
+      elementoEncontrado.forEach(
+              elemento -> {
+                  elemento.click();
+                  evaluateJavascript(String.format("$('input[name|=\"Amount\"]').val('%s')", montoRecupero));
+              });
+      }
 
   public void actualizarRecupero() {
     btnActualizar.waitUntilClickable();
     btnActualizar.click();
-    btnActualizar.click();
+    waitForWithRefresh();
   }
 }

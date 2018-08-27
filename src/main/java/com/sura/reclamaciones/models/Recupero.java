@@ -29,7 +29,7 @@ public class Recupero {
     this.ciudad = datosRecupero.get("ciudad");
     this.cantidad = datosRecupero.get("cantidad");
     this.categoriaRecupero = datosRecupero.get("categoriaRecupero");
-    this.estadoRecupero = datosRecupero.get ("estadoRecupero");
+    this.estadoRecupero = datosRecupero.get("estadoRecupero");
   }
 
   public Recupero(List<Map<String, String>> datosRecupero) {
@@ -72,7 +72,9 @@ public class Recupero {
     return categoriaRecupero;
   }
 
-  public String getEstadoRecupero () {return  estadoRecupero; }
+  public String getEstadoRecupero() {
+    return estadoRecupero;
+  }
 
   public List<Recupero> getLstRecupero() {
     return lstRecupero;

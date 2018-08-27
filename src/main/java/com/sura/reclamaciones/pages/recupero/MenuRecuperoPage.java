@@ -22,18 +22,16 @@ public class MenuRecuperoPage extends GeneralPage {
   )
   private WebElementFacade mnmSegundoNivel;
 
-  @FindBy(id = "Claim:ClaimMenuActions-btnInnerEl")
+  @FindBy(xpath = "//span[@id ='Claim:ClaimMenuActions-btnInnerEl']")
   private WebElementFacade btnAcciones;
 
   @FindBy(
-    id =
-        "Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans-textEl"
+    xpath = "//a[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans-itemEl']"
   )
   private WebElementFacade mnmOtros;
 
   @FindBy(
-    id =
-        "Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans:ClaimMenuActions_NewTransaction_RecoverySet-textEl"
+    xpath = "//span[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans:ClaimMenuActions_NewTransaction_RecoverySet-textEl']"
   )
   private WebElementFacade mnmRecuperos;
 
@@ -42,14 +40,15 @@ public class MenuRecuperoPage extends GeneralPage {
         .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
         .sendKeys(Keys.ARROW_DOWN);
     mnmSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
+    realizarEsperaCarga();
   }
 
-  public void irMenuRecupero() {
-    btnAcciones.waitUntilPresent();
+  public void irMenuRecupero(String tipoReserva) {
+    btnAcciones.waitUntilClickable();
     btnAcciones.click();
-    mnmOtros.waitUntilPresent();
+    mnmOtros.waitUntilClickable();
     mnmOtros.click();
-    mnmRecuperos.waitUntilPresent();
+    mnmRecuperos.waitUntilClickable();
     mnmRecuperos.click();
   }
 }
