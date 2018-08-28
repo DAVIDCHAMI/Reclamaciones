@@ -44,19 +44,6 @@ public class MenuClaimPage extends GeneralPage {
     mnuSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
   }
 
-  public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
-    mnuLateralPrimerNivel
-        .findElement(
-            By.xpath(
-                "//span[contains(@class,'x-tree-node-text')][contains(text(),'"
-                    + nombreOpcion
-                    + "')]"))
-        .click();
-    realizarEsperaCarga();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, subItem);
-    $(auxSelectOpcion).waitUntilVisible().click();
-  }
-
   public void seleecionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
     mnuLateralPrimerNivel
         .findElement(
@@ -70,5 +57,18 @@ public class MenuClaimPage extends GeneralPage {
 
   public void ingresarComandoClaim(String comando) {
     txtComandoPolicy.type(comando).sendKeys(Keys.ENTER);
+  }
+
+  public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
+    mnuLateralPrimerNivel
+        .findElement(
+            By.xpath(
+                "//span[contains(@class,'x-tree-node-text')][contains(text(),'"
+                    + nombreOpcion
+                    + "')]"))
+        .click();
+    realizarEsperaCarga();
+    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, subItem);
+    $(auxSelectOpcion).waitUntilVisible().click();
   }
 }
