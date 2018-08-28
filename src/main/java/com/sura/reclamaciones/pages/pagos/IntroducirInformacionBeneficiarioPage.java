@@ -12,10 +12,10 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
     }
 
     @FindBy(xpath = "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PrimaryPayee_Name-inputEl']")
-    private WebElementFacade selNombreBeneficiario;
+    private WebElementFacade cmbNombreBeneficiario;
 
     @FindBy(xpath = "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PrimaryPayee_Type-inputEl']")
-    private WebElementFacade selTipoBeneficiario;
+    private WebElementFacade cmbTipoBeneficiario;
 
     @FindBy(xpath = "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PaymentMethod_option1-inputEl']")
     private WebElementFacade rbnTransferenciaElectronica;
@@ -35,13 +35,13 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
     public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
         strNombreBeneficiario  = "Victor Hugo Sepulveda Vallejo";
-        selNombreBeneficiario.selectByValue(strNombreBeneficiario);
+        cmbNombreBeneficiario.selectByValue(strNombreBeneficiario);
     }
 
 
     public void seleccionarTipoBeneficiario(String strTipoBeneficiario) {
         strTipoBeneficiario  = "Proveedor";
-        selTipoBeneficiario.selectByValue(strTipoBeneficiario);
+        cmbTipoBeneficiario.selectByValue(strTipoBeneficiario);
     }
 
     public void seleccionarMetodoPago(String strMetodoPago){

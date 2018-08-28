@@ -10,10 +10,10 @@ public class IntroducirInformacionPagoPage  extends GeneralPage {
     public IntroducirInformacionPagoPage(WebDriver driver) {super(driver);}
 
     @FindBy(xpath = "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:ReserveLineInputSet:ReserveLine-inputEl']")
-    private WebElementFacade selLineaReserva;
+    private WebElementFacade cmbLineaReserva;
 
     @FindBy(xpath = "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_PaymentType-inputEl']")
-    private WebElementFacade selTipoPago;
+    private WebElementFacade cmbTipoPago;
 
     @FindBy(xpath = "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Transaction_AvailableReserves-inputEl']")
     private WebElementFacade txtValorReserva;
@@ -21,13 +21,13 @@ public class IntroducirInformacionPagoPage  extends GeneralPage {
 
     public void seleccionarLineaReserva(String strLineaReserva) {
         strLineaReserva  = "linea reserva";
-        selLineaReserva.selectByValue(strLineaReserva);
+        cmbLineaReserva.selectByValue(strLineaReserva);
     }
 
 
     public void seleccionarTipoPago(String strTipoPago) {
         strTipoPago  = "parcial";
-        selTipoPago.selectByValue(strTipoPago);
+        cmbTipoPago.selectByValue(strTipoPago);
     }
 
     public void obtenerValorReserva (){
