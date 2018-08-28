@@ -22,8 +22,23 @@ public class NuevoPagoStep {
 
 
     @Step
-    public void ingresarInformacionBeneficiario(List<PagoEmpresariales> datosPagos) {
+    public void consultarNumeroReclamacion(String strNumeroReclamacion) {
 
     }
 
+    @Step
+    public void ingresarInformacionBeneficiarioPago(String strTipoPago, String strBeneficiarioPago, String strMetodoPago, String strLineaReserva, String strSoloSura, String strCodigoRetencion) {
+        introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
+        introducirInformacionBeneficiarioPage.seleccionarMetodoPago(strMetodoPago);
+        introducirInformacionBeneficiarioPage.seleccionarPagoSura(strSoloSura);
+        introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
+        introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
+
+
+    }
+
+    @Step
+    public void verificarPagoRealizado() {
+
+    }
 }

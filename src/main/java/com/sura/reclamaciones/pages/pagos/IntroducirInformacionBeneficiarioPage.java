@@ -34,7 +34,6 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
 
     public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
-        strNombreBeneficiario  = "Victor Hugo Sepulveda Vallejo";
         cmbNombreBeneficiario.selectByValue(strNombreBeneficiario);
     }
 
@@ -46,9 +45,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
     public void seleccionarMetodoPago(String strMetodoPago){
 
-        strMetodoPago = "transferencia";
-
-        switch (strMetodoPago){
+                switch (strMetodoPago){
 
             case "transferencia":
                 rbnTransferenciaElectronica.click();
@@ -66,8 +63,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
     }
 
     public void seleccionarPagoSura(String strPagoSura) {
-        strPagoSura = "si";
-
+        
         if (strPagoSura=="si")
         {
             rbnPagoSoloSuraSi.click();
