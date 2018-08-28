@@ -53,7 +53,7 @@ public class RecuperoStep {
     lstRecupero.forEach(
         validador -> {
           assertTrue(verificacionRecuperoPage.validarRecupero(validador.getCategoriaRecupero()));
-          assertFalse(verificacionRecuperoPage.validarRecupero(validador.getEstadoRecupero()));
+          assertTrue(verificacionRecuperoPage.validarRecupero(validador.getEstadoRecupero()));
         });
   }
 }
