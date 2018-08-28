@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.steps.recupero;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
@@ -18,32 +18,33 @@ public class RecuperoStep {
   @Page VerificacionRecuperoPage verificacionRecuperoPage;
 
   @Step
-  public void seleccionarNumeroReclamacion(String nombreOpcion, List<Recupero> lstRecupero) {
-    for (Recupero recupero : lstRecupero) {
-      menuRecuperoPage.seleccionarOpcionMenuSegundoNivel(
-          nombreOpcion, recupero.getNumeroReclamacion());
-    }
+  public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
+    lstRecupero.forEach(
+        menu -> {
+          menuRecuperoPage.seleccionarNumeroReclamacion(reclamacion, menu.getNumeroReclamacion());
+        });
   }
 
-  @Step
-  public void seleccionarRecupero(String tipoReserva) {
-    menuRecuperoPage.irMenuRecupero(tipoReserva);
+  public void seleccionarRecupero() {
+    menuRecuperoPage.irMenuRecupero();
   }
 
   @Step
   public void diligenciarCreacionRecupero(
       List<Recupero> lstRecupero, String tipoRecupero, String codigoRetencion) {
     lstRecupero.forEach(
-        autor -> {
-          creacionRecuperoPage.seleccionarPagador(autor.getPagador());
-          creacionRecuperoPage.seleccionarLineaReserva(autor.getLineaRecupero());
-          creacionRecuperoPage.seleccionarMoneda(autor.getMoneda());
-          creacionRecuperoPage.seleccionarPais(autor.getPais());
-          creacionRecuperoPage.seleccionarDepartamento(autor.getDepartamento());
-          creacionRecuperoPage.seleccionarCiudad(autor.getCiudad());
+        formulario -> {
+          creacionRecuperoPage.seleccionarPagador(formulario.getPagador());
+          creacionRecuperoPage.seleccionarLineaReserva(formulario.getLineaRecupero());
+          creacionRecuperoPage.seleccionarMoneda(formulario.getMoneda());
+          creacionRecuperoPage.seleccionarPais(formulario.getPais());
+          creacionRecuperoPage.seleccionarDepartamento(formulario.getDepartamento());
+          creacionRecuperoPage.seleccionarCiudad(formulario.getCiudad());
           creacionRecuperoPage.seleccionarCategoriaRecuperacion(tipoRecupero);
-          creacionRecuperoPage.diligenciarComboboxTabla(codigoRetencion, "Código de retención");
-          creacionRecuperoPage.diligenciarCantidadRecupero(autor.getCantidad(), "Cantidad");
+          creacionRecuperoPage.diligenciarCodigoRetencion(
+              codigoRetencion, ReclamacionConstante.CODIGO_RETENCION);
+          creacionRecuperoPage.diligenciarCantidadRecupero(
+              formulario.getCantidad(), ReclamacionConstante.CANTIDAD);
           creacionRecuperoPage.actualizarRecupero();
         });
   }

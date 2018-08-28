@@ -1,26 +1,21 @@
 package com.sura.reclamaciones.pages.recupero;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import net.serenitybdd.core.annotations.findby.By;
+import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class MenuRecuperoPage extends GeneralPage {
+
+  MenuClaimPage menuClaimPage;
 
   public MenuRecuperoPage(WebDriver driver) {
     super(driver);
   }
 
-  @FindBy(xpath = ".//*[@id=':tabs-innerCt']")
-  private WebElementFacade mnmPrimerNivel;
-
-  @FindBy(
-    xpath =
-        ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
-  )
-  private WebElementFacade mnmSegundoNivel;
+  @FindBy(xpath = "//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
+  private WebElementFacade txtNumeroReclamacion;
 
   @FindBy(xpath = "//span[@id ='Claim:ClaimMenuActions-btnInnerEl']")
   private WebElementFacade btnAcciones;
@@ -37,15 +32,12 @@ public class MenuRecuperoPage extends GeneralPage {
   )
   private WebElementFacade mnmRecuperos;
 
-  public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
-    mnmPrimerNivel
-        .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
-        .sendKeys(Keys.ARROW_DOWN);
-    mnmSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
+  public void seleccionarNumeroReclamacion(String reclamacion, String numeroReclamacion) {
+    menuClaimPage.seleccionarOpcionMenuSegundoNivel(reclamacion, numeroReclamacion);
     realizarEsperaCarga();
   }
 
-  public void irMenuRecupero(String tipoReserva) {
+  public void irMenuRecupero() {
     btnAcciones.waitUntilClickable();
     btnAcciones.click();
     mnmOtros.waitUntilClickable();

@@ -127,7 +127,8 @@ public class CreacionRecuperoPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void diligenciarComboboxTabla(String elementoEscribir, String encabezadoColumnaDevolver) {
+  public void diligenciarCodigoRetencion(
+      String elementoEscribir, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaSinConocerDatoBuscar(
             tblElementoLinea, elementoEscribir, encabezadoColumnaDevolver);

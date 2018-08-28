@@ -17,10 +17,10 @@ public class RecuperoDefinition {
   public void navegarMenuRecupero(String tipoReserva) throws Throwable {
     recupero = new Recupero(genericStep.getFilasModelo("recupero", "escenarioRecupero"));
     recuperoStep.seleccionarNumeroReclamacion("Re", recupero.getLstRecupero());
-    recuperoStep.seleccionarRecupero(tipoReserva);
+    recuperoStep.seleccionarRecupero();
   }
 
-  @Cuando("^se genere un recupero de tipo (.*) con un código de retención (.*)$")
+  @Cuando("^se genere un recupero de tipo (.*) con un codigo de retencion (.*)$")
   public void diligenciarRecupero(String tipoRecupero, String codigoRetencion) {
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
