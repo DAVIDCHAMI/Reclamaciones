@@ -96,17 +96,4 @@ public class ResumenReclamacionPage extends GeneralPage {
     }
     return validarReservaTransaccion;
   }
-
-  public String validarReservaResumen(String montoReserva) {
-    String validarReservaResumen;
-    if (lnkReservaResumen.isVisible()) {
-      validarReservaResumen = lnkReservaResumen.waitUntilVisible().getText();
-      validarReservaResumen =
-          validarReservaResumen.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    } else {
-      validarReservaResumen = montoReserva;
-      LOGGER.info("No se ha generado reserva en la sección de resumen");
-    }
-    return validarReservaResumen;
-  }
 }
