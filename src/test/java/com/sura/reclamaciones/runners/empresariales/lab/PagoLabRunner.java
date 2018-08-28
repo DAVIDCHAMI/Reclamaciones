@@ -9,4 +9,4 @@ import org.junit.runner.RunWith;
   features = "src/test/resources/features/pagos/pagos.feature",
   glue = {"com.sura.reclamaciones.definitions"}
 )
-public class PagosLabRunner {}
+public class PagoLabRunner {}
