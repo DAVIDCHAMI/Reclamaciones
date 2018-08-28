@@ -34,6 +34,12 @@ public class ResumenReclamacionPage extends GeneralPage {
   )
   private WebElementFacade lnkReservaTransaccion;
 
+  @FindBy(
+    xpath =
+        "//a[@id='ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryPanelSet:FinancialsSummaryLV:0:RemainingReserves']"
+  )
+  private WebElementFacade lnkReservaResumen;
+
   public ResumenReclamacionPage(WebDriver driver) {
     super(driver);
   }
@@ -76,6 +82,19 @@ public class ResumenReclamacionPage extends GeneralPage {
     validadorReserva = divReserva.waitUntilVisible().getText();
     validadorReserva = validadorReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     return validadorReserva;
+  }
+
+  public String validarReservaResumen(String montoReserva) {
+    String validarReservaResumen;
+    if (lnkReservaResumen.isVisible()) {
+      validarReservaResumen = lnkReservaResumen.waitUntilVisible().getText();
+      validarReservaResumen =
+          validarReservaResumen.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    } else {
+      validarReservaResumen = montoReserva;
+      LOGGER.info("No se ha generado reserva en la sección de resumen");
+    }
+    return validarReservaResumen;
   }
 
   public String validarReservaTransaccion(String montoReserva) {
