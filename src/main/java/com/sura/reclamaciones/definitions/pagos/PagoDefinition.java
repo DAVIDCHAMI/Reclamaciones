@@ -8,13 +8,13 @@ import net.thucydides.core.annotations.Steps;
 public class PagoDefinition {
 
     @Dado("^que se tiene el siniestro (.*)  del producto (.*) el cual cuenta con una linea de reserva (.*)$")
-    public void que_se_tiene_el_siniestro_del_producto_el_cual_cuenta_con_una_linea_de_reserva(String arg1, String arg2, String arg3) throws Exception {
+    public void que_se_tiene_el_siniestro_del_producto_el_cual_cuenta_con_una_linea_de_reserva(String numeroReclamacion, String producto, String lineaReserva) throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
     }
 
     @Cuando("^se realice un pago (.*) a un (.*) por medio de (.*) y que el responsable (.*) es Sura por una retención de (.*)$")
-    public void se_realice_un_pago_a_un_por_medio_de_y_que_el_responsable_es_Sura_por_una_retención_de(String arg1, String arg2, String arg3, String arg4, String arg5) throws Exception {
+    public void se_realice_un_pago_a_un_por_medio_de_y_que_el_responsable_es_Sura_por_una_retención_de(String tipoPago, String beneficiarioPago, String metodoPago, String soloSura, String codigoRetencion) throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
     }
