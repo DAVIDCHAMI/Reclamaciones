@@ -7,6 +7,7 @@ import java.util.Map;
 public class PagosEmpresariales extends Reclamacion {
 
   private List<PagosEmpresariales> lstPagoEmp = new ArrayList<>();
+  private String tipoBeneficiario;
   private String comentarios;
   private String numeroFactura;
   private String valorPago;
@@ -18,6 +19,7 @@ public class PagosEmpresariales extends Reclamacion {
 
   private PagosEmpresariales(Map<String, String> datosPagosEmp) {
     super(datosPagosEmp);
+    this.tipoBeneficiario = datosPagosEmp.get("tipoBeneficiario");
     this.comentarios = datosPagosEmp.get("comentario");
     this.numeroFactura = datosPagosEmp.get("numeroFactura");
     this.valorPago = datosPagosEmp.get("valorPago");
@@ -25,6 +27,10 @@ public class PagosEmpresariales extends Reclamacion {
 
   public PagosEmpresariales(List<Map<String, String>> datosPagosEmp) {
     asignarDatos(datosPagosEmp);
+  }
+
+  public String getTipoBeneficiario() {
+    return tipoBeneficiario;
   }
 
   public String getComentarios() {
