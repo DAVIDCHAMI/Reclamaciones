@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
@@ -60,14 +61,11 @@ public class NuevaReclamacionAutoStep {
     informacionBasicaPage.seleccionarNombre();
   }
 
-  public void validarReclamacion(List<ReclamacionAuto> reclamaciones) {
-    reclamaciones.forEach(
-        dato -> {
-          String mensajeValidado = nuevaReclamacionGuardadaPage.obtenerMensajeValidador();
-          MatcherAssert.assertThat(
-              "No se encontro el mensaje a validar",
-              mensajeValidado.equals(dato.getMensajeValidar()));
-        });
+  public void validarReclamacion() {
+    String mensajeValidado = nuevaReclamacionGuardadaPage.obtenerMensajeValidador();
+    MatcherAssert.assertThat(
+        "No se encontro el mensaje a validar",
+        mensajeValidado.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
   }
 
   public void finalizarReclamacion() {

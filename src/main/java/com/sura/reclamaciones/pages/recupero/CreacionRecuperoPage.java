@@ -21,7 +21,8 @@ public class CreacionRecuperoPage extends GeneralPage {
   private WebElementFacade txtPagador;
 
   @FindBy(
-    xpath = "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:ReserveLineInputSet:ReserveLine-inputEl']"
+    xpath =
+        "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:ReserveLineInputSet:ReserveLine-inputEl']"
   )
   private WebElementFacade txtLineaReserva;
 
@@ -54,14 +55,16 @@ public class CreacionRecuperoPage extends GeneralPage {
   @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:idIngresoSAP-inputEl")
   private WebElementFacade txtComprobanteBancario;
 
- @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:SuraEditableRecoveryLineItemsLV")
+  @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:SuraEditableRecoveryLineItemsLV")
   private WebElementFacade tblElementoLinea;
 
-  @FindBy(
-    xpath ="//div[@class='x-column-header g-header-sort requiredcolumnindicator x-column-header-align-left x-box-item x-column-header-default x-unselectable']//*[text()='Cantidad']/following::div[1]")
+  @FindBy(xpath = "//input[@name='Amount']")
   private WebElementFacade txtCantidad;
 
-  @FindBy (xpath = "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:dateTransaction-inputEl']")
+  @FindBy(
+    xpath =
+        "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:dateTransaction-inputEl']"
+  )
   private WebElementFacade txtFechaComprobante;
 
   @FindBy(
@@ -69,6 +72,11 @@ public class CreacionRecuperoPage extends GeneralPage {
         "//a[@class='x-btn x-unselectable x-btn-toolbar x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']/span[@id='NewRecoverySet:NewRecoveryScreen:Update-btnWrap']"
   )
   private WebElementFacade btnActualizar;
+
+  @FindBy(
+    xpath = "//span[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:ttlBar']"
+  )
+  private WebElementFacade lblTituloRecupero;
 
   private String selectOpcion = "//li[.='COMODIN']";
   private String auxSelectOpcion = "";
@@ -133,19 +141,21 @@ public class CreacionRecuperoPage extends GeneralPage {
   }
 
   public void diligenciarCantidadRecupero(String montoRecupero, String encabezadoColumnaDevolver) {
-      List<WebElement> elementoEncontrado =
-              obtenerElementoTablaSinConocerDatoBuscar(
-                      tblElementoLinea, montoRecupero, encabezadoColumnaDevolver);
-      elementoEncontrado.forEach(
-              elemento -> {
-                  elemento.click();
-                  evaluateJavascript(String.format("$('input[name|=\"Amount\"]').val('%s')", montoRecupero));
-              });
-      }
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaSinConocerDatoBuscar(
+            tblElementoLinea, montoRecupero, encabezadoColumnaDevolver);
+    elementoEncontrado.forEach(
+        elemento -> {
+          elemento.click();
+          evaluateJavascript(
+              String.format("$('input[name|=\"Amount\"]').val('%s')", montoRecupero));
+        });
+  }
 
   public void actualizarRecupero() {
     btnActualizar.waitUntilClickable();
     btnActualizar.click();
-    waitForWithRefresh();
+    lblTituloRecupero.waitUntilVisible();
+    lblTituloRecupero.isVisible();
   }
 }

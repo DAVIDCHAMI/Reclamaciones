@@ -24,7 +24,7 @@ public class GeneralPage extends PageObject {
   public WebElementFacade lstOpcionesCombobox;
 
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
-  WebElementFacade pruebaLoader;
+  WebElementFacade pgrBarCarga;
 
   @FindBy(xpath = "//span[@id='FNOLWizard:Next-btnInnerEl']")
   private WebElementFacade btnSiguiente;
@@ -96,7 +96,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void realizarEsperaCarga() {
-    pruebaLoader.waitUntilPresent().waitUntilNotVisible();
+    pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
   }
 
   public void aceptarOpcion() {

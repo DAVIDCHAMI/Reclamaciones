@@ -1,5 +1,8 @@
 package com.sura.reclamaciones.steps.recupero;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
@@ -7,7 +10,6 @@ import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
-import org.hamcrest.MatcherAssert;
 
 public class RecuperoStep {
 
@@ -47,14 +49,11 @@ public class RecuperoStep {
   }
 
   @Step
-  public void validarCreacionRecupero( List<Recupero> lstValidacion) {
-      lstValidacion.forEach(
-              validador->{
-                  boolean estado = verificacionRecuperoPage.validarRecupero(validador.getEstadoRecupero());
-                  boolean recupero = verificacionRecuperoPage.validarRecupero(validador.getCategoriaRecupero());
-                  MatcherAssert.assertThat(validador.getCategoriaRecupero(), estado);
-                  MatcherAssert.assertThat(validador.getCategoriaRecupero(), recupero);
-              }
-      );
+  public void validarCreacionRecupero(List<Recupero> lstRecupero) {
+    lstRecupero.forEach(
+        validador -> {
+          assertTrue(verificacionRecuperoPage.validarRecupero(validador.getCategoriaRecupero()));
+          assertFalse(verificacionRecuperoPage.validarRecupero(validador.getEstadoRecupero()));
+        });
   }
 }

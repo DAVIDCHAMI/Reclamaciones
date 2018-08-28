@@ -8,8 +8,6 @@ import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import net.thucydides.core.annotations.Steps;
 
-import java.util.List;
-
 public class RecuperoDefinition {
   Recupero recupero;
   @Steps RecuperoStep recuperoStep;
@@ -29,7 +27,7 @@ public class RecuperoDefinition {
   }
 
   @Entonces("^se obtiene un reintegro de dinero al siniestro$")
-  public void verificarEstadoSolicitud() {
-   recuperoStep.validarCreacionRecupero(recupero.getLstRecupero());
+  public void validarRecupero() {
+    recuperoStep.validarCreacionRecupero(recupero.getLstRecupero());
   }
 }

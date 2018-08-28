@@ -15,4 +15,4 @@ Característica:Recupero de una reclamacion
 
       |tipo reserva         |tipo recupero|codigoRetencion|
       |Daños materiales     |Salvamento   |0001           |
-      |Daños materiales     |Subrogación  |0099           |
+

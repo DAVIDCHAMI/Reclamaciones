@@ -32,17 +32,16 @@ public class MenuClaimPage extends GeneralPage {
     super(wDriver);
   }
 
-  public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
-    mnuLateralPrimerNivel
-        .findElement(
-            By.xpath(
-                "//span[contains(@class,'x-tree-node-text')][contains(text(),'"
-                    + nombreOpcion
-                    + "')]"))
-        .click();
-    realizarEsperaCarga();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, subItem);
-    $(auxSelectOpcion).waitUntilVisible().click();
+  public void seleccionarOpcionMenuPrimerNivel(String nombreOpcion) {
+    mnuPrimerNivel.findElement(By.xpath("//span[contains(text(), '" + nombreOpcion + "')]"));
+    mnuPrimerNivel.click();
+  }
+
+  public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
+    mnuPrimerNivel
+        .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
+        .sendKeys(Keys.ARROW_DOWN);
+    mnuSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
   }
 
   public void seleecionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
@@ -56,19 +55,20 @@ public class MenuClaimPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void seleccionarOpcionMenuPrimerNivel(String nombreOpcion) {
-    mnuPrimerNivel.findElement(By.xpath("//span[contains(text(), '" + nombreOpcion + "')]"));
-    mnuPrimerNivel.click();
-  }
-
-  public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
-    mnuPrimerNivel
-        .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
-        .sendKeys(Keys.ARROW_DOWN);
-    mnuSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
-  }
-
   public void ingresarComandoClaim(String comando) {
     txtComandoPolicy.type(comando).sendKeys(Keys.ENTER);
+  }
+
+  public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
+    mnuLateralPrimerNivel
+        .findElement(
+            By.xpath(
+                "//span[contains(@class,'x-tree-node-text')][contains(text(),'"
+                    + nombreOpcion
+                    + "')]"))
+        .click();
+    realizarEsperaCarga();
+    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, subItem);
+    $(auxSelectOpcion).waitUntilVisible().click();
   }
 }

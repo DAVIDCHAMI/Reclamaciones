@@ -18,7 +18,7 @@ public class NotificacionAvisoDefinition {
   public void buscarPoliza(String tipoCobertura) throws Throwable {
     reclamo =
         new ReclamacionEmpresariales(
-            genericStep.getFilasModelo("reclamacion_empresarial", "escenarioEmpresariales"));
+            genericStep.getFilasModelo("reclamacion_empresarial", "escenarioAvisoEmpresariales"));
     nuevaReclamacionStep.seleccionarNuevaReclamacion("Re", "Nueva");
     nuevaReclamacionStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
   }
@@ -40,7 +40,7 @@ public class NotificacionAvisoDefinition {
   @Entonces("^se obtiene una reclamacion que (.*) genera exposicion$")
   public void verificarExposicion(String exposicion) {
     reclamo.getLstReclamo();
-    nuevaReclamacionStep.validarReclamacion(reclamo.getLstReclamo());
+    nuevaReclamacionStep.validarReclamacion();
     nuevaReclamacionStep.visualizarResumenReclamacion();
     nuevaReclamacionStep.validarExposicionVisualizada(exposicion);
   }
@@ -49,5 +49,6 @@ public class NotificacionAvisoDefinition {
   public void verificarReserva(String reserva, String monto) {
     reclamo.getLstReclamo();
     nuevaReclamacionStep.validarReservaVisualizada(monto);
+    nuevaReclamacionStep.validarReservaDatosFinancieros(reclamo.getLstReclamo(), monto);
   }
 }

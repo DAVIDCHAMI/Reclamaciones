@@ -16,6 +16,7 @@ public class Recupero {
   private String cantidad;
   private String categoriaRecupero;
   private String estadoRecupero;
+  private String fechaComprobante;
 
   public Recupero() {}
 
@@ -30,6 +31,7 @@ public class Recupero {
     this.cantidad = datosRecupero.get("cantidad");
     this.categoriaRecupero = datosRecupero.get("categoriaRecupero");
     this.estadoRecupero = datosRecupero.get("estadoRecupero");
+    this.fechaComprobante = datosRecupero.get("fechaComprobante");
   }
 
   public Recupero(List<Map<String, String>> datosRecupero) {
@@ -74,6 +76,10 @@ public class Recupero {
 
   public String getEstadoRecupero() {
     return estadoRecupero;
+  }
+
+  public String getFechaComprobante() {
+    return fechaComprobante;
   }
 
   public List<Recupero> getLstRecupero() {

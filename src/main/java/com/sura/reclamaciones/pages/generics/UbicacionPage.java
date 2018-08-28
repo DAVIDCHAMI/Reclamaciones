@@ -30,8 +30,8 @@ public class UbicacionPage extends GeneralPage {
   @FindBy(xpath = "//input[@id]")
   private List<WebElement> mnmUbicacion;
 
-  private String selectOpcion = "//li[.='COMODIN']";
-  private String auxSelectOpcion = "";
+  private String lstUbicacion = "//li[.='COMODIN']";
+  private String auxLstUbicacion = "";
 
   public UbicacionPage(WebDriver driver) {
     super(driver);
@@ -40,15 +40,15 @@ public class UbicacionPage extends GeneralPage {
   public void seleccionarPais(String pais) {
     mnuPais.waitUntilVisible();
     mnuPais.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, pais);
-    $(auxSelectOpcion).click();
+    auxLstUbicacion = lstUbicacion.replace(ConstanteGlobal.COMODIN, pais);
+    $(auxLstUbicacion).click();
   }
 
   public void seleccionarDepartamento(String departamento) {
     mnuDepartamento.waitUntilVisible();
     mnuDepartamento.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, departamento);
-    $(auxSelectOpcion).click();
+    auxLstUbicacion = lstUbicacion.replace(ConstanteGlobal.COMODIN, departamento);
+    $(auxLstUbicacion).click();
   }
 
   public void seleccionarCiudad(String ciudad) {
@@ -65,7 +65,7 @@ public class UbicacionPage extends GeneralPage {
         break;
       }
     }
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, ubicacion);
-    $(auxSelectOpcion).click();
+    auxLstUbicacion = lstUbicacion.replace(ConstanteGlobal.COMODIN, ubicacion);
+    $(auxLstUbicacion).click();
   }
 }
