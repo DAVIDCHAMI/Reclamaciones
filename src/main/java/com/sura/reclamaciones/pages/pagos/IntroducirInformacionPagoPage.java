@@ -28,9 +28,17 @@ public class IntroducirInformacionPagoPage  extends GeneralPage {
     public void seleccionarTipoPago(String strTipoPago) {
         strTipoPago  = "parcial";
         cmbTipoPago.selectByValue(strTipoPago);
+        if (strTipoPago=="parcial"){
+
+            
+
+        }
+        else {
+
+        }
     }
 
-    public void obtenerValorReserva (){
+    public void obtenerValorPagoReserva (){
         String strValorReserva;
         strValorReserva = txtValorReserva.getTextValue();
     }
