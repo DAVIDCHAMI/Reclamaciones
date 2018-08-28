@@ -20,7 +20,7 @@ public class RecuperoDefinition {
     recuperoStep.seleccionarRecupero();
   }
 
-  @Cuando("^se genere un recupero de tipo (.*) con un codigo de retencion (.*)$")
+  @Cuando("^se genere un recupero de tipo (.*) con un código de retención (.*)$")
   public void diligenciarRecupero(String tipoRecupero, String codigoRetencion) {
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
