@@ -1,0 +1,2 @@
+id;idFiltro;comentario;numeroFactura;valorPago;;;;;
+1;escenarioPagosEmpresariales;Este comentarios se realiza con el objetivo de verificar la prueba automatizada para pagos, revisando la longitud permitida por el negocio para la capacidad de caracteres que revisa el campo;283326;150000;;;;;

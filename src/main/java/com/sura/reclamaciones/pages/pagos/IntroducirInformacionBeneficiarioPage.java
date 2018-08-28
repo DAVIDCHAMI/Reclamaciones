@@ -44,21 +44,26 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
         selTipoBeneficiario.selectByValue(strTipoBeneficiario);
     }
 
-    public void seleccionarTransferencia() {
-         rbnTransferenciaElectronica.click();
+    public void seleccionarMetodoPago(String strMetodoPago){
+
+        strMetodoPago = "transferencia";
+
+        switch (strMetodoPago){
+
+            case "transferencia":
+                rbnTransferenciaElectronica.click();
+                break;
+            case "pago por banco":
+                rbnPagoBanco.click();
+                break;
+            case "caja sura":
+                rbnPagoCajaSura.click();
+                break;
+
+
+        }
 
     }
-
-    public void seleccionarPagoBanco() {
-        rbnPagoBanco.click();
-
-    }
-
-    public void seleccionarCajaSura() {
-        rbnPagoCajaSura.click();
-
-    }
-
 
     public void seleccionarPagoSura(String strPagoSura) {
         strPagoSura = "si";
@@ -69,7 +74,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
         }
         rbnPagoSoloSuraNo.click();
 
-.    }
+    }
 
 
 }
