@@ -34,12 +34,6 @@ public class ResumenReclamacionPage extends GeneralPage {
   )
   private WebElementFacade lnkReservaTransaccion;
 
-  @FindBy(
-    xpath =
-        "//a[@id='ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryPanelSet:FinancialsSummaryLV:0:RemainingReserves']"
-  )
-  private WebElementFacade lnkReservaResumen;
-
   public ResumenReclamacionPage(WebDriver driver) {
     super(driver);
   }
