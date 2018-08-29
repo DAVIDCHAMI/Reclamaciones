@@ -12,6 +12,9 @@ import org.fluentlenium.core.annotation.Page;
 
 import java.util.List;
 
+import static com.sura.reclamaciones.constantes.MenuConstante.BUSCAR_RECLAMACION;
+import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
+
 public class NuevoPagoStep {
 
     @Page private IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
@@ -24,7 +27,7 @@ public class NuevoPagoStep {
     @Step
     public void consultarNumeroReclamacion(String strNumeroReclamacion) {
 
-        
+        menuClaimPage.seleccionarOpcionMenuSegundoNivel(RECLAMACION_MENU, BUSCAR_RECLAMACION);
 
     }
 

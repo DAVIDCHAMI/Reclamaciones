@@ -24,6 +24,7 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = " //div[@id='westPanel-innerCt']")
   WebElementFacade mnuLateralPrimerNivel;
 
+
   private String selectOpcion =
       "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
   private String auxSelectOpcion = "";
