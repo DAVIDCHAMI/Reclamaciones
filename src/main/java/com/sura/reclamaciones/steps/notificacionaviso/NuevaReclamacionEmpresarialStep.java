@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ReclamacionConstante;
+import static com.sura.reclamaciones.constantes.ReclamacionConstante.*;
+
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
@@ -47,7 +48,7 @@ public class NuevaReclamacionEmpresarialStep {
     verificar = informacionReclamacionPage.obtenerTituloReclamacionGenerada();
     MatcherAssert.assertThat(
         "No se ha obtenido el número de reclamación",
-        verificar.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
+        verificar.equals(VALIDADOR_NUEVA_RECLAMACION));
   }
 
   public void seleccionarNuevaReclamacion(String nombreOpcion, String subItem) {
@@ -89,7 +90,7 @@ public class NuevaReclamacionEmpresarialStep {
         poliza -> {
           buscarPolizaPage.seleccionarOpcionBuscarPoliza();
           buscarPolizaPage.escribirNumeroPoliza(poliza.getNumPoliza());
-          if (ReclamacionConstante.FECHA_HOY.equals(poliza.getFechaSiniestro())) {
+          if (FECHA_HOY.equals(poliza.getFechaSiniestro())) {
             buscarPolizaPage.seleccionarFechaHoySiniestro();
           } else {
             buscarPolizaPage.escribirFechaSiniestro(poliza.getFechaSiniestro());
@@ -103,8 +104,7 @@ public class NuevaReclamacionEmpresarialStep {
       List<ReclamacionEmpresariales> datoReserva, String monto) {
     datoReserva.forEach(
         reserva -> {
-          menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(
-              ReclamacionConstante.DATOS_FINANCIEROS);
+          menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS);
           String validar = resumenReclamacionPage.validarReservaResumen(monto);
           MatcherAssert.assertThat(
               "Se esperaba una reserva de: "
@@ -112,8 +112,7 @@ public class NuevaReclamacionEmpresarialStep {
                   + ", pero se ha obtenido una reserva de: "
                   + validar,
               monto.equals(validar));
-          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-              ReclamacionConstante.DATOS_FINANCIEROS, ReclamacionConstante.TRANSACCIONES);
+          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(DATOS_FINANCIEROS, TRANSACCIONES);
           validar =
               resumenReclamacionPage.validarReservaTransaccion(reserva.getReservaTransaccion());
           MatcherAssert.assertThat(
