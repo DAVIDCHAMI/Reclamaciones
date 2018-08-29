@@ -82,7 +82,6 @@ public class PageUtil extends PageObject {
   }
 
   public boolean ValidarObjetoClikeableServidor(String pathElemento, int maximoEjecuciones) {
-
     WebElementFacade elemento;
     boolean ejecuto = false;
     int ejecuciones = 0;

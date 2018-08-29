@@ -49,7 +49,7 @@ public class ResumenReclamacionPage extends GeneralPage {
     divNumeroReclamacion.waitUntilVisible();
     numeroReclamacion = divNumeroReclamacion.getText();
     numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    LOGGER.info("el número de reclamación generado es: " + numeroReclamacion);
+    LOGGER.info(String.format("el número de reclamación generado es: %s", numeroReclamacion));
     divNumeroReclamacion.click();
   }
 
@@ -81,7 +81,6 @@ public class ResumenReclamacionPage extends GeneralPage {
     menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.RESUMEN);
     validadorReserva = divReserva.waitUntilVisible().getText();
     validadorReserva = validadorReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    LOGGER.info("Se ha generado una reserva de: " + validadorReserva);
     return validadorReserva;
   }
 
