@@ -1,7 +1,6 @@
 # language: es
 Característica: Notificacion de aviso de una reclamacion
 
-
   @pagos
   Esquema del escenario: aviso
     Dado que se tiene el siniestro <numeroReclamacion>  del producto <producto> el cual cuenta con una linea de reserva <lineaReserva>
@@ -9,8 +8,8 @@ Característica: Notificacion de aviso de una reclamacion
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Producto                | Número de Reclamacion | Beneficiario           | Método de Pago | Solo Sura | Línea de reserva | Tipo Pago | Código de Retención |
-      | Multiriesgo corporativo | 9180000014929         | PINTORES S.A. CQLII II | transferencia  | si        | si               | final     | 0018                |
-      | Multiriesgo corporativo | 9180000015675         | Jose Alfredo Martinez  | caja sura      | no        | no               | parcial   | 0020                |
+      | numeroReclamacion  | producto                 | lineaReserva   |tipoPago  | beneficiarioPago           | metodoPago       | soloSura  | codigoRetencion    |
+      | 9180000014929      | Multiriesgo corporativo  | si             | final    |PINTORES S.A. CQLII II      | transferencia    | si        | 0018               |
+      | 9180000015675      | Multiriesgo corporativo  | no             | parcial  |Jose Alfredo Martinez       | caja sura        | no        | 0020               |
 
 
