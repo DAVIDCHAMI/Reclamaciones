@@ -37,7 +37,7 @@ public class MenuRecuperoPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void irMenuRecupero() {
+  public void ingresarMenuRecupero() {
     btnAcciones.waitUntilClickable();
     btnAcciones.click();
     mnuOtros.waitUntilClickable();

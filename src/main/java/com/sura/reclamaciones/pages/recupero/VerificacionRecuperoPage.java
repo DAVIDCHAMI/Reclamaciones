@@ -31,8 +31,8 @@ public class VerificacionRecuperoPage extends GeneralPage {
     getDriver().navigate().refresh();
     tblVerificacionRecupero.waitUntilVisible();
     List<WebElement> lstFilaRecupero = tblVerificacionRecupero.findElements(By.tagName("td"));
-    for (WebElement e : lstFilaRecupero) {
-      if (e.getText().equals(datoValidar)) {
+    for (WebElement cantidadDatosListaRecupero : lstFilaRecupero) {
+      if (cantidadDatosListaRecupero.getText().equals(datoValidar)) {
         return true;
       }
     }

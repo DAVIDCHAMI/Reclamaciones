@@ -9,13 +9,15 @@ import cucumber.api.java.es.Entonces;
 import net.thucydides.core.annotations.Steps;
 
 public class RecuperoDefinition {
-  Recupero recupero;
+
   @Steps RecuperoStep recuperoStep;
   @Steps GenericStep genericStep;
 
+  Recupero recupero;
+
   @Dado("^que se tiene un siniestro con una reserva por (.*)$")
   public void navegarMenuRecupero(String tipoReserva) throws Throwable {
-    recupero = new Recupero(genericStep.getFilasModelo("recupero", "escenarioRecuperoSalvamento"));
+    recupero = new Recupero(genericStep.getFilasModelo("recupero", "recuperoCategoriaSalvamento"));
     recuperoStep.seleccionarNumeroReclamacion("Re", recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();
   }

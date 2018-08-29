@@ -26,7 +26,7 @@ public class RecuperoStep {
   }
 
   public void seleccionarRecupero() {
-    menuRecuperoPage.irMenuRecupero();
+    menuRecuperoPage.ingresarMenuRecupero();
   }
 
   @Step
