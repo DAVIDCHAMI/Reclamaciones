@@ -24,6 +24,8 @@ public class NuevoPagoStep {
     @Step
     public void consultarNumeroReclamacion(String strNumeroReclamacion) {
 
+        
+
     }
 
     @Step

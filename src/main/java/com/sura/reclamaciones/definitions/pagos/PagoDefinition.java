@@ -11,9 +11,7 @@ public class PagoDefinition {
     @Steps NuevoPagoStep nuevoPagoStep;
 
     @Dado("^que se tiene el siniestro (.*)  del producto (.*)$")
-    public void que_se_tiene_el_siniestro_del_producto(String numeroReclamacion, String producto) throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-
+    public void irPagoReclamacion(String numeroReclamacion, String producto) throws Exception {
         nuevoPagoStep.consultarNumeroReclamacion(numeroReclamacion);
     }
 
