@@ -13,8 +13,8 @@ public class MenuClaimPage extends GeneralPage {
   WebElementFacade mnuPrimerNivel;
 
   @FindBy(
-    xpath =
-        ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
+      xpath =
+          ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
   )
   WebElementFacade mnuSegundoNivel;
 
@@ -27,6 +27,12 @@ public class MenuClaimPage extends GeneralPage {
   private String selectOpcion =
       "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
   private String auxSelectOpcion = "";
+
+  @FindBy(xpath = "//span[@id='Claim:ClaimMenuActions-btnIconEl']")
+  WebElementFacade btnAcciones;
+
+  @FindBy(xpath = " //div[@class='x-panel x-columnmenu x-layer x-panel-default x-menu x-menu-plain x-border-box']")
+  WebElementFacade mnuPanelOpciones;
 
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);
@@ -70,5 +76,11 @@ public class MenuClaimPage extends GeneralPage {
     realizarEsperaCarga();
     auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, subItem);
     $(auxSelectOpcion).waitUntilVisible().click();
+  }
+
+  public void seleccionarOpcionMenuAccionesPrimerNivel(String nombreOpcion) {
+    btnAcciones.waitUntilVisible().click();
+    mnuPanelOpciones.findElement(By.xpath("//span[contains(text(), '" + nombreOpcion + "')]"));
+    mnuPanelOpciones.click();
   }
 }

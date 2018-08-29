@@ -1,0 +1,20 @@
+# language: es
+Característica: Reversión de constitución o ajuste manual de la reserva de un siniestro
+
+  Como analista de reclamaciones
+  Quiero que sea posible realizar ajustes en las reservas
+  Para que se pueda cubrir el monto del valor del siniestro
+
+  @claims
+  Esquema del escenario: reversión de constitución
+    Dado que se genera un siniestro del producto <Tipo y Cobertura> con una reserva automática por un monto de <Monto de la reserva>
+    Cuando se ajuste la reserva  con un valor de <Monto del ajuste>
+    Entonces se obtiene una reversión de constitución  y el deducible es generado por  un valor <Deducible>
+
+    Ejemplos:
+      | Tipo y Cobertura                             | Monto de la reserva | Monto del ajuste | Deducible|
+      | Multiriesgo corporativo con cobertura basica | 1218758             |                  |          |
+      | Multiriesgo corporativo con cobertura basica | 0                   |                  |          |
+
+
+
