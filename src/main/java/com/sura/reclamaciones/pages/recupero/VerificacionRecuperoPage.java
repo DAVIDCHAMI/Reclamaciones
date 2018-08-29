@@ -23,7 +23,7 @@ public class VerificacionRecuperoPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
   private WebElementFacade btnCambioPagina;
 
-  public boolean validarRecupero(String datoValidar) {
+  public boolean verificarRecupero(String datoValidar) {
     if (btnCambioPagina.isVisible()) {
       btnCambioPagina.waitUntilClickable();
       btnCambioPagina.click();

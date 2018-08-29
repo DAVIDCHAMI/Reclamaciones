@@ -110,7 +110,7 @@ public class GeneralPage extends PageObject {
     realizarEsperaCarga();
   }
 
-  public List<WebElement> obtenerElementoTablaSinConocerDatoBuscar(
+  public List<WebElement> obtenerElementoTablaDatoDesconocido(
       WebElementFacade elemento, String elementoEscribir, String encabezadoColumnaDevolver) {
     List<String> cabeceraRecuperos = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
     int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + 1;

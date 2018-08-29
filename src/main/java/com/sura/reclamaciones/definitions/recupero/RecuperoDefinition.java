@@ -15,7 +15,7 @@ public class RecuperoDefinition {
 
   @Dado("^que se tiene un siniestro con una reserva por (.*)$")
   public void navegarMenuRecupero(String tipoReserva) throws Throwable {
-    recupero = new Recupero(genericStep.getFilasModelo("recupero", "escenarioRecupero"));
+    recupero = new Recupero(genericStep.getFilasModelo("recupero", "escenarioRecuperoSalvamento"));
     recuperoStep.seleccionarNumeroReclamacion("Re", recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();
   }
@@ -27,7 +27,7 @@ public class RecuperoDefinition {
   }
 
   @Entonces("^se obtiene un reintegro de dinero al siniestro$")
-  public void validarRecupero() {
-    recuperoStep.validarCreacionRecupero(recupero.getLstRecupero());
+  public void verificarRecupero() {
+    recuperoStep.verificarCreacionRecupero(recupero.getLstRecupero());
   }
 }

@@ -24,13 +24,13 @@ public class MenuRecuperoPage extends GeneralPage {
     xpath =
         "//a[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans-itemEl']"
   )
-  private WebElementFacade mnmOtros;
+  private WebElementFacade mnuOtros;
 
   @FindBy(
     xpath =
         "//span[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans:ClaimMenuActions_NewTransaction_RecoverySet-textEl']"
   )
-  private WebElementFacade mnmRecuperos;
+  private WebElementFacade mnuRecuperos;
 
   public void seleccionarNumeroReclamacion(String reclamacion, String numeroReclamacion) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(reclamacion, numeroReclamacion);
@@ -40,9 +40,9 @@ public class MenuRecuperoPage extends GeneralPage {
   public void irMenuRecupero() {
     btnAcciones.waitUntilClickable();
     btnAcciones.click();
-    mnmOtros.waitUntilClickable();
-    mnmOtros.click();
-    mnmRecuperos.waitUntilClickable();
-    mnmRecuperos.click();
+    mnuOtros.waitUntilClickable();
+    mnuOtros.click();
+    mnuRecuperos.waitUntilClickable();
+    mnuRecuperos.click();
   }
 }

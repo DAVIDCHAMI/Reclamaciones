@@ -50,11 +50,11 @@ public class RecuperoStep {
   }
 
   @Step
-  public void validarCreacionRecupero(List<Recupero> lstRecupero) {
+  public void verificarCreacionRecupero(List<Recupero> lstRecupero) {
     lstRecupero.forEach(
         validador -> {
-          assertTrue(verificacionRecuperoPage.validarRecupero(validador.getCategoriaRecupero()));
-          assertTrue(verificacionRecuperoPage.validarRecupero(validador.getEstadoRecupero()));
+          assertTrue(verificacionRecuperoPage.verificarRecupero(validador.getCategoriaRecupero()));
+          assertTrue(verificacionRecuperoPage.verificarRecupero(validador.getEstadoRecupero()));
         });
   }
 }

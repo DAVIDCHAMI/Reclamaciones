@@ -29,7 +29,7 @@ public class CreacionRecuperoPage extends GeneralPage {
   @FindBy(
     xpath = "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:Currency-inputEl']"
   )
-  private WebElementFacade cbxMoneda;
+  private WebElementFacade txtMoneda;
 
   @FindBy(
     xpath =
@@ -47,10 +47,10 @@ public class CreacionRecuperoPage extends GeneralPage {
     xpath =
         "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Sura_Colombian_City-inputEl']"
   )
-  private WebElementFacade cbxCiudad;
+  private WebElementFacade txtCiudad;
 
   @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:RecoveryCategory-inputEl")
-  private WebElementFacade cbxCategoriaRecuperacion;
+  private WebElementFacade txtCategoriaRecuperacion;
 
   @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:idIngresoSAP-inputEl")
   private WebElementFacade txtComprobanteBancario;
@@ -78,8 +78,8 @@ public class CreacionRecuperoPage extends GeneralPage {
   )
   private WebElementFacade lblTituloRecupero;
 
-  private String selectOpcion = "//li[.='COMODIN']";
-  private String auxSelectOpcion = "";
+  private String seleccionarOpcion = "//li[.='COMODIN']";
+  private String auxiliarSeleccionarOpcion = "";
 
   public void seleccionarPagador(String pagador) {
     txtPagador.waitUntilClickable();
@@ -95,42 +95,42 @@ public class CreacionRecuperoPage extends GeneralPage {
   }
 
   public void seleccionarMoneda(String moneda) {
-    cbxMoneda.click();
+    txtMoneda.click();
     seleccionarOpcionCombobox(moneda);
   }
 
   public void seleccionarPais(String pais) {
     txtPais.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, pais);
-    $(auxSelectOpcion).click();
+    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, pais);
+    $(auxiliarSeleccionarOpcion).click();
   }
 
   public void seleccionarDepartamento(String departamento) {
     txtDepartamento.waitUntilClickable();
     txtDepartamento.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, departamento);
-    $(auxSelectOpcion).click();
+    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, departamento);
+    $(auxiliarSeleccionarOpcion).click();
     realizarEsperaCarga();
   }
 
   public void seleccionarCiudad(String ciudad) {
-    cbxCiudad.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, ciudad);
-    $(auxSelectOpcion).click();
+    txtCiudad.click();
+    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, ciudad);
+    $(auxiliarSeleccionarOpcion).click();
     realizarEsperaCarga();
   }
 
   public void seleccionarCategoriaRecuperacion(String recupero) {
-    cbxCategoriaRecuperacion.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, recupero);
-    $(auxSelectOpcion).click();
+    txtCategoriaRecuperacion.click();
+    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, recupero);
+    $(auxiliarSeleccionarOpcion).click();
     realizarEsperaCarga();
   }
 
   public void diligenciarCodigoRetencion(
       String elementoEscribir, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaSinConocerDatoBuscar(
+        obtenerElementoTablaDatoDesconocido(
             tblElementoLinea, elementoEscribir, encabezadoColumnaDevolver);
     elementoEncontrado.forEach(
         elemento -> {
@@ -143,7 +143,7 @@ public class CreacionRecuperoPage extends GeneralPage {
 
   public void diligenciarCantidadRecupero(String montoRecupero, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaSinConocerDatoBuscar(
+        obtenerElementoTablaDatoDesconocido(
             tblElementoLinea, montoRecupero, encabezadoColumnaDevolver);
     elementoEncontrado.forEach(
         elemento -> {
