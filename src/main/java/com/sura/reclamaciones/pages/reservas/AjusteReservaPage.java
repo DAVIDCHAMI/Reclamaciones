@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.reservas;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
+import static com.sura.reclamaciones.constantes.MenuConstante.*;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -14,7 +14,7 @@ public class AjusteReservaPage extends GeneralPage {
   WebElementFacade chkLineaReserva;
 
   @FindBy(xpath = "//span[@id='NewReserveSet:NewReserveSetScreen:Remove-btnInnerEl']")
-  WebElementFacade btnQuitarLineaReserva;
+  WebElementFacade btnQuitar;
 
 @Page
   MenuClaimPage menuClaimPage;
@@ -24,10 +24,10 @@ public class AjusteReservaPage extends GeneralPage {
   }
 
   public void ajustarReserva(String reservaModificar, String montoModificar ){
-    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(MenuConstante.RESERVA);
+    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
 if(chkLineaReserva.isVisible()){
   chkLineaReserva.click();
-  btnQuitarLineaReserva.waitUntilClickable().click();
+  btnQuitar.waitUntilClickable().click();
 }
   }
 
