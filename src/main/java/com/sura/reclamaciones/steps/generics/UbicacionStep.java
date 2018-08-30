@@ -12,6 +12,7 @@ public class UbicacionStep {
   public void seleccionarUbicacion(List<ReclamacionEmpresariales> datosUbicacion) {
     datosUbicacion.forEach(
         ubicacion -> {
+          ubicacionPage.seleccionarUbicacion("Country-inputEl", ubicacion.getPais());
           ubicacionPage.seleccionarPais(ubicacion.getPais());
           ubicacionPage.seleccionarDepartamento(ubicacion.getDepartamento());
           ubicacionPage.seleccionarCiudad(ubicacion.getCiudad());
