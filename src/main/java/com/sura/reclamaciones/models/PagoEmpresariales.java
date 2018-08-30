@@ -4,29 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PagoEmpresariales extends Reclamacion {
+public class PagoEmpresariales {
 
-  private List<PagoEmpresariales> lstPagoEmp = new ArrayList<>();
+  private List<PagoEmpresariales> lstPagoEmpresariales = new ArrayList<>();
   private String tipoBeneficiario;
   private String comentarios;
   private String numeroFactura;
   private String valorPago;
 
+  public PagoEmpresariales() {}
 
-  public PagoEmpresariales() {
-    super();
+  private PagoEmpresariales(Map<String, String> datosPagosEmpresariales) {
+    this.tipoBeneficiario = datosPagosEmpresariales.get("tipoBeneficiario");
+    this.comentarios = datosPagosEmpresariales.get("comentario");
+    this.numeroFactura = datosPagosEmpresariales.get("numeroFactura");
+    this.valorPago = datosPagosEmpresariales.get("valorPago");
   }
 
-  private PagoEmpresariales(Map<String, String> datosPagosEmp) {
-    super(datosPagosEmp);
-    this.tipoBeneficiario = datosPagosEmp.get("tipoBeneficiario");
-    this.comentarios = datosPagosEmp.get("comentario");
-    this.numeroFactura = datosPagosEmp.get("numeroFactura");
-    this.valorPago = datosPagosEmp.get("valorPago");
-  }
-
-  public PagoEmpresariales(List<Map<String, String>> datosPagosEmp) {
-    asignarDatos(datosPagosEmp);
+  public PagoEmpresariales(List<Map<String, String>> datosPagosEmpresariales) {
+    asignarDatos(datosPagosEmpresariales);
   }
 
   public String getTipoBeneficiario() {
@@ -46,12 +42,12 @@ public class PagoEmpresariales extends Reclamacion {
   }
 
   public List<PagoEmpresariales> getLstPago() {
-    return lstPagoEmp;
+    return lstPagoEmpresariales;
   }
 
-  private void asignarDatos(List<Map<String, String>> datosPagosEmp) {
-    for (Map<String, String> dato : datosPagosEmp) {
-      lstPagoEmp.add(new PagoEmpresariales(dato));
+  private void asignarDatos(List<Map<String, String>> datosPagosEmpresariales) {
+    for (Map<String, String> dato : datosPagosEmpresariales) {
+      lstPagoEmpresariales.add(new PagoEmpresariales(dato));
     }
   }
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class MenuRecuperoPage extends GeneralPage {
 
-  MenuClaimPage menuClaimPage;
+
 
   public MenuRecuperoPage(WebDriver driver) {
     super(driver);
@@ -31,11 +31,6 @@ public class MenuRecuperoPage extends GeneralPage {
         "//span[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans:ClaimMenuActions_NewTransaction_RecoverySet-textEl']"
   )
   private WebElementFacade mnuRecuperos;
-
-  public void seleccionarNumeroReclamacion(String reclamacion, String numeroReclamacion) {
-    menuClaimPage.seleccionarOpcionMenuSegundoNivel(reclamacion, numeroReclamacion);
-    realizarEsperaCarga();
-  }
 
   public void ingresarMenuRecupero() {
     btnAcciones.waitUntilClickable();

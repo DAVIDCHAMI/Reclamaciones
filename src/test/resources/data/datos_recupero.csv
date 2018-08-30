@@ -1,2 +1,4 @@
 id;idFiltro;numeroReclamacion;pagador;lineaReserva;moneda;pais;departamento;ciudad;cantidad;categoriaRecupero;estadoRecupero;fechaComprobante
 1;recuperoCategoriaSalvamento;9180000015247;Swiss Reinsurance America Corporation;(1) 1ª partePropiedad - VICTOR HUGO SEPULVEDA VALLEJO CQLII;COP;Colombia;Antioquia;Medellin;15;Salvamento;Solicitado;
+2;recuperoCategoriaSalvamento;9180000015247;Swiss Reinsurance America Corporation;(1) 1ª partePropiedad - VICTOR HUGO SEPULVEDA VALLEJO CQLII;COP;Colombia;Antioquia;Medellin;15;Subrogación;Solicitado;
+3;recuperoCategoriaSalvamento;9180000015247;Swiss Reinsurance America Corporation;(1) 1ª partePropiedad - VICTOR HUGO SEPULVEDA VALLEJO CQLII;COP;Colombia;Antioquia;Medellin;15;Ingreso (otro);Solicitado;

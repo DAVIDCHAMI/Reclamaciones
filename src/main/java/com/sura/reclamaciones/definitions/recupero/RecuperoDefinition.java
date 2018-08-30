@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.definitions.recupero;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.constantes.RecuperoConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
@@ -18,7 +20,7 @@ public class RecuperoDefinition {
   @Dado("^que se tiene un siniestro con una reserva por (.*)$")
   public void navegarMenuRecupero(String tipoReserva) throws Throwable {
     recupero = new Recupero(genericStep.getFilasModelo("recupero", "recuperoCategoriaSalvamento"));
-    recuperoStep.seleccionarNumeroReclamacion("Re", recupero.getLstRecupero());
+    recuperoStep.seleccionarNumeroReclamacion(MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();
   }
 
