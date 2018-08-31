@@ -22,6 +22,7 @@ public class RecuperoDefinition {
     recupero = new Recupero(genericStep.getFilasModelo("recupero", "recuperoCategoriaSalvamento"));
     recuperoStep.seleccionarNumeroReclamacion(MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();
+
   }
 
   @Cuando("^se genere un recupero de tipo (.*) con un código de retención (.*)$")

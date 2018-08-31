@@ -27,6 +27,8 @@ public class RecuperoStep {
               menu->{
                   menuClaimPage.seleccionarOpcionMenuPrimerNivel(reclamacion);
                   menuClaimPage.buscarReclamacion(menu.getNumeroReclamacion());
+
+
               });
   }
 

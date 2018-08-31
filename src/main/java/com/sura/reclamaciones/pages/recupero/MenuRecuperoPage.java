@@ -33,6 +33,7 @@ public class MenuRecuperoPage extends GeneralPage {
   private WebElementFacade mnuRecuperos;
 
   public void ingresarMenuRecupero() {
+    realizarEsperaCarga();
     btnAcciones.waitUntilClickable();
     btnAcciones.click();
     mnuOtros.waitUntilClickable();
