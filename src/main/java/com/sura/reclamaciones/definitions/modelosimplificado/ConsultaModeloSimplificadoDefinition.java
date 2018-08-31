@@ -31,7 +31,6 @@ public class ConsultaModeloSimplificadoDefinition {
         new ModeloSimplificado(
             genericStep.getFilasModelo(
                 "reaseguro_modelo_simplificado", "escenarioMovimientoReserva"));
-    conexion = conexionBDSteps.conectarBaseDatos();
   }
 
   @Cuando("^la transaccion se ha efectuado$")
