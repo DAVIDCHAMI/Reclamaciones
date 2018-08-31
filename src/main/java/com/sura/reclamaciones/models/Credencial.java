@@ -8,7 +8,7 @@ public class Credencial {
 
   private String usuario;
   private String contrasena;
-  private List<Credencial> credencials = new ArrayList<>();
+  private List<Credencial> credenciales = new ArrayList<>();
 
   public Credencial() {}
 
@@ -29,13 +29,13 @@ public class Credencial {
     return contrasena;
   }
 
-  public List<Credencial> getCredencials() {
-    return credencials;
+  public List<Credencial> getCredenciales() {
+    return credenciales;
   }
 
   public void asignarDatos(List<Map<String, String>> datosUsuario) {
     for (Map<String, String> dato : datosUsuario) {
-      credencials.add(new Credencial(dato));
+      credenciales.add(new Credencial(dato));
     }
   }
 }
