@@ -43,13 +43,13 @@ public class ConsultarModeloSimplificadoStep {
           String valorNetoTransaccionCalculado = dato.getValorNeto();
           String valorPagarReaseguradoresCalculado = dato.getValorCedidoReaseguradoras();
           MatcherAssert.assertThat(
-              "No coninciden los datos del valor de la transacción",
+              "No coinciden los datos del valor de la transacción",
               valorTransaccionConsultaModeloSimplificado.equals(valorTransaccionCalculado));
           MatcherAssert.assertThat(
-              "No coninciden los datos del valor neto de la transacción",
+              "No coinciden los datos del valor neto de la transacción",
               valorNetoTransaccionConsultaModeloSimplificado.equals(valorNetoTransaccionCalculado));
           MatcherAssert.assertThat(
-              "No coninciden los datos del valor a pagar a los reaseguradores",
+              "No coinciden los datos del valor a pagar a los reaseguradores",
               valorPagarReaseguradoresModeloSimplificado.equals(valorPagarReaseguradoresCalculado));
         });
   }

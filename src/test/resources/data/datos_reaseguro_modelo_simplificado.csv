@@ -1,3 +1,3 @@
-id;idFiltro              ;numeroTransaccion ;numeroReclamacion;valorTransaccion;valorCedidoReaseguradoras;valorNeto  ;tipoEstructura;tipoTransaccion
-1 ;escenarioCPExcReserva ;5284199           ;9180000015184    ;10000000000     ;9945454539               ;10000000000;proporcional  ;reserva
-2 ;escenarioCPExcPago    ;3890              ;9180000015184    ;9000000000      ;8950909086               ;9000000000 ;proporcional  ;pago
+id;idFiltro                   ;numeroTransaccion ;numeroReclamacion;valorTransaccion;valorCedidoReaseguradoras;valorNeto  ;tipoEstructura;tipoTransaccion
+1 ;escenarioMovimientoReserva ;5284199           ;9180000015184    ;10000000000     ;9945454539               ;10000000000;proporcional  ;reserva
+2 ;escenarioMovimientoPago    ;3890              ;9180000015184    ;9000000000      ;8950909086               ;9000000000 ;proporcional  ;pago

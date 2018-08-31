@@ -24,9 +24,13 @@ public class ConsultaModeloSimplificadoDefinition {
   @Dado("^que se realiza un (.*)$")
   public void realizarConexionModeloSimplificado(String transaccionFinanciera)
       throws SQLException, IOException {
+    if (transaccionFinanciera=="Reserva") {
+      String idFiltro= "escenarioMovimientoReserva";
+    }
     modeloSimplificado =
         new ModeloSimplificado(
-            genericStep.getFilasModelo("reaseguro_modelo_simplificado", "escenarioCPExcReserva"));
+            genericStep.getFilasModelo(
+                "reaseguro_modelo_simplificado", "escenarioMovimientoReserva"));
     conexion = conexionBDSteps.conectarBaseDatos();
   }
 
