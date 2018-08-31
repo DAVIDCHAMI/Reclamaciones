@@ -2,7 +2,6 @@ package com.sura.reclamaciones.steps.modelosimplificado;
 
 import com.sura.reclamaciones.models.ModeloSimplificado;
 import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificado;
-import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,11 +16,12 @@ public class ConsultarModeloSimplificadoStep {
   @Page ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
 
   @Step
-  public Connection conectarBaseDatos() throws SQLException {
-    Connection conexion = null;
-    return conexion = ConexionBaseDatosUtil.conectarBaseDatos();
-  }
-
+  /**
+   * public Connection conectarBaseDatos(List<Credencial> credenciales) throws SQLException {
+   * credenciales.forEach( datocredencial -> { Connection conexion = null; return conexion =
+   * ConexionBaseDatosUtil.conectarBaseDatos(datocredencial.getUsuario(),datocredencial.getContrasena());
+   * }); }*
+   */
   public ResultSet consultarModeloSimplificado(
       Connection conexionBD, List<ModeloSimplificado> datosTransaccion) throws SQLException {
     final String[] transaccionConsulta = {String.valueOf(new Object[1])};

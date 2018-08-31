@@ -1,58 +1,62 @@
 package com.sura.reclamaciones.models;
 
-public class TablaDios {
-  private String cdPoliza;
-  private String cdMovimiento;
-  private String dsResultadoValidacion;
-  private String feMensajeCore;
-  private String feMensajeSAP;
-  private String feContabilizacion;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-  public String getCdPoliza() {
-    return cdPoliza;
+public class TablaCuadre {
+  private String referencia;
+  private String tipoMovimiento;
+  private String estado;
+  private String ramo;
+  private String fechaContabilizacion;
+  private String fechaCreacion;
+  private List<TablaCuadre> lstTablaCuadre = new ArrayList<>();
+
+  public TablaCuadre(){
+    super();
   }
 
-  public String getCdMovimiento() {
-    return cdMovimiento;
+  private TablaCuadre(Map<String, String> datosCuadre){
+    this.referencia = datosCuadre.get("");
+    this.tipoMovimiento = datosCuadre.get("");
+    this.estado = datosCuadre.get("");
+    this.ramo = datosCuadre.get("");
+    this.fechaContabilizacion = datosCuadre.get("");
+    this.fechaCreacion = datosCuadre.get("");
   }
 
-  public String getDsResultadoValidacion() {
-    return dsResultadoValidacion;
+  public TablaCuadre(List<Map<String, String>> datosTablaCuadre){
+    asignarDatos(datosTablaCuadre);
   }
 
-  public String getFeMensajeCore() {
-    return feMensajeCore;
+  public String getReferencia() {
+    return referencia;
   }
 
-  public String getFeMensajeSAP() {
-    return feMensajeSAP;
+  public String getTipoMovimiento() {
+    return tipoMovimiento;
   }
 
-  public String getFeContabilizacion() {
-    return feContabilizacion;
+  public String getEstado() {
+    return estado;
   }
 
-  public void setCdPoliza(String cdPoliza) {
-    this.cdPoliza = cdPoliza;
+  public String getRamo() {
+    return ramo;
   }
 
-  public void setCdMovimiento(String cdMovimiento) {
-    this.cdMovimiento = cdMovimiento;
+  public String getFechaContabilizacion() {
+    return fechaContabilizacion;
   }
 
-  public void setDsResultadoValidacion(String dsResultadoValidacion) {
-    this.dsResultadoValidacion = dsResultadoValidacion;
+  public String getFechaCreacion() {
+    return fechaCreacion;
   }
 
-  public void setFeMensajeCore(String feMensajeCore) {
-    this.feMensajeCore = feMensajeCore;
-  }
-
-  public void setFeMensajeSAP(String feMensajeSAP) {
-    this.feMensajeSAP = feMensajeSAP;
-  }
-
-  public void setFeContabilizacion(String feContabilizacion) {
-    this.feContabilizacion = feContabilizacion;
+  private void asignarDatos(List<Map<String, String>> datosTablaCuadre) {
+    for(Map<String, String> dato : datosTablaCuadre){
+      lstTablaCuadre.add(new TablaCuadre(dato));
+    }
   }
 }
