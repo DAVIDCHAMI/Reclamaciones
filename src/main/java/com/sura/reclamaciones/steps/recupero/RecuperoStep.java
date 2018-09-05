@@ -23,8 +23,7 @@ public class RecuperoStep {
   public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
     lstRecupero.forEach(
         menu -> {
-          menuClaimPage.seleccionarOpcionMenuPrimerNivel(reclamacion);
-          menuClaimPage.buscarReclamacion(menu.getNumeroReclamacion());
+          menuClaimPage.buscarReclamacion(reclamacion, menu.getNumeroReclamacion());
         });
   }
 

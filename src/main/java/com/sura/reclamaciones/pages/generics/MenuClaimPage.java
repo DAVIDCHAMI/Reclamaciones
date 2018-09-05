@@ -46,7 +46,7 @@ public class MenuClaimPage extends GeneralPage {
 
   public void seleccionarOpcionMenuPrimerNivel(String nombreOpcion) {
     mnuPrimerNivel
-        .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
+        .findElement(By.xpath(String.format(".//a[contains(.,'%s')]", nombreOpcion)))
         .sendKeys(Keys.ARROW_DOWN);
   }
 
@@ -85,7 +85,8 @@ public class MenuClaimPage extends GeneralPage {
     $(auxSelectOpcion).waitUntilVisible().click();
   }
 
-  public void buscarReclamacion(String strReclamacion) {
+  public void buscarReclamacion(String strOpcionMenu, String strReclamacion) {
+    seleccionarOpcionMenuPrimerNivel(strOpcionMenu);
     mnuBuscar.click();
     mnuBuscar.typeAndEnter(strReclamacion);
     realizarEsperaCarga();

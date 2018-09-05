@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.definitions.pagos;
 
-import com.sura.reclamaciones.models.PagoEmpresariales;
+import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
@@ -13,13 +13,13 @@ public class PagoDefinition {
   @Steps NuevoPagoStep nuevoPagoStep;
   @Steps GenericStep genericStep;
 
-  PagoEmpresariales pagoEmpresarial;
+  PagoEmpresarial pagoEmpresarial;
 
   @Dado("^que se tiene el siniestro (.*)  del producto (.*)$")
-  public void ingresarMenuPagoReclamacion(String numeroReclamacion, String producto)
+  public void ingresarMenuPagoReclamacion(String numeroReclamacion, String tipoProducto)
       throws Exception {
     pagoEmpresarial =
-        new PagoEmpresariales(genericStep.getFilasModelo("pagos_empresarial", "pagoEmpresarial"));
+        new PagoEmpresarial(genericStep.getFilasModelo("pagos_empresarial", "pagoEmpresarial"));
     nuevoPagoStep.consultarNumeroReclamacion(numeroReclamacion);
   }
 

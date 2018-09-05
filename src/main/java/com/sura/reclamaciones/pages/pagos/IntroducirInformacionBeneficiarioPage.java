@@ -2,12 +2,12 @@ package com.sura.reclamaciones.pages.pagos;
 
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import java.util.List;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
@@ -45,20 +45,14 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   )
   private WebElementFacade rbnPagoCajaSura;
 
-  @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PayCoinsuranceOnlySura_Ext_true-inputEl']"
-  )
-  private WebElementFacade rbnPagoSoloSuraSi;
+  @FindBy(xpath = "//input[contains(@class, 'x-form-field x-form-radio x-form-cb')]")
+  private WebElementFacade rbnPago;
 
   @FindBy(
     xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PayCoinsuranceOnlySura_Ext_false-inputEl']"
+        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:contactEFTLVid:ContactEFTSAPCheckLV']"
   )
-  private WebElementFacade rbnPagoSoloSuraNo;
-
-  @FindBy(xpath = "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:contactEFTLVid:ContactEFTSAPCheckLV']")
-  private  WebElementFacade tblCuentaElectronica;
+  private WebElementFacade tblCuentaElectronica;
 
   public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
     cmbNombreBeneficiario.click();
@@ -72,31 +66,26 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   }
 
   public void seleccionarMetodoPago(String strMetodoPago, String strCuenta) {
-
-    switch (strMetodoPago) {
-      case PagoConstante.TRANSFERENCIA_ELECTRONICA:
-        rbnTransferenciaElectronica.waitUntilClickable().click();
-        List<WebElement> elementoEncontrado =
-                obtenerElementoTablaDatoDesconocido(
-                        tblCuentaElectronica, "", strCuenta);
-        elementoEncontrado.get(0).click();
-        break;
-      case PagoConstante.PAGO_BANCO:
-        rbnPagoBanco.waitUntilClickable().click();
-        break;
-      case PagoConstante.CAJA_SURA:
-        rbnPagoCajaSura.waitUntilClickable().click();
-        break;
+    obtenerElementoPantallaPago(strMetodoPago);
+    if (strMetodoPago.equals(PagoConstante.TRANSFERENCIA_ELECTRONICA)) {
+      List<WebElement> elementoEncontrado =
+          obtenerElementoTablaDatoDesconocido(tblCuentaElectronica, "", strCuenta);
+      elementoEncontrado.get(0).click();
     }
   }
 
-  public void seleccionarPagoSura(String strPagoSura) {
+  public void obtenerElementoPantallaPago(String strElementoPantallaPago) {
+    rbnPago
+        .findElement(
+            By.xpath(
+                "//following-sibling::label[contains( .,'"
+                    + strElementoPantallaPago
+                    + "')]//preceding-sibling::input"))
+        .click();
+  }
 
-    if (strPagoSura.equals(PagoConstante.PAGO_SURA)) {
-      rbnPagoSoloSuraSi.waitUntilClickable().click();
-    } else {
-      rbnPagoSoloSuraNo.waitUntilClickable().click();
-    }
+  public void seleccionarPagoSura(String strPagoSura) {
+    obtenerElementoPantallaPago(strPagoSura);
     continuarSiguientePantalla();
   }
 }

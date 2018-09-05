@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.generics;
 
-import com.sura.reclamaciones.models.ReclamacionEmpresariales;
+import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.pages.generics.UbicacionPage;
 import java.util.List;
 import org.fluentlenium.core.annotation.Page;
@@ -9,7 +9,7 @@ public class UbicacionStep {
 
   @Page UbicacionPage ubicacionPage;
 
-  public void seleccionarUbicacion(List<ReclamacionEmpresariales> datosUbicacion) {
+  public void seleccionarUbicacion(List<ReclamacionEmpresarial> datosUbicacion) {
     datosUbicacion.forEach(
         ubicacion -> {
           ubicacionPage.seleccionarUbicacion("Country-inputEl", ubicacion.getPais());

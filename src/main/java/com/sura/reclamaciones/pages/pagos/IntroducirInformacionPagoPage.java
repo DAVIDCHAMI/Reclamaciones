@@ -4,6 +4,7 @@ import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -40,11 +41,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   private WebElementFacade tblElementoLinea;
 
   @FindBy(xpath = "//textarea")
-  private WebElementFacade txtComentario;
+  private WebElementFacade txtComentarioPago;
 
   @FindBy(
-          xpath =
-                  "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
+    xpath =
+        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
   )
   public WebElementFacade lstCodigo;
 
@@ -59,15 +60,16 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     seleccionarOpcionCombobox(strTipoPago);
   }
 
-  public void ingresarComentario(String comentario) {
-    txtComentario.waitUntilClickable().click();
-    txtComentario.sendKeys(comentario);
+  public void ingresarComentario(String strComentario) {
+    txtComentarioPago.waitUntilClickable().click();
+    txtComentarioPago.sendKeys(strComentario);
   }
 
   public double obtenerValorPagoReserva() {
     String strValorReserva = txtValorReserva.getText();
     strValorReserva = strValorReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    Double dblValorReserva = Double.parseDouble(strValorReserva);
+    Double dblValorReserva;
+    dblValorReserva = Double.parseDouble(strValorReserva);
     return dblValorReserva;
   }
 
@@ -79,11 +81,12 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
         elemento -> {
           elemento.click();
           lstCodigo.waitUntilVisible();
-          lstCodigo.findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + elementoEscribir + "')]")).click();
+          lstCodigo.findElement(By.xpath("//li[contains(.,'" + elementoEscribir + "')]")).click();
         });
+    realizarEsperaCarga();
   }
 
-  public void ingresarCantidad(String strTipoPago, String cantidad) {
+  public void ingresarCantidadPago(String strTipoPago, String strCantidadPago) {
     double dblValorReserva = obtenerValorPagoReserva();
     Double dblCalculoVrReserva;
     if (strTipoPago.equals(PagoConstante.TIPO_PAGO)) {
@@ -93,15 +96,14 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
       dblCalculoVrReserva = dblValorReserva;
     }
     List<WebElement> elementoEncontrado =
-            obtenerElementoTablaDatoDesconocido(
-                    tblElementoLinea, strTipoPago, cantidad);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, strTipoPago, strCantidadPago);
     elementoEncontrado.forEach(
-            elemento->{
-              elemento.click();
-              evaluateJavascript(
-                      String.format("$('input[name|=\"Amount\"]').val('%d')", dblCalculoVrReserva.intValue()));
-
-    });
+        elemento -> {
+          elemento.click();
+          evaluateJavascript(
+              String.format(
+                  "$('input[name|=\"Amount\"]').val('%d')", dblCalculoVrReserva.intValue()));
+        });
     continuarSiguientePantalla();
   }
 }

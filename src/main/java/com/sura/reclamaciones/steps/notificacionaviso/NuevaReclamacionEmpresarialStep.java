@@ -2,7 +2,7 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import static com.sura.reclamaciones.constantes.ReclamacionConstante.*;
 
-import com.sura.reclamaciones.models.ReclamacionEmpresariales;
+import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
@@ -29,7 +29,7 @@ public class NuevaReclamacionEmpresarialStep {
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   public void diligenciarInformacionIncidente(
-      List<ReclamacionEmpresariales> datosIncidente, String incidente) {
+      List<ReclamacionEmpresarial> datosIncidente, String incidente) {
     datosIncidente.forEach(
         datos -> {
           informacionReclamacionPage.cerrarReclamosDuplicados();
@@ -55,7 +55,7 @@ public class NuevaReclamacionEmpresarialStep {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
   }
 
-  public void diligenciarInformacionPersonal(List<ReclamacionEmpresariales> datosAutor) {
+  public void diligenciarInformacionPersonal(List<ReclamacionEmpresarial> datosAutor) {
     datosAutor.forEach(
         autor -> {
           informacionBasicaPage.seleccionarAutorReporte();
@@ -85,7 +85,7 @@ public class NuevaReclamacionEmpresarialStep {
         validar.equals(monto));
   }
 
-  public void buscarPolizaEmpresarial(List<ReclamacionEmpresariales> datosPolizaEmpresarial) {
+  public void buscarPolizaEmpresarial(List<ReclamacionEmpresarial> datosPolizaEmpresarial) {
     datosPolizaEmpresarial.forEach(
         poliza -> {
           buscarPolizaPage.seleccionarOpcionBuscarPoliza();
@@ -101,7 +101,7 @@ public class NuevaReclamacionEmpresarialStep {
   }
 
   public void validarReservaDatosFinancieros(
-      List<ReclamacionEmpresariales> datoReserva, String monto) {
+      List<ReclamacionEmpresarial> datoReserva, String monto) {
     datoReserva.forEach(
         reserva -> {
           menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS);
