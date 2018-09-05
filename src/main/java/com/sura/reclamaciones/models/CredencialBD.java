@@ -17,8 +17,8 @@ public class CredencialBD {
   private CredencialBD(Map<String, String> datosUsuario) {
     this.usuario = datosUsuario.get("usuario");
     this.contrasena = datosUsuario.get("contrasena");
-    this.contrasena = datosUsuario.get("URL");
-    this.contrasena = datosUsuario.get("driver");
+    this.URL = datosUsuario.get("URL");
+    this.driver = datosUsuario.get("driver");
   }
 
   public CredencialBD(List<Map<String, String>> datosUsuario) {
