@@ -42,7 +42,7 @@ public class NuevoPagoStep {
           introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
               diligenciador.getTipoBeneficiario());
           introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
-              strMetodoPago, PagoConstante.CUENTA);
+              strMetodoPago, PagoConstante.CUENTA, PagoConstante.SELECCIONAR);
           introducirInformacionBeneficiarioPage.seleccionarPagoSura(strPagoSoloSura);
           introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
           introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
@@ -50,6 +50,8 @@ public class NuevoPagoStep {
           introducirInformacionPagoPage.ingresarCodigoRetencion(
               strCodigoRetencion, PagoConstante.CODIGO_RETENCION);
           introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, PagoConstante.CANTIDAD);
+          establecerInstruccionPagoPage.ingresarFecha();
+          establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
         });
   }
 

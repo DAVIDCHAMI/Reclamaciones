@@ -1,3 +1,0 @@
-id;idFiltro;tipoBeneficiario;comentario;numeroFactura;valorPago
-1;pagoEmpresarial;Asegurado;Este comentarios se realiza con el objetivo de verificar la prueba automatizada para pagos, revisando la longitud permitida por el negocio para la capacidad de caracteres que revisa el campo;283326;150000
-2;pagoEmpresarial;Proveedor;Pruebas de proveedor;457282;220000

@@ -21,10 +21,9 @@ public class RecuperoStep {
 
   @Step
   public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
-    lstRecupero.forEach(
-        menu -> {
-          menuClaimPage.buscarReclamacion(reclamacion, menu.getNumeroReclamacion());
-        });
+    for (Recupero menu : lstRecupero) {
+      menuClaimPage.buscarReclamacion(reclamacion, menu.getNumeroReclamacion());
+    }
   }
 
   public void seleccionarRecupero() {
@@ -55,8 +54,12 @@ public class RecuperoStep {
   public void verificarCreacionRecupero(List<Recupero> lstRecupero) {
     lstRecupero.forEach(
         validador -> {
-          assertTrue(verificacionRecuperoPage.verificarRecupero(validador.getCategoriaRecupero()));
-          assertTrue(verificacionRecuperoPage.verificarRecupero(validador.getEstadoRecupero()));
+          assertTrue(
+              "No coincide la categoria del recupero",
+              verificacionRecuperoPage.verificarRecupero(validador.getCategoriaRecupero()));
+          assertTrue(
+              "No llego a SAP el recupero",
+              verificacionRecuperoPage.verificarRecupero(validador.getEstadoRecupero()));
         });
   }
 }

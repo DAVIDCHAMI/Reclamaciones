@@ -25,18 +25,18 @@ public class EstablecerInstruccionPagoPage extends GeneralPage {
   )
   private WebElementFacade txtNumeroFactura;
 
-  public static String getFechaActual() {
+  public static String obtenerFechaActual() {
     Date fechaActual = new Date();
     SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
     return formateador.format(fechaActual);
   }
 
   public void ingresarFecha() {
-    txtFechaPago.sendKeys(getFechaActual().toString());
+    txtFechaPago.sendKeys(obtenerFechaActual().toString());
   }
 
   public void ingresarNumeroFactura(String strNumeroFactura) {
-    strNumeroFactura = "283633";
-    txtNumeroFactura.selectByValue(strNumeroFactura);
+    txtNumeroFactura.click();
+    txtNumeroFactura.sendKeys(strNumeroFactura);
   }
 }

@@ -127,24 +127,21 @@ public class CreacionRecuperoPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void diligenciarCodigoRetencion(
-      String elementoEscribir, String encabezadoColumnaDevolver) {
+  public void diligenciarCodigoRetencion(String codigoRetencion, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(
-            tblElementoLinea, elementoEscribir, encabezadoColumnaDevolver);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
           lstOpcionesCombobox.waitUntilVisible();
-          seleccionarOpcionCombobox(elementoEscribir);
+          seleccionarOpcionCombobox(codigoRetencion);
         });
     realizarEsperaCarga();
   }
 
   public void diligenciarCantidadRecupero(String montoRecupero, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(
-            tblElementoLinea, montoRecupero, encabezadoColumnaDevolver);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();

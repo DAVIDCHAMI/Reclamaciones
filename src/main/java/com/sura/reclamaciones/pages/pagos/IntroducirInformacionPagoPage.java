@@ -75,15 +75,13 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
 
   public void ingresarCodigoRetencion(String elementoEscribir, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(
-            tblElementoLinea, elementoEscribir, encabezadoColumnaDevolver);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
           lstCodigo.waitUntilVisible();
           lstCodigo.findElement(By.xpath("//li[contains(.,'" + elementoEscribir + "')]")).click();
         });
-    realizarEsperaCarga();
   }
 
   public void ingresarCantidadPago(String strTipoPago, String strCantidadPago) {
@@ -96,7 +94,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
       dblCalculoVrReserva = dblValorReserva;
     }
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblElementoLinea, strTipoPago, strCantidadPago);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();

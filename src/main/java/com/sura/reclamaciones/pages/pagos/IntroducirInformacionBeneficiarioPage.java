@@ -65,12 +65,12 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
     cmbTipoBeneficiario.click();
   }
 
-  public void seleccionarMetodoPago(String strMetodoPago, String strCuenta) {
+  public void seleccionarMetodoPago(String strMetodoPago, String strCuenta, String strSeleccionar) {
     obtenerElementoPantallaPago(strMetodoPago);
     if (strMetodoPago.equals(PagoConstante.TRANSFERENCIA_ELECTRONICA)) {
       List<WebElement> elementoEncontrado =
-          obtenerElementoTablaDatoDesconocido(tblCuentaElectronica, "", strCuenta);
-      elementoEncontrado.get(0).click();
+          obtenerElementoTablaDatoDesconocido(tblCuentaElectronica, strCuenta);
+      elementoEncontrado.get(0).findElement(By.xpath("//a[contains(.,'" + strSeleccionar + "')]")).click();
     }
   }
 

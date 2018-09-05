@@ -10,16 +10,13 @@ public class PagoEmpresarial {
   private String tipoBeneficiario;
   private String comentario;
   private String numeroFactura;
-  private String valorPago;
 
-  public PagoEmpresarial() {
-  }
+  public PagoEmpresarial() {}
 
   private PagoEmpresarial(Map<String, String> datosPagosEmpresariales) {
     this.tipoBeneficiario = datosPagosEmpresariales.get("tipoBeneficiario");
     this.comentario = datosPagosEmpresariales.get("comentario");
     this.numeroFactura = datosPagosEmpresariales.get("numeroFactura");
-    this.valorPago = datosPagosEmpresariales.get("valorPago");
   }
 
   public PagoEmpresarial(List<Map<String, String>> datosPagosEmpresariales) {
@@ -36,10 +33,6 @@ public class PagoEmpresarial {
 
   public String getNumeroFactura() {
     return numeroFactura;
-  }
-
-  public String getValorPago() {
-    return valorPago;
   }
 
   public List<PagoEmpresarial> getLstPago() {
