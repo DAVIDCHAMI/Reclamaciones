@@ -40,13 +40,11 @@ public class ConsultaModeloSimplificadoDefinition {
 
   @Cuando("^la transaccion se ha efectuado$")
   public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
-    credencial = new Credencial(genericStep.getFilasModelo("credencial", "conexionGWBD"));
-    List<Credencial> datosCredencial = credencial.getCredenciales();
-    conexion = conexionBDStep.conectarBaseDatos(datosCredencial);
+    credencial = new Credencial(genericStep.getFilasModelo("credencialBD", "conexionGWBD"));
     tablaModeloSimplificado =
         new TablaModeloSimplificado(
             conexionBDStep.consultarModeloSimplificado(
-                conexion, modeloSimplificado.getlstModeloSimplificado(), movimientoFinanciero));
+                credencial.getCredenciales(), modeloSimplificado.getlstModeloSimplificado(), movimientoFinanciero));
   }
 
   @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")

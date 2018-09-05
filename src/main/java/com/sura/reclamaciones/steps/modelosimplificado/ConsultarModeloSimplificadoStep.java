@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
 import com.sura.reclamaciones.models.Credencial;
+import com.sura.reclamaciones.models.CredencialBD;
 import com.sura.reclamaciones.models.ModeloSimplificado;
 import com.sura.reclamaciones.models.TablaModeloSimplificado;
 import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificado;
@@ -16,26 +17,25 @@ import org.hamcrest.MatcherAssert;
 
 public class ConsultarModeloSimplificadoStep {
 
+  Connection conexion = null;
+
   @Page
   ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
 
   @Step
-  public Connection conectarBaseDatos(List<Credencial> datosCredenciales) {
-    final String[] credencialesUsuarioBD = {String.valueOf(new Object[1])};
-    final String[] credencialesClaveBD = {String.valueOf(new Object[1])};
-    final String[] credencialesUrlBD = {String.valueOf(new Object[1])};
-    datosCredenciales.forEach(credencial -> credencialesUsuarioBD[0] = credencial.getUsuario());
-    datosCredenciales.forEach(credencial -> credencialesClaveBD[0] = credencial.getContrasena());
-    datosCredenciales.forEach(credencial -> credencialesUrlBD[0] = credencial.getUrlBaseDatos());
-    Connection conexion =
-        ConexionBaseDatosUtil.conectarBaseDatos(
-            credencialesUrlBD[0], credencialesUsuarioBD[0], credencialesClaveBD[0]);
+  public Connection conectarBaseDatos(List<CredencialBD> datosCredenciales) {
+    datosCredenciales.forEach(
+        datoCredencial -> {
+          conexion =
+              ConexionBaseDatosUtil.conectarBaseDatos(
+                  datoCredencial.getUsuario(), datoCredencial.getContrasena(), datoCredencial.getURL(), datoCredencial.getDriver());
+        });
     return conexion;
   }
 
-  public List<Map<String, String>> consultarModeloSimplificado(
-      Connection conexionBD, List<ModeloSimplificado> datosTransaccion,
-      String movimientoFinanciero) throws SQLException {
+  public List<Map<String, String>>  consultarModeloSimplificado(
+      List<CredencialBD> credenciales,
+      List<ModeloSimplificado> datosTransaccion, String movimientoFinanciero) throws SQLException {
     final String[] transaccionConsulta = {String.valueOf(new Object[1])};
     String sql = new String();
     if (movimientoFinanciero.equals("Reserva")) {
@@ -54,9 +54,10 @@ public class ConsultarModeloSimplificadoStep {
     }
     datosTransaccion
         .forEach(transaccion -> transaccionConsulta[0] = transaccion.getTransaccion());
+    conexion = conectarBaseDatos(credenciales);
     List<Map<String, String>> resultadoConsulta =
         consultarModeloSimplificado
-            .consultarModeloSimplificado(conexionBD, transaccionConsulta[0], sql);
+            .consultarModeloSimplificado(conexion, transaccionConsulta[0], sql);
     return resultadoConsulta;
   }
 
