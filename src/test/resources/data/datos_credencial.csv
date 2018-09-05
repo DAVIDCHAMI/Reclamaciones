@@ -1,7 +1,5 @@
-id;idFiltro;usuario;contrasena;urlBaseDatos
+id;idFiltro;usuario;contrasena
 1;superUsuario;suragwsu;sura2017
 2;analistaReclamacionEmp;ruthgrar;sura2016
 3;analistaDllo;su;gw
 4;analistaAuto;juantova;sura2016
-5;conexionTablaCuadre;ADM_CUADRERT;yDrTQEa7t
-6;conexionGWBD;GW_CONF;cor3sur4;jdbc:oracle:thin:@clustercsl01:1537/LABGWCC
