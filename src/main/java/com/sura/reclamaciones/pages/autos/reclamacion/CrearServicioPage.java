@@ -19,7 +19,7 @@ public class CrearServicioPage extends GeneralPage {
 
   public void seleccionarProveedor(String nombreProveedor) {
     WebElement btnSeleccionar =
-        obtenerElementoEnListado(
+        obtenerElementoLista(
             tblProveedores, Tablas.CABECERAS_CC, Tablas.REGISTROS_CC, nombreProveedor, "");
     btnSeleccionar.findElement(By.tagName("a")).click();
   }

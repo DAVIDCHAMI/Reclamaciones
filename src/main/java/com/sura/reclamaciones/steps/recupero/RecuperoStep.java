@@ -2,7 +2,6 @@ package com.sura.reclamaciones.steps.recupero;
 
 import static org.junit.Assert.assertTrue;
 
-import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.constantes.RecuperoConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -11,7 +10,6 @@ import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.Steps;
 import org.fluentlenium.core.annotation.Page;
 
 public class RecuperoStep {
@@ -23,13 +21,11 @@ public class RecuperoStep {
 
   @Step
   public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
-      lstRecupero.forEach(
-              menu->{
-                  menuClaimPage.seleccionarOpcionMenuPrimerNivel(reclamacion);
-                  menuClaimPage.buscarReclamacion(menu.getNumeroReclamacion());
-
-
-              });
+    lstRecupero.forEach(
+        menu -> {
+          menuClaimPage.seleccionarOpcionMenuPrimerNivel(reclamacion);
+          menuClaimPage.buscarReclamacion(menu.getNumeroReclamacion());
+        });
   }
 
   public void seleccionarRecupero() {

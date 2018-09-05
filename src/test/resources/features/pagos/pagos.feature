@@ -8,8 +8,8 @@ Característica: Notificacion de aviso de una reclamacion
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | numeroReclamacion  | producto                 | lineaReserva   |tipoPago  | beneficiarioPago           | metodoPago       | soloSura  | codigoRetencion    |
-      | 9180000014929      | Multiriesgo corporativo  | si             | final    |PINTORES S.A. CQLII II      | transferencia    | si        | 0018               |
-      | 9180000015675      | Multiriesgo corporativo  | no             | parcial  |Jose Alfredo Martinez       | caja sura        | no        | 0020               |
+      | numeroReclamacion  | producto                 | lineaReserva                                                                                               |tipoPago  | beneficiarioPago                       | metodoPago       | soloSura  | codigoRetencion    |
+      | 9180000014929      | Multiriesgo corporativo  |(1) 1ª partePropiedad - JOSE ALFREDO MARTINEZ HERRERA CQLII; Costo de reclamación/Daños materiales; COP     | Final    |JOSE ALFREDO MARTINEZ HERRERA CQLII     | transferencia    | Sí        | 0018               |
+      | 9180000015675      | Multiriesgo corporativo  |(1) 1ª partePropiedad - JOSE ALFREDO MARTINEZ HERRERA CQLII; Costo de reclamación/Daños materiales; COP     | Parcial  |JOSE ALFREDO MARTINEZ HERRERA CQLII     | caja sura        | No       | 0020               |
 
 

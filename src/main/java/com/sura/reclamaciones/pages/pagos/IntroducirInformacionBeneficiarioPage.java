@@ -1,9 +1,13 @@
 package com.sura.reclamaciones.pages.pagos;
 
+import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
@@ -53,35 +57,46 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   )
   private WebElementFacade rbnPagoSoloSuraNo;
 
+  @FindBy(xpath = "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:contactEFTLVid:ContactEFTSAPCheckLV']")
+  private  WebElementFacade tblCuentaElectronica;
+
   public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
-    cmbNombreBeneficiario.selectByValue(strNombreBeneficiario);
+    cmbNombreBeneficiario.click();
+    seleccionarOpcionCombobox(strNombreBeneficiario);
   }
 
   public void seleccionarTipoBeneficiario(String strTipoBeneficiario) {
-    strTipoBeneficiario = "Proveedor";
-    cmbTipoBeneficiario.selectByValue(strTipoBeneficiario);
+    cmbTipoBeneficiario.waitUntilClickable().click();
+    cmbTipoBeneficiario.sendKeys(strTipoBeneficiario);
+    cmbTipoBeneficiario.click();
   }
 
-  public void seleccionarMetodoPago(String strMetodoPago) {
+  public void seleccionarMetodoPago(String strMetodoPago, String strCuenta) {
 
     switch (strMetodoPago) {
-      case "transferencia":
-        rbnTransferenciaElectronica.click();
+      case PagoConstante.TRANSFERENCIA_ELECTRONICA:
+        rbnTransferenciaElectronica.waitUntilClickable().click();
+        List<WebElement> elementoEncontrado =
+                obtenerElementoTablaDatoDesconocido(
+                        tblCuentaElectronica, "", strCuenta);
+        elementoEncontrado.get(0).click();
         break;
-      case "pago por banco":
-        rbnPagoBanco.click();
+      case PagoConstante.PAGO_BANCO:
+        rbnPagoBanco.waitUntilClickable().click();
         break;
-      case "caja sura":
-        rbnPagoCajaSura.click();
+      case PagoConstante.CAJA_SURA:
+        rbnPagoCajaSura.waitUntilClickable().click();
         break;
     }
   }
 
   public void seleccionarPagoSura(String strPagoSura) {
 
-    if (strPagoSura == "si") {
-      rbnPagoSoloSuraSi.click();
+    if (strPagoSura.equals(PagoConstante.PAGO_SURA)) {
+      rbnPagoSoloSuraSi.waitUntilClickable().click();
+    } else {
+      rbnPagoSoloSuraNo.waitUntilClickable().click();
     }
-    rbnPagoSoloSuraNo.click();
+    continuarSiguientePantalla();
   }
 }

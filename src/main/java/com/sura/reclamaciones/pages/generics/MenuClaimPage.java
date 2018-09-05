@@ -27,14 +27,14 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = "//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
   WebElementFacade mnuBuscar;
 
-  @FindBy(xpath = "//div[@id='TabBar:ClaimTab:ClaimTab_FindClaim_Button']")
-  WebElementFacade btnBuscar;
+  @FindBy(xpath = "//span[@id='Claim:ClaimMenuActions-btnIconEl']")
+  WebElementFacade btnAcciones;
 
-  @FindBy(xpath = " //div[@class='x-panel x-columnmenu x-layer x-panel-default x-menu x-menu-plain x-border-box']")
+  @FindBy(xpath = "//div[@class='x-css-shadow'][1]")
   WebElementFacade mnuPanelOpciones;
 
-  @FindBy(xpath = "//span[@id ='Claim:ClaimMenuActions-btnInnerEl']")
-  private WebElementFacade btnAcciones;
+  @FindBy(xpath = "//div[@id='TabBar:ClaimTab:ClaimTab_FindClaim_Button']")
+  WebElementFacade btnBuscar;
 
   private String selectOpcion =
       "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
@@ -46,7 +46,8 @@ public class MenuClaimPage extends GeneralPage {
 
   public void seleccionarOpcionMenuPrimerNivel(String nombreOpcion) {
     mnuPrimerNivel
-            .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]")).sendKeys(Keys.ARROW_DOWN);
+        .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
+        .sendKeys(Keys.ARROW_DOWN);
   }
 
   public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
@@ -87,14 +88,18 @@ public class MenuClaimPage extends GeneralPage {
   public void buscarReclamacion(String strReclamacion) {
     mnuBuscar.click();
     mnuBuscar.typeAndEnter(strReclamacion);
-
+    realizarEsperaCarga();
   }
 
   public void seleccionarOpcionMenuAccionesPrimerNivel(String nombreOpcion) {
     btnAcciones.waitUntilVisible().click();
-    mnuPanelOpciones.findElement(By.xpath(
-            "//span[@class='x-menu-item-text')][contains(text(),'"+ nombreOpcion + "')]"));
-    mnuPanelOpciones.click();
+    mnuPanelOpciones
+        .findElement(
+            By.xpath(
+                "//span[contains(@class,'x-menu-item-text')][contains(text(),'"
+                    + nombreOpcion
+                    + "')]"))
+        .click();
+    realizarEsperaCarga();
   }
-
 }

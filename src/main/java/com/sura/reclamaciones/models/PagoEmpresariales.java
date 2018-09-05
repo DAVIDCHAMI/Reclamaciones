@@ -8,7 +8,7 @@ public class PagoEmpresariales {
 
   private List<PagoEmpresariales> lstPagoEmpresariales = new ArrayList<>();
   private String tipoBeneficiario;
-  private String comentarios;
+  private String comentario;
   private String numeroFactura;
   private String valorPago;
 
@@ -16,7 +16,7 @@ public class PagoEmpresariales {
 
   private PagoEmpresariales(Map<String, String> datosPagosEmpresariales) {
     this.tipoBeneficiario = datosPagosEmpresariales.get("tipoBeneficiario");
-    this.comentarios = datosPagosEmpresariales.get("comentario");
+    this.comentario = datosPagosEmpresariales.get("comentario");
     this.numeroFactura = datosPagosEmpresariales.get("numeroFactura");
     this.valorPago = datosPagosEmpresariales.get("valorPago");
   }
@@ -29,8 +29,8 @@ public class PagoEmpresariales {
     return tipoBeneficiario;
   }
 
-  public String getComentarios() {
-    return comentarios;
+  public String getComentario() {
+    return comentario;
   }
 
   public String getNumeroFactura() {

@@ -1,14 +1,11 @@
 package com.sura.reclamaciones.pages.recupero;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class MenuRecuperoPage extends GeneralPage {
-
-
 
   public MenuRecuperoPage(WebDriver driver) {
     super(driver);
@@ -33,7 +30,6 @@ public class MenuRecuperoPage extends GeneralPage {
   private WebElementFacade mnuRecuperos;
 
   public void ingresarMenuRecupero() {
-    realizarEsperaCarga();
     btnAcciones.waitUntilClickable();
     btnAcciones.click();
     mnuOtros.waitUntilClickable();
