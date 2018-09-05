@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TablaCuadre {
+public class TablaCuadreBD {
   private String numeroPoliza;
   private String referencia;
   private String ramo;
@@ -14,13 +14,13 @@ public class TablaCuadre {
   private String estado;
   private String fechaContabilizacion;
   private String fechaCreacion;
-  private List<TablaCuadre> lstTablaCuadreBD = new ArrayList<>();
+  private List<TablaCuadreBD> lstTablaCuadreBD = new ArrayList<>();
 
-  public TablaCuadre() {
+  public TablaCuadreBD() {
     super();
   }
 
-  private TablaCuadre(Map<String, String> datosCuadre) {
+  private TablaCuadreBD(Map<String, String> datosCuadre) {
     this.numeroPoliza = datosCuadre.get("CDPOLIZA");
     this.referencia = datosCuadre.get("CDMOVIMIENTO");
     this.ramo = datosCuadre.get("CDRAMO");
@@ -32,7 +32,7 @@ public class TablaCuadre {
     this.fechaCreacion = datosCuadre.get("FEDOCUMENTO");
   }
 
-  public TablaCuadre(List<Map<String, String>> datosTablaCuadre) {
+  public TablaCuadreBD(List<Map<String, String>> datosTablaCuadre) {
     asignarDatos(datosTablaCuadre);
   }
 
@@ -72,13 +72,13 @@ public class TablaCuadre {
     return anulacion;
   }
 
-  public List<TablaCuadre> getLstTablaCuadreBD() {
+  public List<TablaCuadreBD> getLstTablaCuadreBD() {
     return lstTablaCuadreBD;
   }
 
   private void asignarDatos(List<Map<String, String>> datosTablaCuadre) {
     for (Map<String, String> dato : datosTablaCuadre) {
-      lstTablaCuadreBD.add(new TablaCuadre(dato));
+      lstTablaCuadreBD.add(new TablaCuadreBD(dato));
     }
   }
 }

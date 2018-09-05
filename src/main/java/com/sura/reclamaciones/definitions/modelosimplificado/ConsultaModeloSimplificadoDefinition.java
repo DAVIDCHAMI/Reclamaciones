@@ -35,9 +35,10 @@ public class ConsultaModeloSimplificadoDefinition {
 
   @Cuando("^la transaccion se ha efectuado$")
   public void ejecutarConsultaModeloSimplificado() throws SQLException {
-    rs =
-        conexionBDSteps.consultarModeloSimplificado(
-            conexion, modeloSimplificado.getlstModeloSimplificado());
+    /**
+     * rs = conexionBDSteps.consultarModeloSimplificado( conexion,
+     * modeloSimplificado.getlstModeloSimplificado());*
+     */
   }
 
   @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")

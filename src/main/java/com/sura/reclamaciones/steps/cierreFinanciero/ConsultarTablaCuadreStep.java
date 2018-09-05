@@ -2,7 +2,8 @@ package com.sura.reclamaciones.steps.cierreFinanciero;
 
 import com.sura.reclamaciones.DAO.ConsultarTablaCuadre;
 import com.sura.reclamaciones.models.Credencial;
-import com.sura.reclamaciones.models.TablaCuadre;
+import com.sura.reclamaciones.models.CredencialBD;
+import com.sura.reclamaciones.models.TablaCuadreBD;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,17 +12,19 @@ import java.util.List;
 public class ConsultarTablaCuadreStep {
   Connection conexion = null;
   ConsultarTablaCuadre consultarTablaCuadre = new ConsultarTablaCuadre();
-  TablaCuadre tablaCuadre;
+  TablaCuadreBD tablaCuadreBD;
 
-
-  public void consultarMovimiento(String numeroTransacion, List<Credencial> credenciales)
+  public TablaCuadreBD consultarMovimiento(String numeroTransacion, List<CredencialBD> credenciales)
       throws SQLException {
     credenciales.forEach(
         datoCredencial -> {
           conexion =
               ConexionBaseDatosUtil.conectarBaseDatos(
-                  datoCredencial.getUsuario(), datoCredencial.getContrasena());
+                  datoCredencial.getUsuario(), datoCredencial.getContrasena(), datoCredencial.getURL(), datoCredencial.getDriver());
         });
-    tablaCuadre =  new TablaCuadre(consultarTablaCuadre.consultarTransaccion(conexion, numeroTransacion));
+    return tablaCuadreBD =
+        new TablaCuadreBD(consultarTablaCuadre.consultarTransaccion(conexion, numeroTransacion));
   }
+
+  public void verificarDatos(List<TablaCuadreBD> lstTablaCuadreBD) {}
 }
