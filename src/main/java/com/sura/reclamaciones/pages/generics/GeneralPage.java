@@ -24,19 +24,22 @@ public class GeneralPage extends PageObject {
   public WebElementFacade lstOpcionesCombobox;
 
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
-  WebElementFacade pgrBarCarga;
+  private WebElementFacade pgrBarCarga;
 
   @FindBy(xpath = ".//span[contains(@id,'Next-btnInnerEl')]")
   private WebElementFacade btnSiguiente;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
-  WebElementFacade btnAceptar;
+  private WebElementFacade btnAceptar;
+
+  @FindBy(xpath = ".//span[contains(@id,'Finish-btnInnerEl')]")
+  private WebElementFacade btnFinalizar;
 
   @FindBy(
     xpath =
         "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
   )
-  WebElementFacade txtTransacciones;
+  private WebElementFacade txtTransacciones;
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -113,6 +116,12 @@ public class GeneralPage extends PageObject {
   public void continuarSiguientePantalla() {
     btnSiguiente.waitUntilClickable();
     btnSiguiente.click();
+    realizarEsperaCarga();
+  }
+
+  public void finalizarProceso() {
+    btnFinalizar.waitUntilClickable();
+    btnFinalizar.click();
     realizarEsperaCarga();
   }
 

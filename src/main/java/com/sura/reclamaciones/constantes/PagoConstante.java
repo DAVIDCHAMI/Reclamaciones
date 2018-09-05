@@ -8,5 +8,5 @@ public class PagoConstante {
   public static final String CODIGO_RETENCION = "Código de retención";
   public static final String CANTIDAD = "Cantidad";
   public static final String CUENTA = "";
-  public static final String SELECCIONAR= "Seleccionar";
+  public static final String SELECCIONAR = "Seleccionar";
 }

@@ -49,6 +49,9 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   )
   public WebElementFacade lstCodigo;
 
+  @FindBy(xpath = ".//span[contains(@id,'Next-btnInnerEl')]")
+  private WebElementFacade btnSiguiente;
+
   public void seleccionarLineaReserva(String strLineaReserva) {
     cmbLineaReserva.waitUntilClickable().click();
     seleccionarOpcionCombobox(strLineaReserva);
@@ -73,15 +76,16 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     return dblValorReserva;
   }
 
-  public void ingresarCodigoRetencion(String elementoEscribir, String encabezadoColumnaDevolver) {
+  public void ingresarCodigoRetencion(String strCodigoRetencion, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
           lstCodigo.waitUntilVisible();
-          lstCodigo.findElement(By.xpath("//li[contains(.,'" + elementoEscribir + "')]")).click();
+          lstCodigo.findElement(By.xpath("//li[contains(.,'" + strCodigoRetencion + "')]")).click();
         });
+    realizarEsperaCarga();
   }
 
   public void ingresarCantidadPago(String strTipoPago, String strCantidadPago) {

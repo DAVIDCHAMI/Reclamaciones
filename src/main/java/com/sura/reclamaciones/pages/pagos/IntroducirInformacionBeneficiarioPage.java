@@ -61,8 +61,9 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
   public void seleccionarTipoBeneficiario(String strTipoBeneficiario) {
     cmbTipoBeneficiario.waitUntilClickable().click();
-    cmbTipoBeneficiario.sendKeys(strTipoBeneficiario);
-    cmbTipoBeneficiario.click();
+    cmbTipoBeneficiario
+        .findElement(By.xpath("//li[contains(.,'" + strTipoBeneficiario + "')]"))
+        .click();
   }
 
   public void seleccionarMetodoPago(String strMetodoPago, String strCuenta, String strSeleccionar) {
@@ -70,11 +71,17 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
     if (strMetodoPago.equals(PagoConstante.TRANSFERENCIA_ELECTRONICA)) {
       List<WebElement> elementoEncontrado =
           obtenerElementoTablaDatoDesconocido(tblCuentaElectronica, strCuenta);
-      elementoEncontrado.get(0).findElement(By.xpath("//a[contains(.,'" + strSeleccionar + "')]")).click();
+      elementoEncontrado
+          .get(0)
+          .findElement(By.xpath("//a[contains(.,'" + strSeleccionar + "')]"))
+          .click();
     }
+    realizarEsperaCarga();
   }
 
   public void obtenerElementoPantallaPago(String strElementoPantallaPago) {
+
+    rbnPago.waitUntilClickable();
     rbnPago
         .findElement(
             By.xpath(
@@ -85,6 +92,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   }
 
   public void seleccionarPagoSura(String strPagoSura) {
+    rbnPago.waitUntilClickable();
     obtenerElementoPantallaPago(strPagoSura);
     continuarSiguientePantalla();
   }

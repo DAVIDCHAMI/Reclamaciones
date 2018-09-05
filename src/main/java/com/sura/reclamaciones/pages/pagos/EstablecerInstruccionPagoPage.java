@@ -21,13 +21,13 @@ public class EstablecerInstruccionPagoPage extends GeneralPage {
 
   @FindBy(
     xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_DateOfService-inputEl']"
+        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_InvoiceNumber-inputEl']"
   )
   private WebElementFacade txtNumeroFactura;
 
   public static String obtenerFechaActual() {
     Date fechaActual = new Date();
-    SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
     return formateador.format(fechaActual);
   }
 
@@ -38,5 +38,6 @@ public class EstablecerInstruccionPagoPage extends GeneralPage {
   public void ingresarNumeroFactura(String strNumeroFactura) {
     txtNumeroFactura.click();
     txtNumeroFactura.sendKeys(strNumeroFactura);
+    finalizarProceso();
   }
 }
