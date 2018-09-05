@@ -2,11 +2,13 @@ package com.sura.reclamaciones.querys;
 
 public enum Query {
   SqlModeloSimplificadoReserva(
-      "select CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT from ADM_GWCC.CCX_RESERVEDENORM_EXT where transactionid in ?"),
+      "select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT from ADM_GWCC.CCX_RESERVEDENORM_EXT where REFERENCE in ?"),
   SqlModeloSimplificadoRecupero(
-      "select CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT  from ADM_GWCC.CCX_RECOVERYDENORM_EXT where transactionid in ?"),
+      "select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT  from ADM_GWCC.CCX_RECOVERYDENORM_EXT where REFERENCE in ?"),
   SqlModeloSimplificadoPago(
-      "select CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT,AMOUNT from ADM_GWCC.CCX_CHECKDENORM_EXT where transactionid in ?");
+      "select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT,AMOUNT from ADM_GWCC.CCX_CHECKDENORM_EXT where reference in ?"),
+  SqlModeloSimplificadoAnulacionPago(
+      "select REFERENCE, CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT  from ADM_GWCC.CCX_CHECKDENORM_EXT where ANNULMENT= 'S' AND reference in ?");
 
   private String consultaSql;
 

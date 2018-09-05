@@ -13,15 +13,17 @@ public class ConsultarTablaCuadreStep {
   ConsultarTablaCuadre consultarTablaCuadre = new ConsultarTablaCuadre();
   TablaCuadre tablaCuadre;
 
-
   public void consultarMovimiento(String numeroTransacion, List<Credencial> credenciales)
       throws SQLException {
     credenciales.forEach(
         datoCredencial -> {
           conexion =
               ConexionBaseDatosUtil.conectarBaseDatos(
-                  datoCredencial.getUsuario(), datoCredencial.getContrasena());
+                  datoCredencial.getUrlBaseDatos(),
+                  datoCredencial.getUsuario(),
+                  datoCredencial.getContrasena());
         });
-    tablaCuadre =  new TablaCuadre(consultarTablaCuadre.consultarTransaccion(conexion, numeroTransacion));
+    tablaCuadre =
+        new TablaCuadre(consultarTablaCuadre.consultarTransaccion(conexion, numeroTransacion));
   }
 }

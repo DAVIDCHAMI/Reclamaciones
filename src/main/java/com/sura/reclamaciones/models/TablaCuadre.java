@@ -13,11 +13,11 @@ public class TablaCuadre {
   private String fechaCreacion;
   private List<TablaCuadre> lstTablaCuadre = new ArrayList<>();
 
-  public TablaCuadre(){
+  public TablaCuadre() {
     super();
   }
 
-  private TablaCuadre(Map<String, String> datosCuadre){
+  private TablaCuadre(Map<String, String> datosCuadre) {
     this.referencia = datosCuadre.get("");
     this.tipoMovimiento = datosCuadre.get("");
     this.estado = datosCuadre.get("");
@@ -26,7 +26,7 @@ public class TablaCuadre {
     this.fechaCreacion = datosCuadre.get("");
   }
 
-  public TablaCuadre(List<Map<String, String>> datosTablaCuadre){
+  public TablaCuadre(List<Map<String, String>> datosTablaCuadre) {
     asignarDatos(datosTablaCuadre);
   }
 
@@ -55,7 +55,7 @@ public class TablaCuadre {
   }
 
   private void asignarDatos(List<Map<String, String>> datosTablaCuadre) {
-    for(Map<String, String> dato : datosTablaCuadre){
+    for (Map<String, String> dato : datosTablaCuadre) {
       lstTablaCuadre.add(new TablaCuadre(dato));
     }
   }

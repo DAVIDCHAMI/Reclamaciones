@@ -8,6 +8,7 @@ public class Credencial {
 
   private String usuario;
   private String contrasena;
+  private String urlBaseDatos;
   private List<Credencial> credenciales = new ArrayList<>();
 
   public Credencial() {}
@@ -15,6 +16,7 @@ public class Credencial {
   private Credencial(Map<String, String> datosUsuario) {
     this.usuario = datosUsuario.get("usuario");
     this.contrasena = datosUsuario.get("contrasena");
+    this.urlBaseDatos = datosUsuario.get("urlBaseDatos");
   }
 
   public Credencial(List<Map<String, String>> datosUsuario) {
@@ -27,6 +29,10 @@ public class Credencial {
 
   public String getContrasena() {
     return contrasena;
+  }
+
+  public String getUrlBaseDatos() {
+    return urlBaseDatos;
   }
 
   public List<Credencial> getCredenciales() {

@@ -8,30 +8,26 @@ import java.util.Map;
 
 public class ConsultarTablaCuadre {
 
-
-    public List<Map<String, String>> consultarTransaccion(Connection conexion, String numeroTransacion)
-            throws SQLException {
-        int uno = 1;
-k
-
-        PreparedStatement stmt = conexion.prepareStatement(sql);
-        stmt.setString(uno, numeroTransacion);
-        stmt.setString(dos, numeroPoliza);
-
-        ResultSet rs = stmt.executeQuery();
-        ResultSetMetaData md = rs.getMetaData();
-        int columnas = md.getColumnCount();
-        List<Map<String, String>> lstFila = new ArrayList<Map<String, String>>();
-        while (rs.next()) {
-            Map<String, String> fila = new HashMap<String, String>(columnas);
-            for (int i = 1; i <= columnas; ++i) {
-                fila.put(md.getColumnName(i), rs.getString(i));
-            }
-            lstFila.add(fila);
-        }
-        rs.close();
-        stmt.close();
-        conexion.close();
-        return lstFila;
+  public List<Map<String, String>> consultarTransaccion(
+      Connection conexion, String numeroTransacion) throws SQLException {
+    int uno = 1;
+    String sql = "";
+    PreparedStatement stmt = conexion.prepareStatement(sql);
+    stmt.setString(uno, numeroTransacion);
+    ResultSet rs = stmt.executeQuery();
+    ResultSetMetaData md = rs.getMetaData();
+    int columnas = md.getColumnCount();
+    List<Map<String, String>> lstFila = new ArrayList<Map<String, String>>();
+    while (rs.next()) {
+      Map<String, String> fila = new HashMap<String, String>(columnas);
+      for (int i = 1; i <= columnas; ++i) {
+        fila.put(md.getColumnName(i), rs.getString(i));
+      }
+      lstFila.add(fila);
     }
+    rs.close();
+    stmt.close();
+    conexion.close();
+    return lstFila;
+  }
 }
