@@ -1,62 +1,83 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
+import com.sura.reclamaciones.models.Credencial;
 import com.sura.reclamaciones.models.ModeloSimplificado;
+import com.sura.reclamaciones.models.TablaModeloSimplificado;
 import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificado;
+import com.sura.reclamaciones.querys.Query;
+import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
 
 public class ConsultarModeloSimplificadoStep {
 
-  @Page ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
+  @Page
+  ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
 
   @Step
-  /**
-   * public Connection conectarBaseDatos(List<Credencial> credenciales) throws SQLException {
-   * credenciales.forEach( datocredencial -> { Connection conexion = null; return conexion =
-   * ConexionBaseDatosUtil.conectarBaseDatos(datocredencial.getUsuario(),datocredencial.getContrasena());
-   * }); }*
-   */
-  public ResultSet consultarModeloSimplificado(
-      Connection conexionBD, List<ModeloSimplificado> datosTransaccion) throws SQLException {
+  public Connection conectarBaseDatos(List<Credencial> datosCredenciales) {
+    final String[] credencialesUsuarioBD = {String.valueOf(new Object[1])};
+    final String[] credencialesClaveBD = {String.valueOf(new Object[1])};
+    final String[] credencialesUrlBD = {String.valueOf(new Object[1])};
+    datosCredenciales.forEach(credencial -> credencialesUsuarioBD[0] = credencial.getUsuario());
+    datosCredenciales.forEach(credencial -> credencialesClaveBD[0] = credencial.getContrasena());
+    datosCredenciales.forEach(credencial -> credencialesUrlBD[0] = credencial.getUrlBaseDatos());
+    Connection conexion =
+        ConexionBaseDatosUtil.conectarBaseDatos(
+            credencialesUrlBD[0], credencialesUsuarioBD[0], credencialesClaveBD[0]);
+    return conexion;
+  }
+
+  public List<Map<String, String>> consultarModeloSimplificado(
+      Connection conexionBD, List<ModeloSimplificado> datosTransaccion,
+      String movimientoFinanciero) throws SQLException {
     final String[] transaccionConsulta = {String.valueOf(new Object[1])};
-    datosTransaccion.forEach(transaccion -> transaccionConsulta[0] = transaccion.getTransaccion());
-    ResultSet resultSet =
-        consultarModeloSimplificado.consultarModeloSimplificado(conexionBD, transaccionConsulta[0]);
-    return resultSet;
+    String sql = new String();
+    if (movimientoFinanciero.equals("Reserva")) {
+      Query sqlConsulta = Query.SqlModeloSimplificadoReserva;
+      sql = sqlConsulta.getConsultaSql();
+    } else if (movimientoFinanciero.equals("Pago")) {
+      Query sqlConsulta = Query.SqlModeloSimplificadoPago;
+      sql = sqlConsulta.getConsultaSql();
+    } else if ((movimientoFinanciero.equals("Recupero")) || (movimientoFinanciero
+        .equals("AnulacionRecupero"))) {
+      Query sqlConsulta = Query.SqlModeloSimplificadoRecupero;
+      sql = sqlConsulta.getConsultaSql();
+    } else if (movimientoFinanciero.equals("AnulacionPago")) {
+      Query sqlConsulta = Query.SqlModeloSimplificadoAnulacionPago;
+      sql = sqlConsulta.getConsultaSql();
+    }
+    datosTransaccion
+        .forEach(transaccion -> transaccionConsulta[0] = transaccion.getTransaccion());
+    List<Map<String, String>> resultadoConsulta =
+        consultarModeloSimplificado
+            .consultarModeloSimplificado(conexionBD, transaccionConsulta[0], sql);
+    return resultadoConsulta;
   }
 
   public void verficarConsultaModeloSimplificado(
-      ResultSet rs, List<ModeloSimplificado> datosTransaccion) throws SQLException {
-    /**
-     * List<String> registroTransaccion = llenarLista(rs); String
-     * valorPagarReaseguradoresModeloSimplificado = registroTransaccion.get(1); String
-     * valorNetoTransaccionConsultaModeloSimplificado = registroTransaccion.get(2); String
-     * valorTransaccionConsultaModeloSimplificado = registroTransaccion.get(3);
-     * datosTransaccion.forEach( dato -> { String valorTransaccionCalculado =
-     * dato.getValorTransaccion(); String valorNetoTransaccionCalculado = dato.getValorNeto();
-     * String valorPagarReaseguradoresCalculado = dato.getValorCedidoReaseguradoras();
-     * MatcherAssert.assertThat( "No coninciden los datos del valor de la transacción",
-     * valorTransaccionConsultaModeloSimplificado.equals(valorTransaccionCalculado));
-     * MatcherAssert.assertThat( "No coninciden los datos del valor neto de la transacción",
-     * valorNetoTransaccionConsultaModeloSimplificado.equals(valorNetoTransaccionCalculado));
-     * MatcherAssert.assertThat( "No coninciden los datos del valor a pagar a los reaseguradores",
-     * valorPagarReaseguradoresModeloSimplificado.equals(valorPagarReaseguradoresCalculado)); });*
-     */
-  }
-
-  public List<String> llenarLista(ResultSet rs) throws SQLException {
-    List<String> fila = new ArrayList<String>();
-    while (rs.next()) {
-      for (int y = 1; y <= rs.getMetaData().getColumnCount(); y++) {
-        String dato = rs.getString(y);
-        fila.add(y - 1, dato);
+      List<TablaModeloSimplificado> resultadoConsulta, List<ModeloSimplificado> datosTransaccion) {
+    for (TablaModeloSimplificado resultadoBaseDatos : resultadoConsulta) {
+      for (ModeloSimplificado resultadoCalculado : datosTransaccion) {
+        MatcherAssert.assertThat(
+            "No coincide el valor cedido a las reaseguradoras",
+            resultadoBaseDatos
+                .getValorCedidoReaseguradoras()
+                .equals(resultadoCalculado.getValorCedidoReaseguradoras()));
+        MatcherAssert.assertThat(
+            "No coincide el valor neto de la transacción",
+            resultadoBaseDatos.getValorNeto().equals(resultadoCalculado.getValorNeto()));
+        MatcherAssert.assertThat(
+            "No coincide el valor de la transacción",
+            resultadoBaseDatos
+                .getValorTransaccion()
+                .equals(resultadoCalculado.getValorTransaccion()));
       }
     }
-    return fila;
   }
 }

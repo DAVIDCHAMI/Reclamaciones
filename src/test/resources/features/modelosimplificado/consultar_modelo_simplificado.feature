@@ -12,7 +12,9 @@ Característica: Consulta a modelo simplificado
     Entonces en las fuentes del tablero deben quedar correctos los valores de reaseguro
 
     Ejemplos:
-      | tipoTransaccion  |
-      | Reserva          |
-      | Pago             |
-      | Recupero         |
+      | tipoTransaccion   |
+      | Reserva           |
+      | Pago              |
+      | Recupero          |
+      | AnulacionPago     |
+      | AnulacionRecupero |
