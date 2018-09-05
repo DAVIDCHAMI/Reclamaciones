@@ -59,7 +59,7 @@ public class ConsultarModeloSimplificadoStep {
             .consultarModeloSimplificado(conexion, transaccionConsulta, sql);
     return resultadoConsulta;
   }
-  
+
   public void verficarConsultaModeloSimplificado1(
       List<ModeloSimplificadoBD> resultadoConsulta, List<ModeloSimplificado> datosTransaccion) {
     for (ModeloSimplificadoBD resultadoBaseDatos : resultadoConsulta) {
