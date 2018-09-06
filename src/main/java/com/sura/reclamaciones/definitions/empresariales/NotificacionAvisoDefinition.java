@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
+
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.*;
@@ -18,8 +20,9 @@ public class NotificacionAvisoDefinition {
   public void buscarPoliza(String tipoCobertura) throws Throwable {
     reclamo =
         new ReclamacionEmpresariales(
-            genericStep.getFilasModelo("reclamacion_empresarial", "escenarioAvisoEmpresariales"));
-    nuevaReclamacionStep.seleccionarNuevaReclamacion("Re", "Nueva");
+            genericStep.getFilasModelo("reclamacion_empresarial", "AvisoEmpresariales"));
+    nuevaReclamacionStep.seleccionarNuevaReclamacion(
+        MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     nuevaReclamacionStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
   }
 
