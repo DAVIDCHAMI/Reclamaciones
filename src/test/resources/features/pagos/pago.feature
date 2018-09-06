@@ -9,7 +9,7 @@ Característica: Notificacion de aviso de una reclamacion
 
     Ejemplos:
       | numeroReclamacion  | producto                 | lineaReserva                                                                                               |tipoPago  | beneficiarioPago                       | metodoPago       | soloSura  | codigoRetencion    |
-      | 9180000014929      | Multiriesgo corporativo  |(1) 1ª partePropiedad - JOSE ALFREDO MARTINEZ HERRERA CQLII; Costo de reclamación/Daños materiales; COP     | Final    |JOSE ALFREDO MARTINEZ HERRERA CQLII     | Transferencia    | Sí        | 0018               |
-      | 9180000015675      | Multiriesgo corporativo  |(1) 1ª partePropiedad - JOSE ALFREDO MARTINEZ HERRERA CQLII; Costo de reclamación/Daños materiales; COP     | Parcial  |JOSE ALFREDO MARTINEZ HERRERA CQLII     | Caja Sura        | No        | 0020               |
+      | 9180000014929      | Multiriesgo corporativo  |(1) 1ª partePropiedad - JOSE ALFREDO MARTINEZ HERRERA CQLII; Costo de reclamación/Daños materiales; COP     | Parcial    |JOSE ALFREDO MARTINEZ HERRERA CQLII     | Transferencia    | Sí        | 0018               |
+      | 9180000015675      | Multiriesgo corporativo  |(1) 1ª partePropiedad - JOSE ALFREDO MARTINEZ HERRERA CQLII; Costo de reclamación/Daños materiales; COP     | Final      |JOSE ALFREDO MARTINEZ HERRERA CQLII     | Caja Sura        | No        | 0020               |
 
 

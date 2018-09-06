@@ -122,8 +122,7 @@ public class GeneralPage extends PageObject {
   public void finalizarProceso() {
     btnFinalizar.waitUntilClickable();
     btnFinalizar.click();
-    realizarEsperaCarga();
-  }
+   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
       WebElementFacade elemento, String encabezadoColumnaDevolver) {
