@@ -28,9 +28,11 @@ public class AjusteReservaPage extends GeneralPage {
   @FindBy(xpath = "//span[@id='NewReserveSet:NewReserveSetScreen:Update-btnInnerEl']")
   WebElementFacade btnGuardarAjusteReserva;
 
-  @FindBy(xpath = "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
+  @FindBy(
+    xpath =
+        "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
+  )
   WebElementFacade btnCerrarAdvertencia;
-
 
   @Page MenuClaimPage menuClaimPage;
 
@@ -62,8 +64,8 @@ public class AjusteReservaPage extends GeneralPage {
         });
   }
 
-  public void cerrarAdvertenciaLimiteAgregado(){
-    if(btnCerrarAdvertencia.isVisible()){
+  public void cerrarAdvertenciaLimiteAgregado() {
+    if (btnCerrarAdvertencia.isVisible()) {
       btnCerrarAdvertencia.click();
       realizarEsperaCarga();
       btnGuardarAjusteReserva.click();
