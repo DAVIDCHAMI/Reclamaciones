@@ -18,7 +18,7 @@ public class ReversionConstitucionDefinition {
 
   @Dado("^que se genera un siniestro del producto (.*)$")
   public void consultarReserva(String producto) throws Throwable {
-    reserva = new Reserva(genericStep.getFilasModelo(RESERVA_CSV, RESERVA_ID_FILTRO));
+    reserva = new Reserva(genericStep.getFilasModelo(RESERVA, REVERSION_CONSTITUCION));
     reversionConstitucionStep.consultarReclamacion(reserva.getLstReclamo());
   }
 
@@ -29,5 +29,7 @@ public class ReversionConstitucionDefinition {
 
   @Entonces(
       "^se obtiene una reversión de constitución y el deducible es generado por un valor (.*)$")
-  public void verificarReversionConstitucion(String deducible) {}
+  public void verificarReversionConstitucion(String deducible) {
+    //To Do
+  }
 }

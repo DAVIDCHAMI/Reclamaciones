@@ -18,7 +18,7 @@ public class AjusteReservaPage extends GeneralPage {
   WebElementFacade chkLineaReserva;
 
   @FindBy(xpath = "//span[@id='NewReserveSet:NewReserveSetScreen:Remove-btnInnerEl']")
-  WebElementFacade btnQuitar;
+  WebElementFacade btnQuitarLineaReserva;
 
   @FindBy(
     xpath = "//div[@id='NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV']"
@@ -44,7 +44,7 @@ public class AjusteReservaPage extends GeneralPage {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
     if (chkLineaReserva.isVisible()) {
       chkLineaReserva.click();
-      btnQuitar.waitUntilClickable().click();
+      btnQuitarLineaReserva.waitUntilClickable().click();
     }
   }
 
@@ -69,7 +69,6 @@ public class AjusteReservaPage extends GeneralPage {
       btnCerrarAdvertencia.click();
       realizarEsperaCarga();
       btnGuardarAjusteReserva.click();
-      realizarEsperaCarga();
     }
   }
 
