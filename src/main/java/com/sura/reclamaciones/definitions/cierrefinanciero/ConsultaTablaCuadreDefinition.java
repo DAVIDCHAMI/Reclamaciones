@@ -6,11 +6,10 @@ import com.sura.reclamaciones.steps.cierreFinanciero.ConsultarTablaCuadreStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
-import net.thucydides.core.annotations.Steps;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import net.thucydides.core.annotations.Steps;
 
 public class ConsultaTablaCuadreDefinition {
 
@@ -18,8 +17,7 @@ public class ConsultaTablaCuadreDefinition {
 
   TablaCuadreBD lstTablaCuadreBD;
 
-  @Steps
-  CredencialBD credencialBD;
+  @Steps CredencialBD credencialBD;
 
   @Steps GenericStep genericStep;
 
@@ -27,7 +25,8 @@ public class ConsultaTablaCuadreDefinition {
 
   @Cuando("^se genera un movimiento financiero de tipo (.*)$")
   public void consultarTransaccionBD(String tipoMovimiento) throws SQLException, IOException {
-    credencialBD = new CredencialBD(genericStep.getFilasModelo("credencialBD", "conexionTablaCuadre"));
+    credencialBD =
+        new CredencialBD(genericStep.getFilasModelo("credencialBD", "conexionTablaCuadre"));
     String numeroTransacion = "CC:3635014";
     lstTablaCuadreBD =
         consultarTablaCuadreStep.consultarMovimiento(

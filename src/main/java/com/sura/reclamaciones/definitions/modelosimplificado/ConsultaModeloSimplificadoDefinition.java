@@ -19,8 +19,7 @@ public class ConsultaModeloSimplificadoDefinition {
 
   String movimientoFinanciero;
 
-  @Steps
-  CredencialBD credencial;
+  @Steps CredencialBD credencial;
 
   @Steps ModeloSimplificado modeloSimplificado;
 
@@ -31,25 +30,28 @@ public class ConsultaModeloSimplificadoDefinition {
   ModeloSimplificadoBD modeloSimplificadoBD;
 
   @Dado("^que se realiza un (.*)$")
-  public void realizarConexionModeloSimplificado(String transaccionFinanciera) throws IOException {
-    movimientoFinanciero= transaccionFinanciera;
+  public void realizarConexionModeloSimplificado(String movimientoFinanciero) throws IOException {
+    this.movimientoFinanciero = movimientoFinanciero;
     modeloSimplificado =
         new ModeloSimplificado(
-            genericStep.getFilasModelo("reaseguro_modelo_simplificado", transaccionFinanciera));
+            genericStep.getFilasModelo("reaseguro_modelo_simplificado", movimientoFinanciero));
   }
 
   @Cuando("^la transaccion se ha efectuado$")
   public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
-    credencial = new CredencialBD (genericStep.getFilasModelo("credencialBD", "conexionGWBD"));
+    credencial = new CredencialBD(genericStep.getFilasModelo("credencialBD", "conexionGWBD"));
     modeloSimplificadoBD =
         new ModeloSimplificadoBD(
             conexionBDStep.consultarModeloSimplificado(
-                credencial.getCredenciales(), modeloSimplificado.getlstModeloSimplificado(), movimientoFinanciero));
+                credencial.getCredenciales(),
+                modeloSimplificado.getlstModeloSimplificado(),
+                movimientoFinanciero));
   }
 
   @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
   public void obtenerDatosModeloSimplificado() {
     conexionBDStep.verficarConsultaModeloSimplificado(
-        modeloSimplificadoBD.getLstModeloSimplificadoBD(), modeloSimplificado.getlstModeloSimplificado());
+        modeloSimplificadoBD.getLstModeloSimplificadoBD(),
+        modeloSimplificado.getlstModeloSimplificado());
   }
 }

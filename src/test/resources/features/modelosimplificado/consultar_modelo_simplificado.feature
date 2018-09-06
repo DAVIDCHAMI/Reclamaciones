@@ -7,14 +7,14 @@ Característica: Consulta a modelo simplificado
 
   @claims
   Esquema del escenario: Consulta base de datos modelo simplificado
-    Dado que se realiza un <tipoTransaccion>
+    Dado que se realiza un <movimientoFinanciero>
     Cuando la transaccion se ha efectuado
     Entonces en las fuentes del tablero deben quedar correctos los valores de reaseguro
 
     Ejemplos:
-      | tipoTransaccion   |
-      | AnulacionPago     |
-      | Pago              |
-      | Recupero          |
-      | Reserva           |
-      | AnulacionRecupero |
+      | movimientoFinanciero   |
+      | AnulacionPago          |
+      | Pago                   |
+      | Recupero               |
+      | Reserva                |
+      | AnulacionRecupero      |

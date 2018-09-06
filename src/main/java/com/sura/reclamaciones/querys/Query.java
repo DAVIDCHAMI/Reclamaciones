@@ -6,9 +6,7 @@ public enum Query {
   SqlModeloSimplificadoRecupero(
       "select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT  from ADM_GWCC.CCX_RECOVERYDENORM_EXT where REFERENCE in ?"),
   SqlModeloSimplificadoPago(
-      "select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT,AMOUNT from ADM_GWCC.CCX_CHECKDENORM_EXT where reference in ?"),
-  SqlModeloSimplificadoAnulacionPago(
-      "select REFERENCE, CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT  from ADM_GWCC.CCX_CHECKDENORM_EXT where ANNULMENT= 'S' AND reference in ?");
+      "select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT,AMOUNT from ADM_GWCC.CCX_CHECKDENORM_EXT where reference in ?");
 
   private String consultaSql;
 

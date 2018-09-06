@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
+import com.sura.reclamaciones.constantes.ModeloSimplificadoConstante;
 import com.sura.reclamaciones.models.CredencialBD;
 import com.sura.reclamaciones.models.ModeloSimplificado;
 import com.sura.reclamaciones.models.ModeloSimplificadoBD;
@@ -18,67 +19,52 @@ public class ConsultarModeloSimplificadoStep {
 
   Connection conexion = null;
   String transaccionConsulta = null;
+  Query sqlConsulta = null;
+  String sql = new String();
+  List<Map<String, String>> resultadoConsulta = null;
 
-  @Page
-  ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
+  @Page ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
 
   @Step
   public Connection conectarBaseDatos(List<CredencialBD> datosCredenciales) {
     datosCredenciales.forEach(
-        datoCredencial -> {
-          conexion =
-              ConexionBaseDatosUtil.conectarBaseDatos(
-                  datoCredencial.getUsuario(), datoCredencial.getContrasena(),
-                  datoCredencial.getURL(), datoCredencial.getDriver());
-        });
+        datoCredencial ->
+            conexion =
+                ConexionBaseDatosUtil.conectarBaseDatos(
+                    datoCredencial.getUsuario(), datoCredencial.getContrasena(),
+                    datoCredencial.getURL(), datoCredencial.getDriver()));
     return conexion;
   }
 
   public List<Map<String, String>> consultarModeloSimplificado(
       List<CredencialBD> credenciales,
-      List<ModeloSimplificado> datosTransaccion, String movimientoFinanciero) throws SQLException {
-    String sql = new String();
-    if (movimientoFinanciero.equals("Reserva")) {
-      Query sqlConsulta = Query.SqlModeloSimplificadoReserva;
-      sql = sqlConsulta.getConsultaSql();
-    } else if (movimientoFinanciero.equals("Pago") || (movimientoFinanciero
-        .equals("AnulacionPago"))) {
-      Query sqlConsulta = Query.SqlModeloSimplificadoPago;
-      sql = sqlConsulta.getConsultaSql();
-    } else if ((movimientoFinanciero.equals("Recupero")) || (movimientoFinanciero
-        .equals("AnulacionRecupero"))) {
-      Query sqlConsulta = Query.SqlModeloSimplificadoRecupero;
-      sql = sqlConsulta.getConsultaSql();
+      List<ModeloSimplificado> datosTransaccion,
+      String movimientoFinanciero)
+      throws SQLException {
+    switch (movimientoFinanciero) {
+      case ModeloSimplificadoConstante.RESERVA:
+        sqlConsulta = Query.SqlModeloSimplificadoReserva;
+        sql = sqlConsulta.getConsultaSql();
+        break;
+      case (ModeloSimplificadoConstante.PAGO):
+      case ModeloSimplificadoConstante.ANULACION_PAGO:
+        sqlConsulta = Query.SqlModeloSimplificadoPago;
+        sql = sqlConsulta.getConsultaSql();
+        break;
+      case ModeloSimplificadoConstante.RECUPERO:
+      case ModeloSimplificadoConstante.ANULACION_RECUPERO:
+        sqlConsulta = Query.SqlModeloSimplificadoRecupero;
+        sql = sqlConsulta.getConsultaSql();
+        break;
+      default:
+        sqlConsulta = null;
     }
-    datosTransaccion.forEach(datoTransaccion -> {
-      transaccionConsulta = datoTransaccion.getTransaccion();
-    });
+    datosTransaccion.forEach(
+        datoTransaccion -> transaccionConsulta = datoTransaccion.getTransaccion());
     conexion = conectarBaseDatos(credenciales);
-    List<Map<String, String>> resultadoConsulta =
-        consultarModeloSimplificado
-            .consultarModeloSimplificado(conexion, transaccionConsulta, sql);
+    resultadoConsulta =
+        consultarModeloSimplificado.consultarModeloSimplificado(conexion, transaccionConsulta, sql);
     return resultadoConsulta;
-  }
-
-  public void verficarConsultaModeloSimplificado1(
-      List<ModeloSimplificadoBD> resultadoConsulta, List<ModeloSimplificado> datosTransaccion) {
-    for (ModeloSimplificadoBD resultadoBaseDatos : resultadoConsulta) {
-      for (ModeloSimplificado resultadoCalculado : datosTransaccion) {
-        MatcherAssert.assertThat(
-            "No coincide el valor cedido a las reaseguradoras",
-            resultadoBaseDatos
-                .getValorCedidoReaseguradoras()
-                .equals(resultadoCalculado.getValorCedidoReaseguradoras()));
-        MatcherAssert.assertThat(
-            "No coincide el valor neto de la transacción",
-            resultadoBaseDatos.getValorNeto().equals(resultadoCalculado.getValorNeto()));
-        MatcherAssert.assertThat(
-            "No coincide el valor de la transacción",
-            resultadoBaseDatos
-                .getValorTransaccion()
-                .equals(resultadoCalculado.getValorTransaccion()));
-      }
-    }
   }
 
   public void verficarConsultaModeloSimplificado(
@@ -88,14 +74,15 @@ public class ConsultarModeloSimplificadoStep {
       ModeloSimplificado resultadoCalculado = datosTransaccion.get(i);
       MatcherAssert.assertThat(
           "No coincide el valor cedido a las reaseguradoras",
-          resultadoBD.getValorCedidoReaseguradoras()
+          resultadoBD
+              .getValorCedidoReaseguradoras()
               .equals(resultadoCalculado.getValorCedidoReaseguradoras()));
       MatcherAssert.assertThat(
           "No coincide el valor neto",
           resultadoBD.getValorNeto().equals(resultadoCalculado.getValorNeto()));
       MatcherAssert.assertThat(
           "No coincide el valor Transacción",
-          resultadoBD.getValorTransaccion().equals(resultadoCalculado.getValorTransaccion()));
+          resultadoBD.getValorMovimientoFinanciero().equals(resultadoCalculado.getValorMovimientoFinanciero()));
     }
   }
 }

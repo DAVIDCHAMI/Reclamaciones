@@ -13,10 +13,10 @@ import java.util.Map;
 public class ConsultarModeloSimplificado {
 
   public List<Map<String, String>> consultarModeloSimplificado(
-      Connection conexionBD, String numeroTransaccion, String sql) throws SQLException {
+      Connection conexionBD, String numeroMovimientoFinanciero, String sql) throws SQLException {
     PreparedStatement stmt = null;
     stmt = conexionBD.prepareStatement(sql);
-    stmt.setString(1, numeroTransaccion);
+    stmt.setString(1, numeroMovimientoFinanciero);
     ResultSet rs = stmt.executeQuery();
     ResultSetMetaData md = rs.getMetaData();
     int columnas = md.getColumnCount();

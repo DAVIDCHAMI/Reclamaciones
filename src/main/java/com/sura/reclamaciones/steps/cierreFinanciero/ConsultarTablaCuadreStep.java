@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.steps.cierreFinanciero;
 
 import com.sura.reclamaciones.DAO.ConsultarTablaCuadre;
-import com.sura.reclamaciones.models.Credencial;
 import com.sura.reclamaciones.models.CredencialBD;
 import com.sura.reclamaciones.models.TablaCuadreBD;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
@@ -20,7 +19,10 @@ public class ConsultarTablaCuadreStep {
         datoCredencial -> {
           conexion =
               ConexionBaseDatosUtil.conectarBaseDatos(
-                  datoCredencial.getUsuario(), datoCredencial.getContrasena(), datoCredencial.getURL(), datoCredencial.getDriver());
+                  datoCredencial.getUsuario(),
+                  datoCredencial.getContrasena(),
+                  datoCredencial.getURL(),
+                  datoCredencial.getDriver());
         });
     return tablaCuadreBD =
         new TablaCuadreBD(consultarTablaCuadre.consultarTransaccion(conexion, numeroTransacion));

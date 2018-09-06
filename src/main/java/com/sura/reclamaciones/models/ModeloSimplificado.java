@@ -6,19 +6,19 @@ import java.util.Map;
 
 public class ModeloSimplificado {
 
-  private String numeroTransaccion;
+  private String numeroMovimientoFinanciero;
   private String numeroReclamacion;
   private String valorCedidoReaseguradoras;
   private String valorNeto;
-  private String valorTransaccion;
+  private String valorMovimientoFinanciero;
 
   private List<ModeloSimplificado> lstModeloSimplificado = new ArrayList<>();
 
   public ModeloSimplificado(Map<String, String> datosModeloSimplificado) {
     super();
     this.numeroReclamacion = datosModeloSimplificado.get("numeroReclamacion");
-    this.numeroTransaccion = datosModeloSimplificado.get("numeroTransaccion");
-    this.valorTransaccion = datosModeloSimplificado.get("valorTransaccion");
+    this.numeroMovimientoFinanciero = datosModeloSimplificado.get("numeroMovimientoFinanciero");
+    this.valorMovimientoFinanciero = datosModeloSimplificado.get("valorMovimientoFinanciero");
     this.valorCedidoReaseguradoras = datosModeloSimplificado.get("valorCedidoReaseguradoras");
     this.valorNeto = datosModeloSimplificado.get("valorNeto");
   }
@@ -30,11 +30,11 @@ public class ModeloSimplificado {
   public ModeloSimplificado() {}
 
   public String getTransaccion() {
-    return numeroTransaccion;
+    return numeroMovimientoFinanciero;
   }
 
-  public String getValorTransaccion() {
-    return valorTransaccion;
+  public String getValorMovimientoFinanciero() {
+    return valorMovimientoFinanciero;
   }
 
   public String getValorCedidoReaseguradoras() {
@@ -45,7 +45,9 @@ public class ModeloSimplificado {
     return valorNeto;
   }
 
-  public String getNumeroReclamacion() { return numeroReclamacion; }
+  public String getNumeroReclamacion() {
+    return numeroReclamacion;
+  }
 
   public List<ModeloSimplificado> getlstModeloSimplificado() {
     return lstModeloSimplificado;
