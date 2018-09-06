@@ -4,12 +4,11 @@ import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class BuscarPolizaPage extends GeneralPage {
-  private String selectOpcion = "//li[.='COMODIN']";
-  private String auxSelectOpcion = "";
+  private String lstTipoDocumento = "//li[.='COMODIN']";
+  private String auxTipoDocumento = "";
 
   @FindBy(
     xpath =
@@ -57,11 +56,7 @@ public class BuscarPolizaPage extends GeneralPage {
     super(driver);
   }
 
-  public void elemento(String nombreElemento) {
-    $("#new-todo").type(nombreElemento).then().sendKeys(Keys.ENTER);
-  }
-
-  public void opcionBuscarPoliza() {
+  public void seleccionarOpcionBuscarPoliza() {
     rbtBuscarPoliza.waitUntilVisible();
     rbtBuscarPoliza.click();
   }
@@ -74,8 +69,8 @@ public class BuscarPolizaPage extends GeneralPage {
   public void seleccionarTipoDocumento(String tipoDocumento) {
     mnuTipoDocumento.waitUntilVisible();
     mnuTipoDocumento.click();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, tipoDocumento);
-    $(auxSelectOpcion).click();
+    auxTipoDocumento = lstTipoDocumento.replace(ConstanteGlobal.COMODIN, tipoDocumento);
+    $(auxTipoDocumento).click();
   }
 
   public void escribirNumeroDocumento(String numDocumento) {

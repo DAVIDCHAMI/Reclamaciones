@@ -1,5 +1,8 @@
 package com.sura.reclamaciones.pages.generics;
 
+import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
+import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
+
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,10 +21,10 @@ public class GeneralPage extends PageObject {
     xpath =
         "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul"
   )
-  private WebElementFacade lstOpcionesCombobox;
+  public WebElementFacade lstOpcionesCombobox;
 
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
-  WebElementFacade pruebaLoader;
+  WebElementFacade pgrBarCarga;
 
   @FindBy(xpath = "//span[@id='FNOLWizard:Next-btnInnerEl']")
   private WebElementFacade btnSiguiente;
@@ -93,7 +96,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void realizarEsperaCarga() {
-    pruebaLoader.waitUntilPresent().waitUntilNotVisible();
+    pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
   }
 
   public void aceptarOpcion() {
@@ -105,5 +108,17 @@ public class GeneralPage extends PageObject {
     btnSiguiente.waitUntilClickable();
     btnSiguiente.click();
     realizarEsperaCarga();
+  }
+
+  public List<WebElement> obtenerElementoTablaDatoDesconocido(
+      WebElementFacade elemento, String elementoEscribir, String encabezadoColumnaDevolver) {
+    List<String> cabeceraRecuperos = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
+    int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + 1;
+    List<WebElement> elementoEncontrado = obtenerFilasDeUnaTabla(elemento, REGISTROS_CC);
+    return elementoEncontrado
+        .stream()
+        .map(
+            fila -> fila.findElement(By.xpath(String.format("./td[%d]/div", posicionDatoDevolver))))
+        .collect(Collectors.toList());
   }
 }

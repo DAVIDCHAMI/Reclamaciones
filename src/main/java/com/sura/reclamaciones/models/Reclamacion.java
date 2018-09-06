@@ -8,6 +8,7 @@ public abstract class Reclamacion {
   private String numPoliza;
   private String fechaSiniestro;
   private String lugar;
+  private String reservaTransaccion;
 
   public Reclamacion() {}
 
@@ -17,6 +18,7 @@ public abstract class Reclamacion {
     this.tipoPoliza = datosReclamacion.get("tipoPoliza");
     this.numPoliza = datosReclamacion.get("numPoliza");
     this.lugar = datosReclamacion.get("lugar");
+    this.reservaTransaccion = datosReclamacion.get("reservaTransaccion");
   }
 
   public String getOrigen() {
@@ -37,5 +39,9 @@ public abstract class Reclamacion {
 
   public String getLugar() {
     return lugar;
+  }
+
+  public String getReservaTransaccion() {
+    return reservaTransaccion;
   }
 }

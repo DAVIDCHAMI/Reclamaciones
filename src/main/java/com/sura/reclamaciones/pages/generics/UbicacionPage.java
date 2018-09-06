@@ -1,9 +1,11 @@
 package com.sura.reclamaciones.pages.generics;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class UbicacionPage extends GeneralPage {
 
@@ -25,8 +27,11 @@ public class UbicacionPage extends GeneralPage {
   )
   private WebElementFacade txtCiudad;
 
-  private String seleccionOpcion = "//li[.='COMODIN']";
-  private String lblSeleccionOpcion = "";
+  @FindBy(xpath = "//input[@id]")
+  private List<WebElement> mnmUbicacion;
+
+  private String lstUbicacion = "//li[.='COMODIN']";
+  private String auxLstUbicacion = "";
 
   public UbicacionPage(WebDriver driver) {
     super(driver);
@@ -35,15 +40,15 @@ public class UbicacionPage extends GeneralPage {
   public void seleccionarPais(String pais) {
     mnuPais.waitUntilVisible();
     mnuPais.click();
-    lblSeleccionOpcion = seleccionOpcion.replace(ConstanteGlobal.COMODIN, pais);
-    $(lblSeleccionOpcion).click();
+    auxLstUbicacion = lstUbicacion.replace(ConstanteGlobal.COMODIN, pais);
+    $(auxLstUbicacion).click();
   }
 
   public void seleccionarDepartamento(String departamento) {
     mnuDepartamento.waitUntilVisible();
     mnuDepartamento.click();
-    lblSeleccionOpcion = seleccionOpcion.replace(ConstanteGlobal.COMODIN, departamento);
-    $(lblSeleccionOpcion).click();
+    auxLstUbicacion = lstUbicacion.replace(ConstanteGlobal.COMODIN, departamento);
+    $(auxLstUbicacion).click();
   }
 
   public void seleccionarCiudad(String ciudad) {
@@ -51,5 +56,16 @@ public class UbicacionPage extends GeneralPage {
     realizarEsperaCarga();
     txtCiudad.clear();
     txtCiudad.type(ciudad);
+  }
+
+  public void seleccionarUbicacion(String etiqueta, String ubicacion) {
+    for (int i = 0; i < mnmUbicacion.size(); i++) {
+      if (mnmUbicacion.get(i).getAttribute("outerHTML").contains(ubicacion)) {
+        mnmUbicacion.get(i).click();
+        break;
+      }
+    }
+    auxLstUbicacion = lstUbicacion.replace(ConstanteGlobal.COMODIN, ubicacion);
+    $(auxLstUbicacion).click();
   }
 }

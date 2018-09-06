@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.definitions.notificacionaviso;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
+
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.*;
@@ -18,8 +20,9 @@ public class NotificacionAvisoDefinition {
   public void buscarPoliza(String tipoCobertura) throws Throwable {
     reclamo =
         new ReclamacionEmpresariales(
-            genericStep.getFilasModelo("reclamacion_empresarial", "escenarioEmpresariales"));
-    nuevaReclamacionStep.seleccionarNuevaReclamacion("Re", "Nueva");
+            genericStep.getFilasModelo("reclamacion_empresarial", "AvisoEmpresariales"));
+    nuevaReclamacionStep.seleccionarNuevaReclamacion(
+        MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     nuevaReclamacionStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
   }
 
@@ -40,7 +43,7 @@ public class NotificacionAvisoDefinition {
   @Entonces("^se obtiene una reclamacion que (.*) genera exposicion$")
   public void verificarExposicion(String exposicion) {
     reclamo.getLstReclamo();
-    nuevaReclamacionStep.validarReclamacion(reclamo.getLstReclamo());
+    nuevaReclamacionStep.validarReclamacion();
     nuevaReclamacionStep.visualizarResumenReclamacion();
     nuevaReclamacionStep.validarExposicionVisualizada(exposicion);
   }
@@ -49,6 +52,6 @@ public class NotificacionAvisoDefinition {
   public void verificarReserva(String reserva, String monto) {
     reclamo.getLstReclamo();
     nuevaReclamacionStep.validarReservaVisualizada(monto);
-    //nuevaReclamacionStep.validarReservaTransaccion(ReclamacionConstante.DATOS_FINANCIEROS,ReclamacionConstante.TRANSACCIONES,reclamo.getLstReclamo());
+    nuevaReclamacionStep.validarReservaDatosFinancieros(reclamo.getLstReclamo(), monto);
   }
 }

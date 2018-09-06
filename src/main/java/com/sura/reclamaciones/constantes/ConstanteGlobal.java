@@ -6,4 +6,6 @@ public class ConstanteGlobal {
   public static final String DESARROLLO = "dllo";
   public static final String SI = "si";
   public static final String NO = "no";
+  public static final String MONTO_2000000 = "2000000";
+  public static final String MONTO_0 = "0";
 }
