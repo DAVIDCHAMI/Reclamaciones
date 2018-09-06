@@ -43,7 +43,9 @@ public class TablaModeloSimplificado {
     return valorTransaccion;
   }
 
-  public String getNumeroTransaccion() { return numeroTransaccion; }
+  public String getNumeroTransaccion() {
+    return numeroTransaccion;
+  }
 
   public List<TablaModeloSimplificado> getLstTablaModeloSimplificado() {
     return lstTablaModeloSimplificado;

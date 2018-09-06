@@ -14,9 +14,7 @@ public class ConsultarTablaCuadre {
     String sql = "SELECT * from CUADRERT.TRTD_MENSAJES MSJ\n" + "WHERE MSJ.CDMOVIMIENTO = ?";
     PreparedStatement stmt = conexion.prepareStatement(sql);
     stmt.setString(uno, numeroTransacion);
-
     ResultSet rs = stmt.executeQuery();
-
     ResultSetMetaData md = rs.getMetaData();
     int columnas = md.getColumnCount();
     List<Map<String, String>> lstFila = new ArrayList<Map<String, String>>();

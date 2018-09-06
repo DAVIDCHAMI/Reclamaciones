@@ -45,7 +45,9 @@ public class ModeloSimplificado {
     return valorNeto;
   }
 
-  public String getNumeroReclamacion() { return numeroReclamacion; }
+  public String getNumeroReclamacion() {
+    return numeroReclamacion;
+  }
 
   public List<ModeloSimplificado> getlstModeloSimplificado() {
     return lstModeloSimplificado;
