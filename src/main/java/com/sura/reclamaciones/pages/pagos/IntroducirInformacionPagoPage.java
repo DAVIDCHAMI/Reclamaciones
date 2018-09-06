@@ -93,7 +93,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     Double dblCalculoVrReserva;
     if (strTipoPago.equals(PagoConstante.TIPO_PAGO)) {
       dblCalculoVrReserva = 0.2 * dblValorReserva;
-
     } else {
       dblCalculoVrReserva = dblValorReserva;
     }

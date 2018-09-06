@@ -28,7 +28,7 @@ public class VerificacionRecuperoPage extends GeneralPage {
       btnCambioPagina.waitUntilClickable();
       btnCambioPagina.click();
     }
-    waitFor(2);
+    waitFor(2);//to do:
     getDriver().navigate().refresh();
     tblVerificacionRecupero.waitUntilVisible();
     List<WebElement> lstFilaRecupero = tblVerificacionRecupero.findElements(By.tagName("td"));

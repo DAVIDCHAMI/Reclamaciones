@@ -27,26 +27,8 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   )
   private WebElementFacade cmbTipoBeneficiario;
 
-  @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PaymentMethod_option1-inputEl']"
-  )
-  private WebElementFacade rbnTransferenciaElectronica;
-
-  @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PaymentMethod_option2-inputEl']"
-  )
-  private WebElementFacade rbnPagoBanco;
-
-  @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PaymentMethod_option3-inputEl']"
-  )
-  private WebElementFacade rbnPagoCajaSura;
-
   @FindBy(xpath = "//input[contains(@class, 'x-form-field x-form-radio x-form-cb')]")
-  private WebElementFacade rbnPago;
+  private WebElementFacade rbtPago;
 
   @FindBy(
     xpath =
@@ -81,8 +63,8 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
   public void obtenerElementoPantallaPago(String strElementoPantallaPago) {
 
-    rbnPago.waitUntilClickable();
-    rbnPago
+    rbtPago.waitUntilClickable();
+    rbtPago
         .findElement(
             By.xpath(
                 "//following-sibling::label[contains( .,'"
@@ -92,7 +74,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   }
 
   public void seleccionarPagoSura(String strPagoSura) {
-    rbnPago.waitUntilClickable();
+    rbtPago.waitUntilClickable();
     obtenerElementoPantallaPago(strPagoSura);
   }
 }
