@@ -24,6 +24,18 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = " //div[@id='westPanel-innerCt']")
   WebElementFacade mnuLateralPrimerNivel;
 
+  @FindBy(xpath = "//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
+  WebElementFacade mnuBuscar;
+
+  @FindBy(xpath = "//span[@id='Claim:ClaimMenuActions-btnIconEl']")
+  WebElementFacade btnAcciones;
+
+  @FindBy(xpath = "//div[@class='x-css-shadow'][1]")
+  WebElementFacade mnuPanelOpciones;
+
+  @FindBy(xpath = "//div[@id='TabBar:ClaimTab:ClaimTab_FindClaim_Button']")
+  WebElementFacade btnBuscar;
+
   private String selectOpcion =
       "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
   private String auxSelectOpcion = "";
@@ -33,8 +45,9 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuPrimerNivel(String nombreOpcion) {
-    mnuPrimerNivel.findElement(By.xpath("//span[contains(text(), '" + nombreOpcion + "')]"));
-    mnuPrimerNivel.click();
+    mnuPrimerNivel
+        .findElement(By.xpath(String.format(".//a[contains(.,'%s')]", nombreOpcion)))
+        .sendKeys(Keys.ARROW_DOWN);
   }
 
   public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
@@ -70,5 +83,24 @@ public class MenuClaimPage extends GeneralPage {
     realizarEsperaCarga();
     auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, subItem);
     $(auxSelectOpcion).waitUntilVisible().click();
+  }
+
+  public void buscarReclamacion(String strOpcionMenu, String strReclamacion) {
+    seleccionarOpcionMenuPrimerNivel(strOpcionMenu);
+    mnuBuscar.click();
+    mnuBuscar.typeAndEnter(strReclamacion);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarOpcionMenuAccionesPrimerNivel(String nombreOpcion) {
+    btnAcciones.waitUntilVisible().click();
+    mnuPanelOpciones
+        .findElement(
+            By.xpath(
+                "//span[contains(@class,'x-menu-item-text')][contains(text(),'"
+                    + nombreOpcion
+                    + "')]"))
+        .click();
+    realizarEsperaCarga();
   }
 }

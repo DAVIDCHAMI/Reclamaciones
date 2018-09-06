@@ -24,13 +24,22 @@ public class GeneralPage extends PageObject {
   public WebElementFacade lstOpcionesCombobox;
 
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
-  WebElementFacade pgrBarCarga;
+  private WebElementFacade pgrBarCarga;
 
-  @FindBy(xpath = "//span[@id='FNOLWizard:Next-btnInnerEl']")
+  @FindBy(xpath = "//a[@id='NormalCreateCheckWizard:Next']")
   private WebElementFacade btnSiguiente;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
-  WebElementFacade btnAceptar;
+  private WebElementFacade btnAceptar;
+
+  @FindBy(xpath = ".//span[contains(@id,'Finish-btnInnerEl')]")
+  private WebElementFacade btnFinalizar;
+
+  @FindBy(
+    xpath =
+        "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
+  )
+  private WebElementFacade txtTransacciones;
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -61,7 +70,7 @@ public class GeneralPage extends PageObject {
         .collect(Collectors.toList());
   }
 
-  public WebElement obtenerElementoDeColumnaEnTabla(
+  public WebElement obtenerElementoColumnaTabla(
       WebElementFacade elementoTabla,
       Tablas enumRegistroTabla,
       String datoEnFilaABuscar,
@@ -75,7 +84,7 @@ public class GeneralPage extends PageObject {
         .get();
   }
 
-  public List<WebElement> obtenerFilasDeUnaTabla(
+  public List<WebElement> obtenerFilasTabla(
       WebElementFacade elementoTabla, Tablas enumRegistroTabla) {
     return elementoTabla
         .findElements(By.xpath(enumRegistroTabla.getXpath()))
@@ -83,7 +92,7 @@ public class GeneralPage extends PageObject {
         .collect(Collectors.toList());
   }
 
-  public WebElement obtenerElementoEnListado(
+  public WebElement obtenerElementoLista(
       WebElementFacade elemento,
       Tablas cabeceras,
       Tablas registros,
@@ -91,7 +100,7 @@ public class GeneralPage extends PageObject {
       String columnaADevolver) {
     List<String> cabeceraFacturarCargos = obtenerCabecerasDeUnaTabla(elemento, cabeceras);
     int posicionDatoADevolver = cabeceraFacturarCargos.indexOf(columnaADevolver) + 1;
-    return obtenerElementoDeColumnaEnTabla(
+    return obtenerElementoColumnaTabla(
         elemento, registros, datoEnFilaABuscar, posicionDatoADevolver);
   }
 
@@ -110,15 +119,26 @@ public class GeneralPage extends PageObject {
     realizarEsperaCarga();
   }
 
+  public void finalizarProceso() {
+    btnFinalizar.waitUntilClickable();
+    btnFinalizar.click();
+    realizarEsperaCarga();
+  }
+
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
-      WebElementFacade elemento, String elementoEscribir, String encabezadoColumnaDevolver) {
+      WebElementFacade elemento, String encabezadoColumnaDevolver) {
     List<String> cabeceraRecuperos = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
     int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + 1;
-    List<WebElement> elementoEncontrado = obtenerFilasDeUnaTabla(elemento, REGISTROS_CC);
+    List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
     return elementoEncontrado
         .stream()
         .map(
             fila -> fila.findElement(By.xpath(String.format("./td[%d]/div", posicionDatoDevolver))))
         .collect(Collectors.toList());
+  }
+
+  public void seleccionarTipoTransaccion(String tipoTransaccion) {
+    txtTransacciones.waitUntilClickable().click();
+    seleccionarOpcionCombobox(tipoTransaccion);
   }
 }
