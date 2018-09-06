@@ -2,7 +2,7 @@ package com.sura.reclamaciones.definitions.modelosimplificado;
 
 import com.sura.reclamaciones.models.CredencialBD;
 import com.sura.reclamaciones.models.ModeloSimplificado;
-import com.sura.reclamaciones.models.TablaModeloSimplificado;
+import com.sura.reclamaciones.models.ModeloSimplificadoBD;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.modelosimplificado.ConsultarModeloSimplificadoStep;
 import cucumber.api.java.ast.Cuando;
@@ -19,7 +19,8 @@ public class ConsultaModeloSimplificadoDefinition {
 
   String movimientoFinanciero;
 
-  @Steps CredencialBD credencial;
+  @Steps
+  CredencialBD credencial;
 
   @Steps ModeloSimplificado modeloSimplificado;
 
@@ -27,11 +28,11 @@ public class ConsultaModeloSimplificadoDefinition {
 
   @Steps ConsultarModeloSimplificadoStep conexionBDStep;
 
-  TablaModeloSimplificado tablaModeloSimplificado;
+  ModeloSimplificadoBD modeloSimplificadoBD;
 
   @Dado("^que se realiza un (.*)$")
   public void realizarConexionModeloSimplificado(String transaccionFinanciera) throws IOException {
-    movimientoFinanciero = transaccionFinanciera;
+    movimientoFinanciero= transaccionFinanciera;
     modeloSimplificado =
         new ModeloSimplificado(
             genericStep.getFilasModelo("reaseguro_modelo_simplificado", transaccionFinanciera));
@@ -39,19 +40,16 @@ public class ConsultaModeloSimplificadoDefinition {
 
   @Cuando("^la transaccion se ha efectuado$")
   public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
-    credencial = new CredencialBD(genericStep.getFilasModelo("credencialBD", "conexionGWBD"));
-    tablaModeloSimplificado =
-        new TablaModeloSimplificado(
+    credencial = new CredencialBD (genericStep.getFilasModelo("credencialBD", "conexionGWBD"));
+    modeloSimplificadoBD =
+        new ModeloSimplificadoBD(
             conexionBDStep.consultarModeloSimplificado(
-                credencial.getCredenciales(),
-                modeloSimplificado.getlstModeloSimplificado(),
-                movimientoFinanciero));
+                credencial.getCredenciales(), modeloSimplificado.getlstModeloSimplificado(), movimientoFinanciero));
   }
 
   @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
   public void obtenerDatosModeloSimplificado() {
     conexionBDStep.verficarConsultaModeloSimplificado(
-        tablaModeloSimplificado.getLstTablaModeloSimplificado(),
-        modeloSimplificado.getlstModeloSimplificado());
+        modeloSimplificadoBD.getLstModeloSimplificadoBD(), modeloSimplificado.getlstModeloSimplificado());
   }
 }

@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TablaModeloSimplificado {
+public class ModeloSimplificadoBD {
 
   private String numeroTransaccion;
   private String numeroReclamacion;
   private String valorCedidoReaseguradoras;
   private String valorNeto;
   private String valorTransaccion;
-  private List<TablaModeloSimplificado> lstTablaModeloSimplificado = new ArrayList<>();
+  private List<ModeloSimplificadoBD> lstModeloSimplificadoBD = new ArrayList<>();
 
-  public TablaModeloSimplificado() {}
+  public ModeloSimplificadoBD() {}
 
-  private TablaModeloSimplificado(Map<String, String> datosTablaModeloSimplificado) {
+  private ModeloSimplificadoBD(Map<String, String> datosTablaModeloSimplificado) {
     this.numeroTransaccion = datosTablaModeloSimplificado.get("REFERENCE");
     this.numeroReclamacion = datosTablaModeloSimplificado.get("CLAIMNUMBER");
     this.valorCedidoReaseguradoras = datosTablaModeloSimplificado.get("CEDEDREINSURANCE");
@@ -23,7 +23,7 @@ public class TablaModeloSimplificado {
     this.valorTransaccion = datosTablaModeloSimplificado.get("AMOUNT");
   }
 
-  public TablaModeloSimplificado(List<Map<String, String>> datosTablaCuadre) {
+  public ModeloSimplificadoBD(List<Map<String, String>> datosTablaCuadre) {
     asignarDatos(datosTablaCuadre);
   }
 
@@ -47,13 +47,13 @@ public class TablaModeloSimplificado {
     return numeroTransaccion;
   }
 
-  public List<TablaModeloSimplificado> getLstTablaModeloSimplificado() {
-    return lstTablaModeloSimplificado;
+  public List<ModeloSimplificadoBD> getLstModeloSimplificadoBD() {
+    return lstModeloSimplificadoBD;
   }
 
   private void asignarDatos(List<Map<String, String>> datosTablaModeloSimplificado) {
     for (Map<String, String> dato : datosTablaModeloSimplificado) {
-      lstTablaModeloSimplificado.add(new TablaModeloSimplificado(dato));
+      lstModeloSimplificadoBD.add(new ModeloSimplificadoBD(dato));
     }
   }
 }

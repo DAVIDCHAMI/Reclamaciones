@@ -5,8 +5,7 @@ import java.sql.DriverManager;
 
 public class ConexionBaseDatosUtil {
 
-  public static Connection conectarBaseDatos(
-      String usuario, String contrasena, String driver, String url) {
+  public static Connection conectarBaseDatos(String usuario, String contrasena, String url, String driver) {
     Connection conexion = null;
     try {
       Class.forName(driver).newInstance();
