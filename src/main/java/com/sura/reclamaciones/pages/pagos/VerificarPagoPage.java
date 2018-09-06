@@ -11,6 +11,7 @@ public class VerificarPagoPage extends GeneralPage{
     }
 
 
-    public void capturarNumeroPagoRealizado(String strNumeroPago) {
+    public void capturarNumeroPagoRealizado(String strNumeroPago) {     
+
     }
 }
