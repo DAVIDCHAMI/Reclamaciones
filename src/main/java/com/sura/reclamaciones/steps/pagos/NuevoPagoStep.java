@@ -10,6 +10,8 @@ import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import java.util.List;
+
+import com.sura.reclamaciones.pages.pagos.VerificarPagoPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
@@ -18,6 +20,7 @@ public class NuevoPagoStep {
   @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
   @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
+  @Page VerificarPagoPage verificarPagoPage;
   @Page GeneralPage generalPage;
   @Page MenuClaimPage menuClaimPage;
 
@@ -60,6 +63,8 @@ public class NuevoPagoStep {
 
   @Step
   public void verificarPagoRealizado() {
-    //to do:
+      String strNumeroPago = new String();
+      verificarPagoPage.capturarNumeroPagoRealizado(strNumeroPago);
+
   }
 }

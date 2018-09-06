@@ -37,7 +37,7 @@ public class GeneralPage extends PageObject {
 
   @FindBy(
     xpath =
-        "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
+          "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
   )
   private WebElementFacade txtTransacciones;
 

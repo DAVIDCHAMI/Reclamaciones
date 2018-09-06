@@ -13,6 +13,7 @@ public class PagoDefinition {
   @Steps NuevoPagoStep nuevoPagoStep;
   @Steps GenericStep genericStep;
 
+
   PagoEmpresarial pagoEmpresarial;
 
   @Dado("^que se tiene el siniestro (.*)  del producto (.*)$")
@@ -44,7 +45,7 @@ public class PagoDefinition {
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
   public void verificarPago() throws Exception {
-    // to do:
 
+    nuevoPagoStep.verificarPagoRealizado();
   }
 }
