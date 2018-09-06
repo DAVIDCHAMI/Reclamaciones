@@ -49,7 +49,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   )
   public WebElementFacade lstCodigo;
 
-  @FindBy(xpath = ".//span[contains(@id,'Next-btnInnerEl')]")
+  @FindBy(xpath = "//span[@id='NormalCreateCheckWizard:Next-btnInnerEl']")
   private WebElementFacade btnSiguiente;
 
   public void seleccionarLineaReserva(String strLineaReserva) {
@@ -106,6 +106,5 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
               String.format(
                   "$('input[name|=\"Amount\"]').val('%d')", dblCalculoVrReserva.intValue()));
         });
-    continuarSiguientePantalla();
   }
 }

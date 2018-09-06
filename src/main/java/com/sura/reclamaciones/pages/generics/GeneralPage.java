@@ -26,7 +26,7 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
   private WebElementFacade pgrBarCarga;
 
-  @FindBy(xpath = ".//span[contains(@id,'Next-btnInnerEl')]")
+  @FindBy(xpath = "//a[@id='NormalCreateCheckWizard:Next']")
   private WebElementFacade btnSiguiente;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")

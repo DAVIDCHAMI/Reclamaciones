@@ -38,6 +38,5 @@ public class EstablecerInstruccionPagoPage extends GeneralPage {
   public void ingresarNumeroFactura(String strNumeroFactura) {
     txtNumeroFactura.click();
     txtNumeroFactura.sendKeys(strNumeroFactura);
-    finalizarProceso();
   }
 }

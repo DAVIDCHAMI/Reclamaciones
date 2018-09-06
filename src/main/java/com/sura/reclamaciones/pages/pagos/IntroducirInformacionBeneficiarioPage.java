@@ -94,6 +94,5 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   public void seleccionarPagoSura(String strPagoSura) {
     rbnPago.waitUntilClickable();
     obtenerElementoPantallaPago(strPagoSura);
-    continuarSiguientePantalla();
   }
 }
