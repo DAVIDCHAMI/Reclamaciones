@@ -13,8 +13,8 @@ public class MenuClaimPage extends GeneralPage {
   WebElementFacade mnuPrimerNivel;
 
   @FindBy(
-      xpath =
-          ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
+    xpath =
+        ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
   )
   WebElementFacade mnuSegundoNivel;
 
@@ -31,8 +31,14 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = "//span[@id='Claim:ClaimMenuActions-btnIconEl']")
   WebElementFacade btnAcciones;
 
-  @FindBy(xpath = " //div[@class='x-panel x-columnmenu x-layer x-panel-default x-menu x-menu-plain x-border-box']")
+  @FindBy(xpath = "//div[@class='x-css-shadow'][1]")
   WebElementFacade mnuPanelOpciones;
+
+  @FindBy(
+    xpath =
+        ".//div[@class='x-panel x-layer x-panel-default x-menu x-border-box x-vertical-scroller x-panel-vertical-scroller x-panel-default-vertical-scroller']"
+  )
+  WebElementFacade mnuReclamacion;
 
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);
@@ -41,6 +47,15 @@ public class MenuClaimPage extends GeneralPage {
   public void seleccionarOpcionMenuPrimerNivel(String nombreOpcion) {
     mnuPrimerNivel.findElement(By.xpath("//span[contains(text(), '" + nombreOpcion + "')]"));
     mnuPrimerNivel.click();
+  }
+
+  public void buscarReclamacion(String nombreOpcion, String numeroReclamacion) {
+    mnuPrimerNivel
+        .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
+        .sendKeys(Keys.ARROW_DOWN);
+    mnuSegundoNivel
+        .findElement(By.xpath("//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']"))
+        .sendKeys(numeroReclamacion, Keys.ENTER);
   }
 
   public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
@@ -80,7 +95,13 @@ public class MenuClaimPage extends GeneralPage {
 
   public void seleccionarOpcionMenuAccionesPrimerNivel(String nombreOpcion) {
     btnAcciones.waitUntilVisible().click();
-    mnuPanelOpciones.findElement(By.xpath("//span[contains(text(), '" + nombreOpcion + "')]"));
-    mnuPanelOpciones.click();
+    mnuPanelOpciones
+        .findElement(
+            By.xpath(
+                "//span[contains(@class,'x-menu-item-text')][contains(text(),'"
+                    + nombreOpcion
+                    + "')]"))
+        .click();
+    realizarEsperaCarga();
   }
 }
