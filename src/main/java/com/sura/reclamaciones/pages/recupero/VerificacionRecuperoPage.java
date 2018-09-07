@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.recupero;
 
+import com.sura.reclamaciones.constantes.RecuperoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
@@ -28,7 +29,7 @@ public class VerificacionRecuperoPage extends GeneralPage {
       btnCambioPagina.waitUntilClickable();
       btnCambioPagina.click();
     }
-    waitFor(2);//to do:
+    waitFor(RecuperoConstante.TIEMPO_COLA);//to do:
     getDriver().navigate().refresh();
     tblVerificacionRecupero.waitUntilVisible();
     List<WebElement> lstFilaRecupero = tblVerificacionRecupero.findElements(By.tagName("td"));

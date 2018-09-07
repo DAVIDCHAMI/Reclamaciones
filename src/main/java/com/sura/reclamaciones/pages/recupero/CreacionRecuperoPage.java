@@ -99,24 +99,17 @@ public class CreacionRecuperoPage extends GeneralPage {
     seleccionarOpcionCombobox(moneda);
   }
 
-  public void seleccionarPais(String pais) {
-    txtPais.click();
-    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, pais);
-    $(auxiliarSeleccionarOpcion).click();
-  }
+  public void seleccionarPais(String etiqueta, String pais) {
+    buscarElementoLista(etiqueta, pais);
+       }
 
-  public void seleccionarDepartamento(String departamento) {
-    txtDepartamento.waitUntilClickable();
-    txtDepartamento.click();
-    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, departamento);
-    $(auxiliarSeleccionarOpcion).click();
+  public void seleccionarDepartamento(String etiqueta, String departamento) {
+    buscarElementoLista(etiqueta, departamento);
     realizarEsperaCarga();
   }
 
-  public void seleccionarCiudad(String ciudad) {
-    txtCiudad.click();
-    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, ciudad);
-    $(auxiliarSeleccionarOpcion).click();
+  public void seleccionarCiudad(String etiqueta, String ciudad) {
+    buscarElementoLista(etiqueta,ciudad);
     realizarEsperaCarga();
   }
 
