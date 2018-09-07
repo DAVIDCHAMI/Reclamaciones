@@ -19,6 +19,9 @@ public class InformacionBasicaPage extends GeneralPage {
   )
   private WebElementFacade lstNombreAutor;
 
+  @FindBy(xpath = ".//div[@class='message']/img[@class='error_icon']")
+  private WebElementFacade msjErrorRelacionAsegurado;
+
   public InformacionBasicaPage(WebDriver wdriver) {
     super(wdriver);
   }
@@ -28,6 +31,7 @@ public class InformacionBasicaPage extends GeneralPage {
     lstNombreAutor.click();
     realizarEsperaCarga();
     continuarSiguientePantalla();
-    realizarEsperaCarga();
   }
+
+
 }
