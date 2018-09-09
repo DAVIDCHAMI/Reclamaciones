@@ -39,7 +39,8 @@ public class RecuperoStep {
           creacionRecuperoPage.seleccionarLineaReserva(formulario.getLineaRecupero());
           creacionRecuperoPage.seleccionarMoneda(formulario.getMoneda());
           creacionRecuperoPage.seleccionarPais(RecuperoConstante.PAIS, formulario.getPais());
-          creacionRecuperoPage.seleccionarDepartamento(RecuperoConstante.DEPARTAMENTO, formulario.getDepartamento());
+          creacionRecuperoPage.seleccionarDepartamento(
+              RecuperoConstante.DEPARTAMENTO, formulario.getDepartamento());
           creacionRecuperoPage.seleccionarCiudad(RecuperoConstante.CIUDAD, formulario.getCiudad());
           creacionRecuperoPage.seleccionarCategoriaRecuperacion(tipoRecupero);
           creacionRecuperoPage.diligenciarCodigoRetencion(

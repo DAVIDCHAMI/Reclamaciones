@@ -150,7 +150,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void buscarElementoLista(String elementoEtiqueta, String ubicacion) {
-    mnuDinamico.findElement(By.xpath("//input[contains(@id,'" + elementoEtiqueta +"')]")).click();
+    mnuDinamico.findElement(By.xpath("//input[contains(@id,'" + elementoEtiqueta + "')]")).click();
     auxLstUbicacion = lstDinami.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
   }
