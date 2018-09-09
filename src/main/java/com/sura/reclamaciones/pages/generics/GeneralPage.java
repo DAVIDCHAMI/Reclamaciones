@@ -3,6 +3,7 @@ package com.sura.reclamaciones.pages.generics;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,6 +41,9 @@ public class GeneralPage extends PageObject {
           "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
   )
   private WebElementFacade txtTransacciones;
+
+  @FindBy (xpath = "//input")
+  private WebElementFacade mnuDinamico;
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -139,5 +143,11 @@ public class GeneralPage extends PageObject {
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();
     seleccionarOpcionCombobox(tipoTransaccion);
+  }
+
+  public void buscarElementoLista(String elementoEtiqueta, String ubicacion) {
+    mnuDinamico.findElement(By.xpath("//input[contains(@id,'" + elementoEtiqueta + "')]")).click();
+    auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
+    $(auxLstUbicacion).click();
   }
 }
