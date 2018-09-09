@@ -45,7 +45,7 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//input")
   private WebElementFacade mnuDinamico;
 
-  private String lstDinami = "//li[.='COMODIN']";
+  private String lstDinamico = "//li[.='COMODIN']";
   private String auxLstUbicacion = "";
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
@@ -151,7 +151,7 @@ public class GeneralPage extends PageObject {
 
   public void buscarElementoLista(String elementoEtiqueta, String ubicacion) {
     mnuDinamico.findElement(By.xpath("//input[contains(@id,'" + elementoEtiqueta + "')]")).click();
-    auxLstUbicacion = lstDinami.replace(ConstanteGlobal.COMODIN, ubicacion);
+    auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
   }
 }
