@@ -45,6 +45,11 @@ public class GeneralPage extends PageObject {
   @FindBy (xpath = "//input")
   private WebElementFacade mnuDinamico;
 
+
+  private String lstDinamico = "//li[.='COMODIN']";
+  private String auxLstUbicacion = "";
+
+  
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   WebDriver driver;
