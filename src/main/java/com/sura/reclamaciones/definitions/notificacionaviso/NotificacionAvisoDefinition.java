@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.definitions.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-
 import com.sura.reclamaciones.models.ReclamacionEmpresariales;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.*;

@@ -82,7 +82,9 @@ public class ConsultarModeloSimplificadoStep {
           resultadoBD.getValorNeto().equals(resultadoCalculado.getValorNeto()));
       MatcherAssert.assertThat(
           "No coincide el valor Transacción",
-          resultadoBD.getValorMovimientoFinanciero().equals(resultadoCalculado.getValorMovimientoFinanciero()));
+          resultadoBD
+              .getValorMovimientoFinanciero()
+              .equals(resultadoCalculado.getValorMovimientoFinanciero()));
     }
   }
 }

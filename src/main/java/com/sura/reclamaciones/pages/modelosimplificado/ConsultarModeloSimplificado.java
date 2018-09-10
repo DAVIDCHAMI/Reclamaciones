@@ -12,25 +12,32 @@ import java.util.Map;
 
 public class ConsultarModeloSimplificado {
 
+  PreparedStatement statement = null;
+  List<Map<String, String>> lstFila = new ArrayList<Map<String, String>>();
+  ResultSet resultSet;
+
   public List<Map<String, String>> consultarModeloSimplificado(
       Connection conexionBD, String numeroMovimientoFinanciero, String sql) throws SQLException {
-    PreparedStatement stmt = null;
-    stmt = conexionBD.prepareStatement(sql);
-    stmt.setString(1, numeroMovimientoFinanciero);
-    ResultSet rs = stmt.executeQuery();
-    ResultSetMetaData md = rs.getMetaData();
-    int columnas = md.getColumnCount();
-    List<Map<String, String>> lstFila = new ArrayList<Map<String, String>>();
-    while (rs.next()) {
-      Map<String, String> fila = new HashMap<String, String>(columnas);
-      for (int i = 1; i <= columnas; ++i) {
-        fila.put(md.getColumnName(i), rs.getString(i));
+    try {
+      statement = conexionBD.prepareStatement(sql);
+      statement.setString(1, numeroMovimientoFinanciero);
+      resultSet = statement.executeQuery();
+      ResultSetMetaData metaData = resultSet.getMetaData();
+      int columnas = metaData.getColumnCount();
+      while (resultSet.next()) {
+        Map<String, String> fila = new HashMap<String, String>(columnas);
+        for (int i = 1; i <= columnas; ++i) {
+          fila.put(metaData.getColumnName(i), resultSet.getString(i));
+        }
+        lstFila.add(fila);
       }
-      lstFila.add(fila);
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      resultSet.close();
+      statement.close();
+      conexionBD.close();
+      return lstFila;
     }
-    rs.close();
-    stmt.close();
-    conexionBD.close();
-    return lstFila;
   }
 }
