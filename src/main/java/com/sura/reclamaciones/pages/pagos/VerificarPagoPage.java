@@ -46,5 +46,6 @@ public class VerificarPagoPage extends GeneralPage {
     if (btnUltimaPagina.isVisible()){
       btnUltimaPagina.click();
     }
+
   }
 }
