@@ -38,18 +38,16 @@ public class GeneralPage extends PageObject {
 
   @FindBy(
     xpath =
-          "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
+        "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
   )
   private WebElementFacade txtTransacciones;
 
-  @FindBy (xpath = "//input")
+  @FindBy(xpath = "//input")
   private WebElementFacade mnuDinamico;
-
 
   private String lstDinamico = "//li[.='COMODIN']";
   private String auxLstUbicacion = "";
 
-  
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   WebDriver driver;
@@ -131,7 +129,7 @@ public class GeneralPage extends PageObject {
   public void finalizarProceso() {
     btnFinalizar.waitUntilClickable();
     btnFinalizar.click();
-   }
+  }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
       WebElementFacade elemento, String encabezadoColumnaDevolver) {

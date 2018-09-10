@@ -9,9 +9,8 @@ import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
-import java.util.List;
-
 import com.sura.reclamaciones.pages.pagos.VerificarPagoPage;
+import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
@@ -47,6 +46,14 @@ public class NuevoPagoStep {
           introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
               strMetodoPago, PagoConstante.CUENTA, PagoConstante.SELECCIONAR);
           introducirInformacionBeneficiarioPage.seleccionarPagoSura(strPagoSoloSura);
+       //   introducirInformacionBeneficiarioPage.seleccionarPais(
+         //     PagoConstante.PAIS, diligenciador.getPais());
+          //introducirInformacionBeneficiarioPage.seleccionarDepartamento(
+              //PagoConstante.DEPARTAMENTO, diligenciador.getDepartamento());
+          //introducirInformacionBeneficiarioPage.seleccionarCiudad(
+            //  PagoConstante.CIUDAD, diligenciador.getCiudad());
+          //introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
+          //    PagoConstante.TIPO_DIRECCION, diligenciador.getTipoDireccion());
           generalPage.continuarSiguientePantalla();
           introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
           introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
@@ -63,8 +70,9 @@ public class NuevoPagoStep {
 
   @Step
   public void verificarPagoRealizado() {
-      String strNumeroPago = new String();
-      verificarPagoPage.capturarNumeroPagoRealizado(strNumeroPago);
+    String strNumeroPago = new String();
+    verificarPagoPage.capturarNumeroPagoRealizado(strNumeroPago);
+    verificarPagoPage.verificarPagoMenuPagos(strNumeroPago);
 
   }
 }

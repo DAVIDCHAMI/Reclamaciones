@@ -77,4 +77,24 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
     rbtPago.waitUntilClickable();
     obtenerElementoPantallaPago(strPagoSura);
   }
+
+  public void seleccionarPais(String etiqueta, String strPais) {
+    buscarElementoLista(etiqueta, strPais);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarDepartamento(String etiqueta, String strDepartamento) {
+    buscarElementoLista(etiqueta, strDepartamento);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarCiudad(String etiqueta, String strCiudad) {
+    buscarElementoLista(etiqueta, strCiudad);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarTipoDireccion(String etiqueta, String strTipoDireccion) {
+    buscarElementoLista(etiqueta, strTipoDireccion);
+    realizarEsperaCarga();
+  }
 }

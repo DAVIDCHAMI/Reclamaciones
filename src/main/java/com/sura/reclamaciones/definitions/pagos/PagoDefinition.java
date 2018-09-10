@@ -13,14 +13,13 @@ public class PagoDefinition {
   @Steps NuevoPagoStep nuevoPagoStep;
   @Steps GenericStep genericStep;
 
-
   PagoEmpresarial pagoEmpresarial;
 
   @Dado("^que se tiene el siniestro (.*)  del producto (.*)$")
   public void ingresarMenuPagoReclamacion(String numeroReclamacion, String tipoProducto)
       throws Exception {
     pagoEmpresarial =
-        new PagoEmpresarial(genericStep.getFilasModelo("pago_empresarial", "pagoEmpresarial"));
+        new PagoEmpresarial(genericStep.getFilasModelo("pago_empresarial", tipoProducto));
     nuevoPagoStep.consultarNumeroReclamacion(numeroReclamacion);
   }
 
@@ -47,5 +46,6 @@ public class PagoDefinition {
   public void verificarPago() throws Exception {
 
     nuevoPagoStep.verificarPagoRealizado();
+
   }
 }
