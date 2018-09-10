@@ -11,6 +11,7 @@ import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.openqa.selenium.WebElement;
 
 public class RecuperoStep {
 
@@ -54,13 +55,16 @@ public class RecuperoStep {
   @Step
   public void verificarCreacionRecupero(List<Recupero> lstRecupero) {
     lstRecupero.forEach(
-        validador -> {
+        (Recupero validador) -> {
+          List<WebElement> lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
           assertTrue(
               "No coincide la categoria del recupero",
-              verificacionRecuperoPage.verificarRecupero(validador.getCategoriaRecupero()));
+              verificacionRecuperoPage.verificarRecupero(
+                  validador.getCategoriaRecupero(), lstFilaRecupero));
           assertTrue(
               "No llego a SAP el recupero",
-              verificacionRecuperoPage.verificarRecupero(validador.getEstadoRecupero()));
+              verificacionRecuperoPage.verificarRecupero(
+                  validador.getEstadoRecupero(), lstFilaRecupero));
         });
   }
 }

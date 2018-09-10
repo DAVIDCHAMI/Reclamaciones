@@ -56,7 +56,7 @@ public class ResumenReclamacionPage extends GeneralPage {
   public String validarExposicion() {
     String validadorExposicion;
     String validador;
-    menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
     if (lnkTipoExposicion.isVisible()) {
       validador = lnkTipoExposicion.waitUntilVisible().getText();
       switch (validador) {
@@ -78,7 +78,7 @@ public class ResumenReclamacionPage extends GeneralPage {
 
   public String obtenerValorReserva() {
     String validadorReserva;
-    menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.RESUMEN);
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.RESUMEN);
     validadorReserva = divReserva.waitUntilVisible().getText();
     validadorReserva = validadorReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     return validadorReserva;

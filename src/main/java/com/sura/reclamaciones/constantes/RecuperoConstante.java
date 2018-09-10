@@ -10,4 +10,6 @@ public class RecuperoConstante {
   public static final String PAIS = "Country-inputEl";
   public static final String DEPARTAMENTO = "State-inputEl";
   public static final String CIUDAD = "City-inputEl";
+  public static final String NUMERO_TRANSACCION = "Número de transacción";
+  public static final String TIPO_TRANSACCION = "Recuperaciones";
 }
