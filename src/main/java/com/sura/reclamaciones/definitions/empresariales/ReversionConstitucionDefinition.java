@@ -12,9 +12,9 @@ import net.thucydides.core.annotations.Steps;
 
 public class ReversionConstitucionDefinition {
 
-  Reserva reserva;
   @Steps ReversionConstitucionStep reversionConstitucionStep;
   @Steps GenericStep genericStep;
+  Reserva reserva;
 
   @Dado("^que se genera un siniestro del producto (.*)$")
   public void consultarReserva(String producto) throws Throwable {
