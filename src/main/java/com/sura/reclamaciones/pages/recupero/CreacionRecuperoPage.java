@@ -31,24 +31,6 @@ public class CreacionRecuperoPage extends GeneralPage {
   )
   private WebElementFacade txtMoneda;
 
-  @FindBy(
-    xpath =
-        "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Country-inputEl']"
-  )
-  private WebElement txtPais;
-
-  @FindBy(
-    xpath =
-        "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:State-inputEl']"
-  )
-  private WebElementFacade txtDepartamento;
-
-  @FindBy(
-    xpath =
-        "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Sura_Colombian_City-inputEl']"
-  )
-  private WebElementFacade txtCiudad;
-
   @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:RecoveryCategory-inputEl")
   private WebElementFacade txtCategoriaRecuperacion;
 
@@ -99,24 +81,17 @@ public class CreacionRecuperoPage extends GeneralPage {
     seleccionarOpcionCombobox(moneda);
   }
 
-  public void seleccionarPais(String pais) {
-    txtPais.click();
-    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, pais);
-    $(auxiliarSeleccionarOpcion).click();
+  public void seleccionarPais(String etiqueta, String pais) {
+    buscarElementoLista(etiqueta, pais);
   }
 
-  public void seleccionarDepartamento(String departamento) {
-    txtDepartamento.waitUntilClickable();
-    txtDepartamento.click();
-    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, departamento);
-    $(auxiliarSeleccionarOpcion).click();
+  public void seleccionarDepartamento(String etiqueta, String departamento) {
+    buscarElementoLista(etiqueta, departamento);
     realizarEsperaCarga();
   }
 
-  public void seleccionarCiudad(String ciudad) {
-    txtCiudad.click();
-    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, ciudad);
-    $(auxiliarSeleccionarOpcion).click();
+  public void seleccionarCiudad(String etiqueta, String ciudad) {
+    buscarElementoLista(etiqueta, ciudad);
     realizarEsperaCarga();
   }
 

@@ -1,4 +1,4 @@
 id;idFiltro;numeroReclamacion;pagador;lineaReserva;moneda;pais;departamento;ciudad;cantidad;categoriaRecupero;estadoRecupero;fechaComprobante
-1;recuperoCategoriaSalvamento;9180000015885;SEGUROS GENERALES SURAMERICANA S.A.;(1) 1ª parteGeneral - JOSE MARIA VASQUEZ CRESPO CQLII;COP;Colombia;Antioquia;Medellin;15;Salvamento;Solicitado;
-2;recuperoCategoriaSubrogacion;9180000015661;SEGUROS GENERALES SURAMERICANA S.A.;(1) 1ª parteGeneral - JOSE MARIA VASQUEZ CRESPO CQLII;COP;Colombia;Antioquia;Medellin;15;Subrogación;Solicitado;
-3;recuperoCategoriaOtros;9180000015885;SEGUROS GENERALES SURAMERICANA S.A.;(1) 1ª parteGeneral - JOSE MARIA VASQUEZ CRESPO CQLII;COP;Colombia;Antioquia;Medellin;15;Ingreso (otro);Solicitado;
+1;Salvamento;9180000015885;SEGUROS GENERALES SURAMERICANA S.A.;(1) 1ª parteGeneral - JOSE MARIA VASQUEZ CRESPO CQLII;COP;Colombia;Antioquia;Medellin;15;Salvamento;Solicitado;
+2;Subrogación;9180000015661;Swiss Reinsurance America Corporation;(1) 1ª parteContenido - VICTOR HUGO SEPULVEDA VALLEJO CQLII;COP;Colombia;Antioquia;Medellin;18;Subrogación;Solicitado;
+3;Ingreso (otro);9180000015885;SEGUROS GENERALES SURAMERICANA S.A.;(1) 1ª parteGeneral - JOSE MARIA VASQUEZ CRESPO CQLII;COP;Colombia;Casanare;Bocas De Guanapalo (Miramar) (San Luis De Palenque);1000;Ingreso (otro);Solicitado;

@@ -27,7 +27,10 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
   private WebElementFacade pgrBarCarga;
 
-  @FindBy(xpath = "//a[@id='NormalCreateCheckWizard:Next']")
+  @FindBy(
+    xpath =
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or contains(@id, 'NormalCreateCheckWizard:Next-btnEl')]"
+  )
   private WebElementFacade btnSiguiente;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
@@ -42,8 +45,17 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade txtTransacciones;
 
+  @FindBy(
+    xpath =
+        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
+  )
+  private WebElementFacade tblVerificacion;
+
   @FindBy(xpath = "//input")
   private WebElementFacade mnuDinamico;
+
+  @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
+  private WebElementFacade btnUltimaPagina;
 
   private String lstDinamico = "//li[.='COMODIN']";
   private String auxLstUbicacion = "";
@@ -129,6 +141,7 @@ public class GeneralPage extends PageObject {
   public void finalizarProceso() {
     btnFinalizar.waitUntilClickable();
     btnFinalizar.click();
+    realizarEsperaCarga();
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
@@ -152,5 +165,19 @@ public class GeneralPage extends PageObject {
     mnuDinamico.findElement(By.xpath("//input[contains(@id,'" + elementoEtiqueta + "')]")).click();
     auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
+  }
+
+  public void verificarBotonUltimaPaginaVisible() {
+    if (btnUltimaPagina.isVisible()) {
+      btnUltimaPagina.click();
+    }
+  }
+
+  public String capturarNumeroTransaccion(String strConstante) {
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaDatoDesconocido(tblVerificacion, strConstante);
+    int longitudTabla = elementoEncontrado.size();
+    String strNumeroTx = elementoEncontrado.get(longitudTabla - 1).getText();
+    return strNumeroTx;
   }
 }
