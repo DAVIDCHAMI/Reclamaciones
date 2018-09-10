@@ -24,9 +24,8 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = " //div[@id='westPanel-innerCt']")
   WebElementFacade mnuLateralPrimerNivel;
 
-  private String selectOpcion =
-      "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
-  private String auxSelectOpcion = "";
+  @FindBy(xpath = "//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
+  WebElementFacade mnuBuscar;
 
   @FindBy(xpath = "//span[@id='Claim:ClaimMenuActions-btnIconEl']")
   WebElementFacade btnAcciones;
@@ -34,28 +33,27 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = "//div[@class='x-css-shadow'][1]")
   WebElementFacade mnuPanelOpciones;
 
+  @FindBy(xpath = "//div[@id='TabBar:ClaimTab:ClaimTab_FindClaim_Button']")
+  WebElementFacade btnBuscar;
+
   @FindBy(
     xpath =
         ".//div[@class='x-panel x-layer x-panel-default x-menu x-border-box x-vertical-scroller x-panel-vertical-scroller x-panel-default-vertical-scroller']"
   )
   WebElementFacade mnuReclamacion;
 
+  private String selectOpcion =
+      "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
+  private String auxSelectOpcion = "";
+
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);
   }
 
   public void seleccionarOpcionMenuPrimerNivel(String nombreOpcion) {
-    mnuPrimerNivel.findElement(By.xpath("//span[contains(text(), '" + nombreOpcion + "')]"));
-    mnuPrimerNivel.click();
-  }
-
-  public void buscarReclamacion(String nombreOpcion, String numeroReclamacion) {
     mnuPrimerNivel
-        .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
+        .findElement(By.xpath(String.format(".//a[contains(.,'%s')]", nombreOpcion)))
         .sendKeys(Keys.ARROW_DOWN);
-    mnuSegundoNivel
-        .findElement(By.xpath("//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']"))
-        .sendKeys(numeroReclamacion, Keys.ENTER);
   }
 
   public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
@@ -91,6 +89,13 @@ public class MenuClaimPage extends GeneralPage {
     realizarEsperaCarga();
     auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, subItem);
     $(auxSelectOpcion).waitUntilVisible().click();
+  }
+
+  public void buscarReclamacion(String strOpcionMenu, String strReclamacion) {
+    seleccionarOpcionMenuPrimerNivel(strOpcionMenu);
+    mnuBuscar.click();
+    mnuBuscar.typeAndEnter(strReclamacion);
+    realizarEsperaCarga();
   }
 
   public void seleccionarOpcionMenuAccionesPrimerNivel(String nombreOpcion) {

@@ -52,8 +52,7 @@ public class AjusteReservaPage extends GeneralPage {
       String montoAjusteReserva, String encabezadoColumnaDevolver) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(
-            tblLineaReserva, montoAjusteReserva, encabezadoColumnaDevolver, -1);
+        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -1);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
