@@ -43,9 +43,7 @@ public class PagoDefinition {
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
-  public void verificarPago() throws Exception {
-
-    nuevoPagoStep.verificarPagoRealizado();
-
+  public void verificarPago() {
+    nuevoPagoStep.verificarPagoRealizado(pagoEmpresarial.getLstPago());
   }
 }

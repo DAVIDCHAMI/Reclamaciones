@@ -14,6 +14,7 @@ public class PagoEmpresarial {
   private String departamento;
   private String ciudad;
   private String tipoDireccion;
+  private String estado;
 
   public PagoEmpresarial() {}
 
@@ -25,6 +26,7 @@ public class PagoEmpresarial {
     this.departamento = datosPagosEmpresariales.get("departamento");
     this.ciudad = datosPagosEmpresariales.get("ciudad");
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
+    this.estado=datosPagosEmpresariales.get("estado");
   }
 
   public PagoEmpresarial(List<Map<String, String>> datosPagosEmpresariales) {
@@ -57,6 +59,10 @@ public class PagoEmpresarial {
 
   public String getTipoDireccion() {
     return tipoDireccion;
+  }
+
+  public String getEstado() {
+    return estado;
   }
 
   public List<PagoEmpresarial> getLstPago() {

@@ -32,17 +32,22 @@ public class VerificarPagoPage extends GeneralPage {
 
   public String capturarNumeroPagoRealizado() {
     verificarBotonUltimaPaginaVisible();
-    realizarEsperaCarga();
-    String strNumeroPago = obtenerNumeroTransaccion(PagoConstante.CODIGO_RETENCION);
-    return strNumeroPago;
+      return obtenerDatoTablaSegunCabecera(PagoConstante.CODIGO_RETENCION);
   }
 
-  public List <WebElement> verificarPagoMenuPagos(String strNumeroTransaccion) {
-    menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(MenuConstante.DATOS_FINANCIEROS,MenuConstante.TRANSACCIONES);
-    verificarBotonUltimaPaginaVisible();
-    realizarEsperaCarga();
-    seleccionarTipoTransaccion(PagoConstante.PAGOS);
-    List<WebElement> lstPagos = obtenerFilaTransacciones(strNumeroTransaccion);
-    return lstPagos;
+  public boolean verificarPagoMenuTransaccion(String datoValidar, List <WebElement> lstFilaPago) {
+      for (WebElement cantidadDatosListaRecupero : lstFilaPago) {
+          if (cantidadDatosListaRecupero.getText().equals(datoValidar)) {
+              return true;
+          }
+      }
+      return false;
   }
+
+
+    public void ingresarMenuTransacciones() {
+        menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(MenuConstante.DATOS_FINANCIEROS,MenuConstante.TRANSACCIONES);
+        verificarBotonUltimaPaginaVisible();
+        seleccionarTipoTransaccion(PagoConstante.PAGOS);
+    }
 }

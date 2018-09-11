@@ -178,11 +178,10 @@ public class GeneralPage extends PageObject {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
     int longitudTabla = elementoEncontrado.size();
-    String strDatoTablaSegunCabecera = elementoEncontrado.get(longitudTabla - 1).getText();
-    return strDatoTablaSegunCabecera;
+    return elementoEncontrado.get(longitudTabla - 1).getText();
   }
 
-  public List<WebElement> obtenerFilaTransacciones(String strTransaccion) {
+  public List<WebElement> obtenerFilaTabla(String strIdentificadorFila) {
     tblVerificacion.waitUntilVisible();
     List<WebElement> lstFila;
     lstFila =
@@ -190,19 +189,8 @@ public class GeneralPage extends PageObject {
             By.xpath(
                 String.format(
                     "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
-                    strTransaccion)));
+                    strIdentificadorFila)));
     return lstFila;
   }
 
-  public List<WebElement> obtenerFilaTransacciones(String strTransaccion) {
-    tblVerificacion.waitUntilVisible();
-    List<WebElement> lstFila;
-    lstFila =
-            tblVerificacion.findElements(
-                    By.xpath(
-                            String.format(
-                                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
-                                    strTransaccion)));
-    return lstFila;
-  }
 }
