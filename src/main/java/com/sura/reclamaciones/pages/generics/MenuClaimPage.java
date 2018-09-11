@@ -42,9 +42,9 @@ public class MenuClaimPage extends GeneralPage {
   )
   WebElementFacade mnuReclamacion;
 
-  private String selectOpcion =
+  private String seleccionarOpcion =
       "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
-  private String auxSelectOpcion = "";
+  private String auxSeleccionarOpcion = "";
 
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);
@@ -87,8 +87,8 @@ public class MenuClaimPage extends GeneralPage {
                     + "')]"))
         .click();
     realizarEsperaCarga();
-    auxSelectOpcion = selectOpcion.replace(ConstanteGlobal.COMODIN, subItem);
-    $(auxSelectOpcion).waitUntilVisible().click();
+    auxSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, subItem);
+    $(auxSeleccionarOpcion).waitUntilVisible().click();
   }
 
   public void buscarReclamacion(String strOpcionMenu, String strReclamacion) {
