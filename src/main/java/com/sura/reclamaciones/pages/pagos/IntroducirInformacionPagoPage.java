@@ -75,7 +75,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
 
   public void ingresarCodigoRetencion(String strCodigoRetencion, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver, 1);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
@@ -94,7 +94,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
       dblCalculoVrReserva = dblValorReserva;
     }
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, 1);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();

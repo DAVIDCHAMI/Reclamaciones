@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.notificacionaviso;
+package com.sura.reclamaciones.definitions.empresariales;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;

@@ -104,7 +104,7 @@ public class CreacionRecuperoPage extends GeneralPage {
 
   public void diligenciarCodigoRetencion(String codigoRetencion, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver, 1);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
@@ -116,7 +116,7 @@ public class CreacionRecuperoPage extends GeneralPage {
 
   public void diligenciarCantidadRecupero(String montoRecupero, String encabezadoColumnaDevolver) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver, 1);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
