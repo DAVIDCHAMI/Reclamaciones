@@ -3,6 +3,7 @@ package com.sura.reclamaciones.pages.generics;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,6 +44,21 @@ public class GeneralPage extends PageObject {
         "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
   )
   private WebElementFacade txtTransacciones;
+
+  @FindBy(
+    xpath =
+        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
+  )
+  private WebElementFacade tblVerificacion;
+
+  @FindBy(xpath = "//input")
+  private WebElementFacade mnuDinamico;
+
+  @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
+  private WebElementFacade btnUltimaPagina;
+
+  private String lstDinamico = "//li[.='COMODIN']";
+  private String auxLstUbicacion = "";
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -143,5 +159,37 @@ public class GeneralPage extends PageObject {
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();
     seleccionarOpcionCombobox(tipoTransaccion);
+  }
+
+  public void buscarElementoLista(String elementoEtiqueta, String ubicacion) {
+    mnuDinamico.findElement(By.xpath("//input[contains(@id,'" + elementoEtiqueta + "')]")).click();
+    auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
+    $(auxLstUbicacion).click();
+  }
+
+  public void verificarBotonUltimaPaginaVisible() {
+    if (btnUltimaPagina.isVisible()) {
+      btnUltimaPagina.click();
+    }
+  }
+
+  public String obtenerNumeroTransaccion(String strConstante) {
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaDatoDesconocido(tblVerificacion, strConstante);
+    int longitudTabla = elementoEncontrado.size();
+    String strNumeroTx = elementoEncontrado.get(longitudTabla - 1).getText();
+    return strNumeroTx;
+  }
+
+  public List<WebElement> obtenerFilaTransacciones(String strTransaccion) {
+    tblVerificacion.waitUntilVisible();
+    List<WebElement> lstFila;
+    lstFila =
+            tblVerificacion.findElements(
+                    By.xpath(
+                            String.format(
+                                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
+                                    strTransaccion)));
+    return lstFila;
   }
 }

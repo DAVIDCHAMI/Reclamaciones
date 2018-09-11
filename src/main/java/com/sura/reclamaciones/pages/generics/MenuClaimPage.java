@@ -36,13 +36,7 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = "//div[@id='TabBar:ClaimTab:ClaimTab_FindClaim_Button']")
   WebElementFacade btnBuscar;
 
-  @FindBy(
-    xpath =
-        ".//div[@class='x-panel x-layer x-panel-default x-menu x-border-box x-vertical-scroller x-panel-vertical-scroller x-panel-default-vertical-scroller']"
-  )
-  WebElementFacade mnuReclamacion;
-
-  private String seleccionarOpcion =
+  private String selectOpcion =
       "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
   private String auxSeleccionarOpcion = "";
 
@@ -63,13 +57,13 @@ public class MenuClaimPage extends GeneralPage {
     mnuSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
   }
 
-  public void seleecionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
+  public void seleccionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
     mnuLateralPrimerNivel
         .findElement(
             By.xpath(
-                "//span[contains(@class,'x-tree-node-text')][contains(text(),'"
-                    + nombreOpcion
-                    + "')]"))
+                String.format(
+                    "//span[contains(@class,'x-tree-node-text')][contains(text(),'%s')]",
+                    nombreOpcion)))
         .click();
     realizarEsperaCarga();
   }
@@ -79,16 +73,8 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
-    mnuLateralPrimerNivel
-        .findElement(
-            By.xpath(
-                "//span[contains(@class,'x-tree-node-text')][contains(text(),'"
-                    + nombreOpcion
-                    + "')]"))
-        .click();
-    realizarEsperaCarga();
-    auxSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, subItem);
-    $(auxSeleccionarOpcion).waitUntilVisible().click();
+    seleccionarOpcionMenuLateralPrimerNivel(nombreOpcion);
+    seleccionarOpcionMenuLateralPrimerNivel(subItem);
   }
 
   public void buscarReclamacion(String strOpcionMenu, String strReclamacion) {

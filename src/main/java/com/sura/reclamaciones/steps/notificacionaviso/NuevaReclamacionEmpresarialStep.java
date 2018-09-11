@@ -104,7 +104,7 @@ public class NuevaReclamacionEmpresarialStep {
       List<ReclamacionEmpresarial> datoReserva, String monto) {
     datoReserva.forEach(
         reserva -> {
-          menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS);
+          menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS);
           String validar = resumenReclamacionPage.validarReservaResumen(monto);
           MatcherAssert.assertThat(
               "Se esperaba una reserva de: "
