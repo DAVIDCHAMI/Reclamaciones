@@ -34,14 +34,7 @@ public class VerificacionRecuperoPage extends GeneralPage {
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
     verificarBotonUltimaPaginaVisible();
-    tblVerificacionRecupero.waitUntilVisible();
-    List<WebElement> lstFilaRecupero;
-    lstFilaRecupero =
-        tblVerificacionRecupero.findElements(
-            By.xpath(
-                String.format(
-                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
-                    strNumeroRecupero)));
+    List<WebElement> lstFilaRecupero= obtenerFilaTransacciones(strNumeroRecupero);
     return lstFilaRecupero;
   }
 

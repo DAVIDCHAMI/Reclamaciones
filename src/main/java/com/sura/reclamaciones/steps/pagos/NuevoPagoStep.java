@@ -70,9 +70,8 @@ public class NuevoPagoStep {
 
   @Step
   public void verificarPagoRealizado() {
-    String strNumeroPago = new String();
-    verificarPagoPage.capturarNumeroPagoRealizado(strNumeroPago);
-    verificarPagoPage.verificarPagoMenuPagos(strNumeroPago);
+    String strNumeroTransaccion= verificarPagoPage.capturarNumeroPagoRealizado();
+    verificarPagoPage.verificarPagoMenuPagos(strNumeroTransaccion);
 
   }
 }

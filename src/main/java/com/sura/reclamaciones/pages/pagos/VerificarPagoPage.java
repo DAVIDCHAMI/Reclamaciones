@@ -30,23 +30,19 @@ public class VerificarPagoPage extends GeneralPage {
   @FindBy (xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
   private WebElementFacade btnUltimaPagina;
 
-  public String capturarNumeroPagoRealizado(String strNumeroPago) {
-    if (btnUltimaPagina.isVisible()){
-      btnUltimaPagina.click();
-    }
-    List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblVerificacionPago, PagoConstante.PAGO_RECUPERO);
-    int longitudTabla= elementoEncontrado.size();
-    strNumeroPago= elementoEncontrado.get(longitudTabla-1).getText();
+  public String capturarNumeroPagoRealizado() {
+    verificarBotonUltimaPaginaVisible();
+    realizarEsperaCarga();
+    String strNumeroPago = obtenerNumeroTransaccion(PagoConstante.CODIGO_RETENCION);
     return strNumeroPago;
   }
 
-  public void verificarPagoMenuPagos(String strNumeroPago) {
-
+  public List <WebElement> verificarPagoMenuPagos(String strNumeroTransaccion) {
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(MenuConstante.DATOS_FINANCIEROS,MenuConstante.TRANSACCIONES);
     verificarBotonUltimaPaginaVisible();
     realizarEsperaCarga();
-    
-
+    seleccionarTipoTransaccion(PagoConstante.PAGOS);
+    List<WebElement> lstPagos = obtenerFilaTransacciones(strNumeroTransaccion);
+    return lstPagos;
   }
 }

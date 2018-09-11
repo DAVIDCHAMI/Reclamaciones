@@ -180,4 +180,16 @@ public class GeneralPage extends PageObject {
     String strNumeroTx = elementoEncontrado.get(longitudTabla - 1).getText();
     return strNumeroTx;
   }
+
+  public List<WebElement> obtenerFilaTransacciones(String strTransaccion) {
+    tblVerificacion.waitUntilVisible();
+    List<WebElement> lstFila;
+    lstFila =
+            tblVerificacion.findElements(
+                    By.xpath(
+                            String.format(
+                                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
+                                    strTransaccion)));
+    return lstFila;
+  }
 }
