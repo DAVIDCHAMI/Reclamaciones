@@ -73,7 +73,7 @@ public class InformacionReclamacionPage extends GeneralPage {
   public void seleccionarCausaSiniestro(String causa) {
     txtCausaSiniestro.waitUntilVisible();
     txtCausaSiniestro.clear();
-    txtCausaSiniestro.type(causa);
+    txtCausaSiniestro.sendKeys(causa);
     lstCausaSiniestro = lstCausaSiniestro.replace(ConstanteGlobal.COMODIN, causa);
     $(lstCausaSiniestro).waitUntilVisible();
     $(lstCausaSiniestro).click();

@@ -145,9 +145,9 @@ public class GeneralPage extends PageObject {
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
-      WebElementFacade elemento, String encabezadoColumnaDevolver) {
+      WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
     List<String> cabeceraRecuperos = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
-    int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + 1;
+    int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + posicionFila;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
     return elementoEncontrado
         .stream()
@@ -175,7 +175,7 @@ public class GeneralPage extends PageObject {
 
   public String obtenerNumeroTransaccion(String strConstante) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblVerificacion, strConstante);
+        obtenerElementoTablaDatoDesconocido(tblVerificacion, strConstante, 1);
     int longitudTabla = elementoEncontrado.size();
     String strNumeroTx = elementoEncontrado.get(longitudTabla - 1).getText();
     return strNumeroTx;
@@ -185,11 +185,11 @@ public class GeneralPage extends PageObject {
     tblVerificacion.waitUntilVisible();
     List<WebElement> lstFila;
     lstFila =
-            tblVerificacion.findElements(
-                    By.xpath(
-                            String.format(
-                                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
-                                    strTransaccion)));
+        tblVerificacion.findElements(
+            By.xpath(
+                String.format(
+                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
+                    strTransaccion)));
     return lstFila;
   }
 }

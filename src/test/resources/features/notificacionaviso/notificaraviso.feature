@@ -15,7 +15,7 @@ Característica: Notificacion de aviso de una reclamacion
 
     Ejemplos:
       | Tipo y Cobertura                             | Causa             | Valor de Pretensión | Tipo de incidente | ¿Genera exposición? | ¿Genera reserva? | Monto de la reserva |
-      | Multiriesgo corporativo con cobertura basica | Rotura de Vidrios | 2000000             | Propiedad         | si                  | si               | 1218758             |
-      | Multiriesgo corporativo con cobertura basica | Rotura de Vidrios | 2000000             | ""                | no                  | no               | 0                   |
+      | Multiriesgo corporativo con cobertura basica | Rotura de vidrios | 2000000             | Propiedad         | si                  | si               | 1218758             |
+      | Multiriesgo corporativo con cobertura basica | Rotura de vidrios | 2000000             | ""                | no                  | no               | 0                   |
 
 

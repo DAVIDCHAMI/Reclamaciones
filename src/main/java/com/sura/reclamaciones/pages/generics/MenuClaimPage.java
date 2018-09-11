@@ -35,9 +35,15 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = "//div[@id='TabBar:ClaimTab:ClaimTab_FindClaim_Button']")
   WebElementFacade btnBuscar;
 
-  private String selectOpcion =
+  @FindBy(
+    xpath =
+        ".//div[@class='x-panel x-layer x-panel-default x-menu x-border-box x-vertical-scroller x-panel-vertical-scroller x-panel-default-vertical-scroller']"
+  )
+  WebElementFacade mnuReclamacion;
+
+  private String seleccionarOpcion =
       "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
-  private String auxSelectOpcion = "";
+  private String auxSeleccionarOpcion = "";
 
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);

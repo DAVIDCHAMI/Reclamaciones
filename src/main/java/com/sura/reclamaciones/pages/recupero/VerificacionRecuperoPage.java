@@ -5,9 +5,6 @@ import com.sura.reclamaciones.constantes.RecuperoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import java.util.List;
-import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,7 +16,7 @@ public class VerificacionRecuperoPage extends GeneralPage {
   }
 
   @Page MenuClaimPage menuClaimPage;
-  
+
   public List<WebElement> obtenerListaRecupero() {
     verificarBotonUltimaPaginaVisible();
     realizarEsperaCarga();
@@ -28,7 +25,7 @@ public class VerificacionRecuperoPage extends GeneralPage {
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
     verificarBotonUltimaPaginaVisible();
-    List<WebElement>lstFilaRecupero = obtenerFilaTransacciones(strNumeroRecupero);
+    List<WebElement> lstFilaRecupero = obtenerFilaTransacciones(strNumeroRecupero);
     return lstFilaRecupero;
   }
 
