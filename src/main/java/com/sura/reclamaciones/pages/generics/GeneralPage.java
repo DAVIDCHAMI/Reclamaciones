@@ -175,7 +175,7 @@ public class GeneralPage extends PageObject {
 
   public String obtenerNumeroTransaccion(String strConstante) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblVerificacion, strConstante);
+        obtenerElementoTablaDatoDesconocido(tblVerificacion, strConstante,1);
     int longitudTabla = elementoEncontrado.size();
     String strNumeroTx = elementoEncontrado.get(longitudTabla - 1).getText();
     return strNumeroTx;
