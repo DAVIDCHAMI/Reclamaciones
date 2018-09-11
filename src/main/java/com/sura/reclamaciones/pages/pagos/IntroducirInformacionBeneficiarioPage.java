@@ -52,7 +52,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
     obtenerElementoPantallaPago(strMetodoPago);
     if (strMetodoPago.equals(PagoConstante.TRANSFERENCIA_ELECTRONICA)) {
       List<WebElement> elementoEncontrado =
-          obtenerElementoTablaDatoDesconocido(tblCuentaElectronica, strCuenta);
+          obtenerElementoTablaDatoDesconocido(tblCuentaElectronica, strCuenta, 1);
       elementoEncontrado
           .get(0)
           .findElement(By.xpath("//a[contains(.,'" + strSeleccionar + "')]"))

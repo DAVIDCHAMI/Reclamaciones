@@ -26,7 +26,10 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
   private WebElementFacade pgrBarCarga;
 
-  @FindBy(xpath = "//a[@id='NormalCreateCheckWizard:Next']")
+  @FindBy(
+    xpath =
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or contains(@id, 'NormalCreateCheckWizard:Next-btnEl')]"
+  )
   private WebElementFacade btnSiguiente;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
@@ -126,9 +129,9 @@ public class GeneralPage extends PageObject {
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
-      WebElementFacade elemento, String encabezadoColumnaDevolver) {
+      WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
     List<String> cabeceraRecuperos = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
-    int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + 1;
+    int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + posicionFila;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
     return elementoEncontrado
         .stream()
