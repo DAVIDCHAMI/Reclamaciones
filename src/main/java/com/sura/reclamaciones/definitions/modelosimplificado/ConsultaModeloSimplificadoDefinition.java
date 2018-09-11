@@ -9,23 +9,24 @@ import cucumber.api.java.ast.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import net.thucydides.core.annotations.Steps;
 
 public class ConsultaModeloSimplificadoDefinition {
-
-  Connection conexion = null;
-
+  
   String movimientoFinanciero;
 
-  @Steps CredencialBD credencial;
+  @Steps
+  CredencialBD credencial;
 
-  @Steps ModeloSimplificado modeloSimplificado;
+  @Steps
+  ModeloSimplificado modeloSimplificado;
 
-  @Steps private GenericStep genericStep;
+  @Steps
+  private GenericStep genericStep;
 
-  @Steps ConsultarModeloSimplificadoStep conexionBDStep;
+  @Steps
+  ConsultarModeloSimplificadoStep conexionBDStep;
 
   ModeloSimplificadoBD modeloSimplificadoBD;
 
