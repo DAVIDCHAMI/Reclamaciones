@@ -13,7 +13,7 @@ Característica: Reversión de constitución o ajuste manual de la reserva de un
 
     Ejemplos:
       | Tipo y Cobertura                             | Monto del ajuste | Deducible |
-      | Multiriesgo corporativo con cobertura basica | 6000000          | 100000    |
+      | Multiriesgo corporativo con cobertura basica | 6000000          | 3906210   |
 
 
 

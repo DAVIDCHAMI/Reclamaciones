@@ -26,5 +26,7 @@ public class ReversionConstitucionStep {
     ajusteReservaPage.cerrarAdvertenciaLimiteAgregado();
   }
 
-  public void verificarAjusteReserva(String deducible) {}
+  public void verificarAjusteReserva(String deducible) {
+
+  }
 }
