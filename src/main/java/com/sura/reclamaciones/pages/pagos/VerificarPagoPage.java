@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.pagos;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class VerificarPagoPage extends GeneralPage {
 
@@ -41,11 +43,10 @@ public class VerificarPagoPage extends GeneralPage {
 
   public void verificarPagoMenuPagos(String strNumeroPago) {
 
-    menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(PagoConstante.DATOS_FINANCIEROS);
-    menuClaimPage.seleecionarOpcionMenuLateralPrimerNivel(PagoConstante.PAGOS_RECUPEROS);
-    if (btnUltimaPagina.isVisible()){
-      btnUltimaPagina.click();
-    }
+    menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(MenuConstante.DATOS_FINANCIEROS,MenuConstante.TRANSACCIONES);
+    verificarBotonUltimaPaginaVisible();
+    realizarEsperaCarga();
+    
 
   }
 }
