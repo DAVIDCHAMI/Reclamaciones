@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import net.thucydides.core.annotations.Steps;
 
 public class ConsultaModeloSimplificadoDefinition {
-  
+
   String movimientoFinanciero;
 
   @Steps
