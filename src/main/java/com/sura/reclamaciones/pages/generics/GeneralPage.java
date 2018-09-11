@@ -170,15 +170,16 @@ public class GeneralPage extends PageObject {
   public void verificarBotonUltimaPaginaVisible() {
     if (btnUltimaPagina.isVisible()) {
       btnUltimaPagina.click();
+      realizarEsperaCarga();
     }
   }
 
-  public String obtenerNumeroTransaccion(String strConstante) {
+  public String obtenerDatoTablaSegunCabecera(String strDatoCabecera) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblVerificacion, strConstante, 1);
+        obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
     int longitudTabla = elementoEncontrado.size();
-    String strNumeroTx = elementoEncontrado.get(longitudTabla - 1).getText();
-    return strNumeroTx;
+    String strDatoTablaSegunCabecera = elementoEncontrado.get(longitudTabla - 1).getText();
+    return strDatoTablaSegunCabecera;
   }
 
   public List<WebElement> obtenerFilaTransacciones(String strTransaccion) {

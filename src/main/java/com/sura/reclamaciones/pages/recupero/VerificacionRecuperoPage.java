@@ -19,8 +19,7 @@ public class VerificacionRecuperoPage extends GeneralPage {
 
   public List<WebElement> obtenerListaRecupero() {
     verificarBotonUltimaPaginaVisible();
-    realizarEsperaCarga();
-    String strNumeroRecupero = obtenerNumeroTransaccion(RecuperoConstante.NUMERO_TRANSACCION);
+    String strNumeroRecupero = obtenerDatoTablaSegunCabecera(RecuperoConstante.NUMERO_TRANSACCION);
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
