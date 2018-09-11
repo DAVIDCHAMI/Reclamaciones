@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ReclamacionEmpresariales extends Reclamacion {
+public class ReclamacionEmpresarial extends Reclamacion {
 
-  private List<ReclamacionEmpresariales> lstReclamoEmp = new ArrayList<>();
+  private List<ReclamacionEmpresarial> lstReclamoEmp = new ArrayList<>();
   private String numeroContrato;
   private String detalleHechos;
   private String pais;
@@ -14,11 +14,11 @@ public class ReclamacionEmpresariales extends Reclamacion {
   private String ciudad;
   private String direccion;
 
-  public ReclamacionEmpresariales() {
+  public ReclamacionEmpresarial() {
     super();
   }
 
-  private ReclamacionEmpresariales(Map<String, String> datosReclamacionEmp) {
+  private ReclamacionEmpresarial(Map<String, String> datosReclamacionEmp) {
     super(datosReclamacionEmp);
     this.numeroContrato = datosReclamacionEmp.get("numeroContrato");
     this.detalleHechos = datosReclamacionEmp.get("detalleHechos");
@@ -28,7 +28,7 @@ public class ReclamacionEmpresariales extends Reclamacion {
     this.direccion = datosReclamacionEmp.get("direccion");
   }
 
-  public ReclamacionEmpresariales(List<Map<String, String>> datosReclamacionesEmp) {
+  public ReclamacionEmpresarial(List<Map<String, String>> datosReclamacionesEmp) {
     asignarDatos(datosReclamacionesEmp);
   }
 
@@ -56,13 +56,13 @@ public class ReclamacionEmpresariales extends Reclamacion {
     return detalleHechos;
   }
 
-  public List<ReclamacionEmpresariales> getLstReclamo() {
+  public List<ReclamacionEmpresarial> getLstReclamo() {
     return lstReclamoEmp;
   }
 
   private void asignarDatos(List<Map<String, String>> datosReclamacionesEmp) {
     for (Map<String, String> dato : datosReclamacionesEmp) {
-      lstReclamoEmp.add(new ReclamacionEmpresariales(dato));
+      lstReclamoEmp.add(new ReclamacionEmpresarial(dato));
     }
   }
 }
