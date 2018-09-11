@@ -46,9 +46,7 @@ public class GeneralPage extends PageObject {
   private WebElementFacade txtTransacciones;
 
   @FindBy(
-    xpath = " //div[text()='USER NAME' or text()='USER ID']"
-        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV'] or contains[id,'ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']"
-  )
+    xpath = "//div[@id ='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV' or @id='ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']")
   private WebElementFacade tblVerificacion;
 
   @FindBy(xpath = "//input")
@@ -159,6 +157,9 @@ public class GeneralPage extends PageObject {
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();
     seleccionarOpcionCombobox(tipoTransaccion);
+    if (pgrBarCarga.isVisible()){
+      realizarEsperaCarga();
+    }
   }
 
   public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {

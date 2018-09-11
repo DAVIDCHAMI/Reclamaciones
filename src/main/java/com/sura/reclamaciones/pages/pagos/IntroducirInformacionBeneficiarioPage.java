@@ -36,6 +36,11 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   )
   private WebElementFacade tblCuentaElectronica;
 
+ String PAIS = "Country-inputEl";
+  String DEPARTAMENTO = "State-inputEl";
+   String CIUDAD = "Sura_Colombian_City-inputEl";
+   String TIPO_DIRECCION = "Address_AddressType-inputEl";
+
   public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
     cmbNombreBeneficiario.click();
     seleccionarOpcionCombobox(strNombreBeneficiario);
@@ -78,23 +83,19 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
     obtenerElementoPantallaPago(strPagoSura);
   }
 
-  public void seleccionarPais(String etiqueta, String strPais) {
-    buscarElementoLista(etiqueta, strPais);
-    realizarEsperaCarga();
+  public void seleccionarPais(String strPais) {
+    seleccionarElementoListado(PAIS, strPais);
   }
 
-  public void seleccionarDepartamento(String etiqueta, String strDepartamento) {
-    buscarElementoLista(etiqueta, strDepartamento);
-    realizarEsperaCarga();
-  }
+  public void seleccionarDepartamento(String strDepartamento) {
+    seleccionarElementoListado(DEPARTAMENTO, strDepartamento);
+     }
 
-  public void seleccionarCiudad(String etiqueta, String strCiudad) {
-    buscarElementoLista(etiqueta, strCiudad);
-    realizarEsperaCarga();
-  }
+  public void seleccionarCiudad(String strCiudad) {
+    seleccionarElementoListado(CIUDAD, strCiudad);
+     }
 
-  public void seleccionarTipoDireccion(String etiqueta, String strTipoDireccion) {
-    buscarElementoLista(etiqueta, strTipoDireccion);
-    realizarEsperaCarga();
-  }
+  public void seleccionarTipoDireccion(String strTipoDireccion) {
+    seleccionarElementoListado(TIPO_DIRECCION, strTipoDireccion);
+    }
 }

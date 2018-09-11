@@ -51,7 +51,10 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   )
   public WebElementFacade lstCodigo;
 
-  
+  @FindBy(
+          xpath =
+                  "//a[contains(@id, 'NormalCreateCheckWizard:Next')]")
+  public WebElementFacade btnSiguiente;
 
   public void seleccionarLineaReserva(String strLineaReserva) {
     cmbLineaReserva.waitUntilClickable().click();
@@ -106,5 +109,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
               String.format(
                   "$('input[name|=\"Amount\"]').val('%d')", dblCalculoVrReserva.intValue()));
         });
+    btnSiguiente.waitUntilVisible();
+    btnSiguiente.click();
   }
 }
