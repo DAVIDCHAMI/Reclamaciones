@@ -20,8 +20,8 @@ public class ReclamacionDefinition {
   @Dado("^que se recibe un auto con causa de siniestro por danos$")
   public void recibirReclamo() throws IOException {
     reclamacionAuto =
-        new ReclamacionAuto(genericStep.getFilasModelo("reclamacion", "reclamacionSimple"));
-    vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "COL001"));
+        new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionSimple"));
+    vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "autoReclamacionSimple"));
     reclamacionStep.seleccionarMenu();
     reclamacionStep.completarFormularioBuscarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
@@ -30,7 +30,7 @@ public class ReclamacionDefinition {
 
   @Cuando("se toman los datos del siniestro")
   public void ingresarDatosSiniestro() throws IOException {
-    reclamacionStep.seleccionarNombreAutorReporte();
+    reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.editarVehiculo(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarCategorizacion(reclamacionAuto.getLstReclamacionAuto());
