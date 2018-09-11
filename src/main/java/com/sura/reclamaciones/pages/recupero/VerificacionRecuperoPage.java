@@ -18,13 +18,13 @@ public class VerificacionRecuperoPage extends GeneralPage {
   @Page MenuClaimPage menuClaimPage;
 
   public List<WebElement> obtenerListaRecupero() {
-    verificarBotonUltimaPaginaVisible();
-    String strNumeroRecupero = obtenerDatoTablaSegunCabecera(RecuperoConstante.NUMERO_TRANSACCION);
+    irUltimaPagina();
+    String strNumeroRecupero = obtenerDatoTablaCabecera(RecuperoConstante.NUMERO_TRANSACCION);
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
-    verificarBotonUltimaPaginaVisible();
-    List<WebElement> lstFilaRecupero = obtenerFilaTabla(strNumeroRecupero);
+    irUltimaPagina();
+    List<WebElement> lstFilaRecupero = obtenerFilaTransacciones(strNumeroRecupero);
     return lstFilaRecupero;
   }
 

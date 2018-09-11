@@ -14,6 +14,10 @@ public class CreacionRecuperoPage extends GeneralPage {
     super(driver);
   }
 
+  String PAIS = "Country-inputEl";
+  String DEPARTAMENTO = "State-inputEl";
+  String CIUDAD = "City-inputEl";
+
   @FindBy(
     xpath =
         "//table[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:Payer-triggerWrap']//td/following-sibling::td/div"
@@ -81,17 +85,17 @@ public class CreacionRecuperoPage extends GeneralPage {
     seleccionarOpcionCombobox(moneda);
   }
 
-  public void seleccionarPais(String etiqueta, String pais) {
-    buscarElementoLista(etiqueta, pais);
+  public void seleccionarPais(String pais) {
+    seleccionarElementoListado(PAIS, pais);
   }
 
-  public void seleccionarDepartamento(String etiqueta, String departamento) {
-    buscarElementoLista(etiqueta, departamento);
+  public void seleccionarDepartamento(String departamento) {
+    seleccionarElementoListado(DEPARTAMENTO, departamento);
     realizarEsperaCarga();
   }
 
-  public void seleccionarCiudad(String etiqueta, String ciudad) {
-    buscarElementoLista(etiqueta, ciudad);
+  public void seleccionarCiudad(String ciudad) {
+    seleccionarElementoListado(CIUDAD, ciudad);
     realizarEsperaCarga();
   }
 

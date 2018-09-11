@@ -46,8 +46,8 @@ public class GeneralPage extends PageObject {
   private WebElementFacade txtTransacciones;
 
   @FindBy(
-    xpath =
-        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
+    xpath = " //div[text()='USER NAME' or text()='USER ID']"
+        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV'] or contains[id,'ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']"
   )
   private WebElementFacade tblVerificacion;
 
@@ -161,20 +161,28 @@ public class GeneralPage extends PageObject {
     seleccionarOpcionCombobox(tipoTransaccion);
   }
 
-  public void buscarElementoLista(String elementoEtiqueta, String ubicacion) {
-    mnuDinamico.findElement(By.xpath("//input[contains(@id,'" + elementoEtiqueta + "')]")).click();
+  public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
+    mnuDinamico
+        .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
+        .click();
     auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
-  }
-
-  public void verificarBotonUltimaPaginaVisible() {
-    if (btnUltimaPagina.isVisible()) {
-      btnUltimaPagina.click();
+    if (pgrBarCarga.isVisible()){
       realizarEsperaCarga();
     }
   }
 
-  public String obtenerDatoTablaSegunCabecera(String strDatoCabecera) {
+  public void irUltimaPagina() {
+    if (btnUltimaPagina.isVisible()) {
+      btnUltimaPagina.click();
+      if (pgrBarCarga.isVisible()){
+        realizarEsperaCarga();
+      }
+
+    }
+  }
+
+  public String obtenerDatoTablaCabecera(String strDatoCabecera) {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
     int longitudTabla = elementoEncontrado.size();
