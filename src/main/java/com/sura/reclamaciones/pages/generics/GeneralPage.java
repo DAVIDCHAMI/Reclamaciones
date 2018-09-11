@@ -161,25 +161,26 @@ public class GeneralPage extends PageObject {
     seleccionarOpcionCombobox(tipoTransaccion);
   }
 
-  public void buscarElementoLista(String elementoEtiqueta, String ubicacion) {
-    mnuDinamico.findElement(By.xpath("//input[contains(@id,'" + elementoEtiqueta + "')]")).click();
+  public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
+    mnuDinamico
+        .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
+        .click();
     auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
   }
 
-  public void verificarBotonUltimaPaginaVisible() {
+  public void irUltimaPagina() {
     if (btnUltimaPagina.isVisible()) {
       btnUltimaPagina.click();
       realizarEsperaCarga();
     }
   }
 
-  public String obtenerDatoTablaSegunCabecera(String strDatoCabecera) {
+  public String obtenerDatoTablaCabecera(String strDatoCabecera) {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
     int longitudTabla = elementoEncontrado.size();
-    String strDatoTablaSegunCabecera = elementoEncontrado.get(longitudTabla - 1).getText();
-    return strDatoTablaSegunCabecera;
+    return elementoEncontrado.get(longitudTabla - 1).getText();
   }
 
   public List<WebElement> obtenerFilaTransacciones(String strTransaccion) {
