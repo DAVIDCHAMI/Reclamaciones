@@ -26,7 +26,7 @@ public class PagoEmpresarial {
     this.departamento = datosPagosEmpresariales.get("departamento");
     this.ciudad = datosPagosEmpresariales.get("ciudad");
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
-    this.estado=datosPagosEmpresariales.get("estado");
+    this.estado = datosPagosEmpresariales.get("estado");
   }
 
   public PagoEmpresarial(List<Map<String, String>> datosPagosEmpresariales) {

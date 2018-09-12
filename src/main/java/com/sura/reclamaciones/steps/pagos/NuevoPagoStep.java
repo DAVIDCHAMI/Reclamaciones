@@ -13,7 +13,6 @@ import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import com.sura.reclamaciones.pages.pagos.VerificarPagoPage;
 import java.util.List;
-
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
@@ -27,8 +26,6 @@ public class NuevoPagoStep {
   @Page VerificarPagoPage verificarPagoPage;
   @Page GeneralPage generalPage;
   @Page MenuClaimPage menuClaimPage;
-
-
 
   @Step
   public void consultarNumeroReclamacion(String strNumeroReclamacion) {
@@ -53,14 +50,12 @@ public class NuevoPagoStep {
           introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
               strMetodoPago, PagoConstante.CUENTA, PagoConstante.SELECCIONAR);
           introducirInformacionBeneficiarioPage.seleccionarPagoSura(strPagoSoloSura);
-        introducirInformacionBeneficiarioPage.seleccionarPais(
-            diligenciador.getPais());
+          introducirInformacionBeneficiarioPage.seleccionarPais(diligenciador.getPais());
           introducirInformacionBeneficiarioPage.seleccionarDepartamento(
-                  diligenciador.getDepartamento());
-          introducirInformacionBeneficiarioPage.seleccionarCiudad(
-              diligenciador.getCiudad());
+              diligenciador.getDepartamento());
+          introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
           introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
-             diligenciador.getTipoDireccion());
+              diligenciador.getTipoDireccion());
           generalPage.continuarSiguientePantalla();
           introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
           introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
@@ -76,17 +71,20 @@ public class NuevoPagoStep {
 
   @Step
   public void verificarPagoRealizado(List<PagoEmpresarial> lstPago) {
-      lstPago.forEach(
-              (PagoEmpresarial validador) -> {
-                  String strNumeroTransaccion = verificarPagoPage.obtenerNumeroPagoRealizado();
-                  verificarPagoPage.ingresarMenuPagos();
-                  List<WebElement> lstFilaPago = verificarPagoPage.obtenerFilaTabla(strNumeroTransaccion);
-                  String strValorReserva = (Serenity.sessionVariableCalled(VALOR_RESERVA));
-                  assertTrue("El valor reservado no es igual al enviado", verificarPagoPage.verificarPagoMenuTransaccion( strValorReserva, lstFilaPago));
-                  assertTrue(
-                          "No llego a SAP el recupero", verificarPagoPage.verificarPagoMenuTransaccion(validador.getEstado(), lstFilaPago));
-
-
-              });
+    lstPago.forEach(
+        (PagoEmpresarial validador) -> {
+          String strNumeroTransaccion = verificarPagoPage.obtenerNumeroPagoRealizado();
+          verificarPagoPage.ingresarMenuPagos();
+          List<WebElement> lstFilaPago =
+              verificarPagoPage.obtenerFilaTabla(
+                  PagoConstante.PAGOS_RECUPEROS, strNumeroTransaccion);
+          String strValorReserva = (Serenity.sessionVariableCalled(VALOR_RESERVA));
+          assertTrue(
+              "El valor reservado no es igual al enviado",
+              verificarPagoPage.verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
+          assertTrue(
+              "No llego a SAP el recupero",
+              verificarPagoPage.verificarPagoMenuTransaccion(validador.getEstado(), lstFilaPago));
+        });
   }
 }

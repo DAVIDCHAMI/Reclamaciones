@@ -4,6 +4,8 @@ import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +48,9 @@ public class GeneralPage extends PageObject {
   private WebElementFacade txtTransacciones;
 
   @FindBy(
-    xpath = "//div[@id ='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV' or @id='ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']")
+    xpath =
+        "//div[@id ='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV' or @id='ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']"
+  )
   private WebElementFacade tblVerificacion;
 
   @FindBy(xpath = "//input")
@@ -157,7 +161,7 @@ public class GeneralPage extends PageObject {
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();
     seleccionarOpcionCombobox(tipoTransaccion);
-    if (pgrBarCarga.isVisible()){
+    if (pgrBarCarga.isVisible()) {
       realizarEsperaCarga();
     }
   }
@@ -168,7 +172,7 @@ public class GeneralPage extends PageObject {
         .click();
     auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
-    if (pgrBarCarga.isVisible()){
+    if (pgrBarCarga.isVisible()) {
       realizarEsperaCarga();
     }
   }
@@ -176,10 +180,9 @@ public class GeneralPage extends PageObject {
   public void irUltimaPagina() {
     if (btnUltimaPagina.isVisible()) {
       btnUltimaPagina.click();
-      if (pgrBarCarga.isVisible()){
+      if (pgrBarCarga.isVisible()) {
         realizarEsperaCarga();
       }
-
     }
   }
 
@@ -190,16 +193,24 @@ public class GeneralPage extends PageObject {
     return elementoEncontrado.get(longitudTabla - 1).getText();
   }
 
-  public List<WebElement> obtenerFilaTabla(String strIdentificadorFila) {
+  public List<WebElement> obtenerFilaTabla(String nombrePantalla, String strIdentificadorFila) {
     tblVerificacion.waitUntilVisible();
-    List<WebElement> lstFila;
-    lstFila =
-        tblVerificacion.findElements(
-            By.xpath(
-                String.format(
-                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
-                    strIdentificadorFila)));
+    List<WebElement> lstFila = null;
+    if (nombrePantalla.equals(MenuConstante.TRANSACCIONES)) {
+      lstFila =
+          tblVerificacion.findElements(
+              By.xpath(
+                  String.format(
+                      "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
+                      strIdentificadorFila)));
+    } else if (nombrePantalla.equals(PagoConstante.PAGOS_RECUPEROS)) {
+      lstFila =
+          tblVerificacion.findElements(
+              By.xpath(
+                  String.format(
+                      "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td",
+                      strIdentificadorFila)));
+    }
     return lstFila;
   }
-
 }

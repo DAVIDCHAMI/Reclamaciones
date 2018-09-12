@@ -24,7 +24,8 @@ public class VerificacionRecuperoPage extends GeneralPage {
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
     irUltimaPagina();
-    List<WebElement> lstFilaRecupero = obtenerFilaTabla(strNumeroRecupero);
+    List<WebElement> lstFilaRecupero =
+        obtenerFilaTabla(MenuConstante.TRANSACCIONES, strNumeroRecupero);
     return lstFilaRecupero;
   }
 
