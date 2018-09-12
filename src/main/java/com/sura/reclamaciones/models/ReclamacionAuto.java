@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class ReclamacionAuto extends Reclamacion {
 
+  private String relacionAsegurado;
   private String sucedido;
   private String causa;
   private String vehiculoRetenido;
@@ -21,6 +22,7 @@ public class ReclamacionAuto extends Reclamacion {
 
   private ReclamacionAuto(Map<String, String> datosReclamacionAut) {
     super(datosReclamacionAut);
+    this.relacionAsegurado = datosReclamacionAut.get("relacionAsegurado");
     this.sucedido = datosReclamacionAut.get("sucedido");
     this.causa = datosReclamacionAut.get("causa");
     this.vehiculoRetenido = datosReclamacionAut.get("vehiculoRetenido");
@@ -32,6 +34,10 @@ public class ReclamacionAuto extends Reclamacion {
 
   public ReclamacionAuto(List<Map<String, String>> datosReclamacionAut) {
     asignarDatos(datosReclamacionAut);
+  }
+
+  public String getRelacionAsegurado() {
+    return relacionAsegurado;
   }
 
   public String getSucedido() {
