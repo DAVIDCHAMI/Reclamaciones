@@ -161,35 +161,36 @@ public class GeneralPage extends PageObject {
     seleccionarOpcionCombobox(tipoTransaccion);
   }
 
-  public void buscarElementoLista(String elementoEtiqueta, String ubicacion) {
-    mnuDinamico.findElement(By.xpath("//input[contains(@id,'" + elementoEtiqueta + "')]")).click();
+  public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
+    mnuDinamico
+        .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
+        .click();
     auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
   }
 
-  public void verificarBotonUltimaPaginaVisible() {
+  public void irUltimaPagina() {
     if (btnUltimaPagina.isVisible()) {
       btnUltimaPagina.click();
     }
   }
 
-  public String obtenerNumeroTransaccion(String strConstante) {
+  public String obtenerDatoTablaCabecera(String strDatoCabecera) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblVerificacion, strConstante,1);
+        obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
     int longitudTabla = elementoEncontrado.size();
-    String strNumeroTx = elementoEncontrado.get(longitudTabla - 1).getText();
-    return strNumeroTx;
+    return elementoEncontrado.get(longitudTabla - 1).getText();
   }
 
   public List<WebElement> obtenerFilaTransacciones(String strTransaccion) {
     tblVerificacion.waitUntilVisible();
     List<WebElement> lstFila;
     lstFila =
-            tblVerificacion.findElements(
-                    By.xpath(
-                            String.format(
-                                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
-                                    strTransaccion)));
+        tblVerificacion.findElements(
+            By.xpath(
+                String.format(
+                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
+                    strTransaccion)));
     return lstFila;
   }
 }

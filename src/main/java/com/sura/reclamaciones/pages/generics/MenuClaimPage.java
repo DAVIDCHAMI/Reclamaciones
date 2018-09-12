@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.pages.generics;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
