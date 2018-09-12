@@ -95,7 +95,6 @@ public class CreacionRecuperoPage extends GeneralPage {
 
   public void seleccionarCiudad(String ciudad) {
     seleccionarElementoListado(CIUDAD, ciudad);
-
   }
 
   public void seleccionarCategoriaRecuperacion(String recupero) {
