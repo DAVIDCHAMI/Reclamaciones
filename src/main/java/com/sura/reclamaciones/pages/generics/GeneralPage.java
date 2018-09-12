@@ -3,6 +3,9 @@ package com.sura.reclamaciones.pages.generics;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,7 +29,10 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
   private WebElementFacade pgrBarCarga;
 
-  @FindBy(xpath = "//a[@id='NormalCreateCheckWizard:Next']")
+  @FindBy(
+    xpath =
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or contains(@id, 'NormalCreateCheckWizard:Next-btnEl')]"
+  )
   private WebElementFacade btnSiguiente;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
@@ -40,6 +46,21 @@ public class GeneralPage extends PageObject {
         "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
   )
   private WebElementFacade txtTransacciones;
+
+  @FindBy(
+    xpath =
+        "//div[@id ='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV' or @id='ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']"
+  )
+  private WebElementFacade tblVerificacion;
+
+  @FindBy(xpath = "//input")
+  private WebElementFacade mnuDinamico;
+
+  @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
+  private WebElementFacade btnUltimaPagina;
+
+  private String lstDinamico = "//li[.='COMODIN']";
+  private String auxLstUbicacion = "";
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -126,9 +147,9 @@ public class GeneralPage extends PageObject {
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
-      WebElementFacade elemento, String encabezadoColumnaDevolver) {
+      WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
     List<String> cabeceraRecuperos = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
-    int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + 1;
+    int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + posicionFila;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
     return elementoEncontrado
         .stream()
@@ -140,5 +161,56 @@ public class GeneralPage extends PageObject {
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();
     seleccionarOpcionCombobox(tipoTransaccion);
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
+  }
+
+  public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
+    mnuDinamico
+        .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
+        .click();
+    auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
+    $(auxLstUbicacion).click();
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
+  }
+
+  public void irUltimaPagina() {
+    if (btnUltimaPagina.isVisible()) {
+      btnUltimaPagina.click();
+      if (pgrBarCarga.isVisible()) {
+        realizarEsperaCarga();
+      }
+    }
+  }
+
+  public String obtenerDatoTablaCabecera(String strDatoCabecera) {
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
+    int longitudTabla = elementoEncontrado.size();
+    return elementoEncontrado.get(longitudTabla - 1).getText();
+  }
+
+  public List<WebElement> obtenerFilaTabla(String nombrePantalla, String strIdentificadorFila) {
+    tblVerificacion.waitUntilVisible();
+    List<WebElement> lstFila = null;
+    if (nombrePantalla.equals(MenuConstante.TRANSACCIONES)) {
+      lstFila =
+          tblVerificacion.findElements(
+              By.xpath(
+                  String.format(
+                      "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
+                      strIdentificadorFila)));
+    } else if (nombrePantalla.equals(PagoConstante.PAGOS_RECUPEROS)) {
+      lstFila =
+          tblVerificacion.findElements(
+              By.xpath(
+                  String.format(
+                      "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td",
+                      strIdentificadorFila)));
+    }
+    return lstFila;
   }
 }

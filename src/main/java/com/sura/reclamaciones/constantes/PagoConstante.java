@@ -9,4 +9,7 @@ public class PagoConstante {
   public static final String CANTIDAD = "Cantidad";
   public static final String CUENTA = "";
   public static final String SELECCIONAR = "Seleccionar";
+  public static final String PAGO_RECUPERO = "Número de pago/recupero";
+  public static final String DATOS_FINANCIEROS = "Datos financieros";
+  public static final String PAGOS_RECUPEROS = "Pagos y Recuperaciones";
 }

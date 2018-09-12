@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.steps.pagos;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
+import static com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage.variablesSesion.*;
+import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.models.PagoEmpresarial;
@@ -9,15 +11,19 @@ import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
+import com.sura.reclamaciones.pages.pagos.VerificarPagoPage;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.openqa.selenium.WebElement;
 
 public class NuevoPagoStep {
 
   @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
   @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
+  @Page VerificarPagoPage verificarPagoPage;
   @Page GeneralPage generalPage;
   @Page MenuClaimPage menuClaimPage;
 
@@ -44,6 +50,12 @@ public class NuevoPagoStep {
           introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
               strMetodoPago, PagoConstante.CUENTA, PagoConstante.SELECCIONAR);
           introducirInformacionBeneficiarioPage.seleccionarPagoSura(strPagoSoloSura);
+          introducirInformacionBeneficiarioPage.seleccionarPais(diligenciador.getPais());
+          introducirInformacionBeneficiarioPage.seleccionarDepartamento(
+              diligenciador.getDepartamento());
+          introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
+          introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
+              diligenciador.getTipoDireccion());
           generalPage.continuarSiguientePantalla();
           introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
           introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
@@ -51,7 +63,6 @@ public class NuevoPagoStep {
           introducirInformacionPagoPage.ingresarCodigoRetencion(
               strCodigoRetencion, PagoConstante.CODIGO_RETENCION);
           introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, PagoConstante.CANTIDAD);
-          generalPage.continuarSiguientePantalla();
           establecerInstruccionPagoPage.ingresarFecha();
           establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
           generalPage.finalizarProceso();
@@ -59,7 +70,21 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void verificarPagoRealizado() {
-    //to do:
+  public void verificarPagoRealizado(List<PagoEmpresarial> lstPago) {
+    lstPago.forEach(
+        (PagoEmpresarial validador) -> {
+          String strNumeroTransaccion = verificarPagoPage.obtenerNumeroPagoRealizado();
+          verificarPagoPage.ingresarMenuPagos();
+          List<WebElement> lstFilaPago =
+              verificarPagoPage.obtenerFilaTabla(
+                  PagoConstante.PAGOS_RECUPEROS, strNumeroTransaccion);
+          String strValorReserva = (Serenity.sessionVariableCalled(VALOR_RESERVA));
+          assertTrue(
+              "El valor reservado no es igual al enviado",
+              verificarPagoPage.verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
+          assertTrue(
+              "No llego a SAP el recupero",
+              verificarPagoPage.verificarPagoMenuTransaccion(validador.getEstado(), lstFilaPago));
+        });
   }
 }

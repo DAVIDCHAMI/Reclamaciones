@@ -11,9 +11,6 @@ public class MenuRecuperoPage extends GeneralPage {
     super(driver);
   }
 
-  @FindBy(xpath = "//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
-  private WebElementFacade txtNumeroReclamacion;
-
   @FindBy(xpath = "//span[@id ='Claim:ClaimMenuActions-btnInnerEl']")
   private WebElementFacade btnAcciones;
 
