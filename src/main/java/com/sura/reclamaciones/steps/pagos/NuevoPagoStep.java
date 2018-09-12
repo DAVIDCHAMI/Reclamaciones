@@ -1,9 +1,9 @@
 package com.sura.reclamaciones.steps.pagos;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
+import static com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage.variablesSesion.*;
 import static org.junit.Assert.assertTrue;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -13,6 +13,8 @@ import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import com.sura.reclamaciones.pages.pagos.VerificarPagoPage;
 import java.util.List;
+
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebElement;
@@ -25,6 +27,8 @@ public class NuevoPagoStep {
   @Page VerificarPagoPage verificarPagoPage;
   @Page GeneralPage generalPage;
   @Page MenuClaimPage menuClaimPage;
+
+
 
   @Step
   public void consultarNumeroReclamacion(String strNumeroReclamacion) {
@@ -73,13 +77,16 @@ public class NuevoPagoStep {
   @Step
   public void verificarPagoRealizado(List<PagoEmpresarial> lstPago) {
       lstPago.forEach(
-              validador->{
-                  String strNumeroTransaccion= verificarPagoPage.obtenerNumeroPagoRealizado();
-                  verificarPagoPage.ingresarMenuTransacciones();
-                  List<WebElement> lstFilaPago=  verificarPagoPage.obtenerFilaTabla(strNumeroTransaccion);
+              (PagoEmpresarial validador) -> {
+                  String strNumeroTransaccion = verificarPagoPage.obtenerNumeroPagoRealizado();
+                  verificarPagoPage.ingresarMenuPagos();
+                  List<WebElement> lstFilaPago = verificarPagoPage.obtenerFilaTabla(strNumeroTransaccion);
+                  String strValorReserva = (Serenity.sessionVariableCalled(VALOR_RESERVA));
+                  assertTrue("El valor reservado no es igual al enviado", verificarPagoPage.verificarPagoMenuTransaccion( strValorReserva, lstFilaPago));
                   assertTrue(
                           "No llego a SAP el recupero", verificarPagoPage.verificarPagoMenuTransaccion(validador.getEstado(), lstFilaPago));
-              }
-      );
+
+
+              });
   }
 }
