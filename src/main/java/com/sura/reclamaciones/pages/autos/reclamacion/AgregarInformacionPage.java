@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
@@ -14,7 +15,10 @@ public class AgregarInformacionPage extends GeneralPage {
   )
   private WebElementFacade btnCerrarVentanaEmergente;
 
-  @FindBy(xpath = ".//td[@class='x-input-cell']/input")
+  @FindBy(
+    xpath =
+        ".//input[@role='textbox' and @id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:LossEstimate-inputEl']"
+  )
   WebElementFacade txtPretension;
 
   @FindBy(xpath = ".//label[contains(.,'Causa')]/../following-sibling::td//input")
@@ -64,7 +68,7 @@ public class AgregarInformacionPage extends GeneralPage {
   }
 
   public void cerrarVentanaEmergente() {
-    if (btnCerrarVentanaEmergente.isPresent()) {
+    if (btnCerrarVentanaEmergente.isVisible()) {
       btnCerrarVentanaEmergente.waitUntilVisible();
       btnCerrarVentanaEmergente.click();
       realizarEsperaCarga();
@@ -85,11 +89,12 @@ public class AgregarInformacionPage extends GeneralPage {
 
   public void seleccionarOrigen(String origen) {
     cmbOrigenSiniestro.type(origen);
-    cmbOrigenSiniestro.sendKeys(Keys.TAB);
+    cmbOrigenSiniestro.sendKeys(Keys.ENTER);
   }
 
   public void escribirValorPretension(String valorPretension) {
-    txtPretension.type(valorPretension);
+    txtPretension.withTimeoutOf(5, TimeUnit.SECONDS).click();
+    txtPretension.sendKeys(valorPretension);
   }
 
   public void seleccionarIntervinoAutoridad(String autoridad) {
