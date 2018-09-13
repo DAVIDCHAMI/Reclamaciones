@@ -191,7 +191,10 @@ public class GeneralPage extends PageObject {
 
   public void irSiguientePagina(){
       if (btnCambioPagina.isSelected()){
-          
+          btnCambioPagina.click();
+          if (pgrBarCarga.isVisible()){
+              realizarEsperaCarga();
+          }
       }
   }
 

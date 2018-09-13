@@ -27,7 +27,7 @@ public class DetallePagoPage extends GeneralPage {
     }
 
     public void realizarAnulacionPago() {
-        if (btnAnularDetener.isSelected()){
+        if (btnAnularDetener.isEnabled()){
             btnAnularDetener.click();
             btnAnularCheque.waitUntilClickable();
             btnAnularCheque.click();
@@ -36,7 +36,7 @@ public class DetallePagoPage extends GeneralPage {
         }
         else {
             LOGGER.info("El boton de anulación no se encuentra activo");
-            System.exit(1);
+            System.exit(0);
         }
                 }
 
@@ -46,7 +46,7 @@ public class DetallePagoPage extends GeneralPage {
         for (WebElement aLstPago : lstPago) {
             if (aLstPago.getText().equals(strNumeroPago)) {
                 aLstPago.click();
-                aLstPago.findElement(By.xpath("//a[@class='g-actionable']")).click();
+                aLstPago.findElement(By.xpath(String.format("//a[@class='g-actionable'][contains(text(),'%s')]", strNumeroPago))).click();
                 break;
             }
         }
