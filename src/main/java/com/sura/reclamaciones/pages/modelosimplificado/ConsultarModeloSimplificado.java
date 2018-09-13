@@ -31,7 +31,7 @@ public class ConsultarModeloSimplificado {
         }
         lstFila.add(fila);
       }
-    } catch (Exception e) {
+    } catch (SQLException e) {
       e.printStackTrace();
     } finally {
       resultSet.close();
