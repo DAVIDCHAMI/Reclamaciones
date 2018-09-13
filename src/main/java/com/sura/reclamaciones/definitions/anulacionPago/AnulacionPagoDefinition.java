@@ -32,6 +32,6 @@ public class AnulacionPagoDefinition {
 
   @Entonces("^se debe obtener un estado de tipo (.*)$")
   public void seDebeObtenerUnEstadoDeTipoTipoEstado(String strTipoEstado) {
-    anulacionPagoStep.verificarAnulacionRealizada(strTipoEstado);
+    anulacionPagoStep.verificarAnulacionRealizada(strTipoEstado,anulacionPagoEmpresarial.getLstAnulacionPagoEmpresarialPago());
   }
 }

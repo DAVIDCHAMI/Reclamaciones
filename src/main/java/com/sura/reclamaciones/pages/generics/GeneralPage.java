@@ -67,7 +67,7 @@ public class GeneralPage extends PageObject {
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-  WebDriver driver;
+  protected WebDriver driver;
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
@@ -190,7 +190,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void irSiguientePagina() {
-    if (btnCambioPagina.isSelected()) {
+    if (btnCambioPagina.isVisible()) {
       btnCambioPagina.click();
       if (pgrBarCarga.isVisible()) {
         realizarEsperaCarga();
