@@ -1,9 +1,7 @@
 package com.sura.reclamaciones.pages.reservas;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.*;
-import static com.sura.reclamaciones.constantes.ReclamacionConstante.*;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import java.util.List;
@@ -70,10 +68,5 @@ public class AjusteReservaPage extends GeneralPage {
       realizarEsperaCarga();
       btnGuardarAjusteReserva.click();
     }
-  }
-
-  public void verificarReservaAjustada() {
-    menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-        MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
   }
 }

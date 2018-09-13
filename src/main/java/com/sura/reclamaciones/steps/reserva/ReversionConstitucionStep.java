@@ -31,7 +31,7 @@ public class ReversionConstitucionStep {
 
   public void verificarAjusteReserva(String deducible) {
     String deducibleVisualizado;
-    deducibleVisualizado = transaccionDatoFinancieroPage.verificarDeducibleReversionConstitucion();
+    deducibleVisualizado = transaccionDatoFinancieroPage.obtenerDeducibleReversionConstitucion();
     MatcherAssert.assertThat(
         "Se esperaba un deducible de: "
             + deducible

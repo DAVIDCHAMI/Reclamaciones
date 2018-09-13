@@ -41,7 +41,7 @@ public class TransaccionDatoFinancieroPage extends GeneralPage {
     return cantidadDeducible;
   }
 
-  public String verificarDeducibleReversionConstitucion() {
+  public String obtenerDeducibleReversionConstitucion() {
     irUltimaPagina();
     lblNumeroTransaccion.waitUntilPresent();
     String deducible = seleccionarUltimoDeducible(ReservaConstante.CANTIDAD);
