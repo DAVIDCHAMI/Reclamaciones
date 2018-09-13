@@ -35,6 +35,9 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade btnSiguiente;
 
+  @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-next ']")
+  private  WebElementFacade btnCambioPagina;
+
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
   private WebElementFacade btnAceptar;
 
@@ -184,6 +187,12 @@ public class GeneralPage extends PageObject {
         realizarEsperaCarga();
       }
     }
+  }
+
+  public void irSiguientePagina(){
+      if (btnCambioPagina.isSelected()){
+          
+      }
   }
 
   public String obtenerDatoTablaCabecera(String strDatoCabecera) {

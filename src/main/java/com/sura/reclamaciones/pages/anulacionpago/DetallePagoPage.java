@@ -38,7 +38,6 @@ public class DetallePagoPage extends GeneralPage {
             LOGGER.info("El boton de anulación no se encuentra activo");
             System.exit(1);
         }
-
                 }
 
     public void ingresarAnulacionPago(String strNumeroPago) {
