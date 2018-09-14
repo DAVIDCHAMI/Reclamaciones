@@ -1,4 +1,4 @@
-# BDDCoreSuraReclamaciones
+compile# BDDCoreSuraReclamaciones
 Cuando se realicen cambios sobre el proyecto ServicesConector, debe actualizarse la versión de la librería en
 el ```build.gradle```
 

@@ -8,7 +8,6 @@ import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.models.AnulacionPagoEmpresarial;
 import com.sura.reclamaciones.pages.anulacionpago.DetallePagoPage;
 import com.sura.reclamaciones.pages.anulacionpago.VerificacionAnulacionPagoPage;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
@@ -21,28 +20,33 @@ public class AnulacionPagoStep {
 
   @Step
   public void consultarNumeroReclamacion(List<AnulacionPagoEmpresarial> lstNumeroReclamacion) {
-      for (AnulacionPagoEmpresarial navegador : lstNumeroReclamacion) {
-          menuClaimPage.buscarReclamacion(RECLAMACION_MENU, navegador.getNumeroReclamacion());
-          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-                  MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS_RECUPEROS);
-      }
+    for (AnulacionPagoEmpresarial navegador : lstNumeroReclamacion) {
+      menuClaimPage.buscarReclamacion(RECLAMACION_MENU, navegador.getNumeroReclamacion());
+      menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
+          MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS_RECUPEROS);
+    }
   }
 
   @Step
   public void ingresarPagoAnular(List<AnulacionPagoEmpresarial> lstNumeroPago) {
-      for (AnulacionPagoEmpresarial diligenciador : lstNumeroPago) {
-          detallePagoPage.ingresarAnulacionPago(diligenciador.getNumeroPago());
-          detallePagoPage.realizarAnulacionPago();
-      }
+    for (AnulacionPagoEmpresarial diligenciador : lstNumeroPago) {
+      assertTrue(
+          "No se pudo encontrar el numero de pago",
+          detallePagoPage.ingresarAnulacionPago(
+              diligenciador.getNumeroPago(), diligenciador.getEstadoPrevio()));
+      detallePagoPage.realizarAnulacionPago();
+    }
   }
 
-  public void verificarAnulacionRealizada(String strAnulacionPago, List<AnulacionPagoEmpresarial> lstNumeroPago) {
-      for (AnulacionPagoEmpresarial validador : lstNumeroPago) {
-          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-                  MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS_RECUPEROS);
-          assertTrue(
-                  "El pago no quedo en estado anulado",
-                  verificacionAnulacionPagoPage.verificarEstadoAnulado(strAnulacionPago, validador.getNumeroPago()));
-      }
+  public void verificarAnulacionRealizada(
+      String strAnulacionPago, List<AnulacionPagoEmpresarial> lstNumeroPago) {
+    for (AnulacionPagoEmpresarial validador : lstNumeroPago) {
+      menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
+          MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS_RECUPEROS);
+      assertTrue(
+          "El pago no quedo en estado anulado",
+          verificacionAnulacionPagoPage.verificarEstadoAnulado(
+              strAnulacionPago, validador.getNumeroPago()));
+    }
   }
 }

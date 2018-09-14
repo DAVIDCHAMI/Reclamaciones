@@ -1,18 +1,17 @@
 package com.sura.reclamaciones.pages.anulacionpago;
 
+import static com.sura.reclamaciones.pages.anulacionpago.DetallePagoPage.variablesSesion.NUMERO_PAGINA;
+
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
-
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import static com.sura.reclamaciones.pages.anulacionpago.DetallePagoPage.variablesSesion.NUMERO_PAGINA;
 
 public class DetallePagoPage extends GeneralPage {
 
@@ -39,10 +38,8 @@ public class DetallePagoPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroPaginas;
 
-
-
   public enum variablesSesion {
-  NUMERO_PAGINA
+    NUMERO_PAGINA
   }
 
   public DetallePagoPage(WebDriver wdriver) {
@@ -50,55 +47,52 @@ public class DetallePagoPage extends GeneralPage {
   }
 
   public void realizarAnulacionPago() {
-    if (btnAnularDetener.isSelected()) {
-      btnAnularDetener.click();
-      btnAnularCheque.waitUntilClickable();
-      btnAnularCheque.click();
-      btnAceptar.waitUntilClickable();
-      btnAceptar.click();
-    } else {
-      LOGGER.info("El boton de anulación no se encuentra activo");
-      driver.quit();
-    }
+    btnAnularDetener.waitUntilClickable();
+    btnAnularDetener.click();
+    btnAnularCheque.waitUntilClickable();
+    btnAnularCheque.click();
+    btnAceptar.waitUntilClickable();
+    btnAceptar.click();
   }
 
-  public int obtenerNumeroPaginas() {
+  private int obtenerNumeroPaginas() {
     if (lblNumeroPaginas.isVisible()) {
       String strNumeroPaginas = lblNumeroPaginas.getText();
       strNumeroPaginas = strNumeroPaginas.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      int intNumeroPaginas = Integer.parseInt(strNumeroPaginas);
+      int intNumeroPaginas;
+      intNumeroPaginas = Integer.parseInt(strNumeroPaginas);
       return intNumeroPaginas;
     } else {
       return 0;
     }
   }
 
-
-  public void ingresarNumeroAnular(List<WebElement> lstPago, String strNumeroPago){
+  private void ingresarNumeroAnular(
+      List<WebElement> lstPago, String strNumeroPago, String strEstadoPrevio) {
     for (WebElement aLstPago : lstPago) {
-      if (aLstPago.getText().equals(strNumeroPago)) {
+      if (aLstPago.getText().equals(strNumeroPago)
+          && lstPago.get(5).getText().equals(strEstadoPrevio)) {
         aLstPago.click();
         aLstPago
-                .findElement(
-                        By.xpath(
-                                String.format(
-                                        "//a[@class='g-actionable'][contains(text(),'%s')]", strNumeroPago)))
-                .click();
+            .findElement(
+                By.xpath(
+                    String.format(
+                        "//a[@class='g-actionable'][contains(text(),'%s')]", strNumeroPago)))
+            .click();
         break;
       }
     }
   }
 
-  public void ingresarAnulacionPago(String strNumeroPago) {
+  public boolean ingresarAnulacionPago(String strNumeroPago, String strEstadoPrevio) {
     int intNumeroPagina = obtenerNumeroPaginas();
     if (intNumeroPagina == 0) {
       List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
       int intLongitudFila = lstPago.size();
-      if (intLongitudFila == 0){
-        LOGGER.info("La reclamación, no tiene pagos");
-        driver.quit();
-      }else{
-        ingresarNumeroAnular(lstPago,strNumeroPago);
+      if (intLongitudFila == 0) {
+        return false;
+      } else {
+        ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
         Serenity.setSessionVariable(NUMERO_PAGINA).to(intNumeroPagina);
       }
     } else {
@@ -106,17 +100,18 @@ public class DetallePagoPage extends GeneralPage {
         List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
         int intLongitudFila = lstPago.size();
         if (intLongitudFila == 0) {
-          if(intNumeroPagina == i){
-            LOGGER.info("El numero de pago ingresado no existe");
-            driver.quit();
+          if (i != (intNumeroPagina - 1)) {
+            irSiguientePagina();
+          } else {
+            return false;
           }
-          irSiguientePagina();
         } else {
-          ingresarNumeroAnular(lstPago,strNumeroPago);
+          ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
           Serenity.setSessionVariable(NUMERO_PAGINA).to(i);
-          i= intNumeroPagina;
-            }
-          }
+          break;
         }
       }
+    }
+    return true;
+  }
 }

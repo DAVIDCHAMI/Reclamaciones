@@ -15,18 +15,17 @@ public class VerificacionAnulacionPagoPage extends GeneralPage {
     super(wdriver);
   }
 
-
-  public List<WebElement> irFilaAnulada(String strNumeroPago) {
-      Integer intNumeroPagina = Serenity.sessionVariableCalled(NUMERO_PAGINA);
-      List<WebElement> lstPago;
-      if (intNumeroPagina.equals(0)) {
-         lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
-      } else {
-          for (int i = 0; i < intNumeroPagina; i++) {
-              irSiguientePagina();
-          }
-          lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
+  private List<WebElement> irFilaAnulada(String strNumeroPago) {
+    Integer intNumeroPagina = Serenity.sessionVariableCalled(NUMERO_PAGINA);
+    List<WebElement> lstPago;
+    if (intNumeroPagina.equals(0)) {
+      lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
+    } else {
+      for (int i = 0; i < intNumeroPagina; i++) {
+        irSiguientePagina();
       }
+      lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
+    }
     return lstPago;
   }
 
