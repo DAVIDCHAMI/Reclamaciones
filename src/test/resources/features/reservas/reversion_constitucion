@@ -5,7 +5,7 @@ Característica: Reversión de constitución o ajuste manual de la reserva de un
   Quiero que sea posible realizar ajustes en las reservas
   Para que se pueda cubrir el monto del valor del siniestro
 
-  @claims
+  @claimsEmpresarial
   Esquema del escenario: reversión de constitución
     Dado que se genera un siniestro del producto <Tipo y Cobertura>
     Cuando se ajuste la reserva con un valor de <Monto del ajuste>
