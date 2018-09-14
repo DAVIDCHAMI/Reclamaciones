@@ -70,8 +70,4 @@ public class AjusteReservaPage extends GeneralPage {
       btnGuardarAjusteReserva.click();
     }
   }
-
-  public void verificarReservaAjustada() {
-    menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(DATOS_FINANCIEROS, TRANSACCIONES);
-  }
 }

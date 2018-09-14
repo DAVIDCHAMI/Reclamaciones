@@ -49,9 +49,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   )
   public WebElementFacade lstCodigo;
 
-  @FindBy(xpath = "//span[@id='NormalCreateCheckWizard:Next-btnInnerEl']")
-  private WebElementFacade btnSiguiente;
-
   public void seleccionarLineaReserva(String strLineaReserva) {
     cmbLineaReserva.waitUntilClickable().click();
     seleccionarOpcionCombobox(strLineaReserva);
