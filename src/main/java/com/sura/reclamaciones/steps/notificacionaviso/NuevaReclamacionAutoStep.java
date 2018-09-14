@@ -58,11 +58,11 @@ public class NuevaReclamacionAutoStep {
   }
 
   public void seleccionarNombreAutorReporte(List<ReclamacionAuto> lstReclamacionAuto) {
-      lstReclamacionAuto.forEach(
-              dato -> {
-                  informacionBasicaPage.seleccionarNombre();
-                  informacionBasicaPage.validarMsjAdvertenciaRelacionAsegurado(dato.getRelacionAsegurado());
-              });
+    lstReclamacionAuto.forEach(
+        dato -> {
+          informacionBasicaPage.seleccionarNombre();
+          informacionBasicaPage.validarMsjAdvertenciaRelacionAsegurado(dato.getRelacionAsegurado());
+        });
   }
 
   public void validarReclamacion() {
