@@ -80,11 +80,6 @@ public class CreacionRecuperoPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void seleccionarMoneda(String moneda) {
-    txtMoneda.click();
-    seleccionarOpcionCombobox(moneda);
-  }
-
   public void seleccionarPais(String pais) {
     seleccionarElementoListado(PAIS, pais);
   }
