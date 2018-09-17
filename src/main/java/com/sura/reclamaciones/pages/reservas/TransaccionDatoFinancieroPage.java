@@ -11,18 +11,15 @@ import org.openqa.selenium.WebElement;
 
 public class TransaccionDatoFinancieroPage extends GeneralPage {
 
-  @FindBy(xpath = "//span[@class='x-column-header-text' and contains(.,'Número')]")
-  private WebElementFacade lblNumeroTransaccion;
-
   @FindBy(
-      xpath =
-          "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
+    xpath =
+        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
   )
-  private WebElementFacade tblVerificacion;
+  private WebElementFacade tblTransaccion;
 
   @FindBy(
-      xpath =
-          "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
+    xpath =
+        "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
   )
   private WebElementFacade lblCantidadDeducible;
 
@@ -32,9 +29,9 @@ public class TransaccionDatoFinancieroPage extends GeneralPage {
 
   public String obtenerDeducibleReversionConstitucion() {
     irUltimaPagina();
-    lblNumeroTransaccion.waitUntilPresent();
+    tblTransaccion.waitUntilPresent();
     List<WebElement> elementroEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblVerificacion, ReservaConstante.CANTIDAD, 1);
+        obtenerElementoTablaDatoDesconocido(tblTransaccion, ReservaConstante.CANTIDAD, 1);
     int longitudTabla = elementroEncontrado.size();
     elementroEncontrado.get(longitudTabla - 1).click();
     String cantidadDeducible = lblCantidadDeducible.getText();
