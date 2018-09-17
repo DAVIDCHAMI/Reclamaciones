@@ -8,7 +8,7 @@ public class ModeloSimplificadoBD extends ModeloSimplificado {
 
   List<ModeloSimplificadoBD> lstModeloSimplificadoBD = new ArrayList<>();
 
-  public ModeloSimplificadoBD(Map<String, String> datosTablaModeloSimplificado) {
+  private ModeloSimplificadoBD(Map<String, String> datosTablaModeloSimplificado) {
     super();
     this.numeroMovimientoFinanciero = datosTablaModeloSimplificado.get("REFERENCE");
     this.numeroReclamacion = datosTablaModeloSimplificado.get("CLAIMNUMBER");
