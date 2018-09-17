@@ -1,9 +1,8 @@
 package com.sura.reclamaciones.constantes;
 
 public class ModeloSimplificadoConstante {
-  public static final String RESERVA = "Reserva";
-  public static final String PAGO = "Pago";
-  public static final String RECUPERO = "Recupero";
-  public static final String ANULACION_PAGO = "AnulacionPago";
-  public static final String ANULACION_RECUPERO = "AnulacionRecupero";
+  public static final String USUARIO = "GW_CONF";
+  public static final String CLAVE = "cor3sur4";
+  public static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
+  public static final String URL = "jdbc:oracle:thin:@clustercsl01:1537/LABGWCC";
 }

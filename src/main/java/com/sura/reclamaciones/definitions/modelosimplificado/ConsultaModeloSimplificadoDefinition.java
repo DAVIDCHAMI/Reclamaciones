@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.definitions.modelosimplificado;
 
-import com.sura.reclamaciones.models.CredencialBD;
 import com.sura.reclamaciones.models.ModeloSimplificado;
 import com.sura.reclamaciones.models.ModeloSimplificadoBD;
 import com.sura.reclamaciones.steps.generics.GenericStep;
@@ -15,8 +14,6 @@ import net.thucydides.core.annotations.Steps;
 public class ConsultaModeloSimplificadoDefinition {
 
   String movimientoFinanciero;
-
-  @Steps CredencialBD credencial;
 
   @Steps ModeloSimplificado modeloSimplificado;
 
@@ -36,11 +33,9 @@ public class ConsultaModeloSimplificadoDefinition {
 
   @Cuando("^la transaccion se ha efectuado$")
   public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
-    credencial = new CredencialBD(genericStep.getFilasModelo("credencialBD", "conexionGWBD"));
     modeloSimplificadoBD =
         new ModeloSimplificadoBD(
             conexionBDStep.consultarModeloSimplificado(
-                credencial.getCredenciales(),
                 modeloSimplificado.getlstModeloSimplificado(),
                 movimientoFinanciero));
   }

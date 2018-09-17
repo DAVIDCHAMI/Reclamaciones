@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
-import com.sura.reclamaciones.models.CredencialBD;
+import com.sura.reclamaciones.constantes.ModeloSimplificadoConstante;
 import com.sura.reclamaciones.models.ModeloSimplificado;
 import com.sura.reclamaciones.models.ModeloSimplificadoBD;
 import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificado;
@@ -20,29 +20,27 @@ public class ConsultarModeloSimplificadoStep {
   String sql = new String();
   List<Map<String, String>> resultadoConsulta = null;
 
+
   @Page
   ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
 
   @Step
-  public Connection conectarBaseDatos(List<CredencialBD> datosCredenciales) {
-    datosCredenciales.forEach(
-        datoCredencial ->
-            conexion =
-                ConexionBaseDatosUtil.conectarBaseDatos(
-                    datoCredencial.getUsuario(), datoCredencial.getContrasena(),
-                    datoCredencial.getURL(), datoCredencial.getDriver()));
+  public Connection conectarBaseDatos() {
+    conexion =
+        ConexionBaseDatosUtil.conectarBaseDatos(
+            ModeloSimplificadoConstante.USUARIO, ModeloSimplificadoConstante.CLAVE,
+            ModeloSimplificadoConstante.URL, ModeloSimplificadoConstante.DRIVER);
     return conexion;
   }
 
   public List<Map<String, String>> consultarModeloSimplificado(
-      List<CredencialBD> credenciales,
       List<ModeloSimplificado> datosTransaccion,
       String movimientoFinanciero)
       throws SQLException {
     sql = consultarModeloSimplificado.obtenerSentenciaSql(movimientoFinanciero);
     datosTransaccion.forEach(
         datoTransaccion -> transaccionConsulta = datoTransaccion.getTransaccion());
-    conexion = conectarBaseDatos(credenciales);
+    conexion = conectarBaseDatos();
     resultadoConsulta =
         consultarModeloSimplificado.consultarModeloSimplificado(conexion, transaccionConsulta, sql);
     return resultadoConsulta;

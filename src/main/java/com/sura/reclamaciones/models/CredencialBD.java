@@ -10,20 +10,22 @@ public class CredencialBD {
   private String contrasena;
   private String URL;
   private String driver;
-  private List<CredencialBD> credenciales = new ArrayList<>();
+ // private List<CredencialBD> credenciales = new ArrayList<>();
 
   public CredencialBD() {}
 
-  private CredencialBD(Map<String, String> datosUsuario) {
+  /*private CredencialBD(Map<String, String> datosUsuario) {
     this.usuario = datosUsuario.get("usuario");
     this.contrasena = datosUsuario.get("contrasena");
     this.URL = datosUsuario.get("URL");
     this.driver = datosUsuario.get("driver");
   }
-
+*/
+/*
   public CredencialBD(List<Map<String, String>> datosUsuario) {
     asignarDatos(datosUsuario);
   }
+*/
 
   public String getUsuario() {
     return usuario;
@@ -41,13 +43,15 @@ public class CredencialBD {
     return driver;
   }
 
+/*
   public List<CredencialBD> getCredenciales() {
     return credenciales;
   }
+*/
 
-  public void asignarDatos(List<Map<String, String>> datosUsuario) {
+  /*public void asignarDatos(List<Map<String, String>> datosUsuario) {
     for (Map<String, String> dato : datosUsuario) {
       credenciales.add(new CredencialBD(dato));
     }
-  }
+  }*/
 }
