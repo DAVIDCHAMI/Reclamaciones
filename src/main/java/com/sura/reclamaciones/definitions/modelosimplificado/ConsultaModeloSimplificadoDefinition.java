@@ -16,17 +16,13 @@ public class ConsultaModeloSimplificadoDefinition {
 
   String movimientoFinanciero;
 
-  @Steps
-  CredencialBD credencial;
+  @Steps CredencialBD credencial;
 
-  @Steps
-  ModeloSimplificado modeloSimplificado;
+  @Steps ModeloSimplificado modeloSimplificado;
 
-  @Steps
-  private GenericStep genericStep;
+  @Steps private GenericStep genericStep;
 
-  @Steps
-  ConsultarModeloSimplificadoStep conexionBDStep;
+  @Steps ConsultarModeloSimplificadoStep conexionBDStep;
 
   ModeloSimplificadoBD modeloSimplificadoBD;
 
