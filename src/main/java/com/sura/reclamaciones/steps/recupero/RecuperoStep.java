@@ -38,7 +38,6 @@ public class RecuperoStep {
         formulario -> {
           creacionRecuperoPage.seleccionarPagador(formulario.getPagador());
           creacionRecuperoPage.seleccionarLineaReserva(formulario.getLineaRecupero());
-          creacionRecuperoPage.seleccionarMoneda(formulario.getMoneda());
           creacionRecuperoPage.seleccionarPais(formulario.getPais());
           creacionRecuperoPage.seleccionarDepartamento(formulario.getDepartamento());
           creacionRecuperoPage.seleccionarCiudad(formulario.getCiudad());
