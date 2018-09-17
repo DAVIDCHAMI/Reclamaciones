@@ -51,7 +51,7 @@ public class ModeloSimplificado {
     return lstModeloSimplificado;
   }
 
-  private void asignarDatos(List<Map<String, String>> datosModeloSimplificado) {
+  public void asignarDatos(List<Map<String, String>> datosModeloSimplificado) {
     for (Map<String, String> dato : datosModeloSimplificado) {
       lstModeloSimplificado.add(new ModeloSimplificado(dato));
     }

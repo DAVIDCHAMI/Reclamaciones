@@ -21,7 +21,9 @@ public class ModeloSimplificadoBD extends ModeloSimplificado {
     asignarDatos(datosTablaModeloSimplificado);
   }
 
-  protected void asignarDatos(List<Map<String, String>> datosTablaModeloSimplificado) {
+  @Override
+  public void asignarDatos(List<Map<String, String>> datosTablaModeloSimplificado) {
+    super.asignarDatos(datosTablaModeloSimplificado);
     for (Map<String, String> dato : datosTablaModeloSimplificado) {
       lstModeloSimplificadoBD.add(new ModeloSimplificadoBD(dato));
     }
