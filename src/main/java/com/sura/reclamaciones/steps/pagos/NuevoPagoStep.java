@@ -77,7 +77,7 @@ public class NuevoPagoStep {
           verificarPagoPage.ingresarMenuPagos();
           List<WebElement> lstFilaPago =
               verificarPagoPage.obtenerFilaTabla(
-                  PagoConstante.PAGOS_RECUPEROS, strNumeroTransaccion);
+                  PagoConstante.PAGOS, strNumeroTransaccion);
           String strValorReserva = (Serenity.sessionVariableCalled(VALOR_RESERVA));
           assertTrue(
               "El valor reservado no es igual al enviado",

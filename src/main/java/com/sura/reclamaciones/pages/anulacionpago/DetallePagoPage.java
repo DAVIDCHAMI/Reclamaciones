@@ -87,7 +87,7 @@ public class DetallePagoPage extends GeneralPage {
   public boolean ingresarAnulacionPago(String strNumeroPago, String strEstadoPrevio) {
     int intNumeroPagina = obtenerNumeroPaginas();
     if (intNumeroPagina == 0) {
-      List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
+      List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);
       int intLongitudFila = lstPago.size();
       if (intLongitudFila == 0) {
         return false;
@@ -97,7 +97,7 @@ public class DetallePagoPage extends GeneralPage {
       }
     } else {
       for (int i = 0; i < intNumeroPagina; i++) {
-        List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
+        List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);
         int intLongitudFila = lstPago.size();
         if (intLongitudFila == 0) {
           if (i != (intNumeroPagina - 1)) {

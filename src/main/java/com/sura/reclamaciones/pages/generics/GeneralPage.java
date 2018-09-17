@@ -219,7 +219,7 @@ public class GeneralPage extends PageObject {
                   String.format(
                       "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
                       strIdentificadorFila)));
-    } else if (nombrePantalla.equals(PagoConstante.PAGOS_RECUPEROS)) {
+    } else if (nombrePantalla.equals(PagoConstante.PAGOS)) {
       lstFila =
           tblVerificacion.findElements(
               By.xpath(

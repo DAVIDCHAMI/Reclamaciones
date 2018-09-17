@@ -23,7 +23,7 @@ public class AnulacionPagoStep {
     for (AnulacionPagoEmpresarial navegador : lstNumeroReclamacion) {
       menuClaimPage.buscarReclamacion(RECLAMACION_MENU, navegador.getNumeroReclamacion());
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-          MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS_RECUPEROS);
+          MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
     }
   }
 
@@ -42,7 +42,7 @@ public class AnulacionPagoStep {
       String strAnulacionPago, List<AnulacionPagoEmpresarial> lstNumeroPago) {
     for (AnulacionPagoEmpresarial validador : lstNumeroPago) {
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-          MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS_RECUPEROS);
+          MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
       assertTrue(
           "El pago no quedo en estado anulado",
           verificacionAnulacionPagoPage.verificarEstadoAnulado(

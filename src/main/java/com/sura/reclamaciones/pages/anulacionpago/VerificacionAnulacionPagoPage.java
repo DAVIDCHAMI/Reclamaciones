@@ -19,12 +19,12 @@ public class VerificacionAnulacionPagoPage extends GeneralPage {
     Integer intNumeroPagina = Serenity.sessionVariableCalled(NUMERO_PAGINA);
     List<WebElement> lstPago;
     if (intNumeroPagina.equals(0)) {
-      lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
+      lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);
     } else {
       for (int i = 0; i < intNumeroPagina; i++) {
         irSiguientePagina();
       }
-      lstPago = obtenerFilaTabla(PagoConstante.PAGOS_RECUPEROS, strNumeroPago);
+      lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);
     }
     return lstPago;
   }
