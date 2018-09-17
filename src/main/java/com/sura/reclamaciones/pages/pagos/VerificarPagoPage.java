@@ -47,7 +47,7 @@ public class VerificarPagoPage extends GeneralPage {
 
   public void ingresarMenuPagos() {
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-        MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS_RECUPEROS);
+        MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
     irUltimaPagina();
   }
 }

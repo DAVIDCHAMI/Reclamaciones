@@ -16,5 +16,5 @@ Característica:Recupero de una reclamacion
       |tipo reserva         |tipo recupero  |codigoRetencion|
       |Daños materiales (1) |Salvamento     |0099           |
       |Daños materiales (2) |Subrogación    |0099           |
-      |Daños materiales (3) |Ingreso (otro) |0028           |
+      |Daños materiales (3) |Ingreso (otro) |0099           |
 
