@@ -16,9 +16,9 @@ public class RecuperoDefinition {
 
   Recupero recupero;
 
-  @Dado("^que se tiene un siniestro con una reserva por (.*),teniendo en cuenta el (.*)$")
-  public void navegarMenuRecupero(String tipoReserva, String tipoRecupero) throws Throwable {
-    recupero = new Recupero(genericStep.getFilasModelo("recupero", tipoRecupero));
+  @Dado("^que se tiene un siniestro con una reserva por (.*)$")
+  public void navegarMenuRecupero(String tipoReserva) throws Throwable {
+    recupero = new Recupero(genericStep.getFilasModelo("recupero", tipoReserva));
     recuperoStep.seleccionarNumeroReclamacion(
         MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();

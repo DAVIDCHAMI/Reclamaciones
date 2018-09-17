@@ -42,7 +42,7 @@ public class LoginClaimStep {
 
   @Step
   public void iniciarSesionLab() throws IOException {
-    credencial = new Credencial(genericStep.getFilasModelo("credencial", "analistaAuto"));
+    credencial = new Credencial(genericStep.getFilasModelo("credencial", "analistaReclamacionEmp"));
     abrirClaims();
     iniciarSesionUAT(credencial.getCredencials());
   }
