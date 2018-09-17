@@ -31,7 +31,7 @@ public class GeneralPage extends PageObject {
 
   @FindBy(
     xpath =
-        "//span[@id='FNOLWizard:Next-btnInnerEl' or contains(@id, 'NormalCreateCheckWizard:Next-btnEl')]"
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']"
   )
   private WebElementFacade btnSiguiente;
 
@@ -137,13 +137,17 @@ public class GeneralPage extends PageObject {
   public void continuarSiguientePantalla() {
     btnSiguiente.waitUntilClickable();
     btnSiguiente.click();
-    realizarEsperaCarga();
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
   }
 
   public void finalizarProceso() {
     btnFinalizar.waitUntilClickable();
     btnFinalizar.click();
-    realizarEsperaCarga();
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(

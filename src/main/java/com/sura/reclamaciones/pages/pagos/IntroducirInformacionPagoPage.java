@@ -60,9 +60,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   )
   public WebElementFacade lstCodigo;
 
-  @FindBy(xpath = "//a[contains(@id, 'NormalCreateCheckWizard:Next')]")
-  public WebElementFacade btnSiguiente;
-
   public void seleccionarLineaReserva(String strLineaReserva) {
     cmbLineaReserva.waitUntilClickable().click();
     seleccionarOpcionCombobox(strLineaReserva);
@@ -120,8 +117,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%d')", CalculoVrReserva));
         });
-    btnSiguiente.waitUntilVisible();
-    btnSiguiente.click();
-    Serenity.setSessionVariable(variablesSesion.VALOR_RESERVA).to(CalculoVrReserva.toString());
+   Serenity.setSessionVariable(variablesSesion.VALOR_RESERVA).to(CalculoVrReserva.toString());
   }
 }

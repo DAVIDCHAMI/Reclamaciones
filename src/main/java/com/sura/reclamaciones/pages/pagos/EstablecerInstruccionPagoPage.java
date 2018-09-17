@@ -25,14 +25,15 @@ public class EstablecerInstruccionPagoPage extends GeneralPage {
   )
   private WebElementFacade txtNumeroFactura;
 
-  public static String obtenerFechaActual() {
+  private static String obtenerFechaActual() {
     Date fechaActual = new Date();
     SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
     return formateador.format(fechaActual);
   }
 
-  public void ingresarFecha() {
-    txtFechaPago.sendKeys(obtenerFechaActual().toString());
+  public  void ingresarFechaFactura(){
+    txtFechaPago.waitUntilClickable();
+    txtFechaPago.sendKeys(obtenerFechaActual());
   }
 
   public void ingresarNumeroFactura(String strNumeroFactura) {
