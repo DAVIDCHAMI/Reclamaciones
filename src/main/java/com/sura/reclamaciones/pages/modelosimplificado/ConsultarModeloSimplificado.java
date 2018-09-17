@@ -40,4 +40,14 @@ public class ConsultarModeloSimplificado {
       return lstFila;
     }
   }
+
+  public String obtenerSentenciaSql (String movimientoFinanciero){
+    Map<String,String> sentenciaSql = new HashMap<String,String>();
+    sentenciaSql.put("Reserva","select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT from ADM_GWCC.CCX_RESERVEDENORM_EXT where REFERENCE in ?" );
+    sentenciaSql.put("Recupero","select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT  from ADM_GWCC.CCX_RECOVERYDENORM_EXT where REFERENCE in ?");
+    sentenciaSql.put("Pago","select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT,AMOUNT from ADM_GWCC.CCX_CHECKDENORM_EXT where reference in ?");
+    sentenciaSql.put("AnulacionPago","select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT,AMOUNT from ADM_GWCC.CCX_CHECKDENORM_EXT where reference in ?");
+    sentenciaSql.put("AnulacionRecupero","select REFERENCE,CLAIMNUMBER,CEDEDREINSURANCE,NETAMOUNT, AMOUNT  from ADM_GWCC.CCX_RECOVERYDENORM_EXT where REFERENCE in ?");
+  return sentenciaSql.get(movimientoFinanciero);
+  }
 }

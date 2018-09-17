@@ -1,11 +1,9 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
-import com.sura.reclamaciones.constantes.ModeloSimplificadoConstante;
 import com.sura.reclamaciones.models.CredencialBD;
 import com.sura.reclamaciones.models.ModeloSimplificado;
 import com.sura.reclamaciones.models.ModeloSimplificadoBD;
 import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificado;
-import com.sura.reclamaciones.querys.Query;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,11 +17,11 @@ public class ConsultarModeloSimplificadoStep {
 
   Connection conexion = null;
   String transaccionConsulta = null;
-  Query sqlConsulta = null;
   String sql = new String();
   List<Map<String, String>> resultadoConsulta = null;
 
-  @Page ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
+  @Page
+  ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
 
   @Step
   public Connection conectarBaseDatos(List<CredencialBD> datosCredenciales) {
@@ -41,24 +39,7 @@ public class ConsultarModeloSimplificadoStep {
       List<ModeloSimplificado> datosTransaccion,
       String movimientoFinanciero)
       throws SQLException {
-    switch (movimientoFinanciero) {
-      case ModeloSimplificadoConstante.RESERVA:
-        sqlConsulta = Query.SqlModeloSimplificadoReserva;
-        sql = sqlConsulta.getConsultaSql();
-        break;
-      case (ModeloSimplificadoConstante.PAGO):
-      case ModeloSimplificadoConstante.ANULACION_PAGO:
-        sqlConsulta = Query.SqlModeloSimplificadoPago;
-        sql = sqlConsulta.getConsultaSql();
-        break;
-      case ModeloSimplificadoConstante.RECUPERO:
-      case ModeloSimplificadoConstante.ANULACION_RECUPERO:
-        sqlConsulta = Query.SqlModeloSimplificadoRecupero;
-        sql = sqlConsulta.getConsultaSql();
-        break;
-      default:
-        sqlConsulta = null;
-    }
+    sql = consultarModeloSimplificado.obtenerSentenciaSql(movimientoFinanciero);
     datosTransaccion.forEach(
         datoTransaccion -> transaccionConsulta = datoTransaccion.getTransaccion());
     conexion = conectarBaseDatos(credenciales);

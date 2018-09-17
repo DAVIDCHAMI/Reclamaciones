@@ -6,16 +6,14 @@ import java.util.Map;
 
 public class ModeloSimplificado {
 
-  private String numeroMovimientoFinanciero;
-  private String numeroReclamacion;
-  private String valorCedidoReaseguradoras;
-  private String valorNeto;
-  private String valorMovimientoFinanciero;
-
+  public String numeroMovimientoFinanciero;
+  public String numeroReclamacion;
+  public String valorCedidoReaseguradoras;
+  public String valorNeto;
+  public String valorMovimientoFinanciero;
   private List<ModeloSimplificado> lstModeloSimplificado = new ArrayList<>();
 
-  public ModeloSimplificado(Map<String, String> datosModeloSimplificado) {
-    super();
+  private ModeloSimplificado(Map<String, String> datosModeloSimplificado) {
     this.numeroReclamacion = datosModeloSimplificado.get("numeroReclamacion");
     this.numeroMovimientoFinanciero = datosModeloSimplificado.get("numeroMovimientoFinanciero");
     this.valorMovimientoFinanciero = datosModeloSimplificado.get("valorMovimientoFinanciero");
