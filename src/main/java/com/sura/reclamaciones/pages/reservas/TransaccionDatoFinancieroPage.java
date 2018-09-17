@@ -15,14 +15,14 @@ public class TransaccionDatoFinancieroPage extends GeneralPage {
   private WebElementFacade lblNumeroTransaccion;
 
   @FindBy(
-    xpath =
-        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
+      xpath =
+          "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
   )
   private WebElementFacade tblVerificacion;
 
   @FindBy(
-    xpath =
-        "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
+      xpath =
+          "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
   )
   private WebElementFacade lblCantidadDeducible;
 
@@ -30,22 +30,15 @@ public class TransaccionDatoFinancieroPage extends GeneralPage {
     super(driver);
   }
 
-  public String seleccionarUltimoDeducible(String strDatoCabecera) {
-    String cantidadDeducible;
-    List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
-    int longitudTabla = elementoEncontrado.size();
-    elementoEncontrado.get(longitudTabla - 1).click();
-    realizarEsperaCarga();
-    cantidadDeducible = lblCantidadDeducible.getText();
-    return cantidadDeducible;
-  }
-
   public String obtenerDeducibleReversionConstitucion() {
     irUltimaPagina();
     lblNumeroTransaccion.waitUntilPresent();
-    String deducible = seleccionarUltimoDeducible(ReservaConstante.CANTIDAD);
-    deducible = deducible.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    return deducible;
+    List<WebElement> elementroEncontrado =
+        obtenerElementoTablaDatoDesconocido(tblVerificacion, ReservaConstante.CANTIDAD, 1);
+    int longitudTabla = elementroEncontrado.size();
+    elementroEncontrado.get(longitudTabla - 1).click();
+    String cantidadDeducible = lblCantidadDeducible.getText();
+    cantidadDeducible = cantidadDeducible.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    return cantidadDeducible;
   }
 }
