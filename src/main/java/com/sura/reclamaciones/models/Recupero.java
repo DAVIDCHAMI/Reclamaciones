@@ -11,9 +11,12 @@ public class Recupero extends Transacciones {
   private String categoriaRecupero;
   private String fechaComprobante;
 
-  public Recupero() {}
+  public Recupero() {
+    super();
+  }
 
   private Recupero(Map<String, String> datosRecupero) {
+    super(datosRecupero);
     this.pagador = datosRecupero.get("pagador");
     this.lineaRecupero = datosRecupero.get("lineaReserva");
     this.categoriaRecupero = datosRecupero.get("categoriaRecupero");

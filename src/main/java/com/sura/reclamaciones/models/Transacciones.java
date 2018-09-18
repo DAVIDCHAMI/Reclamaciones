@@ -4,53 +4,48 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Transacciones {
+public abstract class Transacciones {
 
-    private List<Transacciones> lstTransacciones = new ArrayList<Transacciones>();
-    private String numeroReclamacion;
-    private String pais;
-    private String departamento;
-    private String ciudad;
-    private String valorTransaccion;
-    private String estadoTransaccion;
+  private List<Transacciones> lstTransacciones = new ArrayList<Transacciones>();
+  private String numeroReclamacion;
+  private String pais;
+  private String departamento;
+  private String ciudad;
+  private String valorTransaccion;
+  private String estadoTransaccion;
 
+  public Transacciones() {}
 
-    public Transacciones() {}
+  Transacciones(Map<String, String> datosTransaccion) {
+    this.numeroReclamacion = datosTransaccion.get("numeroReclamacion");
+    this.pais = datosTransaccion.get("pais");
+    this.departamento = datosTransaccion.get("departamento");
+    this.ciudad = datosTransaccion.get("ciudad");
+    this.valorTransaccion = datosTransaccion.get("valorTransaccion");
+    this.estadoTransaccion = datosTransaccion.get("estadoTransaccion");
+  }
 
-    private Transacciones(Map<String, String> datosRecupero) {
-        this.numeroReclamacion = datosRecupero.get("numeroReclamacion");
-        this.pais = datosRecupero.get("pais");
-        this.departamento = datosRecupero.get("departamento");
-        this.ciudad = datosRecupero.get("ciudad");
-        this.valorTransaccion = datosRecupero.get("valorTransaccion");
-        this.estadoTransaccion = datosRecupero.get("estadoTransaccion");
-    }
+  public String getNumeroReclamacion() {
+    return numeroReclamacion;
+  }
 
-    public Transacciones(List<Map<String, String>> datosTransacciones) {
-    }
+  public String getPais() {
+    return pais;
+  }
 
-    public String getNumeroReclamacion() {
-        return numeroReclamacion;
-    }
+  public String getDepartamento() {
+    return departamento;
+  }
 
-    public String getPais() {
-        return pais;
-    }
+  public String getCiudad() {
+    return ciudad;
+  }
 
-    public String getDepartamento() {
-        return departamento;
-    }
+  public String getValorTransaccion() {
+    return valorTransaccion;
+  }
 
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public String getValorTransaccion() {
-        return valorTransaccion;
-    }
-
-    public String getEstadoTransaccion() {
-        return estadoTransaccion;
-    }
-
+  public String getEstadoTransaccion() {
+    return estadoTransaccion;
+  }
 }
