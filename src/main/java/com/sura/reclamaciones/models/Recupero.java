@@ -9,7 +9,6 @@ public class Recupero {
   private String numeroReclamacion;
   private String pagador;
   private String lineaRecupero;
-  private String moneda;
   private String pais;
   private String departamento;
   private String ciudad;
@@ -24,7 +23,6 @@ public class Recupero {
     this.numeroReclamacion = datosRecupero.get("numeroReclamacion");
     this.pagador = datosRecupero.get("pagador");
     this.lineaRecupero = datosRecupero.get("lineaReserva");
-    this.moneda = datosRecupero.get("moneda");
     this.pais = datosRecupero.get("pais");
     this.departamento = datosRecupero.get("departamento");
     this.ciudad = datosRecupero.get("ciudad");
@@ -48,10 +46,6 @@ public class Recupero {
 
   public String getLineaRecupero() {
     return lineaRecupero;
-  }
-
-  public String getMoneda() {
-    return moneda;
   }
 
   public String getPais() {

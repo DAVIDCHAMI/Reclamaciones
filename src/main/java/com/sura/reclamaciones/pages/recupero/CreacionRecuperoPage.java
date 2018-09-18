@@ -30,11 +30,6 @@ public class CreacionRecuperoPage extends GeneralPage {
   )
   private WebElementFacade txtLineaReserva;
 
-  @FindBy(
-    xpath = "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:Currency-inputEl']"
-  )
-  private WebElementFacade txtMoneda;
-
   @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:RecoveryCategory-inputEl")
   private WebElementFacade txtCategoriaRecuperacion;
 
@@ -78,11 +73,6 @@ public class CreacionRecuperoPage extends GeneralPage {
     txtLineaReserva.click();
     seleccionarOpcionCombobox(lineaReserva);
     realizarEsperaCarga();
-  }
-
-  public void seleccionarMoneda(String moneda) {
-    txtMoneda.click();
-    seleccionarOpcionCombobox(moneda);
   }
 
   public void seleccionarPais(String pais) {
