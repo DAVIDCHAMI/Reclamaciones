@@ -31,8 +31,8 @@ public class VerificacionAnulacionPagoPage extends GeneralPage {
 
   public boolean verificarEstadoAnulado(String strAnulacionPago, String strNumeroPago) {
     List<WebElement> lstPago = irFilaAnulada(strNumeroPago);
-    for (WebElement aLstPago : lstPago) {
-      if (aLstPago.getText().equals(strAnulacionPago)) {
+    for (int i = 0; i < lstPago.size(); i++) {
+      if (lstPago.get(i).getText().equals(strAnulacionPago)) {
         return true;
       }
     }

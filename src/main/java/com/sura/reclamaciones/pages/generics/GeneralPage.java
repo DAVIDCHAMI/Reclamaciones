@@ -35,7 +35,7 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade btnSiguiente;
 
-  @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-next ']")
+  @FindBy(xpath = "//a[@class='x-btn x-unselectable x-btn-toolbar x-box-item x-toolbar-item x-btn-plain-toolbar-small x-icon x-btn-icon x-btn-plain-toolbar-small-icon']//span[@class='x-btn-icon-el x-tbar-page-next ']")
   private WebElementFacade btnCambioPagina;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
@@ -195,7 +195,7 @@ public class GeneralPage extends PageObject {
 
   public void irSiguientePagina() {
     if (btnCambioPagina.isVisible()) {
-      btnCambioPagina.click();
+      btnCambioPagina.waitUntilClickable().click();
       if (pgrBarCarga.isVisible()) {
         realizarEsperaCarga();
       }

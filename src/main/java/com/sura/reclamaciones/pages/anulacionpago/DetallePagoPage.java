@@ -49,8 +49,10 @@ public class DetallePagoPage extends GeneralPage {
   public void realizarAnulacionPago() {
     btnAnularDetener.waitUntilClickable();
     btnAnularDetener.click();
+    realizarEsperaCarga();
     btnAnularCheque.waitUntilClickable();
     btnAnularCheque.click();
+    realizarEsperaCarga();
     btnAceptar.waitUntilClickable();
     btnAceptar.click();
   }
@@ -67,7 +69,7 @@ public class DetallePagoPage extends GeneralPage {
     }
   }
 
-  private void ingresarNumeroAnular(
+  private boolean ingresarNumeroAnular(
       List<WebElement> lstPago, String strNumeroPago, String strEstadoPrevio) {
     for (WebElement aLstPago : lstPago) {
       if (aLstPago.getText().equals(strNumeroPago)
@@ -79,36 +81,41 @@ public class DetallePagoPage extends GeneralPage {
                     String.format(
                         "//a[@class='g-actionable'][contains(text(),'%s')]", strNumeroPago)))
             .click();
-        break;
+        return true;
       }
     }
+    return false;
   }
 
   public boolean ingresarAnulacionPago(String strNumeroPago, String strEstadoPrevio) {
     int intNumeroPagina = obtenerNumeroPaginas();
+    boolean estadoPago;
     if (intNumeroPagina == 0) {
       List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);
       int intLongitudFila = lstPago.size();
       if (intLongitudFila == 0) {
         return false;
       } else {
-        ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
+        estadoPago= ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
         Serenity.setSessionVariable(NUMERO_PAGINA).to(intNumeroPagina);
+        return estadoPago;
       }
     } else {
       for (int i = 0; i < intNumeroPagina; i++) {
         List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);
         int intLongitudFila = lstPago.size();
         if (intLongitudFila == 0) {
-          if (i != (intNumeroPagina - 1)) {
-            irSiguientePagina();
-          } else {
-            return false;
+           if (i == (intNumeroPagina -1)){
+             return false;
+           }
+           else {
+             irSiguientePagina();
+           }
           }
-        } else {
-          ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
+        else {
+          estadoPago= ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
           Serenity.setSessionVariable(NUMERO_PAGINA).to(i);
-          break;
+          return estadoPago;
         }
       }
     }
