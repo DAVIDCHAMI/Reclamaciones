@@ -127,9 +127,4 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
               .to(CalculoVrReserva.toString());
         });
   }
-
-  public void cambiarPantalla() {
-    btnSiguiente.waitUntilClickable().click();
-    realizarEsperaCarga();
-  }
 }

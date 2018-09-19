@@ -36,10 +36,10 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   )
   private WebElementFacade tblCuentaElectronica;
 
-  String PAIS = "Country-inputEl";
-  String DEPARTAMENTO = "State-inputEl";
-  String CIUDAD = "Sura_Colombian_City-inputEl";
-  String TIPO_DIRECCION = "Address_AddressType-inputEl";
+  private String PAIS = "Country-inputEl";
+  private String DEPARTAMENTO = "State-inputEl";
+  private String CIUDAD = "Sura_Colombian_City-inputEl";
+  private String TIPO_DIRECCION = "Address_AddressType-inputEl";
 
   public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
     cmbNombreBeneficiario.click();

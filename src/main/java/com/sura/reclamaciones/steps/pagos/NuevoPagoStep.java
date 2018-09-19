@@ -60,7 +60,7 @@ public class NuevoPagoStep {
       introducirInformacionPagoPage.ingresarCodigoRetencion(
           strCodigoRetencion, PagoConstante.CODIGO_RETENCION);
       introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, PagoConstante.CANTIDAD);
-      introducirInformacionPagoPage.cambiarPantalla();
+      introducirInformacionPagoPage.continuarSiguientePantalla();
       establecerInstruccionPagoPage.ingresarFechaFactura();
       establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
       establecerInstruccionPagoPage.finalizarProceso();
