@@ -17,8 +17,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
 
   private Integer CalculoVrReserva;
 
-
-
   public enum variablesSesion {
     VALOR_RESERVA
   }
@@ -62,7 +60,10 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   )
   private WebElementFacade lstCodigo;
 
-  @FindBy (xpath = "//span[@id='NormalCreateCheckWizard:Next-btnInnerEl' and @class='x-btn-inner x-btn-inner-center' and @unselectable='on' and text()='Siguiente >']")
+  @FindBy(
+    xpath =
+        "//span[@id='NormalCreateCheckWizard:Next-btnInnerEl' and @class='x-btn-inner x-btn-inner-center' and @unselectable='on' and text()='Siguiente >']"
+  )
   private WebElementFacade btnSiguiente;
 
   public void seleccionarLineaReserva(String strLineaReserva) {
@@ -113,7 +114,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   }
 
   public void ingresarCantidadPago(String strTipoPago, String strCantidadPago) {
-    Serenity.setSessionVariable(variablesSesion.VALOR_RESERVA).to(CalculoVrReserva.toString());
     calcularCantidadPago(strTipoPago);
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, 1);
@@ -122,6 +122,9 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
           elemento.click();
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%d')", CalculoVrReserva));
+          txtComentarioPago.click();
+          Serenity.setSessionVariable(variablesSesion.VALOR_RESERVA)
+              .to(CalculoVrReserva.toString());
         });
   }
 

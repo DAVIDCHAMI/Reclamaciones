@@ -12,8 +12,8 @@ public class PagoEmpresarial extends Transacciones {
   private String numeroFactura;
   private String tipoDireccion;
 
-
-  public PagoEmpresarial() {super();
+  public PagoEmpresarial() {
+    super();
   }
 
   private PagoEmpresarial(Map<String, String> datosPagosEmpresariales) {
@@ -22,7 +22,6 @@ public class PagoEmpresarial extends Transacciones {
     this.comentario = datosPagosEmpresariales.get("comentario");
     this.numeroFactura = datosPagosEmpresariales.get("numeroFactura");
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
-
   }
 
   public PagoEmpresarial(List<Map<String, String>> datosPagosEmpresariales) {
@@ -44,8 +43,6 @@ public class PagoEmpresarial extends Transacciones {
   public String getTipoDireccion() {
     return tipoDireccion;
   }
-
-
 
   public List<PagoEmpresarial> getLstPago() {
     return lstPagoEmpresarial;

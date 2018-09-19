@@ -31,7 +31,7 @@ public class EstablecerInstruccionPagoPage extends GeneralPage {
     return formateador.format(fechaActual);
   }
 
-  public  void ingresarFechaFactura(){
+  public void ingresarFechaFactura() {
     txtFechaPago.waitUntilClickable();
     txtFechaPago.sendKeys(obtenerFechaActual());
   }
