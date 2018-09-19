@@ -53,14 +53,14 @@ public class NuevoPagoStep {
       introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
       introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
           diligenciador.getTipoDireccion());
-      introducirInformacionPagoPage.continuarSiguientePantalla();
+      introducirInformacionPagoPage.irSiguientePantalla();
       introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
       introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
       introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
       introducirInformacionPagoPage.ingresarCodigoRetencion(
           strCodigoRetencion, PagoConstante.CODIGO_RETENCION);
       introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, PagoConstante.CANTIDAD);
-      introducirInformacionPagoPage.continuarSiguientePantalla();
+      introducirInformacionPagoPage.irSiguientePantalla();
       establecerInstruccionPagoPage.ingresarFechaFactura();
       establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
       establecerInstruccionPagoPage.finalizarProceso();

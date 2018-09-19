@@ -61,8 +61,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   private WebElementFacade lstCodigo;
 
   @FindBy(
-    xpath =
-        "//span[@id='NormalCreateCheckWizard:Next-btnInnerEl' and @class='x-btn-inner x-btn-inner-center' and @unselectable='on' and text()='Siguiente >']"
+          xpath =
+                  "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
   )
   private WebElementFacade btnSiguiente;
 
@@ -126,5 +126,13 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
           Serenity.setSessionVariable(variablesSesion.VALOR_RESERVA)
               .to(CalculoVrReserva.toString());
         });
+  }
+
+  public void irSiguientePantalla() {
+    btnSiguiente.waitUntilClickable();
+    btnSiguiente.click();
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
   }
 }
