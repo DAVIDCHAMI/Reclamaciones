@@ -45,7 +45,7 @@ public class RecuperoStep {
           creacionRecuperoPage.diligenciarCodigoRetencion(
               codigoRetencion, RecuperoConstante.CODIGO_RETENCION);
           creacionRecuperoPage.diligenciarCantidadRecupero(
-              formulario.getCantidad(), RecuperoConstante.CANTIDAD);
+              formulario.getValorTransaccion(), RecuperoConstante.CANTIDAD);
           creacionRecuperoPage.actualizarRecupero();
         });
   }
@@ -62,7 +62,7 @@ public class RecuperoStep {
           assertTrue(
               "No llego a SAP el recupero",
               verificacionRecuperoPage.verificarRecupero(
-                  validador.getEstadoRecupero(), lstFilaRecupero));
+                  validador.getEstadoTransaccion(), lstFilaRecupero));
         });
   }
 }

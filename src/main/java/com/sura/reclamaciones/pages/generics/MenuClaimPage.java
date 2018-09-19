@@ -41,10 +41,6 @@ public class MenuClaimPage extends GeneralPage {
   )
   WebElementFacade mnuReclamacion;
 
-  private String seleccionarOpcion =
-      "//span[contains(@class,'x-tree-node-text')][contains(text(),'COMODIN')]";
-  private String auxSeleccionarOpcion = "";
-
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);
   }

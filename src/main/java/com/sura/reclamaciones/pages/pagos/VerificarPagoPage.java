@@ -26,8 +26,12 @@ public class VerificarPagoPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
   private WebElementFacade btnUltimaPagina;
 
+  @FindBy(xpath = "//span[@class='x-column-header-text'][contains(text(),'Número de pago')]")
+  private WebElementFacade lblNumeroPago;
+
   public String obtenerNumeroPagoRealizado() {
     irUltimaPagina();
+    lblNumeroPago.click();
     return obtenerDatoTablaCabecera(PagoConstante.NÚMERO_PAGO);
   }
 

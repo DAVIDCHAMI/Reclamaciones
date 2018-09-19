@@ -27,7 +27,7 @@ public class GeneralPage extends PageObject {
   public WebElementFacade lstOpcionesCombobox;
 
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
-  private WebElementFacade pgrBarCarga;
+  public WebElementFacade pgrBarCarga;
 
   @FindBy(
     xpath =

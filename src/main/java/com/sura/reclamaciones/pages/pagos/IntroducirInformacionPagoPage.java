@@ -58,7 +58,13 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     xpath =
         "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
   )
-  public WebElementFacade lstCodigo;
+  private WebElementFacade lstCodigo;
+
+  @FindBy(
+          xpath =
+                  "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
+  )
+  private WebElementFacade btnSiguiente;
 
   public void seleccionarLineaReserva(String strLineaReserva) {
     cmbLineaReserva.waitUntilClickable().click();
@@ -116,7 +122,17 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
           elemento.click();
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%d')", CalculoVrReserva));
+          txtComentarioPago.click();
+          Serenity.setSessionVariable(variablesSesion.VALOR_RESERVA)
+              .to(CalculoVrReserva.toString());
         });
-   Serenity.setSessionVariable(variablesSesion.VALOR_RESERVA).to(CalculoVrReserva.toString());
+  }
+
+  public void irSiguientePantalla() {
+    btnSiguiente.waitUntilClickable();
+    btnSiguiente.click();
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
   }
 }

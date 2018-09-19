@@ -4,29 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PagoEmpresarial {
+public class PagoEmpresarial extends Transacciones {
 
   private List<PagoEmpresarial> lstPagoEmpresarial = new ArrayList<PagoEmpresarial>();
   private String tipoBeneficiario;
   private String comentario;
   private String numeroFactura;
-  private String pais;
-  private String departamento;
-  private String ciudad;
   private String tipoDireccion;
-  private String estado;
 
-  public PagoEmpresarial() {}
+  public PagoEmpresarial() {
+    super();
+  }
 
   private PagoEmpresarial(Map<String, String> datosPagosEmpresariales) {
+    super(datosPagosEmpresariales);
     this.tipoBeneficiario = datosPagosEmpresariales.get("tipoBeneficiario");
     this.comentario = datosPagosEmpresariales.get("comentario");
     this.numeroFactura = datosPagosEmpresariales.get("numeroFactura");
-    this.pais = datosPagosEmpresariales.get("pais");
-    this.departamento = datosPagosEmpresariales.get("departamento");
-    this.ciudad = datosPagosEmpresariales.get("ciudad");
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
-    this.estado = datosPagosEmpresariales.get("estado");
   }
 
   public PagoEmpresarial(List<Map<String, String>> datosPagosEmpresariales) {
@@ -45,24 +40,8 @@ public class PagoEmpresarial {
     return numeroFactura;
   }
 
-  public String getPais() {
-    return pais;
-  }
-
-  public String getDepartamento() {
-    return departamento;
-  }
-
-  public String getCiudad() {
-    return ciudad;
-  }
-
   public String getTipoDireccion() {
     return tipoDireccion;
-  }
-
-  public String getEstado() {
-    return estado;
   }
 
   public List<PagoEmpresarial> getLstPago() {
