@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.models.PagoEmpresarial;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
@@ -24,7 +23,6 @@ public class NuevoPagoStep {
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
   @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
   @Page VerificarPagoPage verificarPagoPage;
-  @Page GeneralPage generalPage;
   @Page MenuClaimPage menuClaimPage;
 
   @Step
@@ -55,17 +53,17 @@ public class NuevoPagoStep {
           introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
           introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
                   diligenciador.getTipoDireccion());
-          generalPage.continuarSiguientePantalla();
+          introducirInformacionPagoPage.continuarSiguientePantalla();
           introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
           introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
           introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
           introducirInformacionPagoPage.ingresarCodigoRetencion(
                   strCodigoRetencion, PagoConstante.CODIGO_RETENCION);
           introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, PagoConstante.CANTIDAD);
-          generalPage.continuarSiguientePantalla();
+          introducirInformacionPagoPage.cambiarPantalla();
           establecerInstruccionPagoPage.ingresarFechaFactura();
           establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
-          generalPage.finalizarProceso();
+          establecerInstruccionPagoPage.finalizarProceso();
       }
   }
 
@@ -84,7 +82,7 @@ public class NuevoPagoStep {
               verificarPagoPage.verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
           assertTrue(
               "No llego a SAP el recupero",
-              verificarPagoPage.verificarPagoMenuTransaccion(validador.getEstado(), lstFilaPago));
+              verificarPagoPage.verificarPagoMenuTransaccion(validador.getEstadoTransaccion(), lstFilaPago));
         });
   }
 }
