@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class AnulacionPagoEmpresarial {
+public class AnulacionPagoEmpresarial extends Transacciones {
 
   private List<AnulacionPagoEmpresarial> lstAnulacionPagoEmpresarial =
       new ArrayList<AnulacionPagoEmpresarial>();
@@ -12,16 +12,14 @@ public class AnulacionPagoEmpresarial {
   private String numeroPago;
   private String estadoPrevio;
 
-  public AnulacionPagoEmpresarial() {}
-
-  private AnulacionPagoEmpresarial(Map<String, String> datosPagosEmpresariales) {
-    this.numeroReclamacion = datosPagosEmpresariales.get("numeroReclamacion");
-    this.numeroPago = datosPagosEmpresariales.get("numeroPago");
-    this.estadoPrevio = datosPagosEmpresariales.get("estadoPrevio");
+  public AnulacionPagoEmpresarial() {
+    super();
   }
 
-  public String getNumeroReclamacion() {
-    return numeroReclamacion;
+  private AnulacionPagoEmpresarial(Map<String, String> datosPagosEmpresariales) {
+    super(datosPagosEmpresariales);
+    this.numeroPago = datosPagosEmpresariales.get("numeroPago");
+    this.estadoPrevio = datosPagosEmpresariales.get("estadoPrevio");
   }
 
   public String getNumeroPago() {

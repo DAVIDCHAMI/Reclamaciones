@@ -11,8 +11,6 @@ Característica: Anulacion Pago
       |TipoProducto  | TipoEstado|
       | MRC 1        | Anulado   |
       | MRC 2        | Anulado   |
-      | MRC 3        | Anulado   |
-      | MRC 4        | Anulado   |
-      | MRC 5        | Anulado   |
+
 
 

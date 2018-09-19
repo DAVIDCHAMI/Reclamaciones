@@ -61,8 +61,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   private WebElementFacade lstCodigo;
 
   @FindBy(
-          xpath =
-                  "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
+    xpath =
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
   )
   private WebElementFacade btnSiguiente;
 

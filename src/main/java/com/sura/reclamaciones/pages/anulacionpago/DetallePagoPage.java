@@ -96,7 +96,7 @@ public class DetallePagoPage extends GeneralPage {
       if (intLongitudFila == 0) {
         return false;
       } else {
-        estadoPago= ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
+        estadoPago = ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
         Serenity.setSessionVariable(NUMERO_PAGINA).to(intNumeroPagina);
         return estadoPago;
       }
@@ -105,15 +105,13 @@ public class DetallePagoPage extends GeneralPage {
         List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);
         int intLongitudFila = lstPago.size();
         if (intLongitudFila == 0) {
-           if (i == (intNumeroPagina -1)){
-             return false;
-           }
-           else {
-             irSiguientePagina();
-           }
+          if (i == (intNumeroPagina - 1)) {
+            return false;
+          } else {
+            irSiguientePagina();
           }
-        else {
-          estadoPago= ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
+        } else {
+          estadoPago = ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
           Serenity.setSessionVariable(NUMERO_PAGINA).to(i);
           return estadoPago;
         }
