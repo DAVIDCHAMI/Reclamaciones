@@ -2,7 +2,7 @@ package com.sura.reclamaciones.utils;
 
 public enum Variables {
   COLUMNA_FILTRO_CSV("idFiltro"),
-  FORMATEAR_MONTOS("[+$.,()éA-Za-z ]");
+  FORMATEAR_MONTOS("[+$.,()óéA-Za-z ]");
 
   private String valor;
 
