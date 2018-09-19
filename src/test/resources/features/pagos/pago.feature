@@ -9,5 +9,5 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | numeroReclamacion  | producto                  | lineaReserva            |tipoPago    | beneficiarioPago                       | metodoPago       | soloSura  | codigoRetencion    |
-      | 9180000020103      | Multiriesgo corporativo 1 |(1) 1ª partePropiedad    | Parcial    |VICTOR HUGO SEPULVEDA VALLEJO CQLII     | Transferencia    | Sí        | 0099               |
-      | 9180000020946      | Multiriesgo corporativo 4 |(1) 1ª partePropiedad    | Parcial    |VICTOR HUGO SEPULVEDA VALLEJO CQLII     | Caja Sura        | No        | 0028               |
+      | 9180000020103      | Multiriesgo corporativo (1) |(1) 1ª partePropiedad    | Parcial    |VICTOR HUGO SEPULVEDA VALLEJO CQLII     | Transferencia    | Sí        | 0099               |
+      | 9180000020946      | Multiriesgo corporativo (2) |(1) 1ª partePropiedad    | Parcial    |VICTOR HUGO SEPULVEDA VALLEJO CQLII     | Caja Sura        | No        | 0023               |

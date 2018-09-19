@@ -80,7 +80,7 @@ public class NuevoPagoStep {
               "El valor reservado no es igual al enviado",
               verificarPagoPage.verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
           assertTrue(
-              "No llego a SAP el recupero",
+              "No llego a SAP el pago",
               verificarPagoPage.verificarPagoMenuTransaccion(
                   validador.getEstadoTransaccion(), lstFilaPago));
         });
