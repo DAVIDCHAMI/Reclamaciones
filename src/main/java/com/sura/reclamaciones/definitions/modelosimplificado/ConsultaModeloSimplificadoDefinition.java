@@ -21,7 +21,7 @@ public class ConsultaModeloSimplificadoDefinition {
 
   @Steps ConsultarModeloSimplificadoStep conexionBDStep;
 
-  ModeloSimplificadoBD modeloSimplificadoBD;
+  @Steps ModeloSimplificadoBD modeloSimplificadoBD;
 
   @Dado("^que se realiza un (.*)$")
   public void realizarConexionModeloSimplificado(String movimientoFinanciero) throws IOException {
@@ -32,7 +32,7 @@ public class ConsultaModeloSimplificadoDefinition {
   }
 
   @Cuando("^la transaccion se ha efectuado$")
-  public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
+  public void ejecutarConsultaModeloSimplificado() throws SQLException {
     modeloSimplificadoBD =
         new ModeloSimplificadoBD(
             conexionBDStep.consultarModeloSimplificado(
