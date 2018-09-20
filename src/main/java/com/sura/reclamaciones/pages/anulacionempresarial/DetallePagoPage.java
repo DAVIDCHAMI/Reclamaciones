@@ -1,6 +1,6 @@
-package com.sura.reclamaciones.pages.anulacionpago;
+package com.sura.reclamaciones.pages.anulacionempresarial;
 
-import static com.sura.reclamaciones.pages.anulacionpago.DetallePagoPage.variablesSesion.NUMERO_PAGINA;
+import static com.sura.reclamaciones.pages.anulacionempresarial.DetallePagoPage.variablesSesion.NUMERO_PAGINA;
 
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -38,6 +38,13 @@ public class DetallePagoPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroPaginas;
 
+    @FindBy(
+
+            xpath = "//input[@id='VoidRecovery:VoidRecoveryScreen:RecoveryBasicsInputSet:Comments-inputEl']"
+
+    )
+    private WebElementFacade txtIngresarComentario;
+
   public enum variablesSesion {
     NUMERO_PAGINA
   }
@@ -46,15 +53,16 @@ public class DetallePagoPage extends GeneralPage {
     super(wdriver);
   }
 
-  public void realizarAnulacionPago() {
+  public void realizarAnulacionPago(String comentario) {
     btnAnularDetener.waitUntilClickable();
     btnAnularDetener.click();
-    realizarEsperaCarga();
     btnAnularCheque.waitUntilClickable();
+   // txtIngresarComentario.click();
+    //txtIngresarComentario.sendKeys(comentario);
     btnAnularCheque.click();
-    realizarEsperaCarga();
     btnAceptar.waitUntilClickable();
     btnAceptar.click();
+    realizarEsperaCarga();
   }
 
   private int obtenerNumeroPaginas() {
@@ -82,9 +90,11 @@ public class DetallePagoPage extends GeneralPage {
                         "//a[@class='g-actionable'][contains(text(),'%s')]", strNumeroPago)))
             .click();
         return true;
+      }else {
+          return false;
       }
     }
-    return false;
+    return true;
   }
 
   public boolean ingresarAnulacionPago(String strNumeroPago, String strEstadoPrevio) {

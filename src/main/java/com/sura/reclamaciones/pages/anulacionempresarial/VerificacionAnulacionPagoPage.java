@@ -1,6 +1,6 @@
-package com.sura.reclamaciones.pages.anulacionpago;
+package com.sura.reclamaciones.pages.anulacionempresarial;
 
-import static com.sura.reclamaciones.pages.anulacionpago.DetallePagoPage.variablesSesion.NUMERO_PAGINA;
+import static com.sura.reclamaciones.pages.anulacionempresarial.DetallePagoPage.variablesSesion.NUMERO_PAGINA;
 
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;

@@ -158,8 +158,8 @@ public class GeneralPage extends PageObject {
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
       WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
-    List<String> cabeceraRecuperos = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
-    int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + posicionFila;
+    List<String> cabeceraTabla = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
+    int posicionDatoDevolver = cabeceraTabla.indexOf(encabezadoColumnaDevolver) + posicionFila;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
     return elementoEncontrado
         .stream()
