@@ -38,7 +38,7 @@ public class AnulacionEmpresarial extends Transacciones {
     asignarDatos(datosPagosEmpresariales);
   }
 
-  public List<AnulacionEmpresarial> getLstAnulacionEmpresarial() {
+  public List<AnulacionPagoEmpresarial> getLstAnulacionEmpresarial() {
     return lstAnulacionEmpresarial;
   }
 

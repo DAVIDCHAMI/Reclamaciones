@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.anulacionEmpresariales;
+package com.sura.reclamaciones.definitions.anulacionEmpresarial;
 
 import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.steps.anulacionPago.AnulacionPagoStep;
