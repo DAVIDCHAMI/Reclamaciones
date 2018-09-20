@@ -68,7 +68,7 @@ public class NuevaReclamacionEmpresarialStep {
   }
 
   public void visualizarResumenReclamacion() {
-    resumenReclamacionPage.obtenerNumeroReclamacion();
+    String numeroReclamacion = resumenReclamacionPage.obtenerNumeroReclamacion();
   }
 
   public void validarExposicionVisualizada(String exposicion) {
