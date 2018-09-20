@@ -13,10 +13,19 @@ public class SetupStory {
 
   AmbientesUtil ambientesUtil = new AmbientesUtil();
 
-  @Before("@claims")
-  public void seleccionarAmbiente() throws IOException {
+  @Before("@claimsEmpresarial")
+  public void seleccionarAmbienteEmpresarial() throws IOException {
     if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
-      loginClaimStep.iniciarSesionLab();
+      loginClaimStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_EMPRESARIAL);
+    } else if (ConstanteGlobal.DESARROLLO.equals(ambientesUtil.getAmbiente())) {
+      loginClaimStep.iniciarSesionAmbienteDllo();
+    }
+  }
+
+  @Before("@claimsAuto")
+  public void seleccionarAmbienteAuto() throws IOException {
+    if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
+      loginClaimStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_AUTO);
     } else if (ConstanteGlobal.DESARROLLO.equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionAmbienteDllo();
     }

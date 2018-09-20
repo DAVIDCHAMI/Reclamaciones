@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.pages.reservas;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.*;
-import static com.sura.reclamaciones.constantes.ReclamacionConstante.*;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -15,24 +14,24 @@ import org.openqa.selenium.WebElement;
 public class AjusteReservaPage extends GeneralPage {
 
   @FindBy(xpath = "//img[@class='x-grid-checkcolumn']")
-  WebElementFacade chkLineaReserva;
+  private WebElementFacade chkLineaReserva;
 
   @FindBy(xpath = "//span[@id='NewReserveSet:NewReserveSetScreen:Remove-btnInnerEl']")
-  WebElementFacade btnQuitarLineaReserva;
+  private WebElementFacade btnQuitarLineaReserva;
 
   @FindBy(
     xpath = "//div[@id='NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV']"
   )
-  WebElementFacade tblLineaReserva;
+  private WebElementFacade tblLineaReserva;
 
   @FindBy(xpath = "//span[@id='NewReserveSet:NewReserveSetScreen:Update-btnInnerEl']")
-  WebElementFacade btnGuardarAjusteReserva;
+  private WebElementFacade btnGuardarAjusteReserva;
 
   @FindBy(
     xpath =
         "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
   )
-  WebElementFacade btnCerrarAdvertencia;
+  private WebElementFacade btnCerrarAdvertencia;
 
   @Page MenuClaimPage menuClaimPage;
 

@@ -23,7 +23,10 @@ public class InformacionBasicaPage extends GeneralPage {
   @FindBy(xpath = ".//div[@class='message']/img[@class='error_icon']")
   private WebElementFacade msjAdvertenciaRelacionAsegurado;
 
-  @FindBy(xpath = ".//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputCell']/input")
+  @FindBy(
+    xpath =
+        ".//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputCell']/input"
+  )
   private WebElementFacade txtRelacionAsegurado;
 
   public InformacionBasicaPage(WebDriver wdriver) {
@@ -37,8 +40,8 @@ public class InformacionBasicaPage extends GeneralPage {
     continuarSiguientePantalla();
   }
 
-  public void validarMsjAdvertenciaRelacionAsegurado(String relacionAsegurado){
-    if (msjAdvertenciaRelacionAsegurado.isPresent()){
+  public void validarMsjAdvertenciaRelacionAsegurado(String relacionAsegurado) {
+    if (msjAdvertenciaRelacionAsegurado.isPresent()) {
       txtRelacionAsegurado.type(relacionAsegurado);
       txtRelacionAsegurado.sendKeys(Keys.ENTER);
       realizarEsperaCarga();

@@ -30,6 +30,6 @@ public class ReversionConstitucionDefinition {
   @Entonces(
       "^se obtiene una reversión de constitución y el deducible es generado por un valor (.*)$")
   public void verificarReversionConstitucion(String deducible) {
-    //To Do
+    reversionConstitucionStep.verificarAjusteReserva(deducible);
   }
 }
