@@ -36,8 +36,7 @@ public class ConsultaModeloSimplificadoDefinition {
     modeloSimplificadoBD =
         new ModeloSimplificadoBD(
             conexionBDStep.consultarModeloSimplificado(
-                modeloSimplificado.getlstModeloSimplificado(),
-                movimientoFinanciero));
+                modeloSimplificado.getlstModeloSimplificado(), movimientoFinanciero));
   }
 
   @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")

@@ -20,9 +20,7 @@ public class ConsultarModeloSimplificadoStep {
   String sql = new String();
   List<Map<String, String>> resultadoConsulta = null;
 
-
-  @Page
-  ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
+  @Page ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
 
   @Step
   public Connection conectarBaseDatos() {
@@ -34,9 +32,7 @@ public class ConsultarModeloSimplificadoStep {
   }
 
   public List<Map<String, String>> consultarModeloSimplificado(
-      List<ModeloSimplificado> datosTransaccion,
-      String movimientoFinanciero)
-      throws SQLException {
+      List<ModeloSimplificado> datosTransaccion, String movimientoFinanciero) throws SQLException {
     sql = consultarModeloSimplificado.obtenerSentenciaSql(movimientoFinanciero);
     datosTransaccion.forEach(
         datoTransaccion -> transaccionConsulta = datoTransaccion.getTransaccion());
