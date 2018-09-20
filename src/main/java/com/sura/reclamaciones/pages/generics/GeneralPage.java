@@ -172,7 +172,6 @@ public class GeneralPage extends PageObject {
   public void irUltimaPagina() {
     if (btnUltimaPagina.isVisible()) {
       btnUltimaPagina.click();
-      realizarEsperaCarga();
     }
   }
 
