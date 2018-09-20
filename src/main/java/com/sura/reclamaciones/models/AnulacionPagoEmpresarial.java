@@ -8,7 +8,6 @@ public class AnulacionPagoEmpresarial extends Transacciones {
 
   private List<AnulacionPagoEmpresarial> lstAnulacionPagoEmpresarial =
       new ArrayList<AnulacionPagoEmpresarial>();
-  private String numeroReclamacion;
   private String numeroPago;
   private String estadoPrevio;
 

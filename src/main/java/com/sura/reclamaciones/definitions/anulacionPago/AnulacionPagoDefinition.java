@@ -16,10 +16,9 @@ public class AnulacionPagoDefinition {
   AnulacionPagoEmpresarial anulacionPagoEmpresarial;
 
   @Dado("^Un siniestro de una poliza empresarial con producto (.*)$")
-  public void ingresarPagos(String strTipoProducto) throws Throwable {
+  public void ingresarPagos(String tipoProducto) throws Throwable {
     anulacionPagoEmpresarial =
-        new AnulacionPagoEmpresarial(
-            genericStep.getFilasModelo("anulacion_pago_empresarial", strTipoProducto));
+        new AnulacionPagoEmpresarial(genericStep.getFilasModelo("anulacion_pago", tipoProducto));
     anulacionPagoStep.consultarNumeroReclamacion(
         anulacionPagoEmpresarial.getLstAnulacionPagoEmpresarialPago());
   }
