@@ -1,5 +1,5 @@
-id;idFiltro;numeroReclamacion;numeroPago;comentario; estadoPrevio
-1;MRC(1);9180000014929;4224;prueba Pago;Solicitado;
-2;MRC(2);9180000014929;4246;prueba pago;Solicitado;
-3;MRC(3);9180000017471;cc:5380399;ingreso comentario prueba;Solicitado
+id;idFiltro;numeroReclamacion;numeroTransaccion;comentario; estadoPrevio
+1;MRC(1);9180000014929;4234;pruebaPago;Solicitado;
+2;MRC(2);9180000014929;4209;pruebapago;Solicitado;
+3;MRC(3);9180000017471;cc:5380084;ingreso comentario prueba;Solicitado
 4;MRC(4);9180000017471;cc:5380403;comentario para prueba;Solicitado

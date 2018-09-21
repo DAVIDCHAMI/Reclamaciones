@@ -2,6 +2,8 @@ package com.sura.reclamaciones.pages.anulacionempresarial;
 
 import static com.sura.reclamaciones.pages.anulacionempresarial.DetallePagoPage.variablesSesion.NUMERO_PAGINA;
 
+import com.sura.reclamaciones.constantes.AnulacionConstante;
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
@@ -15,35 +17,29 @@ import org.openqa.selenium.WebElement;
 
 public class DetallePagoPage extends GeneralPage {
 
-  @FindBy(
-    xpath =
-        "//span[@id='ClaimFinancialsChecksDetail:ClaimFinancialsChecksDetailScreen:ClaimFinancialsChecksDetail_VoidStopButton-btnInnerEl']"
-  )
-  private WebElementFacade btnAnularDetener;
+  @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Anular')]")
+  private WebElementFacade btnAnular;
 
   @FindBy(
-    xpath = "//span[@id='VoidStopCheck:VoidStopCheckScreen:VoidStopCheck_VoidButton-btnInnerEl']"
-  )
-  private WebElementFacade btnAnularCheque;
-
-  @FindBy(
-    xpath =
-        "//div[@class='x-window x-message-box x-layer x-window-default x-closable x-window-closable x-window-default-closable x-border-box']//div//span[@class='x-btn-inner x-btn-inner-center'][contains(text(),'Aceptar')]"
-  )
+    xpath ="//span[@class='x-btn-button']//span[contains(text(),'Aceptar')]")
   private WebElementFacade btnAceptar;
 
   @FindBy(
     xpath =
-        "//div[@class=\"x-toolbar-text x-box-item x-toolbar-item x-toolbar-text-default\"][contains(text(),'de')]"
+        "//a[@class='x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']//a//span[@class='x-btn-inner x-btn-inner-center'][contains(text(),'Aceptar')]"
+  )
+  private WebElementFacade btnAceptarRecupero;
+
+  @FindBy(
+    xpath =
+        "//div[@class='x-toolbar-text x-box-item x-toolbar-item x-toolbar-text-default'][contains(text(),'de')]"
   )
   private WebElementFacade lblNumeroPaginas;
 
-    @FindBy(
-
-            xpath = "//input[@id='VoidRecovery:VoidRecoveryScreen:RecoveryBasicsInputSet:Comments-inputEl']"
-
-    )
-    private WebElementFacade txtIngresarComentario;
+  @FindBy(
+    xpath = "//input[@id='VoidRecovery:VoidRecoveryScreen:RecoveryBasicsInputSet:Comments-inputEl']"
+  )
+  private WebElementFacade txtIngresarComentario;
 
   public enum variablesSesion {
     NUMERO_PAGINA
@@ -53,17 +49,19 @@ public class DetallePagoPage extends GeneralPage {
     super(wdriver);
   }
 
-  public void realizarAnulacionPago(String comentario) {
-    btnAnularDetener.waitUntilClickable();
-    btnAnularDetener.click();
-    btnAnularCheque.waitUntilClickable();
-   // txtIngresarComentario.click();
-    //txtIngresarComentario.sendKeys(comentario);
-    btnAnularCheque.click();
+  public void realizarAnulacion(String strComentario) {
+    if(btnAnular.isVisible()){
+    btnAnular.waitUntilClickable();
+    btnAnular.click();
+    realizarEsperaCarga();
+    btnAnular.waitUntilClickable();
+    btnAnular.click();
     btnAceptar.waitUntilClickable();
     btnAceptar.click();
     realizarEsperaCarga();
   }
+  }
+
 
   private int obtenerNumeroPaginas() {
     if (lblNumeroPaginas.isVisible()) {
@@ -78,55 +76,105 @@ public class DetallePagoPage extends GeneralPage {
   }
 
   private boolean ingresarNumeroAnular(
-      List<WebElement> lstPago, String strNumeroPago, String strEstadoPrevio) {
+      List<WebElement> lstPago,
+      String strNumeroTransaccion,
+      String strEstadoPrevio,
+      String tipoAnulacion) {
     for (WebElement aLstPago : lstPago) {
-      if (aLstPago.getText().equals(strNumeroPago)
-          && lstPago.get(5).getText().equals(strEstadoPrevio)) {
-        aLstPago.click();
-        aLstPago
-            .findElement(
-                By.xpath(
-                    String.format(
-                        "//a[@class='g-actionable'][contains(text(),'%s')]", strNumeroPago)))
-            .click();
-        return true;
-      }else {
+      if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
+        if (aLstPago.getText().equals(strNumeroTransaccion)
+            && lstPago.get(5).getText().equals(strEstadoPrevio)) {
+          aLstPago.click();
+          aLstPago
+              .findElement(
+                  By.xpath(
+                      String.format(
+                          "//a[@class='g-actionable'][contains(text(),'%s')]",
+                          strNumeroTransaccion)))
+              .click();
+          return true;
+        } else {
           return false;
+        }
+      } else {
+        if (aLstPago.getText().equals(strNumeroTransaccion)
+            && lstPago.get(9).getText().equals(strEstadoPrevio)) {
+          lstPago.get(3).click();
+          return true;
+        } else {
+          return false;
+        }
       }
     }
     return true;
   }
 
-  public boolean ingresarAnulacionPago(String strNumeroPago, String strEstadoPrevio) {
-    int intNumeroPagina = obtenerNumeroPaginas();
+  private boolean ingresarAnulacionPrimeraHoja(
+      String strNumeroTransaccion,
+      String strEstadoPrevio,
+      int intNumeroPaginas,
+      String tipoAnulacion) {
     boolean estadoPago;
-    if (intNumeroPagina == 0) {
-      List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);
+    List<WebElement> lstPago;
+    if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
+      lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroTransaccion);
+    } else {
+      lstPago = obtenerFilaTabla(MenuConstante.TRANSACCIONES, strNumeroTransaccion);
+    }
+    int intLongitudFila = lstPago.size();
+    if (intLongitudFila == 0) {
+      return false;
+    } else {
+      estadoPago =
+          ingresarNumeroAnular(lstPago, strNumeroTransaccion, strEstadoPrevio, tipoAnulacion);
+      Serenity.setSessionVariable(NUMERO_PAGINA).to(intNumeroPaginas);
+      return estadoPago;
+    }
+  }
+
+  private boolean ingresarAnulacionHojaDiferentePrimera(
+      String strNumeroTransaccion,
+      String strEstadoPrevio,
+      int intNumeroPaginas,
+      String tipoAnulacion) {
+    for (int i = 0; i < intNumeroPaginas; i++) {
+      List<WebElement> lstPago;
+      if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
+        lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroTransaccion);
+      } else {
+        lstPago = obtenerFilaTabla(MenuConstante.TRANSACCIONES, strNumeroTransaccion);
+      }
       int intLongitudFila = lstPago.size();
       if (intLongitudFila == 0) {
-        return false;
-      } else {
-        estadoPago = ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
-        Serenity.setSessionVariable(NUMERO_PAGINA).to(intNumeroPagina);
-        return estadoPago;
-      }
-    } else {
-      for (int i = 0; i < intNumeroPagina; i++) {
-        List<WebElement> lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);
-        int intLongitudFila = lstPago.size();
-        if (intLongitudFila == 0) {
-          if (i == (intNumeroPagina - 1)) {
-            return false;
-          } else {
-            irSiguientePagina();
-          }
+        if (i == (intNumeroPaginas - 1)) {
+          return false;
         } else {
-          estadoPago = ingresarNumeroAnular(lstPago, strNumeroPago, strEstadoPrevio);
-          Serenity.setSessionVariable(NUMERO_PAGINA).to(i);
-          return estadoPago;
+          irSiguientePagina();
         }
+      } else {
+        boolean estadoPago =
+            ingresarNumeroAnular(lstPago, strNumeroTransaccion, strEstadoPrevio, tipoAnulacion);
+        Serenity.setSessionVariable(NUMERO_PAGINA).to(i);
+        return estadoPago;
       }
     }
     return true;
+  }
+
+  public boolean ingresarAnulacionEmpresarial(
+      String strNumeroTransaccion, String strEstadoPrevio, String tipoAnulacion) {
+    int intNumeroPagina = obtenerNumeroPaginas();
+    boolean estadoPago;
+    if (intNumeroPagina == 0) {
+      estadoPago =
+          ingresarAnulacionPrimeraHoja(
+              strNumeroTransaccion, strEstadoPrevio, intNumeroPagina, tipoAnulacion);
+      return estadoPago;
+    } else {
+      estadoPago =
+          ingresarAnulacionHojaDiferentePrimera(
+              strNumeroTransaccion, strEstadoPrevio, intNumeroPagina, tipoAnulacion);
+      return estadoPago;
+    }
   }
 }

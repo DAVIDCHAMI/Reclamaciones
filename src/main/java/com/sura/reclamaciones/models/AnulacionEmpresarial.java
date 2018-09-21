@@ -8,7 +8,7 @@ public class AnulacionEmpresarial extends Transacciones {
 
   private List<AnulacionEmpresarial> lstAnulacionEmpresarial =
       new ArrayList<AnulacionEmpresarial>();
-  private String numeroPago;
+  private String numeroTransaccion;
   private String estadoPrevio;
   private String comentario;
 
@@ -18,21 +18,22 @@ public class AnulacionEmpresarial extends Transacciones {
 
   private AnulacionEmpresarial(Map<String, String> datosAnulacionEmpresarial) {
     super(datosAnulacionEmpresarial);
-    this.numeroPago = datosAnulacionEmpresarial.get("numeroPago");
+    this.numeroTransaccion = datosAnulacionEmpresarial.get("numeroTransaccion");
     this.estadoPrevio = datosAnulacionEmpresarial.get("estadoPrevio");
     this.comentario = datosAnulacionEmpresarial.get("comentario");
-
   }
 
-  public String getNumeroPago() {
-    return numeroPago;
+  public String getNumeroTransaccion() {
+    return numeroTransaccion;
   }
 
   public String getEstadoPrevio() {
     return estadoPrevio;
   }
 
-  public String getComentario() { return comentario; }
+  public String getComentario() {
+    return comentario;
+  }
 
   public AnulacionEmpresarial(List<Map<String, String>> datosPagosEmpresariales) {
     asignarDatos(datosPagosEmpresariales);
