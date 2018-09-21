@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
-import static com.sura.reclamaciones.pages.anulacionempresarial.DetallePagoPage.variablesSesion.NUMERO_PAGINA;
+import static com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage.variablesSesion.NUMERO_PAGINA;
 
 import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.constantes.MenuConstante;
@@ -15,13 +15,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class DetallePagoPage extends GeneralPage {
+public class DetalleTransaccionPage extends GeneralPage {
 
   @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Anular')]")
   private WebElementFacade btnAnular;
 
-  @FindBy(
-    xpath ="//span[@class='x-btn-button']//span[contains(text(),'Aceptar')]")
+  @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Aceptar')]")
   private WebElementFacade btnAceptar;
 
   @FindBy(
@@ -36,32 +35,26 @@ public class DetallePagoPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroPaginas;
 
-  @FindBy(
-    xpath = "//input[@id='VoidRecovery:VoidRecoveryScreen:RecoveryBasicsInputSet:Comments-inputEl']"
-  )
-  private WebElementFacade txtIngresarComentario;
-
   public enum variablesSesion {
     NUMERO_PAGINA
   }
 
-  public DetallePagoPage(WebDriver wdriver) {
+  public DetalleTransaccionPage(WebDriver wdriver) {
     super(wdriver);
   }
 
-  public void realizarAnulacion(String strComentario) {
-    if(btnAnular.isVisible()){
-    btnAnular.waitUntilClickable();
-    btnAnular.click();
-    realizarEsperaCarga();
-    btnAnular.waitUntilClickable();
-    btnAnular.click();
-    btnAceptar.waitUntilClickable();
-    btnAceptar.click();
-    realizarEsperaCarga();
+  public void realizarAnulacion() {
+    if (btnAnular.isVisible()) {
+      btnAnular.waitUntilClickable();
+      btnAnular.click();
+      realizarEsperaCarga();
+      btnAnular.waitUntilClickable();
+      btnAnular.click();
+      btnAceptar.waitUntilClickable();
+      btnAceptar.click();
+      realizarEsperaCarga();
+    }
   }
-  }
-
 
   private int obtenerNumeroPaginas() {
     if (lblNumeroPaginas.isVisible()) {

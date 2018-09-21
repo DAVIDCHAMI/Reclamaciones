@@ -8,8 +8,8 @@ import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.models.AnulacionEmpresarial;
-import com.sura.reclamaciones.pages.anulacionempresarial.DetallePagoPage;
-import com.sura.reclamaciones.pages.anulacionempresarial.VerificacionAnulacionPagoPage;
+import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
+import com.sura.reclamaciones.pages.anulacionempresarial.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
@@ -18,12 +18,12 @@ import org.fluentlenium.core.annotation.Page;
 
 public class AnulacionEmpresarialStep {
   @Page MenuClaimPage menuClaimPage;
-  @Page DetallePagoPage detallePagoPage;
-  @Page VerificacionAnulacionPagoPage verificacionAnulacionPagoPage;
+  @Page DetalleTransaccionPage detalleTransaccionPage;
+  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
   public enum variablesSesion {
     TIPO_ANULACION
-  };
+  }
 
   @Step
   public void consultarNumeroReclamacion(
@@ -47,19 +47,19 @@ public class AnulacionEmpresarialStep {
       if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
         assertTrue(
             "No se pudo encontrar el numero de pago",
-            detallePagoPage.ingresarAnulacionEmpresarial(
+            detalleTransaccionPage.ingresarAnulacionEmpresarial(
                 diligenciador.getNumeroTransaccion(),
                 diligenciador.getEstadoPrevio(),
                 tipoAnulacion));
-        detallePagoPage.realizarAnulacion(diligenciador.getComentario());
+        detalleTransaccionPage.realizarAnulacion();
       } else {
         assertTrue(
             "No se pudo encontrar el numero de recupero",
-            detallePagoPage.ingresarAnulacionEmpresarial(
+            detalleTransaccionPage.ingresarAnulacionEmpresarial(
                 diligenciador.getNumeroTransaccion(),
                 diligenciador.getEstadoPrevio(),
                 tipoAnulacion));
-        detallePagoPage.realizarAnulacion(diligenciador.getComentario());
+        detalleTransaccionPage.realizarAnulacion();
       }
     }
   }
@@ -74,14 +74,14 @@ public class AnulacionEmpresarialStep {
             MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
         assertTrue(
             "El pago no quedo en estado anulado",
-            verificacionAnulacionPagoPage.verificarEstadoAnulado(
+            verificacionDatosFinancierosPage.verificarEstadoAnulado(
                 strAnulacionPago, validador.getNumeroTransaccion()));
       } else {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
             MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
         assertTrue(
             "El recupero no quedo en estado anulado",
-            verificacionAnulacionPagoPage.verificarEstadoAnulado(
+            verificacionDatosFinancierosPage.verificarEstadoAnulado(
                 strAnulacionPago, validador.getNumeroTransaccion()));
       }
     }
