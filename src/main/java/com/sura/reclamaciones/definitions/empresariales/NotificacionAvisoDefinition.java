@@ -46,7 +46,6 @@ public class NotificacionAvisoDefinition {
 
   @Entonces("^que (.*) genera reserva con un monto (.*), envia correo y se asigna a un analista$")
   public void verificarReserva(String reserva, String monto) {
-    reclamo.getLstReclamo();
     nuevaReclamacionStep.validarReservaVisualizada(monto);
     nuevaReclamacionStep.validarReservaDatosFinancieros(reclamo.getLstReclamo(), monto);
   }
