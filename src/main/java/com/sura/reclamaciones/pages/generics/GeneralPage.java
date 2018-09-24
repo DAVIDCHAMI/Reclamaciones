@@ -199,30 +199,13 @@ public class GeneralPage extends PageObject {
     return elementoEncontrado.get(longitudTabla - 1).getText();
   }
 
-  public List<WebElement> obtenerFilaTabla(String nombrePantalla, String strIdentificadorFila) {
+  public List<WebElement> obtenerFilaTabla(String strIdentificadorFila, String strXpathElementoTabla) {
     tblVerificacion.waitUntilVisible();
     List<WebElement> lstFila = null;
-    if (nombrePantalla.equals(MenuConstante.TRANSACCIONES)) {
       lstFila =
           tblVerificacion.findElements(
-              By.xpath(
-                  String.format(
-                      "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
-                      strIdentificadorFila)));
-    } else if (nombrePantalla.equals(PagoConstante.PAGOS)) {
-      lstFila =
-          tblVerificacion.findElements(
-              By.xpath(
-                  String.format(
-                      "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td",
-                      strIdentificadorFila)));
-    }
+              By.xpath(String.format(strXpathElementoTabla, strIdentificadorFila)));
     return lstFila;
   }
 
-  public String obtenerFechaActual() {
-    Date fechaActual = new Date();
-    SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
-    return formateador.format(fechaActual);
-  }
 }

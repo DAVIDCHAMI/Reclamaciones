@@ -18,8 +18,7 @@ public class PagoDefinition {
   @Dado("^que se tiene el siniestro (.*)  del producto (.*)$")
   public void ingresarMenuPagoReclamacion(String numeroReclamacion, String tipoProducto)
       throws Exception {
-    pagoEmpresarial =
-        new PagoEmpresarial(genericStep.getFilasModelo("pago_empresarial", tipoProducto));
+    pagoEmpresarial = new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", tipoProducto)));
     nuevoPagoStep.consultarNumeroReclamacion(numeroReclamacion);
   }
 

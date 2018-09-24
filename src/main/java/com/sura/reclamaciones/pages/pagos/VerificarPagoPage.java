@@ -28,6 +28,8 @@ public class VerificarPagoPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='x-column-header-text'][contains(text(),'Número de pago')]")
   private WebElementFacade lblNumeroPago;
 
+  public static String tblPago = "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
+
   public String obtenerNumeroPagoRealizado() {
     irUltimaPagina();
     lblNumeroPago.click();

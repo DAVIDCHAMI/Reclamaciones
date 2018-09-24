@@ -21,8 +21,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     super(driver);
   }
 
-  NumberFormat formatoNumero = NumberFormat.getIntegerInstance();
-
   @FindBy(
     xpath =
         "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:ReserveLineInputSet:ReserveLine-inputEl']"
@@ -104,7 +102,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     double dblValorReserva = obtenerValorPagoReserva();
     Double dblCalculoVrReserva;
     if (strTipoPago.equals(PagoConstante.TIPO_PAGO)) {
-      dblCalculoVrReserva = 0.2 * dblValorReserva;
+      dblCalculoVrReserva = PagoConstante.PORCENTAJE * dblValorReserva;
     } else {
       dblCalculoVrReserva = dblValorReserva;
     }
