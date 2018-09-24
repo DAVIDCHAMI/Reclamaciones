@@ -59,7 +59,7 @@ public class AnulacionEmpresarialStep {
                 diligenciador.getNumeroTransaccion(),
                 diligenciador.getEstadoPrevio(),
                 tipoAnulacion));
-        detalleTransaccionPage.realizarAnulacion();
+        assertTrue("El número de transaccion, no tiene habilitado el boton de anular",detalleTransaccionPage.realizarAnulacion());
       }
     }
   }

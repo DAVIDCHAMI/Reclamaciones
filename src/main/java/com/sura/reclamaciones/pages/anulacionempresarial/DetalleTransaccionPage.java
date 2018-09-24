@@ -25,12 +25,6 @@ public class DetalleTransaccionPage extends GeneralPage {
 
   @FindBy(
     xpath =
-        "//a[@class='x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']//a//span[@class='x-btn-inner x-btn-inner-center'][contains(text(),'Aceptar')]"
-  )
-  private WebElementFacade btnAceptarRecupero;
-
-  @FindBy(
-    xpath =
         "//div[@class='x-toolbar-text x-box-item x-toolbar-item x-toolbar-text-default'][contains(text(),'de')]"
   )
   private WebElementFacade lblNumeroPaginas;
@@ -43,7 +37,7 @@ public class DetalleTransaccionPage extends GeneralPage {
     super(wdriver);
   }
 
-  public void realizarAnulacion() {
+  public boolean realizarAnulacion() {
     if (btnAnular.isVisible()) {
       btnAnular.waitUntilClickable();
       btnAnular.click();
@@ -53,7 +47,9 @@ public class DetalleTransaccionPage extends GeneralPage {
       btnAceptar.waitUntilClickable();
       btnAceptar.click();
       realizarEsperaCarga();
+      return true;
     }
+    return false;
   }
 
   private int obtenerNumeroPaginas() {
