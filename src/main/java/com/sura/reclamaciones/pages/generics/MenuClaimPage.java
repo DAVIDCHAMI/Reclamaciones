@@ -9,31 +9,28 @@ import org.openqa.selenium.WebDriver;
 public class MenuClaimPage extends GeneralPage {
 
   @FindBy(xpath = ".//*[@id=':tabs-innerCt']")
-  WebElementFacade mnuPrimerNivel;
+  private WebElementFacade mnuPrimerNivel;
 
   @FindBy(
     xpath =
         ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
   )
-  WebElementFacade mnuSegundoNivel;
+  private WebElementFacade mnuSegundoNivel;
 
   @FindBy(xpath = "//input[@id='QuickJump-inputEl']")
-  WebElementFacade txtComandoPolicy;
+  private WebElementFacade txtComandoPolicy;
 
   @FindBy(xpath = " //div[@id='westPanel-innerCt']")
-  WebElementFacade mnuLateralPrimerNivel;
+  private WebElementFacade mnuLateralPrimerNivel;
 
   @FindBy(xpath = "//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
-  WebElementFacade mnuBuscar;
+  private WebElementFacade mnuBuscar;
 
   @FindBy(xpath = "//span[@id='Claim:ClaimMenuActions-btnIconEl']")
-  WebElementFacade btnAcciones;
+  private WebElementFacade btnAcciones;
 
   @FindBy(xpath = "//div[@class='x-css-shadow'][1]")
-  WebElementFacade mnuPanelOpciones;
-
-  @FindBy(xpath = "//div[@id='TabBar:ClaimTab:ClaimTab_FindClaim_Button']")
-  WebElementFacade btnBuscar;
+  private WebElementFacade mnuPanelOpciones;
 
   @FindBy(
     xpath =

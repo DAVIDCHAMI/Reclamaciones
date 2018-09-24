@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.pages.pagos;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -29,6 +28,8 @@ public class VerificarPagoPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='x-column-header-text'][contains(text(),'Número de pago')]")
   private WebElementFacade lblNumeroPago;
 
+  public static String tblPago = "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
+
   public String obtenerNumeroPagoRealizado() {
     irUltimaPagina();
     lblNumeroPago.click();
@@ -39,7 +40,8 @@ public class VerificarPagoPage extends GeneralPage {
     int i;
     for (i = 0; i < lstFilaPago.size(); i++) {
       String strDatoPantalla = lstFilaPago.get(i).getText();
-      if (strDatoPantalla.contains("COP") || strDatoPantalla.contains("USD")) {
+      if (strDatoPantalla.contains(PagoConstante.COP)
+          || strDatoPantalla.contains(PagoConstante.USD)) {
         strDatoPantalla = strDatoPantalla.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       }
       if (strDatoPantalla.equals(datoValidar)) {
@@ -47,11 +49,5 @@ public class VerificarPagoPage extends GeneralPage {
       }
     }
     return false;
-  }
-
-  public void ingresarMenuPagos() {
-    menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-        MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
-    irUltimaPagina();
   }
 }

@@ -21,6 +21,9 @@ public class AnulacionEmpresarialStep {
   @Page DetalleTransaccionPage detalleTransaccionPage;
   @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
+  public static String tblRecupero = "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
+
+
   public enum variablesSesion {
     TIPO_ANULACION
   }

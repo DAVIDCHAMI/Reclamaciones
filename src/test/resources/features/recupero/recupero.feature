@@ -5,7 +5,7 @@ Característica:Recupero de una reclamacion
   Quiero registrar un recupero a partir de una reserva
 
 
-  @claims
+  @claimsEmpresarial
   Esquema del escenario: recupero
     Dado que se tiene un siniestro con una reserva por <tipo reserva>
     Cuando se genere un recupero de tipo <tipo recupero> con un código de retención <codigoRetencion>

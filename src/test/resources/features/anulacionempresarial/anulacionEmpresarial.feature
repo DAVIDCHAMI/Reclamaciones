@@ -1,7 +1,7 @@
 # language: es
 Característica: Anulacion Empresarial
 
-  @claims
+  @claimsEmpresarial
   Esquema del escenario: anulacion pago
     Dado que se debe realizar una anulacion de <tipoTransaccion>, de un siniestro de una poliza empresarial con producto <tipoProducto>
     Cuando se realice una transaccion de <tipoTransaccion> sobre un <tipoTransaccion> asociado
@@ -9,10 +9,10 @@ Característica: Anulacion Empresarial
 
     Ejemplos:
      |tipoTransaccion   |tipoProducto  | tipoEstado|
-     |Pago              |MRC(1)        |Anulado|
-     |Pago              |MRC(2)       |Anulado       |
-     | Recupero         | MRC(3)       | Anulado    |
-     | Recupero         | MRC(4)       | Anulado    |
+     |Pago              |MRC_01        |Anulado    |
+     |Pago              |MRC_02        |Anulado    |
+     | Recupero         |MRC_03        | Anulado   |
+     | Recupero         |MRC_04        | Anulado   |
 
 
 

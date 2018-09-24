@@ -5,7 +5,7 @@ Característica: Notificacion de aviso de una reclamacion
   quiero que se generen avisos internos de los diferentes productos que tiene la compañía en empresariales
   para permitir la afectación de las pólizas que han adquirido los usuarios.
 
-  @claims
+  @claimsEmpresarial
   Esquema del escenario: aviso
     Dado que se tiene una poliza de <Tipo y Cobertura>
     Cuando se genere un siniestro por causal <Causa> con un valor de pretension de <Valor de Pretensión>

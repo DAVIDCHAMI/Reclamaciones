@@ -1,10 +1,11 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
-import static com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage.variablesSesion.NUMERO_PAGINA;
 
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
+
+import com.sura.reclamaciones.utils.Variables;
 import net.serenitybdd.core.Serenity;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
   }
 
   private List<WebElement> irFilaAnulada(String strNumeroPago) {
-    Integer intNumeroPagina = Serenity.sessionVariableCalled(NUMERO_PAGINA);
+    Integer intNumeroPagina = Serenity.sessionVariableCalled(Variables.NUMERO_PAGINA);
     List<WebElement> lstPago;
     if (intNumeroPagina.equals(0)) {
       lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroPago);

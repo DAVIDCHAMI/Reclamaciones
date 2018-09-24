@@ -15,17 +15,11 @@ import org.openqa.selenium.WebElement;
 
 public class IntroducirInformacionPagoPage extends GeneralPage {
 
-  private Integer CalculoVrReserva;
-
-  public enum variablesSesion {
-    VALOR_RESERVA
-  }
+  private Integer intCalculoVrReserva;
 
   public IntroducirInformacionPagoPage(WebDriver driver) {
     super(driver);
   }
-
-  NumberFormat formatoNumero = NumberFormat.getIntegerInstance();
 
   @FindBy(
     xpath =
@@ -58,7 +52,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     xpath =
         "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
   )
-  private WebElementFacade lstCodigo;
+  private WebElementFacade lstCodigoRetencion;
 
   @FindBy(
     xpath =
@@ -96,8 +90,10 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
-          lstCodigo.waitUntilVisible();
-          lstCodigo.findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]")).click();
+          lstCodigoRetencion.waitUntilVisible();
+          lstCodigoRetencion
+              .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
+              .click();
         });
     realizarEsperaCarga();
   }
@@ -106,11 +102,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     double dblValorReserva = obtenerValorPagoReserva();
     Double dblCalculoVrReserva;
     if (strTipoPago.equals(PagoConstante.TIPO_PAGO)) {
-      dblCalculoVrReserva = 0.2 * dblValorReserva;
+      dblCalculoVrReserva = PagoConstante.PORCENTAJE * dblValorReserva;
     } else {
       dblCalculoVrReserva = dblValorReserva;
     }
-    return CalculoVrReserva = dblCalculoVrReserva.intValue();
+    return intCalculoVrReserva = dblCalculoVrReserva.intValue();
   }
 
   public void ingresarCantidadPago(String strTipoPago, String strCantidadPago) {
@@ -121,10 +117,9 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
         elemento -> {
           elemento.click();
           evaluateJavascript(
-              String.format("$('input[name|=\"Amount\"]').val('%d')", CalculoVrReserva));
+              String.format("$('input[name|=\"Amount\"]').val('%d')", intCalculoVrReserva));
           txtComentarioPago.click();
-          Serenity.setSessionVariable(variablesSesion.VALOR_RESERVA)
-              .to(CalculoVrReserva.toString());
+          Serenity.setSessionVariable(Variables.VALOR_RESERVA).to(intCalculoVrReserva.toString());
         });
   }
 

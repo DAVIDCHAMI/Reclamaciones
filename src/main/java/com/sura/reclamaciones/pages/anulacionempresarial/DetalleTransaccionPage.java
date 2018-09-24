@@ -1,10 +1,7 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
-import static com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage.variablesSesion.NUMERO_PAGINA;
 
 import com.sura.reclamaciones.constantes.AnulacionConstante;
-import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
@@ -29,9 +26,8 @@ public class DetalleTransaccionPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroPaginas;
 
-  public enum variablesSesion {
-    NUMERO_PAGINA
-  }
+  private String  tblPago= "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
+  private String  tblTransaccion = "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   public DetalleTransaccionPage(WebDriver wdriver) {
     super(wdriver);
@@ -107,9 +103,9 @@ public class DetalleTransaccionPage extends GeneralPage {
     boolean estadoPago;
     List<WebElement> lstPago;
     if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
-      lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroTransaccion);
+      lstPago = obtenerFilaTabla(strNumeroTransaccion,tblPago);
     } else {
-      lstPago = obtenerFilaTabla(MenuConstante.TRANSACCIONES, strNumeroTransaccion);
+      lstPago = obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
     }
     int intLongitudFila = lstPago.size();
     if (intLongitudFila == 0) {
@@ -117,7 +113,7 @@ public class DetalleTransaccionPage extends GeneralPage {
     } else {
       estadoPago =
           ingresarNumeroAnular(lstPago, strNumeroTransaccion, strEstadoPrevio, tipoAnulacion);
-      Serenity.setSessionVariable(NUMERO_PAGINA).to(intNumeroPaginas);
+      Serenity.setSessionVariable(Variables.NUMERO_PAGINA).to(intNumeroPaginas);
       return estadoPago;
     }
   }
@@ -130,9 +126,9 @@ public class DetalleTransaccionPage extends GeneralPage {
     for (int i = 0; i < intNumeroPaginas; i++) {
       List<WebElement> lstPago;
       if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
-        lstPago = obtenerFilaTabla(PagoConstante.PAGOS, strNumeroTransaccion);
+        lstPago = obtenerFilaTabla(strNumeroTransaccion,tblPago);
       } else {
-        lstPago = obtenerFilaTabla(MenuConstante.TRANSACCIONES, strNumeroTransaccion);
+        lstPago = obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
       }
       int intLongitudFila = lstPago.size();
       if (intLongitudFila == 0) {
@@ -144,7 +140,7 @@ public class DetalleTransaccionPage extends GeneralPage {
       } else {
         boolean estadoPago =
             ingresarNumeroAnular(lstPago, strNumeroTransaccion, strEstadoPrevio, tipoAnulacion);
-        Serenity.setSessionVariable(NUMERO_PAGINA).to(i);
+        Serenity.setSessionVariable(Variables.NUMERO_PAGINA).to(i);
         return estadoPago;
       }
     }

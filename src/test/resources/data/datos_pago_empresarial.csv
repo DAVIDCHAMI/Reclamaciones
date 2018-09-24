@@ -1,3 +1,2 @@
 id;idFiltro;tipoBeneficiario;comentario;numeroFactura;pais;departamento;ciudad;tipoDireccion;estadoTransaccion
-1; Multiriesgo corporativo (1);Asegurado;Este comentarios se realiza con el objetivo de verificar la prueba automatizada para pagos, revisando la longitud permitida por el negocio para la capacidad de caracteres que revisa el campo;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
-2; Multiriesgo corporativo (2);Asegurado;Pruebas de proveedor;457282;Colombia;Atlantico;Barranquilla;DIRECCION DE TRABAJO;Solicitado
+1;MRC;Asegurado;Este comentarios se realiza con el objetivo de verificar la prueba automatizada para pagos, revisando la longitud permitida por el negocio para la capacidad de caracteres que revisa el campo;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
