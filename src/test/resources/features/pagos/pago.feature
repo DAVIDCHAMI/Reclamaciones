@@ -1,7 +1,7 @@
 # language: es
 Característica: Realizar pago de un siniestro
 
-  @claims
+  @claimsEmpresarial
   Esquema del escenario: Pago
     Dado que se tiene el siniestro <numeroReclamacion>  del producto <producto>
     Cuando se realice un pago <tipoPago> a un <beneficiarioPago> por medio de <metodoPago> el cual cuenta con una linea de reserva <lineaReserva> donde el responsable <soloSura> es Sura por una retención de <codigoRetencion>
