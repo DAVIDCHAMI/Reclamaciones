@@ -13,9 +13,6 @@ public class InformacionReclamacionPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'e')]")
   private WebElementFacade btnCerrar;
 
-  @FindBy(xpath = "//td[.='Causa del siniestro']//input")
-  private WebElementFacade txtCausaSiniestro;
-
   @FindBy(
     xpath =
         "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:LossEstimate-inputEl']"
@@ -58,6 +55,12 @@ public class InformacionReclamacionPage extends GeneralPage {
   @FindBy(xpath = "//span[@id='NewClaimSaved:NewClaimSavedScreen:ttlBar']")
   private WebElementFacade spanNuevaReclamacion;
 
+  @FindBy(
+    xpath =
+        "//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:Claim_LossCause2-inputCell']/following-sibling::td"
+  )
+  private WebElementFacade mnuCausa;
+
   public InformacionReclamacionPage(WebDriver driver) {
     super(driver);
   }
@@ -71,9 +74,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarCausaSiniestro(String causa) {
-    txtCausaSiniestro.waitUntilVisible();
-    txtCausaSiniestro.clear();
-    txtCausaSiniestro.sendKeys(causa);
+    mnuCausa.waitUntilPresent();
+    mnuCausa.click();
     lstCausaSiniestro = lstCausaSiniestro.replace(ConstanteGlobal.COMODIN, causa);
     $(lstCausaSiniestro).waitUntilVisible();
     $(lstCausaSiniestro).click();

@@ -27,7 +27,6 @@ public class NotificacionAvisoDefinition {
 
   @Cuando("^se genere un siniestro por causal (.*) con un valor de pretension de (.*)$")
   public void tomarDatosSiniestro(String causa, String valorPretension) {
-    reclamo.getLstReclamo();
     nuevaReclamacionStep.seleccionarPropiedadImplicada();
     nuevaReclamacionStep.diligenciarInformacionPersonal(reclamo.getLstReclamo());
     nuevaReclamacionStep.seleccionarCausalIncidente(causa, valorPretension);
@@ -35,13 +34,11 @@ public class NotificacionAvisoDefinition {
 
   @Cuando("^un incidente de tipo (.*)$")
   public void tomarTipoIncidente(String tipoIncidente) {
-    reclamo.getLstReclamo();
     nuevaReclamacionStep.diligenciarInformacionIncidente(reclamo.getLstReclamo(), tipoIncidente);
   }
 
   @Entonces("^se obtiene una reclamacion que (.*) genera exposicion$")
   public void verificarExposicion(String exposicion) {
-    reclamo.getLstReclamo();
     nuevaReclamacionStep.validarReclamacion();
     nuevaReclamacionStep.visualizarResumenReclamacion();
     nuevaReclamacionStep.validarExposicionVisualizada(exposicion);

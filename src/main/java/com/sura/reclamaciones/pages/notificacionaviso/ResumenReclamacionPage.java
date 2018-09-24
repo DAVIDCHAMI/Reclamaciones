@@ -44,13 +44,14 @@ public class ResumenReclamacionPage extends GeneralPage {
     super(driver);
   }
 
-  public void obtenerNumeroReclamacion() {
+  public String obtenerNumeroReclamacion() {
     String numeroReclamacion;
     divNumeroReclamacion.waitUntilVisible();
     numeroReclamacion = divNumeroReclamacion.getText();
     numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     LOGGER.info(String.format("el número de reclamación generado es: %s", numeroReclamacion));
     divNumeroReclamacion.click();
+    return numeroReclamacion;
   }
 
   public String validarExposicion() {
