@@ -10,4 +10,6 @@ public class PagoConstante {
   public static final String CUENTA = "";
   public static final String SELECCIONAR = "Seleccionar";
   public static final String NÚMERO_PAGO = "Número de pago";
+  public static final String COP = "COP";
+  public static final String USD = "USD";
 }

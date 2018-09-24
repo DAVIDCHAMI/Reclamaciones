@@ -7,6 +7,8 @@ import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.constantes.Tablas;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import net.serenitybdd.core.annotations.findby.By;
@@ -216,5 +218,11 @@ public class GeneralPage extends PageObject {
                       strIdentificadorFila)));
     }
     return lstFila;
+  }
+
+  public String obtenerFechaActual() {
+    Date fechaActual = new Date();
+    SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+    return formateador.format(fechaActual);
   }
 }

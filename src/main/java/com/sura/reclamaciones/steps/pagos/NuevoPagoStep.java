@@ -1,9 +1,10 @@
 package com.sura.reclamaciones.steps.pagos;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
-import static com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage.variablesSesion.*;
+import static com.sura.reclamaciones.utils.Variables.VALOR_RESERVA;
 import static org.junit.Assert.assertTrue;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -72,7 +73,9 @@ public class NuevoPagoStep {
     lstPago.forEach(
         (PagoEmpresarial validador) -> {
           String strNumeroTransaccion = verificarPagoPage.obtenerNumeroPagoRealizado();
-          verificarPagoPage.ingresarMenuPagos();
+          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
+              MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
+          verificarPagoPage.irUltimaPagina();
           List<WebElement> lstFilaPago =
               verificarPagoPage.obtenerFilaTabla(PagoConstante.PAGOS, strNumeroTransaccion);
           String strValorReserva = (Serenity.sessionVariableCalled(VALOR_RESERVA));

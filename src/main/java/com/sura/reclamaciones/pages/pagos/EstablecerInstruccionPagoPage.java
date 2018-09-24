@@ -1,8 +1,6 @@
 package com.sura.reclamaciones.pages.pagos;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -24,12 +22,6 @@ public class EstablecerInstruccionPagoPage extends GeneralPage {
         "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_InvoiceNumber-inputEl']"
   )
   private WebElementFacade txtNumeroFactura;
-
-  private static String obtenerFechaActual() {
-    Date fechaActual = new Date();
-    SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
-    return formateador.format(fechaActual);
-  }
 
   public void ingresarFechaFactura() {
     txtFechaPago.waitUntilClickable();

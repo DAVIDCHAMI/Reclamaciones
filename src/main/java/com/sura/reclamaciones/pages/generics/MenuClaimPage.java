@@ -32,9 +32,6 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = "//div[@class='x-css-shadow'][1]")
   WebElementFacade mnuPanelOpciones;
 
-  @FindBy(xpath = "//div[@id='TabBar:ClaimTab:ClaimTab_FindClaim_Button']")
-  WebElementFacade btnBuscar;
-
   @FindBy(
     xpath =
         ".//div[@class='x-panel x-layer x-panel-default x-menu x-border-box x-vertical-scroller x-panel-vertical-scroller x-panel-default-vertical-scroller']"
