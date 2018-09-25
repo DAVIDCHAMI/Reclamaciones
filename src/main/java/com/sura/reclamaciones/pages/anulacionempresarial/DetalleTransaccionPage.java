@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
-
 import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
@@ -26,8 +25,10 @@ public class DetalleTransaccionPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroPaginas;
 
-  private String  tblPago= "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
-  private String  tblTransaccion = "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
+  public static String tblPago =
+      "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
+  public static String tblTransaccion =
+      "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   public DetalleTransaccionPage(WebDriver wdriver) {
     super(wdriver);
@@ -84,8 +85,8 @@ public class DetalleTransaccionPage extends GeneralPage {
       } else {
         if (aLstPago.getText().equals(strNumeroTransaccion)
             && lstPago.get(9).getText().equals(strEstadoPrevio)) {
-          lstPago.get(3).click();
-          aLstPago.findElement(By.xpath( "//a[@class='g-actionable'][contains(@id,'Amount')]")).click();
+          lstPago.get(2).click();
+          lstPago.get(2).findElement(By.xpath("//a[@class='g-actionable'][contains(text(),'$')]")).click();
           return true;
         } else {
           return false;
@@ -103,7 +104,7 @@ public class DetalleTransaccionPage extends GeneralPage {
     boolean estadoPago;
     List<WebElement> lstPago;
     if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
-      lstPago = obtenerFilaTabla(strNumeroTransaccion,tblPago);
+      lstPago = obtenerFilaTabla(strNumeroTransaccion, tblPago);
     } else {
       lstPago = obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
     }
@@ -126,7 +127,7 @@ public class DetalleTransaccionPage extends GeneralPage {
     for (int i = 0; i < intNumeroPaginas; i++) {
       List<WebElement> lstPago;
       if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
-        lstPago = obtenerFilaTabla(strNumeroTransaccion,tblPago);
+        lstPago = obtenerFilaTabla(strNumeroTransaccion, tblPago);
       } else {
         lstPago = obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
       }

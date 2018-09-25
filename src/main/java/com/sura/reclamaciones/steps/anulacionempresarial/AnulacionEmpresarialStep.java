@@ -1,16 +1,17 @@
 package com.sura.reclamaciones.steps.anulacionempresarial;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
-import static com.sura.reclamaciones.steps.anulacionempresarial.AnulacionEmpresarialStep.variablesSesion.TIPO_ANULACION;
 import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
+import com.sura.reclamaciones.constantes.RecuperoConstante;
 import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
 import com.sura.reclamaciones.pages.anulacionempresarial.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -20,13 +21,6 @@ public class AnulacionEmpresarialStep {
   @Page MenuClaimPage menuClaimPage;
   @Page DetalleTransaccionPage detalleTransaccionPage;
   @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
-
-  public static String tblRecupero = "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
-
-
-  public enum variablesSesion {
-    TIPO_ANULACION
-  }
 
   @Step
   public void consultarNumeroReclamacion(
@@ -39,13 +33,14 @@ public class AnulacionEmpresarialStep {
       } else {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
             MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
+        menuClaimPage.seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
       }
     }
   }
 
   @Step
   public void ingresarAnulacion(List<AnulacionEmpresarial> lstNumeroPago, String tipoAnulacion) {
-    Serenity.setSessionVariable(TIPO_ANULACION).to(tipoAnulacion);
+    Serenity.setSessionVariable(Variables.TIPO_ANULACION).to(tipoAnulacion);
     for (AnulacionEmpresarial diligenciador : lstNumeroPago) {
       if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
         assertTrue(
@@ -62,7 +57,9 @@ public class AnulacionEmpresarialStep {
                 diligenciador.getNumeroTransaccion(),
                 diligenciador.getEstadoPrevio(),
                 tipoAnulacion));
-        assertTrue("El número de transaccion, no tiene habilitado el boton de anular",detalleTransaccionPage.realizarAnulacion());
+        assertTrue(
+            "El número de transaccion, no tiene habilitado el boton de anular",
+            detalleTransaccionPage.realizarAnulacion());
       }
     }
   }
@@ -70,22 +67,23 @@ public class AnulacionEmpresarialStep {
   @Step
   public void verificarAnulacionRealizada(
       String strAnulacionPago, List<AnulacionEmpresarial> lstNumeroPago) {
-    String tipoAnulacion = Serenity.sessionVariableCalled(TIPO_ANULACION);
+    String strTipoAnulacion = Serenity.sessionVariableCalled(Variables.TIPO_ANULACION);
     for (AnulacionEmpresarial validador : lstNumeroPago) {
-      if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
+      if (strTipoAnulacion.equals(AnulacionConstante.PAGO)) {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
             MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
         assertTrue(
             "El pago no quedo en estado anulado",
             verificacionDatosFinancierosPage.verificarEstadoAnulado(
-                strAnulacionPago, validador.getNumeroTransaccion()));
+                strAnulacionPago, validador.getNumeroTransaccion(), strTipoAnulacion));
       } else {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
             MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
+            verificacionDatosFinancierosPage.seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
         assertTrue(
             "El recupero no quedo en estado anulado",
             verificacionDatosFinancierosPage.verificarEstadoAnulado(
-                strAnulacionPago, validador.getNumeroTransaccion()));
+                strAnulacionPago, validador.getNumeroTransaccion(), strTipoAnulacion));
       }
     }
   }
