@@ -11,21 +11,41 @@ public class ModeloSimplificado {
   public String valorCedidoReaseguradoras;
   public String valorNeto;
   public String valorMovimientoFinanciero;
-  private List<ModeloSimplificado> lstModeloSimplificado = new ArrayList<>();
+  public String estadoMovimientoFinanciero;
+  public List<ModeloSimplificado> lstModeloSimplificado = new ArrayList<>();
 
   private ModeloSimplificado(Map<String, String> datosModeloSimplificado) {
+    if (datosModeloSimplificado.containsKey("NUMERORECLAMACION")) {
+      ObtenerCamposBaseDatos(datosModeloSimplificado);
+    } else {
+      ObtenerCamposCsv(datosModeloSimplificado);
+    }
+  }
+
+  public void ObtenerCamposBaseDatos(Map<String, String> datosModeloSimplificado) {
+    this.numeroReclamacion = datosModeloSimplificado.get("NUMERORECLAMACION");
+    this.numeroMovimientoFinanciero = datosModeloSimplificado.get("NUMEROMOVIMIENTOFINANCIERO");
+    this.valorMovimientoFinanciero = datosModeloSimplificado.get("VALORMOVIMIENTOFINANCIERO");
+    this.valorCedidoReaseguradoras = datosModeloSimplificado.get("VALORCEDIDOREASEGURADORAS");
+    this.valorNeto = datosModeloSimplificado.get("VALORNETO");
+    this.estadoMovimientoFinanciero = datosModeloSimplificado.get("ESTADOMOVIMIENTOFINANCIERO");
+  }
+
+  public void ObtenerCamposCsv(Map<String, String> datosModeloSimplificado) {
     this.numeroReclamacion = datosModeloSimplificado.get("numeroReclamacion");
     this.numeroMovimientoFinanciero = datosModeloSimplificado.get("numeroMovimientoFinanciero");
     this.valorMovimientoFinanciero = datosModeloSimplificado.get("valorMovimientoFinanciero");
     this.valorCedidoReaseguradoras = datosModeloSimplificado.get("valorCedidoReaseguradoras");
     this.valorNeto = datosModeloSimplificado.get("valorNeto");
+    this.estadoMovimientoFinanciero = datosModeloSimplificado.get("estadoMovimientoFinanciero");
   }
 
   public ModeloSimplificado(List<Map<String, String>> datosModeloSimplificado) {
     asignarDatos(datosModeloSimplificado);
   }
 
-  public ModeloSimplificado() {}
+  public ModeloSimplificado() {
+  }
 
   public String getTransaccion() {
     return numeroMovimientoFinanciero;
@@ -45,6 +65,10 @@ public class ModeloSimplificado {
 
   public String getNumeroReclamacion() {
     return numeroReclamacion;
+  }
+
+  public String getEstadoMovimientoFinanciero() {
+    return estadoMovimientoFinanciero;
   }
 
   public List<ModeloSimplificado> getlstModeloSimplificado() {

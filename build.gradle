@@ -49,6 +49,10 @@ repositories {
     jcenter()
     maven{
         url "https://artifactory.suramericana.com.co/artifactory/sura-share/"
+        credentials{
+            username "artifactory"
+            password "APhUNND62ueYkqmndp3TPc5AfM"
+        }
     }
 }
 

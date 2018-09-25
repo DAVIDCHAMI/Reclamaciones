@@ -2,8 +2,7 @@ package com.sura.reclamaciones.steps.modelosimplificado;
 
 import com.sura.reclamaciones.constantes.ModeloSimplificadoConstante;
 import com.sura.reclamaciones.models.ModeloSimplificado;
-import com.sura.reclamaciones.models.ModeloSimplificadoBD;
-import com.sura.reclamaciones.pages.modelosimplificado.ConsultarModeloSimplificado;
+import com.sura.reclamaciones.sentenciasSql.ConsultarModeloSimplificado;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,7 +19,10 @@ public class ConsultarModeloSimplificadoStep {
   String sql = new String();
   List<Map<String, String>> resultadoConsulta = null;
 
-  @Page ConsultarModeloSimplificado consultarModeloSimplificado = new ConsultarModeloSimplificado();
+  @Page
+  ConexionBaseDatosUtil consultarModeloSimplificado = new ConexionBaseDatosUtil();
+
+  ConsultarModeloSimplificado obtenerSql = new ConsultarModeloSimplificado();
 
   @Step
   public Connection conectarBaseDatos() {
@@ -33,19 +35,19 @@ public class ConsultarModeloSimplificadoStep {
 
   public List<Map<String, String>> consultarModeloSimplificado(
       List<ModeloSimplificado> datosTransaccion, String movimientoFinanciero) throws SQLException {
-    sql = consultarModeloSimplificado.obtenerSentenciaSql(movimientoFinanciero);
+    sql = obtenerSql.obtenerSentenciaSql(movimientoFinanciero);
     datosTransaccion.forEach(
         datoTransaccion -> transaccionConsulta = datoTransaccion.getTransaccion());
     conexion = conectarBaseDatos();
     resultadoConsulta =
-        consultarModeloSimplificado.consultarModeloSimplificado(conexion, transaccionConsulta, sql);
+        consultarModeloSimplificado.consultarBaseDatos(conexion, transaccionConsulta, sql);
     return resultadoConsulta;
   }
 
   public void verficarConsultaModeloSimplificado(
-      List<ModeloSimplificadoBD> resultadoConsulta, List<ModeloSimplificado> datosTransaccion) {
+      List<ModeloSimplificado> resultadoConsulta, List<ModeloSimplificado> datosTransaccion) {
     for (int i = 0; i < resultadoConsulta.size(); i++) {
-      ModeloSimplificadoBD resultadoBD = resultadoConsulta.get(i);
+      ModeloSimplificado resultadoBD = resultadoConsulta.get(i);
       ModeloSimplificado resultadoCalculado = datosTransaccion.get(i);
       MatcherAssert.assertThat(
           "No coincide el valor cedido a las reaseguradoras",
@@ -60,6 +62,11 @@ public class ConsultarModeloSimplificadoStep {
           resultadoBD
               .getValorMovimientoFinanciero()
               .equals(resultadoCalculado.getValorMovimientoFinanciero()));
+      MatcherAssert.assertThat(
+          "No coincide el estado del movimiento financiero",
+          resultadoBD
+              .getEstadoMovimientoFinanciero()
+              .equals(resultadoCalculado.getEstadoMovimientoFinanciero()));
     }
   }
 }
