@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.sentenciasSql;
+package com.sura.reclamaciones.sentenciasSQL;
 
 import java.util.HashMap;
 import java.util.Map;

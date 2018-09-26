@@ -2,7 +2,7 @@ package com.sura.reclamaciones.steps.modelosimplificado;
 
 import com.sura.reclamaciones.constantes.ModeloSimplificadoConstante;
 import com.sura.reclamaciones.models.ModeloSimplificado;
-import com.sura.reclamaciones.sentenciasSql.ConsultarModeloSimplificado;
+import com.sura.reclamaciones.sentenciasSQL.ConsultarModeloSimplificado;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
