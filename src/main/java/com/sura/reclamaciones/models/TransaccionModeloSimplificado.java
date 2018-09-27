@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ModeloSimplificado {
+public class TransaccionModeloSimplificado {
 
   public String numeroMovimientoFinanciero;
   public String numeroReclamacion;
@@ -12,9 +12,9 @@ public class ModeloSimplificado {
   public String valorNeto;
   public String valorMovimientoFinanciero;
   public String estadoMovimientoFinanciero;
-  public List<ModeloSimplificado> lstModeloSimplificado = new ArrayList<>();
+  public List<TransaccionModeloSimplificado> lstTransaccionModeloSimplificado = new ArrayList<>();
 
-  private ModeloSimplificado(Map<String, String> datosModeloSimplificado) {
+  private TransaccionModeloSimplificado(Map<String, String> datosModeloSimplificado) {
     if (datosModeloSimplificado.containsKey("NUMERORECLAMACION")) {
       ObtenerCamposBaseDatos(datosModeloSimplificado);
     } else {
@@ -40,12 +40,11 @@ public class ModeloSimplificado {
     this.estadoMovimientoFinanciero = datosModeloSimplificado.get("estadoMovimientoFinanciero");
   }
 
-  public ModeloSimplificado(List<Map<String, String>> datosModeloSimplificado) {
+  public TransaccionModeloSimplificado(List<Map<String, String>> datosModeloSimplificado) {
     asignarDatos(datosModeloSimplificado);
   }
 
-  public ModeloSimplificado() {
-  }
+  public TransaccionModeloSimplificado() {}
 
   public String getTransaccion() {
     return numeroMovimientoFinanciero;
@@ -71,13 +70,13 @@ public class ModeloSimplificado {
     return estadoMovimientoFinanciero;
   }
 
-  public List<ModeloSimplificado> getlstModeloSimplificado() {
-    return lstModeloSimplificado;
+  public List<TransaccionModeloSimplificado> getlstModeloSimplificado() {
+    return lstTransaccionModeloSimplificado;
   }
 
   public void asignarDatos(List<Map<String, String>> datosModeloSimplificado) {
     for (Map<String, String> dato : datosModeloSimplificado) {
-      lstModeloSimplificado.add(new ModeloSimplificado(dato));
+      lstTransaccionModeloSimplificado.add(new TransaccionModeloSimplificado(dato));
     }
   }
 }

@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
-import com.sura.reclamaciones.constantes.ModeloSimplificadoConstante;
-import com.sura.reclamaciones.models.ModeloSimplificado;
-import com.sura.reclamaciones.sentenciasSQL.ConsultarModeloSimplificado;
+import com.sura.reclamaciones.constantes.TransaccionModeloSimplificadoConstante;
+import com.sura.reclamaciones.models.TransaccionModeloSimplificado;
+import com.sura.reclamaciones.sentenciasSQL.ConsultarTransaccionModeloSimplificado;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,29 +12,31 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
-public class ConsultarModeloSimplificadoStep {
+public class ConsultarTransaccionModeloSimplificadoStep {
 
   Connection conexion = null;
   String transaccionConsulta = null;
   String sql = new String();
   List<Map<String, String>> resultadoConsulta = null;
 
-  @Page
-  ConexionBaseDatosUtil consultarModeloSimplificado = new ConexionBaseDatosUtil();
+  @Page ConexionBaseDatosUtil consultarModeloSimplificado = new ConexionBaseDatosUtil();
 
-  ConsultarModeloSimplificado obtenerSql = new ConsultarModeloSimplificado();
+  ConsultarTransaccionModeloSimplificado obtenerSql = new ConsultarTransaccionModeloSimplificado();
 
   @Step
   public Connection conectarBaseDatos() {
     conexion =
         ConexionBaseDatosUtil.conectarBaseDatos(
-            ModeloSimplificadoConstante.USUARIO, ModeloSimplificadoConstante.CLAVE,
-            ModeloSimplificadoConstante.URL, ModeloSimplificadoConstante.DRIVER);
+            TransaccionModeloSimplificadoConstante.USUARIO,
+                TransaccionModeloSimplificadoConstante.CLAVE,
+            TransaccionModeloSimplificadoConstante.URL,
+                TransaccionModeloSimplificadoConstante.DRIVER);
     return conexion;
   }
 
   public List<Map<String, String>> consultarModeloSimplificado(
-      List<ModeloSimplificado> datosTransaccion, String movimientoFinanciero) throws SQLException {
+      List<TransaccionModeloSimplificado> datosTransaccion, String movimientoFinanciero)
+      throws SQLException {
     sql = obtenerSql.obtenerSentenciaSql(movimientoFinanciero);
     datosTransaccion.forEach(
         datoTransaccion -> transaccionConsulta = datoTransaccion.getTransaccion());
@@ -45,10 +47,11 @@ public class ConsultarModeloSimplificadoStep {
   }
 
   public void verficarConsultaModeloSimplificado(
-      List<ModeloSimplificado> resultadoConsulta, List<ModeloSimplificado> datosTransaccion) {
+      List<TransaccionModeloSimplificado> resultadoConsulta,
+      List<TransaccionModeloSimplificado> datosTransaccion) {
     for (int i = 0; i < resultadoConsulta.size(); i++) {
-      ModeloSimplificado resultadoBD = resultadoConsulta.get(i);
-      ModeloSimplificado resultadoCalculado = datosTransaccion.get(i);
+      TransaccionModeloSimplificado resultadoBD = resultadoConsulta.get(i);
+      TransaccionModeloSimplificado resultadoCalculado = datosTransaccion.get(i);
       MatcherAssert.assertThat(
           "No coincide el valor cedido a las reaseguradoras",
           resultadoBD

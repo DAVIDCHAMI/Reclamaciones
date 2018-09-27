@@ -3,7 +3,7 @@ package com.sura.reclamaciones.sentenciasSQL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ConsultarModeloSimplificado {
+public class ConsultarTransaccionModeloSimplificado {
 
   public String obtenerSentenciaSql(String movimientoFinanciero) {
     Map<String, String> sentenciaSql = new HashMap<String, String>();

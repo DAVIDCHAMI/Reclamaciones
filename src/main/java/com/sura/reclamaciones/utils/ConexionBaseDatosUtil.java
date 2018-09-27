@@ -30,7 +30,7 @@ public class ConexionBaseDatosUtil {
     }
   }
 
-  public  List<Map<String, String>> consultarBaseDatos(
+  public List<Map<String, String>> consultarBaseDatos(
       Connection conexionBD, String numeroMovimientoFinanciero, String sql) throws SQLException {
     try {
       statement = conexionBD.prepareStatement(sql);
