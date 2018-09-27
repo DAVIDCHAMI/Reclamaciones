@@ -67,7 +67,7 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   public void cerrarReclamosDuplicados() {
     if (btnCerrar.isPresent()) {
-      btnCerrar.waitUntilVisible();
+      btnCerrar.waitUntilClickable();
       btnCerrar.click();
       realizarEsperaCarga();
     }
@@ -82,28 +82,28 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void escribirValorPretension(String valor) {
-    txtValorPretension.waitUntilVisible();
-    realizarEsperaCarga();
-    txtValorPretension.type(valor);
+    if (txtValorPretension.isVisible()) {
+      txtValorPretension.sendKeys(valor);
+    }
   }
 
   public void seleccionarTipoIncidente(String tipoIncidente) {
     if ("Propiedad".equalsIgnoreCase(tipoIncidente)) {
-      btnIncidentePropiedad.waitUntilVisible();
+      btnIncidentePropiedad.waitUntilClickable();
       btnIncidentePropiedad.click();
       btnAceptarIncPropiedad.waitUntilVisible();
       btnAceptarIncPropiedad.click();
       realizarEsperaCarga();
     }
     if ("Contenido".equalsIgnoreCase(tipoIncidente)) {
-      btnIncidenteContenido.waitUntilVisible();
+      btnIncidenteContenido.waitUntilClickable();
       btnIncidenteContenido.click();
       btnAceptarIncContenido.waitUntilVisible();
       btnAceptarIncContenido.click();
       realizarEsperaCarga();
     }
     if ("Lesiones".equalsIgnoreCase(tipoIncidente)) {
-      btnIncidenteLesiones.waitUntilVisible();
+      btnIncidenteLesiones.waitUntilClickable();
       btnIncidenteLesiones.click();
       btnIncidenteLesiones.waitUntilVisible();
       btnIncidenteLesiones.click();

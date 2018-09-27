@@ -1,2 +1,7 @@
 id;idFiltro;numeroContrato;detalleHechos;pais;departamento;ciudad;direccion;origen;fechaSiniestro;numPoliza;lugar;validadorNumReclamacion;reservaTransaccion;causa;valorPretension;tipoIncidente
-1;AvisoEmpresariales;;Esta es una regresión de pruebas automatizada ;Colombia;Antioquia;Medellin;;;10/05/2018;030001014345;;Nueva reclamación guardada;2000000;Rotura de vidrios;2000000;Propiedad
+1;Multiriesgo corporativo con cobertura basica;;Esta es una regresión de pruebas automatizada ;Colombia;Antioquia;Medellin;;;10/05/2018;030001014345;;Nueva reclamación guardada;2000000;Rotura de vidrios;2000000;Propiedad
+2;Cumplimiento con cobertura Cumplimiento del contrato;;Esta es una regresión de pruebas automatizada ;Colombia;Huila;Neiva;;;10/03/2018;012001936753;;Nueva reclamación guardada;200000;Incumplimiento;200000;
+3;Plan Empresario Sura con Amit;;Esta es una regresión de pruebas automatizada ;Colombia;Valle del Cauca;Santiago De Cali;;;10/05/2018;030001129624;;Nueva reclamación guardada;4000000;Amit/ huelga, conmoción civil;4000000;Contenido
+
+
+

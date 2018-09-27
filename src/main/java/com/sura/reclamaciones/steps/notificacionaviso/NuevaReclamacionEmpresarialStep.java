@@ -39,8 +39,8 @@ public class NuevaReclamacionEmpresarialStep {
   }
 
   public void seleccionarCausalIncidente(String causa, String valorPretension) {
-    informacionReclamacionPage.seleccionarCausaSiniestro(causa);
     informacionReclamacionPage.escribirValorPretension(valorPretension);
+    informacionReclamacionPage.seleccionarCausaSiniestro(causa);
   }
 
   public void validarReclamacion() {

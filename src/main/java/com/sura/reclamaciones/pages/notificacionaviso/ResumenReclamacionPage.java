@@ -62,9 +62,8 @@ public class ResumenReclamacionPage extends GeneralPage {
       validador = lnkTipoExposicion.waitUntilVisible().getText();
       switch (validador) {
         case ReclamacionConstante.EXPOSICION_CONTENIDO:
-          validadorExposicion = ConstanteGlobal.SI;
-          break;
         case ReclamacionConstante.EXPOSICION_PROPIEDAD:
+        case ReclamacionConstante.EXPOSICION_GENERAL:
           validadorExposicion = ConstanteGlobal.SI;
           break;
         default:
