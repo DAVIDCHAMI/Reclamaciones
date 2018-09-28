@@ -16,13 +16,13 @@ public class TransaccionModeloSimplificado {
 
   private TransaccionModeloSimplificado(Map<String, String> datosModeloSimplificado) {
     if (datosModeloSimplificado.containsKey("NUMERORECLAMACION")) {
-      ObtenerCamposBaseDatos(datosModeloSimplificado);
+      obtenerCamposBaseDatos(datosModeloSimplificado);
     } else {
-      ObtenerCamposCsv(datosModeloSimplificado);
+      obtenerCamposCsv(datosModeloSimplificado);
     }
   }
 
-  public void ObtenerCamposBaseDatos(Map<String, String> datosModeloSimplificado) {
+  public void obtenerCamposBaseDatos(Map<String, String> datosModeloSimplificado) {
     this.numeroReclamacion = datosModeloSimplificado.get("NUMERORECLAMACION");
     this.numeroMovimientoFinanciero = datosModeloSimplificado.get("NUMEROMOVIMIENTOFINANCIERO");
     this.valorMovimientoFinanciero = datosModeloSimplificado.get("VALORMOVIMIENTOFINANCIERO");
@@ -31,7 +31,7 @@ public class TransaccionModeloSimplificado {
     this.estadoMovimientoFinanciero = datosModeloSimplificado.get("ESTADOMOVIMIENTOFINANCIERO");
   }
 
-  public void ObtenerCamposCsv(Map<String, String> datosModeloSimplificado) {
+  public void obtenerCamposCsv(Map<String, String> datosModeloSimplificado) {
     this.numeroReclamacion = datosModeloSimplificado.get("numeroReclamacion");
     this.numeroMovimientoFinanciero = datosModeloSimplificado.get("numeroMovimientoFinanciero");
     this.valorMovimientoFinanciero = datosModeloSimplificado.get("valorMovimientoFinanciero");
