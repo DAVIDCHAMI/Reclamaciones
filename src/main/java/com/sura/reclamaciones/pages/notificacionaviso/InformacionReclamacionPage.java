@@ -83,9 +83,8 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   public void escribirValorPretension(String valor) {
     txtValorPretension.waitUntilVisible();
-      txtValorPretension.sendKeys(valor);
-    }
-
+    txtValorPretension.sendKeys(valor);
+  }
 
   public void seleccionarTipoIncidente(String tipoIncidente) {
     if ("Propiedad".equalsIgnoreCase(tipoIncidente)) {

@@ -48,7 +48,7 @@ public class GenericStep {
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
       File archivoLog = new File("C:\\Log\\Numeros_Reclamacion.txt");
       FileWriter escribir = new FileWriter(archivoLog, true);
-      escribir.write(valor+" "+horaFormateada.format(date));
+      escribir.write(valor + " " + horaFormateada.format(date));
       escribir.write("\r\n");
       escribir.close();
     } catch (Exception e) {
