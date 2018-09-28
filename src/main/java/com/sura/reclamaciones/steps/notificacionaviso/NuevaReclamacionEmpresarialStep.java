@@ -3,6 +3,7 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 import static com.sura.reclamaciones.constantes.ReclamacionConstante.*;
 
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
@@ -25,6 +26,7 @@ public class NuevaReclamacionEmpresarialStep {
   @Page InformacionBasicaPage informacionBasicaPage;
   @Page PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
   @Page ResumenReclamacionPage resumenReclamacionPage;
+  @Page GeneralPage generalPage;
   @Steps UbicacionStep ubicacionStep;
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -97,6 +99,7 @@ public class NuevaReclamacionEmpresarialStep {
           }
           ubicacionStep.seleccionarUbicacion(datosPolizaEmpresarial);
           buscarPolizaPage.buscarPoliza();
+          buscarPolizaPage.seleccionarPoliza();
         });
   }
 

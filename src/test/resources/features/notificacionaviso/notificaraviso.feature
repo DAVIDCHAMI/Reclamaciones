@@ -14,7 +14,8 @@ Característica: Notificacion de aviso de una reclamacion
     Y que <¿Genera reserva?> genera reserva con un monto <Monto de la reserva>, envia correo y se asigna a un analista
 
     Ejemplos:
-      | Tipo y Cobertura                                     | Causa                         | Valor de Pretensión | Tipo de incidente | ¿Genera exposición? | ¿Genera reserva? | Monto de la reserva |
-      | Multiriesgo corporativo con cobertura basica         | Rotura de vidrios             | 2000000             | Propiedad         | si                  | si               | 1218758             |
-      | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                | 200000              | ""                | si                  | si               | 200000              |
-      | Plan Empresario Sura con Amit                        | Amit/ huelga, conmoción civil | 4000000             | Contenido         | si                  | si               | 3600000             |
+      | Tipo y Cobertura              | Causa | Valor de Pretensión | Tipo de incidente | ¿Genera exposición? | ¿Genera reserva? | Monto de la reserva |
+      #| Multiriesgo corporativo con cobertura basica         | Rotura de vidrios             | 2000000             | Propiedad         | si                  | si               | 1218758             |
+      #| Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                | 200000              | ""                | si                  | si               | 200000              |
+      #| Plan Empresario Sura con Amit                        | Amit/ huelga, conmoción civil | 4000000             | Contenido         | si                  | si               | 3600000             |
+      | Incendio con cobertura basica | asd   | asd                 | asd               | asd                 | ads              | asd                 |
