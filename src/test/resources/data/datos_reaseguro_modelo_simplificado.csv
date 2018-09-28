@@ -1,0 +1,7 @@
+id;idFiltro           ;numeroMovimientoFinanciero ;numeroReclamacion;valorMovimientoFinanciero;valorCedidoReaseguradoras;valorNeto   ;estadoMovimientoFinanciero
+1 ;Reserva            ;cc:5284199                 ;9180000015184    ;10000000000              ;9945454539               ;10000000000 ;0
+2 ;Pago               ;3890                       ;9180000015184    ;9000000000               ;8950909087               ;9000000000  ;N
+3 ;Recupero           ;cc:5288691                 ;9180000015766    ;2000000000               ;1959072764               ;2000000000  ;N
+4 ;AnulacionPago      ;4027                       ;9180000015766    ;-1000000000              ;-823139816               ;-840336134  ;S
+5 ;AnulacionPago      ;4027                       ;9180000015766    ;1000000000               ;823139816                ;840336134   ;N
+6 ;AnulacionRecupero  ;cc:5289102                 ;9180000015766    ;-500000000               ;-489768190               ;-500000000  ;S

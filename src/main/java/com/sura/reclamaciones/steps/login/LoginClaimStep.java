@@ -44,13 +44,13 @@ public class LoginClaimStep {
   public void iniciarSesionLab(String analista) throws IOException {
     credencial = new Credencial(genericStep.getFilasModelo("credencial", analista));
     abrirClaims();
-    iniciarSesionUAT(credencial.getCredencials());
+    iniciarSesionUAT(credencial.getCredenciales());
   }
 
   @Step
   public void iniciarSesionAmbienteDllo() throws IOException {
     credencial = new Credencial(genericStep.getFilasModelo("credencial", "analistaDllo"));
     abrirClaims();
-    iniciarSesionDllo(credencial.getCredencials());
+    iniciarSesionDllo(credencial.getCredenciales());
   }
 }
