@@ -4,7 +4,11 @@ import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.constantes.Tablas;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import net.serenitybdd.core.annotations.findby.By;
@@ -25,11 +29,11 @@ public class GeneralPage extends PageObject {
   public WebElementFacade lstOpcionesCombobox;
 
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
-  private WebElementFacade pgrBarCarga;
+  public WebElementFacade pgrBarCarga;
 
   @FindBy(
     xpath =
-        "//span[@id='FNOLWizard:Next-btnInnerEl' or contains(@id, 'NormalCreateCheckWizard:Next-btnEl')]"
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']"
   )
   private WebElementFacade btnSiguiente;
 
@@ -47,7 +51,7 @@ public class GeneralPage extends PageObject {
 
   @FindBy(
     xpath =
-        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
+        "//div[@id ='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV' or @id='ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']"
   )
   private WebElementFacade tblVerificacion;
 
@@ -135,13 +139,17 @@ public class GeneralPage extends PageObject {
   public void continuarSiguientePantalla() {
     btnSiguiente.waitUntilClickable();
     btnSiguiente.click();
-    realizarEsperaCarga();
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
   }
 
   public void finalizarProceso() {
     btnFinalizar.waitUntilClickable();
     btnFinalizar.click();
-    realizarEsperaCarga();
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
@@ -159,6 +167,9 @@ public class GeneralPage extends PageObject {
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();
     seleccionarOpcionCombobox(tipoTransaccion);
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
   }
 
   public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
@@ -167,11 +178,17 @@ public class GeneralPage extends PageObject {
         .click();
     auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
+    if (pgrBarCarga.isVisible()) {
+      realizarEsperaCarga();
+    }
   }
 
   public void irUltimaPagina() {
     if (btnUltimaPagina.isVisible()) {
       btnUltimaPagina.click();
+      if (pgrBarCarga.isVisible()) {
+        realizarEsperaCarga();
+      }
     }
   }
 
@@ -182,15 +199,13 @@ public class GeneralPage extends PageObject {
     return elementoEncontrado.get(longitudTabla - 1).getText();
   }
 
-  public List<WebElement> obtenerFilaTransacciones(String strTransaccion) {
+  public List<WebElement> obtenerFilaTabla(String strIdentificadorFila, String strXpathElementoTabla) {
     tblVerificacion.waitUntilVisible();
-    List<WebElement> lstFila;
-    lstFila =
-        tblVerificacion.findElements(
-            By.xpath(
-                String.format(
-                    "//td//div[contains(text(),'%s')]//parent::td//parent::tr//td",
-                    strTransaccion)));
+    List<WebElement> lstFila = null;
+      lstFila =
+          tblVerificacion.findElements(
+              By.xpath(String.format(strXpathElementoTabla, strIdentificadorFila)));
     return lstFila;
   }
+
 }

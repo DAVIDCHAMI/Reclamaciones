@@ -81,12 +81,10 @@ public class CreacionRecuperoPage extends GeneralPage {
 
   public void seleccionarDepartamento(String departamento) {
     seleccionarElementoListado(DEPARTAMENTO, departamento);
-    realizarEsperaCarga();
   }
 
   public void seleccionarCiudad(String ciudad) {
     seleccionarElementoListado(CIUDAD, ciudad);
-    realizarEsperaCarga();
   }
 
   public void seleccionarCategoriaRecuperacion(String recupero) {

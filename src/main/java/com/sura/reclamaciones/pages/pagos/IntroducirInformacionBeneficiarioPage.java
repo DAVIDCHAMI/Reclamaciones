@@ -36,6 +36,11 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   )
   private WebElementFacade tblCuentaElectronica;
 
+  private String PAIS = "Country-inputEl";
+  private String DEPARTAMENTO = "State-inputEl";
+  private String CIUDAD = "Sura_Colombian_City-inputEl";
+  private String TIPO_DIRECCION = "Address_AddressType-inputEl";
+
   public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
     cmbNombreBeneficiario.click();
     seleccionarOpcionCombobox(strNombreBeneficiario);
@@ -76,5 +81,21 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   public void seleccionarPagoSura(String strPagoSura) {
     rbtPago.waitUntilClickable();
     obtenerElementoPantallaPago(strPagoSura);
+  }
+
+  public void seleccionarPais(String strPais) {
+    seleccionarElementoListado(PAIS, strPais);
+  }
+
+  public void seleccionarDepartamento(String strDepartamento) {
+    seleccionarElementoListado(DEPARTAMENTO, strDepartamento);
+  }
+
+  public void seleccionarCiudad(String strCiudad) {
+    seleccionarElementoListado(CIUDAD, strCiudad);
+  }
+
+  public void seleccionarTipoDireccion(String strTipoDireccion) {
+    seleccionarElementoListado(TIPO_DIRECCION, strTipoDireccion);
   }
 }

@@ -17,6 +17,8 @@ public class VerificacionRecuperoPage extends GeneralPage {
 
   @Page MenuClaimPage menuClaimPage;
 
+  public static String tblRecupero = "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
+
   public List<WebElement> obtenerListaRecupero() {
     irUltimaPagina();
     String strNumeroRecupero = obtenerDatoTablaCabecera(RecuperoConstante.NUMERO_TRANSACCION);
@@ -24,7 +26,8 @@ public class VerificacionRecuperoPage extends GeneralPage {
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
     irUltimaPagina();
-    List<WebElement> lstFilaRecupero = obtenerFilaTransacciones(strNumeroRecupero);
+    List<WebElement> lstFilaRecupero =
+        obtenerFilaTabla(strNumeroRecupero, tblRecupero);
     return lstFilaRecupero;
   }
 
