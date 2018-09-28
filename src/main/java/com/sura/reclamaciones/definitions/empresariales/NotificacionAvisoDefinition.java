@@ -17,7 +17,9 @@ public class NotificacionAvisoDefinition {
 
   @Dado("^que se tiene una poliza de (.*)$")
   public void buscarPoliza(String tipoCobertura) throws Throwable {
-    reclamo = new ReclamacionEmpresarial(genericStep.getFilasModelo("reclamacion_empresarial", tipoCobertura));
+    reclamo =
+        new ReclamacionEmpresarial(
+            genericStep.getFilasModelo("reclamacion_empresarial", tipoCobertura));
     nuevaReclamacionStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     nuevaReclamacionStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
