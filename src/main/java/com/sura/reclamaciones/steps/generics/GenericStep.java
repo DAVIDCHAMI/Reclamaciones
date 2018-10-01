@@ -42,11 +42,11 @@ public class GenericStep {
     return loadedDataFiltered;
   }
 
-  public void guardarValor(String valor) {
+  public void generarRegistro(String valor) {
     try {
       Date date = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-      File archivoLog = new File("C:\\Log\\Numeros_Reclamacion.txt");
+      File archivoLog = new File("C:\\Log\\Registros.txt");
       FileWriter escribir = new FileWriter(archivoLog, true);
       escribir.write(valor + " " + horaFormateada.format(date));
       escribir.write("\r\n");
