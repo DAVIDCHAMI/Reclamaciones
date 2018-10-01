@@ -3,6 +3,7 @@ package com.sura.reclamaciones.constantes;
 public class ReclamacionConstante {
   public static final String EXPOSICION_CONTENIDO = "Contenido";
   public static final String EXPOSICION_PROPIEDAD = "Propiedad";
+  public static final String EXPOSICION_GENERAL = "General";
   public static final String FECHA_HOY = "Hoy";
   public static final String DATOS_FINANCIEROS = "Datos financieros";
   public static final String TRANSACCIONES = "Transacciones";
