@@ -83,7 +83,7 @@ test {
     maxParallelForks = Runtime.runtime.availableProcessors()
 }
 
-task wrapper(type: Wrapper) {
+wrapper {
     gradleVersion = '4.6'
 }
 
