@@ -124,8 +124,10 @@ public class GeneralPage extends PageObject {
   }
 
   public void realizarEsperaCarga() {
-    pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
-  }
+    if(pgrBarCarga.isVisible()) {
+      pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
+    }
+    }
 
   public void aceptarOpcion() {
     btnAceptar.waitUntilVisible();

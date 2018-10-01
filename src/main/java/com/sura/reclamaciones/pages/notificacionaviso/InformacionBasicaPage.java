@@ -23,6 +23,10 @@ public class InformacionBasicaPage extends GeneralPage {
   @FindBy(xpath = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li")
   private WebElementFacade lstAutorReporte;
 
+  @FindBy(xpath = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li[2]")
+  private WebElementFacade lstAutorReporteCliente;
+
+
   @FindBy(
       xpath =
           "//textarea[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Description-inputEl']"
@@ -69,8 +73,13 @@ public class InformacionBasicaPage extends GeneralPage {
   public void seleccionarAutorReporte() {
     txtNombreAutor.waitUntilVisible();
     txtNombreAutor.click();
-    String autorReporte = lstAutorReporte.getText();
-    if (autorReporte.equalsIgnoreCase("<ninguno>")) {
+    //String autorReporte = lstAutorReporte.getText();
+    if(lstAutorReporteCliente.isVisible()){
+      lstAutorReporteCliente.waitUntilVisible();
+      lstAutorReporteCliente.click();
+      realizarEsperaCarga();
+    }else{
+    //if (autorReporte.equalsIgnoreCase("<ninguno>")) {
       btnCotactManager.waitUntilClickable();
       btnCotactManager.click();
       btnBuscarContactoExistente.waitUntilClickable();
@@ -86,10 +95,6 @@ public class InformacionBasicaPage extends GeneralPage {
       btnRelacionAsegurado.click();
       lstAmigo.waitUntilVisible();
       lstAmigo.click();
-    }else {
-      lstAutorReporte.waitUntilVisible();
-      lstAutorReporte.click();
-      realizarEsperaCarga();
     }
   }
 

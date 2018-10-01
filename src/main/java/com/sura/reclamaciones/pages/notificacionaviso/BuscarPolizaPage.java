@@ -97,7 +97,6 @@ public class BuscarPolizaPage extends GeneralPage {
   public void buscarPoliza() {
     btnBuscar.waitUntilClickable();
     btnBuscar.click();
-    realizarEsperaCarga();
   }
 
   public void escribirPlaca(String placa) {
@@ -110,7 +109,6 @@ public class BuscarPolizaPage extends GeneralPage {
       btnPoliza.waitUntilClickable();
       btnPoliza.click();
       realizarEsperaCarga();
-      continuarSiguientePantalla();
     }
   }
 

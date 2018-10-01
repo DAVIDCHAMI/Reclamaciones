@@ -10,7 +10,7 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   private String lstCausaSiniestro = "//li[.='COMODIN']";
 
-  @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'e')]")
+  @FindBy(xpath = "//span[@id='NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnInnerEl']")
   private WebElementFacade btnCerrar;
 
   @FindBy(
@@ -66,7 +66,7 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void cerrarReclamosDuplicados() {
-    if (btnCerrar.isPresent()) {
+    if (btnCerrar.isVisible()) {
       btnCerrar.waitUntilClickable();
       btnCerrar.click();
       realizarEsperaCarga();
@@ -79,6 +79,7 @@ public class InformacionReclamacionPage extends GeneralPage {
     lstCausaSiniestro = lstCausaSiniestro.replace(ConstanteGlobal.COMODIN, causa);
     $(lstCausaSiniestro).waitUntilVisible();
     $(lstCausaSiniestro).click();
+    realizarEsperaCarga();
   }
 
   public void escribirValorPretension(String valor) {

@@ -34,13 +34,13 @@ public class NuevaReclamacionEmpresarialStep {
       List<ReclamacionEmpresarial> datosIncidente, String incidente) {
     datosIncidente.forEach(
         datos -> {
-          informacionReclamacionPage.cerrarReclamosDuplicados();
           informacionReclamacionPage.seleccionarTipoIncidente(incidente);
           informacionReclamacionPage.finalizarSiniestro();
         });
   }
 
   public void seleccionarCausalIncidente(String causa, String valorPretension) {
+    informacionReclamacionPage.cerrarReclamosDuplicados();
     informacionReclamacionPage.escribirValorPretension(valorPretension);
     informacionReclamacionPage.seleccionarCausaSiniestro(causa);
   }
@@ -100,6 +100,8 @@ public class NuevaReclamacionEmpresarialStep {
           ubicacionStep.seleccionarUbicacion(datosPolizaEmpresarial);
           buscarPolizaPage.buscarPoliza();
           buscarPolizaPage.seleccionarPoliza();
+          generalPage.continuarSiguientePantalla();
+
         });
   }
 
