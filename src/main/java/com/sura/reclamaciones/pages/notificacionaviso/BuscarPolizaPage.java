@@ -52,9 +52,11 @@ public class BuscarPolizaPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'s')]")
   private WebElementFacade btnBuscar;
 
-  @FindBy(xpath = "//a[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyResultLV:0:selectButton']")
+  @FindBy(
+    xpath =
+        "//a[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyResultLV:0:selectButton']"
+  )
   private WebElementFacade btnPoliza;
-
 
   public BuscarPolizaPage(WebDriver driver) {
     super(driver);
@@ -104,12 +106,11 @@ public class BuscarPolizaPage extends GeneralPage {
     txtPlaca.type(placa);
   }
 
-  public void seleccionarPoliza(){
-    if(btnPoliza.isVisible()){
+  public void seleccionarPoliza() {
+    if (btnPoliza.isVisible()) {
       btnPoliza.waitUntilClickable();
       btnPoliza.click();
       realizarEsperaCarga();
     }
   }
-
 }

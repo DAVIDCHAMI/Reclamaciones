@@ -101,7 +101,6 @@ public class NuevaReclamacionEmpresarialStep {
           buscarPolizaPage.buscarPoliza();
           buscarPolizaPage.seleccionarPoliza();
           generalPage.continuarSiguientePantalla();
-
         });
   }
 

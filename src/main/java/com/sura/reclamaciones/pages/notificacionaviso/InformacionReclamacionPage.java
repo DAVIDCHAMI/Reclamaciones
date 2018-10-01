@@ -10,7 +10,10 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   private String lstCausaSiniestro = "//li[.='COMODIN']";
 
-  @FindBy(xpath = "//span[@id='NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnInnerEl']")
+  @FindBy(
+    xpath =
+        "//span[@id='NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnInnerEl']"
+  )
   private WebElementFacade btnCerrar;
 
   @FindBy(
