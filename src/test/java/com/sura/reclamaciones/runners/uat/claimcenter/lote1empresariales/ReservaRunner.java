@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.runners.lab.claimcenter.lote2autos;
+package com.sura.reclamaciones.runners.uat.claimcenter.lote1empresariales;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-  features = "src/test/resources/features/autos/siniestro_dano.feature",
+  features = "src/test/resources/features/reservas/reversion_constitucion",
   glue = {"com.sura.reclamaciones.definitions"}
 )
-public class SiniestroDano {}
+public class ReservaRunner {}
