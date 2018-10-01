@@ -4,7 +4,6 @@ import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-
 import com.sura.reclamaciones.utils.Variables;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -25,21 +24,9 @@ public class ResumenReclamacionPage extends GeneralPage {
 
   @FindBy(
     xpath =
-        "//div[@id='ClaimSummary:ClaimSummaryScreen:ClaimSummaryHeadlinePanelSet:TotalGrossIncurred-inputEl']"
-  )
-  private WebElementFacade divReserva;
-
-  @FindBy(
-    xpath =
         "//a[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount']"
   )
   private WebElementFacade lnkReservaTransaccion;
-
-  @FindBy(
-    xpath =
-        "//a[@id='ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryPanelSet:FinancialsSummaryLV:0:RemainingReserves']"
-  )
-  private WebElementFacade lnkReservaResumen;
 
   public ResumenReclamacionPage(WebDriver driver) {
     super(driver);
@@ -75,27 +62,6 @@ public class ResumenReclamacionPage extends GeneralPage {
       validadorExposicion = ConstanteGlobal.NO;
     }
     return validadorExposicion;
-  }
-
-  public String obtenerValorReserva() {
-    String validadorReserva;
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.RESUMEN);
-    validadorReserva = divReserva.waitUntilVisible().getText();
-    validadorReserva = validadorReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    return validadorReserva;
-  }
-
-  public String validarReservaResumen(String montoReserva) {
-    String validarReservaResumen;
-    if (lnkReservaResumen.isVisible()) {
-      validarReservaResumen = lnkReservaResumen.waitUntilVisible().getText();
-      validarReservaResumen =
-          validarReservaResumen.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    } else {
-      validarReservaResumen = montoReserva;
-      LOGGER.info("No se ha generado reserva en la sección de resumen");
-    }
-    return validarReservaResumen;
   }
 
   public String validarReservaTransaccion(String montoReserva) {

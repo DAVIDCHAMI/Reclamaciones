@@ -80,13 +80,6 @@ public class NuevaReclamacionEmpresarialStep {
         validar.equals(exposicion));
   }
 
-  public void validarReservaVisualizada(String monto) {
-    String validar = resumenReclamacionPage.obtenerValorReserva();
-    MatcherAssert.assertThat(
-        "No generó reserva, verificar las reglas de administración de reserva o data ingresada",
-        validar.equals(monto));
-  }
-
   public void buscarPolizaEmpresarial(List<ReclamacionEmpresarial> datosPolizaEmpresarial) {
     datosPolizaEmpresarial.forEach(
         poliza -> {
@@ -104,20 +97,10 @@ public class NuevaReclamacionEmpresarialStep {
         });
   }
 
-  public void validarReservaDatosFinancieros(
-      List<ReclamacionEmpresarial> datoReserva, String monto) {
+  public void validarReservaDatosFinancieros(List<ReclamacionEmpresarial> datoReserva) {
     datoReserva.forEach(
         reserva -> {
-          menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS);
-          String validar = resumenReclamacionPage.validarReservaResumen(monto);
-          MatcherAssert.assertThat(
-              "Se esperaba una reserva de: "
-                  + monto
-                  + ", pero se ha obtenido una reserva de: "
-                  + validar,
-              monto.equals(validar));
-          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(DATOS_FINANCIEROS, TRANSACCIONES);
-          validar =
+          String validar =
               resumenReclamacionPage.validarReservaTransaccion(reserva.getReservaTransaccion());
           MatcherAssert.assertThat(
               "Se esperaba una reserva de: "
