@@ -44,7 +44,7 @@ public class AmbientesUtilTest {
 
   @Test
   public void ambientesValidosDebeRetornarElAmbienteEnviadoSiSeIngresaAmbienteValido() {
-    List<String> valorEnvs = new ArrayList<String>(Arrays.asList("local", "dllo", "lab", "pdn"));
+    List<String> valorEnvs = new ArrayList<String>(Arrays.asList("local", "dllo", "uat", "pdn"));
     AmbientesUtil utils = new AmbientesUtil();
 
     for (String valorEnv : valorEnvs) {
