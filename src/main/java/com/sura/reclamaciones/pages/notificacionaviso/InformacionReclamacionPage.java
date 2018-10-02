@@ -10,7 +10,10 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   private String lstCausaSiniestro = "//li[.='COMODIN']";
 
-  @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'e')]")
+  @FindBy(
+    xpath =
+        "//span[@id='NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnInnerEl']"
+  )
   private WebElementFacade btnCerrar;
 
   @FindBy(
@@ -66,8 +69,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void cerrarReclamosDuplicados() {
-    if (btnCerrar.isPresent()) {
-      btnCerrar.waitUntilVisible();
+    if (btnCerrar.isVisible()) {
+      btnCerrar.waitUntilClickable();
       btnCerrar.click();
       realizarEsperaCarga();
     }
@@ -79,31 +82,31 @@ public class InformacionReclamacionPage extends GeneralPage {
     lstCausaSiniestro = lstCausaSiniestro.replace(ConstanteGlobal.COMODIN, causa);
     $(lstCausaSiniestro).waitUntilVisible();
     $(lstCausaSiniestro).click();
+    realizarEsperaCarga();
   }
 
   public void escribirValorPretension(String valor) {
     txtValorPretension.waitUntilVisible();
-    realizarEsperaCarga();
-    txtValorPretension.type(valor);
+    txtValorPretension.sendKeys(valor);
   }
 
   public void seleccionarTipoIncidente(String tipoIncidente) {
     if ("Propiedad".equalsIgnoreCase(tipoIncidente)) {
-      btnIncidentePropiedad.waitUntilVisible();
+      btnIncidentePropiedad.waitUntilClickable();
       btnIncidentePropiedad.click();
       btnAceptarIncPropiedad.waitUntilVisible();
       btnAceptarIncPropiedad.click();
       realizarEsperaCarga();
     }
     if ("Contenido".equalsIgnoreCase(tipoIncidente)) {
-      btnIncidenteContenido.waitUntilVisible();
+      btnIncidenteContenido.waitUntilClickable();
       btnIncidenteContenido.click();
       btnAceptarIncContenido.waitUntilVisible();
       btnAceptarIncContenido.click();
       realizarEsperaCarga();
     }
     if ("Lesiones".equalsIgnoreCase(tipoIncidente)) {
-      btnIncidenteLesiones.waitUntilVisible();
+      btnIncidenteLesiones.waitUntilClickable();
       btnIncidenteLesiones.click();
       btnIncidenteLesiones.waitUntilVisible();
       btnIncidenteLesiones.click();

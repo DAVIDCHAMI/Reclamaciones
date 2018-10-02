@@ -11,7 +11,7 @@ import net.thucydides.core.annotations.Steps;
 
 public class NotificacionAvisoDefinition {
 
-  ReclamacionEmpresarial reclamo;
+  @Steps ReclamacionEmpresarial reclamo;
   @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionStep;
   @Steps GenericStep genericStep;
 
@@ -19,7 +19,7 @@ public class NotificacionAvisoDefinition {
   public void buscarPoliza(String tipoCobertura) throws Throwable {
     reclamo =
         new ReclamacionEmpresarial(
-            genericStep.getFilasModelo("reclamacion_empresarial", "AvisoEmpresariales"));
+            genericStep.getFilasModelo("reclamacion_empresarial", tipoCobertura));
     nuevaReclamacionStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     nuevaReclamacionStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
@@ -46,7 +46,6 @@ public class NotificacionAvisoDefinition {
 
   @Entonces("^que (.*) genera reserva con un monto (.*), envia correo y se asigna a un analista$")
   public void verificarReserva(String reserva, String monto) {
-    nuevaReclamacionStep.validarReservaVisualizada(monto);
-    nuevaReclamacionStep.validarReservaDatosFinancieros(reclamo.getLstReclamo(), monto);
+    nuevaReclamacionStep.validarReservaDatosFinancieros(reclamo.getLstReclamo());
   }
 }
