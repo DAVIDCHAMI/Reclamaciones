@@ -127,7 +127,9 @@ public class GeneralPage extends PageObject {
   }
 
   public void realizarEsperaCarga() {
-    pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
+    if (pgrBarCarga.isVisible()) {
+      pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
+    }
   }
 
   public void aceptarOpcion() {
@@ -138,17 +140,13 @@ public class GeneralPage extends PageObject {
   public void continuarSiguientePantalla() {
     btnSiguiente.waitUntilClickable();
     btnSiguiente.click();
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
+    realizarEsperaCarga();
   }
 
   public void finalizarProceso() {
     btnFinalizar.waitUntilClickable();
     btnFinalizar.click();
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
+    realizarEsperaCarga();
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
@@ -166,9 +164,7 @@ public class GeneralPage extends PageObject {
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();
     seleccionarOpcionCombobox(tipoTransaccion);
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
+    realizarEsperaCarga();
   }
 
   public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
@@ -177,26 +173,20 @@ public class GeneralPage extends PageObject {
         .click();
     auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
+    realizarEsperaCarga();
   }
 
   public void irUltimaPagina() {
     if (btnUltimaPagina.isVisible()) {
       btnUltimaPagina.click();
-      if (pgrBarCarga.isVisible()) {
-        realizarEsperaCarga();
-      }
+      realizarEsperaCarga();
     }
   }
 
   public void irSiguientePagina() {
     if (btnCambioPagina.isVisible()) {
       btnCambioPagina.waitUntilClickable().click();
-      if (pgrBarCarga.isVisible()) {
-        realizarEsperaCarga();
-      }
+      realizarEsperaCarga();
     }
   }
 

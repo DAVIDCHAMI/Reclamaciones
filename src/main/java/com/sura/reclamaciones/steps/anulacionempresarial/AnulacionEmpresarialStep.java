@@ -49,7 +49,9 @@ public class AnulacionEmpresarialStep {
                 diligenciador.getNumeroTransaccion(),
                 diligenciador.getEstadoPrevio(),
                 tipoAnulacion));
-        detalleTransaccionPage.realizarAnulacion();
+        assertTrue(
+            "El número de transaccion, no tiene habilitado el boton de anular",
+            detalleTransaccionPage.realizarAnulacion());
       } else {
         assertTrue(
             "No se pudo encontrar el numero de recupero",
@@ -79,7 +81,8 @@ public class AnulacionEmpresarialStep {
       } else {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
             MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
-            verificacionDatosFinancierosPage.seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
+        verificacionDatosFinancierosPage.seleccionarTipoTransaccion(
+            RecuperoConstante.TIPO_TRANSACCION);
         assertTrue(
             "El recupero no quedo en estado anulado",
             verificacionDatosFinancierosPage.verificarEstadoAnulado(

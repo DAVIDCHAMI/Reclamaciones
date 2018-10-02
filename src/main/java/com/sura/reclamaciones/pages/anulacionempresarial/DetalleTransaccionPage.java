@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 
 public class DetalleTransaccionPage extends GeneralPage {
 
-  @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Anular')]")
+  @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//parent::span")
   private WebElementFacade btnAnular;
 
   @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Aceptar')]")
@@ -41,6 +41,7 @@ public class DetalleTransaccionPage extends GeneralPage {
       realizarEsperaCarga();
       btnAnular.waitUntilClickable();
       btnAnular.click();
+      realizarEsperaCarga();
       btnAceptar.waitUntilClickable();
       btnAceptar.click();
       realizarEsperaCarga();
@@ -86,7 +87,10 @@ public class DetalleTransaccionPage extends GeneralPage {
         if (aLstPago.getText().equals(strNumeroTransaccion)
             && lstPago.get(9).getText().equals(strEstadoPrevio)) {
           lstPago.get(2).click();
-          lstPago.get(2).findElement(By.xpath("//a[@class='g-actionable'][contains(text(),'$')]")).click();
+          lstPago
+              .get(2)
+              .findElement(By.xpath("//a[@class='g-actionable'][contains(text(),'$')]"))
+              .click();
           return true;
         } else {
           return false;
