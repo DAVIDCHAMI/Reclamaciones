@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.runners.empresariales.lab;
+package com.sura.reclamaciones.runners.uat.claimcenter.lote1empresariales;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
@@ -9,4 +9,4 @@ import org.junit.runner.RunWith;
   features = "src/test/resources/features/anulacionempresarial/anulacionempresarial.feature",
   glue = {"com.sura.reclamaciones.definitions"}
 )
-public class AnulacionEmpresarialLabRunner {}
+public class AnulacionEmpresarialRunner {}
