@@ -5,7 +5,7 @@ public enum Variables {
   FORMATEAR_MONTOS("[+$.,()éA-Za-z ]"),
   VALOR_RESERVA("valorReserva"),
   NUMERO_PAGINA("numeroPagina"),
-  TIPO_ANULACION("TipoAnulacion");
+  TIPO_ANULACION("tipoAnulacion");
 
   private String valor;
 
