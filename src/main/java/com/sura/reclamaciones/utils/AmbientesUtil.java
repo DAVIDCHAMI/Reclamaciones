@@ -25,7 +25,7 @@ public class AmbientesUtil {
 
   public String ambientesValidos(String ambiente) {
     List<String> ambientesValidos =
-        new ArrayList<String>(Arrays.asList("local", "dllo", "lab", "pdn"));
+        new ArrayList<String>(Arrays.asList("local", "dllo", "uat", "pdn"));
     if (ambientesValidos.contains(ambiente)) {
       return ambiente;
     } else {
