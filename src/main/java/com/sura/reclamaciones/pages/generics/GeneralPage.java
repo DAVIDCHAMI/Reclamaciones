@@ -4,11 +4,7 @@ import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
-import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.constantes.Tablas;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import net.serenitybdd.core.annotations.findby.By;
@@ -201,13 +197,13 @@ public class GeneralPage extends PageObject {
     return elementoEncontrado.get(longitudTabla - 1).getText();
   }
 
-  public List<WebElement> obtenerFilaTabla(String strIdentificadorFila, String strXpathElementoTabla) {
+  public List<WebElement> obtenerFilaTabla(
+      String strIdentificadorFila, String strXpathElementoTabla) {
     tblVerificacion.waitUntilVisible();
     List<WebElement> lstFila = null;
-      lstFila =
-          tblVerificacion.findElements(
-              By.xpath(String.format(strXpathElementoTabla, strIdentificadorFila)));
+    lstFila =
+        tblVerificacion.findElements(
+            By.xpath(String.format(strXpathElementoTabla, strIdentificadorFila)));
     return lstFila;
   }
-
 }
