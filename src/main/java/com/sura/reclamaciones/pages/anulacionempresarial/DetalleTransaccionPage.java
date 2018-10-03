@@ -87,10 +87,6 @@ public class DetalleTransaccionPage extends GeneralPage {
         if (aLstPago.getText().equals(strNumeroTransaccion)
             && lstPago.get(9).getText().equals(strEstadoPrevio)) {
           lstPago.get(2).click();
-          lstPago
-              .get(2)
-              .findElement(By.xpath("//a[@class='g-actionable'][contains(text(),'$')]"))
-              .click();
           return true;
         } else {
           return false;
