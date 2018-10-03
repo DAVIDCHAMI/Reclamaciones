@@ -39,9 +39,9 @@ public class AnulacionEmpresarialStep {
   }
 
   @Step
-  public void ingresarAnulacion(List<AnulacionEmpresarial> lstNumeroPago, String tipoAnulacion) {
+  public void ingresarAnulacion(List<AnulacionEmpresarial> lstNumeroTransaccion, String tipoAnulacion) {
     Serenity.setSessionVariable(Variables.TIPO_ANULACION).to(tipoAnulacion);
-    for (AnulacionEmpresarial diligenciador : lstNumeroPago) {
+    for (AnulacionEmpresarial diligenciador : lstNumeroTransaccion) {
       assertTrue(
           "No se pudo encontrar el numero de transaccion",
           detalleTransaccionPage.ingresarAnulacionEmpresarial(
@@ -56,9 +56,9 @@ public class AnulacionEmpresarialStep {
 
   @Step
   public void verificarAnulacionRealizada(
-      String strAnulacionPago, List<AnulacionEmpresarial> lstNumeroPago) {
+      String strAnulacionPago, List<AnulacionEmpresarial> lstNumeroTransaccion) {
     String strTipoAnulacion = Serenity.sessionVariableCalled(Variables.TIPO_ANULACION);
-    for (AnulacionEmpresarial validador : lstNumeroPago) {
+    for (AnulacionEmpresarial validador : lstNumeroTransaccion) {
       if (strTipoAnulacion.equals(AnulacionConstante.PAGO)) {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
             MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
