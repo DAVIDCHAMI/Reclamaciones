@@ -3,3 +3,9 @@ id;idFiltro;detalleHechos;pais;departamento;ciudad;fechaSiniestro;numPoliza;vali
 2;Cumplimiento con cobertura Cumplimiento del contrato;Esta es una regresi贸n de pruebas automatizada ;Colombia;Huila;Neiva;10/03/2018;012001936753;Nueva reclamaci贸n guardada;200000
 3;Plan Empresario Sura con Amit;Esta es una regresi贸n de pruebas automatizada ;Colombia;Valle del Cauca;Santiago De Cali;10/05/2018;030001129624;Nueva reclamaci贸n guardada;4000000
 4;Incendio con cobertura Da帽os materiales;Esta es una regresi贸n de pruebas automatizada ;Colombia;Antioquia;Itag眉铆;28/09/2018;030000118188;Nueva reclamaci贸n guardada;3000000
+5;Incendio con cobertura de Hurto;Esta es una regresi贸n de pruebas automatizada ;Colombia;Antioquia;Itag眉铆;10/05/2018;030000126013;Nueva reclamaci贸n guardada;3500000
+6;Multiriesgo corporativo con cobertura Terremoto,temblor o erupci髇;Esta es una regresi贸n de pruebas automatizada ;Colombia;Santander;Bucaramanga;11/07/2018;030000248417;Nueva reclamaci贸n guardada;3000000
+7;Multiriesgo corporativo con Amit-Articulo  ;Esta es una regresi贸n de pruebas automatizada ;Colombia;Cundinamarca;Funza;12/09/2018;030000248417;Nueva reclamaci贸n guardada;3000000
+8;Multiriesgo corporativo con cobertura Da駉s materiales Articulo ;Esta es una regresi贸n de pruebas automatizada ;Colombia;Valle del Cauca;Palmira;22/12/2016;030000319806;Nueva reclamaci贸n guardada;3000000
+9;Multiriesgo corporativo con cobertura Rotura Maquinaria;Esta es una regresi贸n de pruebas automatizada ;Colombia;Tolima;San Sebasti醤 De Mariquita;12/02/2018;030000319806;Nueva reclamaci贸n guardada;3000000
+10;Multiriesgo corporativo con cobertura Da駉s materiales Articulo Deslizamiento;Esta es una regresi贸n de pruebas automatizada ;Colombia ;Cauca;Popay醤;29/12/2016;030000319957;Nueva reclamaci贸n guardada;3000000
