@@ -34,7 +34,7 @@ public class VerificarPagoPage extends GeneralPage {
   public String obtenerNumeroPagoRealizado() {
     irUltimaPagina();
     lblNumeroPago.click();
-    return obtenerDatoTablaCabecera(PagoConstante.NÚMERO_PAGO);
+    return obtenerDatoTablaCabecera(PagoConstante.NUMERO_PAGO);
   }
 
   public boolean verificarPagoMenuTransaccion(String datoValidar, List<WebElement> lstFilaPago) {

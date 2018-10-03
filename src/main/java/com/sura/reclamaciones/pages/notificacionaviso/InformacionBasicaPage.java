@@ -79,13 +79,11 @@ public class InformacionBasicaPage extends GeneralPage {
   public void seleccionarAutorReporte() {
     txtNombreAutor.waitUntilVisible();
     txtNombreAutor.click();
-    //String autorReporte = lstAutorReporte.getText();
     if (lstAutorReporteCliente.isVisible()) {
       lstAutorReporteCliente.waitUntilVisible();
       lstAutorReporteCliente.click();
       realizarEsperaCarga();
     } else {
-      //if (autorReporte.equalsIgnoreCase("<ninguno>")) {
       btnCotactManager.waitUntilClickable();
       btnCotactManager.click();
       btnBuscarContactoExistente.waitUntilClickable();

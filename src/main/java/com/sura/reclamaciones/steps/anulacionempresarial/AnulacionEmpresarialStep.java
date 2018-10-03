@@ -42,27 +42,15 @@ public class AnulacionEmpresarialStep {
   public void ingresarAnulacion(List<AnulacionEmpresarial> lstNumeroPago, String tipoAnulacion) {
     Serenity.setSessionVariable(Variables.TIPO_ANULACION).to(tipoAnulacion);
     for (AnulacionEmpresarial diligenciador : lstNumeroPago) {
-      if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
-        assertTrue(
-            "No se pudo encontrar el numero de pago",
-            detalleTransaccionPage.ingresarAnulacionEmpresarial(
-                diligenciador.getNumeroTransaccion(),
-                diligenciador.getEstadoPrevio(),
-                tipoAnulacion));
-        assertTrue(
-            "El número de transaccion, no tiene habilitado el boton de anular",
-            detalleTransaccionPage.realizarAnulacion());
-      } else {
-        assertTrue(
-            "No se pudo encontrar el numero de recupero",
-            detalleTransaccionPage.ingresarAnulacionEmpresarial(
-                diligenciador.getNumeroTransaccion(),
-                diligenciador.getEstadoPrevio(),
-                tipoAnulacion));
-        assertTrue(
-            "El número de transaccion, no tiene habilitado el boton de anular",
-            detalleTransaccionPage.realizarAnulacion());
-      }
+      assertTrue(
+          "No se pudo encontrar el numero de transaccion",
+          detalleTransaccionPage.ingresarAnulacionEmpresarial(
+              diligenciador.getNumeroTransaccion(),
+              diligenciador.getEstadoPrevio(),
+              tipoAnulacion));
+      assertTrue(
+          "El número de transaccion, no tiene habilitado el boton de anular",
+          detalleTransaccionPage.realizarAnulacion());
     }
   }
 
