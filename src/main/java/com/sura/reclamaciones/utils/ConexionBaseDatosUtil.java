@@ -23,11 +23,10 @@ public class ConexionBaseDatosUtil {
     try {
       Class.forName(driver).newInstance();
       conexion = DriverManager.getConnection(url, usuario, clave);
-    } catch (SQLException e) {
+    } catch (SQLException|IllegalAccessException|InstantiationException|ClassNotFoundException e) {
       e.printStackTrace();
-    } finally {
-      return conexion;
     }
+    return conexion;
   }
 
   public List<Map<String, String>> consultarBaseDatos(
@@ -51,7 +50,7 @@ public class ConexionBaseDatosUtil {
       resultSet.close();
       statement.close();
       conexionBD.close();
-      return lstFila;
     }
+    return lstFila;
   }
 }
