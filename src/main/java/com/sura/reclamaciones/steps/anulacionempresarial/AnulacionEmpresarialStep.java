@@ -39,7 +39,8 @@ public class AnulacionEmpresarialStep {
   }
 
   @Step
-  public void ingresarAnulacion(List<AnulacionEmpresarial> lstNumeroTransaccion, String tipoAnulacion) {
+  public void ingresarAnulacion(
+      List<AnulacionEmpresarial> lstNumeroTransaccion, String tipoAnulacion) {
     Serenity.setSessionVariable(Variables.TIPO_ANULACION).to(tipoAnulacion);
     for (AnulacionEmpresarial diligenciador : lstNumeroTransaccion) {
       assertTrue(
