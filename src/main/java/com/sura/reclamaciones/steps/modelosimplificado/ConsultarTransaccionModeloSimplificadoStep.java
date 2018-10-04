@@ -16,7 +16,7 @@ public class ConsultarTransaccionModeloSimplificadoStep {
 
   Connection conexion = null;
   String transaccionConsulta = null;
-  String sql = new String();
+  String sql = "";
   List<Map<String, String>> resultadoConsulta = null;
 
   @Page ConexionBaseDatosUtil consultarModeloSimplificado = new ConexionBaseDatosUtil();
