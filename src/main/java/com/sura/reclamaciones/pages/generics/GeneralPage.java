@@ -33,6 +33,9 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade btnSiguiente;
 
+  @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-next ']//parent::span")
+  private WebElementFacade btnCambioPagina;
+
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
   private WebElementFacade btnAceptar;
 
@@ -62,7 +65,7 @@ public class GeneralPage extends PageObject {
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-  WebDriver driver;
+  protected WebDriver driver;
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
@@ -137,23 +140,19 @@ public class GeneralPage extends PageObject {
   public void continuarSiguientePantalla() {
     btnSiguiente.waitUntilClickable();
     btnSiguiente.click();
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
+    realizarEsperaCarga();
   }
 
   public void finalizarProceso() {
     btnFinalizar.waitUntilClickable();
     btnFinalizar.click();
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
+    realizarEsperaCarga();
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
       WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
-    List<String> cabeceraRecuperos = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
-    int posicionDatoDevolver = cabeceraRecuperos.indexOf(encabezadoColumnaDevolver) + posicionFila;
+    List<String> cabeceraTabla = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
+    int posicionDatoDevolver = cabeceraTabla.indexOf(encabezadoColumnaDevolver) + posicionFila;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
     return elementoEncontrado
         .stream()
@@ -165,9 +164,7 @@ public class GeneralPage extends PageObject {
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();
     seleccionarOpcionCombobox(tipoTransaccion);
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
+    realizarEsperaCarga();
   }
 
   public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
@@ -176,17 +173,20 @@ public class GeneralPage extends PageObject {
         .click();
     auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
     $(auxLstUbicacion).click();
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
+    realizarEsperaCarga();
   }
 
   public void irUltimaPagina() {
     if (btnUltimaPagina.isVisible()) {
       btnUltimaPagina.click();
-      if (pgrBarCarga.isVisible()) {
-        realizarEsperaCarga();
-      }
+      realizarEsperaCarga();
+    }
+  }
+
+  public void irSiguientePagina() {
+    if (btnCambioPagina.isVisible()) {
+      btnCambioPagina.waitUntilClickable().click();
+      realizarEsperaCarga();
     }
   }
 
