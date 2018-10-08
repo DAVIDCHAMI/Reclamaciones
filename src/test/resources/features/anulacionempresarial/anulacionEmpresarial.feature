@@ -9,10 +9,8 @@ Característica: Anulacion Empresarial
 
     Ejemplos:
      |tipoTransaccion   |tipoProducto  | tipoEstado|
-     | Recupero         |MRC_03        | Anulado   |
-     | Recupero         |MRC_04        | Anulado   |
      |Pago              |MRC_01        |Anulado    |
-     |Pago              |MRC_02        |Anulado    |
+     |Recupero          |MRC_02        |Anulado    |
 
 
 
