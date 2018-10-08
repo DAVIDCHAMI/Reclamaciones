@@ -44,6 +44,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
     cmbNombreBeneficiario.click();
     seleccionarOpcionCombobox(strNombreBeneficiario);
+    realizarEsperaCarga();
   }
 
   public void seleccionarTipoBeneficiario(String strTipoBeneficiario) {
@@ -51,6 +52,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
     cmbTipoBeneficiario
         .findElement(By.xpath("//li[contains(.,'" + strTipoBeneficiario + "')]"))
         .click();
+    realizarEsperaCarga();
   }
 
   public void seleccionarMetodoPago(String strMetodoPago, String strCuenta, String strSeleccionar) {

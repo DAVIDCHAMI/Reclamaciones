@@ -68,6 +68,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   public void seleccionarTipoPago(String strTipoPago) {
     cmbTipoPago.waitUntilClickable().click();
     seleccionarOpcionCombobox(strTipoPago);
+    realizarEsperaCarga();
   }
 
   public void ingresarComentario(String strComentario) {
