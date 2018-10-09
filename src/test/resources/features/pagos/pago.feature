@@ -8,6 +8,7 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | numeroReclamacion  | producto  | lineaReserva            |tipoPago    | beneficiarioPago                       | metodoPago       | soloSura  | codigoRetencion    |
-      | 9180000020103      | MRC       |(1) 1ª partePropiedad    | Parcial    |VICTOR HUGO SEPULVEDA VALLEJO CQLII     | Transferencia    | Sí        | 0099               |
-      | 9180000020946      | MRC       |(1) 1ª partePropiedad    | Parcial    |VICTOR HUGO SEPULVEDA VALLEJO CQLII     | Caja Sura        | No        | 0023               |
+      | numeroReclamacion  | producto     | lineaReserva            |tipoPago    | beneficiarioPago                       | metodoPago       | soloSura  | codigoRetencion    |
+      | 9180000020103      | MRC_01       |(1) 1ª partePropiedad    | Parcial    |VICTOR HUGO SEPULVEDA VALLEJO CQLII     | Transferencia    | Sí        | 0099               |
+      | 9180000019212      | MRC_02       |(2) 1ª partePropiedad    | Parcial    |ROBIN EDULFO BAUTISTA ALVAREZ CQLII     | Pago por banco   | No        | 0023               |
+
