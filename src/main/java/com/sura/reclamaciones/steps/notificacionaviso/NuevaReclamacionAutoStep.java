@@ -72,6 +72,10 @@ public class NuevaReclamacionAutoStep {
         mensajeValidado.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
   }
 
+  public void visualizarResumenSiniestro(){
+    nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
+  }
+
   public void finalizarReclamacion() {
     agregarInformacionPage.concluirReclamacion();
   }

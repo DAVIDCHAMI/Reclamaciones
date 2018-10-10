@@ -40,5 +40,6 @@ public class ReclamacionDefinition {
   @Entonces("^se le brindara al reclamante un numero de reclamacion$")
   public void generarReclamacion() {
     reclamacionStep.validarReclamacion();
+    reclamacionStep.visualizarResumenSiniestro();
   }
 }

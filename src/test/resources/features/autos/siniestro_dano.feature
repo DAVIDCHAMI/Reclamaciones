@@ -5,7 +5,7 @@ Característica: Notificacion de aviso de una notificacion de autos
   Quiero registrar los datos de un afectado en un siniestro
   Para generar un registro de reclamacion por daños
 
-  @claims
+  @claimsAuto
   Escenario:generacion de reclamacion
     Dado que se recibe un auto con causa de siniestro por danos
     Cuando se toman los datos del siniestro

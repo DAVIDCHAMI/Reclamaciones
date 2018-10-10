@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.generics;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.io.File;
@@ -42,15 +43,23 @@ public class GenericStep {
     return loadedDataFiltered;
   }
 
-  public void generarRegistro(String valor) {
+  public void generarRegistro(String valor, String tipoAviso) {
     try {
       Date date = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-      File archivoLog = new File("C:\\Log\\Registros.txt");
-      FileWriter escribir = new FileWriter(archivoLog, true);
-      escribir.write(valor + " " + horaFormateada.format(date));
-      escribir.write("\r\n");
-      escribir.close();
+      if(tipoAviso.equalsIgnoreCase(ConstanteGlobal.EMPRESARIALES)) {
+        File archivoLogEmpresarial = new File("C:\\Log\\RegistrosEmpresarial.txt");
+        FileWriter escribirEmp = new FileWriter(archivoLogEmpresarial, true);
+        escribirEmp.write(valor + " " + horaFormateada.format(date));
+        escribirEmp.write("\r\n");
+        escribirEmp.close();
+      }else {
+        File archivoLogAuto = new File("C:\\Log\\RegistrosAutos.txt");
+        FileWriter escribirAut = new FileWriter(archivoLogAuto, true);
+        escribirAut.write(valor + " " + horaFormateada.format(date));
+        escribirAut.write("\r\n");
+        escribirAut.close();
+      }
     } catch (Exception e) {
       System.out.println("No se realizó el guardado del Log");
     }
