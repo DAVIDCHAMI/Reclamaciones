@@ -47,13 +47,13 @@ public class GenericStep {
     try {
       Date date = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-      if(tipoAviso.equalsIgnoreCase(ConstanteGlobal.EMPRESARIALES)) {
+      if (tipoAviso.equalsIgnoreCase(ConstanteGlobal.EMPRESARIALES)) {
         File archivoLogEmpresarial = new File("C:\\Log\\RegistrosEmpresarial.txt");
         FileWriter escribirEmp = new FileWriter(archivoLogEmpresarial, true);
         escribirEmp.write(valor + " " + horaFormateada.format(date));
         escribirEmp.write("\r\n");
         escribirEmp.close();
-      }else {
+      } else {
         File archivoLogAuto = new File("C:\\Log\\RegistrosAutos.txt");
         FileWriter escribirAut = new FileWriter(archivoLogAuto, true);
         escribirAut.write(valor + " " + horaFormateada.format(date));

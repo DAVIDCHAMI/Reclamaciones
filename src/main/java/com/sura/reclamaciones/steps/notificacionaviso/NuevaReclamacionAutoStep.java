@@ -1,7 +1,9 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
+import static com.sura.reclamaciones.utils.ConexionBaseDatosUtil.conectarBaseDatos;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
+import com.sura.reclamaciones.constantes.TransaccionModeloSimplificadoConstante;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
@@ -10,12 +12,26 @@ import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
+import com.sura.reclamaciones.sentenciasSQL.ConsultarCondicionesPoliza;
+import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
+
 public class NuevaReclamacionAutoStep {
+
+  ConsultarCondicionesPoliza consultarCondicionesPoliza = new ConsultarCondicionesPoliza();
+  ConexionBaseDatosUtil conexionBaseDatosUtil = new ConexionBaseDatosUtil();
+
+  Connection conexion = null;
+  String transaccionConsulta = null;
+  Map<String, String> sql = null;
+  List<Map<String, String>> resultadoConsulta = null;
 
   @Page private InformacionBasicaPage informacionBasicaPage;
   @Page private BuscarPolizaPage buscarPolizaPage;
@@ -24,7 +40,7 @@ public class NuevaReclamacionAutoStep {
   @Page private NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
   @Page MenuClaimPage menuClaimPage;
 
-  @Step
+  @Step()
   public void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
     datosReclamacion.forEach(
         dato -> {
@@ -47,16 +63,37 @@ public class NuevaReclamacionAutoStep {
   }
 
   @Step
-  public void editarVehiculo(List<ReclamacionAuto> datosReclamacion) {
+  public void diligenciarReclamacion(String culpabilidad){
+    switch(culpabilidad) {
+
+      case "Responsabilidad Civil":
+        agregarInformacionPage.diligenciarReclamacion(culpabilidad);
+        break;
+
+      case "Solo RC":
+
+        break;
+    }
+
+
+
+
+  }
+
+  @Step
+  public void editarVehiculo(List<ReclamacionAuto> datosReclamacion,String culpabilidad) {
     agregarInformacionPage.ingresarEdicionVehiculo();
     detalleVehiculoPage.agregarConductor();
     datosReclamacion.forEach(
         dato -> {
-          detalleVehiculoPage.seleccionarTaller(dato.getTaller());
+          if(!dato.getCulpabilidad().equals(culpabilidad)) {
+            detalleVehiculoPage.seleccionarTaller(dato.getTaller());
+          }
         });
     detalleVehiculoPage.volverPasoAnterior();
   }
 
+  @Step
   public void seleccionarNombreAutorReporte(List<ReclamacionAuto> lstReclamacionAuto) {
     lstReclamacionAuto.forEach(
         dato -> {
@@ -72,7 +109,7 @@ public class NuevaReclamacionAutoStep {
         mensajeValidado.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
   }
 
-  public void visualizarResumenSiniestro(){
+  public void visualizarResumenSiniestro() {
     nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
   }
 
@@ -110,5 +147,34 @@ public class NuevaReclamacionAutoStep {
   public void seleccionarMenu() {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
+  }
+
+  @Step
+  public Connection conectarBaseDatos() {
+    conexion =
+        ConexionBaseDatosUtil.conectarBaseDatos(
+            TransaccionModeloSimplificadoConstante.USUARIO,
+            TransaccionModeloSimplificadoConstante.CLAVE,
+            TransaccionModeloSimplificadoConstante.URL,
+            TransaccionModeloSimplificadoConstante.DRIVER);
+    return conexion;
+  }
+
+  public List<Map<String, String>> consultarReclamacion() throws SQLException {
+    String numeroReclamacion;
+    String consultaSql;
+    nuevaReclamacionGuardadaPage.abrirReclamacion();
+    numeroReclamacion = nuevaReclamacionGuardadaPage.obtenerNumeroReclamacionConsultaPoliza();
+    sql = consultarCondicionesPoliza.obtenerSentenciaSql(numeroReclamacion);
+    consultaSql = sql.get("Datos Poliza");
+    //Revisar aquí. Extraer clave de la consulta
+    conexion = conectarBaseDatos();
+    resultadoConsulta = conexionBaseDatosUtil.consultarBaseDatosCCLab(conexion, consultaSql);
+    return resultadoConsulta;
+  }
+
+  public void consultarExposicionesyReservas(String culpabilidad) {
+    //nuevaReclamacionGuardadaPage.obtenerNumeroReclamacionConsultaPoliza();
+    nuevaReclamacionGuardadaPage.consultarReclamacion(culpabilidad);
   }
 }

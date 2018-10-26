@@ -40,7 +40,7 @@ public class ResumenReclamacionPage extends GeneralPage {
     numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     LOGGER.info(String.format("el número de reclamación generado es: %s\n", numeroReclamacion));
     GenericStep log = new GenericStep();
-    log.generarRegistro(numeroReclamacion,ConstanteGlobal.EMPRESARIALES);
+    log.generarRegistro(numeroReclamacion, ConstanteGlobal.EMPRESARIALES);
     divNumeroReclamacion.click();
     return numeroReclamacion;
   }

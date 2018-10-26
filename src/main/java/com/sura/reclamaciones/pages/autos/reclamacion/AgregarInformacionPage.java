@@ -103,10 +103,15 @@ public class AgregarInformacionPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void seleccionarCulpabilidad(String culpabilidad) {
+  public void  seleccionarCulpabilidad(String culpabilidad) {
     cmbCulpabilidad.type(culpabilidad);
     cmbCulpabilidad.sendKeys(Keys.ENTER);
   }
+
+  public void diligenciarReclamacion(String culpabilidad){
+
+  }
+
 
   public void seleccionarLugar(String lugar) {
     cmbLugar.waitUntilClickable().click();
@@ -121,6 +126,7 @@ public class AgregarInformacionPage extends GeneralPage {
   }
 
   public void concluirReclamacion() {
+    btnFinalizar.waitUntilVisible();
     btnFinalizar.click();
     realizarEsperaCarga();
   }

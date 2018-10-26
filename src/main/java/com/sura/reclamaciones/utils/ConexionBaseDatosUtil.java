@@ -23,7 +23,10 @@ public class ConexionBaseDatosUtil {
     try {
       Class.forName(driver).newInstance();
       conexion = DriverManager.getConnection(url, usuario, clave);
-    } catch (SQLException|IllegalAccessException|InstantiationException|ClassNotFoundException e) {
+    } catch (SQLException
+        | IllegalAccessException
+        | InstantiationException
+        | ClassNotFoundException e) {
       e.printStackTrace();
     }
     return conexion;
@@ -33,7 +36,31 @@ public class ConexionBaseDatosUtil {
       Connection conexionBD, String numeroMovimientoFinanciero, String sql) throws SQLException {
     try {
       statement = conexionBD.prepareStatement(sql);
-      statement.setString(1, numeroMovimientoFinanciero);
+      //statement.setString(1, numeroMovimientoFinanciero);
+      resultSet = statement.executeQuery();
+      ResultSetMetaData metaData = resultSet.getMetaData();
+      int columnas = metaData.getColumnCount();
+      while (resultSet.next()) {
+        Map<String, String> fila = new HashMap<String, String>(columnas);
+        for (int i = 1; i <= columnas; ++i) {
+          fila.put(metaData.getColumnName(i), resultSet.getString(i));
+        }
+        lstFila.add(fila);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      resultSet.close();
+      statement.close();
+      conexionBD.close();
+    }
+    return lstFila;
+  }
+
+  public List<Map<String, String>> consultarBaseDatosCCLab(Connection conexionBD, String sql)
+      throws SQLException {
+    try {
+      statement = conexionBD.prepareStatement(sql);
       resultSet = statement.executeQuery();
       ResultSetMetaData metaData = resultSet.getMetaData();
       int columnas = metaData.getColumnCount();

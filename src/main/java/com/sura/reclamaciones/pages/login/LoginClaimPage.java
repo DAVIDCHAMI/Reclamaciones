@@ -49,7 +49,7 @@ public class LoginClaimPage extends GeneralPage {
     btnIniciarSesionDllo.click();
   }
 
-  public void inisiarSesionLAB(String usuario, String contrasena) {
+  public void iniciarSesionLAB(String usuario, String contrasena) {
     btnEmpleado.click();
     txtusuario.type(usuario);
     txtcontrasena.type(contrasena).sendKeys(Keys.ENTER);

@@ -8,6 +8,7 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
+import java.sql.SQLException;
 import net.thucydides.core.annotations.Steps;
 
 public class ReclamacionDefinition {
@@ -17,8 +18,8 @@ public class ReclamacionDefinition {
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
 
-  @Dado("^que se recibe un auto con causa de siniestro por danos$")
-  public void recibirReclamo() throws IOException {
+  @Dado("^que se tiene una poliza con las coberturas (.*)$")
+  public void recibirReclamo(String st) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionSimple"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "autoReclamacionSimple"));
@@ -28,18 +29,22 @@ public class ReclamacionDefinition {
     reclamacionStep.buscarPoliza();
   }
 
-  @Cuando("se toman los datos del siniestro")
-  public void ingresarDatosSiniestro() throws IOException {
+  @Cuando("^se genere un siniestro por la causa (.*) y la culpabilidad (.*)$")
+  public void ingresarDatosSiniestro(String causa, String culpabilidad) throws IOException {
     reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
-    reclamacionStep.editarVehiculo(reclamacionAuto.getLstReclamacionAuto());
+    reclamacionStep.editarVehiculo(reclamacionAuto.getLstReclamacionAuto(),culpabilidad);
     reclamacionStep.completarCategorizacion(reclamacionAuto.getLstReclamacionAuto());
+    reclamacionStep.diligenciarReclamacion(culpabilidad);
     reclamacionStep.finalizarReclamacion();
   }
 
-  @Entonces("^se le brindara al reclamante un numero de reclamacion$")
-  public void generarReclamacion() {
+  @Entonces(
+      "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva reserva, según la culpabilidad marcada (.*)$")
+  public void generarReclamacion(String culpabilidad) throws SQLException {
     reclamacionStep.validarReclamacion();
     reclamacionStep.visualizarResumenSiniestro();
+    reclamacionStep.consultarReclamacion();
+    reclamacionStep.consultarExposicionesyReservas(culpabilidad);
   }
 }

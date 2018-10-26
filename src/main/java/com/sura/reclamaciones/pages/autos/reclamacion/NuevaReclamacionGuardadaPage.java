@@ -18,14 +18,18 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
   private WebElementFacade lblMensajeValidar;
 
   @FindBy(
-      xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
+    xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
   )
   private WebElementFacade divNumeroReclamacion;
+
+  @FindBy(xpath = "//span[@id='TabBar:ClaimTab-btnInnerEl']")
+  private WebElementFacade spanNumeroReclamacion;
 
   public String obtenerMensajeValidador() {
     String valorMensaje;
     lblMensajeValidar.waitUntilVisible();
     valorMensaje = lblMensajeValidar.getText();
+
     return valorMensaje;
   }
 
@@ -36,9 +40,29 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
     numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     LOGGER.info(String.format("el número de reclamación generado es: %s\n", numeroReclamacion));
     GenericStep log = new GenericStep();
-    log.generarRegistro(numeroReclamacion,ConstanteGlobal.AUTOS);
-    divNumeroReclamacion.click();
+    log.generarRegistro(numeroReclamacion, ConstanteGlobal.AUTOS);
+    divNumeroReclamacion.waitUntilVisible();
     return numeroReclamacion;
   }
 
+  public void abrirReclamacion() {
+    divNumeroReclamacion.waitUntilVisible();
+    divNumeroReclamacion.click();
+  }
+
+  public String obtenerNumeroReclamacionConsultaPoliza() {
+    String numeroReclamacion;
+    spanNumeroReclamacion.waitUntilVisible();
+    numeroReclamacion = spanNumeroReclamacion.getText();
+    numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    return numeroReclamacion;
+  }
+
+  public void consultarReclamacion(String culpabilidad) {
+
+    switch (culpabilidad) {
+      case "Archivo":
+        break;
+    }
+  }
 }
