@@ -104,9 +104,7 @@ public class ConsumoServicioCreacionSiniestro {
       response = creacionSiniestroCliente.claimsResponse(parametro);
 
       LOGGER.info("Número de siniestro: " + response.getResult().getClaimNumber());
-      GenericStep genericStep = new GenericStep();
-      genericStep.generarRegistro(
-          response.getResult().getClaimNumber(), ConstanteGlobal.EMPRESARIALES);
+
       Serenity.setSessionVariable(ReclamacionConstante.NUMERO_SINIESTRO)
           .to(response.getResult().getClaimNumber());
     }
