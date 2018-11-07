@@ -1,0 +1,2 @@
+id;idFiltro;numPoliza;descripcionHechos;fechaAviso;fechaSiniestro;idAutor;causaPerdida;valorPerdida;tipoMoneda;pais;ciudad;direccion;idRiesgo;esPolizaPropiedad
+1;aviso1;030000505400;Prueba automatizada del consumo de servicio creacion siniestro empresarial;2018-08-29T14:50:53-05:00;2018-08-07T00:00:00-05:00;C71690076;incendio;5000000;cop;CO05;05001;CR043**A*019****0017*P***5;9;true
