@@ -23,7 +23,10 @@ public class ConexionBaseDatosUtil {
     try {
       Class.forName(driver).newInstance();
       conexion = DriverManager.getConnection(url, usuario, clave);
-    } catch (SQLException|IllegalAccessException|InstantiationException|ClassNotFoundException e) {
+    } catch (SQLException
+        | IllegalAccessException
+        | InstantiationException
+        | ClassNotFoundException e) {
       e.printStackTrace();
     }
     return conexion;

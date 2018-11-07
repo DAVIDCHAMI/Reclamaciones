@@ -2,11 +2,9 @@ package com.sura.reclamaciones.services;
 
 import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.service.cliente.siniestro.CreacionSiniestroCliente;
 import com.sura.service.creacionSiniestro.gen.ClaimsRequest;
 import com.sura.service.creacionSiniestro.gen.ClaimsResponse;

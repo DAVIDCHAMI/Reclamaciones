@@ -1,14 +1,12 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
-
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import java.io.IOException;
 import java.util.List;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.fluentlenium.core.annotation.Page;
