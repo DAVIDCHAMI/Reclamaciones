@@ -70,6 +70,11 @@ public class ConsumoServicioCreacionSiniestro {
 
       creacionSiniestroFactory.setPolicySystemId(lstParametroCPLine.get(i).getPolicySystemId());
 
+      creacionSiniestroFactory.setFixedPropertyIncident(
+          lstParametroCPLine.get(i).getIncidentepropiedad());
+      creacionSiniestroFactory.setPropertyContentsIncident(
+          lstParametroCPLine.get(i).getIncidenteContenido());
+
       creacionSiniestroFactory.setDescription(
           lstParametroDescription.get(i).getDescripcionHechosSiniestro());
       creacionSiniestroFactory.setIsPolicyProperty(

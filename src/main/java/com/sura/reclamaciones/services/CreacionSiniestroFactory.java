@@ -48,6 +48,8 @@ public class CreacionSiniestroFactory {
   private String documentTypeAuthor;
   private String taxIdAuthor;
   private String nameAuthor;
+  private boolean fixedPropertyIncident;
+  private boolean propertyContentsIncident;
 
   List<Object> lstVacia = new ArrayList<Object>();
 
@@ -345,6 +347,22 @@ public class CreacionSiniestroFactory {
     this.taxIdAuthor = taxIdAuthor;
   }
 
+  public boolean getFixedPropertyIncident() {
+    return fixedPropertyIncident;
+  }
+
+  public void setFixedPropertyIncident(boolean fixedPropertyIncident) {
+    this.fixedPropertyIncident = fixedPropertyIncident;
+  }
+
+  public boolean getPropertyContentsIncident() {
+    return propertyContentsIncident;
+  }
+
+  public void setPropertyContentsIncident(boolean propertyContentsIncident) {
+    this.propertyContentsIncident = propertyContentsIncident;
+  }
+
   ClaimsRequest creacionSiniestroRequestFactory() {
     ClaimsRequest crearSiniestroRequest = new ClaimsRequest();
     crearSiniestroRequest.setId(ID_SERVICIO_CLAIM);
@@ -387,8 +405,12 @@ public class CreacionSiniestroFactory {
   CPLine cpLineFactory() {
     CPLine cpLine = new CPLine();
     cpLine.setPolicySystemId("9");
-    cpLine.setFixedPropertyIncident(listFixedPropertyIncidentFactory());
-    cpLine.setPropertyContentsIncident(listPropertyContentsIncidentFactory());
+    if (fixedPropertyIncident == true) {
+      cpLine.setFixedPropertyIncident(listFixedPropertyIncidentFactory());
+    }
+    if (propertyContentsIncident == true) {
+      cpLine.setPropertyContentsIncident(listPropertyContentsIncidentFactory());
+    }
     return cpLine;
   }
 
