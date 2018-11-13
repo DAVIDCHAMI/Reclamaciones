@@ -7,33 +7,33 @@ public abstract class Reclamacion {
   private String origen;
   private String tipoPoliza;
   private String numPoliza;
-  private String lossDate;
-  private String lugar;
+  private String fechaSiniestro;
+  private String lugarSiniestro;
   private String reservaTransaccion;
-  private String notificationDate;
-  private String lossCause;
-  private String description;
-  private String authorUser;
-  private String amount;
-  private String currency;
-  private String isPolicyProperty;
+  private String fechaAvisoSiniestro;
+  private String causaSiniestro;
+  private String descripcionHechosSiniestro;
+  private String identificacionAutor;
+  private String valorPerdidaSiniestro;
+  private String tipoMonedaPoliza;
+  private String esPolizaPropiedad;
 
   public Reclamacion() {}
 
   public Reclamacion(Map<String, String> datosReclamacion) {
     this.origen = datosReclamacion.get("origen");
-    this.lossDate = datosReclamacion.get("fechaSiniestro");
+    this.fechaSiniestro = datosReclamacion.get("fechaSiniestro");
     this.tipoPoliza = datosReclamacion.get("tipoPoliza");
     this.numPoliza = datosReclamacion.get("numPoliza");
-    this.lugar = datosReclamacion.get("lugar");
+    this.lugarSiniestro = datosReclamacion.get("lugarSiniestro");
     this.reservaTransaccion = datosReclamacion.get("reservaTransaccion");
-    this.notificationDate = datosReclamacion.get("fechaAviso");
-    this.lossCause = datosReclamacion.get("causaPerdida");
-    this.description = datosReclamacion.get("descripcionHechos");
-    this.authorUser = datosReclamacion.get("idAutor");
-    this.amount = datosReclamacion.get("valorPerdida");
-    this.currency = datosReclamacion.get("tipoMoneda");
-    this.isPolicyProperty = datosReclamacion.get("esPolizaPropiedad");
+    this.fechaAvisoSiniestro = datosReclamacion.get("fechaAviso");
+    this.causaSiniestro = datosReclamacion.get("causaPerdida");
+    this.descripcionHechosSiniestro = datosReclamacion.get("descripcionHechos");
+    this.identificacionAutor = datosReclamacion.get("idAutor");
+    this.valorPerdidaSiniestro = datosReclamacion.get("valorPerdida");
+    this.tipoMonedaPoliza = datosReclamacion.get("tipoMoneda");
+    this.esPolizaPropiedad = datosReclamacion.get("esPolizaPropiedad");
   }
 
   public String getOrigen() {
@@ -49,44 +49,44 @@ public abstract class Reclamacion {
   }
 
   public String getFechaSiniestro() {
-    return lossDate;
+    return fechaSiniestro;
   }
 
-  public String getLugar() {
-    return lugar;
+  public String getLugarSiniestro() {
+    return lugarSiniestro;
   }
 
   public String getReservaTransaccion() {
     return reservaTransaccion;
   }
 
-  public String getFechaAviso() {
-    return notificationDate;
+  public String getFechaAvisoSiniestro() {
+    return fechaAvisoSiniestro;
   }
 
-  public String getCausaPerdida() {
-    return lossCause;
+  public String getCausaSiniestro() {
+    return causaSiniestro;
   }
 
-  public String getDescripcionHechos() {
-    return description;
+  public String getDescripcionHechosSiniestro() {
+    return descripcionHechosSiniestro;
   }
 
-  public String getIdAutor() {
-    return authorUser;
+  public String getIdentificacionAutor() {
+    return identificacionAutor;
   }
 
-  public Integer getAmount() {
-    int Amount = Integer.parseInt(amount);
-    return Amount;
+  public Integer getValorPerdidaSiniestro() {
+    int valorPerdida = Integer.parseInt(valorPerdidaSiniestro);
+    return valorPerdida;
   }
 
-  public String getCurrency() {
-    return currency;
+  public String getTipoMonedaPoliza() {
+    return tipoMonedaPoliza;
   }
 
   public boolean getIsPolicyProperty() {
-    boolean IsPolicyProperty = Boolean.parseBoolean(isPolicyProperty);
+    boolean IsPolicyProperty = Boolean.parseBoolean(esPolizaPropiedad);
     return IsPolicyProperty;
   }
 }

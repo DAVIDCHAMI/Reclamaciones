@@ -35,19 +35,22 @@ public class ConsumoServicioCreacionSiniestro {
 
     for (int i = 0; i < lstSiniestroParam.size(); i++) {
       creacionSiniestroFactory.setPolicyNumber(lstSiniestroParam.get(i).getNumPoliza());
-      creacionSiniestroFactory.setDescriptionLoss(lstSiniestroParam.get(i).getDescripcionHechos());
-      creacionSiniestroFactory.setNotificationDate(lstSiniestroParam.get(i).getFechaAviso());
+      creacionSiniestroFactory.setDescriptionLoss(
+          lstSiniestroParam.get(i).getDescripcionHechosSiniestro());
+      creacionSiniestroFactory.setNotificationDate(
+          lstSiniestroParam.get(i).getFechaAvisoSiniestro());
       creacionSiniestroFactory.setLossDate(lstSiniestroParam.get(i).getFechaSiniestro());
-      creacionSiniestroFactory.setAuthorUser(lstSiniestroParam.get(i).getIdAutor());
-      creacionSiniestroFactory.setLossCause(lstSiniestroParam.get(i).getCausaPerdida());
+      creacionSiniestroFactory.setAuthorUser(lstSiniestroParam.get(i).getIdentificacionAutor());
+      creacionSiniestroFactory.setLossCause(lstSiniestroParam.get(i).getCausaSiniestro());
 
       creacionSiniestroFactory.setDocumentTypeAuthor(lstParametroAuthor.get(i).getTipoDocumento());
       creacionSiniestroFactory.setTaxIdAuthor(lstParametroAuthor.get(i).getNumDocumento());
       creacionSiniestroFactory.setNameAuthor(lstParametroAuthor.get(i).getPrimerNombre());
 
-      creacionSiniestroFactory.setAmountLossEstimate(lstParametroLossEstimate.get(i).getAmount());
+      creacionSiniestroFactory.setAmountLossEstimate(
+          lstParametroLossEstimate.get(i).getValorPerdidaSiniestro());
       creacionSiniestroFactory.setCurrencyLossEstimate(
-          lstParametroLossEstimate.get(i).getCurrency());
+          lstParametroLossEstimate.get(i).getTipoMonedaPoliza());
 
       creacionSiniestroFactory.setDocumentTypeMainContact(
           lstParametroMainContact.get(i).getTipoDocumento());
@@ -68,7 +71,7 @@ public class ConsumoServicioCreacionSiniestro {
       creacionSiniestroFactory.setPolicySystemId(lstParametroCPLine.get(i).getPolicySystemId());
 
       creacionSiniestroFactory.setDescription(
-          lstParametroDescription.get(i).getDescripcionHechos());
+          lstParametroDescription.get(i).getDescripcionHechosSiniestro());
       creacionSiniestroFactory.setIsPolicyProperty(
           lstParametroIsPolicyProperty.get(i).getIsPolicyProperty());
 
@@ -88,10 +91,10 @@ public class ConsumoServicioCreacionSiniestro {
       creacionSiniestroFactory.setCityAnt(lstParametroPrimaryAddress.get(i).getCiudad());
 
       creacionSiniestroFactory.setPropertyDesc(
-          lstParametroPropertyDesc.get(i).getDescripcionHechos());
+          lstParametroPropertyDesc.get(i).getDescripcionHechosSiniestro());
 
       creacionSiniestroFactory.setDescription(
-          lstParametroDescription.get(i).getDescripcionHechos());
+          lstParametroDescription.get(i).getDescripcionHechosSiniestro());
 
       creacionSiniestroFactory.setStateLossLocation(lstParametroLossLocation.get(i).getPais());
       creacionSiniestroFactory.setAddressLine1LossLocation(
