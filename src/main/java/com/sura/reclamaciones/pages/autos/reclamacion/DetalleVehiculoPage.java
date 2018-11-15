@@ -1,85 +1,150 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
+import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+
+import java.util.List;
 
 public class DetalleVehiculoPage extends GeneralPage {
 
-  CrearServicioPage crearServicioPage;
+    CrearServicioPage crearServicioPage;
 
-  @FindBy(
-    xpath =
-        "//span[@class='x-btn-button']/span[@class='x-btn-inner x-btn-inner-center' and contains(.,'conductor')]"
-  )
-  WebElementFacade btnAgregarConductor;
+    @FindBy(xpath ="//span[@class='x-btn-button']/span[@class='x-btn-inner x-btn-inner-center' and contains(.,'conductor')]")
+    WebElementFacade btnAgregarConductor;
 
-  @FindBy(
-    xpath =
-        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:ClaimContactPerson-inputEl']/../following-sibling::td"
-  )
-  WebElementFacade cmbPersona;
+    @FindBy(xpath ="//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:ClaimContactPerson-inputEl']/../following-sibling::td")
+    WebElementFacade cmbPersona;
 
-  @FindBy(
-    xpath =
-        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]//ul/li/following-sibling::li"
-  )
-  WebElementFacade lstNombrePersona;
+    @FindBy(xpath ="//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]//ul/li/following-sibling::li")
+    WebElementFacade lstNombrePersona;
 
-  @FindBy(xpath = "//input[@class='x-form-field x-form-checkbox x-form-cb']")
-  WebElementFacade chkServicio;
+    @FindBy(xpath = "//input[@class='x-form-field x-form-checkbox x-form-cb']")
+    WebElementFacade chkServicio;
 
-  @FindBy(
-    xpath = "//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Agregar Taller')]"
-  )
-  WebElementFacade btnAgregarTaller;
+    @FindBy(xpath = "//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Agregar Taller')]")
+    WebElementFacade btnAgregarTaller;
 
-  @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
-  WebElementFacade btnBuscarProveedor;
+    @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
+    WebElementFacade btnBuscarProveedor;
 
-  public DetalleVehiculoPage(WebDriver wdriver) {
-    super(wdriver);
-  }
+    @FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleDetailInputSet:Vehicle_LicensePlate-inputEl")
+    WebElementFacade txtPlaca;
 
-  public void agregarConductor() {
-    btnAgregarConductor.waitUntilVisible().click();
-    seleccionarConductor();
-  }
+    @FindBy(xpath = "//td[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:DocumentType_Ext-inputCell']//input")
+    WebElementFacade cmbTipoDocumento;
 
-  private void seleccionarConductor() {
-    cmbPersona.waitUntilVisible().click();
-    lstNombrePersona.click();
-    realizarEsperaCarga();
-    aceptarOpcion();
-    realizarEsperaCarga();
-  }
+    @FindBy(xpath = "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:TaxID-inputEl']")
+    WebElementFacade txtNumeroDocumento;
 
-  public void seleccionarTaller(String taller) {
-    seleccionarServicios();
-    agregarTaller();
-    buscarProveedor();
-    crearServicioPage.seleccionarProveedor(taller);
-    realizarEsperaCarga();
-    aceptarOpcion();
-    realizarEsperaCarga();
-  }
+    @FindBy(xpath = "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    WebElementFacade txtPrimerNombre;
 
-  private void buscarProveedor() {
-    btnBuscarProveedor.waitUntilVisible().click();
-    realizarEsperaCarga();
-  }
+    @FindBy(xpath = "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
+    WebElementFacade txtPrimerApellido;
 
-  private void agregarTaller() {
-    btnAgregarTaller.waitUntilVisible().click();
-  }
+    @FindBy(xpath = "//td[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:State-inputCell']//input")
+    WebElementFacade cmbDepartamento;
 
-  private void seleccionarServicios() {
-    chkServicio.waitUntilVisible().click();
-  }
+    @FindBy(xpath = "//td[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Sura_Colombian_City-inputCell']//input")
+    WebElementFacade cmbCiudad;
 
-  public void volverPasoAnterior() {
-    aceptarOpcion();
-    realizarEsperaCarga();
-  }
+    @FindBy(xpath = "//td[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_AddressType-inputCell']//input")
+    WebElementFacade cmbTipoDireccion;
+
+    @FindBy(xpath = "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl']")
+    WebElementFacade txtDireccion;
+
+    @FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleDetailInputSet:fasecoldaGet-btnInnerEl")
+    WebElementFacade btnRecuperarInformacion;
+
+    public DetalleVehiculoPage(WebDriver wdriver) {
+        super(wdriver);
+    }
+
+    public void agregarConductor() {
+        btnAgregarConductor.waitUntilVisible().click();
+        seleccionarConductor();
+    }
+
+    public void agregarTerceroConductor(List<ExposicionVehiculoTercero> datosExposicionTercero) {
+        datosExposicionTercero.forEach(
+                dato -> {
+                    btnAgregarConductor.waitUntilVisible().click();
+                    cmbTipoDocumento.clear();
+                    cmbTipoDocumento.sendKeys(dato.getTipoDocumento());
+                    cmbTipoDocumento.sendKeys(Keys.ENTER);
+                    realizarEsperaCarga();
+                    txtNumeroDocumento.sendKeys(dato.getNumeroDocumentoConductor());
+                    txtPrimerNombre.sendKeys(dato.getPrimerNombre());
+                    txtPrimerApellido.sendKeys(dato.getPrimerApellido());
+                    cmbDepartamento.clear();
+                    cmbDepartamento.sendKeys(dato.getDepartamento());
+                    cmbDepartamento.sendKeys(Keys.ENTER);
+                    realizarEsperaCarga();
+                    cmbCiudad.clear();
+                    cmbCiudad.sendKeys(dato.getCiudad());
+                    cmbCiudad.sendKeys(Keys.ENTER);
+                    realizarEsperaCarga();
+                    txtDireccion.sendKeys(dato.getDireccion());
+                    realizarEsperaCarga();
+                    cmbTipoDireccion.clear();
+                    cmbTipoDireccion.sendKeys(dato.getTipoDireccion());
+                    cmbTipoDireccion.sendKeys(Keys.ENTER);
+                    realizarEsperaCarga();
+                    aceptarOpcion();
+                    realizarEsperaCarga();
+                }
+        );
+    }
+
+    private void seleccionarConductor() {
+        cmbPersona.waitUntilVisible().click();
+        lstNombrePersona.click();
+        realizarEsperaCarga();
+        aceptarOpcion();
+        realizarEsperaCarga();
+    }
+
+    public void seleccionarTaller(String taller) {
+        seleccionarServicios();
+        agregarTaller();
+        buscarProveedor();
+        realizarEsperaCarga();
+        crearServicioPage.seleccionarProveedor(taller);
+        realizarEsperaCarga();
+        aceptarOpcion();
+        realizarEsperaCarga();
+    }
+
+    private void buscarProveedor() {
+        btnBuscarProveedor.waitUntilVisible().click();
+        realizarEsperaCarga();
+    }
+
+    public void ingresarVehiculoTercero(List<ExposicionVehiculoTercero> datosExposicionTercero) {
+        datosExposicionTercero.forEach(
+                dato -> {
+                    txtPlaca.sendKeys(dato.getPlacaTercero());
+                    realizarEsperaCarga();
+                    btnRecuperarInformacion.waitUntilVisible().click();
+                    realizarEsperaCarga();
+                });
+    }
+
+    private void agregarTaller() {
+        btnAgregarTaller.waitUntilVisible().click();
+    }
+
+    private void seleccionarServicios() {
+        chkServicio.waitUntilVisible().click();
+    }
+
+    public void volverPasoAnterior() {
+        aceptarOpcion();
+        realizarEsperaCarga();
+    }
 }

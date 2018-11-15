@@ -22,7 +22,7 @@ public class LoginClaimPage extends GeneralPage {
     super(wdriver);
   }
 
-  @FindBy(id = "idTabEmpleado")
+  @FindBy(id = "ctl00_ContentMain_idTabEmpleado")
   private WebElementFacade btnEmpleado;
 
   @FindBy(id = "suranetName")

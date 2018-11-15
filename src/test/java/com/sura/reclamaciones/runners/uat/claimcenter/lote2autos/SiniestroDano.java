@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
   features = "src/test/resources/features/autos/siniestro_dano.feature",
-  glue = {"com.sura.reclamaciones.definitions"}
+          glue = {"com.sura.reclamaciones.definitions"},
+        tags = {"@pruebaRegresion"}
 )
 public class SiniestroDano {}

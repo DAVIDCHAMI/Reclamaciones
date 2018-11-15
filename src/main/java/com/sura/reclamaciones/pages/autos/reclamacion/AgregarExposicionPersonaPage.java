@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
-public class AgregarExposicionPersona extends GeneralPage {
+public class AgregarExposicionPersonaPage extends GeneralPage {
 
     @FindBy(xpath = "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_true-inputEl']")
     WebElementFacade chkLesiones;
@@ -60,7 +60,7 @@ public class AgregarExposicionPersona extends GeneralPage {
     @FindBy(xpath = "//td[@class='x-grid-cell x-grid-td x-grid-cell-headerId-gridcolumn-1552  g-cell-edit']")
     WebElementFacade btnA;
 
-    public AgregarExposicionPersona(WebDriver wdriver) {
+    public AgregarExposicionPersonaPage(WebDriver wdriver) {
         super(wdriver);
     }
 
@@ -68,8 +68,6 @@ public class AgregarExposicionPersona extends GeneralPage {
         datosExposicionPersona.forEach(
                 dato -> {
                     btnAgregarPeaton.waitUntilVisible().click();
-                    cmbTipoDocumento.click();
-                    seleccionarOpcionCombobox(dato.getTipoDocumento());
                     cmbTipoDocumento.clear();
                     cmbTipoDocumento.sendKeys(dato.getTipoDocumento());
                     cmbTipoDocumento.sendKeys(Keys.ENTER);

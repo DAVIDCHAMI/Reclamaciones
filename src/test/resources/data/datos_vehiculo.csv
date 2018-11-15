@@ -1,2 +1,5 @@
 id;idFiltro;placa;clase;modelo;marca;linea;motor;chasis
 1;autoReclamacionSimple;MRT001;vehiculo;Mazda;nose;fghjiuyhgb;iuhhedsdds
+2;reclamacionArchivo;ANA222;vehiculo;Mazda;nose;H8AUSNAKAJA;9AMUDNAOMAYUQ7AN
+3;reclamacionSubrogacion;ANA999;vehiculo;Mazda;nose;H8AUSNAKAJA;9AMUDNAOMAYUQ7AN
+4;reclamacionSoloRC;OIY765;vehiculo;Mazda;nose;H8AUSNAKAJA;9AMUDNAOMAYUQ7AN

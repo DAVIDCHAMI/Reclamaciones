@@ -79,4 +79,27 @@ public class ResumenReclamacionPage extends GeneralPage {
     }
     return validarReservaTransaccion;
   }
+
+  public String validarExposicionAutos() {
+    String validadorExposicion;
+    String validador;
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
+    if (lnkTipoExposicion.isVisible()) {
+      validador = lnkTipoExposicion.waitUntilVisible().getText();
+      switch (validador) {
+        case ReclamacionConstante.EXPOSICION_CONTENIDO:
+        case ReclamacionConstante.EXPOSICION_PROPIEDAD:
+        case ReclamacionConstante.EXPOSICION_GENERAL:
+          validadorExposicion = ConstanteGlobal.SI;
+          break;
+        default:
+          validadorExposicion = ConstanteGlobal.NO;
+          break;
+      }
+    } else {
+      validadorExposicion = ConstanteGlobal.NO;
+    }
+    return validadorExposicion;
+  }
+
 }

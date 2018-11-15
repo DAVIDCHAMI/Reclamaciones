@@ -1,2 +1,2 @@
-id;idFiltro;placaTercero;tipoDocumento;numeroDocumentoConductor;primerNombre;primerApellido;departamento;ciudad;direccion;tipoDireccion;taller;numeroDocumentoPeaton;primerNombrePeaton;PrimerApellidoPeaton;direccionPeaton;gravedadLesion;describirLesiones;tipoLesion;detallesTipoLesion;zonaCuerpo;parteCuerpo
-1;reclamacionTercero;CUS165;CEDULA DE CIUDADANIA;1027882995;Camilo;Giraldo;Antioquia;Medellin;Cl 55 N 78 18 Int 303;DIRECCION DE RESIDENCIA;ANDAR S.A.;1037882995;Yessica;Paternina;Cra 55 N 74 85;Leve;Lesión de tipo contusión en el craneo y con exposición de músculo facial;Lesión específica;Contusión;Cabeza;Varias lesiones en la cabeza
+id;idFiltro;placaTercero;tipoDocumento;numeroDocumentoConductor;primerNombre;primerApellido;departamento;ciudad;direccion;tipoDireccion;taller
+1;exposicionRcVehiculo;CUS165;CEDULA DE CIUDADANIA;1027882995;Camilo;Giraldo;Antioquia;Medellin;Cl 55 N 78 18 Int 303;DIRECCION DE RESIDENCIA;ANDAR S.A.

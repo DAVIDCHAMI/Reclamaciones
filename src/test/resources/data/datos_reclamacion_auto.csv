@@ -1,3 +1,5 @@
 id;idFiltro;fechaSiniestro;relacionAsegurado;lugar;sucedido;causa;origen;valorPretension;vehiculoRetenido;autoridad;taller;culpabilidad;mensajeValidador
-1;reclamacionSimple;Hoy;Él mismo;Medellin;ejemplouno;Colisión con vehículo;Exceso de Velocidad;123145;;Nacional;ANDAR S.A.;Archivo;Nueva reclamación guardada
-2;blasf;fsdf;asd;as;dasfd;;;
+1;reclamacionRC;Hoy;Él mismo;Medellin;ejemplouno;Colisión con vehículo;Exceso de Velocidad;123145;;Nacional;ANDAR S.A.;Responsabilidad civil;Nueva reclamación guardada
+2;reclamacionArchivo;Hoy;Él mismo;Medellin;ejemplouno;Amit, Disturbios o desorden civil;Actos vandalicos o hurto;3950000;;Municipal;ANDAR S.A.;Archivo;Nueva reclamación guardada
+3;reclamacionSubrogacion;Hoy;Él mismo;Medellin;ejemplouno;Colisión con bicicleta;Embriaguez;2500000;;Tráfico;ANDAR S.A.;Subrogación;Nueva reclamación guardada
+4;reclamacionSoloRC;Hoy;Él mismo;Medellin;ejemplouno;Colisión con vehículo;Embriaguez;5500000;;Tráfico;ANDAR S.A.;Solo RC;Nueva reclamación guardada

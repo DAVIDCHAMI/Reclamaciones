@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExposicionTerceroAutos {
+public class ExposicionVehiculoTercero {
 
     private String tipoDocumento;
     private String numeroDocumentoConductor;
@@ -16,59 +16,9 @@ public class ExposicionTerceroAutos {
     private String tipoDireccion;
     private String placaTercero;
     private String taller;
-    private String numeroDocumentoPeaton;
-    private String primerNombrePeaton;
-    private String PrimerApellidoPeaton;
-    private String direccionPeaton;
-    private String gravedadLesion;
-    private String tipoLesion;
-    private String detallesTipoLesion;
-    private String zonaCuerpo;
-    private String parteCuerpo;
-    private String describirLesiones;
-    private List<ExposicionTerceroAutos> lstExposicionTercero = new ArrayList<>();
 
-    public String getGravedadLesion() {
-        return gravedadLesion;
-    }
-
-    public String getdescribirLesiones() {
-        return describirLesiones;
-    }
-
-    public String getTipoLesion() {
-        return tipoLesion;
-    }
-
-    public String getDetallesTipoLesion() {
-        return detallesTipoLesion;
-    }
-
-    public String getZonaCuerpo() {
-        return zonaCuerpo;
-    }
-
-    public String getParteCuerpo() {
-        return parteCuerpo;
-    }
-
-    public String getNumeroDocumentoPeaton() {
-        return numeroDocumentoPeaton;
-    }
-
-    public String getPrimerNombrePeaton() {
-        return primerNombrePeaton;
-    }
-
-    public String getPrimerApellidoPeaton() {
-        return PrimerApellidoPeaton;
-    }
-
-    public String getDireccionPeaton() {
-        return direccionPeaton;
-    }
-
-    public List<ExposicionTerceroAutos> getLstExposicionTerceros() {
+    private List<ExposicionVehiculoTercero> lstExposicionTercero = new ArrayList<>();
+    public List<ExposicionVehiculoTercero> getLstExposicionTerceros() {
         return lstExposicionTercero;
     }
     public String getTaller() {
@@ -145,11 +95,11 @@ public class ExposicionTerceroAutos {
     }
 
 
-    public ExposicionTerceroAutos() {
+    public ExposicionVehiculoTercero() {
         super();
     }
 
-    private ExposicionTerceroAutos(Map<String, String> datosExposicionTercero) {
+    private ExposicionVehiculoTercero(Map<String, String> datosExposicionTercero) {
         this.tipoDocumento = datosExposicionTercero.get("tipoDocumento");
         this.numeroDocumentoConductor = datosExposicionTercero.get("numeroDocumentoConductor");
         this.primerNombre = datosExposicionTercero.get("primerNombre");
@@ -160,25 +110,15 @@ public class ExposicionTerceroAutos {
         this.tipoDireccion = datosExposicionTercero.get("tipoDireccion");
         this.placaTercero = datosExposicionTercero.get("placaTercero");
         this.taller = datosExposicionTercero.get("taller");
-        this.numeroDocumentoPeaton = datosExposicionTercero.get("numeroDocumentoPeaton");
-        this.primerNombrePeaton = datosExposicionTercero.get("primerNombrePeaton");
-        this.PrimerApellidoPeaton = datosExposicionTercero.get("PrimerApellidoPeaton");
-        this.direccionPeaton = datosExposicionTercero.get("direccionPeaton");
-        this.gravedadLesion = datosExposicionTercero.get("gravedadLesion");
-        this.describirLesiones = datosExposicionTercero.get("describirLesiones");
-        this.tipoLesion = datosExposicionTercero.get("tipoLesion");
-        this.detallesTipoLesion = datosExposicionTercero.get("detallesTipoLesion");
-        this.zonaCuerpo = datosExposicionTercero.get("zonaCuerpo");
-        this.parteCuerpo = datosExposicionTercero.get("parteCuerpo");
             }
 
-    public ExposicionTerceroAutos(List<Map<String, String>> datosTerceroAuto) {
+    public ExposicionVehiculoTercero(List<Map<String, String>> datosTerceroAuto) {
         asignarDatos(datosTerceroAuto);
     }
 
     private void asignarDatos(List<Map<String, String>> datosTerceroAuto) {
         for (Map<String, String> dato : datosTerceroAuto) {
-            lstExposicionTercero.add(new ExposicionTerceroAutos(dato));
+            lstExposicionTercero.add(new ExposicionVehiculoTercero(dato));
         }
     }
 
