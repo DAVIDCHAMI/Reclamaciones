@@ -404,7 +404,7 @@ public class CreacionSiniestroFactory {
 
   CPLine cpLineFactory() {
     CPLine cpLine = new CPLine();
-    cpLine.setPolicySystemId("9");
+    cpLine.setPolicySystemId(getPolicySystemId());
     if (fixedPropertyIncident == true) {
       cpLine.setFixedPropertyIncident(listFixedPropertyIncidentFactory());
     }
