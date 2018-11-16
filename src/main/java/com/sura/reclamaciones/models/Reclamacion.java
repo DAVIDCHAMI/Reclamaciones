@@ -85,6 +85,6 @@ public abstract class Reclamacion {
   }
 
   public boolean getIsPolicyProperty() {
-    return  Boolean.parseBoolean(esPolizaPropiedad);
+    return Boolean.parseBoolean(esPolizaPropiedad);
   }
 }

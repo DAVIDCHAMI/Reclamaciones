@@ -18,7 +18,7 @@ public class ReclamacionEmpresarial extends Reclamacion {
   private String tipoIncidente;
   private String policySystemId;
   private String incidenteContenido;
-  private String incidentepropiedad;
+  private String incidentePropiedad;
 
   public ReclamacionEmpresarial() {
     super();
@@ -37,7 +37,7 @@ public class ReclamacionEmpresarial extends Reclamacion {
     this.tipoIncidente = datosReclamacionEmp.get("tipoIncidente");
     this.policySystemId = datosReclamacionEmp.get("idRiesgo");
     this.incidenteContenido = datosReclamacionEmp.get("incidenteContenido");
-    this.incidentepropiedad = datosReclamacionEmp.get("incidentepropiedad");
+    this.incidentePropiedad = datosReclamacionEmp.get("incidentePropiedad");
   }
 
   public ReclamacionEmpresarial(List<Map<String, String>> datosReclamacionesEmp) {
@@ -85,13 +85,11 @@ public class ReclamacionEmpresarial extends Reclamacion {
   }
 
   public boolean getIncidenteContenido() {
-    boolean IncidenteContenido = Boolean.parseBoolean(incidenteContenido);
-    return IncidenteContenido;
+    return Boolean.parseBoolean(incidenteContenido);
   }
 
-  public boolean getIncidentepropiedad() {
-    boolean IncidentePropiedad = Boolean.parseBoolean(incidentepropiedad);
-    return IncidentePropiedad;
+  public boolean getIncidentePropiedad() {
+    return Boolean.parseBoolean(incidentePropiedad);
   }
 
   public List<ReclamacionEmpresarial> getLstReclamo() {

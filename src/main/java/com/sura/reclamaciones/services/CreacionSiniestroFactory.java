@@ -51,8 +51,6 @@ public class CreacionSiniestroFactory {
   private boolean fixedPropertyIncident;
   private boolean propertyContentsIncident;
 
-  List<Object> lstVacia = new ArrayList<Object>();
-
   public CreacionSiniestroFactory() {}
 
   public String getLossDate() {
