@@ -19,16 +19,11 @@ public class NuevaReclamacionAtrEmpresarialStep {
   InformacionBasicaPage informacionBasicaPage;
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-  slbProducto
-
-  OTROS PRODUCTOS
-
-
-  images/Bot_Aceptar.jpg
 
 
   public void accederAvisoEmpresa() {
     asistenteVirtualAtrPage.accederHerramientaAvisoEmpresa();
+    asistenteVirtualAtrPage.seleccionarPlanListaProducto();
   }
 
   public void buscarPolizaAtr(List<ReclamacionEmpresarial> datosPolizaEmpresarial) {

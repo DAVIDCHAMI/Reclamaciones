@@ -13,8 +13,5 @@ Característica: Notificacion de aviso de una reclamacion desde ATR
     Entonces se obtiene una reclamacion que podrá ser consultada en ClaimCenter
 
     Ejemplos:
-      | Tipo y Cobertura                                     | Causa                         | Valor de Pretensión | Categoria de costo |
-      | Multiriesgo corporativo con cobertura basica         | Rotura de vidrios             | 2000000             | Propiedad          |
-      | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                | 200000              | ""                 |
-      | Plan Empresario Sura con Amit                        | Amit/ huelga, conmoción civil | 4000000             | Contenido          |
-      | Incendio con cobertura Daños materiales              | Daños por agua                | 3000000             | Contenido          |
+      | Tipo y Cobertura | Causa             | Valor de Pretensión | Categoria de costo |
+      | ATR              | Rotura de vidrios | 2000000             | Propiedad          |

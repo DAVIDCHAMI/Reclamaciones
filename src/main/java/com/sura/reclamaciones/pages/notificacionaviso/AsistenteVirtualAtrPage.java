@@ -17,6 +17,19 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   @FindBy(xpath = "//div[@class='ig_ac11e92_r5 rootMenu rootMenu nodeSubMenu nodeSubMenuSelected']/span")
   private WebElementFacade lstAsistenteVirtual;
 
+  @FindBy(id = "slbProducto")
+  private WebElementFacade lstProducto;
+
+  @FindBy(xpath = "//option[contains(text(),'AGRO')]")
+  private WebElementFacade mnuOtroProducto;
+
+  @FindBy(xpath = "//img[@src='images/Bot_Aceptar.jpg']")
+  private WebElementFacade btnAceptar;
+
+  @FindBy(xpath = "//div[@igtag='/modules/serviciosexternos/displayservice.aspx?id=RECLAMACIONESEMPRESARIALESASESOR&TIPO=RAMOS GENERALES']/span")
+  private WebElementFacade mnuReclamacionEmpresa;
+
+
   public AsistenteVirtualAtrPage(WebDriver driver) {
     super(driver);
   }
@@ -30,8 +43,16 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
     auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Reclamaciones");
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Ingresar aviso  de Empresas");
-    $(auxMnuAsistenteVirtual).waitUntilVisible().click();
+    //auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Empresas");
+    //$(auxMnuAsistenteVirtual).waitUntilVisible().click();
+    mnuReclamacionEmpresa.waitUntilVisible().click();
+  }
+
+  public void seleccionarPlanListaProducto(){
+    enfocarVentana();
+    lstProducto.waitUntilVisible().click();
+    mnuOtroProducto.waitUntilVisible().click();
+    btnAceptar.waitUntilVisible().click();
   }
 
 }

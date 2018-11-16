@@ -131,9 +131,9 @@ public class InformacionBasicaPage extends GeneralPage {
 
   public void seleccionarFechaAviso(String fechaAviso){
     //2018/11/15
-   //Date date = new Date();
-   //DateFormat horaFormateada = new SimpleDateFormat("yyyy/MM/dd");
-   //String fechaActual=horaFormateada.format(date);
+  // Date date = new Date();
+  // DateFormat horaFormateada = new SimpleDateFormat("yyyy/MM/dd");
+  // String fechaActual=horaFormateada.format(date);
     String dia = fechaAviso.substring(8,9);
     calendarioFechaAviso.waitUntilVisible().click();
     String auxIndicadorAnioMes = indicadorAnioMes.getText();
