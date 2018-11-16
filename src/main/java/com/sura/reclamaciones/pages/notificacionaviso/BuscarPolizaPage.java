@@ -58,6 +58,22 @@ public class BuscarPolizaPage extends GeneralPage {
   )
   private WebElementFacade btnPoliza;
 
+  @FindBy(id = "snfPolizaInformacionAsegurado")
+  private WebElementFacade txtNumeroPolizaAtr;
+
+  @FindBy(id = "ramoInformacionAsegurado")
+  private WebElementFacade txtRamoPoliza;
+
+  @FindBy(id = "lnkConsultarAseguradoInformacionAsegurado")
+  private WebElementFacade btnConsultarPolizaAtr;
+
+  @FindBy(className = "gwt-RadioButton")
+  private WebElementFacade rbtRiesgoAtr;
+
+
+
+
+
   public BuscarPolizaPage(WebDriver driver) {
     super(driver);
   }
@@ -113,4 +129,17 @@ public class BuscarPolizaPage extends GeneralPage {
       realizarEsperaCarga();
     }
   }
+
+  public void consultarPolizaAtr(String ramoPolizaAtr, String numPolizaAtr){
+    enfocarVentana();
+    txtRamoPoliza.waitUntilVisible().type(ramoPolizaAtr);
+    txtNumeroPolizaAtr.waitUntilVisible().type(numPolizaAtr);
+    btnConsultarPolizaAtr.waitUntilVisible().click();
+  }
+
+  public void seleccionarRiesgoAtr(){
+    rbtRiesgoAtr.waitUntilVisible().click();
+  }
+
+
 }

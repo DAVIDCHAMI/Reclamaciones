@@ -206,4 +206,11 @@ public class GeneralPage extends PageObject {
             By.xpath(String.format(strXpathElementoTabla, strIdentificadorFila)));
     return lstFila;
   }
+
+  public void enfocarVentana(){
+    for (String ventana : driver.getWindowHandles()) {
+      System.out.println(ventana);
+      driver.switchTo().window(ventana);
+    }
+  }
 }

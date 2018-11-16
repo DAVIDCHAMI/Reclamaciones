@@ -17,17 +17,13 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   @FindBy(xpath = "//div[@class='ig_ac11e92_r5 rootMenu rootMenu nodeSubMenu nodeSubMenuSelected']/span")
   private WebElementFacade lstAsistenteVirtual;
 
-
-
-
-
-
   public AsistenteVirtualAtrPage(WebDriver driver) {
     super(driver);
   }
 
   public void accederHerramientaAvisoEmpresa(){
     bntAsistenteVirtual.waitUntilVisible().click();
+    enfocarVentana();
     auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Asistente virtual");
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
     auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Herramientas");
