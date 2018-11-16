@@ -34,7 +34,7 @@ public class ConsumoServicioCreacionSiniestroStep {
       new ConsumoServicioCreacionSiniestro();
 
   @Step
-  public void siniestrar() {
+  public void siniestrarPolizaEmpresarialAtr() {
     consumoServicioCreacionSiniestro.siniestrarPoliza(
         lstSiniestroParam,
         lstParametroLossEstimate,
