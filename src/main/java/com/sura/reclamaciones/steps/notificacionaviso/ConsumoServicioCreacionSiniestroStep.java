@@ -13,25 +13,24 @@ import org.fluentlenium.core.annotation.Page;
 
 public class ConsumoServicioCreacionSiniestroStep {
 
-  List<ReclamacionEmpresarial>
-      lstParametroDescription,
-      lstParametroIsPolicyProperty,
-      lstParametroPropertyDesc,
-      lstSiniestroParam,
-      lstParametroLossEstimate,
-      lstParametroProperty,
-      lstParametroPrimaryAddress,
-      lstParametroLossLocation,
-      lstParametroCPLine;
-  List<Persona> lstParametroAuthor, lstParametroMainContact, lstParametroClaimAnt;
+  List<ReclamacionEmpresarial> lstParametroDescription;
+  List<ReclamacionEmpresarial> lstParametroIsPolicyProperty;
+  List<ReclamacionEmpresarial> lstParametroPropertyDesc;
+  List<ReclamacionEmpresarial> lstSiniestroParam;
+  List<ReclamacionEmpresarial> lstParametroLossEstimate;
+  List<ReclamacionEmpresarial> lstParametroProperty;
+  List<ReclamacionEmpresarial> lstParametroPrimaryAddress;
+  List<ReclamacionEmpresarial> lstParametroLossLocation;
+  List<ReclamacionEmpresarial> lstParametroCPLine;
+  List<Persona> lstParametroAuthor;
+  List<Persona> lstParametroMainContact;
+  List<Persona> lstParametroClaimAnt;
   ReclamacionEmpresarial parametroSiniestro = new ReclamacionEmpresarial();
   Persona parametroPersona = new Persona();
 
-  @Steps GenericStep genericStep = new GenericStep();
+  @Steps GenericStep genericStep;
 
-  @Page
-  ConsumoServicioCreacionSiniestro consumoServicioCreacionSiniestro =
-      new ConsumoServicioCreacionSiniestro();
+  @Page ConsumoServicioCreacionSiniestro consumoServicioCreacionSiniestro;
 
   @Step
   public void siniestrarPolizaEmpresarialAtr() {
