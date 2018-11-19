@@ -8,8 +8,6 @@ import com.sura.reclamaciones.steps.generics.GenericStep;
 import java.io.IOException;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.Steps;
-import org.fluentlenium.core.annotation.Page;
 
 public class ConsumoServicioCreacionSiniestroStep {
 
@@ -28,9 +26,10 @@ public class ConsumoServicioCreacionSiniestroStep {
   ReclamacionEmpresarial parametroSiniestro = new ReclamacionEmpresarial();
   Persona parametroPersona = new Persona();
 
-  @Steps GenericStep genericStep;
+  GenericStep genericStep = new GenericStep();
 
-  @Page ConsumoServicioCreacionSiniestro consumoServicioCreacionSiniestro;
+  ConsumoServicioCreacionSiniestro consumoServicioCreacionSiniestro =
+      new ConsumoServicioCreacionSiniestro();
 
   @Step
   public void siniestrarPolizaEmpresarialAtr() {
@@ -49,6 +48,7 @@ public class ConsumoServicioCreacionSiniestroStep {
         lstParametroClaimAnt);
   }
 
+  @Step
   public void asignarValoresSiniestro(String filtroSiniestroCsv) throws IOException {
     parametroSiniestro =
         new ReclamacionEmpresarial(

@@ -5,11 +5,11 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
+import net.thucydides.core.annotations.Steps;
 
 public class ConsumoCreacionSiniestroEmpresarialDefinition {
 
-  ConsumoServicioCreacionSiniestroStep consumoServicioCreacionSiniestroStep =
-      new ConsumoServicioCreacionSiniestroStep();
+  @Steps ConsumoServicioCreacionSiniestroStep consumoServicioCreacionSiniestroStep;
 
   @Dado("^que se recibe un aviso (.*) de una reclamacion$")
   public void parametrizarValoresSiniestro(String filtroCsv) throws IOException {
