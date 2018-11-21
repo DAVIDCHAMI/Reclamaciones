@@ -11,10 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-
-import groovy.transform.stc.FirstParam;
 import net.thucydides.core.annotations.Steps;
-import org.apache.tools.ant.types.resources.First;
 
 public class ReclamacionDefinition {
 
@@ -25,12 +22,13 @@ public class ReclamacionDefinition {
   private ExposicionVehiculoTercero exposicionVehiculoTercero;
   private ExposicionPersona exposicionPersona;
   private LineaReservaValorReservaAutos lineaReservaValorReservaAutos;
+  private ExposicionAutomaticaReservaAutomatica exposicionAutomaticaReservaAutomatica;
   private List<String> coberturas;
   private Map<String, String> lstCausaCulpabilidad;
 
   @Dado("^que se tiene una poliza con las coberturas$")
   public void recibirReclamoRC(List<String> coberturas) throws IOException {
-    this.coberturas=coberturas;
+    this.coberturas = coberturas;
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionRC"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "autoReclamacionSimple"));
@@ -41,8 +39,8 @@ public class ReclamacionDefinition {
   }
 
   @Cuando("se genere un siniestro por la causa y la culpabilidad$")
-     public void ingresarDatosSiniestro(DataTable dtl_causaCulpabilidad) throws IOException {
-      reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
+  public void ingresarDatosSiniestro(DataTable dtl_causaCulpabilidad) throws IOException {
+    reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.editarVehiculo(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarCategorizacion(reclamacionAuto.getLstReclamacionAuto());
@@ -53,81 +51,118 @@ public class ReclamacionDefinition {
   public void generarReclamacionRC(DataTable dtl_culpabilidad) throws SQLException, IOException {
     List<List<String>> data = dtl_culpabilidad.raw();
     String culpabilidad = data.get(1).get(0);
-      exposicionVehiculoTercero = new ExposicionVehiculoTercero(genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
-      reclamacionStep.crearExposionVehiculoTercero(exposicionVehiculoTercero.getLstExposicionTerceros());
-      exposicionPersona = new ExposicionPersona(genericStep.getFilasModelo("responsabilidad_civil_persona","exposicionRcPersona"));
-      reclamacionStep.crearExposicionPersona(exposicionPersona.getLstExposicionPersona());
-      reclamacionStep.finalizarReclamacion();
-      reclamacionStep.validarReclamacion();
-      reclamacionStep.visualizarResumenSiniestro();
-      reclamacionStep.consultarReclamacion();
-      lineaReservaValorReservaAutos = new LineaReservaValorReservaAutos(genericStep.getFilasModelo("linea_reserva_valor_reserva","RC_Vehiculo_y_peaton"));
-      reclamacionStep.consultarLineaReservaValorReservaRC(lineaReservaValorReservaAutos.getLstLineasReservaValoresReserva());
-  }
-
-  @Dado("^que se tiene una poliza con las coberturas para Daños$")
-  public void recibirReclamoArchivo(List<String> coberturas) throws IOException {
-    this.coberturas=coberturas;
-    reclamacionAuto =
-            new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionArchivo"));
-    vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionArchivo"));
-    reclamacionStep.seleccionarMenu();
-    reclamacionStep.completarFormularioBuscarPoliza(
-            reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
-    reclamacionStep.buscarPoliza();
-  }
-
-  @Entonces(
-          "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva reserva, según la culpabilidad marcada Archivo$")
-  public void generarReclamacionArchivo(DataTable dtl_culpabilidad) throws SQLException, IOException {
-    List<List<String>> data = dtl_culpabilidad.raw();
-    String culpabilidad = data.get(1).get(0);
-    reclamacionStep.finalizarReclamacion();
-    reclamacionStep.validarReclamacion();
-    reclamacionStep.visualizarResumenSiniestro();
-    reclamacionStep.consultarReclamacion();
-    lineaReservaValorReservaAutos = new LineaReservaValorReservaAutos(genericStep.getFilasModelo("linea_reserva_valor_reserva","Archivo_Subrogacion"));
-    reclamacionStep.consultarLineayValorReservaArchivo(lineaReservaValorReservaAutos.getLstLineasReservaValoresReserva());
-  }
-
-  @Dado("^que se tiene una poliza con las coberturas para Subrogación$")
-  public void recibirReclamoSubrogacion(List<String> coberturas) throws IOException {
-    this.coberturas=coberturas;
-    reclamacionAuto =
-            new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionSubrogacion"));
-    vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionSubrogacion"));
-    reclamacionStep.seleccionarMenu();
-    reclamacionStep.completarFormularioBuscarPoliza(
-            reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
-    reclamacionStep.buscarPoliza();
-  }
-
-  @Dado("^que se tiene una poliza con las coberturas para SoloRC$")
-  public void recibirReclamoSoloRC(List<String> coberturas) throws IOException {
-    this.coberturas=coberturas;
-    reclamacionAuto =
-            new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionSoloRC"));
-    vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionSoloRC"));
-    reclamacionStep.seleccionarMenu();
-    reclamacionStep.completarFormularioBuscarPoliza(
-            reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
-    reclamacionStep.buscarPoliza();
-  }
-  @Entonces(
-          "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva reserva, según la culpabilidad marcada SoloRC$")
-  public void generarReclamacionSoloRC(DataTable dtl_culpabilidad) throws SQLException, IOException {
-    List<List<String>> data = dtl_culpabilidad.raw();
-    String culpabilidad = data.get(1).get(0);
-    exposicionVehiculoTercero = new ExposicionVehiculoTercero(genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
-    reclamacionStep.crearExposionVehiculoTercero(exposicionVehiculoTercero.getLstExposicionTerceros());
-    exposicionPersona = new ExposicionPersona(genericStep.getFilasModelo("responsabilidad_civil_persona","exposicionRcPersona"));
+    exposicionVehiculoTercero =
+        new ExposicionVehiculoTercero(
+            genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
+    reclamacionStep.crearExposionVehiculoTercero(
+        exposicionVehiculoTercero.getLstExposicionTerceros());
+    exposicionPersona =
+        new ExposicionPersona(
+            genericStep.getFilasModelo("responsabilidad_civil_persona", "exposicionRcPersona"));
     reclamacionStep.crearExposicionPersona(exposicionPersona.getLstExposicionPersona());
     reclamacionStep.finalizarReclamacion();
     reclamacionStep.validarReclamacion();
     reclamacionStep.visualizarResumenSiniestro();
     reclamacionStep.consultarReclamacion();
-    lineaReservaValorReservaAutos = new LineaReservaValorReservaAutos(genericStep.getFilasModelo("linea_reserva_valor_reserva","SoloRC|"));
-    reclamacionStep.consultarLineaReservaValorReservaRC(lineaReservaValorReservaAutos.getLstLineasReservaValoresReserva());
+    exposicionAutomaticaReservaAutomatica =
+        new ExposicionAutomaticaReservaAutomatica(
+            genericStep.getFilasModelo("exposicion_automatica", "exposicionesRC"));
+    reclamacionStep.validarExposicion(
+        exposicionAutomaticaReservaAutomatica.getLstExposicionAutomaticaReservaAutomaticas());
+    lineaReservaValorReservaAutos =
+        new LineaReservaValorReservaAutos(
+            genericStep.getFilasModelo("linea_reserva_valor_reserva", "RC_Vehiculo_y_peaton"));
+    reclamacionStep.consultarLineaReservaValorReservaRC(
+        lineaReservaValorReservaAutos.getLstLineasReservaValoresReserva());
   }
 
+  @Dado("^que se tiene una poliza con las coberturas para Daños$")
+  public void recibirReclamoArchivo(List<String> coberturas) throws IOException {
+    this.coberturas = coberturas;
+    reclamacionAuto =
+        new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionArchivo"));
+    vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionArchivo"));
+    reclamacionStep.seleccionarMenu();
+    reclamacionStep.completarFormularioBuscarPoliza(
+        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
+    reclamacionStep.buscarPoliza();
+  }
+
+  @Entonces(
+      "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva reserva, según la culpabilidad marcada Archivo$")
+  public void generarReclamacionArchivo(DataTable dtl_culpabilidad)
+      throws SQLException, IOException {
+    List<List<String>> data = dtl_culpabilidad.raw();
+    String culpabilidad = data.get(1).get(0);
+    reclamacionStep.finalizarReclamacion();
+    reclamacionStep.validarReclamacion();
+    reclamacionStep.visualizarResumenSiniestro();
+    reclamacionStep.consultarReclamacion();
+    exposicionAutomaticaReservaAutomatica =
+        new ExposicionAutomaticaReservaAutomatica(
+            genericStep.getFilasModelo("exposicion_automatica", "exposisionesArchivo"));
+    reclamacionStep.validarExposicion(
+        exposicionAutomaticaReservaAutomatica.getLstExposicionAutomaticaReservaAutomaticas());
+    lineaReservaValorReservaAutos =
+        new LineaReservaValorReservaAutos(
+            genericStep.getFilasModelo("linea_reserva_valor_reserva", "Archivo_Subrogacion"));
+    reclamacionStep.consultarLineayValorReservaArchivo(
+        lineaReservaValorReservaAutos.getLstLineasReservaValoresReserva());
+  }
+
+  @Dado("^que se tiene una poliza con las coberturas para Subrogación$")
+  public void recibirReclamoSubrogacion(List<String> coberturas) throws IOException {
+    this.coberturas = coberturas;
+    reclamacionAuto =
+        new ReclamacionAuto(
+            genericStep.getFilasModelo("reclamacion_auto", "reclamacionSubrogacion"));
+    vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionSubrogacion"));
+    reclamacionStep.seleccionarMenu();
+    reclamacionStep.completarFormularioBuscarPoliza(
+        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
+    reclamacionStep.buscarPoliza();
+  }
+
+  @Dado("^que se tiene una poliza con las coberturas para SoloRC$")
+  public void recibirReclamoSoloRC(List<String> coberturas) throws IOException {
+    this.coberturas = coberturas;
+    reclamacionAuto =
+        new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionSoloRC"));
+    vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionSoloRC"));
+    reclamacionStep.seleccionarMenu();
+    reclamacionStep.completarFormularioBuscarPoliza(
+        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
+    reclamacionStep.buscarPoliza();
+  }
+
+  @Entonces(
+      "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva reserva, según la culpabilidad marcada SoloRC$")
+  public void generarReclamacionSoloRC(DataTable dtl_culpabilidad)
+      throws SQLException, IOException {
+    List<List<String>> data = dtl_culpabilidad.raw();
+    String culpabilidad = data.get(1).get(0);
+    exposicionVehiculoTercero =
+        new ExposicionVehiculoTercero(
+            genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
+    reclamacionStep.crearExposionVehiculoTercero(
+        exposicionVehiculoTercero.getLstExposicionTerceros());
+    exposicionPersona =
+        new ExposicionPersona(
+            genericStep.getFilasModelo("responsabilidad_civil_persona", "exposicionRcPersona"));
+    reclamacionStep.crearExposicionPersona(exposicionPersona.getLstExposicionPersona());
+    reclamacionStep.finalizarReclamacion();
+    reclamacionStep.validarReclamacion();
+    reclamacionStep.visualizarResumenSiniestro();
+    reclamacionStep.consultarReclamacion();
+    exposicionAutomaticaReservaAutomatica =
+        new ExposicionAutomaticaReservaAutomatica(
+            genericStep.getFilasModelo("exposicion_automatica", "exposicionesSoloRC"));
+    reclamacionStep.validarExposicion(
+        exposicionAutomaticaReservaAutomatica.getLstExposicionAutomaticaReservaAutomaticas());
+    lineaReservaValorReservaAutos =
+        new LineaReservaValorReservaAutos(
+            genericStep.getFilasModelo("linea_reserva_valor_reserva", "SoloRC|"));
+    reclamacionStep.consultarLineaReservaValorReservaRC(
+        lineaReservaValorReservaAutos.getLstLineasReservaValoresReserva());
+  }
 }

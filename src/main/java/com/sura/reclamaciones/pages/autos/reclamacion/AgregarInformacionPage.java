@@ -61,15 +61,18 @@ public class AgregarInformacionPage extends GeneralPage {
   private WebElementFacade txtSucedio;
 
   @FindBy(
-          id =
-                  "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddVehicleButton-btnInnerEl"
+    id =
+        "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddVehicleButton-btnInnerEl"
   )
   private WebElementFacade btnAgregarVehiculo;
 
   @FindBy(xpath = ".//span[@class='g-underlined' and contains(.,'F')]")
   private WebElementFacade btnFinalizar;
 
-  @FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPedestrianButton-btnInnerEl")
+  @FindBy(
+    id =
+        "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPedestrianButton-btnInnerEl"
+  )
   WebElementFacade btnAgregarPeaton;
 
   public AgregarInformacionPage(WebDriver wdriver) {
@@ -112,17 +115,17 @@ public class AgregarInformacionPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void  seleccionarCulpabilidad(String culpabilidad) {
+  public void seleccionarCulpabilidad(String culpabilidad) {
     cmbCulpabilidad.type(culpabilidad);
     cmbCulpabilidad.sendKeys(Keys.ENTER);
   }
 
-  public void agregarExposicionVehiculoTercero(){
+  public void agregarExposicionVehiculoTercero() {
     btnAgregarVehiculo.click();
   }
 
-  public void agregarExposicionPersona(){
-   btnAgregarPeaton.waitUntilVisible().click();
+  public void agregarExposicionPersona() {
+    btnAgregarPeaton.waitUntilVisible().click();
   }
 
   public void seleccionarLugar(String lugar) {

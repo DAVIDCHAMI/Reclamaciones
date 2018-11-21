@@ -1,17 +1,12 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
-import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.utils.Variables;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 public class NuevaReclamacionGuardadaPage extends GeneralPage {
 

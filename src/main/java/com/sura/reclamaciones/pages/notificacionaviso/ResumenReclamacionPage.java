@@ -101,5 +101,4 @@ public class ResumenReclamacionPage extends GeneralPage {
     }
     return validadorExposicion;
   }
-
 }

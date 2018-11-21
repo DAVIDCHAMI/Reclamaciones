@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.constantes.TransaccionModeloSimplificadoConstante;
@@ -14,11 +13,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
-
 
 public class NuevaReclamacionAutoStep {
 
@@ -36,6 +33,7 @@ public class NuevaReclamacionAutoStep {
   @Page private DetalleVehiculoPage detalleVehiculoPage;
   @Page private NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
   @Page private DatosFinancierosPage datosFinancierosPage;
+  @Page private ExposicionesAutomaticasPage exposicionesAutomaticasPage;
   @Page private AgregarExposicionPersonaPage agregarExposicionPersonaPage;
   @Page MenuClaimPage menuClaimPage;
 
@@ -62,20 +60,20 @@ public class NuevaReclamacionAutoStep {
   }
 
   @Step
-  public void crearExposionVehiculoTercero(List<ExposicionVehiculoTercero> datosExposicionTercero){
+  public void crearExposionVehiculoTercero(List<ExposicionVehiculoTercero> datosExposicionTercero) {
 
-        agregarInformacionPage.agregarExposicionVehiculoTercero();
-        detalleVehiculoPage.ingresarVehiculoTercero(datosExposicionTercero);
-        detalleVehiculoPage.agregarTerceroConductor(datosExposicionTercero);
-               datosExposicionTercero.forEach(
-                dato -> {
-                 detalleVehiculoPage.seleccionarTaller(dato.getTaller());
-                });
-        detalleVehiculoPage.volverPasoAnterior();
-
+    agregarInformacionPage.agregarExposicionVehiculoTercero();
+    detalleVehiculoPage.ingresarVehiculoTercero(datosExposicionTercero);
+    detalleVehiculoPage.agregarTerceroConductor(datosExposicionTercero);
+    datosExposicionTercero.forEach(
+        dato -> {
+          detalleVehiculoPage.seleccionarTaller(dato.getTaller());
+        });
+    detalleVehiculoPage.volverPasoAnterior();
   }
+
   @Step
-  public void crearExposicionPersona(List<ExposicionPersona> datosExposicionPersona){
+  public void crearExposicionPersona(List<ExposicionPersona> datosExposicionPersona) {
     agregarExposicionPersonaPage.agregarPeaton(datosExposicionPersona);
   }
 
@@ -85,7 +83,7 @@ public class NuevaReclamacionAutoStep {
     detalleVehiculoPage.agregarConductor();
     datosReclamacion.forEach(
         dato -> {
-          if(!dato.getCulpabilidad().equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
+          if (!dato.getCulpabilidad().equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
             detalleVehiculoPage.seleccionarTaller(dato.getTaller());
           }
         });
@@ -106,6 +104,14 @@ public class NuevaReclamacionAutoStep {
     MatcherAssert.assertThat(
         "No se encontro el mensaje a validar",
         mensajeValidado.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
+  }
+
+  public void validarExposicion(
+      List<ExposicionAutomaticaReservaAutomatica> datosExposicionAutomatica) throws SQLException {
+    boolean exposicionAutomatica =
+        exposicionesAutomaticasPage.validarExposiciones(datosExposicionAutomatica);
+    MatcherAssert.assertThat(
+        "No coinciden todos los valores de las líneas de reserva", exposicionAutomatica);
   }
 
   public void visualizarResumenSiniestro() {
@@ -160,33 +166,33 @@ public class NuevaReclamacionAutoStep {
     return conexion;
   }
 
-
   public void consultarReclamacion() {
     nuevaReclamacionGuardadaPage.abrirReclamacion();
   }
 
-  public void consultarLineaReservaValorReservaRC(List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos) throws SQLException {
-        boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReservaValorReservaAutos);
-      MatcherAssert.assertThat(
-              "No coinciden todos los valores de las líneas de reserva",
-              valorLineaReserva);
+  public void consultarLineaReservaValorReservaRC(
+      List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos) throws SQLException {
+    boolean valorLineaReserva =
+        datosFinancierosPage.obtenerDatosFinancieros(lineaReservaValorReservaAutos);
+    MatcherAssert.assertThat(
+        "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
 
-        //String numeroReclamacion;
-        //String consultaSql;
-        //numeroReclamacion = nuevaReclamacionGuardadaPage.obtenerNumeroReclamacionConsultaPoliza();
-        //sql = consultarCondicionesPoliza.obtenerSentenciaSql(numeroReclamacion);
-        //consultaSql = sql.get("Datos Poliza");
-        //conexion = conectarBaseDatos();
-        //resultadoConsulta = conexionBaseDatosUtil.consultarBaseDatosCCLab(conexion, consultaSql);
-        //nuevaReclamacionGuardadaPage.obtenerNumeroReclamacionConsultaPoliza();
-        // nuevaReclamacionGuardadaPage.consultarReclamacion(culpabilidad);
+    //String numeroReclamacion;
+    //String consultaSql;
+    //numeroReclamacion = nuevaReclamacionGuardadaPage.obtenerNumeroReclamacionConsultaPoliza();
+    //sql = consultarCondicionesPoliza.obtenerSentenciaSql(numeroReclamacion);
+    //consultaSql = sql.get("Datos Poliza");
+    //conexion = conectarBaseDatos();
+    //resultadoConsulta = conexionBaseDatosUtil.consultarBaseDatosCCLab(conexion, consultaSql);
+    //nuevaReclamacionGuardadaPage.obtenerNumeroReclamacionConsultaPoliza();
+    // nuevaReclamacionGuardadaPage.consultarReclamacion(culpabilidad);
   }
 
-    public void consultarLineayValorReservaArchivo(List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos) throws SQLException {
-        boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReservaValorReservaAutos);
-        MatcherAssert.assertThat(
-                "No coinciden todos los valores de las líneas de reserva",
-                valorLineaReserva);
-    }
-
+  public void consultarLineayValorReservaArchivo(
+      List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos) throws SQLException {
+    boolean valorLineaReserva =
+        datosFinancierosPage.obtenerDatosFinancieros(lineaReservaValorReservaAutos);
+    MatcherAssert.assertThat(
+        "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
+  }
 }

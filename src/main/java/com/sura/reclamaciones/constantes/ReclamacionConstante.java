@@ -12,5 +12,4 @@ public class ReclamacionConstante {
   public static final String EXPOSICION_DAÑOS = "Daños";
   public static final String EXPOSICION_RESPONSABILIDAD_CIVIL = "Responsabilidad civil";
   public static final String CULPABILIDAD_SOLO_RC = "Solo RC";
-
 }
