@@ -14,4 +14,4 @@ Característica: Notificacion de aviso de una reclamacion desde ATR
 
     Ejemplos:
       | Tipo y Cobertura | Causa             | Valor de Pretensión | Categoria de costo |
-      | ATR              | Rotura de vidrios | 2000000             | Propiedad          |
+      | AseguradoATR     | Rotura de vidrios | 2000000             | Propiedad          |

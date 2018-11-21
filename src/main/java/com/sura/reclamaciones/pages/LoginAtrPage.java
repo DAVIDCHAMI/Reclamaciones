@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 @DefaultUrl("https://arlappslab.suramericana.com/SSAutenticacion/faces/autenticacion/paginaAutenticacion.jspx?cdApp=SURACOM&cookies=false&ReturnUrl=%2fdefault.aspx")
 @NamedUrls({
-    @NamedUrl(name = "uat", url = "https://arlappslab.suramericana.com/SSAutenticacion/faces/autenticacion/paginaAutenticacion.jspx?cdApp=SURACOM&cookies=false&ReturnUrl=%2fdefault.aspx"),
+    @NamedUrl(name = "uat", url = "https://arlappslab.suramericana.com/SSAutenticacion/faces/autenticacion/paginaAutenticacion.jspx?cdApp=SURACOM&cookies=false"),
 })
 
 public class LoginAtrPage extends GeneralPage {

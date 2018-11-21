@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresarialStep;
 import cucumber.api.java.es.Cuando;
@@ -13,16 +14,16 @@ public class NotificacionAvisoAtrDefinition {
 
   @Steps
   NuevaReclamacionAtrEmpresarialStep nuevaReclamacionAtrEmpresarialStep;
-  @Steps ReclamacionEmpresarial reclamo;
-  @Steps GenericStep genericStep;
+   @Steps Persona aseguradoAtr;
+   @Steps GenericStep genericStep;
 
     @Dado("^que tenemos una poliza de (.*)$")
-    public void NotificacionAvisoAtrDefinition(String cobertura) throws Throwable{
-      reclamo =
-          new ReclamacionEmpresarial(
-              genericStep.getFilasModelo("reclamacion_empresarial", "ATR"));
+    public void NotificacionAvisoAtrDefinition(String  cobertura) throws Throwable{
+      aseguradoAtr =
+          new Persona(
+              genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
       nuevaReclamacionAtrEmpresarialStep.accederAvisoEmpresa();
-      nuevaReclamacionAtrEmpresarialStep.buscarPolizaAtr(reclamo.getLstReclamo());
+      nuevaReclamacionAtrEmpresarialStep.buscarPolizaAtr(aseguradoAtr.getLstPersona());
       nuevaReclamacionAtrEmpresarialStep.diligenciarFechaAtr();
   }
 

@@ -20,14 +20,14 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   @FindBy(id = "slbProducto")
   private WebElementFacade lstProducto;
 
-  @FindBy(xpath = "//option[contains(text(),'AGRO')]")
+  @FindBy(xpath = "//option[contains(text(),'OTROS PRODUCTOS')]")
   private WebElementFacade mnuOtroProducto;
 
   @FindBy(xpath = "//img[@src='images/Bot_Aceptar.jpg']")
   private WebElementFacade btnAceptar;
 
-  @FindBy(xpath = "//div[@igtag='/modules/serviciosexternos/displayservice.aspx?id=RECLAMACIONESEMPRESARIALESASESOR&TIPO=RAMOS GENERALES']/span")
-  private WebElementFacade mnuReclamacionEmpresa;
+  @FindBy(id = "tipoIdInformacionAsegurado")
+  private WebElementFacade lstIdentificacionAsegurado;
 
 
   public AsistenteVirtualAtrPage(WebDriver driver) {
@@ -43,9 +43,8 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
     auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Reclamaciones");
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    //auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Empresas");
-    //$(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    mnuReclamacionEmpresa.waitUntilVisible().click();
+    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Empresas");
+    $(auxMnuAsistenteVirtual).waitUntilVisible().click();
   }
 
   public void seleccionarPlanListaProducto(){

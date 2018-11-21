@@ -9,7 +9,8 @@ import org.openqa.selenium.WebDriver;
 public class BuscarPolizaPage extends GeneralPage {
   private String lstTipoDocumento = "//li[.='COMODIN']";
   private String auxTipoDocumento = "";
-
+  private String mnuTipoDocumentoAtr = "//option[contains(text(),'COMODIN')]";
+  private String auxMnuTipoDocumentoAtr = "";
   @FindBy(
     xpath =
         "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:licensePlate-inputEl']"
@@ -61,18 +62,15 @@ public class BuscarPolizaPage extends GeneralPage {
   @FindBy(id = "snfPolizaInformacionAsegurado")
   private WebElementFacade txtNumeroPolizaAtr;
 
-  @FindBy(id = "ramoInformacionAsegurado")
-  private WebElementFacade txtRamoPoliza;
-
   @FindBy(id = "lnkConsultarAseguradoInformacionAsegurado")
   private WebElementFacade btnConsultarPolizaAtr;
 
-  @FindBy(className = "gwt-RadioButton")
-  private WebElementFacade rbtRiesgoAtr;
 
+  @FindBy(id = "idAseguradoInformacionAsegurado")
+  private WebElementFacade txtNumeroDocumentoAtr;
 
-
-
+  @FindBy(id = "tipoIdInformacionAsegurado")
+  private WebElementFacade txtTipoDocumentoAsegurado;
 
   public BuscarPolizaPage(WebDriver driver) {
     super(driver);
@@ -130,16 +128,16 @@ public class BuscarPolizaPage extends GeneralPage {
     }
   }
 
-  public void consultarPolizaAtr(String ramoPolizaAtr, String numPolizaAtr){
+  public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr){
     enfocarVentana();
-    txtRamoPoliza.waitUntilVisible().type(ramoPolizaAtr);
-    txtNumeroPolizaAtr.waitUntilVisible().type(numPolizaAtr);
+    txtTipoDocumentoAsegurado.waitUntilVisible().click();
+    auxMnuTipoDocumentoAtr = mnuTipoDocumentoAtr.replace(ConstanteGlobal.COMODIN, tipoDocumentoAtr);
+    $(auxMnuTipoDocumentoAtr).click();
+    txtNumeroDocumentoAtr.waitUntilVisible().type(numDocumentoAtr);
     btnConsultarPolizaAtr.waitUntilVisible().click();
   }
 
-  public void seleccionarRiesgoAtr(){
-    rbtRiesgoAtr.waitUntilVisible().click();
-  }
+
 
 
 }
