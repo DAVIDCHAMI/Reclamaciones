@@ -17,8 +17,12 @@ public class ConsumoCreacionSiniestroEmpresarialDefinition {
   }
 
   @Cuando("^se toman los datos del mismo$")
-  @Entonces("^se le brindara al reportante un numero de reclamacion$")
   public void siniestrarPolizaServicio() {
     consumoServicioCreacionSiniestroStep.siniestrarPolizaEmpresarialAtr();
+  }
+
+  @Entonces("^se le brindara al reportante un numero de reclamacion$")
+  public void verificarCreacionSiniestro() {
+    consumoServicioCreacionSiniestroStep.verificarSiniestro();
   }
 }

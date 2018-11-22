@@ -1,13 +1,16 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import java.io.IOException;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
+import org.hamcrest.MatcherAssert;
 
 public class ConsumoServicioCreacionSiniestroStep {
 
@@ -68,5 +71,12 @@ public class ConsumoServicioCreacionSiniestroStep {
     lstParametroAuthor = parametroPersona.getLstPersona();
     lstParametroMainContact = parametroPersona.getLstPersona();
     lstParametroClaimAnt = parametroPersona.getLstPersona();
+  }
+
+  public void verificarSiniestro() {
+    String numReclamacion = Serenity.sessionVariableCalled(ReclamacionConstante.NUMERO_SINIESTRO);
+    MatcherAssert.assertThat(
+        "No se obtuvo el número del siniestro, verificar el consumo",
+        numReclamacion.contains(ReclamacionConstante.VERIFICADOR_NUMERO_SINIESTRO));
   }
 }
