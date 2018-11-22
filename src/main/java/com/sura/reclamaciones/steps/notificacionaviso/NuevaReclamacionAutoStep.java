@@ -176,16 +176,6 @@ public class NuevaReclamacionAutoStep {
         datosFinancierosPage.obtenerDatosFinancieros(lineaReservaValorReservaAutos);
     MatcherAssert.assertThat(
         "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
-
-    //String numeroReclamacion;
-    //String consultaSql;
-    //numeroReclamacion = nuevaReclamacionGuardadaPage.obtenerNumeroReclamacionConsultaPoliza();
-    //sql = consultarCondicionesPoliza.obtenerSentenciaSql(numeroReclamacion);
-    //consultaSql = sql.get("Datos Poliza");
-    //conexion = conectarBaseDatos();
-    //resultadoConsulta = conexionBaseDatosUtil.consultarBaseDatosCCLab(conexion, consultaSql);
-    //nuevaReclamacionGuardadaPage.obtenerNumeroReclamacionConsultaPoliza();
-    // nuevaReclamacionGuardadaPage.consultarReclamacion(culpabilidad);
   }
 
   public void consultarLineayValorReservaArchivo(
