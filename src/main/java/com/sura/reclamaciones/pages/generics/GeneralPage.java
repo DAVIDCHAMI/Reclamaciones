@@ -60,8 +60,22 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
   private WebElementFacade btnUltimaPagina;
 
+  @FindBy(xpath = "//table[@class='datePickerMonthSelector']//td[2]//div[@class='html-face']")
+  private WebElementFacade btnMesPrevio;
+
+  @FindBy(xpath = "//table[@class='datePickerMonthSelector']//td[4]//div[@class='html-face']")
+  private WebElementFacade btnMesPosterior;
+
+  @FindBy(xpath = "//table[@class='datePickerMonthSelector']//td[1]//div[@class='html-face']")
+  private WebElementFacade btnAnioPrevio;
+
+  @FindBy(xpath = "//table[@class='datePickerMonthSelector']//td[5]//div[@class='html-face']")
+  private WebElementFacade btnAnioPosterior;
+
   private String lstDinamico = "//li[.='COMODIN']";
   private String auxLstUbicacion = "";
+  private String diaMes = "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
+  private String auxMes = "";
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -213,4 +227,65 @@ public class GeneralPage extends PageObject {
       driver.switchTo().window(ventana);
     }
   }
+
+  public void seleccionarDiaCalendarioAtr(String diaUsuario){
+    auxMes = diaMes.replace(ConstanteGlobal.COMODIN, diaUsuario);
+    $(auxMes).click();
+  }
+
+  public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual){
+    int buscadorValor = valorMesActual - valorMesAnterior;
+    int numeroClick = 0;
+    while (numeroClick < buscadorValor ){
+      btnMesPrevio.waitUntilVisible().click();
+      numeroClick ++;
+    }
+
+  }
+
+  public void seleecionarMesPosterior (int valorMesPosterior, int valorMesActual) {
+    int buscadorValor = valorMesPosterior - valorMesActual;
+    int numeroClick = 0;
+    while (numeroClick < buscadorValor) {
+      btnMesPosterior.waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public int valorarMes(String mes) {
+    switch (mes) {
+      case "Ene": case "Jan":
+        return 1;
+      case "Feb":
+        return 2;
+      case "Mar":
+        return 3;
+      case "Abr": case"Apr":
+        return 4;
+      case "May":
+        return 5;
+      case "Jun":
+        return 6;
+      case "Jul":
+        return 7;
+      case "Aug":case"Ago":
+        return 8;
+      case "Sep":
+        return 9;
+      case "Oct":
+        return 10;
+      case "Nov":
+        return 11;
+      case "Dic": case "Dec":
+        return 12;
+      default:
+        return 0;
+    }
+  }
+
+  public int valorarAnio(String anio){
+    return Integer.parseInt(anio);
+  }
+
+
 }

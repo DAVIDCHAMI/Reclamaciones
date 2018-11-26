@@ -28,7 +28,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
 @Step
-  public void buscarPolizaAtr(List<Persona> datosPersona) {
+  public void buscarAseguradoAtr(List<Persona> datosPersona) {
     datosPersona.forEach(
         asegurado -> {
           buscarPolizaPage.consultarDocumentoAtr(asegurado.getTipoDocumento(), asegurado.getNumDocumento());
@@ -36,7 +36,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   public void diligenciarFechaAtr(){
-    informacionBasicaPage.seleccionarFechaAviso("2018/11/01");
+    informacionBasicaPage.seleccionarFechaAviso("2018/Ene/09");
   }
 
 }

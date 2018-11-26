@@ -23,7 +23,7 @@ public class NotificacionAvisoAtrDefinition {
           new Persona(
               genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
       nuevaReclamacionAtrEmpresarialStep.accederAvisoEmpresa();
-      nuevaReclamacionAtrEmpresarialStep.buscarPolizaAtr(aseguradoAtr.getLstPersona());
+      nuevaReclamacionAtrEmpresarialStep.buscarAseguradoAtr(aseguradoAtr.getLstPersona());
       nuevaReclamacionAtrEmpresarialStep.diligenciarFechaAtr();
   }
 
