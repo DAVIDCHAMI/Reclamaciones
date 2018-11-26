@@ -5,7 +5,11 @@ import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.Tablas;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -252,6 +256,37 @@ public class GeneralPage extends PageObject {
     }
   }
 
+  public void valorarrMes(String mes){
+    Map<String, Integer> map = new HashMap<String, Integer>();
+    map.put("Jan", 1);
+    map.put("Enero", 1);
+    map.put("Feb", 2);
+    map.put("Febrero", 2);
+    map.put("Mar", 3);
+    map.put("Marzo", 3);
+    map.put("Apr", 4);
+    map.put("Abr", 4);
+    map.put("Abril", 4);
+    map.put("May", 5);
+    map.put("Mayo", 5);
+    map.put("Jun", 6);
+    map.put("Junio", 6);
+    map.put("Jul", 7);
+    map.put("Julio", 7);
+    map.put("Aug", 8);
+    map.put("Ago", 8);
+    map.put("Agosto", 8);
+    map.put("Sep", 9);
+    map.put("Septiembre", 9);
+    map.put("Oct", 10);
+    map.put("Octubre", 10);
+    map.put("Nov", 11);
+    map.put("Noviembre", 11);
+    map.put("Dec", 12);
+    map.put("Dic", 12);
+    map.put("Diciembre", 12);
+      }
+
   public int valorarMes(String mes) {
     switch (mes) {
       case "Ene": case "Jan":
@@ -282,6 +317,8 @@ public class GeneralPage extends PageObject {
         return 0;
     }
   }
+
+
 
   public int valorarAnio(String anio){
     return Integer.parseInt(anio);
