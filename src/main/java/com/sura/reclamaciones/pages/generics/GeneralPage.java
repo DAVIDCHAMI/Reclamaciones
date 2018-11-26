@@ -85,6 +85,8 @@ public class GeneralPage extends PageObject {
 
   protected WebDriver driver;
 
+  Map<String, Integer> map = new HashMap<String, Integer>();
+
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
     driver = wdriver;
@@ -256,9 +258,27 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public void valorarrMes(String mes){
-    Map<String, Integer> map = new HashMap<String, Integer>();
+  public void seleccionarAnioAnterior(int valorAnioAnterior, int valorAnioActual){
+    int buscadorValor = valorAnioActual - valorAnioAnterior;
+    int numeroClick = 0;
+    while (numeroClick < buscadorValor){
+      btnAnioPrevio.waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public void seleccionarAnioPosterior (int valorAnioPosterior, int valorAnioActual) {
+    int buscadorValor = valorAnioPosterior - valorAnioActual;
+    int numeroClick = 0;
+    while (numeroClick < buscadorValor) {
+      btnAnioPosterior.waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public int valorarMes(String mes){
     map.put("Jan", 1);
+    map.put("Ene", 1);
     map.put("Enero", 1);
     map.put("Feb", 2);
     map.put("Febrero", 2);
@@ -285,40 +305,8 @@ public class GeneralPage extends PageObject {
     map.put("Dec", 12);
     map.put("Dic", 12);
     map.put("Diciembre", 12);
+    return map.get(mes);
       }
-
-  public int valorarMes(String mes) {
-    switch (mes) {
-      case "Ene": case "Jan":
-        return 1;
-      case "Feb":
-        return 2;
-      case "Mar":
-        return 3;
-      case "Abr": case"Apr":
-        return 4;
-      case "May":
-        return 5;
-      case "Jun":
-        return 6;
-      case "Jul":
-        return 7;
-      case "Aug":case"Ago":
-        return 8;
-      case "Sep":
-        return 9;
-      case "Oct":
-        return 10;
-      case "Nov":
-        return 11;
-      case "Dic": case "Dec":
-        return 12;
-      default:
-        return 0;
-    }
-  }
-
-
 
   public int valorarAnio(String anio){
     return Integer.parseInt(anio);

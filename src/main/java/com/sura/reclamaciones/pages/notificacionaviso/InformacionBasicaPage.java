@@ -5,6 +5,7 @@ import com.sura.reclamaciones.pages.generics.GeneralPage;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 
 public class InformacionBasicaPage extends GeneralPage {
@@ -83,7 +84,8 @@ public class InformacionBasicaPage extends GeneralPage {
   @FindBy(className = "datePickerMonth")
   private WebElementFacade indicadorAnioMes;
 
-
+  @Page
+  GeneralPage generalPage;
 
   public void seleccionarAutorReporte() {
     txtNombreAutor.waitUntilVisible();
@@ -121,20 +123,22 @@ public class InformacionBasicaPage extends GeneralPage {
     //2018/Ene/09
     String diaUsuario = fechaAviso.substring(9, 11);
     String mesUsuario = fechaAviso.substring(5, 8);
-    String anioUsuario = fechaAviso.substring(0,4);
+    String anioUsuario = fechaAviso.substring(0, 4);
     calendarioFechaSiniestro.waitUntilVisible().click();
     String auxIndicadorAnioMes = indicadorAnioMes.getText();
     String mesCalendarioAtr = auxIndicadorAnioMes.substring(5, 8);
-    String anioCalendarioAtr = auxIndicadorAnioMes.substring(0,4);
+    String anioCalendarioAtr = auxIndicadorAnioMes.substring(0, 4);
     if ("0".equalsIgnoreCase(diaUsuario.substring(0, 1))) {
       diaUsuario = diaUsuario.substring(1, 2);
     }
-    int valorMesCalendarioAtr = valorarMes(mesCalendarioAtr);
-    int valorMesUsuario = valorarMes(mesUsuario);
+    int valorMesCalendarioAtr = generalPage.valorarMes(mesCalendarioAtr);
+    int valorMesUsuario = generalPage.valorarMes(mesUsuario);
     int valorAnioCalendarioAtr = valorarAnio(anioCalendarioAtr);
     int valorAnioUsuario = valorarAnio(anioUsuario);
-    if(valorAnioUsuario < valorAnioCalendarioAtr){
-
+    if (valorAnioUsuario < valorAnioCalendarioAtr) {
+      seleccionarAnioAnterior(valorAnioUsuario, valorAnioCalendarioAtr);
+    } else if (valorAnioUsuario > valorAnioCalendarioAtr) {
+      seleccionarAnioPosterior(valorAnioUsuario, valorAnioCalendarioAtr);
     }
     if (valorMesUsuario == valorMesCalendarioAtr) {
       seleccionarDiaCalendarioAtr(diaUsuario);
