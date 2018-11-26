@@ -11,12 +11,12 @@ public class ConsumoCreacionSiniestroEmpresarialDefinition {
 
   @Steps ConsumoServicioCreacionSiniestroStep consumoServicioCreacionSiniestroStep;
 
-  @Dado("^que se recibe un aviso (.*) de una reclamacion$")
+  @Dado("^que se tiene una póliza (.*) de empresariales$")
   public void parametrizarValoresSiniestro(String filtroCsv) throws IOException {
     consumoServicioCreacionSiniestroStep.asignarValoresSiniestro(filtroCsv);
   }
 
-  @Cuando("^se toman los datos del mismo$")
+  @Cuando("^se genera un siniestro$")
   public void siniestrarPolizaServicio() {
     consumoServicioCreacionSiniestroStep.siniestrarPolizaEmpresarialAtr();
   }

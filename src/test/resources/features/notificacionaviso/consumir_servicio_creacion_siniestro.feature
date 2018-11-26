@@ -6,10 +6,10 @@ Característica: Notificacion de aviso de una reclamacion
   para permitir la afectación de las pólizas que han adquirido los usuarios.
 
   Esquema del escenario: : Consumo servicio creacion Siniestro
-    Dado que se recibe un aviso <Aviso> de una reclamacion
-    Cuando se toman los datos del mismo
+    Dado que se tiene una póliza <poliza> de empresariales
+    Cuando se genera un siniestro
     Entonces se le brindara al reportante un numero de reclamacion
 
     Ejemplos:
-      | Aviso  |
-      | aviso1 |
+      | poliza |
+      | poliza |
