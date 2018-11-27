@@ -4,6 +4,7 @@ import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
+import com.sura.reclamaciones.pages.notificacionaviso.InformacionReclamacionPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.StepInterceptor;
@@ -18,6 +19,8 @@ public class NuevaReclamacionAtrEmpresarialStep {
   BuscarPolizaPage buscarPolizaPage;
   @Page
   InformacionBasicaPage informacionBasicaPage;
+  @Page
+  InformacionReclamacionPage informacionReclamacionPage;
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
@@ -35,8 +38,15 @@ public class NuevaReclamacionAtrEmpresarialStep {
         });
   }
 
+  @Step
   public void diligenciarFechaAtr(){
-    informacionBasicaPage.seleccionarFechaAviso("2018/Ene/09");
+    informacionBasicaPage.seleccionarFechaAviso("2016/Ene/09");
+  }
+
+  @Step
+  public void diligenciarInformacionSiniestro(String causaSiniestro, String detalleHechos){
+informacionReclamacionPage.seleccionarCausaSiniestroAtr(causaSiniestro);
+informacionReclamacionPage.diligenciarDetalleHechosAtr(detalleHechos);
   }
 
 }

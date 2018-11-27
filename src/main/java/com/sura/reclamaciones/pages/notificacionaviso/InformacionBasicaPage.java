@@ -124,6 +124,7 @@ public class InformacionBasicaPage extends GeneralPage {
     String diaUsuario = fechaAviso.substring(9, 11);
     String mesUsuario = fechaAviso.substring(5, 8);
     String anioUsuario = fechaAviso.substring(0, 4);
+    realizarEsperaCarga();
     calendarioFechaSiniestro.waitUntilVisible().click();
     String auxIndicadorAnioMes = indicadorAnioMes.getText();
     String mesCalendarioAtr = auxIndicadorAnioMes.substring(5, 8);

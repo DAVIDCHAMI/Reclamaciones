@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 public class InformacionReclamacionPage extends GeneralPage {
 
   private String lstCausaSiniestro = "//li[.='COMODIN']";
+  private String lstCausaSiniestroAtr = "//td[.='COMODIN']";
 
   @FindBy(
     xpath =
@@ -59,10 +60,21 @@ public class InformacionReclamacionPage extends GeneralPage {
   private WebElementFacade spanNuevaReclamacion;
 
   @FindBy(
-    xpath =
-        "//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:Claim_LossCause2-inputCell']/following-sibling::td"
+      xpath =
+          "//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:Claim_LossCause2-inputCell']/following-sibling::td"
   )
   private WebElementFacade mnuCausa;
+
+  @FindBy(
+      xpath =
+          "//div[@id='causaSiniestroInformacionSiniestroEmp']/input")
+  private WebElementFacade txtCausaSiniestroAtr;
+
+  @FindBy(
+      xpath =
+          "//textarea[@id='detalleHechosInformacionSiniestroEmp']")
+  private WebElementFacade txtDetalleHechosSiniestroAtr;
+
 
   public InformacionReclamacionPage(WebDriver driver) {
     super(driver);
@@ -123,5 +135,15 @@ public class InformacionReclamacionPage extends GeneralPage {
   public String obtenerTituloReclamacionGenerada() {
     String texto = spanNuevaReclamacion.waitUntilVisible().getText();
     return texto;
+  }
+
+  public void seleccionarCausaSiniestroAtr(String causa) {
+    txtCausaSiniestroAtr.waitUntilPresent().click();
+    lstCausaSiniestroAtr = lstCausaSiniestroAtr.replace(ConstanteGlobal.COMODIN, causa);
+    $(lstCausaSiniestroAtr).waitUntilVisible().click();
+  }
+
+  public void diligenciarDetalleHechosAtr(String detalleHechos){
+txtDetalleHechosSiniestroAtr.waitUntilVisible().type(detalleHechos);
   }
 }
