@@ -84,7 +84,7 @@ public abstract class Reclamacion {
     return tipoMonedaPoliza;
   }
 
-  public boolean getIsPolicyProperty() {
+  public boolean getEsPolizaPropiedad() {
     return Boolean.parseBoolean(esPolizaPropiedad);
   }
 }

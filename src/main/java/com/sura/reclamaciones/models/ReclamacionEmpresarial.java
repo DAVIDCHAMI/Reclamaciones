@@ -16,7 +16,7 @@ public class ReclamacionEmpresarial extends Reclamacion {
   private String causa;
   private String valorPretension;
   private String tipoIncidente;
-  private String policySystemId;
+  private String identificadorRiesgo;
   private String incidenteContenido;
   private String incidentePropiedad;
 
@@ -35,7 +35,7 @@ public class ReclamacionEmpresarial extends Reclamacion {
     this.causa = datosReclamacionEmp.get("causa");
     this.valorPretension = datosReclamacionEmp.get("valorPretension");
     this.tipoIncidente = datosReclamacionEmp.get("tipoIncidente");
-    this.policySystemId = datosReclamacionEmp.get("idRiesgo");
+    this.identificadorRiesgo = datosReclamacionEmp.get("idRiesgo");
     this.incidenteContenido = datosReclamacionEmp.get("incidenteContenido");
     this.incidentePropiedad = datosReclamacionEmp.get("incidentePropiedad");
   }
@@ -80,8 +80,8 @@ public class ReclamacionEmpresarial extends Reclamacion {
     return tipoIncidente;
   }
 
-  public String getPolicySystemId() {
-    return policySystemId;
+  public String getIdentificadorRiesgo() {
+    return identificadorRiesgo;
   }
 
   public boolean getIncidenteContenido() {

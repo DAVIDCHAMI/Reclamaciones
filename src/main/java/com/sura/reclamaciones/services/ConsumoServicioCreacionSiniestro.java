@@ -68,7 +68,8 @@ public class ConsumoServicioCreacionSiniestro {
           lstParametroPrimaryAddress.get(i).getDireccion());
       creacionSiniestroFactory.setCityMainContact(lstParametroPrimaryAddress.get(i).getCiudad());
 
-      creacionSiniestroFactory.setPolicySystemId(lstParametroCPLine.get(i).getPolicySystemId());
+      creacionSiniestroFactory.setPolicySystemId(
+          lstParametroCPLine.get(i).getIdentificadorRiesgo());
 
       creacionSiniestroFactory.setFixedPropertyIncident(
           lstParametroCPLine.get(i).getIncidentePropiedad());
@@ -78,7 +79,7 @@ public class ConsumoServicioCreacionSiniestro {
       creacionSiniestroFactory.setDescription(
           lstParametroDescription.get(i).getDescripcionHechosSiniestro());
       creacionSiniestroFactory.setIsPolicyProperty(
-          lstParametroIsPolicyProperty.get(i).getIsPolicyProperty());
+          lstParametroIsPolicyProperty.get(i).getEsPolizaPropiedad());
 
       creacionSiniestroFactory.setStateProperty(lstParametroProperty.get(i).getPais());
       creacionSiniestroFactory.setAddressLine1Property(lstParametroProperty.get(i).getDireccion());
