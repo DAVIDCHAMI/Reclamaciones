@@ -7,6 +7,7 @@ import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class RecuperoDefinition {
@@ -17,7 +18,7 @@ public class RecuperoDefinition {
   Recupero recupero;
 
   @Dado("^que se tiene un siniestro con una reserva por (.*)$")
-  public void navegarMenuRecupero(String tipoReserva) throws Throwable {
+  public void navegarMenuRecupero(String tipoReserva) throws IOException {
     recupero = new Recupero(genericStep.getFilasModelo("recupero", tipoReserva));
     recuperoStep.seleccionarNumeroReclamacion(
         MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
