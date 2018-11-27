@@ -16,10 +16,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
 
   private Integer intCalculoVrReserva;
 
-  public IntroducirInformacionPagoPage(WebDriver driver) {
-    super(driver);
-  }
-
   @FindBy(
     xpath =
         "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:ReserveLineInputSet:ReserveLine-inputEl']"
@@ -58,6 +54,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
         "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
   )
   private WebElementFacade btnSiguiente;
+
+  public IntroducirInformacionPagoPage(WebDriver driver) {
+    super(driver);
+  }
+
 
   public void seleccionarLineaReserva(String strLineaReserva) {
     cmbLineaReserva.waitUntilClickable().click();
@@ -106,7 +107,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     } else {
       dblCalculoVrReserva = dblValorReserva;
     }
-    return intCalculoVrReserva = dblCalculoVrReserva.intValue();
+     intCalculoVrReserva = dblCalculoVrReserva.intValue();
+     return intCalculoVrReserva;
   }
 
   public void ingresarCantidadPago(String strTipoPago, String strCantidadPago) {

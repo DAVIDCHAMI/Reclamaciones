@@ -11,10 +11,6 @@ import org.openqa.selenium.WebElement;
 
 public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
-  public IntroducirInformacionBeneficiarioPage(WebDriver driver) {
-    super(driver);
-  }
-
   @FindBy(
     xpath =
         "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PrimaryPayee_Name-inputEl']"
@@ -36,10 +32,15 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   )
   private WebElementFacade tblCuentaElectronica;
 
-  private String PAIS = "Country-inputEl";
-  private String DEPARTAMENTO = "State-inputEl";
-  private String CIUDAD = "Sura_Colombian_City-inputEl";
-  private String TIPO_DIRECCION = "Address_AddressType-inputEl";
+  private String pais = "Country-inputEl";
+  private String departamento = "State-inputEl";
+  private String ciudad = "Sura_Colombian_City-inputEl";
+  private String tipoDireccion = "Address_AddressType-inputEl";
+
+  public IntroducirInformacionBeneficiarioPage(WebDriver driver) {
+    super(driver);
+  }
+
 
   public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
     cmbNombreBeneficiario.click();
@@ -86,18 +87,18 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   }
 
   public void seleccionarPais(String strPais) {
-    seleccionarElementoListado(PAIS, strPais);
+    seleccionarElementoListado(pais, strPais);
   }
 
   public void seleccionarDepartamento(String strDepartamento) {
-    seleccionarElementoListado(DEPARTAMENTO, strDepartamento);
+    seleccionarElementoListado(departamento, strDepartamento);
   }
 
   public void seleccionarCiudad(String strCiudad) {
-    seleccionarElementoListado(CIUDAD, strCiudad);
+    seleccionarElementoListado(ciudad, strCiudad);
   }
 
   public void seleccionarTipoDireccion(String strTipoDireccion) {
-    seleccionarElementoListado(TIPO_DIRECCION, strTipoDireccion);
+    seleccionarElementoListado(tipoDireccion, strTipoDireccion);
   }
 }

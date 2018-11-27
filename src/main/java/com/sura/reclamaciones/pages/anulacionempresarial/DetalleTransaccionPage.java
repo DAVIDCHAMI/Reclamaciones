@@ -25,14 +25,18 @@ public class DetalleTransaccionPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroPaginas;
 
-  public static String tblPago =
+  private String tblPago =
       "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
-  public static String tblTransaccion =
+  private String tblTransaccion =
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   public DetalleTransaccionPage(WebDriver wdriver) {
     super(wdriver);
   }
+
+  public String getTblPago(){return tblPago;}
+
+  public String getTblTransaccion(){return tblTransaccion;}
 
   public boolean realizarAnulacion() {
     if (btnAnular.isVisible()) {

@@ -8,9 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class InformacionBasicaPage extends GeneralPage {
 
-  public InformacionBasicaPage(WebDriver driver) {
-    super(driver);
-  }
+
 
   //td[.='Nombre']/following-sibling::td//table//table//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputCell']/following-sibling::td/div
   @FindBy(
@@ -75,6 +73,10 @@ public class InformacionBasicaPage extends GeneralPage {
 
   @FindBy(xpath = "//li[contains(text(),'Amigo')]")
   private WebElementFacade lstAmigo;
+
+  public InformacionBasicaPage(WebDriver driver) {
+    super(driver);
+  }
 
   public void seleccionarAutorReporte() {
     txtNombreAutor.waitUntilVisible();
