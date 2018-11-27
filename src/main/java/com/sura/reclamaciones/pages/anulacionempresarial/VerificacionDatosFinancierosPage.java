@@ -11,8 +11,7 @@ import org.openqa.selenium.WebElement;
 
 public class VerificacionDatosFinancierosPage extends GeneralPage {
 
-  @Page
-  DetalleTransaccionPage detalleTransaccionPage;
+  @Page DetalleTransaccionPage detalleTransaccionPage;
 
   public VerificacionDatosFinancierosPage(WebDriver wdriver) {
     super(wdriver);
@@ -32,12 +31,14 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
       }
     } else {
       if (intNumeroPagina.equals(0)) {
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
+        lstPago =
+            obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
       } else {
         for (int i = 0; i < intNumeroPagina; i++) {
           irSiguientePagina();
         }
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
+        lstPago =
+            obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
       }
     }
     return lstPago;

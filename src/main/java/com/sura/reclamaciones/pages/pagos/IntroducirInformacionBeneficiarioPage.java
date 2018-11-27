@@ -41,7 +41,6 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
     super(driver);
   }
 
-
   public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
     cmbNombreBeneficiario.click();
     seleccionarOpcionCombobox(strNombreBeneficiario);

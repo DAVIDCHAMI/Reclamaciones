@@ -33,7 +33,7 @@ public class AnulacionEmpresarial extends Transacciones {
     return estadoPrevio;
   }
 
-   public List<AnulacionEmpresarial> getLstAnulacionEmpresarial() {
+  public List<AnulacionEmpresarial> getLstAnulacionEmpresarial() {
     return lstAnulacionEmpresarial;
   }
 

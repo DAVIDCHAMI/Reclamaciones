@@ -31,9 +31,10 @@ public class VerificarPagoPage extends GeneralPage {
     super(wdriver);
   }
 
-  public String getTblPago(){
+  public String getTblPago() {
     return tblPago;
   }
+
   public String obtenerNumeroPagoRealizado() {
     irUltimaPagina();
     lblNumeroPago.click();

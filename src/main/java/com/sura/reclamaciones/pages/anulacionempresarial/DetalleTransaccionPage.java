@@ -34,9 +34,13 @@ public class DetalleTransaccionPage extends GeneralPage {
     super(wdriver);
   }
 
-  public String getTblPago(){return tblPago;}
+  public String getTblPago() {
+    return tblPago;
+  }
 
-  public String getTblTransaccion(){return tblTransaccion;}
+  public String getTblTransaccion() {
+    return tblTransaccion;
+  }
 
   public boolean realizarAnulacion() {
     if (btnAnular.isVisible()) {

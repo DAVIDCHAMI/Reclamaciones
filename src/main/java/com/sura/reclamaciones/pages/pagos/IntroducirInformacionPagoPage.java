@@ -59,7 +59,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     super(driver);
   }
 
-
   public void seleccionarLineaReserva(String strLineaReserva) {
     cmbLineaReserva.waitUntilClickable().click();
     seleccionarOpcionCombobox(strLineaReserva);
@@ -107,8 +106,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     } else {
       dblCalculoVrReserva = dblValorReserva;
     }
-     intCalculoVrReserva = dblCalculoVrReserva.intValue();
-     return intCalculoVrReserva;
+    intCalculoVrReserva = dblCalculoVrReserva.intValue();
+    return intCalculoVrReserva;
   }
 
   public void ingresarCantidadPago(String strTipoPago, String strCantidadPago) {

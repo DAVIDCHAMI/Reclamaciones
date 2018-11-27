@@ -1,5 +1,3 @@
 package com.sura.reclamaciones.exceptions;
 
-public class Exception {
-
-}
+public class Exception {}

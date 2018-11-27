@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 
 public class InformacionBasicaPage extends GeneralPage {
 
-
-
   //td[.='Nombre']/following-sibling::td//table//table//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputCell']/following-sibling::td/div
   @FindBy(
     xpath =
