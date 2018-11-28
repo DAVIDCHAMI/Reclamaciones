@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.recupero;
 
+import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINIESTRO;
 import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.constantes.RecuperoConstante;
@@ -9,6 +10,8 @@ import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
 import java.util.List;
+
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebElement;
@@ -21,10 +24,9 @@ public class RecuperoStep {
   @Page MenuClaimPage menuClaimPage;
 
   @Step
-  public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
-    for (Recupero menu : lstRecupero) {
-      menuClaimPage.buscarReclamacion(reclamacion, menu.getNumeroReclamacion());
-    }
+  public void seleccionarNumeroReclamacion(String reclamacion) {
+      menuClaimPage.buscarReclamacion(reclamacion, Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
+
   }
 
   public void seleccionarRecupero() {

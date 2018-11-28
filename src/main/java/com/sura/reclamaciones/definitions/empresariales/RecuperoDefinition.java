@@ -3,6 +3,7 @@ package com.sura.reclamaciones.definitions.recupero;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionSiniestroStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -14,11 +15,20 @@ public class RecuperoDefinition {
   @Steps RecuperoStep recuperoStep;
   @Steps GenericStep genericStep;
 
+  @Steps
+  ConsumoServicioCreacionSiniestroStep crearSiniestro;
+  
   Recupero recupero;
 
-  @Dado("^que se tiene un siniestro con una reserva por (.*)$")
-  public void navegarMenuRecupero(String tipoReserva) throws Throwable {
-    recupero = new Recupero(genericStep.getFilasModelo("recupero", tipoReserva));
+  //@Dado("^que se tiene un siniestro con una reserva por (.*)$")
+
+  @Dado("^que se tiene un siniestro con una reserva (.*)$")
+  public void navegarMenuRecupero(String strTipoReserva) throws Throwable {
+
+    crearSiniestro.asignarValoresSiniestro (strTipoReserva);
+    crearSiniestro.siniestrar();
+
+    recupero = new Recupero(genericStep.getFilasModelo("recupero", strTipoReserva));
     recuperoStep.seleccionarNumeroReclamacion(
         MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();
