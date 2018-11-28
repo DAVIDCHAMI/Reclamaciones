@@ -107,7 +107,7 @@ public class NuevaReclamacionAutoStep {
   }
 
   public void validarExposicion(
-      List<ExposicionAutomaticaReservaAutomatica> datosExposicionAutomatica) throws SQLException {
+      List<ExposicionAutomaticaReservaAutomatica> datosExposicionAutomatica)  {
     boolean exposicionAutomatica =
         exposicionesAutomaticasPage.validarExposiciones(datosExposicionAutomatica);
     MatcherAssert.assertThat(
@@ -171,7 +171,7 @@ public class NuevaReclamacionAutoStep {
   }
 
   public void consultarLineaReservaValorReservaRC(
-      List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos) throws SQLException {
+      List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos)  {
     boolean valorLineaReserva =
         datosFinancierosPage.obtenerDatosFinancieros(lineaReservaValorReservaAutos);
     MatcherAssert.assertThat(
@@ -179,7 +179,7 @@ public class NuevaReclamacionAutoStep {
   }
 
   public void consultarLineayValorReservaArchivo(
-      List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos) throws SQLException {
+      List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos)  {
     boolean valorLineaReserva =
         datosFinancierosPage.obtenerDatosFinancieros(lineaReservaValorReservaAutos);
     MatcherAssert.assertThat(
