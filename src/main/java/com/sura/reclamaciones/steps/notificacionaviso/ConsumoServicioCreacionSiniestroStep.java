@@ -35,22 +35,29 @@ public class ConsumoServicioCreacionSiniestroStep {
       new ConsumoServicioCreacionSiniestro();
 
   @Step
-  public void siniestrarPolizaEmpresarialAtr() {
-    consumoServicioCreacionSiniestro.siniestrarPoliza(
-        lstSiniestroParam,
-        lstParametroLossEstimate,
-        lstParametroProperty,
-        lstParametroPrimaryAddress,
-        lstParametroLossLocation,
-        lstParametroCPLine,
-        lstParametroDescription,
-        lstParametroIsPolicyProperty,
-        lstParametroPropertyDesc,
-        lstParametroAuthor,
-        lstParametroMainContact,
-        lstParametroClaimAnt);
-  }
+  public void siniestrarPolizaEmpresarialAtr()
+  {
+    consumoServicioCreacionSiniestro.asignarParametrosSiniestro(lstSiniestroParam);
+    consumoServicioCreacionSiniestro.asignarParametrosAutor(lstParametroAuthor);
+    consumoServicioCreacionSiniestro.asignarParametrosValorPerdida(lstParametroLossEstimate);
+    consumoServicioCreacionSiniestro.asignarParametrosContactoPrincipal(lstParametroMainContact);
+    consumoServicioCreacionSiniestro.asignarParametrosDireccionPrincipal(lstParametroPrimaryAddress);
+    consumoServicioCreacionSiniestro.asignarParametrosTipoIncidente(lstParametroCPLine);
+    consumoServicioCreacionSiniestro.asignarParametrosInformacionSiniestro(lstParametroDescription,lstParametroIsPolicyProperty);
+    consumoServicioCreacionSiniestro.asignarParametrosDireccionSiniestro(lstParametroProperty);
 
+  }
+  //lstParametroLossEstimate,
+  //lstParametroProperty,
+  //lstParametroPrimaryAddress,
+  //lstParametroLossLocation,
+  //lstParametroCPLine,
+  //lstParametroDescription,
+  //lstParametroIsPolicyProperty,
+  //lstParametroPropertyDesc,
+  //lstParametroAuthor,
+  //lstParametroMainContact,
+  //lstParametroClaimAnt
   @Step
   public void asignarValoresSiniestro(String filtroSiniestroCsv) throws IOException {
     parametroSiniestro =
