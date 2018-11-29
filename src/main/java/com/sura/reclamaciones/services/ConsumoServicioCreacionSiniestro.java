@@ -40,7 +40,6 @@ public class ConsumoServicioCreacionSiniestro {
   }
 
   private void asignarParametrosSiniestro(List<ReclamacionEmpresarial> lstSiniestroParam) {
-
     creacionSiniestroFactory.setPolicyNumber(lstSiniestroParam.get(campoDato).getNumPoliza());
     creacionSiniestroFactory.setDescriptionLoss(
         lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
@@ -53,7 +52,6 @@ public class ConsumoServicioCreacionSiniestro {
   }
 
   private void asignarParametrosAutor(List<Persona> lstParametroPersona) {
-
     creacionSiniestroFactory.setDocumentTypeAuthor(
         lstParametroPersona.get(campoDato).getTipoDocumento());
     creacionSiniestroFactory.setTaxIdAuthor(lstParametroPersona.get(campoDato).getNumDocumento());
@@ -61,7 +59,6 @@ public class ConsumoServicioCreacionSiniestro {
   }
 
   private void asignarParametrosValorPerdida(List<ReclamacionEmpresarial> lstSiniestroParam) {
-
     creacionSiniestroFactory.setAmountLossEstimate(
         lstSiniestroParam.get(campoDato).getValorPerdidaSiniestro());
     creacionSiniestroFactory.setCurrencyLossEstimate(
@@ -69,7 +66,6 @@ public class ConsumoServicioCreacionSiniestro {
   }
 
   private void asignarParametrosContactoPrincipal(List<Persona> lstParametroPersona) {
-
     creacionSiniestroFactory.setDocumentTypeMainContact(
         lstParametroPersona.get(campoDato).getTipoDocumento());
     creacionSiniestroFactory.setContactNameMainContact(
@@ -83,7 +79,6 @@ public class ConsumoServicioCreacionSiniestro {
   }
 
   private void asignarParametrosDireccionPrincipal(List<ReclamacionEmpresarial> lstSiniestroParam) {
-
     creacionSiniestroFactory.setStateMainContact(lstSiniestroParam.get(campoDato).getPais());
     creacionSiniestroFactory.setAddressLine1MainContact(
         lstSiniestroParam.get(campoDato).getDireccion());
@@ -94,7 +89,6 @@ public class ConsumoServicioCreacionSiniestro {
   }
 
   private void asignarParametrosTipoIncidente(List<ReclamacionEmpresarial> lstSiniestroParam) {
-
     creacionSiniestroFactory.setPolicySystemId(
         lstSiniestroParam.get(campoDato).getIdentificadorRiesgo());
     creacionSiniestroFactory.setFixedPropertyIncident(
@@ -105,7 +99,6 @@ public class ConsumoServicioCreacionSiniestro {
 
   private void asignarParametrosInformacionSiniestro(
       List<ReclamacionEmpresarial> lstSiniestroParam) {
-
     creacionSiniestroFactory.setDescription(
         lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
     creacionSiniestroFactory.setIsPolicyProperty(
@@ -113,7 +106,6 @@ public class ConsumoServicioCreacionSiniestro {
   }
 
   private void asignarParametrosDireccionSiniestro(List<ReclamacionEmpresarial> lstSiniestroParam) {
-
     creacionSiniestroFactory.setStateProperty(lstSiniestroParam.get(campoDato).getPais());
     creacionSiniestroFactory.setAddressLine1Property(
         lstSiniestroParam.get(campoDato).getDireccion());
@@ -121,7 +113,6 @@ public class ConsumoServicioCreacionSiniestro {
   }
 
   private void asignarParametrosReclamante(List<Persona> lstParametroPersona) {
-
     creacionSiniestroFactory.setDocumentTypeAnt(
         lstParametroPersona.get(campoDato).getTipoDocumento());
     creacionSiniestroFactory.setContactNameAnt(
@@ -134,21 +125,18 @@ public class ConsumoServicioCreacionSiniestro {
 
   private void asignarParametrosDescripcionPropiedad(
       List<ReclamacionEmpresarial> lstSiniestroParam) {
-
     creacionSiniestroFactory.setPropertyDesc(
         lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
   }
 
   private void asignarParametrosDescripcionSiniestro(
       List<ReclamacionEmpresarial> lstSiniestroParam) {
-
     creacionSiniestroFactory.setDescription(
         lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
   }
 
   private void asignarParametrosLocalizacionPropiedad(
       List<ReclamacionEmpresarial> lstSiniestroParam) {
-
     creacionSiniestroFactory.setStateLossLocation(lstSiniestroParam.get(campoDato).getPais());
     creacionSiniestroFactory.setAddressLine1LossLocation(
         lstSiniestroParam.get(campoDato).getDireccion());
