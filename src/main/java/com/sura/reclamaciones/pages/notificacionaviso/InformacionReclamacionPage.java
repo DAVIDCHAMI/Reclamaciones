@@ -76,6 +76,18 @@ public class InformacionReclamacionPage extends GeneralPage {
   private WebElementFacade txtDetalleHechosSiniestroAtr;
 
 
+  @FindBy(
+      xpath =
+          "//div[2]//table[@class='sTablaContenedor']//tr[4]//td[2]/div")
+  private WebElementFacade lblNombreCiudad;
+
+  @FindBy(
+      xpath =
+          "//div[@id='ciudadesInformacionSiniestroEmp']//input")
+  private WebElementFacade txtCiudadSiniestro;
+
+
+
   public InformacionReclamacionPage(WebDriver driver) {
     super(driver);
   }
@@ -133,8 +145,7 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public String obtenerTituloReclamacionGenerada() {
-    String texto = spanNuevaReclamacion.waitUntilVisible().getText();
-    return texto;
+    return spanNuevaReclamacion.waitUntilVisible().getText();
   }
 
   public void seleccionarCausaSiniestroAtr(String causa) {
@@ -145,5 +156,10 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   public void diligenciarDetalleHechosAtr(String detalleHechos){
 txtDetalleHechosSiniestroAtr.waitUntilVisible().type(detalleHechos);
+  }
+
+  public void seleccionarCiudadSiniestro(){
+    String ciudad = lblNombreCiudad.waitUntilVisible().getText();
+    txtCiudadSiniestro.waitUntilVisible().type(ciudad);
   }
 }

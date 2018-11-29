@@ -29,7 +29,7 @@ public class NotificacionAvisoAtrDefinition {
 
   @Cuando("^se genere un siniestro por causa (.*) con un valor de pretension de (.*)$")
   public void seGenereUnSiniestroPorCausaCausaConUnValorDePretensionDeValorDePretensión(){
-
+nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionSiniestro("Amit","Prueba");
 
   }
 
