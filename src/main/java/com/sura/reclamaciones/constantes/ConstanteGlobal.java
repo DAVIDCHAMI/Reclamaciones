@@ -11,4 +11,6 @@ public class ConstanteGlobal {
   public static final String MONTO_2000000 = "2000000";
   public static final String MONTO_0 = "0";
   public static final String NIT = "98630089";
+  public static final String PARAMETROS_SINIESTRO = "parametros_siniestro";
+  public static final String PARAMETROS_PERSONA = "parametros_persona";
 }

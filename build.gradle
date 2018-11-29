@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
         maven {
             url "https://plugins.gradle.org/m2/"
-            }
+        }
     }
     dependencies {
         classpath "net.serenity-bdd:serenity-gradle-plugin:1.9.4"
@@ -24,7 +24,6 @@ apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'
 apply plugin: 'org.sonarqube'
 apply plugin: 'com.github.sherter.google-java-format'
-
 
 // Configuraciones para Pruebas unitarias
 sourceSets {
@@ -47,8 +46,19 @@ repositories {
     mavenCentral()
     mavenLocal()
     jcenter()
-    maven{
+    maven {
         url "https://artifactory.suramericana.com.co/artifactory/sura-share/"
+        credentials {
+            username "artifactory"
+            password "APhUNND62ueYkqmndp3TPc5AfM"
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://artifactory.suramericana.com.co/artifactory/CoreDeSeguros-snapshot-local/"
         credentials{
             username "artifactory"
             password "APhUNND62ueYkqmndp3TPc5AfM"
@@ -57,12 +67,13 @@ repositories {
 }
 
 dependencies {
+    compile group: 'com.sura.bdd', name: 'services-conector', version: '7.0.2'
     compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.9.6'
     compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.9.4'
     compile group: 'org.assertj', name: 'assertj-core', version: '1.7.0'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.2'
-    compile group: 'oracle', name:'ojdbc', version:'7'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.2'
+    compile group: 'oracle', name: 'ojdbc', version: '7'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
     unitTestCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
@@ -119,4 +130,9 @@ task unitTest(type: Test) {
     classpath = sourceSets.unitTest.runtimeClasspath
     outputs.upToDateWhen { false }
     reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+task installCerts(type: Exec) {
+    def java_home = System.getenv("JAVA_HOME")
+    commandLine "\"${java_home}\\bin\\keytool.exe\"", '-importcert', '-v', '-noprompt', '-trustcacerts', '-storepass', 'changeit', '-keystore', "${java_home}\\jre\\lib\\security\\cacerts", '-file', "certs\\artifactory.cer", '-alias', "artifactory"
 }
