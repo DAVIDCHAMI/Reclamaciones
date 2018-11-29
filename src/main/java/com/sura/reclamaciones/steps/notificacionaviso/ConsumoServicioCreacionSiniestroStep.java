@@ -26,20 +26,8 @@ public class ConsumoServicioCreacionSiniestroStep {
 
   @Step
   public void siniestrarPolizaEmpresarialAtr() {
-    consumoServicioCreacionSiniestro.asignarParametrosSiniestro(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.asignarParametrosAutor(lstParametroPersona);
-    consumoServicioCreacionSiniestro.asignarParametrosValorPerdida(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.asignarParametrosContactoPrincipal(lstParametroPersona);
-    consumoServicioCreacionSiniestro.asignarParametrosDireccionPrincipal(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.asignarParametrosTipoIncidente(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.asignarParametrosInformacionSiniestro(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.asignarParametrosDireccionSiniestro(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.asignarParametrosReclamante(lstParametroPersona);
-    consumoServicioCreacionSiniestro.asignarParametrosDescripcionPropiedad(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.asignarParametrosDescripcionSiniestro(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.asignarParametrosLocalizacionPropiedad(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.crearRequest();
-    consumoServicioCreacionSiniestro.obtenerResponse();
+    consumoServicioCreacionSiniestro.asignarParametrosRequest(
+        lstSiniestroParam, lstParametroPersona);
   }
 
   @Step
