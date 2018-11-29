@@ -14,18 +14,8 @@ import org.hamcrest.MatcherAssert;
 
 public class ConsumoServicioCreacionSiniestroStep {
 
-  List<ReclamacionEmpresarial> lstParametroDescription;
-  List<ReclamacionEmpresarial> lstParametroIsPolicyProperty;
-  List<ReclamacionEmpresarial> lstParametroPropertyDesc;
   List<ReclamacionEmpresarial> lstSiniestroParam;
-  List<ReclamacionEmpresarial> lstParametroLossEstimate;
-  List<ReclamacionEmpresarial> lstParametroProperty;
-  List<ReclamacionEmpresarial> lstParametroPrimaryAddress;
-  List<ReclamacionEmpresarial> lstParametroLossLocation;
-  List<ReclamacionEmpresarial> lstParametroCPLine;
-  List<Persona> lstParametroAuthor;
-  List<Persona> lstParametroMainContact;
-  List<Persona> lstParametroClaimAnt;
+  List<Persona> lstParametroPersona;
   ReclamacionEmpresarial parametroSiniestro = new ReclamacionEmpresarial();
   Persona parametroPersona = new Persona();
 
@@ -35,49 +25,33 @@ public class ConsumoServicioCreacionSiniestroStep {
       new ConsumoServicioCreacionSiniestro();
 
   @Step
-  public void siniestrarPolizaEmpresarialAtr()
-  {
+  public void siniestrarPolizaEmpresarialAtr() {
     consumoServicioCreacionSiniestro.asignarParametrosSiniestro(lstSiniestroParam);
-    consumoServicioCreacionSiniestro.asignarParametrosAutor(lstParametroAuthor);
-    consumoServicioCreacionSiniestro.asignarParametrosValorPerdida(lstParametroLossEstimate);
-    consumoServicioCreacionSiniestro.asignarParametrosContactoPrincipal(lstParametroMainContact);
-    consumoServicioCreacionSiniestro.asignarParametrosDireccionPrincipal(lstParametroPrimaryAddress);
-    consumoServicioCreacionSiniestro.asignarParametrosTipoIncidente(lstParametroCPLine);
-    consumoServicioCreacionSiniestro.asignarParametrosInformacionSiniestro(lstParametroDescription,lstParametroIsPolicyProperty);
-    consumoServicioCreacionSiniestro.asignarParametrosDireccionSiniestro(lstParametroProperty);
-
+    consumoServicioCreacionSiniestro.asignarParametrosAutor(lstParametroPersona);
+    consumoServicioCreacionSiniestro.asignarParametrosValorPerdida(lstSiniestroParam);
+    consumoServicioCreacionSiniestro.asignarParametrosContactoPrincipal(lstParametroPersona);
+    consumoServicioCreacionSiniestro.asignarParametrosDireccionPrincipal(lstSiniestroParam);
+    consumoServicioCreacionSiniestro.asignarParametrosTipoIncidente(lstSiniestroParam);
+    consumoServicioCreacionSiniestro.asignarParametrosInformacionSiniestro(lstSiniestroParam);
+    consumoServicioCreacionSiniestro.asignarParametrosDireccionSiniestro(lstSiniestroParam);
+    consumoServicioCreacionSiniestro.asignarParametrosReclamante(lstParametroPersona);
+    consumoServicioCreacionSiniestro.asignarParametrosDescripcionPropiedad(lstSiniestroParam);
+    consumoServicioCreacionSiniestro.asignarParametrosDescripcionSiniestro(lstSiniestroParam);
+    consumoServicioCreacionSiniestro.asignarParametrosLocalizacionPropiedad(lstSiniestroParam);
+    consumoServicioCreacionSiniestro.crearRequest();
+    consumoServicioCreacionSiniestro.obtenerResponse();
   }
-  //lstParametroLossEstimate,
-  //lstParametroProperty,
-  //lstParametroPrimaryAddress,
-  //lstParametroLossLocation,
-  //lstParametroCPLine,
-  //lstParametroDescription,
-  //lstParametroIsPolicyProperty,
-  //lstParametroPropertyDesc,
-  //lstParametroAuthor,
-  //lstParametroMainContact,
-  //lstParametroClaimAnt
+
   @Step
   public void asignarValoresSiniestro(String filtroSiniestroCsv) throws IOException {
     parametroSiniestro =
         new ReclamacionEmpresarial(
             genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_SINIESTRO, filtroSiniestroCsv));
     lstSiniestroParam = parametroSiniestro.getLstReclamo();
-    lstParametroLossEstimate = parametroSiniestro.getLstReclamo();
-    lstParametroProperty = parametroSiniestro.getLstReclamo();
-    lstParametroPrimaryAddress = parametroSiniestro.getLstReclamo();
-    lstParametroLossLocation = parametroSiniestro.getLstReclamo();
-    lstParametroCPLine = parametroSiniestro.getLstReclamo();
-    lstParametroDescription = parametroSiniestro.getLstReclamo();
-    lstParametroIsPolicyProperty = parametroSiniestro.getLstReclamo();
-    lstParametroPropertyDesc = parametroSiniestro.getLstReclamo();
     parametroPersona =
         new Persona(
             genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, filtroSiniestroCsv));
-    lstParametroAuthor = parametroPersona.getLstPersona();
-    lstParametroMainContact = parametroPersona.getLstPersona();
-    lstParametroClaimAnt = parametroPersona.getLstPersona();
+    lstParametroPersona = parametroPersona.getLstPersona();
   }
 
   public void verificarSiniestro() {
