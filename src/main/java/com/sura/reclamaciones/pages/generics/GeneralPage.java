@@ -60,6 +60,12 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
   private WebElementFacade btnUltimaPagina;
 
+  private String tblPago =
+      "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
+
+  private String tblTransaccion =
+      "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
+
   private String lstDinamico = "//li[.='COMODIN']";
   private String auxLstUbicacion = "";
 
@@ -70,6 +76,14 @@ public class GeneralPage extends PageObject {
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
     driver = wdriver;
+  }
+
+  public String getTblPago() {
+    return tblPago;
+  }
+
+  public String getTblTransaccion() {
+    return tblTransaccion;
   }
 
   public void seleccionarOpcionCombobox(String opcion) {

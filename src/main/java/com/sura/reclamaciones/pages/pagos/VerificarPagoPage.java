@@ -13,12 +13,6 @@ import org.openqa.selenium.WebElement;
 
 public class VerificarPagoPage extends GeneralPage {
 
-  public VerificarPagoPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
-  @Page MenuClaimPage menuClaimPage;
-
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
   private WebElementFacade tblVerificacionPago;
 
@@ -28,8 +22,9 @@ public class VerificarPagoPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='x-column-header-text'][contains(text(),'Número de pago')]")
   private WebElementFacade lblNumeroPago;
 
-  public static String tblPago =
-      "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
+  public VerificarPagoPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
   public String obtenerNumeroPagoRealizado() {
     irUltimaPagina();

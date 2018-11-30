@@ -25,11 +25,6 @@ public class DetalleTransaccionPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroPaginas;
 
-  public static String tblPago =
-      "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
-  public static String tblTransaccion =
-      "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
-
   public DetalleTransaccionPage(WebDriver wdriver) {
     super(wdriver);
   }
@@ -104,9 +99,9 @@ public class DetalleTransaccionPage extends GeneralPage {
     boolean estadoPago;
     List<WebElement> lstPago;
     if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
-      lstPago = obtenerFilaTabla(strNumeroTransaccion, tblPago);
+      lstPago = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
     } else {
-      lstPago = obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
+      lstPago = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
     }
     int intLongitudFila = lstPago.size();
     if (intLongitudFila == 0) {
@@ -127,9 +122,9 @@ public class DetalleTransaccionPage extends GeneralPage {
     for (int i = 0; i < intNumeroPaginas; i++) {
       List<WebElement> lstPago;
       if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, tblPago);
+        lstPago = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
       } else {
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
+        lstPago = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
       }
       int intLongitudFila = lstPago.size();
       if (intLongitudFila == 0) {

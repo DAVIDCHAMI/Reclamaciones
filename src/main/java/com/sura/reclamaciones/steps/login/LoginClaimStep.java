@@ -27,17 +27,13 @@ public class LoginClaimStep {
   @Step
   public void iniciarSesionUAT(List<Credencial> datosCredencial) {
     datosCredencial.forEach(
-        dato -> {
-          loginClaimPage.inisiarSesionLAB(dato.getUsuario(), dato.getContrasena());
-        });
+        dato -> loginClaimPage.inisiarSesionLAB(dato.getUsuario(), dato.getContrasena()));
   }
 
   @Step
   public void iniciarSesionDllo(List<Credencial> datosCredencial) {
     datosCredencial.forEach(
-        dato -> {
-          loginClaimPage.iniciarSesionDLLO(dato.getUsuario(), dato.getContrasena());
-        });
+        dato -> loginClaimPage.iniciarSesionDLLO(dato.getUsuario(), dato.getContrasena()));
   }
 
   @Step

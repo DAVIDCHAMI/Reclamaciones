@@ -11,14 +11,14 @@ import org.openqa.selenium.WebElement;
 
 public class VerificacionRecuperoPage extends GeneralPage {
 
+  @Page MenuClaimPage menuClaimPage;
+
+  private static String tblRecupero =
+      "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
+
   public VerificacionRecuperoPage(WebDriver driver) {
     super(driver);
   }
-
-  @Page MenuClaimPage menuClaimPage;
-
-  public static String tblRecupero =
-      "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   public List<WebElement> obtenerListaRecupero() {
     irUltimaPagina();
@@ -27,7 +27,8 @@ public class VerificacionRecuperoPage extends GeneralPage {
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
     irUltimaPagina();
-    List<WebElement> lstFilaRecupero = obtenerFilaTabla(strNumeroRecupero, tblRecupero);
+    List<WebElement> lstFilaRecupero;
+    lstFilaRecupero = obtenerFilaTabla(strNumeroRecupero, tblRecupero);
     return lstFilaRecupero;
   }
 
