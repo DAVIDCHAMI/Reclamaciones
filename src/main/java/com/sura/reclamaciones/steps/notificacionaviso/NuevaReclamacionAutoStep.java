@@ -117,10 +117,6 @@ public class NuevaReclamacionAutoStep {
         "No coinciden todos los valores de las líneas de reserva", exposicionAutomatica);
   }
 
-  public void visualizarResumenSiniestro() {
-    nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
-  }
-
   public void finalizarReclamacion() {
     agregarInformacionPage.concluirReclamacion();
   }

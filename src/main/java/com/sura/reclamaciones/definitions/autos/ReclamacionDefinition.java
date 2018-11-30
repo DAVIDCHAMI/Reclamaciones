@@ -77,7 +77,7 @@ public class ReclamacionDefinition {
         exposicionLesiones.getLstExposicionLesiones());
     reclamacionStep.finalizarReclamacion();
     reclamacionStep.validarReclamacion();
-    reclamacionStep.visualizarResumenSiniestro();
+
     reclamacionStep.consultarReclamacion();
     exposiciones =
         new Exposiciones(genericStep.getFilasModelo("exposicion_automatica", "exposicionesRC"));
@@ -103,7 +103,6 @@ public class ReclamacionDefinition {
 
     reclamacionStep.finalizarReclamacion();
     reclamacionStep.validarReclamacion();
-    reclamacionStep.visualizarResumenSiniestro();
     reclamacionStep.consultarReclamacion();
     exposiciones =
         new Exposiciones(
@@ -165,7 +164,6 @@ public class ReclamacionDefinition {
         exposicionLesiones.getLstExposicionLesiones());
     reclamacionStep.finalizarReclamacion();
     reclamacionStep.validarReclamacion();
-    reclamacionStep.visualizarResumenSiniestro();
     reclamacionStep.consultarReclamacion();
     exposiciones =
         new Exposiciones(genericStep.getFilasModelo("exposicion_automatica", "exposicionesSoloRC"));

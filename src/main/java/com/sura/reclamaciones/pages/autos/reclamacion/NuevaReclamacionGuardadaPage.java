@@ -33,18 +33,6 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
     return valorMensaje;
   }
 
-  public String obtenerNumeroReclamacion() {
-    String numeroReclamacion;
-    divNumeroReclamacion.waitUntilVisible();
-    numeroReclamacion = divNumeroReclamacion.getText();
-    numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    LOGGER.info(String.format("el número de reclamación generado es: %s\n", numeroReclamacion));
-    GenericStep log = new GenericStep();
-    log.generarRegistro(numeroReclamacion, ConstanteGlobal.AUTOS);
-    divNumeroReclamacion.waitUntilVisible();
-    return numeroReclamacion;
-  }
-
   public void abrirReclamacion() {
     divNumeroReclamacion.waitUntilVisible();
     divNumeroReclamacion.click();
