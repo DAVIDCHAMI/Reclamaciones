@@ -3,16 +3,24 @@ package com.sura.reclamaciones.models;
 import java.util.Map;
 
 public abstract class Reclamacion {
+
   private String origen;
   private String tipoPoliza;
   private String numPoliza;
   private String fechaSiniestro;
-  private String lugar;
+  private String lugarSiniestro;
   private String reservaTransaccion;
   private String departamento;
   private String ciudad;
   private String direccion;
   private String tipoDireccion;
+  private String fechaAvisoSiniestro;
+  private String causaSiniestro;
+  private String descripcionHechosSiniestro;
+  private String identificacionAutor;
+  private String valorPerdidaSiniestro;
+  private String tipoMonedaPoliza;
+  private String esPolizaPropiedad;
 
   public Reclamacion() {}
 
@@ -21,12 +29,19 @@ public abstract class Reclamacion {
     this.fechaSiniestro = datosReclamacion.get("fechaSiniestro");
     this.tipoPoliza = datosReclamacion.get("tipoPoliza");
     this.numPoliza = datosReclamacion.get("numPoliza");
-    this.lugar = datosReclamacion.get("lugar");
+    this.lugarSiniestro = datosReclamacion.get("lugarSiniestro");
     this.reservaTransaccion = datosReclamacion.get("reservaTransaccion");
     this.departamento = datosReclamacion.get("departamento");
     this.ciudad = datosReclamacion.get("ciudad");
     this.direccion = datosReclamacion.get("direccion");
     this.tipoDireccion = datosReclamacion.get("tipoDireccion");
+    this.fechaAvisoSiniestro = datosReclamacion.get("fechaAviso");
+    this.causaSiniestro = datosReclamacion.get("causaPerdida");
+    this.descripcionHechosSiniestro = datosReclamacion.get("descripcionHechos");
+    this.identificacionAutor = datosReclamacion.get("idAutor");
+    this.valorPerdidaSiniestro = datosReclamacion.get("valorPerdida");
+    this.tipoMonedaPoliza = datosReclamacion.get("tipoMoneda");
+    this.esPolizaPropiedad = datosReclamacion.get("esPolizaPropiedad");
   }
 
   public String getOrigen() {
@@ -45,8 +60,8 @@ public abstract class Reclamacion {
     return fechaSiniestro;
   }
 
-  public String getLugar() {
-    return lugar;
+  public String getLugarSiniestro() {
+    return lugarSiniestro;
   }
 
   public String getReservaTransaccion() {
@@ -83,5 +98,33 @@ public abstract class Reclamacion {
 
   public void setTipoDireccion(String tipoDireccion) {
     this.tipoDireccion = tipoDireccion;
+  }
+
+  public String getFechaAvisoSiniestro() {
+    return fechaAvisoSiniestro;
+  }
+
+  public String getCausaSiniestro() {
+    return causaSiniestro;
+  }
+
+  public String getDescripcionHechosSiniestro() {
+    return descripcionHechosSiniestro;
+  }
+
+  public String getIdentificacionAutor() {
+    return identificacionAutor;
+  }
+
+  public Integer getValorPerdidaSiniestro() {
+    return Integer.parseInt(valorPerdidaSiniestro);
+  }
+
+  public String getTipoMonedaPoliza() {
+    return tipoMonedaPoliza;
+  }
+
+  public boolean getEsPolizaPropiedad() {
+    return Boolean.parseBoolean(esPolizaPropiedad);
   }
 }

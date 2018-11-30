@@ -40,7 +40,7 @@ public class NuevaReclamacionAutoStep {
     datosReclamacion.forEach(
         dato -> {
           agregarInformacionPage.cerrarVentanaEmergente();
-          agregarInformacionPage.seleccionarLugar(dato.getLugar());
+          agregarInformacionPage.seleccionarLugar(dato.getLugarSiniestro());
           agregarInformacionPage.escribirSucedido(dato.getSucedido());
           agregarInformacionPage.seleccionarCausa(dato.getCausa());
           agregarInformacionPage.seleccionarOrigen(dato.getOrigen());
