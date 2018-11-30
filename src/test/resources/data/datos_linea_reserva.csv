@@ -1,4 +1,4 @@
-id;idFiltro;lineaReserva;valorReserva;columnaADevolver;valorDeducible
+id;idFiltro;lineaReserva;valorReserva;columnaDevolver;valorDeducible
 1;RC_Vehiculo_y_peaton;Perdida Parcial Daños autorizado TALLER COP;$3.000.000 (COP);Reservas disponibles;Deducible
 2;RC_Vehiculo_y_peaton;RC Lesión a Persona COP;$3.600.000 (COP);Reservas disponibles;Deducible
 3;RC_Vehiculo_y_peaton;Daños Vehiculos COP;$3.400.000 (COP);Reservas disponibles;Deducible

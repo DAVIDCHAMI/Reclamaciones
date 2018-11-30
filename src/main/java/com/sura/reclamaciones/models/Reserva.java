@@ -6,17 +6,25 @@ import java.util.Map;
 
 public class Reserva {
 
-  private List<Reserva> lstReservaEmp = new ArrayList<>();
+  private List<Reserva> lstReserva = new ArrayList<>();
   private String numeroReclamacion;
   private String monedaReserva;
+  private String lineaReserva;
+  private String valorReserva;
+  private String columnaDevolver;
+  private String valorDeducible;
 
-  private Reserva(Map<String, String> datosReservaEmp) {
-    this.numeroReclamacion = datosReservaEmp.get("numeroReclamacion");
-    this.monedaReserva = datosReservaEmp.get("monedaReserva");
+  public Reserva(Map<String, String> datosReserva) {
+    this.numeroReclamacion = datosReserva.get("numeroReclamacion");
+    this.monedaReserva = datosReserva.get("monedaReserva");
+    this.lineaReserva = datosReserva.get("lineaReserva");
+    this.valorReserva = datosReserva.get("valorReserva");
+    this.columnaDevolver = datosReserva.get("columnaDevolver");
+    this.valorDeducible = datosReserva.get("valorDeducible");
   }
 
-  public Reserva(List<Map<String, String>> datosReclamacionesEmp) {
-    asignarDatos(datosReclamacionesEmp);
+  public Reserva(List<Map<String, String>> datosReclamaciones) {
+    asignarDatos(datosReclamaciones);
   }
 
   public String getNumeroReclamacion() {
@@ -27,13 +35,29 @@ public class Reserva {
     return monedaReserva;
   }
 
-  public List<Reserva> getLstReclamo() {
-    return lstReservaEmp;
+  public List<Reserva> getLstReserva() {
+    return lstReserva;
   }
 
-  private void asignarDatos(List<Map<String, String>> datosReservaEmp) {
-    for (Map<String, String> dato : datosReservaEmp) {
-      lstReservaEmp.add(new Reserva(dato));
+  public String getValorDeducible() {
+    return valorDeducible;
+  }
+
+  public String getLineaReserva() {
+    return lineaReserva;
+  }
+
+  public String getValorReserva() {
+    return valorReserva;
+  }
+
+  public String getColumnaDevolver() {
+    return columnaDevolver;
+  }
+
+  private void asignarDatos(List<Map<String, String>> datosReserva) {
+    for (Map<String, String> dato : datosReserva) {
+      lstReserva.add(new Reserva(dato));
     }
   }
 }

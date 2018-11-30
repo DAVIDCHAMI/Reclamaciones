@@ -57,12 +57,4 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
     numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     return numeroReclamacion;
   }
-
-  public void consultarReclamacion(String culpabilidad) {
-
-    switch (culpabilidad) {
-      case "Archivo":
-        break;
-    }
-  }
 }

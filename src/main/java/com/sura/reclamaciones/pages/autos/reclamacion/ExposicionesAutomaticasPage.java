@@ -2,7 +2,7 @@ package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import com.sura.reclamaciones.constantes.DatosFinancierosConstante;
 import com.sura.reclamaciones.constantes.Tablas;
-import com.sura.reclamaciones.models.ExposicionAutomaticaReservaAutomatica;
+import com.sura.reclamaciones.models.Exposiciones;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import java.util.List;
@@ -24,8 +24,7 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
 
   public boolean valorLineaReserva = true;
 
-  public boolean validarExposiciones(
-      List<ExposicionAutomaticaReservaAutomatica> datosExposicionesAutomaticas) {
+  public boolean validarExposiciones(List<Exposiciones> datosExposicionesAutomaticas) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DatosFinancierosConstante.EXPOSICIONES);
     obtenerCabecerasDeUnaTabla(
         $("//div[@id='ClaimExposures:ClaimExposuresScreen:ExposuresLV']"), Tablas.CABECERAS_CC);
@@ -37,7 +36,7 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
                   Tablas.CABECERAS_CC,
                   Tablas.REGISTROS_CC,
                   datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
-                  datosExposicionesAutomaticas.get(i).getColumnaADevolver())
+                  datosExposicionesAutomaticas.get(i).getColumnaDevolver())
               .getText();
       if (lineaReservaTbl.equals(datosExposicionesAutomaticas.get(i).getExposicionAutomatica())) {
         String valorReserva =
@@ -46,7 +45,7 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
                     Tablas.CABECERAS_CC,
                     Tablas.REGISTROS_CC,
                     datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
-                    datosExposicionesAutomaticas.get(0).getColumnaADevolver())
+                    datosExposicionesAutomaticas.get(0).getColumnaDevolver())
                 .getText();
       } else {
         valorLineaReserva = false;

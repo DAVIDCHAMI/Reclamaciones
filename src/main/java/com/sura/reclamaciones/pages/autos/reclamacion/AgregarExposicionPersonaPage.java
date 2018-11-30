@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
-import com.sura.reclamaciones.models.ExposicionPersona;
+import com.sura.reclamaciones.models.ExposicionLesiones;
+import com.sura.reclamaciones.models.PersonaReclamacionAuto;
+import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -91,32 +93,28 @@ public class AgregarExposicionPersonaPage extends GeneralPage {
   )
   WebElementFacade cmbDetalleLesion;
 
-  @FindBy(
-    xpath =
-        "//span[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV_tb:Add-btnInnerEl']"
-  )
-  WebElementFacade btnAgregarParteCuerpo;
-
-  @FindBy(
-    xpath = "//td[@class='x-grid-cell x-grid-td x-grid-cell-headerId-gridcolumn-1552  g-cell-edit']"
-  )
-  WebElementFacade btnA;
-
   public AgregarExposicionPersonaPage(WebDriver wdriver) {
     super(wdriver);
   }
 
-  public void agregarPeaton(List<ExposicionPersona> datosExposicionPersona) {
-    datosExposicionPersona.forEach(
+  public void agregarPeaton(
+      List<PersonaReclamacionAuto> datosPersonaReclamacionAutos,
+      List<ReclamacionAuto> datosReclamacionAuto,
+      List<ExposicionLesiones> datosExposicionLesiones) {
+    datosPersonaReclamacionAutos.forEach(
         dato -> {
           btnAgregarPeaton.waitUntilVisible().click();
           cmbTipoDocumento.clear();
           cmbTipoDocumento.sendKeys(dato.getTipoDocumento());
           cmbTipoDocumento.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtNumeroDocumento.sendKeys(dato.getNumeroDocumentoPeaton());
-          txtPrimerNombre.sendKeys(dato.getPrimerNombrePeaton());
-          txtPrimerApellido.sendKeys(dato.getPrimerApellidoPeaton());
+          txtNumeroDocumento.sendKeys(dato.getnumeroDocumento());
+          txtPrimerNombre.sendKeys(dato.getPrimerNombre());
+          txtPrimerApellido.sendKeys(dato.getPrimerApellido());
+        });
+
+    datosReclamacionAuto.forEach(
+        dato -> {
           cmbDepartamento.clear();
           cmbDepartamento.sendKeys(dato.getDepartamento());
           cmbDepartamento.sendKeys(Keys.ENTER);
@@ -125,11 +123,14 @@ public class AgregarExposicionPersonaPage extends GeneralPage {
           cmbCiudad.sendKeys(dato.getCiudad());
           cmbCiudad.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtDireccion.sendKeys(dato.getDireccionPeaton());
+          txtDireccion.sendKeys(dato.getDireccion());
           realizarEsperaCarga();
           cmbTipoDireccion.clear();
           cmbTipoDireccion.sendKeys(dato.getTipoDireccion());
           cmbTipoDireccion.sendKeys(Keys.ENTER);
+        });
+    datosExposicionLesiones.forEach(
+        dato -> {
           chkLesiones.waitUntilVisible().click();
           cmbGravedad.clear();
           cmbGravedad.sendKeys(dato.getGravedadLesion());

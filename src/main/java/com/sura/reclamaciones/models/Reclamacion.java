@@ -9,6 +9,10 @@ public abstract class Reclamacion {
   private String fechaSiniestro;
   private String lugar;
   private String reservaTransaccion;
+  private String departamento;
+  private String ciudad;
+  private String direccion;
+  private String tipoDireccion;
 
   public Reclamacion() {}
 
@@ -19,6 +23,10 @@ public abstract class Reclamacion {
     this.numPoliza = datosReclamacion.get("numPoliza");
     this.lugar = datosReclamacion.get("lugar");
     this.reservaTransaccion = datosReclamacion.get("reservaTransaccion");
+    this.departamento = datosReclamacion.get("departamento");
+    this.ciudad = datosReclamacion.get("ciudad");
+    this.direccion = datosReclamacion.get("direccion");
+    this.tipoDireccion = datosReclamacion.get("tipoDireccion");
   }
 
   public String getOrigen() {
@@ -43,5 +51,37 @@ public abstract class Reclamacion {
 
   public String getReservaTransaccion() {
     return reservaTransaccion;
+  }
+
+  public String getDepartamento() {
+    return departamento;
+  }
+
+  public void setDepartamento(String departamento) {
+    this.departamento = departamento;
+  }
+
+  public String getCiudad() {
+    return ciudad;
+  }
+
+  public void setCiudad(String ciudad) {
+    this.ciudad = ciudad;
+  }
+
+  public String getDireccion() {
+    return direccion;
+  }
+
+  public void setDireccion(String direccion) {
+    this.direccion = direccion;
+  }
+
+  public String getTipoDireccion() {
+    return tipoDireccion;
+  }
+
+  public void setTipoDireccion(String tipoDireccion) {
+    this.tipoDireccion = tipoDireccion;
   }
 }

@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.models.PersonaReclamacionAuto;
+import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -107,17 +109,23 @@ public class DetalleVehiculoPage extends GeneralPage {
     seleccionarConductor();
   }
 
-  public void agregarTerceroConductor(List<ExposicionVehiculoTercero> datosExposicionTercero) {
-    datosExposicionTercero.forEach(
+  public void agregarTerceroConductor(
+      List<PersonaReclamacionAuto> datosPersonaReclamacion,
+      List<ReclamacionAuto> datosReclamacionAuto) {
+    datosPersonaReclamacion.forEach(
         dato -> {
           btnAgregarConductor.waitUntilVisible().click();
           cmbTipoDocumento.clear();
           cmbTipoDocumento.sendKeys(dato.getTipoDocumento());
           cmbTipoDocumento.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtNumeroDocumento.sendKeys(dato.getNumeroDocumentoConductor());
+          txtNumeroDocumento.sendKeys(dato.getnumeroDocumento());
           txtPrimerNombre.sendKeys(dato.getPrimerNombre());
           txtPrimerApellido.sendKeys(dato.getPrimerApellido());
+          realizarEsperaCarga();
+        });
+    datosReclamacionAuto.forEach(
+        dato -> {
           cmbDepartamento.clear();
           cmbDepartamento.sendKeys(dato.getDepartamento());
           cmbDepartamento.sendKeys(Keys.ENTER);
@@ -133,7 +141,6 @@ public class DetalleVehiculoPage extends GeneralPage {
           cmbTipoDireccion.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
           aceptarOpcion();
-          realizarEsperaCarga();
         });
   }
 

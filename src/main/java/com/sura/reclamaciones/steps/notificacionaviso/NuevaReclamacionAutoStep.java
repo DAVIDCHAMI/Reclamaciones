@@ -2,30 +2,28 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.constantes.TransaccionModeloSimplificadoConstante;
-import com.sura.reclamaciones.models.*;
-import com.sura.reclamaciones.pages.autos.reclamacion.*;
+import com.sura.reclamaciones.models.ExposicionLesiones;
+import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.models.Exposiciones;
+import com.sura.reclamaciones.models.PersonaReclamacionAuto;
+import com.sura.reclamaciones.models.ReclamacionAuto;
+import com.sura.reclamaciones.models.Reserva;
+import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.pages.autos.reclamacion.AgregarExposicionPersonaPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.DatosFinancierosPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
-import com.sura.reclamaciones.sentenciasSQL.ConsultarCondicionesPoliza;
-import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
 public class NuevaReclamacionAutoStep {
-
-  ConsultarCondicionesPoliza consultarCondicionesPoliza = new ConsultarCondicionesPoliza();
-  ConexionBaseDatosUtil conexionBaseDatosUtil = new ConexionBaseDatosUtil();
-
-  Connection conexion = null;
-  private String transaccionConsulta = null;
-  private Map<String, String> sql = null;
-  private List<Map<String, String>> resultadoConsulta = null;
 
   @Page private InformacionBasicaPage informacionBasicaPage;
   @Page private BuscarPolizaPage buscarPolizaPage;
@@ -60,11 +58,13 @@ public class NuevaReclamacionAutoStep {
   }
 
   @Step
-  public void crearExposionVehiculoTercero(List<ExposicionVehiculoTercero> datosExposicionTercero) {
-
+  public void crearExposionVehiculoTercero(
+      List<ExposicionVehiculoTercero> datosExposicionTercero,
+      List<PersonaReclamacionAuto> datosPersonaReclamacion,
+      List<ReclamacionAuto> datosReclamacionAuto) {
     agregarInformacionPage.agregarExposicionVehiculoTercero();
+    detalleVehiculoPage.agregarTerceroConductor(datosPersonaReclamacion, datosReclamacionAuto);
     detalleVehiculoPage.ingresarVehiculoTercero(datosExposicionTercero);
-    detalleVehiculoPage.agregarTerceroConductor(datosExposicionTercero);
     datosExposicionTercero.forEach(
         dato -> {
           detalleVehiculoPage.seleccionarTaller(dato.getTaller());
@@ -73,8 +73,12 @@ public class NuevaReclamacionAutoStep {
   }
 
   @Step
-  public void crearExposicionPersona(List<ExposicionPersona> datosExposicionPersona) {
-    agregarExposicionPersonaPage.agregarPeaton(datosExposicionPersona);
+  public void crearExposicionPersona(
+      List<PersonaReclamacionAuto> datopersonaReclamacion,
+      List<ReclamacionAuto> datosReclamacionAuto,
+      List<ExposicionLesiones> datosExposicionLesiones) {
+    agregarExposicionPersonaPage.agregarPeaton(
+        datopersonaReclamacion, datosReclamacionAuto, datosExposicionLesiones);
   }
 
   @Step
@@ -106,8 +110,7 @@ public class NuevaReclamacionAutoStep {
         mensajeValidado.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
   }
 
-  public void validarExposicion(
-      List<ExposicionAutomaticaReservaAutomatica> datosExposicionAutomatica)  {
+  public void validarExposicion(List<Exposiciones> datosExposicionAutomatica) {
     boolean exposicionAutomatica =
         exposicionesAutomaticasPage.validarExposiciones(datosExposicionAutomatica);
     MatcherAssert.assertThat(
@@ -155,33 +158,18 @@ public class NuevaReclamacionAutoStep {
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
   }
 
-  @Step
-  public Connection conectarBaseDatos() {
-    conexion =
-        ConexionBaseDatosUtil.conectarBaseDatos(
-            TransaccionModeloSimplificadoConstante.USUARIO,
-            TransaccionModeloSimplificadoConstante.CLAVE,
-            TransaccionModeloSimplificadoConstante.URL,
-            TransaccionModeloSimplificadoConstante.DRIVER);
-    return conexion;
-  }
-
   public void consultarReclamacion() {
     nuevaReclamacionGuardadaPage.abrirReclamacion();
   }
 
-  public void consultarLineaReservaValorReservaRC(
-      List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos)  {
-    boolean valorLineaReserva =
-        datosFinancierosPage.obtenerDatosFinancieros(lineaReservaValorReservaAutos);
+  public void consultarReservaResponsabilidadCivil(List<Reserva> lineaReserva) {
+    boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
     MatcherAssert.assertThat(
         "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
   }
 
-  public void consultarLineayValorReservaArchivo(
-      List<LineaReservaValorReservaAutos> lineaReservaValorReservaAutos)  {
-    boolean valorLineaReserva =
-        datosFinancierosPage.obtenerDatosFinancieros(lineaReservaValorReservaAutos);
+  public void consultarValorReservaArchivo(List<Reserva> lineaReserva) {
+    boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
     MatcherAssert.assertThat(
         "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
   }
