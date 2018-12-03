@@ -75,7 +75,8 @@ public class NuevoPagoStep {
           String strNumeroTransaccion = verificarPagoPage.obtenerNumeroPagoRealizado();
           menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
               MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
-          verificarPagoPage.irUltimaPagina();
+          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
+              MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
           List<WebElement> lstFilaPago =
               verificarPagoPage.obtenerFilaTabla(
                   strNumeroTransaccion, verificarPagoPage.getTblPago());
