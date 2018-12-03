@@ -52,6 +52,7 @@ public class Persona {
   }
 
   public List<Persona> lstPersona = new ArrayList<>();
+
   public List<Persona> getLstPersona() {
     return lstPersona;
   }
@@ -77,6 +78,4 @@ public class Persona {
       lstPersona.add(new Persona(dato));
     }
   }
-
-
 }

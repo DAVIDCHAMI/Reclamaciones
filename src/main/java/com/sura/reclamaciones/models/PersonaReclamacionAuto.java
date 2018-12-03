@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PersonaReclamacionAuto{
+public class PersonaReclamacionAuto {
 
   private String primerNombre;
   private String segundoNombre;
