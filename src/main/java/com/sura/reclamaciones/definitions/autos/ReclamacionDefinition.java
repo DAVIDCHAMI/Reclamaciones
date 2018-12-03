@@ -68,6 +68,9 @@ public class ReclamacionDefinition {
     personaReclamacionAuto =
         new PersonaReclamacionAuto(
             genericStep.getFilasModelo("persona_reclamacion_auto", "peaton"));
+    direccionReclamacion =
+        new ReclamacionAuto(
+            genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionLesiones"));
     exposicionLesiones =
         new ExposicionLesiones(
             genericStep.getFilasModelo("responsabilidad_civil_lesiones", "exposicionRcPersona"));
@@ -77,7 +80,6 @@ public class ReclamacionDefinition {
         exposicionLesiones.getLstExposicionLesiones());
     reclamacionStep.finalizarReclamacion();
     reclamacionStep.validarReclamacion();
-
     reclamacionStep.consultarReclamacion();
     exposiciones =
         new Exposiciones(genericStep.getFilasModelo("exposicion_automatica", "exposicionesRC"));
@@ -155,6 +157,9 @@ public class ReclamacionDefinition {
     personaReclamacionAuto =
         new PersonaReclamacionAuto(
             genericStep.getFilasModelo("persona_reclamacion_auto", "peaton"));
+    direccionReclamacion =
+        new ReclamacionAuto(
+            genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionLesiones"));
     exposicionLesiones =
         new ExposicionLesiones(
             genericStep.getFilasModelo("responsabilidad_civil_lesiones", "exposicionRcPersona"));

@@ -108,7 +108,7 @@ public class AgregarExposicionPersonaPage extends GeneralPage {
           cmbTipoDocumento.sendKeys(dato.getTipoDocumento());
           cmbTipoDocumento.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtNumeroDocumento.sendKeys(dato.getnumeroDocumento());
+          txtNumeroDocumento.sendKeys(dato.getNumeroDocumento());
           txtPrimerNombre.sendKeys(dato.getPrimerNombre());
           txtPrimerApellido.sendKeys(dato.getPrimerApellido());
         });

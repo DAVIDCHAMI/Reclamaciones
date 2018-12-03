@@ -119,7 +119,7 @@ public class DetalleVehiculoPage extends GeneralPage {
           cmbTipoDocumento.sendKeys(dato.getTipoDocumento());
           cmbTipoDocumento.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtNumeroDocumento.sendKeys(dato.getnumeroDocumento());
+          txtNumeroDocumento.sendKeys(dato.getNumeroDocumento());
           txtPrimerNombre.sendKeys(dato.getPrimerNombre());
           txtPrimerApellido.sendKeys(dato.getPrimerApellido());
           realizarEsperaCarga();
@@ -166,6 +166,7 @@ public class DetalleVehiculoPage extends GeneralPage {
   private void buscarProveedor() {
     btnBuscarProveedor.waitUntilVisible().click();
     realizarEsperaCarga();
+    btnBuscarProveedor.waitUntilVisible().click();
   }
 
   public void ingresarVehiculoTercero(List<ExposicionVehiculoTercero> datosExposicionTercero) {
