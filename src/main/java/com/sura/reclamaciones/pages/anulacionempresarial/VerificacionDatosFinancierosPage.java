@@ -1,17 +1,17 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
-import static com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage.tblPago;
-import static com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage.tblTransaccion;
-
 import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
+import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class VerificacionDatosFinancierosPage extends GeneralPage {
+
+  @Page DetalleTransaccionPage detalleTransaccionPage;
 
   public VerificacionDatosFinancierosPage(WebDriver wdriver) {
     super(wdriver);
@@ -22,21 +22,23 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     List<WebElement> lstPago;
     if (strTipoAnulacion.equals(AnulacionConstante.PAGO)) {
       if (intNumeroPagina.equals(0)) {
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, tblPago);
+        lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblPago());
       } else {
         for (int i = 0; i < intNumeroPagina; i++) {
           irSiguientePagina();
         }
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, tblPago);
+        lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblPago());
       }
     } else {
       if (intNumeroPagina.equals(0)) {
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
+        lstPago =
+            obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
       } else {
         for (int i = 0; i < intNumeroPagina; i++) {
           irSiguientePagina();
         }
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
+        lstPago =
+            obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
       }
     }
     return lstPago;

@@ -35,9 +35,7 @@ public class LoginClaimStep {
   @Step
   public void iniciarSesionDllo(List<Credencial> datosCredencial) {
     datosCredencial.forEach(
-        dato -> {
-          loginClaimPage.iniciarSesionDLLO(dato.getUsuario(), dato.getContrasena());
-        });
+        dato -> loginClaimPage.iniciarSesionDLLO(dato.getUsuario(), dato.getContrasena()));
   }
 
   @Step

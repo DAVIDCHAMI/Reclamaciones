@@ -8,10 +8,6 @@ import org.openqa.selenium.WebDriver;
 
 public class NuevaReclamacionGuardadaPage extends GeneralPage {
 
-  public NuevaReclamacionGuardadaPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   @FindBy(id = "NewClaimSaved:NewClaimSavedScreen:ttlBar")
   private WebElementFacade lblMensajeValidar;
 
@@ -22,6 +18,10 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
 
   @FindBy(xpath = "//span[@id='TabBar:ClaimTab-btnInnerEl']")
   private WebElementFacade spanNumeroReclamacion;
+
+  public NuevaReclamacionGuardadaPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
   public String obtenerMensajeValidador() {
     String valorMensaje;

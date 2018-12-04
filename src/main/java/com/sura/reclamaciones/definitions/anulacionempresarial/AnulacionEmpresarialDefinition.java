@@ -6,6 +6,7 @@ import com.sura.reclamaciones.steps.generics.GenericStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class AnulacionEmpresarialDefinition {
@@ -18,7 +19,7 @@ public class AnulacionEmpresarialDefinition {
   @Dado(
       "^que se debe realizar una anulacion de (.*), de un siniestro de una poliza empresarial con producto (.*)$")
   public void ingresarVentanaAnulacion(String tipoTransaccion, String tipoProducto)
-      throws Throwable {
+      throws IOException {
     anulacionEmpresarial =
         new AnulacionEmpresarial(genericStep.getFilasModelo("anulacion_empresarial", tipoProducto));
     anulacionEmpresarialStep.consultarNumeroReclamacion(

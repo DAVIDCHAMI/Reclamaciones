@@ -13,6 +13,26 @@ public class PersonaReclamacionAuto {
   private String tipoDocumento;
   private String numeroDocumento;
 
+  private List<PersonaReclamacionAuto> lstPersonaReclamacionAuto = new ArrayList<>();
+
+  public PersonaReclamacionAuto() {
+    super();
+  }
+
+  public PersonaReclamacionAuto(List<Map<String, String>> datosPersonaReclamacionAuto) {
+    super();
+    asignarDatos(datosPersonaReclamacionAuto);
+  }
+
+  private PersonaReclamacionAuto(Map<String, String> datosPersonaReclamacionAuto) {
+    this.primerNombre = datosPersonaReclamacionAuto.get("primerNombre");
+    this.segundoNombre = datosPersonaReclamacionAuto.get("segundoNombre");
+    this.primerApellido = datosPersonaReclamacionAuto.get("primerApellido");
+    this.segundoApellido = datosPersonaReclamacionAuto.get("segundoApellido");
+    this.tipoDocumento = datosPersonaReclamacionAuto.get("tipoDocumento");
+    this.numeroDocumento = datosPersonaReclamacionAuto.get("numeroDocumento");
+  }
+
   public String getPrimerNombre() {
     return primerNombre;
   }
@@ -35,26 +55,6 @@ public class PersonaReclamacionAuto {
 
   public String getNumeroDocumento() {
     return numeroDocumento;
-  }
-
-  private List<PersonaReclamacionAuto> lstPersonaReclamacionAuto = new ArrayList<>();
-
-  public PersonaReclamacionAuto() {
-    super();
-  }
-
-  public PersonaReclamacionAuto(List<Map<String, String>> datosPersonaReclamacionAuto) {
-    super();
-    asignarDatos(datosPersonaReclamacionAuto);
-  }
-
-  private PersonaReclamacionAuto(Map<String, String> datosPersonaReclamacionAuto) {
-    this.primerNombre = datosPersonaReclamacionAuto.get("primerNombre");
-    this.segundoNombre = datosPersonaReclamacionAuto.get("segundoNombre");
-    this.primerApellido = datosPersonaReclamacionAuto.get("primerApellido");
-    this.segundoApellido = datosPersonaReclamacionAuto.get("segundoApellido");
-    this.tipoDocumento = datosPersonaReclamacionAuto.get("tipoDocumento");
-    this.numeroDocumento = datosPersonaReclamacionAuto.get("numeroDocumento");
   }
 
   private void asignarDatos(List<Map<String, String>> datosPersonaReclamacionAuto) {

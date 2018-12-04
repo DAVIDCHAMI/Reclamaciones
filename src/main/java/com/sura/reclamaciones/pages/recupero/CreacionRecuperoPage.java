@@ -10,13 +10,11 @@ import org.openqa.selenium.WebElement;
 
 public class CreacionRecuperoPage extends GeneralPage {
 
-  public CreacionRecuperoPage(WebDriver driver) {
-    super(driver);
-  }
-
-  String PAIS = "Country-inputEl";
-  String DEPARTAMENTO = "State-inputEl";
-  String CIUDAD = "City-inputEl";
+  private String pais = "Country-inputEl";
+  private String departamento = "State-inputEl";
+  private String ciudad = "City-inputEl";
+  private String seleccionarOpcion = "//li[.='COMODIN']";
+  private String auxiliarSeleccionarOpcion = "";
 
   @FindBy(
     xpath =
@@ -59,8 +57,9 @@ public class CreacionRecuperoPage extends GeneralPage {
   )
   private WebElementFacade lblTituloRecupero;
 
-  private String seleccionarOpcion = "//li[.='COMODIN']";
-  private String auxiliarSeleccionarOpcion = "";
+  public CreacionRecuperoPage(WebDriver driver) {
+    super(driver);
+  }
 
   public void seleccionarPagador(String pagador) {
     txtPagador.waitUntilClickable();
@@ -76,15 +75,15 @@ public class CreacionRecuperoPage extends GeneralPage {
   }
 
   public void seleccionarPais(String pais) {
-    seleccionarElementoListado(PAIS, pais);
+    seleccionarElementoListado(this.pais, pais);
   }
 
   public void seleccionarDepartamento(String departamento) {
-    seleccionarElementoListado(DEPARTAMENTO, departamento);
+    seleccionarElementoListado(this.departamento, departamento);
   }
 
   public void seleccionarCiudad(String ciudad) {
-    seleccionarElementoListado(CIUDAD, ciudad);
+    seleccionarElementoListado(this.ciudad, ciudad);
   }
 
   public void seleccionarCategoriaRecuperacion(String recupero) {

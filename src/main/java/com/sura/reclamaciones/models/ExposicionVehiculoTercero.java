@@ -11,18 +11,6 @@ public class ExposicionVehiculoTercero {
 
   private List<ExposicionVehiculoTercero> lstExposicionTercero = new ArrayList<>();
 
-  public List<ExposicionVehiculoTercero> getLstExposicionTerceros() {
-    return lstExposicionTercero;
-  }
-
-  public String getTaller() {
-    return taller;
-  }
-
-  public String getPlacaTercero() {
-    return placaTercero;
-  }
-
   public ExposicionVehiculoTercero() {
     super();
   }
@@ -34,6 +22,18 @@ public class ExposicionVehiculoTercero {
 
   public ExposicionVehiculoTercero(List<Map<String, String>> datosTerceroAuto) {
     asignarDatos(datosTerceroAuto);
+  }
+
+  public List<ExposicionVehiculoTercero> getLstExposicionTerceros() {
+    return lstExposicionTercero;
+  }
+
+  public String getTaller() {
+    return taller;
+  }
+
+  public String getPlacaTercero() {
+    return placaTercero;
   }
 
   private void asignarDatos(List<Map<String, String>> datosTerceroAuto) {

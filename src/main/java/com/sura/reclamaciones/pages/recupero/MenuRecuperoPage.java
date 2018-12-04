@@ -7,10 +7,6 @@ import org.openqa.selenium.WebDriver;
 
 public class MenuRecuperoPage extends GeneralPage {
 
-  public MenuRecuperoPage(WebDriver driver) {
-    super(driver);
-  }
-
   @FindBy(xpath = "//span[@id ='Claim:ClaimMenuActions-btnInnerEl']")
   private WebElementFacade btnAcciones;
 
@@ -25,6 +21,10 @@ public class MenuRecuperoPage extends GeneralPage {
         "//span[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans:ClaimMenuActions_NewTransaction_RecoverySet-textEl']"
   )
   private WebElementFacade mnuRecuperos;
+
+  public MenuRecuperoPage(WebDriver driver) {
+    super(driver);
+  }
 
   public void ingresarMenuRecupero() {
     btnAcciones.waitUntilClickable();

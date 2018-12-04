@@ -9,22 +9,10 @@ public class Exposiciones {
   private String exposicionAutomatica;
   private String columnaDevolver;
 
-  public String getExposicionAutomatica() {
-    return exposicionAutomatica;
-  }
-
-  public String getColumnaDevolver() {
-    return columnaDevolver;
-  }
+  private List<Exposiciones> lstExposiciones = new ArrayList<>();
 
   public Exposiciones() {
     super();
-  }
-
-  private List<Exposiciones> lstExposiciones = new ArrayList<>();
-
-  public List<Exposiciones> getLstExposiciones() {
-    return lstExposiciones;
   }
 
   private Exposiciones(Map<String, String> datosExposicionAutomaticaReservaAutomatica) {
@@ -35,6 +23,18 @@ public class Exposiciones {
 
   public Exposiciones(List<Map<String, String>> datosExposicionAutomaticaReservaAutomatica) {
     asignarDatos(datosExposicionAutomaticaReservaAutomatica);
+  }
+
+  public List<Exposiciones> getLstExposiciones() {
+    return lstExposiciones;
+  }
+
+  public String getExposicionAutomatica() {
+    return exposicionAutomatica;
+  }
+
+  public String getColumnaDevolver() {
+    return columnaDevolver;
   }
 
   private void asignarDatos(List<Map<String, String>> datosExposicionAutomaticaReservaAutomatica) {

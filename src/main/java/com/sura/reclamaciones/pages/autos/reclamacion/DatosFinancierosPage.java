@@ -14,10 +14,6 @@ import org.openqa.selenium.WebDriver;
 
 public class DatosFinancierosPage extends GeneralPage {
 
-  public DatosFinancierosPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   @Page MenuClaimPage menuClaimPage;
 
   @FindBy(
@@ -26,7 +22,11 @@ public class DatosFinancierosPage extends GeneralPage {
   )
   WebElementFacade tblDatosFinancieros2;
 
-  public boolean valorLineaReserva = true;
+  private boolean valorLineaReserva = true;
+
+  public DatosFinancierosPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
   public boolean obtenerDatosFinancieros(List<Reserva> datosLineaReserva) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(

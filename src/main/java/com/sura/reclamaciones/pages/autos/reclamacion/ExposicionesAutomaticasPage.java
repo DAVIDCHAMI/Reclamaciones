@@ -13,16 +13,16 @@ import org.openqa.selenium.WebDriver;
 
 public class ExposicionesAutomaticasPage extends GeneralPage {
 
-  public ExposicionesAutomaticasPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   @Page MenuClaimPage menuClaimPage;
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
   WebElementFacade tblExposicionesAutomaticas;
 
-  public boolean valorLineaReserva = true;
+  private boolean valorLineaReserva = true;
+
+  public ExposicionesAutomaticasPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
   public boolean validarExposiciones(List<Exposiciones> datosExposicionesAutomaticas) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DatosFinancierosConstante.EXPOSICIONES);

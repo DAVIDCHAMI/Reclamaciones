@@ -15,6 +15,10 @@ public class AnulacionEmpresarial extends Transacciones {
     super();
   }
 
+  public AnulacionEmpresarial(List<Map<String, String>> datosPagosEmpresariales) {
+    asignarDatos(datosPagosEmpresariales);
+  }
+
   private AnulacionEmpresarial(Map<String, String> datosAnulacionEmpresarial) {
     super(datosAnulacionEmpresarial);
     this.numeroTransaccion = datosAnulacionEmpresarial.get("numeroTransaccion");
@@ -27,10 +31,6 @@ public class AnulacionEmpresarial extends Transacciones {
 
   public String getEstadoPrevio() {
     return estadoPrevio;
-  }
-
-  public AnulacionEmpresarial(List<Map<String, String>> datosPagosEmpresariales) {
-    asignarDatos(datosPagosEmpresariales);
   }
 
   public List<AnulacionEmpresarial> getLstAnulacionEmpresarial() {

@@ -15,6 +15,19 @@ public class ExposicionLesiones {
 
   private List<ExposicionLesiones> lstExposicionLesiones = new ArrayList<>();
 
+  public ExposicionLesiones(List<Map<String, String>> datosExposicionPersona) {
+    asignarDatos(datosExposicionPersona);
+  }
+
+  private ExposicionLesiones(Map<String, String> datosExposicionPersona) {
+    this.gravedadLesion = datosExposicionPersona.get("gravedadLesion");
+    this.describirLesiones = datosExposicionPersona.get("describirLesiones");
+    this.tipoLesion = datosExposicionPersona.get("tipoLesion");
+    this.detallesTipoLesion = datosExposicionPersona.get("detallesTipoLesion");
+    this.zonaCuerpo = datosExposicionPersona.get("zonaCuerpo");
+    this.parteCuerpo = datosExposicionPersona.get("parteCuerpo");
+  }
+
   public List<ExposicionLesiones> getLstExposicionLesiones() {
     return lstExposicionLesiones;
   }
@@ -41,19 +54,6 @@ public class ExposicionLesiones {
 
   public String getDescribirLesiones() {
     return describirLesiones;
-  }
-
-  private ExposicionLesiones(Map<String, String> datosExposicionPersona) {
-    this.gravedadLesion = datosExposicionPersona.get("gravedadLesion");
-    this.describirLesiones = datosExposicionPersona.get("describirLesiones");
-    this.tipoLesion = datosExposicionPersona.get("tipoLesion");
-    this.detallesTipoLesion = datosExposicionPersona.get("detallesTipoLesion");
-    this.zonaCuerpo = datosExposicionPersona.get("zonaCuerpo");
-    this.parteCuerpo = datosExposicionPersona.get("parteCuerpo");
-  }
-
-  public ExposicionLesiones(List<Map<String, String>> datosExposicionPersona) {
-    asignarDatos(datosExposicionPersona);
   }
 
   private void asignarDatos(List<Map<String, String>> datosTerceroAuto) {

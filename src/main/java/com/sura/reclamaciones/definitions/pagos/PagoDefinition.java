@@ -6,6 +6,7 @@ import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoDefinition {
@@ -17,7 +18,7 @@ public class PagoDefinition {
 
   @Dado("^que se tiene el siniestro (.*)  del producto (.*)$")
   public void ingresarMenuPagoReclamacion(String numeroReclamacion, String tipoProducto)
-      throws Exception {
+      throws IOException {
     pagoEmpresarial =
         new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", tipoProducto)));
     nuevoPagoStep.consultarNumeroReclamacion(numeroReclamacion);

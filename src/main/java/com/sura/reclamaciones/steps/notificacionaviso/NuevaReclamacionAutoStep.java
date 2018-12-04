@@ -51,10 +51,9 @@ public class NuevaReclamacionAutoStep {
 
   @Step
   public void completarCategorizacion(List<ReclamacionAuto> datosReclamacion) {
-    datosReclamacion.forEach(
-        dato -> {
-          agregarInformacionPage.seleccionarCulpabilidad(dato.getCulpabilidad());
-        });
+    for (ReclamacionAuto dato : datosReclamacion) {
+      agregarInformacionPage.seleccionarCulpabilidad(dato.getCulpabilidad());
+    }
   }
 
   @Step
@@ -65,10 +64,9 @@ public class NuevaReclamacionAutoStep {
     agregarInformacionPage.agregarExposicionVehiculoTercero();
     detalleVehiculoPage.agregarTerceroConductor(datosPersonaReclamacion, datosReclamacionAuto);
     detalleVehiculoPage.ingresarVehiculoTercero(datosExposicionTercero);
-    datosExposicionTercero.forEach(
-        dato -> {
-          detalleVehiculoPage.seleccionarTaller(dato.getTaller());
-        });
+    for (ExposicionVehiculoTercero dato : datosExposicionTercero) {
+      detalleVehiculoPage.seleccionarTaller(dato.getTaller());
+    }
     detalleVehiculoPage.volverPasoAnterior();
   }
 
@@ -124,14 +122,12 @@ public class NuevaReclamacionAutoStep {
   @Step
   public void completarFormularioBuscarPoliza(
       List<ReclamacionAuto> datosReclamacion, List<Vehiculo> datosVehiculo) {
-    datosVehiculo.forEach(
-        datoReclamacion -> {
-          buscarPolizaPage.escribirPlaca(datoReclamacion.getPlaca());
-        });
-    datosReclamacion.forEach(
-        dato -> {
-          seleccionarFecha(dato.getFechaSiniestro());
-        });
+    for (Vehiculo datoReclamacion : datosVehiculo) {
+      buscarPolizaPage.escribirPlaca(datoReclamacion.getPlaca());
+    }
+    for (ReclamacionAuto dato : datosReclamacion) {
+      seleccionarFecha(dato.getFechaSiniestro());
+    }
   }
 
   @Step
