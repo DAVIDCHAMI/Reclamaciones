@@ -154,9 +154,9 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarCausaSiniestroAtr(String causa) {
-    txtCausaSiniestroAtr.waitUntilPresent().type(causa);
-   // lstCausaSiniestroAtr = lstCausaSiniestroAtr.replace(ConstanteGlobal.COMODIN, causa);
-   // $(lstCausaSiniestroAtr).waitUntilVisible().click();
+    txtCausaSiniestroAtr.waitUntilPresent().waitUntilClickable().click();
+   lstCausaSiniestroAtr = lstCausaSiniestroAtr.replace(ConstanteGlobal.COMODIN, causa);
+   $(lstCausaSiniestroAtr).waitUntilVisible().click();
   }
 
   public void diligenciarDetalleHechosAtr(String detalleHechos){

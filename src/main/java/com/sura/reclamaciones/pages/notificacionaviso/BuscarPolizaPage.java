@@ -149,10 +149,12 @@ public class BuscarPolizaPage extends GeneralPage {
 
   public void consultarPolizaAseguradoAtr(){
     btnConsultarPolizaAtr.waitUntilVisible().click();
+    realizarEsperaCarga();
   }
 
   public void seleccionarPolizaAtr(){
     rbtPolizaAtr.waitUntilVisible().click();
+    realizarEsperaCarga();
   }
 
 public void seleccionarRiegoPolizaAtr(){
