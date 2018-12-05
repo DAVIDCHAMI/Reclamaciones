@@ -86,6 +86,11 @@ public class InformacionReclamacionPage extends GeneralPage {
           "//div[@id='ciudadesInformacionSiniestroEmp']//input")
   private WebElementFacade txtCiudadSiniestro;
 
+  @FindBy(
+      xpath =
+          "//td[@class='GMMMP1-BMTC GMMMP1-BOTC GMMMP1-BJUC']//input")
+  private WebElementFacade txtValorPretensionAtr;
+
 
 
   public InformacionReclamacionPage(WebDriver driver) {
@@ -149,9 +154,9 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarCausaSiniestroAtr(String causa) {
-    txtCausaSiniestroAtr.waitUntilPresent().click();
-    lstCausaSiniestroAtr = lstCausaSiniestroAtr.replace(ConstanteGlobal.COMODIN, causa);
-    $(lstCausaSiniestroAtr).waitUntilVisible().click();
+    txtCausaSiniestroAtr.waitUntilPresent().type(causa);
+   // lstCausaSiniestroAtr = lstCausaSiniestroAtr.replace(ConstanteGlobal.COMODIN, causa);
+   // $(lstCausaSiniestroAtr).waitUntilVisible().click();
   }
 
   public void diligenciarDetalleHechosAtr(String detalleHechos){
@@ -161,5 +166,9 @@ txtDetalleHechosSiniestroAtr.waitUntilVisible().type(detalleHechos);
   public void seleccionarCiudadSiniestro(){
     String ciudad = lblNombreCiudad.waitUntilVisible().getText();
     txtCiudadSiniestro.waitUntilVisible().type(ciudad);
+  }
+
+  public void ingresarValorPretensionAtr(String valorPretension){
+    txtValorPretensionAtr.waitUntilVisible().type(valorPretension);
   }
 }

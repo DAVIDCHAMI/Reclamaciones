@@ -40,14 +40,28 @@ public class NuevaReclamacionAtrEmpresarialStep {
 
   @Step
   public void diligenciarFechaAtr(){
-    informacionBasicaPage.seleccionarFechaAviso("2016/Ene/09");
+    informacionBasicaPage.seleccionarFechaAviso("2018/Nov/20");
   }
 
   @Step
   public void diligenciarInformacionSiniestro(String causaSiniestro, String detalleHechos){
 informacionReclamacionPage.seleccionarCausaSiniestroAtr(causaSiniestro);
 informacionReclamacionPage.diligenciarDetalleHechosAtr(detalleHechos);
+informacionReclamacionPage.seleccionarCiudadSiniestro();
   }
+
+  @Step
+  public void consultarPolizaAtr(){
+  buscarPolizaPage.consultarPolizaAseguradoAtr();
+  buscarPolizaPage.seleccionarPolizaAtr();
+  buscarPolizaPage.seleccionarRiegoPolizaAtr();
+  }
+
+  @Step
+  public void diligenciarValorPretension(String valorPretension){
+  informacionReclamacionPage.ingresarValorPretensionAtr(valorPretension);
+  }
+
 
 }
 

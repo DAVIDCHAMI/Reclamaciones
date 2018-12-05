@@ -13,5 +13,5 @@ Característica: Notificacion de aviso de una reclamacion desde ATR
     Entonces se obtiene una reclamacion que podrá ser consultada en ClaimCenter
 
     Ejemplos:
-      | Tipo y Cobertura | Causa             | Valor de Pretensión | Categoria de costo |
-      | AseguradoATR     | Rotura de vidrios | 2000000             | Propiedad          |
+      | Tipo y Cobertura | Causa                         | Valor de Pretensión | Categoria de costo |
+      | AseguradoATR     | Amit/ huelga, conmoción civil | 2000000             | Propiedad          |

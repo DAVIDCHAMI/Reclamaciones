@@ -63,7 +63,7 @@ public class BuscarPolizaPage extends GeneralPage {
   private WebElementFacade txtNumeroPolizaAtr;
 
   @FindBy(id = "lnkConsultarAseguradoInformacionAsegurado")
-  private WebElementFacade btnConsultarPolizaAtr;
+  private WebElementFacade btnConsultarDatosAseguradoATR;
 
 
   @FindBy(id = "idAseguradoInformacionAsegurado")
@@ -71,6 +71,16 @@ public class BuscarPolizaPage extends GeneralPage {
 
   @FindBy(id = "tipoIdInformacionAsegurado")
   private WebElementFacade txtTipoDocumentoAsegurado;
+
+  @FindBy(id = "lnkConsultarPolizasInformacionSiniestroEmp")
+  private WebElementFacade btnConsultarPolizaAtr;
+
+  @FindBy(xpath = "//input[@name='Pólizas EmpresarialesOption']")
+  private WebElementFacade rbtPolizaAtr;
+
+  @FindBy(xpath = "//input[@name='RiesgosOption']")
+  private WebElementFacade rbtRiesgoPolizaAtr;
+
 
   public BuscarPolizaPage(WebDriver driver) {
     super(driver);
@@ -134,10 +144,20 @@ public class BuscarPolizaPage extends GeneralPage {
     auxMnuTipoDocumentoAtr = mnuTipoDocumentoAtr.replace(ConstanteGlobal.COMODIN, tipoDocumentoAtr);
     $(auxMnuTipoDocumentoAtr).click();
     txtNumeroDocumentoAtr.waitUntilVisible().type(numDocumentoAtr);
+    btnConsultarDatosAseguradoATR.waitUntilVisible().click();
+  }
+
+  public void consultarPolizaAseguradoAtr(){
     btnConsultarPolizaAtr.waitUntilVisible().click();
   }
 
+  public void seleccionarPolizaAtr(){
+    rbtPolizaAtr.waitUntilVisible().click();
+  }
 
+public void seleccionarRiegoPolizaAtr(){
+    rbtRiesgoPolizaAtr.waitUntilVisible().click();
+}
 
 
 }
