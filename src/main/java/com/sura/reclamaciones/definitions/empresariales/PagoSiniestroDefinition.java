@@ -23,7 +23,7 @@ public class PagoSiniestroDefinition {
 
   PagoEmpresarial pagoEmpresarial;
 
-  @Dado("^que se tiene el siniestro del producto (.*)$")
+  @Dado("^que se tiene un siniestro del producto (.*)$")
   public void crearSiniestroEmpresarial(String strTipoProducto) throws IOException {
     creacionSiniestro.asignarValoresSiniestro(strTipoProducto);
     creacionSiniestro.siniestrarPolizaEmpresarialAtr();
@@ -33,7 +33,7 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se realice un pago (.*) a un (.*) por medio de (.*) el cual cuenta con una linea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
+      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una linea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
   public void generarPagoReclamacion(
       String lineaReserva,
       String tipoPago,
