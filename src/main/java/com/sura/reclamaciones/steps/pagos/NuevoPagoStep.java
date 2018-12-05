@@ -20,15 +20,20 @@ import org.openqa.selenium.WebElement;
 
 public class NuevoPagoStep {
 
-  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
+  @Page
+  IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
 
-  @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
+  @Page
+  IntroducirInformacionPagoPage introducirInformacionPagoPage;
 
-  @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
+  @Page
+  EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page
+  VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-  @Page MenuClaimPage menuClaimPage;
+  @Page
+  MenuClaimPage menuClaimPage;
 
   @Step
   public void consultarNumeroReclamacion(String strNumeroReclamacion) {
@@ -78,8 +83,6 @@ public class NuevoPagoStep {
         (PagoEmpresarial validador) -> {
           String strNumeroTransaccion =
               verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
-          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-              MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
           menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
               MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
           List<WebElement> lstFilaPago =
