@@ -2,7 +2,6 @@ package com.sura.reclamaciones.pages.reaseguro;
 
 import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.Constantes.PORCIENTO;
-import static com.sura.reclamaciones.utils.Constantes.REASEGURO_DETALLADO;
 import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA;
 import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA_ENCABEZADO;
 import static com.sura.reclamaciones.utils.Constantes.SURA;
@@ -10,12 +9,10 @@ import static com.sura.reclamaciones.utils.Constantes.VALOR_REASEGURADO;
 
 import com.sura.reclamaciones.models.Reasegurador;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -27,14 +24,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   @FindBy(xpath = "//a[@id='ReinsuranceTransactionDetailSummary:__crumb__']")
   private WebElementFacade btnVolverReaseguroDetalladoTransaccion;
 
-  @Page MenuClaimPage menuClaimPage;
-
   public ReaseguroDetalladoTransaccionPage(WebDriver driver) {
     super(driver);
-  }
-
-  public void ingresarSeccionReaseguroDetallado() {
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(REASEGURO_DETALLADO.getValor());
   }
 
   public boolean verificarRetencionPura(Double dblValorRetencionPura) {

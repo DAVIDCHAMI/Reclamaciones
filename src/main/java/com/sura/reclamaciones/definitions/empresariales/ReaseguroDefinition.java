@@ -21,14 +21,15 @@ public class ReaseguroDefinition {
 
   private Contrato contrato1;
   private Reasegurador reasegurador1, reasegurador2, reasegurador3;
+  private String numeroReclamacion;
 
   @Steps ReaseguroStep reaseguroStep;
+
   @Steps GenericStep genericStep;
-  @Steps ConsumoServicioCreacionSiniestroStep crearSiniestro;
+
+  @Steps ConsumoServicioCreacionSiniestroStep creacionSiniestro;
 
   @Page MenuClaimPage menuClaimPage;
-
-  private String numeroReclamacion;
 
   @Cuando(
       "^se genere una reclamacion de un contrato tipo (.*), por causal (.*) con un valor de pretension de (.*) e incidente de tipo (.*)$")
@@ -36,8 +37,8 @@ public class ReaseguroDefinition {
       String tipoContratoPoliza, String causa, String valorPretension, String tipoIncidente)
       throws IOException {
     Serenity.setSessionVariable(TIPO_CONTRATO_POLIZA).to(tipoContratoPoliza);
-    crearSiniestro.asignarValoresSiniestro(tipoContratoPoliza);
-    crearSiniestro.siniestrarPolizaEmpresarialAtr();
+    creacionSiniestro.asignarValoresSiniestro(tipoContratoPoliza);
+    creacionSiniestro.siniestrarPolizaEmpresarialAtr();
     numeroReclamacion = Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor());
     menuClaimPage.buscarReclamacion(Constantes.RECLAMACION_MENU.getValor(), numeroReclamacion);
   }

@@ -1,10 +1,12 @@
 package com.sura.reclamaciones.steps.reaseguro;
 
+import static com.sura.reclamaciones.utils.Constantes.REASEGURO_DETALLADO;
 import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA;
 import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.Reasegurador;
+import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.reaseguro.ReaseguroDetalladoTransaccionPage;
 import java.util.List;
 import org.fluentlenium.core.annotation.Page;
@@ -13,12 +15,14 @@ public class ReaseguroStep {
 
   @Page ReaseguroDetalladoTransaccionPage reaseguroDetalladoTransaccionPage;
 
+  @Page MenuClaimPage menuClaimPage;
+
   public void verificarReaseguro(
       List<Contrato> lstContrato1,
       List<Reasegurador> lstReasegurador1,
       List<Reasegurador> lstReasegurador2,
       List<Reasegurador> lstReasegurador3) {
-    reaseguroDetalladoTransaccionPage.ingresarSeccionReaseguroDetallado();
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(REASEGURO_DETALLADO.getValor());
     lstContrato1.forEach(
         verificador -> {
           assertTrue(
