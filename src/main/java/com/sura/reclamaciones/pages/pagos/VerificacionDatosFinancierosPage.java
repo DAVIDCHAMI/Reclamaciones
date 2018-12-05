@@ -9,7 +9,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class VerificarPagoPage extends GeneralPage {
+public class VerificacionDatosFinancierosPage extends GeneralPage {
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
   private WebElementFacade tblVerificacionPago;
@@ -20,7 +20,7 @@ public class VerificarPagoPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='x-column-header-text'][contains(text(),'Número de pago')]")
   private WebElementFacade lblNumeroPago;
 
-  public VerificarPagoPage(WebDriver wdriver) {
+  public VerificacionDatosFinancierosPage(WebDriver wdriver) {
     super(wdriver);
   }
 

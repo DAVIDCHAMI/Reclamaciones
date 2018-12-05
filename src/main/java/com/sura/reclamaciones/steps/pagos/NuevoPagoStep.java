@@ -11,7 +11,7 @@ import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
-import com.sura.reclamaciones.pages.pagos.VerificarPagoPage;
+import com.sura.reclamaciones.pages.pagos.VerificacionDatosFinancierosPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -23,7 +23,8 @@ public class NuevoPagoStep {
   @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
   @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
-  @Page VerificarPagoPage verificarPagoPage;
+  @Page
+  VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
   @Page MenuClaimPage menuClaimPage;
 
   @Step
@@ -72,21 +73,22 @@ public class NuevoPagoStep {
   public void verificarPagoRealizado(List<PagoEmpresarial> lstPago) {
     lstPago.forEach(
         (PagoEmpresarial validador) -> {
-          String strNumeroTransaccion = verificarPagoPage.obtenerNumeroPagoRealizado();
+          String strNumeroTransaccion = verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
           menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
               MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
           menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
               MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
           List<WebElement> lstFilaPago =
-              verificarPagoPage.obtenerFilaTabla(
-                  strNumeroTransaccion, verificarPagoPage.getTblPago());
+              verificacionDatosFinancierosPage.obtenerFilaTabla(
+                  strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
           String strValorReserva = (Serenity.sessionVariableCalled(VALOR_RESERVA));
           assertTrue(
               "El valor reservado no es igual al enviado",
-              verificarPagoPage.verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
+              verificacionDatosFinancierosPage
+                  .verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
           assertTrue(
               "No llego a SAP el pago",
-              verificarPagoPage.verificarPagoMenuTransaccion(
+              verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
                   validador.getEstadoTransaccion(), lstFilaPago));
         });
   }
