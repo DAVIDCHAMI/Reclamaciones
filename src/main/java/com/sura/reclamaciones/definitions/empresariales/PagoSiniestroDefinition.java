@@ -13,18 +13,21 @@ import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-public class PagoDefinition {
+
+public class PagoSiniestroDefinition {
 
   @Steps NuevoPagoStep nuevoPagoStep;
+
   @Steps GenericStep genericStep;
-  @Steps ConsumoServicioCreacionSiniestroStep crearSiniestro;
+
+  @Steps ConsumoServicioCreacionSiniestroStep creacionSiniestro;
 
   PagoEmpresarial pagoEmpresarial;
 
   @Dado("^que se tiene el siniestro del producto (.*)$")
-  public void queSeTieneElSiniestroDelProductoProducto(String strTipoProducto) throws IOException {
-    crearSiniestro.asignarValoresSiniestro(strTipoProducto);
-    crearSiniestro.siniestrarPolizaEmpresarialAtr();
+  public void crearSiniestroEmpresarial(String strTipoProducto) throws IOException {
+    creacionSiniestro.asignarValoresSiniestro(strTipoProducto);
+    creacionSiniestro.siniestrarPolizaEmpresarialAtr();
     pagoEmpresarial =
         new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", strTipoProducto)));
     nuevoPagoStep.consultarNumeroReclamacion(Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
