@@ -13,7 +13,6 @@ import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-
 public class PagoSiniestroDefinition {
 
   @Steps NuevoPagoStep nuevoPagoStep;
@@ -40,14 +39,14 @@ public class PagoSiniestroDefinition {
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
-      String soloSura,
+      String aplicaSoloSura,
       String codigoRetencion) {
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
         tipoPago,
         beneficiarioPago,
         metodoPago,
-        soloSura,
+        aplicaSoloSura,
         codigoRetencion,
         pagoEmpresarial.getLstPago());
   }
