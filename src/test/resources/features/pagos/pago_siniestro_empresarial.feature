@@ -1,8 +1,12 @@
 # language: es
 Característica: Realizar pago de un siniestro
 
+  Como analista de reclamacion
+  Quiero efectuar un pago a una reclamación
+  Para responderle al cliente por su siniestro
+
   @claimsEmpresarial
-  Esquema del escenario: Pago
+  Esquema del escenario: Pago siniestro empresarial
     Dado que se tiene el siniestro del producto <producto>
     Cuando se realice un pago <tipoPago> a un <beneficiarioPago> por medio de <metodoPago> el cual cuenta con una linea de reserva <lineaReserva> donde el responsable <soloSura> es Sura por una retención de <codigoRetencion>
     Entonces se genera una orden de pago para que le sea entregado al usuario
