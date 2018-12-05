@@ -48,10 +48,7 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade txtTransacciones;
 
-  @FindBy(
-    xpath =
-        "//div[@id ='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV' or @id='ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']"
-  )
+  @FindBy(xpath = "//div[@class='x-panel x-panel-default x-grid']" )
   private WebElementFacade tblVerificacion;
 
   @FindBy(xpath = "//input")
