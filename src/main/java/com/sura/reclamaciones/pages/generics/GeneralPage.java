@@ -204,11 +204,11 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public String obtenerDatoTablaCabecera(String strDatoCabecera) {
+  public String obtenerDatoTablaCabecera(String strDatoCabecera, int posicionElemento) {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
     int longitudTabla = elementoEncontrado.size();
-    return elementoEncontrado.get(longitudTabla - 1).getText();
+    return elementoEncontrado.get(longitudTabla - posicionElemento).getText();
   }
 
   public List<WebElement> obtenerFilaTabla(

@@ -22,7 +22,7 @@ public class VerificacionRecuperoPage extends GeneralPage {
 
   public List<WebElement> obtenerListaRecupero() {
     irUltimaPagina();
-    String strNumeroRecupero = obtenerDatoTablaCabecera(RecuperoConstante.NUMERO_TRANSACCION);
+    String strNumeroRecupero = obtenerDatoTablaCabecera(RecuperoConstante.NUMERO_TRANSACCION, 0);
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
