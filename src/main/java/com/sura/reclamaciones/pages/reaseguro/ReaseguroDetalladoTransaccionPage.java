@@ -45,7 +45,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         lstReaseguroDetallado.size() > posicionElementoFila;
         posicionElementoFila++) {
       String strRetencionPura =
-          obtenerDatoTablaCabecera(RETENCION_PURA_ENCABEZADO.getValor(),posicionElementoFila+1)
+          obtenerDatoTablaCabecera(RETENCION_PURA_ENCABEZADO.getValor(), posicionElementoFila + 1)
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       Double dblRetencionPura = Double.parseDouble(strRetencionPura);
       if (dblRetencionPura >= -dblValorRetencionPura && dblRetencionPura >= dblRetencionPura) {
@@ -68,7 +68,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
     String strValorReasegurado =
-        (obtenerDatoTablaCabecera(VALOR_REASEGURADO.getValor(),2))
+        (obtenerDatoTablaCabecera(VALOR_REASEGURADO.getValor(), 2))
             .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     String strValorDeducible =
         calcularDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
@@ -82,13 +82,13 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String strDatoPantalla =
           lstFilaTransaccion.get(5).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       if ((Double.parseDouble(strDatoPantalla)
-          >= (dblValorRetenido - Double.parseDouble(RETENCION_PURA.getValor())))
-          && (Double.parseDouble(strDatoPantalla)
-          <= (dblValorRetenido + Double.parseDouble(RETENCION_PURA.getValor())))
+                  >= (dblValorRetenido - Double.parseDouble(RETENCION_PURA.getValor())))
+              && (Double.parseDouble(strDatoPantalla)
+                  <= (dblValorRetenido + Double.parseDouble(RETENCION_PURA.getValor())))
           || (Double.parseDouble(strDatoPantalla)
-          >= (dblValorRetenidoDeducible - Double.parseDouble(RETENCION_PURA.getValor())))
-          && (Double.parseDouble(strDatoPantalla)
-          <= (dblValorRetenidoDeducible + Double.parseDouble(RETENCION_PURA.getValor())))) {
+                  >= (dblValorRetenidoDeducible - Double.parseDouble(RETENCION_PURA.getValor())))
+              && (Double.parseDouble(strDatoPantalla)
+                  <= (dblValorRetenidoDeducible + Double.parseDouble(RETENCION_PURA.getValor())))) {
         LOGGER.info("El retenido esta en el rango correcto");
       } else {
         return false;
@@ -107,7 +107,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
     String strValorReasegurado =
-        (obtenerDatoTablaCabecera(VALOR_REASEGURADO.getValor(),2))
+        (obtenerDatoTablaCabecera(VALOR_REASEGURADO.getValor(), 2))
             .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     String strValorDeducible =
         calcularDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
@@ -121,21 +121,21 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String strDatoPantalla =
           lstFilaTransaccion.get(4).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       if ((Double.parseDouble(strDatoPantalla)
-          >= Double.parseDouble(strValorReasegurado)
-          - dblValorRetenido
-          - Double.parseDouble(RETENCION_PURA.getValor())
-          && (Double.parseDouble(strDatoPantalla)
-          <= Double.parseDouble(strValorReasegurado)
-          - dblValorRetenido
-          + Double.parseDouble(RETENCION_PURA.getValor()))
+                  >= Double.parseDouble(strValorReasegurado)
+                      - dblValorRetenido
+                      - Double.parseDouble(RETENCION_PURA.getValor())
+              && (Double.parseDouble(strDatoPantalla)
+                  <= Double.parseDouble(strValorReasegurado)
+                      - dblValorRetenido
+                      + Double.parseDouble(RETENCION_PURA.getValor()))
           || (Double.parseDouble(strDatoPantalla)
-          >= (Double.parseDouble(strValorDeducible)
-          - dblValorRetenidoDeducible
-          - Double.parseDouble(RETENCION_PURA.getValor()))
-          && (Double.parseDouble(strDatoPantalla)
-          <= (Double.parseDouble(strValorDeducible)
-          - dblValorRetenidoDeducible
-          + Double.parseDouble(RETENCION_PURA.getValor())))))) {
+                  >= (Double.parseDouble(strValorDeducible)
+                      - dblValorRetenidoDeducible
+                      - Double.parseDouble(RETENCION_PURA.getValor()))
+              && (Double.parseDouble(strDatoPantalla)
+                  <= (Double.parseDouble(strValorDeducible)
+                      - dblValorRetenidoDeducible
+                      + Double.parseDouble(RETENCION_PURA.getValor())))))) {
         LOGGER.info("El cedido esta en el rango correcto");
       } else {
         return false;
@@ -175,4 +175,3 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     return dblPorcentajeCedido * dblValorReasegurado * dblPorcentaCuotaParte;
   }
 }
-

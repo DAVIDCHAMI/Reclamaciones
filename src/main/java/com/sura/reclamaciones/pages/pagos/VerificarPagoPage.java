@@ -2,12 +2,10 @@ package com.sura.reclamaciones.pages.pagos;
 
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -29,7 +27,7 @@ public class VerificarPagoPage extends GeneralPage {
   public String obtenerNumeroPagoRealizado() {
     irUltimaPagina();
     lblNumeroPago.click();
-    return obtenerDatoTablaCabecera(PagoConstante.NUMERO_PAGO,0);
+    return obtenerDatoTablaCabecera(PagoConstante.NUMERO_PAGO, 0);
   }
 
   public boolean verificarPagoMenuTransaccion(String datoValidar, List<WebElement> lstFilaPago) {
