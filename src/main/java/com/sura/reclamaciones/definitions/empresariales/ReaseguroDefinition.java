@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
 import static com.sura.reclamaciones.utils.Constantes.NUMERO_SINIESTRO;
-import static com.sura.reclamaciones.utils.Variables.TIPO_CONTRATO_POLIZA;
 
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.Reasegurador;
@@ -22,6 +21,7 @@ public class ReaseguroDefinition {
   private Contrato contrato1;
   private Reasegurador reasegurador1, reasegurador2, reasegurador3;
   private String numeroReclamacion;
+  private String tipoContrato;
 
   @Steps ReaseguroStep reaseguroStep;
 
@@ -33,10 +33,10 @@ public class ReaseguroDefinition {
 
   @Cuando(
       "^se genere una reclamacion de un contrato tipo (.*), por causal (.*) con un valor de pretension de (.*) e incidente de tipo (.*)$")
-  public void generarReserva(
+  public void crearSiniestro(
       String tipoContratoPoliza, String causa, String valorPretension, String tipoIncidente)
       throws IOException {
-    Serenity.setSessionVariable(TIPO_CONTRATO_POLIZA).to(tipoContratoPoliza);
+    tipoContrato = tipoContratoPoliza;
     creacionSiniestro.asignarValoresSiniestro(tipoContratoPoliza);
     creacionSiniestro.siniestrarPolizaEmpresarialAtr();
     numeroReclamacion = Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor());
@@ -48,10 +48,7 @@ public class ReaseguroDefinition {
   public void verificarReaseguro(
       String tipoTransaccion, String tipoContrato1, String tipoContrato2, String tipoContrato3)
       throws IOException {
-    contrato1 =
-        new Contrato(
-            genericStep.getFilasModelo(
-                "contrato", Serenity.sessionVariableCalled(TIPO_CONTRATO_POLIZA)));
+    contrato1 = new Contrato(genericStep.getFilasModelo("contrato", tipoContrato));
     reasegurador1 = new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato1));
     reasegurador2 = new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato2));
     reasegurador3 = new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato3));
