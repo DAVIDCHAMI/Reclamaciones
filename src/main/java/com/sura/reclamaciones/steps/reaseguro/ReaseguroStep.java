@@ -7,6 +7,7 @@ import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.Reasegurador;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.reaseguro.ReaseguroDetalladoTransaccionPage;
+import com.sura.reclamaciones.utils.Constantes;
 import java.util.List;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
@@ -16,6 +17,10 @@ public class ReaseguroStep {
   @Page ReaseguroDetalladoTransaccionPage reaseguroDetalladoTransaccionPage;
 
   @Page MenuClaimPage menuClaimPage;
+
+  public void buscarReclamacion(String strNumeroReclamacion) {
+    menuClaimPage.buscarReclamacion(Constantes.RECLAMACION_MENU.getValor(), strNumeroReclamacion);
+  }
 
   public void verificarReaseguro(
       List<Contrato> lstContrato1,

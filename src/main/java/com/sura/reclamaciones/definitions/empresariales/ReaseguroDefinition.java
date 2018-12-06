@@ -4,17 +4,14 @@ import static com.sura.reclamaciones.utils.Constantes.NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.Reasegurador;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionSiniestroStep;
 import com.sura.reclamaciones.steps.reaseguro.ReaseguroStep;
-import com.sura.reclamaciones.utils.Constantes;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
-import org.fluentlenium.core.annotation.Page;
 
 public class ReaseguroDefinition {
 
@@ -26,8 +23,6 @@ public class ReaseguroDefinition {
 
   @Steps ConsumoServicioCreacionSiniestroStep creacionSiniestro;
 
-  @Page MenuClaimPage menuClaimPage;
-
   @Cuando(
       "^se genere una reclamacion de un contrato tipo (.*), por causal (.*) con un valor de pretension de (.*) e incidente de tipo (.*)$")
   public void crearSiniestro(
@@ -36,8 +31,8 @@ public class ReaseguroDefinition {
     tipoContrato = tipoContratoPoliza;
     creacionSiniestro.asignarValoresSiniestro(tipoContratoPoliza);
     creacionSiniestro.siniestrarPolizaEmpresarialAtr();
-    String numeroReclamacion = Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor());
-    menuClaimPage.buscarReclamacion(Constantes.RECLAMACION_MENU.getValor(), numeroReclamacion);
+    String strNumeroReclamacion = Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor());
+    reaseguroStep.buscarReclamacion(strNumeroReclamacion);
   }
 
   @Entonces(
