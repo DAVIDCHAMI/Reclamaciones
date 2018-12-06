@@ -21,7 +21,9 @@ public class ReaseguroStep {
   @Page MenuClaimPage menuClaimPage;
 
   public void buscarReclamacion() {
-    menuClaimPage.buscarReclamacion(Constantes.RECLAMACION_MENU.getValor(), Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor()));
+    menuClaimPage.buscarReclamacion(
+        Constantes.RECLAMACION_MENU.getValor(),
+        Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor()));
   }
 
   public void verificarReaseguro(
