@@ -18,9 +18,6 @@ import org.fluentlenium.core.annotation.Page;
 
 public class ReaseguroDefinition {
 
-  private Contrato contrato1;
-  private Reasegurador reasegurador1, reasegurador2, reasegurador3;
-  private String numeroReclamacion;
   private String tipoContrato;
 
   @Steps ReaseguroStep reaseguroStep;
@@ -39,7 +36,7 @@ public class ReaseguroDefinition {
     tipoContrato = tipoContratoPoliza;
     creacionSiniestro.asignarValoresSiniestro(tipoContratoPoliza);
     creacionSiniestro.siniestrarPolizaEmpresarialAtr();
-    numeroReclamacion = Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor());
+    String numeroReclamacion = Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor());
     menuClaimPage.buscarReclamacion(Constantes.RECLAMACION_MENU.getValor(), numeroReclamacion);
   }
 
@@ -48,10 +45,13 @@ public class ReaseguroDefinition {
   public void verificarReaseguro(
       String tipoTransaccion, String tipoContrato1, String tipoContrato2, String tipoContrato3)
       throws IOException {
-    contrato1 = new Contrato(genericStep.getFilasModelo("contrato", tipoContrato));
-    reasegurador1 = new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato1));
-    reasegurador2 = new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato2));
-    reasegurador3 = new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato3));
+    Contrato contrato1 = new Contrato(genericStep.getFilasModelo("contrato", tipoContrato));
+    Reasegurador reasegurador1 =
+        new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato1));
+    Reasegurador reasegurador2 =
+        new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato2));
+    Reasegurador reasegurador3 =
+        new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato3));
     reaseguroStep.verificarReaseguro(
         contrato1.getLstContrato(),
         reasegurador1.getLstReasegurador(),
