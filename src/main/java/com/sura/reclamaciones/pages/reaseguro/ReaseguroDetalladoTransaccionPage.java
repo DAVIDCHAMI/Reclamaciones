@@ -39,7 +39,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
           obtenerDatoTablaCabecera(RETENCION_PURA_ENCABEZADO.getValor(), posicionElementoFila + 1)
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       Double dblRetencionPura = Double.parseDouble(strRetencionPura);
-      if (dblRetencionPura >= -dblValorRetencionPura && dblRetencionPura >= dblRetencionPura) {
+      if (dblRetencionPura >= -dblValorRetencionPura && dblRetencionPura >= dblValorRetencionPura) {
         LOGGER.info(
             "El elemento " + posicionElementoFila + "esta en el rango permitido de retencion pura");
       } else {
