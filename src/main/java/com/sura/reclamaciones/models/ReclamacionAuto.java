@@ -14,6 +14,10 @@ public class ReclamacionAuto extends Reclamacion {
   private String culpabilidad;
   private String taller;
   private String valorPretension;
+  private String pais;
+  private String departamento;
+  private String ciudad;
+  private String direccion;
   private List<ReclamacionAuto> lstReclamacionAuto = new ArrayList<>();
 
   public ReclamacionAuto() {
@@ -24,6 +28,10 @@ public class ReclamacionAuto extends Reclamacion {
     super(datosReclamacionAut);
     this.relacionAsegurado = datosReclamacionAut.get("relacionAsegurado");
     this.sucedido = datosReclamacionAut.get("sucedido");
+    this.pais = datosReclamacionAut.get("pais");
+    this.departamento = datosReclamacionAut.get("departamento");
+    this.ciudad = datosReclamacionAut.get("ciudad");
+    this.direccion = datosReclamacionAut.get("direccion");
     this.causa = datosReclamacionAut.get("causa");
     this.vehiculoRetenido = datosReclamacionAut.get("vehiculoRetenido");
     this.autoridad = datosReclamacionAut.get("autoridad");
@@ -42,6 +50,38 @@ public class ReclamacionAuto extends Reclamacion {
 
   public String getSucedido() {
     return sucedido;
+  }
+
+  public String getPais() {
+    return pais;
+  }
+
+  public void setPais(String pais) {
+    this.pais = pais;
+  }
+
+  public String getDepartamento() {
+    return departamento;
+  }
+
+  public void setDepartamento(String departamento) {
+    this.departamento = departamento;
+  }
+
+  public String getCiudad() {
+    return ciudad;
+  }
+
+  public void setCiudad(String ciudad) {
+    this.ciudad = ciudad;
+  }
+
+  public String getDireccion() {
+    return direccion;
+  }
+
+  public void setDireccion(String direccion) {
+    this.direccion = direccion;
   }
 
   public String getCausa() {
