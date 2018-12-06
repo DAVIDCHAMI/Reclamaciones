@@ -2,7 +2,6 @@ package com.sura.reclamaciones.pages.reaseguro;
 
 import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.Constantes.PORCIENTO;
-import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA;
 import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA_ENCABEZADO;
 import static com.sura.reclamaciones.utils.Constantes.SURA;
 import static com.sura.reclamaciones.utils.Constantes.VALOR_REASEGURADO;
@@ -41,10 +40,11 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String strRetencionPura =
           obtenerDatoTablaCabecera(RETENCION_PURA_ENCABEZADO.getValor(), posicionElementoFila + 1)
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      if( abs(dblRetencionPura) <= abs(Double.parseDouble(strRetencionPura))) {
+      if (abs(dblRetencionPura) <= abs(Double.parseDouble(strRetencionPura))) {
         dblRetencionPura = abs(Double.parseDouble(strRetencionPura));
       }
-      if (dblRetencionPura >= -dblMaximoValorRetencionPura && dblRetencionPura <= dblMaximoValorRetencionPura) {
+      if (dblRetencionPura >= -dblMaximoValorRetencionPura
+          && dblRetencionPura <= dblMaximoValorRetencionPura) {
         LOGGER.info(
             "El elemento " + posicionElementoFila + "esta en el rango permitido de retencion pura");
       } else {
@@ -77,15 +77,11 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
       String strDatoPantalla =
           lstFilaTransaccion.get(5).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      Double dblDatoPantalla = Double.parseDouble(strDatoPantalla);
-      if ((dblDatoPantalla
-                  >= (dblValorRetenido - dblRetencionPura))
-              && (dblDatoPantalla
-                  <= (dblValorRetenido + dblRetencionPura))
-          || ((dblDatoPantalla
-                  >= (dblValorRetenidoDeducible - dblRetencionPura))
-              && (dblDatoPantalla
-                  <= (dblValorRetenidoDeducible + dblRetencionPura)))) {
+      Integer intDatoPantalla = Integer.parseInt(strDatoPantalla);
+      if ((intDatoPantalla >= Math.round(dblValorRetenido - dblRetencionPura))
+              && (intDatoPantalla <= Math.round(dblValorRetenido + dblRetencionPura))
+          || ((intDatoPantalla >= Math.round(dblValorRetenidoDeducible - dblRetencionPura))
+              && (intDatoPantalla <= Math.round(dblValorRetenidoDeducible + dblRetencionPura)))) {
         LOGGER.info("El retenido esta en el rango correcto");
       } else {
         return false;
@@ -117,23 +113,27 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
       String strDatoPantalla =
           lstFilaTransaccion.get(4).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      Double dblDatoPantalla = Double.parseDouble(strDatoPantalla);
-      if ((dblDatoPantalla
-                  >= Double.parseDouble(strValorReasegurado)
-                      - dblValorRetenido
-                      - dblRetencionPura)
-              && (dblDatoPantalla
-                  <= Double.parseDouble(strValorReasegurado)
-                      - dblValorRetenido
-                      + dblRetencionPura)
-          || ((dblDatoPantalla
-                  >= (Double.parseDouble(strValorDeducible)
-                      + dblValorRetenidoDeducible
-                      - dblRetencionPura))
-              && (dblDatoPantalla
-                  <= (Double.parseDouble(strValorDeducible)
-                      + dblValorRetenidoDeducible
-                      + dblRetencionPura)))) {
+      Integer intDatoPantalla = Integer.parseInt(strDatoPantalla);
+      if ((intDatoPantalla
+                  >= Math.round(
+                      Double.parseDouble(strValorReasegurado)
+                          - dblValorRetenido
+                          - dblRetencionPura))
+              && (intDatoPantalla
+                  <= Math.round(
+                      Double.parseDouble(strValorReasegurado)
+                          - dblValorRetenido
+                          + dblRetencionPura))
+          || ((intDatoPantalla
+                  >= Math.round(
+                      Double.parseDouble(strValorDeducible)
+                          - dblValorRetenidoDeducible
+                          - dblRetencionPura))
+              && (intDatoPantalla
+                  <= Math.round(
+                      Double.parseDouble(strValorDeducible)
+                          - dblValorRetenidoDeducible
+                          + dblRetencionPura)))) {
         LOGGER.info("El cedido esta en el rango correcto");
       } else {
         return false;
