@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA;
 import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA_ENCABEZADO;
 import static com.sura.reclamaciones.utils.Constantes.SURA;
 import static com.sura.reclamaciones.utils.Constantes.VALOR_REASEGURADO;
+import static java.lang.Math.abs;
 
 import com.sura.reclamaciones.models.Reasegurador;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -18,6 +19,8 @@ import org.openqa.selenium.WebElement;
 
 public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
+  private Double dblRetencionPura = 0.0;
+
   @FindBy(xpath = "//div[@class='x-container g-screen x-container-page x-table-layout-ct']")
   private WebElementFacade tblReaseguroDetalladoTransaccion;
 
@@ -28,7 +31,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     super(driver);
   }
 
-  public boolean verificarRetencionPura(Double dblValorRetencionPura) {
+  public boolean verificarRetencionPura(Double dblMaximoValorRetencionPura) {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
@@ -38,8 +41,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String strRetencionPura =
           obtenerDatoTablaCabecera(RETENCION_PURA_ENCABEZADO.getValor(), posicionElementoFila + 1)
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      Double dblRetencionPura = Double.parseDouble(strRetencionPura);
-      if (dblRetencionPura >= -dblValorRetencionPura && dblRetencionPura >= dblValorRetencionPura) {
+      if( abs(dblRetencionPura) <= abs(Double.parseDouble(strRetencionPura))) {
+        dblRetencionPura = abs(Double.parseDouble(strRetencionPura));
+      }
+      if (dblRetencionPura >= -dblMaximoValorRetencionPura && dblRetencionPura <= dblMaximoValorRetencionPura) {
         LOGGER.info(
             "El elemento " + posicionElementoFila + "esta en el rango permitido de retencion pura");
       } else {
@@ -72,14 +77,15 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
       String strDatoPantalla =
           lstFilaTransaccion.get(5).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      if ((Double.parseDouble(strDatoPantalla)
-                  >= (dblValorRetenido - Double.parseDouble(RETENCION_PURA.getValor())))
-              && (Double.parseDouble(strDatoPantalla)
-                  <= (dblValorRetenido + Double.parseDouble(RETENCION_PURA.getValor())))
-          || (Double.parseDouble(strDatoPantalla)
-                  >= (dblValorRetenidoDeducible - Double.parseDouble(RETENCION_PURA.getValor())))
-              && (Double.parseDouble(strDatoPantalla)
-                  <= (dblValorRetenidoDeducible + Double.parseDouble(RETENCION_PURA.getValor())))) {
+      Double dblDatoPantalla = Double.parseDouble(strDatoPantalla);
+      if ((dblDatoPantalla
+                  >= (dblValorRetenido - dblRetencionPura))
+              && (dblDatoPantalla
+                  <= (dblValorRetenido + dblRetencionPura))
+          || ((dblDatoPantalla
+                  >= (dblValorRetenidoDeducible - dblRetencionPura))
+              && (dblDatoPantalla
+                  <= (dblValorRetenidoDeducible + dblRetencionPura)))) {
         LOGGER.info("El retenido esta en el rango correcto");
       } else {
         return false;
@@ -111,22 +117,23 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
       String strDatoPantalla =
           lstFilaTransaccion.get(4).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      if ((Double.parseDouble(strDatoPantalla)
+      Double dblDatoPantalla = Double.parseDouble(strDatoPantalla);
+      if ((dblDatoPantalla
                   >= Double.parseDouble(strValorReasegurado)
                       - dblValorRetenido
-                      - Double.parseDouble(RETENCION_PURA.getValor())
-              && (Double.parseDouble(strDatoPantalla)
+                      - dblRetencionPura)
+              && (dblDatoPantalla
                   <= Double.parseDouble(strValorReasegurado)
                       - dblValorRetenido
-                      + Double.parseDouble(RETENCION_PURA.getValor()))
-          || (Double.parseDouble(strDatoPantalla)
+                      + dblRetencionPura)
+          || ((dblDatoPantalla
                   >= (Double.parseDouble(strValorDeducible)
-                      - dblValorRetenidoDeducible
-                      - Double.parseDouble(RETENCION_PURA.getValor()))
-              && (Double.parseDouble(strDatoPantalla)
+                      + dblValorRetenidoDeducible
+                      - dblRetencionPura))
+              && (dblDatoPantalla
                   <= (Double.parseDouble(strValorDeducible)
-                      - dblValorRetenidoDeducible
-                      + Double.parseDouble(RETENCION_PURA.getValor())))))) {
+                      + dblValorRetenidoDeducible
+                      + dblRetencionPura)))) {
         LOGGER.info("El cedido esta en el rango correcto");
       } else {
         return false;
