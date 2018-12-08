@@ -43,14 +43,14 @@ public class ReaseguroStep {
               reaseguroDetalladoTransaccionPage.verificarRetenido(
                   lstReasegurador2,
                   verificador.getDeducibleMinimo(),
-                  verificador.getPorcentajeDeducibleminimo(),
+                  verificador.getPorcentajeDeducibleMinimo(),
                   verificador.getProporcionCuotaParte()));
           MatcherAssert.assertThat(
               "El cedido no corresponde a lo esperado",
               reaseguroDetalladoTransaccionPage.verificarCedido(
                   lstReasegurador2,
                   verificador.getDeducibleMinimo(),
-                  verificador.getPorcentajeDeducibleminimo(),
+                  verificador.getPorcentajeDeducibleMinimo(),
                   verificador.getProporcionCuotaParte()));
         });
   }

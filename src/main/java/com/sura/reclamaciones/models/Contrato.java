@@ -45,7 +45,7 @@ public class Contrato {
     return deducibleMinimo;
   }
 
-  public String getPorcentajeDeducibleminimo() {
+  public String getPorcentajeDeducibleMinimo() {
     return porcentajeDeducibleMinimo;
   }
 
