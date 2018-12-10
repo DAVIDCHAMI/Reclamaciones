@@ -11,7 +11,7 @@ import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
-import com.sura.reclamaciones.pages.pagos.VerificacionDatosFinancierosPage;
+import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;

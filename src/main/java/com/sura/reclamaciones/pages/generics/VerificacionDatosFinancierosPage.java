@@ -1,15 +1,21 @@
-package com.sura.reclamaciones.pages.pagos;
+package com.sura.reclamaciones.pages.generics;
 
+import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
+import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class VerificacionDatosFinancierosPage extends GeneralPage {
+
+  @Page
+  DetalleTransaccionPage detalleTransaccionPage;
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
   private WebElementFacade tblVerificacionPago;
@@ -37,6 +43,28 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
         strDatoPantalla = strDatoPantalla.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       }
       if (strDatoPantalla.equals(datoValidar)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private List<WebElement> irFilaAnulada(String strNumeroTransaccion, String strTipoAnulacion) {
+    List<WebElement> lstPago;
+    if (strTipoAnulacion.equals(AnulacionConstante.PAGO)) {
+      lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblPago());
+    } else {
+      lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
+    }
+    return lstPago;
+  }
+
+  public boolean verificarEstadoAnulado(
+      String strAnulacion, String strNumeroTransaccion, String strTipoAnulacion) {
+    irUltimaPagina();
+    List<WebElement> lstPago = irFilaAnulada(strNumeroTransaccion, strTipoAnulacion);
+    for (int i = 0; i < lstPago.size(); i++) {
+      if (lstPago.get(i).getText().equals(strAnulacion)) {
         return true;
       }
     }

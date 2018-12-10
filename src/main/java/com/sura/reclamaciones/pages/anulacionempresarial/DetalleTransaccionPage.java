@@ -1,8 +1,9 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
+import static com.sura.reclamaciones.utils.Variables.TIPO_ANULACION;
+
 import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -20,10 +21,16 @@ public class DetalleTransaccionPage extends GeneralPage {
   private WebElementFacade btnAceptar;
 
   @FindBy(
-    xpath =
-        "//div[@class='x-toolbar-text x-box-item x-toolbar-item x-toolbar-text-default'][contains(text(),'de')]"
+      xpath =
+          "//div[@class='x-toolbar-text x-box-item x-toolbar-item x-toolbar-text-default'][contains(text(),'de')]"
   )
   private WebElementFacade lblNumeroPaginas;
+
+  @FindBy(xpath = "//span[@class='x-column-header-text'][contains(text(),'Número de pago')]")
+  private WebElementFacade lblNumeroPago;
+
+  @FindBy(xpath = "//a[@class='g-link x-component-after-title x-box-item']")
+  private WebElementFacade lnkPago;
 
   public DetalleTransaccionPage(WebDriver wdriver) {
     super(wdriver);
@@ -45,27 +52,47 @@ public class DetalleTransaccionPage extends GeneralPage {
     return false;
   }
 
-  private int obtenerNumeroPaginas() {
-    if (lblNumeroPaginas.isVisible()) {
-      String strNumeroPaginas = lblNumeroPaginas.getText();
-      strNumeroPaginas = strNumeroPaginas.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      int intNumeroPaginas;
-      intNumeroPaginas = Integer.parseInt(strNumeroPaginas);
-      return intNumeroPaginas;
+  private void anularTransaccion() {
+    btnAnular.waitUntilClickable();
+    btnAnular.click();
+    realizarEsperaCarga();
+    btnAnular.waitUntilClickable();
+    btnAnular.click();
+    realizarEsperaCarga();
+    btnAceptar.waitUntilClickable();
+    btnAceptar.click();
+    realizarEsperaCarga();
+  }
+
+  public boolean realizarAnulacion(String tipoAnulacion) {
+    if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
+      if (btnAnular.containsElements(
+          By.xpath(
+              "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'disabled')]"))) {
+        return false;
+      } else {
+        anularTransaccion();
+        return true;
+      }
     } else {
-      return 0;
+      if (btnAnular.isVisible()) {
+        anularTransaccion();
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 
   private boolean ingresarNumeroAnular(
-      List<WebElement> lstPago,
+      List<WebElement> lstTransaccion,
       String strNumeroTransaccion,
       String strEstadoPrevio,
       String tipoAnulacion) {
-    for (WebElement aLstPago : lstPago) {
+    for (WebElement aLstPago : lstTransaccion)
       if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
         if (aLstPago.getText().equals(strNumeroTransaccion)
-            && lstPago.get(5).getText().equals(strEstadoPrevio)) {
+            && lstTransaccion.get(5).getText().equals(strEstadoPrevio)) {
           aLstPago.click();
           aLstPago
               .findElement(
@@ -80,83 +107,39 @@ public class DetalleTransaccionPage extends GeneralPage {
         }
       } else {
         if (aLstPago.getText().equals(strNumeroTransaccion)
-            && lstPago.get(9).getText().equals(strEstadoPrevio)) {
-          lstPago.get(2).click();
+            && lstTransaccion.get(9).getText().equals(strEstadoPrevio)) {
+          aLstPago
+              .findElement(
+                  By.xpath(String.format("//a[@class='g-actionable'][contains(text(),'$')]")))
+              .click();
           return true;
         } else {
           return false;
         }
       }
-    }
     return true;
   }
 
-  private boolean ingresarAnulacionPrimeraHoja(
-      String strNumeroTransaccion,
-      String strEstadoPrevio,
-      int intNumeroPaginas,
-      String tipoAnulacion) {
+  private boolean ingresarAnulacion(
+      String strNumeroTransaccion, String strEstadoPrevio, String tipoAnulacion) {
     boolean estadoPago;
-    List<WebElement> lstPago;
+    List<WebElement> lstTransaccion;
     if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
-      lstPago = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
+      lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
     } else {
-      lstPago = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
+      lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
     }
-    int intLongitudFila = lstPago.size();
-    if (intLongitudFila == 0) {
-      return false;
-    } else {
-      estadoPago =
-          ingresarNumeroAnular(lstPago, strNumeroTransaccion, strEstadoPrevio, tipoAnulacion);
-      Serenity.setSessionVariable(Variables.NUMERO_PAGINA).to(intNumeroPaginas);
-      return estadoPago;
-    }
-  }
-
-  private boolean ingresarAnulacionHojaDiferentePrimera(
-      String strNumeroTransaccion,
-      String strEstadoPrevio,
-      int intNumeroPaginas,
-      String tipoAnulacion) {
-    for (int i = 0; i < intNumeroPaginas; i++) {
-      List<WebElement> lstPago;
-      if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
-      } else {
-        lstPago = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
-      }
-      int intLongitudFila = lstPago.size();
-      if (intLongitudFila == 0) {
-        if (i == (intNumeroPaginas - 1)) {
-          return false;
-        } else {
-          irSiguientePagina();
-        }
-      } else {
-        boolean estadoPago =
-            ingresarNumeroAnular(lstPago, strNumeroTransaccion, strEstadoPrevio, tipoAnulacion);
-        Serenity.setSessionVariable(Variables.NUMERO_PAGINA).to(i);
-        return estadoPago;
-      }
-    }
-    return true;
+    estadoPago =
+        ingresarNumeroAnular(lstTransaccion, strNumeroTransaccion, strEstadoPrevio, tipoAnulacion);
+    return estadoPago;
   }
 
   public boolean ingresarAnulacionEmpresarial(
-      String strNumeroTransaccion, String strEstadoPrevio, String tipoAnulacion) {
-    int intNumeroPagina = obtenerNumeroPaginas();
+      String strNumeroTransaccion, String strEstadoPrevio, String strTipoAnulacion) {
     boolean estadoPago;
-    if (intNumeroPagina == 0) {
-      estadoPago =
-          ingresarAnulacionPrimeraHoja(
-              strNumeroTransaccion, strEstadoPrevio, intNumeroPagina, tipoAnulacion);
-      return estadoPago;
-    } else {
-      estadoPago =
-          ingresarAnulacionHojaDiferentePrimera(
-              strNumeroTransaccion, strEstadoPrevio, intNumeroPagina, tipoAnulacion);
-      return estadoPago;
-    }
+    estadoPago =
+        ingresarAnulacion(
+            strNumeroTransaccion, strEstadoPrevio, Serenity.sessionVariableCalled(TIPO_ANULACION));
+    return estadoPago;
   }
 }
