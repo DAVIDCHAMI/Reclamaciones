@@ -24,7 +24,7 @@ public class RecuperoStep {
   @Page MenuClaimPage menuClaimPage;
 
   @Step
-  public void seleccionarNumeroReclamacion(String reclamacion) {
+  public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
       menuClaimPage.buscarReclamacion(reclamacion, Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
 
   }
