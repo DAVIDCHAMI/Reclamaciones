@@ -1,5 +1,5 @@
 id		;idFiltro							;tipoPago		;lineaReserva											;beneficiarioPago																								;metodoPago					;soloSura
-1			;MRC_01									;Final					;(1) 1ª partePropiedad		;SOLO FAMILIAR LTDA. CQLII  											  ;Pago por banco	;No
+1			;MRC_01									;Final					;(1) 1ª parteContenido		;SOLO FAMILIAR LTDA. CQLII  											  ;Pago por banco	;No
 2			;MRC_02									;Parcial			;(1) 1ª partePropiedad		;PISOS Y MAS PISOS LTDA. CQLII									 	;Caja Sura						;Sí
 3 		;HOGAR_01							;Final					;(1) 1ª parteContenido		;AURA JUDITH LOPEZ JULIO CQLII										 ;Caja Sura						;No
 4			;RC_01										;Parcial			;(1) 1ª parteGeneral				;INDUSTRIALES S.A. CQLII																	;Pago por banco	;Si
