@@ -18,11 +18,7 @@ import org.openqa.selenium.WebDriver;
 })
 public class LoginClaimPage extends GeneralPage {
 
-  public LoginClaimPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
-  @FindBy(id = "idTabEmpleado")
+  @FindBy(xpath = "//li[@class='ui-state-default ui-corner-top']/a")
   private WebElementFacade btnEmpleado;
 
   @FindBy(id = "suranetName")
@@ -42,6 +38,10 @@ public class LoginClaimPage extends GeneralPage {
 
   @FindBy(id = "Login:LoginScreen:LoginDV:submit-btnInnerEl")
   private WebElementFacade btnIniciarSesionDllo;
+
+  public LoginClaimPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
   public void iniciarSesionDLLO(String usuario, String contrasena) {
     txtNombreUsuario.type(usuario);

@@ -9,10 +9,6 @@ import org.openqa.selenium.WebDriver;
 
 public class EstablecerInstruccionPagoPage extends GeneralPage {
 
-  public EstablecerInstruccionPagoPage(WebDriver driver) {
-    super(driver);
-  }
-
   @FindBy(
     xpath =
         "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_DateOfService-inputEl']"
@@ -24,6 +20,10 @@ public class EstablecerInstruccionPagoPage extends GeneralPage {
         "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_InvoiceNumber-inputEl']"
   )
   private WebElementFacade txtNumeroFactura;
+
+  public EstablecerInstruccionPagoPage(WebDriver driver) {
+    super(driver);
+  }
 
   public void ingresarFechaFactura() {
     txtFechaPago.waitUntilClickable();

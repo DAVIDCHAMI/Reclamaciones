@@ -9,10 +9,6 @@ import org.openqa.selenium.WebDriver;
 
 public class InformacionBasicaPage extends GeneralPage {
 
-  public InformacionBasicaPage(WebDriver driver) {
-    super(driver);
-  }
-
   @FindBy(
     xpath =
         "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputEl']"
@@ -84,6 +80,10 @@ public class InformacionBasicaPage extends GeneralPage {
 
   @Page GeneralPage generalPage;
 
+  public InformacionBasicaPage(WebDriver driver) {
+    super(driver);
+  }
+
   public void seleccionarAutorReporte() {
     txtNombreAutor.waitUntilVisible();
     txtNombreAutor.click();
@@ -117,7 +117,6 @@ public class InformacionBasicaPage extends GeneralPage {
   }
 
   public void seleccionarFechaAviso(String fechaAviso) {
-    //2018/Ene/09
     String diaUsuario = fechaAviso.substring(9, 11);
     String mesUsuario = fechaAviso.substring(5, 8);
     String anioUsuario = fechaAviso.substring(0, 4);

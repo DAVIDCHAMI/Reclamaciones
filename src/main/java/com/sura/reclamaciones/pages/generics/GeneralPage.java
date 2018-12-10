@@ -50,10 +50,7 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade txtTransacciones;
 
-  @FindBy(
-    xpath =
-        "//div[@id ='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV' or @id='ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']"
-  )
+  @FindBy(xpath = "//div[@class='x-panel x-panel-default x-grid']")
   private WebElementFacade tblVerificacion;
 
   @FindBy(xpath = "//input")
@@ -61,6 +58,12 @@ public class GeneralPage extends PageObject {
 
   @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
   private WebElementFacade btnUltimaPagina;
+
+  private String tblPago =
+      "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
+
+  private String tblTransaccion =
+      "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   @FindBy(xpath = "//table[@class='datePickerMonthSelector']//td[2]//div[@class='html-face']")
   private WebElementFacade btnMesPrevio;
@@ -89,6 +92,14 @@ public class GeneralPage extends PageObject {
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
     driver = wdriver;
+  }
+
+  public String getTblPago() {
+    return tblPago;
+  }
+
+  public String getTblTransaccion() {
+    return tblTransaccion;
   }
 
   public void seleccionarOpcionCombobox(String opcion) {
@@ -209,11 +220,11 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public String obtenerDatoTablaCabecera(String strDatoCabecera) {
+  public String obtenerDatoTablaCabecera(String strDatoCabecera, int posicionElemento) {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
     int longitudTabla = elementoEncontrado.size();
-    return elementoEncontrado.get(longitudTabla - 1).getText();
+    return elementoEncontrado.get(longitudTabla - posicionElemento).getText();
   }
 
   public List<WebElement> obtenerFilaTabla(
