@@ -36,7 +36,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
 
   @Step
   public void diligenciarFechaAtr() {
-    informacionBasicaPage.seleccionarFechaAviso("2018/Nov/20");
+    informacionBasicaPage.seleccionarFechaAviso("2018/Nov/20"/*To do*/);
   }
 
   @Step
