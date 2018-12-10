@@ -1,11 +1,11 @@
 package com.sura.reclamaciones.steps.anulacionempresarial;
 
 import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
+import static com.sura.reclamaciones.utils.Constantes.PAGO;
 import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
 import static com.sura.reclamaciones.utils.Variables.TIPO_ANULACION;
 import static org.junit.Assert.assertTrue;
 
-import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.constantes.RecuperoConstante;
@@ -55,7 +55,7 @@ public class AnulacionEmpresarialStep {
 
   @Step
   public void ingresarAnulacionPago(List<PagoEmpresarial> lstPago) {
-    Serenity.setSessionVariable(Variables.TIPO_ANULACION).to(AnulacionConstante.PAGO);
+    Serenity.setSessionVariable(Variables.TIPO_ANULACION).to(PAGO.getValor());
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
     for (PagoEmpresarial diligenciador : lstPago) {
@@ -77,7 +77,7 @@ public class AnulacionEmpresarialStep {
   public void verificarAnulacionRealizada(String strAnulacionPago) {
     String strNumeroTransaccion = Serenity.sessionVariableCalled(NUMERO_TRANSACCION.getValor());
     String strTipoAnulacion = Serenity.sessionVariableCalled(TIPO_ANULACION);
-    if (strTipoAnulacion.equals(AnulacionConstante.PAGO)) {
+    if (strTipoAnulacion.equals(PAGO.getValor())) {
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
       assertTrue(

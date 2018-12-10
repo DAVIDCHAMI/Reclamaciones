@@ -1,9 +1,9 @@
 package com.sura.reclamaciones.pages.generics;
 
-import com.sura.reclamaciones.constantes.AnulacionConstante;
+import static com.sura.reclamaciones.utils.Constantes.PAGO;
+
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -51,7 +51,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
 
   private List<WebElement> irFilaAnulada(String strNumeroTransaccion, String strTipoAnulacion) {
     List<WebElement> lstPago;
-    if (strTipoAnulacion.equals(AnulacionConstante.PAGO)) {
+    if (strTipoAnulacion.equals(PAGO.getValor())) {
       lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblPago());
     } else {
       lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());

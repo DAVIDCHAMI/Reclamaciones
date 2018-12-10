@@ -3,7 +3,6 @@ package com.sura.reclamaciones.definitions.empresariales;
 import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.Constantes.ESTADO_ANULACION;
 
-import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.models.Recupero;

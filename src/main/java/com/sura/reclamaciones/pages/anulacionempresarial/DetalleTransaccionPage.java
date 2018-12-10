@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
+import static com.sura.reclamaciones.utils.Constantes.PAGO;
 import static com.sura.reclamaciones.utils.Variables.TIPO_ANULACION;
 
-import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
@@ -65,7 +65,7 @@ public class DetalleTransaccionPage extends GeneralPage {
   }
 
   public boolean realizarAnulacion(String tipoAnulacion) {
-    if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
+    if (tipoAnulacion.equals(PAGO.getValor())) {
       if (btnAnular.containsElements(
           By.xpath(
               "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'disabled')]"))) {
@@ -90,7 +90,7 @@ public class DetalleTransaccionPage extends GeneralPage {
       String strEstadoPrevio,
       String tipoAnulacion) {
     for (WebElement aLstPago : lstTransaccion)
-      if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
+      if (tipoAnulacion.equals(PAGO.getValor())) {
         if (aLstPago.getText().equals(strNumeroTransaccion)
             && lstTransaccion.get(5).getText().equals(strEstadoPrevio)) {
           aLstPago.click();
@@ -124,7 +124,7 @@ public class DetalleTransaccionPage extends GeneralPage {
       String strNumeroTransaccion, String strEstadoPrevio, String tipoAnulacion) {
     boolean estadoPago;
     List<WebElement> lstTransaccion;
-    if (tipoAnulacion.equals(AnulacionConstante.PAGO)) {
+    if (tipoAnulacion.equals(PAGO.getValor())) {
       lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
     } else {
       lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
