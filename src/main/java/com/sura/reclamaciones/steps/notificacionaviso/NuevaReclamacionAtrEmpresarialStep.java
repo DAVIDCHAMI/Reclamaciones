@@ -13,55 +13,55 @@ import org.slf4j.LoggerFactory;
 
 public class NuevaReclamacionAtrEmpresarialStep {
 
-  @Page
-  AsistenteVirtualAtrPage asistenteVirtualAtrPage;
-  @Page
-  BuscarPolizaPage buscarPolizaPage;
-  @Page
-  InformacionBasicaPage informacionBasicaPage;
-  @Page
-  InformacionReclamacionPage informacionReclamacionPage;
+  @Page AsistenteVirtualAtrPage asistenteVirtualAtrPage;
+  @Page BuscarPolizaPage buscarPolizaPage;
+  @Page InformacionBasicaPage informacionBasicaPage;
+  @Page InformacionReclamacionPage informacionReclamacionPage;
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-
-@Step
+  @Step
   public void accederAvisoEmpresa() {
     asistenteVirtualAtrPage.accederHerramientaAvisoEmpresa();
     asistenteVirtualAtrPage.seleccionarPlanListaProducto();
   }
 
-@Step
+  @Step
   public void buscarAseguradoAtr(List<Persona> datosPersona) {
     datosPersona.forEach(
         asegurado -> {
-          buscarPolizaPage.consultarDocumentoAtr(asegurado.getTipoDocumento(), asegurado.getNumDocumento());
+          buscarPolizaPage.consultarDocumentoAtr(
+              asegurado.getTipoDocumento(), asegurado.getNumDocumento());
         });
   }
 
   @Step
-  public void diligenciarFechaAtr(){
+  public void diligenciarFechaAtr() {
     informacionBasicaPage.seleccionarFechaAviso("2018/Nov/20");
   }
 
   @Step
-  public void diligenciarInformacionSiniestro(String causaSiniestro, String detalleHechos){
-informacionReclamacionPage.seleccionarCausaSiniestroAtr(causaSiniestro);
-informacionReclamacionPage.diligenciarDetalleHechosAtr(detalleHechos);
-informacionReclamacionPage.seleccionarCiudadSiniestro();
+  public void diligenciarInformacionSiniestro(String causaSiniestro, String detalleHechos) {
+    informacionReclamacionPage.seleccionarCausaSiniestroAtr(causaSiniestro);
+    informacionReclamacionPage.diligenciarDetalleHechosAtr(detalleHechos);
+    informacionReclamacionPage.seleccionarCiudadSiniestro();
   }
 
   @Step
-  public void consultarPolizaAtr(){
-  buscarPolizaPage.consultarPolizaAseguradoAtr();
-  buscarPolizaPage.seleccionarPolizaAtr();
-  buscarPolizaPage.seleccionarRiegoPolizaAtr();
+  public void consultarPolizaAtr() {
+    buscarPolizaPage.consultarPolizaAseguradoAtr();
+    buscarPolizaPage.seleccionarPolizaAtr();
+    buscarPolizaPage.seleccionarRiegoPolizaAtr();
   }
 
   @Step
-  public void diligenciarValorPretension(String valorPretension){
-  informacionReclamacionPage.ingresarValorPretensionAtr(valorPretension);
+  public void diligenciarValorPretension(String valorPretension) {
+    informacionReclamacionPage.ingresarValorPretensionAtr(valorPretension);
+    informacionReclamacionPage.enviarReclamacion();
   }
 
-
+  @Step
+  public void verificarSiniestroAtr() {
+    String numeroSiniestro = informacionReclamacionPage.obtenerNumeroSiniestroAtr();
+    //To Do
+  }
 }
-

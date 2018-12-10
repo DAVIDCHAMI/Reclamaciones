@@ -11,6 +11,7 @@ public class BuscarPolizaPage extends GeneralPage {
   private String auxTipoDocumento = "";
   private String mnuTipoDocumentoAtr = "//option[contains(text(),'COMODIN')]";
   private String auxMnuTipoDocumentoAtr = "";
+
   @FindBy(
     xpath =
         "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:licensePlate-inputEl']"
@@ -65,7 +66,6 @@ public class BuscarPolizaPage extends GeneralPage {
   @FindBy(id = "lnkConsultarAseguradoInformacionAsegurado")
   private WebElementFacade btnConsultarDatosAseguradoATR;
 
-
   @FindBy(id = "idAseguradoInformacionAsegurado")
   private WebElementFacade txtNumeroDocumentoAtr;
 
@@ -80,7 +80,6 @@ public class BuscarPolizaPage extends GeneralPage {
 
   @FindBy(xpath = "//input[@name='RiesgosOption']")
   private WebElementFacade rbtRiesgoPolizaAtr;
-
 
   public BuscarPolizaPage(WebDriver driver) {
     super(driver);
@@ -138,7 +137,7 @@ public class BuscarPolizaPage extends GeneralPage {
     }
   }
 
-  public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr){
+  public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr) {
     enfocarVentana();
     txtTipoDocumentoAsegurado.waitUntilVisible().click();
     auxMnuTipoDocumentoAtr = mnuTipoDocumentoAtr.replace(ConstanteGlobal.COMODIN, tipoDocumentoAtr);
@@ -147,19 +146,17 @@ public class BuscarPolizaPage extends GeneralPage {
     btnConsultarDatosAseguradoATR.waitUntilVisible().click();
   }
 
-  public void consultarPolizaAseguradoAtr(){
+  public void consultarPolizaAseguradoAtr() {
     btnConsultarPolizaAtr.waitUntilVisible().click();
     realizarEsperaCarga();
   }
 
-  public void seleccionarPolizaAtr(){
+  public void seleccionarPolizaAtr() {
     rbtPolizaAtr.waitUntilVisible().click();
     realizarEsperaCarga();
   }
 
-public void seleccionarRiegoPolizaAtr(){
+  public void seleccionarRiegoPolizaAtr() {
     rbtRiesgoPolizaAtr.waitUntilVisible().click();
-}
-
-
+  }
 }

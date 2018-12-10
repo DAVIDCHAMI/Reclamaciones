@@ -14,7 +14,9 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   @FindBy(xpath = "//img[@title='Asistente Virtual']")
   private WebElementFacade bntAsistenteVirtual;
 
-  @FindBy(xpath = "//div[@class='ig_ac11e92_r5 rootMenu rootMenu nodeSubMenu nodeSubMenuSelected']/span")
+  @FindBy(
+    xpath = "//div[@class='ig_ac11e92_r5 rootMenu rootMenu nodeSubMenu nodeSubMenuSelected']/span"
+  )
   private WebElementFacade lstAsistenteVirtual;
 
   @FindBy(id = "slbProducto")
@@ -29,15 +31,19 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   @FindBy(id = "tipoIdInformacionAsegurado")
   private WebElementFacade lstIdentificacionAsegurado;
 
+  @FindBy(xpath = "//div[contains(.,'Bienvenido al Tour')]/a[2]")
+  private WebElementFacade btnCerrarTour;
 
   public AsistenteVirtualAtrPage(WebDriver driver) {
     super(driver);
   }
 
-  public void accederHerramientaAvisoEmpresa(){
+  public void accederHerramientaAvisoEmpresa() {
     bntAsistenteVirtual.waitUntilVisible().click();
     enfocarVentana();
-    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Asistente virtual");
+    btnCerrarTour.waitUntilVisible().click();
+    auxMnuAsistenteVirtual =
+        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Asistente virtual");
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
     auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Herramientas");
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
@@ -47,11 +53,10 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
   }
 
-  public void seleccionarPlanListaProducto(){
+  public void seleccionarPlanListaProducto() {
     enfocarVentana();
     lstProducto.waitUntilVisible().click();
     mnuOtroProducto.waitUntilVisible().click();
     btnAceptar.waitUntilVisible().click();
   }
-
 }

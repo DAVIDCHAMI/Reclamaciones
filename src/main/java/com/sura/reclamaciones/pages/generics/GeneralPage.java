@@ -5,11 +5,9 @@ import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.Tablas;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -78,7 +76,8 @@ public class GeneralPage extends PageObject {
 
   private String lstDinamico = "//li[.='COMODIN']";
   private String auxLstUbicacion = "";
-  private String diaMes = "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
+  private String diaMes =
+      "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
   private String auxMes = "";
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
@@ -227,29 +226,28 @@ public class GeneralPage extends PageObject {
     return lstFila;
   }
 
-  public void enfocarVentana(){
+  public void enfocarVentana() {
     for (String ventana : driver.getWindowHandles()) {
       System.out.println(ventana);
       driver.switchTo().window(ventana);
     }
   }
 
-  public void seleccionarDiaCalendarioAtr(String diaUsuario){
+  public void seleccionarDiaCalendarioAtr(String diaUsuario) {
     auxMes = diaMes.replace(ConstanteGlobal.COMODIN, diaUsuario);
     $(auxMes).click();
   }
 
-  public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual){
+  public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
     int buscadorValor = valorMesActual - valorMesAnterior;
     int numeroClick = 0;
-    while (numeroClick < buscadorValor ){
+    while (numeroClick < buscadorValor) {
       btnMesPrevio.waitUntilVisible().click();
-      numeroClick ++;
+      numeroClick++;
     }
-
   }
 
-  public void seleecionarMesPosterior (int valorMesPosterior, int valorMesActual) {
+  public void seleecionarMesPosterior(int valorMesPosterior, int valorMesActual) {
     int buscadorValor = valorMesPosterior - valorMesActual;
     int numeroClick = 0;
     while (numeroClick < buscadorValor) {
@@ -258,16 +256,16 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public void seleccionarAnioAnterior(int valorAnioAnterior, int valorAnioActual){
+  public void seleccionarAnioAnterior(int valorAnioAnterior, int valorAnioActual) {
     int buscadorValor = valorAnioActual - valorAnioAnterior;
     int numeroClick = 0;
-    while (numeroClick < buscadorValor){
+    while (numeroClick < buscadorValor) {
       btnAnioPrevio.waitUntilVisible().click();
       numeroClick++;
     }
   }
 
-  public void seleccionarAnioPosterior (int valorAnioPosterior, int valorAnioActual) {
+  public void seleccionarAnioPosterior(int valorAnioPosterior, int valorAnioActual) {
     int buscadorValor = valorAnioPosterior - valorAnioActual;
     int numeroClick = 0;
     while (numeroClick < buscadorValor) {
@@ -276,7 +274,7 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public int valorarMes(String mes){
+  public int valorarMes(String mes) {
     map.put("Jan", 1);
     map.put("Ene", 1);
     map.put("Enero", 1);
@@ -306,11 +304,9 @@ public class GeneralPage extends PageObject {
     map.put("Dic", 12);
     map.put("Diciembre", 12);
     return map.get(mes);
-      }
-
-  public int valorarAnio(String anio){
-    return Integer.parseInt(anio);
   }
 
-
+  public int valorarAnio(String anio) {
+    return Integer.parseInt(anio);
+  }
 }

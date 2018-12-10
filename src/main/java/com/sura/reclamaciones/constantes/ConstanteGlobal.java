@@ -15,5 +15,4 @@ public interface ConstanteGlobal {
   String NIT = "98630089";
   String PARAMETROS_PERSONA = "parametros_persona";
   String ASEGURADO_ATR = "AseguradoATR";
-
 }

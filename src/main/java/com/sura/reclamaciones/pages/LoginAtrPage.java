@@ -9,18 +9,23 @@ import net.thucydides.core.annotations.NamedUrl;
 import net.thucydides.core.annotations.NamedUrls;
 import org.openqa.selenium.WebDriver;
 
-@DefaultUrl("https://arlappslab.suramericana.com/SSAutenticacion/faces/autenticacion/paginaAutenticacion.jspx?cdApp=SURACOM&cookies=false&ReturnUrl=%2fdefault.aspx")
+@DefaultUrl(
+    "https://arlappslab.suramericana.com/SSAutenticacion/faces/autenticacion/paginaAutenticacion.jspx?cdApp=SURACOM&cookies=false&ReturnUrl=%2fdefault.aspx")
 @NamedUrls({
-    @NamedUrl(name = "uat", url = "https://arlappslab.suramericana.com/SSAutenticacion/faces/autenticacion/paginaAutenticacion.jspx?cdApp=SURACOM&cookies=false"),
+  @NamedUrl(
+    name = "uat",
+    url =
+        "https://arlappslab.suramericana.com/SSAutenticacion/faces/autenticacion/paginaAutenticacion.jspx?cdApp=SURACOM&cookies=false"
+  ),
 })
-
 public class LoginAtrPage extends GeneralPage {
 
   public LoginAtrPage(WebDriver wdriver) {
     super(wdriver);
   }
 
-  private String btnClave = "//img[@src='/SSAutenticacion/imagenes/teclado/btnTec_COMODIN_off.gif']";
+  private String btnClave =
+      "//img[@src='/SSAutenticacion/imagenes/teclado/btnTec_COMODIN_off.gif']";
   private String auxbtnClave = "";
 
   @FindBy(id = "tempUserID")
@@ -49,8 +54,7 @@ public class LoginAtrPage extends GeneralPage {
     optCedula.click();
     for (int cadenaString = 0; cadenaString < 4; cadenaString++) {
       String digito = contrasena.substring(cadenaString, cadenaString + 1);
-      auxbtnClave = btnClave
-          .replace(ConstanteGlobal.COMODIN, digito);
+      auxbtnClave = btnClave.replace(ConstanteGlobal.COMODIN, digito);
       $(auxbtnClave).click();
       txtClave.click();
     }
@@ -59,5 +63,3 @@ public class LoginAtrPage extends GeneralPage {
     btnAceptarCondicionUso.waitUntilVisible().click();
   }
 }
-
-

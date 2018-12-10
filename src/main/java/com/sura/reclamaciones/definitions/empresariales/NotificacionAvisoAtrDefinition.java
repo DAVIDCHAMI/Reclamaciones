@@ -12,38 +12,34 @@ import net.thucydides.core.annotations.Steps;
 
 public class NotificacionAvisoAtrDefinition {
 
-  @Steps
-  NuevaReclamacionAtrEmpresarialStep nuevaReclamacionAtrEmpresarialStep;
-   @Steps Persona aseguradoAtr;
-   @Steps GenericStep genericStep;
+  @Steps NuevaReclamacionAtrEmpresarialStep nuevaReclamacionAtrEmpresarialStep;
+  @Steps Persona aseguradoAtr;
+  @Steps GenericStep genericStep;
 
-    @Dado("^que tenemos una poliza de (.*)$")
-    public void NotificacionAvisoAtrDefinition(String  cobertura) throws Throwable{
-      aseguradoAtr =
-          new Persona(
-              genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
-      nuevaReclamacionAtrEmpresarialStep.accederAvisoEmpresa();
-      nuevaReclamacionAtrEmpresarialStep.buscarAseguradoAtr(aseguradoAtr.getLstPersona());
-      nuevaReclamacionAtrEmpresarialStep.diligenciarFechaAtr();
+  @Dado("^que tenemos una poliza de (.*)$")
+  public void diligenciarInformacionContacto(String cobertura) throws Throwable {
+    aseguradoAtr =
+        new Persona(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
+    nuevaReclamacionAtrEmpresarialStep.accederAvisoEmpresa();
+    nuevaReclamacionAtrEmpresarialStep.buscarAseguradoAtr(aseguradoAtr.getLstPersona());
+    nuevaReclamacionAtrEmpresarialStep.diligenciarFechaAtr();
   }
 
   @Cuando("^se genere un siniestro por causa (.*) con un valor de pretension de (.*)$")
-  public void seGenereUnSiniestroPorCausaCausaConUnValorDePretensionDeValorDePretensión(String causaSiniestro, String valorPretension){
-nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionSiniestro(causaSiniestro,"Prueba");
-nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();
-nuevaReclamacionAtrEmpresarialStep.diligenciarValorPretension(valorPretension);
-
+  public void diligenciarInformacionSiniestro(String causaSiniestro, String valorPretension) {
+    nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionSiniestro(causaSiniestro, "Prueba");
+    nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();
+    nuevaReclamacionAtrEmpresarialStep.diligenciarValorPretension(valorPretension);
+    nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
   }
 
   @Y("^se ajusta la reserva de la categoria de costo (.*)$")
-  public void seAjustaLaReservaDeLaCategoriaDeCostoCategoriaDeCosto()  {
-
-
+  public void seAjustaLaReservaDeLaCategoriaDeCostoCategoriaDeCosto() {
+    //To Do
   }
 
   @Entonces("^se obtiene una reclamacion que podrá ser consultada en ClaimCenter$")
-  public void seObtieneUnaReclamacionQuePodráSerConsultadaEnClaimCenter()  {
-
-
+  public void seObtieneUnaReclamacionQuePodráSerConsultadaEnClaimCenter() {
+    //To Do
   }
 }

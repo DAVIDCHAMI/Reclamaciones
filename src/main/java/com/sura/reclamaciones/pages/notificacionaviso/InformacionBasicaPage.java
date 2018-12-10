@@ -2,7 +2,6 @@ package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.annotation.Page;
@@ -14,64 +13,63 @@ public class InformacionBasicaPage extends GeneralPage {
     super(driver);
   }
 
-
   @FindBy(
-      xpath =
-          "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputEl']"
+    xpath =
+        "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputEl']"
   )
   private WebElementFacade txtNombreAutor;
 
   @FindBy(
-      xpath =
-          "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li"
+    xpath =
+        "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li"
   )
   private WebElementFacade lstAutorReporte;
 
   @FindBy(
-      xpath =
-          "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li[2]"
+    xpath =
+        "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li[2]"
   )
   private WebElementFacade lstAutorReporteCliente;
 
   @FindBy(
-      xpath =
-          "//textarea[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Description-inputEl']"
+    xpath =
+        "//textarea[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Description-inputEl']"
   )
   private WebElementFacade txtDetalleHechos;
 
   @FindBy(
-      xpath =
-          " //a[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:ReportedBy_NameMenuIcon']"
+    xpath =
+        " //a[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:ReportedBy_NameMenuIcon']"
   )
   private WebElementFacade btnCotactManager;
 
   @FindBy(
-      xpath =
-          "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:MenuItem_Search-textEl']"
+    xpath =
+        "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:MenuItem_Search-textEl']"
   )
   private WebElementFacade btnBuscarContactoExistente;
 
   @FindBy(
-      xpath =
-          "//input[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:TaxID-inputEl']"
+    xpath =
+        "//input[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:TaxID-inputEl']"
   )
   private WebElementFacade txtNit;
 
   @FindBy(
-      xpath =
-          "//a[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']"
+    xpath =
+        "//a[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']"
   )
   private WebElementFacade btnBuscarNit;
 
   @FindBy(
-      xpath =
-          "//a[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV:0:_Select']"
+    xpath =
+        "//a[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV:0:_Select']"
   )
   private WebElementFacade btnSeleccionarContacto;
 
   @FindBy(
-      xpath =
-          " //input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Claim_ReportedByType-inputEl']"
+    xpath =
+        " //input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Claim_ReportedByType-inputEl']"
   )
   private WebElementFacade btnRelacionAsegurado;
 
@@ -84,8 +82,7 @@ public class InformacionBasicaPage extends GeneralPage {
   @FindBy(className = "datePickerMonth")
   private WebElementFacade indicadorAnioMes;
 
-  @Page
-  GeneralPage generalPage;
+  @Page GeneralPage generalPage;
 
   public void seleccionarAutorReporte() {
     txtNombreAutor.waitUntilVisible();
@@ -153,8 +150,3 @@ public class InformacionBasicaPage extends GeneralPage {
     }
   }
 }
-
-
-
-
-

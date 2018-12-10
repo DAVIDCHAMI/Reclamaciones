@@ -13,12 +13,9 @@ import net.thucydides.core.annotations.Steps;
 import org.fluentlenium.core.annotation.Page;
 
 public class LoginAtrStep {
-  @Page
-  LoginAtrPage loginAtrPage;
-  @Steps
-  Credencial credencial;
-  @Steps
-  GenericStep genericStep;
+  @Page LoginAtrPage loginAtrPage;
+  @Steps Credencial credencial;
+  @Steps GenericStep genericStep;
 
   @Step
   public void abrirClaims() {
@@ -40,5 +37,4 @@ public class LoginAtrStep {
     abrirClaims();
     iniciarSesionUAT(credencial.getCredenciales());
   }
-
 }
