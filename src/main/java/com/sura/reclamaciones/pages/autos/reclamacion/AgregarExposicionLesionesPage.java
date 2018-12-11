@@ -10,7 +10,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class AgregarExposicionPersonaPage extends GeneralPage {
+public class AgregarExposicionLesionesPage extends GeneralPage {
 
   @FindBy(
     xpath =
@@ -73,13 +73,13 @@ public class AgregarExposicionPersonaPage extends GeneralPage {
     xpath =
         "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:Severity-inputEl']"
   )
-  WebElementFacade cmbGravedad;
+  WebElementFacade cmbGravedadLesion;
 
   @FindBy(
     xpath =
         "//textarea[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:InjuryDescription-inputEl']"
   )
-  WebElementFacade txtDescibirLesiones;
+  WebElementFacade txtDescribirLesiones;
 
   @FindBy(
     xpath =
@@ -93,11 +93,11 @@ public class AgregarExposicionPersonaPage extends GeneralPage {
   )
   WebElementFacade cmbDetalleLesion;
 
-  public AgregarExposicionPersonaPage(WebDriver wdriver) {
+  public AgregarExposicionLesionesPage(WebDriver wdriver) {
     super(wdriver);
   }
 
-  public void agregarPeaton(
+  public void agregarPersonaLesionada(
       List<PersonaReclamacionAuto> datosPersonaReclamacionAutos,
       List<ReclamacionAuto> datosReclamacionAuto,
       List<ExposicionLesiones> datosExposicionLesiones) {
@@ -112,7 +112,6 @@ public class AgregarExposicionPersonaPage extends GeneralPage {
           txtPrimerNombre.sendKeys(dato.getPrimerNombre());
           txtPrimerApellido.sendKeys(dato.getPrimerApellido());
         });
-
     datosReclamacionAuto.forEach(
         dato -> {
           cmbDepartamento.clear();
@@ -132,11 +131,11 @@ public class AgregarExposicionPersonaPage extends GeneralPage {
     datosExposicionLesiones.forEach(
         dato -> {
           chkLesiones.waitUntilVisible().click();
-          cmbGravedad.clear();
-          cmbGravedad.sendKeys(dato.getGravedadLesion());
-          cmbGravedad.sendKeys(Keys.ENTER);
+          cmbGravedadLesion.clear();
+          cmbGravedadLesion.sendKeys(dato.getGravedadLesion());
+          cmbGravedadLesion.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtDescibirLesiones.sendKeys(dato.getDescribirLesiones());
+          txtDescribirLesiones.sendKeys(dato.getDescribirLesiones());
           cmbTipoLesion.clear();
           cmbTipoLesion.sendKeys(dato.getTipoLesion());
           cmbTipoLesion.sendKeys(Keys.ENTER);

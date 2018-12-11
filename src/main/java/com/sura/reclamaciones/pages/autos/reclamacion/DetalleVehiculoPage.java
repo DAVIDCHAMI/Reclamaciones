@@ -33,7 +33,7 @@ public class DetalleVehiculoPage extends GeneralPage {
   WebElementFacade lstNombrePersona;
 
   @FindBy(xpath = "//input[@class='x-form-field x-form-checkbox x-form-cb']")
-  WebElementFacade chkServicio;
+  WebElementFacade chkServicioTaller;
 
   @FindBy(
     xpath = "//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Agregar Taller')]"
@@ -184,7 +184,7 @@ public class DetalleVehiculoPage extends GeneralPage {
   }
 
   private void seleccionarServicios() {
-    chkServicio.waitUntilVisible().click();
+    chkServicioTaller.waitUntilVisible().click();
   }
 
   public void volverPasoAnterior() {

@@ -1,26 +1,21 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
-import com.sura.reclamaciones.constantes.DatosFinancierosConstante;
 import com.sura.reclamaciones.constantes.Tablas;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 
 public class DatosFinancierosPage extends GeneralPage {
-
-  @Page MenuClaimPage menuClaimPage;
 
   @FindBy(
     id =
         "ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryPanelSet:FinancialsSummaryLV"
   )
-  WebElementFacade tblDatosFinancieros2;
+  WebElementFacade tblResumenDatosFinancieros;
 
   private boolean valorLineaReserva = true;
 
@@ -29,17 +24,14 @@ public class DatosFinancierosPage extends GeneralPage {
   }
 
   public boolean obtenerDatosFinancieros(List<Reserva> datosLineaReserva) {
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(
-        DatosFinancierosConstante.DATOS_FINANCIEROS);
     obtenerCabecerasDeUnaTabla(
         $(
             "//div[@id='ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryPanelSet:FinancialsSummaryLV']"),
         Tablas.CABECERAS_CC);
-
     for (int i = 0; i < datosLineaReserva.size(); i++) {
       String lineaReservaTbl =
           obtenerElementoLista(
-                  tblDatosFinancieros2,
+                  tblResumenDatosFinancieros,
                   Tablas.CABECERAS_CC,
                   Tablas.REGISTROS_CC,
                   datosLineaReserva.get(i).getLineaReserva(),
@@ -48,13 +40,12 @@ public class DatosFinancierosPage extends GeneralPage {
       if (lineaReservaTbl.equals(datosLineaReserva.get(i).getLineaReserva())) {
         String valorReserva =
             obtenerElementoLista(
-                    tblDatosFinancieros2,
+                    tblResumenDatosFinancieros,
                     Tablas.CABECERAS_CC,
                     Tablas.REGISTROS_CC,
                     datosLineaReserva.get(i).getLineaReserva(),
-                    datosLineaReserva.get(0).getColumnaDevolver())
+                    datosLineaReserva.get(0).getColumnaDevolverTablaDatosFinancieros())
                 .getText();
-
         if (valorReserva.equals(datosLineaReserva.get(i).getValorReserva())) {
           valorLineaReserva = true;
         } else if (!valorReserva.equals(datosLineaReserva.get(i).getValorReserva())) {
@@ -64,7 +55,7 @@ public class DatosFinancierosPage extends GeneralPage {
               totalizarLineaReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
           String valorDeducible =
               obtenerElementoLista(
-                      tblDatosFinancieros2,
+                      tblResumenDatosFinancieros,
                       Tablas.CABECERAS_CC,
                       Tablas.REGISTROS_CC,
                       datosLineaReserva.get(i).getLineaReserva(),
@@ -72,7 +63,6 @@ public class DatosFinancierosPage extends GeneralPage {
                   .getText();
           valorDeducible = valorDeducible.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
           totalReserva = Integer.parseInt(totalizarLineaReserva) + Integer.parseInt(valorDeducible);
-
           if ((String.valueOf(totalReserva)).equals(datosLineaReserva.get(i).getValorReserva())) {
             valorLineaReserva = true;
           }

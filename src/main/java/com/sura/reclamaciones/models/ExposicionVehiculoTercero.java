@@ -7,7 +7,7 @@ import java.util.Map;
 public class ExposicionVehiculoTercero {
 
   private String placaTercero;
-  private String taller;
+  private String tallerReparacionAsignado;
 
   private List<ExposicionVehiculoTercero> lstExposicionTercero = new ArrayList<>();
 
@@ -17,7 +17,7 @@ public class ExposicionVehiculoTercero {
 
   private ExposicionVehiculoTercero(Map<String, String> datosExposicionTercero) {
     this.placaTercero = datosExposicionTercero.get("placaTercero");
-    this.taller = datosExposicionTercero.get("taller");
+    this.tallerReparacionAsignado = datosExposicionTercero.get("tallerReparacionAsignado");
   }
 
   public ExposicionVehiculoTercero(List<Map<String, String>> datosTerceroAuto) {
@@ -28,8 +28,8 @@ public class ExposicionVehiculoTercero {
     return lstExposicionTercero;
   }
 
-  public String getTaller() {
-    return taller;
+  public String getTallerReparacionAsignado() {
+    return tallerReparacionAsignado;
   }
 
   public String getPlacaTercero() {

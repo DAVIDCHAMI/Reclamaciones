@@ -7,7 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class AgregarInformacionPage extends GeneralPage {
+public class AgregarInformacionSiniestroAutosPage extends GeneralPage {
 
   @FindBy(
     id =
@@ -58,7 +58,7 @@ public class AgregarInformacionPage extends GeneralPage {
     id =
         "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Description-inputEl"
   )
-  private WebElementFacade txtSucedio;
+  private WebElementFacade txtDescripcionHechos;
 
   @FindBy(
     id =
@@ -75,7 +75,7 @@ public class AgregarInformacionPage extends GeneralPage {
   )
   WebElementFacade btnAgregarPeaton;
 
-  public AgregarInformacionPage(WebDriver wdriver) {
+  public AgregarInformacionSiniestroAutosPage(WebDriver wdriver) {
     super(wdriver);
   }
 
@@ -88,7 +88,7 @@ public class AgregarInformacionPage extends GeneralPage {
   }
 
   public void escribirSucedido(String sucedido) {
-    txtSucedio.type(sucedido);
+    txtDescripcionHechos.type(sucedido);
     cmbCausaSiniestro.sendKeys(Keys.TAB);
     realizarEsperaCarga();
   }

@@ -28,7 +28,7 @@ public class ReclamacionAuto extends Reclamacion {
     this.vehiculoRetenido = datosReclamacionAut.get("vehiculoRetenido");
     this.autoridad = datosReclamacionAut.get("autoridad");
     this.culpabilidad = datosReclamacionAut.get("culpabilidad");
-    this.taller = datosReclamacionAut.get("taller");
+    this.taller = datosReclamacionAut.get("tallerReparacionAsignado");
     this.valorPretension = datosReclamacionAut.get("valorPretension");
   }
 

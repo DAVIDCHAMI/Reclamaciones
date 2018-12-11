@@ -36,7 +36,6 @@ public class ConexionBaseDatosUtil {
       Connection conexionBD, String numeroMovimientoFinanciero, String sql) throws SQLException {
     try {
       statement = conexionBD.prepareStatement(sql);
-      //statement.setString(1, numeroMovimientoFinanciero);
       resultSet = statement.executeQuery();
       ResultSetMetaData metaData = resultSet.getMetaData();
       int columnas = metaData.getColumnCount();

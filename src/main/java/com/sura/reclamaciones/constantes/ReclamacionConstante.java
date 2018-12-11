@@ -8,7 +8,7 @@ public class ReclamacionConstante {
   public static final String DATOS_FINANCIEROS = "Datos financieros";
   public static final String TRANSACCIONES = "Transacciones";
   public static final String RESUMEN = "Resumen";
-  public static final String EXPOSICIONES = "Exposiciones";
+  public static final String EXPOSICIONES = "ExposicionesAutomaticasAutos";
   public static final String VALIDADOR_NUEVA_RECLAMACION = "Nueva reclamación guardada";
   public static final String EXPOSICION_DAÑOS = "Daños";
   public static final String EXPOSICION_RESPONSABILIDAD_CIVIL = "Responsabilidad civil";

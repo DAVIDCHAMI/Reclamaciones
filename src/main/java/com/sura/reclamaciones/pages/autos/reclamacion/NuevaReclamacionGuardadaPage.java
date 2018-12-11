@@ -17,7 +17,7 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
   private WebElementFacade divNumeroReclamacion;
 
   @FindBy(xpath = "//span[@id='TabBar:ClaimTab-btnInnerEl']")
-  private WebElementFacade spanNumeroReclamacion;
+  private WebElementFacade txtNumeroReclamacion;
 
   public NuevaReclamacionGuardadaPage(WebDriver wdriver) {
     super(wdriver);
@@ -27,7 +27,6 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
     String valorMensaje;
     lblMensajeValidar.waitUntilVisible();
     valorMensaje = lblMensajeValidar.getText();
-
     return valorMensaje;
   }
 
@@ -38,8 +37,8 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
 
   public String obtenerNumeroReclamacionConsultaPoliza() {
     String numeroReclamacion;
-    spanNumeroReclamacion.waitUntilVisible();
-    numeroReclamacion = spanNumeroReclamacion.getText();
+    txtNumeroReclamacion.waitUntilVisible();
+    numeroReclamacion = txtNumeroReclamacion.getText();
     numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     return numeroReclamacion;
   }
