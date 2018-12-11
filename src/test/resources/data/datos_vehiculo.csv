@@ -1,2 +1,3 @@
-id;idFiltro;placa;clase;modelo;marca;linea;motor;chasis
-1;autoReclamacionSimple;ZUL001;vehiculo;Mazda;nose;fghjiuyhgb;iuhhedsdds
+id;idFiltro;placa;clase;modelo;marca;linea;motor;chasis;anio;color;tipoVehiculo;codigoFasecolda
+1;autoReclamacionSimple;ZUL001;vehiculo;Mazda;nose;f8a9mgdhjiuyhgb;iuhhd9ia7jdjau;2017;BLANCO ALMENDRA;1;08001165
+2;creacionAvisoWS;ANA222;vehiculo;Mazda;nose;;f8a9mgdhjiuyhgb;iuhhd9ia7jdjau;2017;AZUL BLANCO MARFIL;1;08001165

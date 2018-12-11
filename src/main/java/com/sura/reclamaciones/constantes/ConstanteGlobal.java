@@ -13,4 +13,7 @@ public class ConstanteGlobal {
   public static final String NIT = "98630089";
   public static final String PARAMETROS_SINIESTRO = "parametros_siniestro";
   public static final String PARAMETROS_PERSONA = "parametros_persona";
+  public static final String PARAMETROS_RECLAMACION_AUTO = "reclamacion_auto";
+  public static final String PARAMETROS_RECLAMACION_PERSONA = "persona_reclamacion_auto";
+  public static final String PARAMETROS_RECLAMACION_VEHICULO = "vehiculo";
 }

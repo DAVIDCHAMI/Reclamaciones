@@ -12,9 +12,19 @@ public class Vehiculo {
   private String linea;
   private String motor;
   private String chasis;
+  private int anio;
+  private String tipoVehiculo;
+  private String color;
+  private String codigoFasecolda;
+
   private List<Vehiculo> vehiculos = new ArrayList<>();
 
   public Vehiculo() {}
+
+  public Vehiculo(List<Map<String, String>> datoVehiculo) {
+    super();
+    asignarDatos(datoVehiculo);
+  }
 
   private Vehiculo(Map<String, String> datosVehiculos) {
     this.placa = datosVehiculos.get("placa");
@@ -24,11 +34,10 @@ public class Vehiculo {
     this.linea = datosVehiculos.get("linea");
     this.motor = datosVehiculos.get("motor");
     this.chasis = datosVehiculos.get("chasis");
-  }
-
-  public Vehiculo(List<Map<String, String>> datoVehiculo) {
-    super();
-    asignarDatos(datoVehiculo);
+    this.anio = Integer.parseInt(datosVehiculos.get("anio"));
+    this.color = datosVehiculos.get("color");
+    this.codigoFasecolda = datosVehiculos.get("codigoFasecolda");
+    this.tipoVehiculo = datosVehiculos.get("tipoVehiculo");
   }
 
   public String getPlaca() {
@@ -57,6 +66,38 @@ public class Vehiculo {
 
   public String getChasis() {
     return chasis;
+  }
+
+  public int getAnio() {
+    return anio;
+  }
+
+  public void setAnio(int anio) {
+    this.anio = anio;
+  }
+
+  public String getTipoVehiculo() {
+    return tipoVehiculo;
+  }
+
+  public void setTipoVehiculo(String tipoVehiculo) {
+    this.tipoVehiculo = tipoVehiculo;
+  }
+
+  public String getColor() {
+    return color;
+  }
+
+  public void setColor(String color) {
+    this.color = color;
+  }
+
+  public String getCodigoFasecolda() {
+    return codigoFasecolda;
+  }
+
+  public void setCodigoFasecolda(String codigoFasecolda) {
+    this.codigoFasecolda = codigoFasecolda;
   }
 
   public List<Vehiculo> getVehiculos() {
