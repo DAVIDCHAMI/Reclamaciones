@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class ReclamacionAuto extends Reclamacion {
 
+  private String fechaNotificacionSiniestro;
   private String relacionAsegurado;
   private String sucedido;
   private String causa;
@@ -36,6 +37,7 @@ public class ReclamacionAuto extends Reclamacion {
 
   private ReclamacionAuto(Map<String, String> datosReclamacionAut) {
     super(datosReclamacionAut);
+    this.fechaNotificacionSiniestro = datosReclamacionAut.get("fechaNotificacionSiniestro");
     this.relacionAsegurado = datosReclamacionAut.get("relacionAsegurado");
     this.sucedido = datosReclamacionAut.get("sucedido");
     this.causa = datosReclamacionAut.get("causa");
@@ -61,6 +63,10 @@ public class ReclamacionAuto extends Reclamacion {
 
   public ReclamacionAuto(List<Map<String, String>> datosReclamacionAut) {
     asignarDatos(datosReclamacionAut);
+  }
+
+  public String getFechaNotificacionSiniestro() {
+    return fechaNotificacionSiniestro;
   }
 
   public String getMensajeValidador() {

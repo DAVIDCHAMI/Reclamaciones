@@ -17,9 +17,11 @@ public class Persona {
   private String telefonoPrincipal;
   private String celular;
 
-  public Persona() {}
+  public Persona() {
+    super();
+  }
 
-  private Persona(Map<String, String> datosPersona) {
+  public Persona(Map<String, String> datosPersona) {
     this.primerNombre = datosPersona.get("primerNombre");
     this.segundoNombre = datosPersona.get("segundoNombre");
     this.primerApellido = datosPersona.get("primerApellido");

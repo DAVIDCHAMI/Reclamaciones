@@ -121,9 +121,12 @@ public class PersonaReclamacionAuto extends Persona {
     return lstPersonaReclamacionAuto;
   }
 
-  public PersonaReclamacionAuto() {}
+  public PersonaReclamacionAuto() {
+    super();
+  }
 
   public PersonaReclamacionAuto(List<Map<String, String>> datoPersonaReclamacionAuto) {
+    super();
     asignarDatos(datoPersonaReclamacionAuto);
   }
 
@@ -134,7 +137,7 @@ public class PersonaReclamacionAuto extends Persona {
   }
 
   private PersonaReclamacionAuto(Map<String, String> datoPersonaReclamacionAuto) {
-    super();
+    super(datoPersonaReclamacionAuto);
     this.numeroTrabajo = datoPersonaReclamacionAuto.get("numeroTrabajo");
     this.policyRole = datoPersonaReclamacionAuto.get("policyRole");
     this.ciudad = datoPersonaReclamacionAuto.get("ciudad");

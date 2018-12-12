@@ -16,7 +16,8 @@ import org.hamcrest.MatcherAssert;
 public class ConsumoServicioCreacionAvisoAutoStep {
 
   List<ReclamacionAuto> lstReclamacionAuto;
-  List<PersonaReclamacionAuto> lstPersonaReclamacionAuto;
+  List<PersonaReclamacionAuto> lstPersonaLesionada;
+  List<PersonaReclamacionAuto> lstConductor;
   List<Vehiculo> lstVehiculoParam;
   ReclamacionAuto parametroAviso = new ReclamacionAuto();
   PersonaReclamacionAuto parametroPersonaReclamacionAuto = new PersonaReclamacionAuto();
@@ -30,7 +31,7 @@ public class ConsumoServicioCreacionAvisoAutoStep {
   @Step
   public void siniestrarPolizaAutos() {
     consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
-        lstReclamacionAuto, lstPersonaReclamacionAuto, lstVehiculoParam);
+        lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
   }
 
   @Step
@@ -38,15 +39,20 @@ public class ConsumoServicioCreacionAvisoAutoStep {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacionAuto(
             genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA, filtroSiniestroCsv));
-    lstPersonaReclamacionAuto = parametroPersonaReclamacionAuto.getLstPersonaReclamacionAuto();
+                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA, "lesionado"));
+    lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacionAuto();
+    parametroPersonaReclamacionAuto =
+        new PersonaReclamacionAuto(
+            genericStep.getFilasModelo(
+                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA, "conductor"));
+    lstConductor = parametroPersonaReclamacionAuto.getLstPersonaReclamacionAuto();
     reclamacionVehiculo =
         new Vehiculo(
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETROS_RECLAMACION_VEHICULO, filtroSiniestroCsv));
     lstVehiculoParam = reclamacionVehiculo.getVehiculos();
     parametroAviso =
-        new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionSimple"));
+        new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "creacionAvisoWS"));
     lstReclamacionAuto = parametroAviso.getLstReclamacionAuto();
   }
 
