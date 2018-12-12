@@ -13,106 +13,144 @@ import net.serenitybdd.core.Serenity;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 public class ConsumoServicioCreacionSiniestro {
+  int campoDato = 0;
+  CreacionSiniestroFactory creacionSiniestroFactory = new CreacionSiniestroFactory();
+  CreacionSiniestroCliente creacionSiniestroCliente = new CreacionSiniestroCliente();
+  ClaimsResponse response;
+  List<ReclamacionEmpresarial> lstSiniestroParam;
+  List<Persona> lstParametroPersona;
 
   @RequestMapping
-  public void siniestrarPoliza(
-      List<ReclamacionEmpresarial> lstSiniestroParam,
-      List<ReclamacionEmpresarial> lstParametroLossEstimate,
-      List<ReclamacionEmpresarial> lstParametroProperty,
-      List<ReclamacionEmpresarial> lstParametroPrimaryAddress,
-      List<ReclamacionEmpresarial> lstParametroLossLocation,
-      List<ReclamacionEmpresarial> lstParametroCPLine,
-      List<ReclamacionEmpresarial> lstParametroDescription,
-      List<ReclamacionEmpresarial> lstParametroIsPolicyProperty,
-      List<ReclamacionEmpresarial> lstParametroPropertyDesc,
-      List<Persona> lstParametroAuthor,
-      List<Persona> lstParametroMainContact,
-      List<Persona> lstParametroClaimAnt) {
+  public void asignarParametrosRequest(
+      List<ReclamacionEmpresarial> lstSiniestroParam, List<Persona> lstParametroPersona) {
+    asignarParametrosSiniestro(lstSiniestroParam);
+    asignarParametrosAutor(lstParametroPersona);
+    asignarParametrosValorPerdida(lstSiniestroParam);
+    asignarParametrosContactoPrincipal(lstParametroPersona);
+    asignarParametrosDireccionPrincipal(lstSiniestroParam);
+    asignarParametrosTipoIncidente(lstSiniestroParam);
+    asignarParametrosInformacionSiniestro(lstSiniestroParam);
+    asignarParametrosDireccionSiniestro(lstSiniestroParam);
+    asignarParametrosReclamante(lstParametroPersona);
+    asignarParametrosDescripcionPropiedad(lstSiniestroParam);
+    asignarParametrosDescripcionSiniestro(lstSiniestroParam);
+    asignarParametrosLocalizacionPropiedad(lstSiniestroParam);
+    crearRequest();
+    obtenerResponse();
+  }
 
-    ClaimsResponse response;
-    CreacionSiniestroCliente creacionSiniestroCliente = new CreacionSiniestroCliente();
-    CreacionSiniestroFactory creacionSiniestroFactory = new CreacionSiniestroFactory();
+  private void asignarParametrosSiniestro(List<ReclamacionEmpresarial> lstSiniestroParam) {
+    creacionSiniestroFactory.setPolicyNumber(lstSiniestroParam.get(campoDato).getNumPoliza());
+    creacionSiniestroFactory.setDescriptionLoss(
+        lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
+    creacionSiniestroFactory.setNotificationDate(
+        lstSiniestroParam.get(campoDato).getFechaAvisoSiniestro());
+    creacionSiniestroFactory.setLossDate(lstSiniestroParam.get(campoDato).getFechaSiniestro());
+    creacionSiniestroFactory.setAuthorUser(
+        lstSiniestroParam.get(campoDato).getIdentificacionAutor());
+    creacionSiniestroFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaSiniestro());
+  }
 
-    for (int i = 0; i < lstSiniestroParam.size(); i++) {
-      creacionSiniestroFactory.setPolicyNumber(lstSiniestroParam.get(i).getNumPoliza());
-      creacionSiniestroFactory.setDescriptionLoss(
-          lstSiniestroParam.get(i).getDescripcionHechosSiniestro());
-      creacionSiniestroFactory.setNotificationDate(
-          lstSiniestroParam.get(i).getFechaAvisoSiniestro());
-      creacionSiniestroFactory.setLossDate(lstSiniestroParam.get(i).getFechaSiniestro());
-      creacionSiniestroFactory.setAuthorUser(lstSiniestroParam.get(i).getIdentificacionAutor());
-      creacionSiniestroFactory.setLossCause(lstSiniestroParam.get(i).getCausaSiniestro());
+  private void asignarParametrosAutor(List<Persona> lstParametroPersona) {
+    creacionSiniestroFactory.setDocumentTypeAuthor(
+        lstParametroPersona.get(campoDato).getTipoDocumento());
+    creacionSiniestroFactory.setTaxIdAuthor(lstParametroPersona.get(campoDato).getNumDocumento());
+    creacionSiniestroFactory.setNameAuthor(lstParametroPersona.get(campoDato).getPrimerNombre());
+  }
 
-      creacionSiniestroFactory.setDocumentTypeAuthor(lstParametroAuthor.get(i).getTipoDocumento());
-      creacionSiniestroFactory.setTaxIdAuthor(lstParametroAuthor.get(i).getNumDocumento());
-      creacionSiniestroFactory.setNameAuthor(lstParametroAuthor.get(i).getPrimerNombre());
+  private void asignarParametrosValorPerdida(List<ReclamacionEmpresarial> lstSiniestroParam) {
+    creacionSiniestroFactory.setAmountLossEstimate(
+        lstSiniestroParam.get(campoDato).getValorPerdidaSiniestro());
+    creacionSiniestroFactory.setCurrencyLossEstimate(
+        lstSiniestroParam.get(campoDato).getTipoMonedaPoliza());
+  }
 
-      creacionSiniestroFactory.setAmountLossEstimate(
-          lstParametroLossEstimate.get(i).getValorPerdidaSiniestro());
-      creacionSiniestroFactory.setCurrencyLossEstimate(
-          lstParametroLossEstimate.get(i).getTipoMonedaPoliza());
+  private void asignarParametrosContactoPrincipal(List<Persona> lstParametroPersona) {
+    creacionSiniestroFactory.setDocumentTypeMainContact(
+        lstParametroPersona.get(campoDato).getTipoDocumento());
+    creacionSiniestroFactory.setContactNameMainContact(
+        lstParametroPersona.get(campoDato).getPrimerNombre());
+    creacionSiniestroFactory.setTaxIdMainContact(
+        lstParametroPersona.get(campoDato).getNumDocumento());
+    creacionSiniestroFactory.setEmailAddress1MainContact(
+        lstParametroPersona.get(campoDato).getCorreoElectronico());
+    creacionSiniestroFactory.setCellNumberMainContact(
+        lstParametroPersona.get(campoDato).getCelular());
+  }
 
-      creacionSiniestroFactory.setDocumentTypeMainContact(
-          lstParametroMainContact.get(i).getTipoDocumento());
-      creacionSiniestroFactory.setContactNameMainContact(
-          lstParametroMainContact.get(i).getPrimerNombre());
-      creacionSiniestroFactory.setTaxIdMainContact(
-          lstParametroMainContact.get(i).getNumDocumento());
-      creacionSiniestroFactory.setEmailAddress1MainContact(
-          lstParametroMainContact.get(i).getCorreoElectronico());
-      creacionSiniestroFactory.setCellNumberMainContact(
-          lstParametroMainContact.get(i).getCelular());
+  private void asignarParametrosDireccionPrincipal(List<ReclamacionEmpresarial> lstSiniestroParam) {
+    creacionSiniestroFactory.setStateMainContact(lstSiniestroParam.get(campoDato).getPais());
+    creacionSiniestroFactory.setAddressLine1MainContact(
+        lstSiniestroParam.get(campoDato).getDireccion());
+    creacionSiniestroFactory.setCityMainContact(lstSiniestroParam.get(campoDato).getCiudad());
+    creacionSiniestroFactory.setStateAnt(lstSiniestroParam.get(campoDato).getPais());
+    creacionSiniestroFactory.setAddressLine1Ant(lstSiniestroParam.get(campoDato).getDireccion());
+    creacionSiniestroFactory.setCityAnt(lstSiniestroParam.get(campoDato).getCiudad());
+  }
 
-      creacionSiniestroFactory.setStateMainContact(lstParametroPrimaryAddress.get(i).getPais());
-      creacionSiniestroFactory.setAddressLine1MainContact(
-          lstParametroPrimaryAddress.get(i).getDireccion());
-      creacionSiniestroFactory.setCityMainContact(lstParametroPrimaryAddress.get(i).getCiudad());
+  private void asignarParametrosTipoIncidente(List<ReclamacionEmpresarial> lstSiniestroParam) {
+    creacionSiniestroFactory.setPolicySystemId(
+        lstSiniestroParam.get(campoDato).getIdentificadorRiesgo());
+    creacionSiniestroFactory.setFixedPropertyIncident(
+        lstSiniestroParam.get(campoDato).getIncidentePropiedad());
+    creacionSiniestroFactory.setPropertyContentsIncident(
+        lstSiniestroParam.get(campoDato).getIncidenteContenido());
+  }
 
-      creacionSiniestroFactory.setPolicySystemId(lstParametroCPLine.get(i).getPolicySystemId());
+  private void asignarParametrosInformacionSiniestro(
+      List<ReclamacionEmpresarial> lstSiniestroParam) {
+    creacionSiniestroFactory.setDescription(
+        lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
+    creacionSiniestroFactory.setIsPolicyProperty(
+        lstSiniestroParam.get(campoDato).getEsPolizaPropiedad());
+  }
 
-      creacionSiniestroFactory.setFixedPropertyIncident(
-          lstParametroCPLine.get(i).getIncidentepropiedad());
-      creacionSiniestroFactory.setPropertyContentsIncident(
-          lstParametroCPLine.get(i).getIncidenteContenido());
+  private void asignarParametrosDireccionSiniestro(List<ReclamacionEmpresarial> lstSiniestroParam) {
+    creacionSiniestroFactory.setStateProperty(lstSiniestroParam.get(campoDato).getPais());
+    creacionSiniestroFactory.setAddressLine1Property(
+        lstSiniestroParam.get(campoDato).getDireccion());
+    creacionSiniestroFactory.setCityProperty(lstSiniestroParam.get(campoDato).getCiudad());
+  }
 
-      creacionSiniestroFactory.setDescription(
-          lstParametroDescription.get(i).getDescripcionHechosSiniestro());
-      creacionSiniestroFactory.setIsPolicyProperty(
-          lstParametroIsPolicyProperty.get(i).getIsPolicyProperty());
+  private void asignarParametrosReclamante(List<Persona> lstParametroPersona) {
+    creacionSiniestroFactory.setDocumentTypeAnt(
+        lstParametroPersona.get(campoDato).getTipoDocumento());
+    creacionSiniestroFactory.setContactNameAnt(
+        lstParametroPersona.get(campoDato).getPrimerNombre());
+    creacionSiniestroFactory.setTaxIdAnt(lstParametroPersona.get(campoDato).getNumDocumento());
+    creacionSiniestroFactory.setEmailAddress1Ant(
+        lstParametroPersona.get(campoDato).getCorreoElectronico());
+    creacionSiniestroFactory.setCellNumberAnt(lstParametroPersona.get(campoDato).getCelular());
+  }
 
-      creacionSiniestroFactory.setStateProperty(lstParametroProperty.get(i).getPais());
-      creacionSiniestroFactory.setAddressLine1Property(lstParametroProperty.get(i).getDireccion());
-      creacionSiniestroFactory.setCityProperty(lstParametroProperty.get(i).getCiudad());
+  private void asignarParametrosDescripcionPropiedad(
+      List<ReclamacionEmpresarial> lstSiniestroParam) {
+    creacionSiniestroFactory.setPropertyDesc(
+        lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
+  }
 
-      creacionSiniestroFactory.setDocumentTypeAnt(lstParametroClaimAnt.get(i).getTipoDocumento());
-      creacionSiniestroFactory.setContactNameAnt(lstParametroClaimAnt.get(i).getPrimerNombre());
-      creacionSiniestroFactory.setTaxIdAnt(lstParametroClaimAnt.get(i).getNumDocumento());
-      creacionSiniestroFactory.setEmailAddress1Ant(
-          lstParametroClaimAnt.get(i).getCorreoElectronico());
-      creacionSiniestroFactory.setCellNumberAnt(lstParametroClaimAnt.get(i).getCelular());
+  private void asignarParametrosDescripcionSiniestro(
+      List<ReclamacionEmpresarial> lstSiniestroParam) {
+    creacionSiniestroFactory.setDescription(
+        lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
+  }
 
-      creacionSiniestroFactory.setStateAnt(lstParametroPrimaryAddress.get(i).getPais());
-      creacionSiniestroFactory.setAddressLine1Ant(lstParametroPrimaryAddress.get(i).getDireccion());
-      creacionSiniestroFactory.setCityAnt(lstParametroPrimaryAddress.get(i).getCiudad());
+  private void asignarParametrosLocalizacionPropiedad(
+      List<ReclamacionEmpresarial> lstSiniestroParam) {
+    creacionSiniestroFactory.setStateLossLocation(lstSiniestroParam.get(campoDato).getPais());
+    creacionSiniestroFactory.setAddressLine1LossLocation(
+        lstSiniestroParam.get(campoDato).getDireccion());
+    creacionSiniestroFactory.setCityLossLocation(lstSiniestroParam.get(campoDato).getCiudad());
+  }
 
-      creacionSiniestroFactory.setPropertyDesc(
-          lstParametroPropertyDesc.get(i).getDescripcionHechosSiniestro());
+  private ClaimsRequest crearRequest() {
+    return creacionSiniestroFactory.creacionSiniestroRequestFactory();
+  }
 
-      creacionSiniestroFactory.setDescription(
-          lstParametroDescription.get(i).getDescripcionHechosSiniestro());
-
-      creacionSiniestroFactory.setStateLossLocation(lstParametroLossLocation.get(i).getPais());
-      creacionSiniestroFactory.setAddressLine1LossLocation(
-          lstParametroLossLocation.get(i).getDireccion());
-      creacionSiniestroFactory.setCityLossLocation(lstParametroLossLocation.get(i).getCiudad());
-
-      ClaimsRequest parametro = creacionSiniestroFactory.creacionSiniestroRequestFactory();
-      response = creacionSiniestroCliente.claimsResponse(parametro);
-
-      LOGGER.info("Número de siniestro: " + response.getResult().getClaimNumber());
-
-      Serenity.setSessionVariable(ReclamacionConstante.NUMERO_SINIESTRO)
-          .to(response.getResult().getClaimNumber());
-    }
+  private void obtenerResponse() {
+    response = creacionSiniestroCliente.claimsResponse(crearRequest());
+    LOGGER.info("Número de siniestro: " + response.getResult().getClaimNumber());
+    Serenity.setSessionVariable(ReclamacionConstante.NUMERO_SINIESTRO)
+        .to(response.getResult().getClaimNumber());
   }
 }

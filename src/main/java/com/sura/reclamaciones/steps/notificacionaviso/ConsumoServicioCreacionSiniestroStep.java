@@ -1,73 +1,51 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import java.io.IOException;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.Steps;
-import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
 
 public class ConsumoServicioCreacionSiniestroStep {
 
-  List<ReclamacionEmpresarial>
-      lstParametroDescription,
-      lstParametroIsPolicyProperty,
-      lstParametroPropertyDesc,
-      lstSiniestroParam,
-      lstParametroLossEstimate,
-      lstParametroProperty,
-      lstParametroPrimaryAddress,
-      lstParametroLossLocation,
-      lstParametroCPLine;
-  List<Persona> lstParametroAuthor, lstParametroMainContact, lstParametroClaimAnt;
+  List<ReclamacionEmpresarial> lstSiniestroParam;
+  List<Persona> lstParametroPersona;
   ReclamacionEmpresarial parametroSiniestro = new ReclamacionEmpresarial();
   Persona parametroPersona = new Persona();
 
-  @Steps GenericStep genericStep = new GenericStep();
+  GenericStep genericStep = new GenericStep();
 
-  @Page
   ConsumoServicioCreacionSiniestro consumoServicioCreacionSiniestro =
       new ConsumoServicioCreacionSiniestro();
 
   @Step
-  public void siniestrar() {
-    consumoServicioCreacionSiniestro.siniestrarPoliza(
-        lstSiniestroParam,
-        lstParametroLossEstimate,
-        lstParametroProperty,
-        lstParametroPrimaryAddress,
-        lstParametroLossLocation,
-        lstParametroCPLine,
-        lstParametroDescription,
-        lstParametroIsPolicyProperty,
-        lstParametroPropertyDesc,
-        lstParametroAuthor,
-        lstParametroMainContact,
-        lstParametroClaimAnt);
+  public void siniestrarPolizaEmpresarialAtr() {
+    consumoServicioCreacionSiniestro.asignarParametrosRequest(
+        lstSiniestroParam, lstParametroPersona);
   }
 
+  @Step
   public void asignarValoresSiniestro(String filtroSiniestroCsv) throws IOException {
     parametroSiniestro =
         new ReclamacionEmpresarial(
             genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_SINIESTRO, filtroSiniestroCsv));
     lstSiniestroParam = parametroSiniestro.getLstReclamo();
-    lstParametroLossEstimate = parametroSiniestro.getLstReclamo();
-    lstParametroProperty = parametroSiniestro.getLstReclamo();
-    lstParametroPrimaryAddress = parametroSiniestro.getLstReclamo();
-    lstParametroLossLocation = parametroSiniestro.getLstReclamo();
-    lstParametroCPLine = parametroSiniestro.getLstReclamo();
-    lstParametroDescription = parametroSiniestro.getLstReclamo();
-    lstParametroIsPolicyProperty = parametroSiniestro.getLstReclamo();
-    lstParametroPropertyDesc = parametroSiniestro.getLstReclamo();
     parametroPersona =
         new Persona(
             genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, filtroSiniestroCsv));
-    lstParametroAuthor = parametroPersona.getLstPersona();
-    lstParametroMainContact = parametroPersona.getLstPersona();
-    lstParametroClaimAnt = parametroPersona.getLstPersona();
+    lstParametroPersona = parametroPersona.getLstPersona();
+  }
+
+  public void verificarSiniestro() {
+    String numReclamacion = Serenity.sessionVariableCalled(ReclamacionConstante.NUMERO_SINIESTRO);
+    MatcherAssert.assertThat(
+        "No se obtuvo el número del siniestro, verificar el consumo",
+        numReclamacion.contains(ReclamacionConstante.VERIFICADOR_NUMERO_SINIESTRO));
   }
 }

@@ -20,14 +20,14 @@ public class RecuperoDefinition {
 
   @Steps
   ConsumoServicioCreacionSiniestroStep crearSiniestro;
-  
+
   Recupero recupero;
 
   @Dado("^que se tiene un siniestro con una reserva por (.*)$")
   public void navegarMenuRecupero(String strTipoReserva) throws Throwable {
 
     crearSiniestro.asignarValoresSiniestro (strTipoReserva);
-    crearSiniestro.siniestrar();
+    crearSiniestro.siniestrarPolizaEmpresarialAtr();
 
     recupero = new Recupero(genericStep.getFilasModelo("recupero", strTipoReserva));
     recuperoStep.seleccionarNumeroReclamacion(

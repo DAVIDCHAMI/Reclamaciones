@@ -77,16 +77,14 @@ public abstract class Reclamacion {
   }
 
   public Integer getValorPerdidaSiniestro() {
-    int valorPerdida = Integer.parseInt(valorPerdidaSiniestro);
-    return valorPerdida;
+    return Integer.parseInt(valorPerdidaSiniestro);
   }
 
   public String getTipoMonedaPoliza() {
     return tipoMonedaPoliza;
   }
 
-  public boolean getIsPolicyProperty() {
-    boolean IsPolicyProperty = Boolean.parseBoolean(esPolizaPropiedad);
-    return IsPolicyProperty;
+  public boolean getEsPolizaPropiedad() {
+    return Boolean.parseBoolean(esPolizaPropiedad);
   }
 }

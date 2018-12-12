@@ -51,8 +51,6 @@ public class CreacionSiniestroFactory {
   private boolean fixedPropertyIncident;
   private boolean propertyContentsIncident;
 
-  List<Object> lstVacia = new ArrayList<Object>();
-
   public CreacionSiniestroFactory() {}
 
   public String getLossDate() {
@@ -404,7 +402,7 @@ public class CreacionSiniestroFactory {
 
   CPLine cpLineFactory() {
     CPLine cpLine = new CPLine();
-    cpLine.setPolicySystemId("9");
+    cpLine.setPolicySystemId(getPolicySystemId());
     if (fixedPropertyIncident == true) {
       cpLine.setFixedPropertyIncident(listFixedPropertyIncidentFactory());
     }

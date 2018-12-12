@@ -11,4 +11,5 @@ public class ReclamacionConstante {
   public static final String EXPOSICIONES = "Exposiciones";
   public static final String VALIDADOR_NUEVA_RECLAMACION = "Nueva reclamación guardada";
   public static final String NUMERO_SINIESTRO = "NumeroSiniestro";
+  public static final String VERIFICADOR_NUMERO_SINIESTRO = "9180000";
 }

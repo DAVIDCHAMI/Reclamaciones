@@ -5,20 +5,24 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
+import net.thucydides.core.annotations.Steps;
 
 public class ConsumoCreacionSiniestroEmpresarialDefinition {
 
-  ConsumoServicioCreacionSiniestroStep consumoServicioCreacionSiniestroStep =
-      new ConsumoServicioCreacionSiniestroStep();
+  @Steps ConsumoServicioCreacionSiniestroStep consumoServicioCreacionSiniestroStep;
 
-  @Dado("^que se recibe un aviso (.*) de una reclamacion$")
+  @Dado("^que se tiene una póliza (.*) de empresariales$")
   public void parametrizarValoresSiniestro(String filtroCsv) throws IOException {
     consumoServicioCreacionSiniestroStep.asignarValoresSiniestro(filtroCsv);
   }
 
-  @Cuando("^se toman los datos del mismo$")
-  @Entonces("^se le brindara al reportante un numero de reclamacion$")
+  @Cuando("^se genera un siniestro$")
   public void siniestrarPolizaServicio() {
-    consumoServicioCreacionSiniestroStep.siniestrar();
+    consumoServicioCreacionSiniestroStep.siniestrarPolizaEmpresarialAtr();
+  }
+
+  @Entonces("^se le brindara al reportante un numero de reclamacion$")
+  public void verificarCreacionSiniestro() {
+    consumoServicioCreacionSiniestroStep.verificarSiniestro();
   }
 }
