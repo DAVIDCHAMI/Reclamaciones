@@ -109,35 +109,35 @@ public class DetalleVehiculoPage extends GeneralPage {
     seleccionarConductor();
   }
 
-  public void agregarTerceroConductor(
+  public void agregarConductorVehiculoAfectado(
       List<PersonaReclamacionAuto> datosPersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto) {
     datosPersonaReclamacion.forEach(
-        dato -> {
+        conductor -> {
           btnAgregarConductor.waitUntilVisible().click();
           cmbTipoDocumento.clear();
-          cmbTipoDocumento.sendKeys(dato.getTipoDocumento());
+          cmbTipoDocumento.sendKeys(conductor.getTipoDocumento());
           cmbTipoDocumento.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtNumeroDocumento.sendKeys(dato.getNumeroDocumento());
-          txtPrimerNombre.sendKeys(dato.getPrimerNombre());
-          txtPrimerApellido.sendKeys(dato.getPrimerApellido());
+          txtNumeroDocumento.sendKeys(conductor.getNumeroDocumento());
+          txtPrimerNombre.sendKeys(conductor.getPrimerNombre());
+          txtPrimerApellido.sendKeys(conductor.getPrimerApellido());
           realizarEsperaCarga();
         });
     datosReclamacionAuto.forEach(
-        dato -> {
+        direccionConductor -> {
           cmbDepartamento.clear();
-          cmbDepartamento.sendKeys(dato.getDepartamento());
+          cmbDepartamento.sendKeys(direccionConductor.getDepartamento());
           cmbDepartamento.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
           cmbCiudad.clear();
-          cmbCiudad.sendKeys(dato.getCiudad());
+          cmbCiudad.sendKeys(direccionConductor.getCiudad());
           cmbCiudad.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtDireccion.sendKeys(dato.getDireccion());
+          txtDireccion.sendKeys(direccionConductor.getDireccion());
           realizarEsperaCarga();
           cmbTipoDireccion.clear();
-          cmbTipoDireccion.sendKeys(dato.getTipoDireccion());
+          cmbTipoDireccion.sendKeys(direccionConductor.getTipoDireccion());
           cmbTipoDireccion.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
           aceptarOpcion();
@@ -153,7 +153,7 @@ public class DetalleVehiculoPage extends GeneralPage {
   }
 
   public void seleccionarTaller(String taller) {
-    seleccionarServicios();
+    seleccionarServicioTaller();
     agregarTaller();
     buscarProveedor();
     realizarEsperaCarga();
@@ -171,8 +171,8 @@ public class DetalleVehiculoPage extends GeneralPage {
 
   public void ingresarVehiculoTercero(List<ExposicionVehiculoTercero> datosExposicionTercero) {
     datosExposicionTercero.forEach(
-        dato -> {
-          txtPlaca.sendKeys(dato.getPlacaTercero());
+        placaVehiculoTercero -> {
+          txtPlaca.sendKeys(placaVehiculoTercero.getPlacaTercero());
           realizarEsperaCarga();
           btnRecuperarInformacion.waitUntilVisible().click();
           realizarEsperaCarga();
@@ -183,7 +183,7 @@ public class DetalleVehiculoPage extends GeneralPage {
     btnAgregarTaller.waitUntilVisible().click();
   }
 
-  private void seleccionarServicios() {
+  private void seleccionarServicioTaller() {
     chkServicioTaller.waitUntilVisible().click();
   }
 

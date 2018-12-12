@@ -18,6 +18,7 @@ import net.thucydides.core.annotations.Steps;
 public class ReclamacionDefinition {
 
   @Steps private GenericStep genericStep;
+
   @Steps private NuevaReclamacionAutoStep reclamacionStep;
 
   private ReclamacionAuto reclamacionAuto;
@@ -34,7 +35,7 @@ public class ReclamacionDefinition {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionRC"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "autoReclamacionSimple"));
-    reclamacionStep.seleccionarMenu();
+    reclamacionStep.seleccionarOpcionMenuPrincipal();
     reclamacionStep.completarFormularioBuscarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
     reclamacionStep.buscarPoliza();
@@ -77,14 +78,14 @@ public class ReclamacionDefinition {
         personaReclamacionAuto.getLstPersonaReclamacionAuto(),
         reclamacionAuto.getLstReclamacionAuto(),
         exposicionLesiones.getLstExposicionLesiones());
-    reclamacionStep.finalizarReclamacion();
-    reclamacionStep.validarReclamacion();
-    reclamacionStep.consultarReclamacion();
+    reclamacionStep.finalizarReclamacionAutos();
+    reclamacionStep.validarReclamacionAutos();
+    reclamacionStep.consultarReclamacionAutos();
     exposicionesAutomaticasAutos =
         new ExposicionesAutomaticasAutos(
             genericStep.getFilasModelo("exposicion_automatica", "exposicionesRC"));
     reclamacionStep.validarExposicion(exposicionesAutomaticasAutos.getLstExposiciones());
-    reserva = new Reserva(genericStep.getFilasModelo("linea_reserva", "rc_Vehiculo_y_peaton"));
+    reserva = new Reserva(genericStep.getFilasModelo("linea_reserva", "rcVehiculoPeaton"));
     reclamacionStep.consultarReservaResponsabilidadCivil(reserva.getLstReserva());
   }
 
@@ -93,7 +94,7 @@ public class ReclamacionDefinition {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionArchivo"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionArchivo"));
-    reclamacionStep.seleccionarMenu();
+    reclamacionStep.seleccionarOpcionMenuPrincipal();
     reclamacionStep.completarFormularioBuscarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
     reclamacionStep.buscarPoliza();
@@ -102,14 +103,14 @@ public class ReclamacionDefinition {
   @Entonces(
       "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo$")
   public void generarReclamacionArchivo() throws IOException {
-    reclamacionStep.finalizarReclamacion();
-    reclamacionStep.validarReclamacion();
-    reclamacionStep.consultarReclamacion();
+    reclamacionStep.finalizarReclamacionAutos();
+    reclamacionStep.validarReclamacionAutos();
+    reclamacionStep.consultarReclamacionAutos();
     exposicionesAutomaticasAutos =
         new ExposicionesAutomaticasAutos(
             genericStep.getFilasModelo("exposicion_automatica", "exposicionesArchivo"));
     reclamacionStep.validarExposicion(exposicionesAutomaticasAutos.getLstExposiciones());
-    reserva = new Reserva(genericStep.getFilasModelo("linea_reserva", "archivo_Subrogacion"));
+    reserva = new Reserva(genericStep.getFilasModelo("linea_reserva", "archivoSubrogacion"));
     reclamacionStep.consultarValorReservaArchivo(reserva.getLstReserva());
   }
 
@@ -119,7 +120,7 @@ public class ReclamacionDefinition {
         new ReclamacionAuto(
             genericStep.getFilasModelo("reclamacion_auto", "reclamacionSubrogacion"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionSubrogacion"));
-    reclamacionStep.seleccionarMenu();
+    reclamacionStep.seleccionarOpcionMenuPrincipal();
     reclamacionStep.completarFormularioBuscarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
     reclamacionStep.buscarPoliza();
@@ -130,7 +131,7 @@ public class ReclamacionDefinition {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionSoloRC"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionSoloRC"));
-    reclamacionStep.seleccionarMenu();
+    reclamacionStep.seleccionarOpcionMenuPrincipal();
     reclamacionStep.completarFormularioBuscarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
     reclamacionStep.buscarPoliza();
@@ -165,9 +166,9 @@ public class ReclamacionDefinition {
         personaReclamacionAuto.getLstPersonaReclamacionAuto(),
         reclamacionAuto.getLstReclamacionAuto(),
         exposicionLesiones.getLstExposicionLesiones());
-    reclamacionStep.finalizarReclamacion();
-    reclamacionStep.validarReclamacion();
-    reclamacionStep.consultarReclamacion();
+    reclamacionStep.finalizarReclamacionAutos();
+    reclamacionStep.validarReclamacionAutos();
+    reclamacionStep.consultarReclamacionAutos();
     exposicionesAutomaticasAutos =
         new ExposicionesAutomaticasAutos(
             genericStep.getFilasModelo("exposicion_automatica", "exposicionesSoloRC"));

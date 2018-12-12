@@ -63,7 +63,7 @@ public class NuevaReclamacionAutoStep {
       List<PersonaReclamacionAuto> datosPersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto) {
     agregarInformacionSiniestroAutosPage.agregarExposicionVehiculoTercero();
-    detalleVehiculoPage.agregarTerceroConductor(datosPersonaReclamacion, datosReclamacionAuto);
+    detalleVehiculoPage.agregarConductorVehiculoAfectado(datosPersonaReclamacion, datosReclamacionAuto);
     detalleVehiculoPage.ingresarVehiculoTercero(datosExposicionTercero);
     for (ExposicionVehiculoTercero dato : datosExposicionTercero) {
       detalleVehiculoPage.seleccionarTaller(dato.getTallerReparacionAsignado());
@@ -85,9 +85,9 @@ public class NuevaReclamacionAutoStep {
     agregarInformacionSiniestroAutosPage.ingresarEdicionVehiculo();
     detalleVehiculoPage.agregarConductor();
     datosReclamacion.forEach(
-        dato -> {
-          if (!dato.getCulpabilidad().equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
-            detalleVehiculoPage.seleccionarTaller(dato.getTaller());
+        datoReclamacionAutos -> {
+          if (!datoReclamacionAutos.getCulpabilidad().equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
+            detalleVehiculoPage.seleccionarTaller(datoReclamacionAutos.getTaller());
           }
         });
     detalleVehiculoPage.volverPasoAnterior();
@@ -96,13 +96,13 @@ public class NuevaReclamacionAutoStep {
   @Step
   public void seleccionarNombreAutorReporte(List<ReclamacionAuto> lstReclamacionAuto) {
     lstReclamacionAuto.forEach(
-        dato -> {
+        autorReporte -> {
           informacionBasicaPage.seleccionarNombre();
-          informacionBasicaPage.validarMsjAdvertenciaRelacionAsegurado(dato.getRelacionAsegurado());
+          informacionBasicaPage.validarMsjAdvertenciaRelacionAsegurado(autorReporte.getRelacionAsegurado());
         });
   }
 
-  public void validarReclamacion() {
+  public void validarReclamacionAutos() {
     String mensajeValidado = nuevaReclamacionGuardadaPage.obtenerMensajeValidador();
     MatcherAssert.assertThat(
         "No se encontro el mensaje a validar",
@@ -117,7 +117,7 @@ public class NuevaReclamacionAutoStep {
         "No coinciden todos los valores de las líneas de reserva", exposicionAutomatica);
   }
 
-  public void finalizarReclamacion() {
+  public void finalizarReclamacionAutos() {
     agregarInformacionSiniestroAutosPage.concluirReclamacion();
   }
 
@@ -147,12 +147,12 @@ public class NuevaReclamacionAutoStep {
   }
 
   @Step
-  public void seleccionarMenu() {
+  public void seleccionarOpcionMenuPrincipal() {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
   }
 
-  public void consultarReclamacion() {
+  public void consultarReclamacionAutos() {
     nuevaReclamacionGuardadaPage.abrirReclamacion();
   }
 

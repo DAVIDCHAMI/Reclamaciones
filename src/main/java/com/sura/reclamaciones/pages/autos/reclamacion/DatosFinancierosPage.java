@@ -5,17 +5,9 @@ import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class DatosFinancierosPage extends GeneralPage {
-
-  @FindBy(
-    id =
-        "ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryPanelSet:FinancialsSummaryLV"
-  )
-  WebElementFacade tblResumenDatosFinancieros;
 
   private boolean valorLineaReserva = true;
 
@@ -31,7 +23,7 @@ public class DatosFinancierosPage extends GeneralPage {
     for (int i = 0; i < datosLineaReserva.size(); i++) {
       String lineaReservaTbl =
           obtenerElementoLista(
-                  tblResumenDatosFinancieros,
+                  tblVerificacion,
                   Tablas.CABECERAS_CC,
                   Tablas.REGISTROS_CC,
                   datosLineaReserva.get(i).getLineaReserva(),
@@ -40,7 +32,7 @@ public class DatosFinancierosPage extends GeneralPage {
       if (lineaReservaTbl.equals(datosLineaReserva.get(i).getLineaReserva())) {
         String valorReserva =
             obtenerElementoLista(
-                    tblResumenDatosFinancieros,
+                    tblVerificacion,
                     Tablas.CABECERAS_CC,
                     Tablas.REGISTROS_CC,
                     datosLineaReserva.get(i).getLineaReserva(),
@@ -55,7 +47,7 @@ public class DatosFinancierosPage extends GeneralPage {
               totalizarLineaReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
           String valorDeducible =
               obtenerElementoLista(
-                      tblResumenDatosFinancieros,
+                      tblVerificacion,
                       Tablas.CABECERAS_CC,
                       Tablas.REGISTROS_CC,
                       datosLineaReserva.get(i).getLineaReserva(),

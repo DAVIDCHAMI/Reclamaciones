@@ -102,46 +102,46 @@ public class AgregarExposicionLesionesPage extends GeneralPage {
       List<ReclamacionAuto> datosReclamacionAuto,
       List<ExposicionLesiones> datosExposicionLesiones) {
     datosPersonaReclamacionAutos.forEach(
-        dato -> {
+        peaton -> {
           btnAgregarPeaton.waitUntilVisible().click();
           cmbTipoDocumento.clear();
-          cmbTipoDocumento.sendKeys(dato.getTipoDocumento());
+          cmbTipoDocumento.sendKeys(peaton.getTipoDocumento());
           cmbTipoDocumento.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtNumeroDocumento.sendKeys(dato.getNumeroDocumento());
-          txtPrimerNombre.sendKeys(dato.getPrimerNombre());
-          txtPrimerApellido.sendKeys(dato.getPrimerApellido());
+          txtNumeroDocumento.sendKeys(peaton.getNumeroDocumento());
+          txtPrimerNombre.sendKeys(peaton.getPrimerNombre());
+          txtPrimerApellido.sendKeys(peaton.getPrimerApellido());
         });
     datosReclamacionAuto.forEach(
-        dato -> {
+        direccionPeaton -> {
           cmbDepartamento.clear();
-          cmbDepartamento.sendKeys(dato.getDepartamento());
+          cmbDepartamento.sendKeys(direccionPeaton.getDepartamento());
           cmbDepartamento.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
           cmbCiudad.clear();
-          cmbCiudad.sendKeys(dato.getCiudad());
+          cmbCiudad.sendKeys(direccionPeaton.getCiudad());
           cmbCiudad.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtDireccion.sendKeys(dato.getDireccion());
+          txtDireccion.sendKeys(direccionPeaton.getDireccion());
           realizarEsperaCarga();
           cmbTipoDireccion.clear();
-          cmbTipoDireccion.sendKeys(dato.getTipoDireccion());
+          cmbTipoDireccion.sendKeys(direccionPeaton.getTipoDireccion());
           cmbTipoDireccion.sendKeys(Keys.ENTER);
         });
     datosExposicionLesiones.forEach(
-        dato -> {
+        lesionesPeaton -> {
           chkLesiones.waitUntilVisible().click();
           cmbGravedadLesion.clear();
-          cmbGravedadLesion.sendKeys(dato.getGravedadLesion());
+          cmbGravedadLesion.sendKeys(lesionesPeaton.getGravedadLesion());
           cmbGravedadLesion.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtDescribirLesiones.sendKeys(dato.getDescribirLesiones());
+          txtDescribirLesiones.sendKeys(lesionesPeaton.getDescribirLesiones());
           cmbTipoLesion.clear();
-          cmbTipoLesion.sendKeys(dato.getTipoLesion());
+          cmbTipoLesion.sendKeys(lesionesPeaton.getTipoLesion());
           cmbTipoLesion.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
           cmbDetalleLesion.clear();
-          cmbDetalleLesion.sendKeys(dato.getDetallesTipoLesion());
+          cmbDetalleLesion.sendKeys(lesionesPeaton.getDetallesTipoLesion());
           cmbDetalleLesion.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
           aceptarOpcion();
