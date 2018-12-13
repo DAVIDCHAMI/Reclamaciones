@@ -3,7 +3,7 @@ package com.sura.reclamaciones.definitions.autos;
 import com.sura.reclamaciones.models.ExposicionLesiones;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
-import com.sura.reclamaciones.models.PersonaReclamacionAuto;
+import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -24,7 +24,7 @@ public class ReclamacionDefinition {
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
   private ExposicionVehiculoTercero exposicionVehiculoTercero;
-  private PersonaReclamacionAuto personaReclamacionAuto;
+  private Persona personaReclamacionAuto;
   private ExposicionLesiones exposicionLesiones;
   private Reserva reserva;
   private ReclamacionAuto direccionReclamacion;
@@ -56,18 +56,16 @@ public class ReclamacionDefinition {
         new ExposicionVehiculoTercero(
             genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
     personaReclamacionAuto =
-        new PersonaReclamacionAuto(
-            genericStep.getFilasModelo("persona_reclamacion_auto", "conductor"));
+        new Persona(genericStep.getFilasModelo("persona_reclamacion_auto", "conductor"));
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionVehicular"));
     reclamacionStep.crearExposionVehicular(
         exposicionVehiculoTercero.getLstExposicionTerceros(),
-        personaReclamacionAuto.getLstPersonaReclamacionAuto(),
+        personaReclamacionAuto.getLstPersona(),
         direccionReclamacion.getLstReclamacionAuto());
     personaReclamacionAuto =
-        new PersonaReclamacionAuto(
-            genericStep.getFilasModelo("persona_reclamacion_auto", "peaton"));
+        new Persona(genericStep.getFilasModelo("persona_reclamacion_auto", "peaton"));
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionLesiones"));
@@ -75,7 +73,7 @@ public class ReclamacionDefinition {
         new ExposicionLesiones(
             genericStep.getFilasModelo("responsabilidad_civil_lesiones", "exposicionRcPersona"));
     reclamacionStep.crearExposicionLesiones(
-        personaReclamacionAuto.getLstPersonaReclamacionAuto(),
+        personaReclamacionAuto.getLstPersona(),
         reclamacionAuto.getLstReclamacionAuto(),
         exposicionLesiones.getLstExposicionLesiones());
     reclamacionStep.finalizarReclamacionAutos();
@@ -144,18 +142,16 @@ public class ReclamacionDefinition {
         new ExposicionVehiculoTercero(
             genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
     personaReclamacionAuto =
-        new PersonaReclamacionAuto(
-            genericStep.getFilasModelo("persona_reclamacion_auto", "conductor"));
+        new Persona(genericStep.getFilasModelo("persona_reclamacion_auto", "conductor"));
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionVehicular"));
     reclamacionStep.crearExposionVehicular(
         exposicionVehiculoTercero.getLstExposicionTerceros(),
-        personaReclamacionAuto.getLstPersonaReclamacionAuto(),
+        personaReclamacionAuto.getLstPersona(),
         direccionReclamacion.getLstReclamacionAuto());
     personaReclamacionAuto =
-        new PersonaReclamacionAuto(
-            genericStep.getFilasModelo("persona_reclamacion_auto", "peaton"));
+        new Persona(genericStep.getFilasModelo("persona_reclamacion_auto", "peaton"));
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionLesiones"));
@@ -163,7 +159,7 @@ public class ReclamacionDefinition {
         new ExposicionLesiones(
             genericStep.getFilasModelo("responsabilidad_civil_lesiones", "exposicionRcPersona"));
     reclamacionStep.crearExposicionLesiones(
-        personaReclamacionAuto.getLstPersonaReclamacionAuto(),
+        personaReclamacionAuto.getLstPersona(),
         reclamacionAuto.getLstReclamacionAuto(),
         exposicionLesiones.getLstExposicionLesiones());
     reclamacionStep.finalizarReclamacionAutos();

@@ -6,7 +6,7 @@ import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ExposicionLesiones;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
-import com.sura.reclamaciones.models.PersonaReclamacionAuto;
+import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -60,7 +60,7 @@ public class NuevaReclamacionAutoStep {
   @Step
   public void crearExposionVehicular(
       List<ExposicionVehiculoTercero> datosExposicionTercero,
-      List<PersonaReclamacionAuto> datosPersonaReclamacion,
+      List<Persona> datosPersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto) {
     agregarInformacionSiniestroAutosPage.agregarExposicionVehiculoTercero();
     detalleVehiculoPage.agregarConductorVehiculoAfectado(
@@ -74,7 +74,7 @@ public class NuevaReclamacionAutoStep {
 
   @Step
   public void crearExposicionLesiones(
-      List<PersonaReclamacionAuto> datopersonaReclamacion,
+      List<Persona> datopersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto,
       List<ExposicionLesiones> datosExposicionLesiones) {
     agregarExposicionLesionesPage.agregarPersonaLesionada(

@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
-import com.sura.reclamaciones.models.PersonaReclamacionAuto;
+import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
@@ -110,8 +110,7 @@ public class DetalleVehiculoPage extends GeneralPage {
   }
 
   public void agregarConductorVehiculoAfectado(
-      List<PersonaReclamacionAuto> datosPersonaReclamacion,
-      List<ReclamacionAuto> datosReclamacionAuto) {
+      List<Persona> datosPersonaReclamacion, List<ReclamacionAuto> datosReclamacionAuto) {
     datosPersonaReclamacion.forEach(
         conductor -> {
           btnAgregarConductor.waitUntilVisible().click();
@@ -119,7 +118,7 @@ public class DetalleVehiculoPage extends GeneralPage {
           cmbTipoDocumento.sendKeys(conductor.getTipoDocumento());
           cmbTipoDocumento.sendKeys(Keys.ENTER);
           realizarEsperaCarga();
-          txtNumeroDocumento.sendKeys(conductor.getNumeroDocumento());
+          txtNumeroDocumento.sendKeys(conductor.getNumDocumento());
           txtPrimerNombre.sendKeys(conductor.getPrimerNombre());
           txtPrimerApellido.sendKeys(conductor.getPrimerApellido());
           realizarEsperaCarga();
