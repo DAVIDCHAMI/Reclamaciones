@@ -26,17 +26,25 @@ import org.hamcrest.MatcherAssert;
 
 public class NuevaReclamacionAutoStep {
 
-  @Page private InformacionBasicaPage informacionBasicaPage;
-  @Page private BuscarPolizaPage buscarPolizaPage;
-  @Page private AgregarInformacionSiniestroAutosPage agregarInformacionSiniestroAutosPage;
-  @Page private DetalleVehiculoPage detalleVehiculoPage;
-  @Page private NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
-  @Page private DatosFinancierosPage datosFinancierosPage;
-  @Page private ExposicionesAutomaticasPage exposicionesAutomaticasPage;
-  @Page private AgregarExposicionLesionesPage agregarExposicionLesionesPage;
+  @Page InformacionBasicaPage informacionBasicaPage;
+
+  @Page BuscarPolizaPage buscarPolizaPage;
+
+  @Page AgregarInformacionSiniestroAutosPage agregarInformacionSiniestroAutosPage;
+
+  @Page DetalleVehiculoPage detalleVehiculoPage;
+
+  @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
+
+  @Page DatosFinancierosPage datosFinancierosPage;
+
+  @Page ExposicionesAutomaticasPage exposicionesAutomaticasPage;
+
+  @Page AgregarExposicionLesionesPage agregarExposicionLesionesPage;
+
   @Page MenuClaimPage menuClaimPage;
 
-  @Step()
+  @Step
   public void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
     datosReclamacion.forEach(
         dato -> {
