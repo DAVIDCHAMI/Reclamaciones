@@ -14,7 +14,7 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
   @FindBy(
     xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
   )
-  private WebElementFacade divNumeroReclamacion;
+  private WebElementFacade lblNumeroReclamacion;
 
   @FindBy(xpath = "//span[@id='TabBar:ClaimTab-btnInnerEl']")
   private WebElementFacade txtNumeroReclamacion;
@@ -31,8 +31,8 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
   }
 
   public void abrirReclamacion() {
-    divNumeroReclamacion.waitUntilVisible();
-    divNumeroReclamacion.click();
+    lblNumeroReclamacion.waitUntilVisible();
+    lblNumeroReclamacion.click();
   }
 
   public String obtenerNumeroReclamacionConsultaPoliza() {

@@ -63,7 +63,8 @@ public class NuevaReclamacionAutoStep {
       List<PersonaReclamacionAuto> datosPersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto) {
     agregarInformacionSiniestroAutosPage.agregarExposicionVehiculoTercero();
-    detalleVehiculoPage.agregarConductorVehiculoAfectado(datosPersonaReclamacion, datosReclamacionAuto);
+    detalleVehiculoPage.agregarConductorVehiculoAfectado(
+        datosPersonaReclamacion, datosReclamacionAuto);
     detalleVehiculoPage.ingresarVehiculoTercero(datosExposicionTercero);
     for (ExposicionVehiculoTercero dato : datosExposicionTercero) {
       detalleVehiculoPage.seleccionarTaller(dato.getTallerReparacionAsignado());
@@ -86,7 +87,9 @@ public class NuevaReclamacionAutoStep {
     detalleVehiculoPage.agregarConductor();
     datosReclamacion.forEach(
         datoReclamacionAutos -> {
-          if (!datoReclamacionAutos.getCulpabilidad().equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
+          if (!datoReclamacionAutos
+              .getCulpabilidad()
+              .equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
             detalleVehiculoPage.seleccionarTaller(datoReclamacionAutos.getTaller());
           }
         });
@@ -98,7 +101,8 @@ public class NuevaReclamacionAutoStep {
     lstReclamacionAuto.forEach(
         autorReporte -> {
           informacionBasicaPage.seleccionarNombre();
-          informacionBasicaPage.validarMsjAdvertenciaRelacionAsegurado(autorReporte.getRelacionAsegurado());
+          informacionBasicaPage.validarMsjAdvertenciaRelacionAsegurado(
+              autorReporte.getRelacionAsegurado());
         });
   }
 
