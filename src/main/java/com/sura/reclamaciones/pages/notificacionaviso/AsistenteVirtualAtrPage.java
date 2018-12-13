@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -43,13 +44,13 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
     enfocarVentana();
     btnCerrarTour.waitUntilVisible().click();
     auxMnuAsistenteVirtual =
-        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Asistente virtual");
+        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.ASISTENTE_VIRTUAL);
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Herramientas");
+    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.HERRAMIENTAS);
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Reclamaciones");
+    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.RECLAMACIONES);
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, "Empresas");
+    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.EMPRESAS);
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
   }
 
