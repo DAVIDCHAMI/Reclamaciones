@@ -48,11 +48,9 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade txtTransacciones;
 
-  @FindBy(
-    xpath =
-        "//div[@id ='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV' or @id='ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV' or @id='ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryPanelSet:FinancialsSummaryLV']"
-  )
-  public WebElementFacade tblVerificacion;
+  @FindBy(xpath = "//div[@class='x-panel x-panel-default x-grid']")
+  public
+  WebElementFacade tblVerificacion;
 
   @FindBy(xpath = "//input")
   private WebElementFacade mnuDinamico;
@@ -204,11 +202,11 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public String obtenerDatoTablaCabecera(String strDatoCabecera) {
+  public String obtenerDatoTablaCabecera(String strDatoCabecera, int posicionElemento) {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
     int longitudTabla = elementoEncontrado.size();
-    return elementoEncontrado.get(longitudTabla - 1).getText();
+    return elementoEncontrado.get(longitudTabla - posicionElemento).getText();
   }
 
   public List<WebElement> obtenerFilaTabla(
