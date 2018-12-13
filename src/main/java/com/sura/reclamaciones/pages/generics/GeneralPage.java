@@ -239,7 +239,6 @@ public class GeneralPage extends PageObject {
 
   public void enfocarVentana() {
     for (String ventana : driver.getWindowHandles()) {
-      System.out.println(ventana);
       driver.switchTo().window(ventana);
     }
   }

@@ -13,12 +13,11 @@ import net.thucydides.core.annotations.Steps;
 public class NotificacionAvisoAtrDefinition {
 
   @Steps NuevaReclamacionAtrEmpresarialStep nuevaReclamacionAtrEmpresarialStep;
-  @Steps Persona aseguradoAtr;
   @Steps GenericStep genericStep;
 
   @Dado("^que tenemos una poliza de (.*)$")
   public void diligenciarInformacionContacto(String cobertura) throws Throwable {
-    aseguradoAtr =
+    Persona aseguradoAtr =
         new Persona(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
     nuevaReclamacionAtrEmpresarialStep.accederAvisoEmpresa();
     nuevaReclamacionAtrEmpresarialStep.buscarAseguradoAtr(aseguradoAtr.getLstPersona());
