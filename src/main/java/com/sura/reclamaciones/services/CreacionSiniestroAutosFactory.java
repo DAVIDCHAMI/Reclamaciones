@@ -63,6 +63,7 @@ public class CreacionSiniestroAutosFactory {
   private String firstNameDriver;
   private String middleNameDriver;
   private String lastNameDriver;
+  private String secondLastNameDriver;
   private String workNumberDriver;
   private String cellNumberDriver;
   private String emailAddress1Driver;
@@ -402,6 +403,10 @@ public class CreacionSiniestroAutosFactory {
   public void setLastNameDriver(String lastNameDriver) {
     this.lastNameDriver = lastNameDriver;
   }
+
+  public void setSecondLastNameDriver(String secondLastNameDriver){this.secondLastNameDriver = secondLastNameDriver;}
+
+  public String getSecondLastNameDriver(){return secondLastNameDriver;}
 
   public String getWorkNumberDriver() {
     return workNumberDriver;
@@ -943,6 +948,7 @@ public class CreacionSiniestroAutosFactory {
     driver.setFirstName(getFirstNameDriver());
     driver.setMiddleName(getMiddleNameDriver());
     driver.setLastName(getLastNameDriver());
+    driver.setSecondLastName(getSecondLastNameDriver());
     driver.setWorkNumber(getWorkNumberDriver());
     driver.setCellNumber(getCellNumberDriver());
     driver.setEmailAddress1(getEmailAddress1Driver());

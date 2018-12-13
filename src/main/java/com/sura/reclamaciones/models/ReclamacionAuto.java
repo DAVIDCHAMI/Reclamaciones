@@ -8,7 +8,7 @@ public class ReclamacionAuto extends Reclamacion {
 
   private String fechaNotificacionSiniestro;
   private String relacionAsegurado;
-  private String sucedido;
+  private String descripcionHechos;
   private String causa;
   private String vehiculoRetenido;
   private String autoridad;
@@ -39,7 +39,7 @@ public class ReclamacionAuto extends Reclamacion {
     super(datosReclamacionAut);
     this.fechaNotificacionSiniestro = datosReclamacionAut.get("fechaNotificacionSiniestro");
     this.relacionAsegurado = datosReclamacionAut.get("relacionAsegurado");
-    this.sucedido = datosReclamacionAut.get("sucedido");
+    this.descripcionHechos = datosReclamacionAut.get("descripcionHechos");
     this.causa = datosReclamacionAut.get("causa");
     this.vehiculoRetenido = datosReclamacionAut.get("vehiculoRetenido");
     this.autoridad = datosReclamacionAut.get("autoridad");
@@ -77,8 +77,8 @@ public class ReclamacionAuto extends Reclamacion {
     return relacionAsegurado;
   }
 
-  public String getSucedido() {
-    return sucedido;
+  public String getDescripcionHechos() {
+    return descripcionHechos;
   }
 
   public String getCausa() {

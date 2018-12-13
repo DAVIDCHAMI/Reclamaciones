@@ -30,8 +30,7 @@ public class ConsumoServicioCreacionAvisoAutoStep {
 
   @Step
   public void siniestrarPolizaAutos() {
-    consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
-        lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
+    consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
   }
 
   @Step

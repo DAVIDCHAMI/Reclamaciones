@@ -136,6 +136,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstConductor.get(campoDato).getSegundoNombre());
     creacionSiniestroAutosFactory.setLastNameDriver(
         lstConductor.get(campoDato).getPrimerApellido());
+    creacionSiniestroAutosFactory.setSecondLastNameDriver(lstConductor.get(campoDato).getSegundoApellido());
     creacionSiniestroAutosFactory.setWorkNumberDriver(
         lstConductor.get(campoDato).getNumeroTrabajo());
     creacionSiniestroAutosFactory.setCellNumberDriver(lstConductor.get(campoDato).getCelular());
@@ -163,16 +164,14 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosVehiculo(List<Vehiculo> lstVehiculoParam) {
-    creacionSiniestroAutosFactory.setLicensePlateVehicle(
-        lstVehiculoParam.get(campoDato).getPlaca());
+    creacionSiniestroAutosFactory.setLicensePlateVehicle(lstVehiculoParam.get(campoDato).getPlaca());
     creacionSiniestroAutosFactory.setMakeVehicle(lstVehiculoParam.get(campoDato).getMarca());
     creacionSiniestroAutosFactory.setModelVehicle(lstVehiculoParam.get(campoDato).getModelo());
-    creacionSiniestroAutosFactory.setEngineNumberVehicle(
-        lstVehiculoParam.get(campoDato).getMotor());
+    creacionSiniestroAutosFactory.setEngineNumberVehicle(lstVehiculoParam.get(campoDato).getMotor());
     creacionSiniestroAutosFactory.setYearVehicle(lstVehiculoParam.get(campoDato).getAnio());
+    creacionSiniestroAutosFactory.setColorVehicle(lstVehiculoParam.get(campoDato).getColor());
     creacionSiniestroAutosFactory.setVehicleType(lstVehiculoParam.get(campoDato).getTipoVehiculo());
-    creacionSiniestroAutosFactory.setFasecoldaCode(
-        lstVehiculoParam.get(campoDato).getCodigoFasecolda());
+    creacionSiniestroAutosFactory.setFasecoldaCode(lstVehiculoParam.get(campoDato).getCodigoFasecolda());
     creacionSiniestroAutosFactory.setVinVehicle(lstVehiculoParam.get(campoDato).getChasis());
   }
 

@@ -30,7 +30,7 @@ public class NuevaReclamacionAutoStep {
         dato -> {
           agregarInformacionPage.cerrarVentanaEmergente();
           agregarInformacionPage.seleccionarLugar(dato.getLugarSiniestro());
-          agregarInformacionPage.escribirSucedido(dato.getSucedido());
+          agregarInformacionPage.escribirSucedido(dato.getDescripcionHechos());
           agregarInformacionPage.seleccionarCausa(dato.getCausa());
           agregarInformacionPage.seleccionarOrigen(dato.getOrigen());
           agregarInformacionPage.escribirValorPretension(dato.getValorPretension());
