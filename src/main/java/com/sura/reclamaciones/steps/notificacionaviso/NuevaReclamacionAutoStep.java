@@ -126,6 +126,7 @@ public class NuevaReclamacionAutoStep {
   public void editarInformacionVehiculo(List<ReclamacionAuto> datosReclamacion) {
     agregarInformacionSiniestroAutosPage.ingresarEdicionVehiculo();
     detalleVehiculoPage.agregarConductor();
+    detalleVehiculoPage.seleccionarConductorVehiculoAsegurado();
     datosReclamacion.forEach(
         datoReclamacionAutos -> {
           if (!datoReclamacionAutos

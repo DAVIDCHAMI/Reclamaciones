@@ -102,6 +102,9 @@ public class DetalleVehiculoPage extends GeneralPage {
 
   public void agregarConductor() {
     btnAgregarConductor.waitUntilVisible().click();
+  }
+
+  public void seleccionarConductorVehiculoAsegurado(){
     seleccionarConductor();
   }
 
@@ -148,6 +151,8 @@ public class DetalleVehiculoPage extends GeneralPage {
     cmbTipoDireccion.clear();
     cmbTipoDireccion.sendKeys(tipoDireccion);
     cmbTipoDireccion.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+    aceptarOpcion();
     realizarEsperaCarga();
   }
 
