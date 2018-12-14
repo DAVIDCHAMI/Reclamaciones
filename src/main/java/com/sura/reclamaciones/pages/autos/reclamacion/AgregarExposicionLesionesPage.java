@@ -1,10 +1,6 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
-import com.sura.reclamaciones.models.ExposicionLesiones;
-import com.sura.reclamaciones.models.Persona;
-import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
@@ -97,55 +93,85 @@ public class AgregarExposicionLesionesPage extends GeneralPage {
     super(wdriver);
   }
 
-  public void agregarPersonaLesionada(
-      List<Persona> datosPersonaReclamacionAutos,
-      List<ReclamacionAuto> datosReclamacionAuto,
-      List<ExposicionLesiones> datosExposicionLesiones) {
-    datosPersonaReclamacionAutos.forEach(
-        peaton -> {
-          btnAgregarPeaton.waitUntilVisible().click();
-          cmbTipoDocumento.clear();
-          cmbTipoDocumento.sendKeys(peaton.getTipoDocumento());
-          cmbTipoDocumento.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          txtNumeroDocumento.sendKeys(peaton.getNumDocumento());
-          txtPrimerNombre.sendKeys(peaton.getPrimerNombre());
-          txtPrimerApellido.sendKeys(peaton.getPrimerApellido());
-        });
-    datosReclamacionAuto.forEach(
-        direccionPeaton -> {
-          cmbDepartamento.clear();
-          cmbDepartamento.sendKeys(direccionPeaton.getDepartamento());
-          cmbDepartamento.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          cmbCiudad.clear();
-          cmbCiudad.sendKeys(direccionPeaton.getCiudad());
-          cmbCiudad.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          txtDireccion.sendKeys(direccionPeaton.getDireccion());
-          realizarEsperaCarga();
-          cmbTipoDireccion.clear();
-          cmbTipoDireccion.sendKeys(direccionPeaton.getTipoDireccion());
-          cmbTipoDireccion.sendKeys(Keys.ENTER);
-        });
-    datosExposicionLesiones.forEach(
-        lesionesPeaton -> {
-          chkLesiones.waitUntilVisible().click();
-          cmbGravedadLesion.clear();
-          cmbGravedadLesion.sendKeys(lesionesPeaton.getGravedadLesion());
-          cmbGravedadLesion.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          txtDescribirLesiones.sendKeys(lesionesPeaton.getDescribirLesiones());
-          cmbTipoLesion.clear();
-          cmbTipoLesion.sendKeys(lesionesPeaton.getTipoLesion());
-          cmbTipoLesion.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          cmbDetalleLesion.clear();
-          cmbDetalleLesion.sendKeys(lesionesPeaton.getDetallesTipoLesion());
-          cmbDetalleLesion.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          aceptarOpcion();
-          realizarEsperaCarga();
-        });
+  public void agregarPersonaLesionada() {
+    btnAgregarPeaton.waitUntilVisible().click();
+  }
+
+  public void seleccionarTipoDocumento(String tipoDocumento) {
+    cmbTipoDocumento.clear();
+    cmbTipoDocumento.sendKeys(tipoDocumento);
+    cmbTipoDocumento.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+  }
+
+  public void ingresarNumeroDocumento(String numDocumento) {
+    txtNumeroDocumento.sendKeys(numDocumento);
+  }
+
+  public void ingresarPrimerNombre(String primerNombre) {
+    txtPrimerNombre.sendKeys(primerNombre);
+  }
+
+  public void ingresarPrimerApellido(String primerApellido) {
+    txtPrimerApellido.sendKeys(primerApellido);
+  }
+
+  public void seleccionarDepartamento(String departamento) {
+    cmbDepartamento.clear();
+    cmbDepartamento.sendKeys(departamento);
+    cmbDepartamento.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarCiudad(String ciudad) {
+    cmbCiudad.clear();
+    cmbCiudad.sendKeys(ciudad);
+    cmbCiudad.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+  }
+
+  public void ingresarDireccion(String direccion) {
+    txtDireccion.sendKeys(direccion);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarTipoDireccion(String tipoDireccion) {
+    cmbTipoDireccion.clear();
+    cmbTipoDireccion.sendKeys(tipoDireccion);
+    cmbTipoDireccion.sendKeys(Keys.ENTER);
+  }
+
+  public void seleccionarLesiones() {
+    chkLesiones.waitUntilVisible().click();
+  }
+
+  public void seleccionarGravedadLesion(String gravedadLesion) {
+    cmbGravedadLesion.clear();
+    cmbGravedadLesion.sendKeys(gravedadLesion);
+    cmbGravedadLesion.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+  }
+
+  public void ingresarDescripcionLesiones(String describirLesiones) {
+    txtDescribirLesiones.sendKeys(describirLesiones);
+  }
+
+  public void seleccionarTipoLesion(String tipoLesion) {
+    cmbTipoLesion.clear();
+    cmbTipoLesion.sendKeys(tipoLesion);
+    cmbTipoLesion.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarDetalleLesion(String detallesTipoLesion) {
+    cmbDetalleLesion.clear();
+    cmbDetalleLesion.sendKeys(detallesTipoLesion);
+    cmbDetalleLesion.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+  }
+
+  public void finalizarExposicion() {
+    aceptarOpcion();
+    realizarEsperaCarga();
   }
 }

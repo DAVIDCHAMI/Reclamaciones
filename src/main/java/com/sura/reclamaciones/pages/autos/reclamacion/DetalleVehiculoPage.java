@@ -1,10 +1,6 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
-import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
-import com.sura.reclamaciones.models.Persona;
-import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
@@ -109,38 +105,50 @@ public class DetalleVehiculoPage extends GeneralPage {
     seleccionarConductor();
   }
 
-  public void agregarConductorVehiculoAfectado(
-      List<Persona> datosPersonaReclamacion, List<ReclamacionAuto> datosReclamacionAuto) {
-    datosPersonaReclamacion.forEach(
-        conductor -> {
-          btnAgregarConductor.waitUntilVisible().click();
-          cmbTipoDocumento.clear();
-          cmbTipoDocumento.sendKeys(conductor.getTipoDocumento());
-          cmbTipoDocumento.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          txtNumeroDocumento.sendKeys(conductor.getNumDocumento());
-          txtPrimerNombre.sendKeys(conductor.getPrimerNombre());
-          txtPrimerApellido.sendKeys(conductor.getPrimerApellido());
-          realizarEsperaCarga();
-        });
-    datosReclamacionAuto.forEach(
-        direccionConductor -> {
-          cmbDepartamento.clear();
-          cmbDepartamento.sendKeys(direccionConductor.getDepartamento());
-          cmbDepartamento.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          cmbCiudad.clear();
-          cmbCiudad.sendKeys(direccionConductor.getCiudad());
-          cmbCiudad.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          txtDireccion.sendKeys(direccionConductor.getDireccion());
-          realizarEsperaCarga();
-          cmbTipoDireccion.clear();
-          cmbTipoDireccion.sendKeys(direccionConductor.getTipoDireccion());
-          cmbTipoDireccion.sendKeys(Keys.ENTER);
-          realizarEsperaCarga();
-          aceptarOpcion();
-        });
+  public void seleccionarTipoDocumento(String tipoDocumento) {
+    cmbTipoDocumento.clear();
+    cmbTipoDocumento.sendKeys(tipoDocumento);
+    cmbTipoDocumento.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+  }
+
+  public void ingresarNumeroDocumento(String numDocumento) {
+    txtNumeroDocumento.sendKeys(numDocumento);
+  }
+
+  public void ingresarPrimerNombre(String primerNombre) {
+    txtPrimerNombre.sendKeys(primerNombre);
+  }
+
+  public void ingresarPrimerApellido(String primerApellido) {
+    txtPrimerApellido.sendKeys(primerApellido);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarDepartamento(String departamento) {
+    cmbDepartamento.clear();
+    cmbDepartamento.sendKeys(departamento);
+    cmbDepartamento.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarCiudad(String ciudad) {
+    cmbCiudad.clear();
+    cmbCiudad.sendKeys(ciudad);
+    cmbCiudad.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
+  }
+
+  public void ingresarDireccion(String direccion) {
+    txtDireccion.sendKeys(direccion);
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarTipoDireccion(String tipoDireccion) {
+    cmbTipoDireccion.clear();
+    cmbTipoDireccion.sendKeys(tipoDireccion);
+    cmbTipoDireccion.sendKeys(Keys.ENTER);
+    realizarEsperaCarga();
   }
 
   private void seleccionarConductor() {
@@ -168,14 +176,14 @@ public class DetalleVehiculoPage extends GeneralPage {
     btnBuscarProveedor.waitUntilVisible().click();
   }
 
-  public void ingresarVehiculoTercero(List<ExposicionVehiculoTercero> datosExposicionTercero) {
-    datosExposicionTercero.forEach(
-        placaVehiculoTercero -> {
-          txtPlaca.sendKeys(placaVehiculoTercero.getPlacaTercero());
-          realizarEsperaCarga();
-          btnRecuperarInformacion.waitUntilVisible().click();
-          realizarEsperaCarga();
-        });
+  public void ingresarVehiculoTercero(String placa) {
+    txtPlaca.sendKeys(placa);
+    realizarEsperaCarga();
+  }
+
+  public void recuperarInformacionVehiculo() {
+    btnRecuperarInformacion.waitUntilVisible().click();
+    realizarEsperaCarga();
   }
 
   private void agregarTaller() {

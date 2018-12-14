@@ -71,11 +71,23 @@ public class NuevaReclamacionAutoStep {
       List<Persona> datosPersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto) {
     agregarInformacionSiniestroAutosPage.agregarExposicionVehiculoTercero();
-    detalleVehiculoPage.agregarConductorVehiculoAfectado(
-        datosPersonaReclamacion, datosReclamacionAuto);
-    detalleVehiculoPage.ingresarVehiculoTercero(datosExposicionTercero);
-    for (ExposicionVehiculoTercero dato : datosExposicionTercero) {
-      detalleVehiculoPage.seleccionarTaller(dato.getTallerReparacionAsignado());
+    detalleVehiculoPage.agregarConductor();
+    for (Persona conductorVehiculoAfectado : datosPersonaReclamacion) {
+      detalleVehiculoPage.seleccionarTipoDocumento(conductorVehiculoAfectado.getTipoDocumento());
+      detalleVehiculoPage.ingresarNumeroDocumento(conductorVehiculoAfectado.getNumDocumento());
+      detalleVehiculoPage.ingresarPrimerNombre(conductorVehiculoAfectado.getPrimerNombre());
+      detalleVehiculoPage.ingresarPrimerApellido(conductorVehiculoAfectado.getPrimerApellido());
+    }
+    for (ReclamacionAuto direccionConductor : datosReclamacionAuto) {
+      detalleVehiculoPage.seleccionarDepartamento(direccionConductor.getDepartamento());
+      detalleVehiculoPage.seleccionarCiudad(direccionConductor.getCiudad());
+      detalleVehiculoPage.ingresarDireccion(direccionConductor.getDireccion());
+      detalleVehiculoPage.seleccionarTipoDireccion(direccionConductor.getTipoDireccion());
+    }
+    for (ExposicionVehiculoTercero datosVehiculo : datosExposicionTercero) {
+      detalleVehiculoPage.ingresarVehiculoTercero(datosVehiculo.getPlacaTercero());
+      detalleVehiculoPage.recuperarInformacionVehiculo();
+      detalleVehiculoPage.seleccionarTaller(datosVehiculo.getTallerReparacionAsignado());
     }
     detalleVehiculoPage.volverPasoAnterior();
   }
@@ -85,8 +97,29 @@ public class NuevaReclamacionAutoStep {
       List<Persona> datopersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto,
       List<ExposicionLesiones> datosExposicionLesiones) {
-    agregarExposicionLesionesPage.agregarPersonaLesionada(
-        datopersonaReclamacion, datosReclamacionAuto, datosExposicionLesiones);
+    agregarExposicionLesionesPage.agregarPersonaLesionada();
+    for (Persona personaLesionada : datopersonaReclamacion) {
+      agregarExposicionLesionesPage.seleccionarTipoDocumento(personaLesionada.getTipoDocumento());
+      agregarExposicionLesionesPage.ingresarNumeroDocumento(personaLesionada.getNumDocumento());
+      agregarExposicionLesionesPage.ingresarPrimerNombre(personaLesionada.getPrimerNombre());
+      agregarExposicionLesionesPage.ingresarPrimerApellido(personaLesionada.getPrimerApellido());
+    }
+    for (ReclamacionAuto direccionLesionado : datosReclamacionAuto) {
+      agregarExposicionLesionesPage.seleccionarDepartamento(direccionLesionado.getDepartamento());
+      agregarExposicionLesionesPage.seleccionarCiudad(direccionLesionado.getCiudad());
+      agregarExposicionLesionesPage.ingresarDireccion(direccionLesionado.getDireccion());
+      agregarExposicionLesionesPage.seleccionarTipoDireccion(direccionLesionado.getTipoDireccion());
+    }
+    for (ExposicionLesiones lesionesPersona : datosExposicionLesiones) {
+      agregarExposicionLesionesPage.seleccionarLesiones();
+      agregarExposicionLesionesPage.seleccionarGravedadLesion(lesionesPersona.getGravedadLesion());
+      agregarExposicionLesionesPage.ingresarDescripcionLesiones(
+          lesionesPersona.getDescribirLesiones());
+      agregarExposicionLesionesPage.seleccionarTipoLesion(lesionesPersona.getTipoLesion());
+      agregarExposicionLesionesPage.seleccionarDetalleLesion(
+          lesionesPersona.getDetallesTipoLesion());
+      agregarExposicionLesionesPage.finalizarExposicion();
+    }
   }
 
   @Step
