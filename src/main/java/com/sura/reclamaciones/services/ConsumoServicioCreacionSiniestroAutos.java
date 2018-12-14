@@ -38,13 +38,14 @@ public class ConsumoServicioCreacionSiniestroAutos {
     asignarParametrosIncidenteVehiculo(lstSiniestroParam);
     asignarParametrosConductorVehiculo(lstConductor);
     asignarParametrosDireccionConductor(lstConductor);
-    asignarParametrosDireccionSiniestro(lstSiniestroParam);
+    asignarParametrosDireccionContactoPrincipal(lstSiniestroParam);
     asignarParametrosVehiculo(lstVehiculoParam);
     asignarParametrosReclamante(lstConductor);
     asignarParametrosDescripcionSiniestro(lstSiniestroParam);
     asignarParametrosIncidenteLesion(lstPersonaLesionada);
     asignarParametrosLesionado(lstPersonaLesionada);
     asignarParametrosDetalleParteCuerpo(lstPersonaLesionada);
+    asignarParametrosDireccionSiniestro(lstSiniestroParam);
     crearRequest();
     obtenerResponse();
   }
@@ -155,7 +156,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setCityDriver(lstConductor.get(campoDato).getCiudad());
   }
 
-  private void asignarParametrosDireccionSiniestro(List<ReclamacionAuto> lstSiniestroParam) {
+  private void asignarParametrosDireccionContactoPrincipal(List<ReclamacionAuto> lstSiniestroParam) {
     creacionSiniestroAutosFactory.setAddressLine1MainContact(
         lstSiniestroParam.get(campoDato).getDireccion());
     creacionSiniestroAutosFactory.setAddressTypeMainContact(
@@ -232,6 +233,12 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstPersonaLesionada.get(campoDato).getParteCuerpo());
     creacionSiniestroAutosFactory.setDetailedBodyPartType2(
         lstPersonaLesionada.get(campoDato).getDetalleParteCuerpo());
+  }
+
+  private void asignarParametrosDireccionSiniestro(List<ReclamacionAuto> lstSiniestroParam){
+    creacionSiniestroAutosFactory.setCountryLossLocation(lstSiniestroParam.get(campoDato).getPais());
+    creacionSiniestroAutosFactory.setAddressLine1LossLocation(lstSiniestroParam.get(campoDato).getDireccion());
+    creacionSiniestroAutosFactory.setCityLossLocation(lstSiniestroParam.get(campoDato).getCiudad());
   }
 
   private ClaimsAutoRequest crearRequest() {
