@@ -37,7 +37,7 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void ingresarInformacionBeneficiarioPago(
+  public void  ingresarInformacionBeneficiarioPago(
       String strTipoPago,
       String strBeneficiarioPago,
       String strMetodoPago,

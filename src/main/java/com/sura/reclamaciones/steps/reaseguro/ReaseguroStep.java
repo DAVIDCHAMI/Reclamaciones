@@ -29,8 +29,7 @@ public class ReaseguroStep {
   public void verificarReaseguro(
       List<Contrato> lstContrato1,
       List<Reasegurador> lstReasegurador1,
-      List<Reasegurador> lstReasegurador2,
-      List<Reasegurador> lstReasegurador3) {
+      List<Reasegurador> lstReasegurador2) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(REASEGURO_DETALLADO.getValor());
     lstContrato1.forEach(
         verificador -> {
