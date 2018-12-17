@@ -2,6 +2,7 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
+import com.sura.reclamaciones.models.PersonaConductorAuto;
 import com.sura.reclamaciones.models.PersonaReclamacionAuto;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -17,10 +18,11 @@ public class ConsumoServicioCreacionAvisoAutoStep {
 
   List<ReclamacionAuto> lstReclamacionAuto;
   List<PersonaReclamacionAuto> lstPersonaLesionada;
-  List<PersonaReclamacionAuto> lstConductor;
+  List<PersonaConductorAuto> lstConductor;
   List<Vehiculo> lstVehiculoParam;
   ReclamacionAuto parametroAviso = new ReclamacionAuto();
   PersonaReclamacionAuto parametroPersonaReclamacionAuto = new PersonaReclamacionAuto();
+  PersonaConductorAuto parametroPersonaConductorAuto = new PersonaConductorAuto();
   Vehiculo reclamacionVehiculo = new Vehiculo();
 
   GenericStep genericStep = new GenericStep();
@@ -40,11 +42,11 @@ public class ConsumoServicioCreacionAvisoAutoStep {
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA, "lesionado"));
     lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacionAuto();
-    parametroPersonaReclamacionAuto =
-        new PersonaReclamacionAuto(
+    parametroPersonaConductorAuto =
+        new PersonaConductorAuto(
             genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA, "conductor"));
-    lstConductor = parametroPersonaReclamacionAuto.getLstPersonaReclamacionAuto();
+                "persona_conductor", "conductor"));
+    lstConductor = parametroPersonaConductorAuto.getLstPersonaConductorAuto();
     reclamacionVehiculo =
         new Vehiculo(
             genericStep.getFilasModelo(

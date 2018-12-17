@@ -3,6 +3,7 @@ package com.sura.reclamaciones.services;
 import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
+import com.sura.reclamaciones.models.PersonaConductorAuto;
 import com.sura.reclamaciones.models.PersonaReclamacionAuto;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -27,7 +28,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
   public void asignarParametrosRequest(
       List<ReclamacionAuto> lstSiniestroParam,
       List<PersonaReclamacionAuto> lstPersonaLesionada,
-      List<PersonaReclamacionAuto> lstConductor,
+      List<PersonaConductorAuto> lstConductor,
       List<Vehiculo> lstVehiculoParam) {
     asignarParametrosSiniestro(lstSiniestroParam);
     asignarParametrosAutor(lstConductor);
@@ -44,6 +45,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
     asignarParametrosDescripcionSiniestro(lstSiniestroParam);
     asignarParametrosIncidenteLesion(lstPersonaLesionada);
     asignarParametrosLesionado(lstPersonaLesionada);
+    agregarDireccionLesionado(lstSiniestroParam);
     asignarParametrosDetalleParteCuerpo(lstPersonaLesionada);
     asignarParametrosDireccionSiniestro(lstSiniestroParam);
     crearRequest();
@@ -70,10 +72,9 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstSiniestroParam.get(campoDato).getAutoridadTransito());
   }
 
-  private void asignarParametrosAutor(List<PersonaReclamacionAuto> lstConductor) {
+  private void asignarParametrosAutor(List<PersonaConductorAuto> lstConductor) {
     creacionSiniestroAutosFactory.setDocumentType(lstConductor.get(campoDato).getTipoDocumento());
     creacionSiniestroAutosFactory.setTaxIDAuthor(lstConductor.get(campoDato).getNumDocumento());
-    creacionSiniestroAutosFactory.setAuthorName(lstConductor.get(campoDato).getPrimerNombre());
   }
 
   private void asignarParametrosValorPerdida(List<ReclamacionAuto> lstSiniestroParam) {
@@ -84,7 +85,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosContactoPrincipal(
-      List<PersonaReclamacionAuto> lstPersonaReclamacionAuto) {
+      List<PersonaConductorAuto> lstPersonaReclamacionAuto) {
     creacionSiniestroAutosFactory.setDocumentTypeMainContact(
         lstPersonaReclamacionAuto.get(campoDato).getTipoDocumento());
     creacionSiniestroAutosFactory.setTaxIDMainContact(
@@ -107,7 +108,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstPersonaReclamacionAuto.get(campoDato).getPolicyRole());
   }
 
-  private void asignarParametrosDireccionPrincipal(List<PersonaReclamacionAuto> lstConductor) {
+  private void asignarParametrosDireccionPrincipal(List<PersonaConductorAuto> lstConductor) {
     creacionSiniestroAutosFactory.setAddressLine1MainContact(
         lstConductor.get(campoDato).getDireccion());
     creacionSiniestroAutosFactory.setAddressTypeMainContact(
@@ -131,7 +132,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstSiniestroParam.get(campoDato).getRelacionAsegurado());
   }
 
-  private void asignarParametrosConductorVehiculo(List<PersonaReclamacionAuto> lstConductor) {
+  private void asignarParametrosConductorVehiculo(List<PersonaConductorAuto> lstConductor) {
     creacionSiniestroAutosFactory.setFirstNameDriver(lstConductor.get(campoDato).getPrimerNombre());
     creacionSiniestroAutosFactory.setMiddleNameDriver(
         lstConductor.get(campoDato).getSegundoNombre());
@@ -149,7 +150,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setTaxIDDriver(lstConductor.get(campoDato).getNumDocumento());
   }
 
-  private void asignarParametrosDireccionConductor(List<PersonaReclamacionAuto> lstConductor) {
+  private void asignarParametrosDireccionConductor(List<PersonaConductorAuto> lstConductor) {
     creacionSiniestroAutosFactory.setAddressLine1Driver(lstConductor.get(campoDato).getDireccion());
     creacionSiniestroAutosFactory.setAddressTypeDriver(
         lstConductor.get(campoDato).getTipoDireccion());
@@ -176,7 +177,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setVinVehicle(lstVehiculoParam.get(campoDato).getChasis());
   }
 
-  private void asignarParametrosReclamante(List<PersonaReclamacionAuto> lstConductor) {
+  private void asignarParametrosReclamante(List<PersonaConductorAuto> lstConductor) {
     creacionSiniestroAutosFactory.setDocumentTypeAnt(
         lstConductor.get(campoDato).getTipoDocumento());
     creacionSiniestroAutosFactory.setContactNameAnt(lstConductor.get(campoDato).getPrimerNombre());
@@ -209,6 +210,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstPersonaLesionada.get(campoDato).getPrimerNombre());
     creacionSiniestroAutosFactory.setMiddleNameInjured(
         lstPersonaLesionada.get(campoDato).getSegundoNombre());
+    creacionSiniestroAutosFactory.setLastNameInjured(lstPersonaLesionada.get(campoDato).getPrimerApellido());
     creacionSiniestroAutosFactory.setSecondLastNameInjured(
         lstPersonaLesionada.get(campoDato).getSegundoApellido());
     creacionSiniestroAutosFactory.setWorkNumberInjured(
@@ -221,6 +223,12 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstPersonaLesionada.get(campoDato).getTipoDocumento());
     creacionSiniestroAutosFactory.setTaxIDInjured(
         lstPersonaLesionada.get(campoDato).getNumDocumento());
+  }
+
+  private void agregarDireccionLesionado(List<ReclamacionAuto> lstSiniestroParam){
+    creacionSiniestroAutosFactory.setAddressLine1Injured(lstSiniestroParam.get(campoDato).getDireccion());
+    creacionSiniestroAutosFactory.setAddressTypeInjured(lstSiniestroParam.get(campoDato).getTipoDireccion());
+    creacionSiniestroAutosFactory.setCityInjured(lstSiniestroParam.get(campoDato).getCiudad());
   }
 
   private void asignarParametrosDetalleParteCuerpo(

@@ -40,7 +40,6 @@ public class CreacionSiniestroAutosFactory {
   private String authorityTransit;
   private String documentType;
   private String taxIDAuthor;
-  private String authorName;
   private int amountLossEstimate;
   private String currencyLossEstimate;
   private String documentTypeMainContact;
@@ -83,13 +82,13 @@ public class CreacionSiniestroAutosFactory {
   private String fasecoldaCode;
   private String vinVehicle;
   private String lossPartyInjuryIncident;
-  private String injuredInjuryIncident;
   private String severityInjuryIncident;
   private String descriptionInjuryIncident;
   private String generalInjuryType;
   private String detailedInjuryType;
   private String firstNameInjured;
   private String middleNameInjured;
+  private String lastNameInjured;
   private String secondLastNameInjured;
   private String workNumberInjured;
   private String cellNumberInjured;
@@ -106,23 +105,11 @@ public class CreacionSiniestroAutosFactory {
   private String countryLossLocation;
   private String addressLine1LossLocation;
   private String cityLossLocation;
-  private String stateMainContact;
   private String documentTypeAnt;
   private String contactNameAnt;
   private String taxIdAnt;
   private String emailAddress1Ant;
   private String cellNumberAnt;
-  private String stateAnt;
-  private String addressLine1Ant;
-  private String cityAnt;
-
-  public String getStateMainContact() {
-    return stateMainContact;
-  }
-
-  public void setStateMainContact(String stateMainContact) {
-    this.stateMainContact = stateMainContact;
-  }
 
   public String getPolicyNumber() {
     return policyNumber;
@@ -560,14 +547,6 @@ public class CreacionSiniestroAutosFactory {
     this.lossPartyInjuryIncident = lossPartyInjuryIncident;
   }
 
-  public String getInjuredInjuryIncident() {
-    return injuredInjuryIncident;
-  }
-
-  public void setInjuredInjuryIncident(String injuredInjuryIncident) {
-    this.injuredInjuryIncident = injuredInjuryIncident;
-  }
-
   public String getSeverityInjuryIncident() {
     return severityInjuryIncident;
   }
@@ -614,6 +593,12 @@ public class CreacionSiniestroAutosFactory {
 
   public void setMiddleNameInjured(String middleNameInjured) {
     this.middleNameInjured = middleNameInjured;
+  }
+
+  public String getLastNameInjured(){return lastNameInjured;}
+
+  public void setLastNameInjured(String lastNameInjured){
+    this.lastNameInjured = lastNameInjured;
   }
 
   public String getSecondLastNameInjured() {
@@ -744,14 +729,6 @@ public class CreacionSiniestroAutosFactory {
     this.cityLossLocation = cityLossLocation;
   }
 
-  public String getAuthorName() {
-    return cityLossLocation;
-  }
-
-  public void setAuthorName(String authorName) {
-    this.authorName = authorName;
-  }
-
   public String getDocumentTypeAnt() {
     return documentTypeAnt;
   }
@@ -790,30 +767,6 @@ public class CreacionSiniestroAutosFactory {
 
   public void setCellNumberAnt(String cellNumberAnt) {
     this.cellNumberAnt = cellNumberAnt;
-  }
-
-  public String getStateAnt() {
-    return stateAnt;
-  }
-
-  public void setStateAnt(String stateAnt) {
-    this.stateAnt = stateAnt;
-  }
-
-  public String getAddressLine1Ant() {
-    return addressLine1Ant;
-  }
-
-  public void setAddressLine1Ant(String addressLine1Ant) {
-    this.addressLine1Ant = addressLine1Ant;
-  }
-
-  public String getCityAnt() {
-    return cityAnt;
-  }
-
-  public void setCityAnt(String cityAnt) {
-    this.cityAnt = cityAnt;
   }
 
   ClaimsAutoRequest creacionSiniestroAutoRequestFactory() {
@@ -899,6 +852,7 @@ public class CreacionSiniestroAutosFactory {
     mainContact.setSecondLastName(getSecondLastNameMainContact());
     mainContact.setWorkNumber(getWorkNumberMainContact());
     mainContact.setPolicyRole(getPolicyRoleMainContact());
+
     return mainContact;
   }
 
@@ -1004,6 +958,7 @@ public class CreacionSiniestroAutosFactory {
     Injured injured = new Injured();
     injured.setFirstName(getFirstNameInjured());
     injured.setMiddleName(getMiddleNameInjured());
+    injured.setLastName(getLastNameInjured());
     injured.setSecondLastName(getSecondLastNameInjured());
     injured.setWorkNumber(getWorkNumberInjured());
     injured.setCellNumber(getCellNumberInjured());
