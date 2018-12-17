@@ -27,9 +27,7 @@ public class ReaseguroStep {
   }
 
   public void verificarReaseguro(
-      List<Contrato> lstContrato1,
-      List<Reasegurador> lstReasegurador1,
-      List<Reasegurador> lstReasegurador2) {
+      List<Contrato> lstContrato1) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(REASEGURO_DETALLADO.getValor());
     lstContrato1.forEach(
         verificador -> {
@@ -40,14 +38,14 @@ public class ReaseguroStep {
           MatcherAssert.assertThat(
               "El retenido no corresponde a lo esperado",
               reaseguroDetalladoTransaccionPage.verificarRetenido(
-                  lstReasegurador2,
+                  verificador.getPorcentajeRetenido(),
                   verificador.getDeducibleMinimo(),
                   verificador.getPorcentajeDeducibleMinimo(),
                   verificador.getProporcionCuotaParte()));
           MatcherAssert.assertThat(
               "El cedido no corresponde a lo esperado",
               reaseguroDetalladoTransaccionPage.verificarCedido(
-                  lstReasegurador2,
+                  verificador.getPorcentajeRetenido(),
                   verificador.getDeducibleMinimo(),
                   verificador.getPorcentajeDeducibleMinimo(),
                   verificador.getProporcionCuotaParte()));

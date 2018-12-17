@@ -31,9 +31,9 @@ public class ReaseguroDefinition {
   NuevoPagoStep nuevoPagoStep;
 
   @Cuando(
-      "^se genere una reclamacion de un contrato tipo (.*), por causal (.*) con un valor de pretension de (.*) e incidente de tipo (.*)$")
+      "^se genere una reclamacion de un contrato tipo (.*)$")
   public void crearSiniestro(
-      String tipoContratoPoliza, String causa, String valorPretension, String tipoIncidente)
+      String tipoContratoPoliza)
       throws IOException {
     tipoContrato = tipoContratoPoliza;
     creacionSiniestro.asignarValoresSiniestro(tipoContratoPoliza);
@@ -42,22 +42,16 @@ public class ReaseguroDefinition {
   }
 
   @Entonces(
-      "^para la transaccion (.*) se distribuye el reaseguro por cada contrato (.*) (.*)  y cada uno de los reaseguradores")
+      "^para la transaccion (.*) se distribuye el reaseguro segun el retenido y el cedido de manera adecuada$")
   public void verificarReaseguro(
-      String tipoTransaccion, String tipoContrato1, String tipoContrato2)
+      String tipoTransaccion)
       throws IOException {
     Contrato contrato1 = new Contrato(genericStep.getFilasModelo("contrato", tipoContrato));
-    Reasegurador reasegurador1 =
-        new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato1));
-    Reasegurador reasegurador2 =
-        new Reasegurador(genericStep.getFilasModelo("reasegurador", tipoContrato2));
-     reaseguroStep.verificarReaseguro(
-        contrato1.getLstContrato(),
-        reasegurador1.getLstReasegurador(),
-        reasegurador2.getLstReasegurador());
+   reaseguroStep.verificarReaseguro(
+        contrato1.getLstContrato());
   }
 
-  @Cuando("^se realice  al siniestro un pago (.*) a un (.*) por medio de (.*) el cual cuenta con una linea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
+  @Cuando("^se realice al siniestro un pago (.*) a un (.*) por medio de (.*) el cual cuenta con una linea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
   public void RealizarPagoSiniestroEmpresarial(String lineaReserva,
       String tipoPago,
       String beneficiarioPago,

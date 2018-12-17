@@ -55,11 +55,9 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   }
 
   public boolean verificarRetenido(
-      List<Reasegurador> lstReasegurador2,
-      String strDeducible,
+      String strPorcentajeRetenido, String strDeducible,
       String strPorcentajeDeducible,
       String strProporcionCuotaParte) {
-    String strPorcentajeCedido = obtenerPorcentajeCedido(lstReasegurador2);
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
@@ -69,9 +67,9 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     String strValorDeducible =
         calcularDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
     Double dblValorRetenido =
-        calcularRetenido(strValorReasegurado, strPorcentajeCedido, strProporcionCuotaParte);
+        calcularRetenido(strValorReasegurado, strPorcentajeRetenido, strProporcionCuotaParte);
     Double dblValorRetenidoDeducible =
-        calcularRetenido(strValorDeducible, strPorcentajeCedido, strProporcionCuotaParte);
+        calcularRetenido(strValorDeducible,strPorcentajeRetenido, strProporcionCuotaParte);
     for (WebElement aLstReaseguroDetallado : lstReaseguroDetallado) {
       String strNumeroTransaccion = aLstReaseguroDetallado.getText();
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
@@ -91,11 +89,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   }
 
   public boolean verificarCedido(
-      List<Reasegurador> lstReasegurador2,
+      String strPorcentajeRetenido,
       String strDeducible,
       String strPorcentajeDeducible,
       String strProporcionCuotaParte) {
-    String strPorcentajeCedido = obtenerPorcentajeCedido(lstReasegurador2);
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
@@ -105,9 +102,9 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     String strValorDeducible =
         calcularDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
     Double dblValorRetenido =
-        calcularRetenido(strValorReasegurado, strPorcentajeCedido, strProporcionCuotaParte);
+        calcularRetenido(strValorReasegurado, strPorcentajeRetenido, strProporcionCuotaParte);
     Double dblValorRetenidoDeducible =
-        calcularRetenido(strValorDeducible, strPorcentajeCedido, strProporcionCuotaParte);
+        calcularRetenido(strValorDeducible, strPorcentajeRetenido, strProporcionCuotaParte);
     for (WebElement aLstReaseguroDetallado : lstReaseguroDetallado) {
       String strNumeroTransaccion = aLstReaseguroDetallado.getText();
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
@@ -140,15 +137,6 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       }
     }
     return true;
-  }
-
-  private String obtenerPorcentajeCedido(List<Reasegurador> lstReasegurador2) {
-    for (Reasegurador reasegurador : lstReasegurador2) {
-      if (reasegurador.getCodigoSura().equals(SURA.getValor())) {
-        return reasegurador.getPorcentajeParticipacion();
-      }
-    }
-    return null;
   }
 
   private String calcularDeducible(
