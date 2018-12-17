@@ -7,39 +7,33 @@ import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresa
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
-import cucumber.api.java.es.Y;
+
 import net.thucydides.core.annotations.Steps;
 
-public class NotificacionAvisoAtrDefinition {
+public class NotificacionAvisoSiniestroAtrDefinition {
 
   @Steps NuevaReclamacionAtrEmpresarialStep nuevaReclamacionAtrEmpresarialStep;
 
   @Steps GenericStep genericStep;
 
   @Dado("^que tenemos una poliza de (.*)$")
-  public void diligenciarInformacionContacto(String cobertura) throws Throwable {
+  public void diligenciarInformacionAsegurado(String cobertura) throws Throwable {
     Persona aseguradoAtr =
         new Persona(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
-    nuevaReclamacionAtrEmpresarialStep.accederAvisoEmpresa();
-    nuevaReclamacionAtrEmpresarialStep.buscarAseguradoAtr(aseguradoAtr.getLstPersona());
-    nuevaReclamacionAtrEmpresarialStep.diligenciarFechaAtr();
+    nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionAsegurado(
+        aseguradoAtr.getLstPersona());
   }
 
   @Cuando("^se genere un siniestro por causa (.*) con un valor de pretension de (.*)$")
   public void diligenciarInformacionSiniestro(String causaSiniestro, String valorPretension) {
-    nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionSiniestro(causaSiniestro, "Prueba");
+    nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(causaSiniestro, "prueba");
     nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();
     nuevaReclamacionAtrEmpresarialStep.diligenciarValorPretension(valorPretension);
-    nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
-  }
-
-  @Y("^se ajusta la reserva de la categoria de costo (.*)$")
-  public void seAjustaLaReservaDeLaCategoriaDeCostoCategoriaDeCosto() {
-    //To Do
   }
 
   @Entonces("^se obtiene una reclamacion que podrá ser consultada en ClaimCenter$")
-  public void seObtieneUnaReclamacionQuePodráSerConsultadaEnClaimCenter() {
+  public void consultarSiniestro() {
+    nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
     //To Do
   }
 }

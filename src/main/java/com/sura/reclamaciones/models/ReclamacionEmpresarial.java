@@ -13,7 +13,7 @@ public class ReclamacionEmpresarial extends Reclamacion {
   private String departamento;
   private String ciudad;
   private String direccion;
-  private String causa;
+  private String causaHechosSiniestro;
   private String valorPretension;
   private String tipoIncidente;
   private String ramoPolizaAtr;
@@ -25,21 +25,21 @@ public class ReclamacionEmpresarial extends Reclamacion {
     super();
   }
 
-  private ReclamacionEmpresarial(Map<String, String> datosReclamacionEmp) {
-    super(datosReclamacionEmp);
-    this.numeroContrato = datosReclamacionEmp.get("numeroContrato");
-    this.detalleHechos = datosReclamacionEmp.get("detalleHechos");
-    this.pais = datosReclamacionEmp.get("pais");
-    this.departamento = datosReclamacionEmp.get("departamento");
-    this.ciudad = datosReclamacionEmp.get("ciudad");
-    this.direccion = datosReclamacionEmp.get("direccion");
-    this.causa = datosReclamacionEmp.get("causa");
-    this.valorPretension = datosReclamacionEmp.get("valorPretension");
-    this.tipoIncidente = datosReclamacionEmp.get("tipoIncidente");
-    this.identificadorRiesgo = datosReclamacionEmp.get("idRiesgo");
-    this.incidenteContenido = datosReclamacionEmp.get("incidenteContenido");
-    this.incidentePropiedad = datosReclamacionEmp.get("incidentePropiedad");
-    this.ramoPolizaAtr = datosReclamacionEmp.get("ramoPolizaAtr");
+  private ReclamacionEmpresarial(Map<String, String> datosReclamacionEmpresarial) {
+    super(datosReclamacionEmpresarial);
+    this.numeroContrato = datosReclamacionEmpresarial.get("numeroContrato");
+    this.detalleHechos = datosReclamacionEmpresarial.get("detalleHechos");
+    this.pais = datosReclamacionEmpresarial.get("pais");
+    this.departamento = datosReclamacionEmpresarial.get("departamento");
+    this.ciudad = datosReclamacionEmpresarial.get("ciudad");
+    this.direccion = datosReclamacionEmpresarial.get("direccion");
+    this.causaHechosSiniestro = datosReclamacionEmpresarial.get("causa");
+    this.valorPretension = datosReclamacionEmpresarial.get("valorPretension");
+    this.tipoIncidente = datosReclamacionEmpresarial.get("tipoIncidente");
+    this.identificadorRiesgo = datosReclamacionEmpresarial.get("idRiesgo");
+    this.incidenteContenido = datosReclamacionEmpresarial.get("incidenteContenido");
+    this.incidentePropiedad = datosReclamacionEmpresarial.get("incidentePropiedad");
+    this.ramoPolizaAtr = datosReclamacionEmpresarial.get("ramoPolizaAtr");
   }
 
   public ReclamacionEmpresarial(List<Map<String, String>> datosReclamacionesEmp) {
@@ -70,8 +70,8 @@ public class ReclamacionEmpresarial extends Reclamacion {
     return detalleHechos;
   }
 
-  public String getCausa() {
-    return causa;
+  public String getCausaHechosSiniestro() {
+    return causaHechosSiniestro;
   }
 
   public String getValorPretension() {

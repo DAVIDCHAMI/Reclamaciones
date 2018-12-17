@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages;
+package com.sura.reclamaciones.pages.login;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -18,15 +18,15 @@ import org.openqa.selenium.WebDriver;
         "https://arlappslab.suramericana.com/SSAutenticacion/faces/autenticacion/paginaAutenticacion.jspx?cdApp=SURACOM&cookies=false"
   ),
 })
-public class LoginAtrPage extends GeneralPage {
+public class AutenticacionAtrPage extends GeneralPage {
 
-  public LoginAtrPage(WebDriver wdriver) {
+  public AutenticacionAtrPage(WebDriver wdriver) {
     super(wdriver);
   }
 
   private String btnClave =
       "//img[@src='/SSAutenticacion/imagenes/teclado/btnTec_COMODIN_off.gif']";
-  private String auxbtnClave = "";
+  private String auxiliarBtnClave = "";
 
   @FindBy(id = "tempUserID")
   private WebElementFacade txtUsuario;
@@ -41,7 +41,7 @@ public class LoginAtrPage extends GeneralPage {
   private WebElementFacade btnAceptarCondicionUso;
 
   @FindBy(xpath = "//option[@value='C']")
-  private WebElementFacade optCedula;
+  private WebElementFacade lstCedula;
 
   @FindBy(xpath = "//table[@width='36%']")
   private WebElementFacade tblNumeros;
@@ -51,11 +51,11 @@ public class LoginAtrPage extends GeneralPage {
 
   public void iniciarSesionUAT(String usuario, String contrasena) {
     lstTipoDocumento.click();
-    optCedula.click();
+    lstCedula.click();
     for (int cadenaString = 0; cadenaString < 4; cadenaString++) {
       String digito = contrasena.substring(cadenaString, cadenaString + 1);
-      auxbtnClave = btnClave.replace(ConstanteGlobal.COMODIN, digito);
-      $(auxbtnClave).click();
+      auxiliarBtnClave = btnClave.replace(ConstanteGlobal.COMODIN, digito);
+      $(auxiliarBtnClave).click();
       txtClave.click();
     }
     txtUsuario.type(usuario);

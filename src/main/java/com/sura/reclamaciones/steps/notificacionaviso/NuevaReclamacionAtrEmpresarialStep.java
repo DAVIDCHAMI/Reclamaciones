@@ -20,13 +20,9 @@ public class NuevaReclamacionAtrEmpresarialStep {
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   @Step
-  public void accederAvisoEmpresa() {
+  public void diligenciarInformacionAsegurado(List<Persona> datosPersona) {
     asistenteVirtualAtrPage.accederHerramientaAvisoEmpresa();
     asistenteVirtualAtrPage.seleccionarPlanListaProducto();
-  }
-
-  @Step
-  public void buscarAseguradoAtr(List<Persona> datosPersona) {
     datosPersona.forEach(
         asegurado -> {
           buscarPolizaPage.consultarDocumentoAtr(
@@ -35,12 +31,8 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   @Step
-  public void diligenciarFechaAtr() {
+  public void diligenciarInformacionReclamacion(String causaSiniestro, String detalleHechos) {
     informacionBasicaPage.seleccionarFechaAviso("2018/Nov/20" /*To do*/);
-  }
-
-  @Step
-  public void diligenciarInformacionSiniestro(String causaSiniestro, String detalleHechos) {
     informacionReclamacionPage.seleccionarCausaSiniestroAtr(causaSiniestro);
     informacionReclamacionPage.diligenciarDetalleHechosAtr(detalleHechos);
     informacionReclamacionPage.seleccionarCiudadSiniestro();

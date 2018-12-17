@@ -9,9 +9,8 @@ Característica: Notificacion de aviso de una reclamacion desde ATR
   Esquema del escenario: aviso
     Dado que tenemos una poliza de <Tipo y Cobertura>
     Cuando se genere un siniestro por causa <Causa> con un valor de pretension de <Valor de Pretensión>
-    Y se ajusta la reserva de la categoria de costo <Categoria de costo>
     Entonces se obtiene una reclamacion que podrá ser consultada en ClaimCenter
 
     Ejemplos:
-      | Tipo y Cobertura | Causa                         | Valor de Pretensión | Categoria de costo |
-      | AseguradoATR     | Amit/ huelga, conmoción civil | 2000000             | Propiedad          |
+      | Tipo y Cobertura | Causa                         | Valor de Pretensión |
+      | AseguradoATR     | Amit/ huelga, conmoción civil | 2000000             |
