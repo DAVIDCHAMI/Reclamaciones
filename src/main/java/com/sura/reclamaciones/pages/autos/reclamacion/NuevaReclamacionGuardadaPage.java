@@ -2,6 +2,7 @@ package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,7 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
   }
 
   public void abrirReclamacion() {
-    lblNumeroReclamacion.waitUntilVisible();
+    lblNumeroReclamacion.withTimeoutOf(180, TimeUnit.SECONDS).waitUntilVisible().waitUntilClickable();
     lblNumeroReclamacion.click();
   }
 
