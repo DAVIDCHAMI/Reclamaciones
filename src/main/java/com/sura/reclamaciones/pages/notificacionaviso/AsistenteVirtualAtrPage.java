@@ -44,13 +44,17 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
     enfocarVentana();
     btnCerrarTour.waitUntilVisible().click();
     auxMnuAsistenteVirtual =
-        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.ASISTENTE_VIRTUAL);
+        mnuAsistenteVirtual.replace(
+            ConstanteGlobal.COMODIN, ReclamacionConstante.ASISTENTE_VIRTUAL);
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.HERRAMIENTAS);
+    auxMnuAsistenteVirtual =
+        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.HERRAMIENTAS);
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.RECLAMACIONES);
+    auxMnuAsistenteVirtual =
+        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.RECLAMACIONES);
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual = mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.EMPRESAS);
+    auxMnuAsistenteVirtual =
+        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.EMPRESAS);
     $(auxMnuAsistenteVirtual).waitUntilVisible().click();
   }
 

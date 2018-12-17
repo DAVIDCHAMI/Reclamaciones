@@ -11,6 +11,7 @@ import net.thucydides.core.annotations.Steps;
 public class SetupStory {
 
   @Steps LoginClaimStep loginClaimStep;
+  
   @Steps LoginAtrStep loginAtrStep;
 
   AmbientesUtil ambientesUtil = new AmbientesUtil();
@@ -36,9 +37,9 @@ public class SetupStory {
   @Before("@ATR")
   public void seleccionarAmbienteATR() throws IOException {
     if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
-      loginAtrStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_EMPRESARIAL_ATR);
+      loginAtrStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_ATR);
     } else if (ConstanteGlobal.DESARROLLO.equals(ambientesUtil.getAmbiente())) {
-      loginAtrStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_EMPRESARIAL_ATR);
+      loginAtrStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_ATR);
     }
   }
 }

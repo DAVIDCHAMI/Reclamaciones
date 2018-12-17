@@ -13,6 +13,7 @@ import net.thucydides.core.annotations.Steps;
 public class NotificacionAvisoAtrDefinition {
 
   @Steps NuevaReclamacionAtrEmpresarialStep nuevaReclamacionAtrEmpresarialStep;
+
   @Steps GenericStep genericStep;
 
   @Dado("^que tenemos una poliza de (.*)$")
