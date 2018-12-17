@@ -143,6 +143,6 @@ public class AgregarInformacionSiniestroAutosPage extends GeneralPage {
   public void concluirReclamacion() {
     btnFinalizar.waitUntilVisible();
     btnFinalizar.click();
-    realizarEsperaCarga();
+    realizarEsperaFinalizarReclamacion();
   }
 }

@@ -137,10 +137,15 @@ public class GeneralPage extends PageObject {
         elemento, registros, datoEnFilaABuscar, posicionDatoADevolver);
   }
 
-  public void realizarEsperaCarga(){
+  public void realizarEsperaCarga() {
+    if (pgrBarCarga.isVisible()) {
+      pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
+    }
+  }
+
+  public void realizarEsperaFinalizarReclamacion(){
     int numeroIntentos = ConstanteGlobal.NUMERO_INTENTOS_ESPERA_ELEMENTO;
     while(numeroIntentos>0){
-      pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
       if(!pgrBarCarga.isPresent()){break;}
       numeroIntentos--;
     }

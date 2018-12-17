@@ -9,11 +9,13 @@ import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAutoStep;
+import cucumber.api.DataTable;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
+import org.yecht.Data.Str;
 
 public class ReclamacionDefinition {
 
@@ -31,7 +33,7 @@ public class ReclamacionDefinition {
   private ExposicionesAutomaticasAutos exposicionesAutomaticasAutos;
 
   @Dado("^que se tiene una poliza con las coberturas$")
-  public void recibirReclamoResponsabilidadCivil() throws IOException {
+  public void recibirReclamoResponsabilidadCivil(DataTable coberturas) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionRC"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "autoReclamacionSimple"));
@@ -42,7 +44,7 @@ public class ReclamacionDefinition {
   }
 
   @Cuando("se genere un siniestro por la causa y la culpabilidad$")
-  public void ingresarDatosSiniestro() {
+  public void ingresarDatosSiniestro(DataTable culpabilidad) {
     reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.editarInformacionVehiculo(reclamacionAuto.getLstReclamacionAuto());
@@ -51,7 +53,7 @@ public class ReclamacionDefinition {
 
   @Entonces(
       "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva, según la culpabilidad marcada Responsabilidad Civil$")
-  public void generarReclamacionResponsabilidadCivil() throws IOException {
+  public void generarReclamacionResponsabilidadCivil(DataTable reservas) throws IOException {
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
             genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
@@ -88,7 +90,7 @@ public class ReclamacionDefinition {
   }
 
   @Dado("^que se tiene una poliza con las coberturas para Daños$")
-  public void recibirReclamoArchivo() throws IOException {
+  public void recibirReclamoArchivo(DataTable cobertura) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionArchivo"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionArchivo"));
@@ -100,7 +102,7 @@ public class ReclamacionDefinition {
 
   @Entonces(
       "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo$")
-  public void generarReclamacionArchivo() throws IOException {
+  public void generarReclamacionArchivo(DataTable reservas) throws IOException {
     reclamacionStep.finalizarReclamacionAutos();
     reclamacionStep.validarReclamacionAutos();
     reclamacionStep.consultarReclamacionAutos();
@@ -113,7 +115,7 @@ public class ReclamacionDefinition {
   }
 
   @Dado("^que se tiene una poliza con las coberturas para Subrogación$")
-  public void recibirReclamoSubrogacion() throws IOException {
+  public void recibirReclamoSubrogacion(DataTable cobertura) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(
             genericStep.getFilasModelo("reclamacion_auto", "reclamacionSubrogacion"));
@@ -125,7 +127,7 @@ public class ReclamacionDefinition {
   }
 
   @Dado("^que se tiene una poliza con las coberturas para Solo Responsabilidad Civil$")
-  public void recibirReclamoSoloResponsabilidadCivil() throws IOException {
+  public void recibirReclamoSoloResponsabilidadCivil(DataTable cobertura) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionSoloRC"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "reclamacionSoloRC"));
@@ -137,7 +139,7 @@ public class ReclamacionDefinition {
 
   @Entonces(
       "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva, según la culpabilidad marcada Solo Responsabilidad Civil$")
-  public void generarReclamacionSoloResponsabilidadCivil() throws IOException {
+  public void generarReclamacionSoloResponsabilidadCivil(DataTable reservas) throws IOException {
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
             genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
