@@ -1,2 +1,12 @@
 id;idFiltro;pagador;lineaReserva;pais;departamento;ciudad;valorTransaccion;categoriaRecupero;estadoTransaccion;fechaComprobante
 1;HOGAR_01;AURA JUDITH LOPEZ JULIO CQLII;(1) 1ª parteContenido;Colombia;Bolivar;Cartagena De Indias;9000000;Salvamento;Solicitado;
+2;MRC_02;JORGE ENRRIQUE GARAY CAJIGAS CQLII;(1) 1ª parteContenido; Colombia; Antioquia; Medellin; 550000;Subrogación;Solicitado;
+3;HOGAR_01;JORGE ENRIQUE GARAY CAJIGAS CQLII; XXX;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
+4;RC_01;XXX;XXX ;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
+5;MRC_03;XXX;XXX ;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
+6;HOGAR_02;XXX;XXX ;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
+7;MRC_04;XXX;XXX ;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
+8;CUMPLIMIENTO_01;XXX;XXX ;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
+9 ;HOGAR_03 ;XXX;XXX ;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
+10 ;HOGAR_04 ;XXX; XXX;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
+11;MRC_01;XXX; XXX;283326; Colombia; Antioquia; Medellin; DIRECCION DE RESIDENCIA;Solicitado
