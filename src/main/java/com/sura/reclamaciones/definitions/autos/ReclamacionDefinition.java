@@ -15,7 +15,6 @@ import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
-import org.yecht.Data.Str;
 
 public class ReclamacionDefinition {
 

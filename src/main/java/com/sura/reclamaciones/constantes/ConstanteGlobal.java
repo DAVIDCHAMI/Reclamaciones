@@ -15,5 +15,5 @@ public class ConstanteGlobal {
   public static final String PARAMETROS_PERSONA = "parametros_persona";
   public static final String EMPRESARIALES = "Empresariales";
   public static final String AUTOS = "Autos";
-  public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO=180;
+  public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO = 180;
 }

@@ -32,7 +32,10 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
   }
 
   public void abrirReclamacion() {
-    lblNumeroReclamacion.withTimeoutOf(180, TimeUnit.SECONDS).waitUntilVisible().waitUntilClickable();
+    lblNumeroReclamacion
+        .withTimeoutOf(180, TimeUnit.SECONDS)
+        .waitUntilVisible()
+        .waitUntilClickable();
     lblNumeroReclamacion.click();
   }
 

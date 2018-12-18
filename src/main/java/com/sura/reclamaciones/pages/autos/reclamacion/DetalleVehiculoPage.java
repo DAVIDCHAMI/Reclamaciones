@@ -104,7 +104,7 @@ public class DetalleVehiculoPage extends GeneralPage {
     btnAgregarConductor.waitUntilVisible().click();
   }
 
-  public void seleccionarConductorVehiculoAsegurado(){
+  public void seleccionarConductorVehiculoAsegurado() {
     seleccionarConductor();
   }
 
