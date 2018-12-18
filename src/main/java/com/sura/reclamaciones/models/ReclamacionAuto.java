@@ -9,7 +9,7 @@ public class ReclamacionAuto extends Reclamacion {
   private String fechaNotificacionSiniestro;
   private String relacionAsegurado;
   private String descripcionHechos;
-  private String causa;
+  private String OrigenCausa;
   private String vehiculoRetenido;
   private String autoridad;
   private String culpabilidad;
@@ -43,7 +43,7 @@ public class ReclamacionAuto extends Reclamacion {
     this.fechaNotificacionSiniestro = datosReclamacionAut.get("fechaNotificacionSiniestro");
     this.relacionAsegurado = datosReclamacionAut.get("relacionAsegurado");
     this.descripcionHechos = datosReclamacionAut.get("descripcionHechos");
-    this.causa = datosReclamacionAut.get("origenCausa");
+    this.OrigenCausa = datosReclamacionAut.get("origenCausa");
     this.vehiculoRetenido = datosReclamacionAut.get("vehiculoRetenido");
     this.autoridad = datosReclamacionAut.get("autoridad");
     this.culpabilidad = datosReclamacionAut.get("culpabilidad");
@@ -87,8 +87,8 @@ public class ReclamacionAuto extends Reclamacion {
     return descripcionHechos;
   }
 
-  public String getCausa() {
-    return causa;
+  public String getOrigenCausa() {
+    return OrigenCausa;
   }
 
   public String getVehiculoRetenido() {

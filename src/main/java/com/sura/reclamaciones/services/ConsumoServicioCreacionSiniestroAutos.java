@@ -19,10 +19,6 @@ public class ConsumoServicioCreacionSiniestroAutos {
   CreacionSiniestroAutosFactory creacionSiniestroAutosFactory = new CreacionSiniestroAutosFactory();
   CreacionSiniestroAutoCliente creacionSiniestroAutoCliente = new CreacionSiniestroAutoCliente();
   ClaimsAutoResponse response;
-  List<ReclamacionAuto> lstSiniestroParam;
-  List<PersonaReclamacionAuto> lstPersonaLesionada;
-  List<PersonaReclamacionAuto> lstConductor;
-  List<Vehiculo> lstVehiculoParam;
 
   @RequestMapping
   public void asignarParametrosRequest(
@@ -70,7 +66,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setIsSuspect(lstSiniestroParam.get(campoDato).getSospechoso());
     creacionSiniestroAutosFactory.setSuspectDesc(
         lstSiniestroParam.get(campoDato).getDescripcionSospecha());
-    creacionSiniestroAutosFactory.setOriginCause(lstSiniestroParam.get(campoDato).getCausa());
+    creacionSiniestroAutosFactory.setOriginCause(lstSiniestroParam.get(campoDato).getOrigenCausa());
     creacionSiniestroAutosFactory.setSegment(lstSiniestroParam.get(campoDato).getSegmento());
     creacionSiniestroAutosFactory.setAuthorityTransit(
         lstSiniestroParam.get(campoDato).getAutoridadTransito());
