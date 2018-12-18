@@ -52,7 +52,7 @@ public class ReclamacionDefinition {
   }
 
   @Entonces(
-      "^se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva, según la culpabilidad marcada Responsabilidad Civil$")
+      "^se obtendran exposiciones automaticas y cada una con su respectiva reserva, según la culpabilidad marcada Responsabilidad Civil$")
   public void generarReclamacionResponsabilidadCivil(DataTable reservas) throws IOException {
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
