@@ -24,7 +24,6 @@ public class CreacionSiniestroAutosFactory {
 
   private static final String ID_SERVICIO_CLAIM = "6";
   private static final String METHOD_CREATE_CLAIM = "createClaim";
-  private static final String LOSS_TYPE_AUTOS = "AUTO";
   private static final String JSONRPC_2 = "2.0";
 
   private String policyNumber;
@@ -110,6 +109,9 @@ public class CreacionSiniestroAutosFactory {
   private String taxIdAnt;
   private String emailAddress1Ant;
   private String cellNumberAnt;
+  private String lossType;
+  private boolean isSuspect;
+  private String suspectDesc;
 
   public String getPolicyNumber() {
     return policyNumber;
@@ -761,12 +763,32 @@ public class CreacionSiniestroAutosFactory {
     this.emailAddress1Ant = emailAddress1Ant;
   }
 
+  public void setLossType(String lossType){this.lossType = lossType;}
+
+  public String getLossType(){return lossType;}
+
   public String getCellNumberAnt() {
     return cellNumberAnt;
   }
 
   public void setCellNumberAnt(String cellNumberAnt) {
     this.cellNumberAnt = cellNumberAnt;
+  }
+
+  public boolean getIsSuspect() {
+    return isSuspect;
+  }
+
+  public void setIsSuspect(boolean isSuspect) {
+    this.isSuspect = isSuspect;
+  }
+
+  public String getSuspectDesc() {
+    return suspectDesc;
+  }
+
+  public void setSuspectDesc(String suspectDesc) {
+    this.suspectDesc = suspectDesc;
   }
 
   ClaimsAutoRequest creacionSiniestroAutoRequestFactory() {
@@ -807,7 +829,7 @@ public class CreacionSiniestroAutosFactory {
     parametro.setAuthor(authorFactory());
     parametro.setLossEstimate(lossEstimateFactory());
     parametro.setMainContact(mainContanctFactory());
-    parametro.setLossType(LOSS_TYPE_AUTOS);
+    parametro.setLossType(getLossType());
     parametro.setLobs(lobsFactory());
     parametro.setDescription(getDescription());
     parametro.setNotificationDate(getNotificationDate());
@@ -817,8 +839,8 @@ public class CreacionSiniestroAutosFactory {
     parametro.setLossLocation(lossLocationFactory());
     parametro.setMacaNumber(getMacaNumber());
     parametro.setFaultRating(getFaultRating());
-    parametro.setIsSuspect(false);
-    parametro.setSuspectDesc("");
+    parametro.setIsSuspect(getIsSuspect());
+    parametro.setSuspectDesc(getSuspectDesc());
     parametro.setOriginCause(getOriginCause());
     parametro.setSegment(getSegment());
     parametro.setAuthorityTransit(getAuthorityTransit());

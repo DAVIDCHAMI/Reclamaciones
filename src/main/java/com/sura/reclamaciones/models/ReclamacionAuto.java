@@ -28,6 +28,9 @@ public class ReclamacionAuto extends Reclamacion {
   private String tipoMoneda;
   private String tallerReparacion;
   private String partePerdida;
+  private String tipoPerdida;
+  private boolean sospechoso;
+  private String descripcionSospecha;
 
   private List<ReclamacionAuto> lstReclamacionAuto = new ArrayList<>();
 
@@ -59,6 +62,9 @@ public class ReclamacionAuto extends Reclamacion {
     this.tipoMoneda = datosReclamacionAut.get("tipoMoneda");
     this.tallerReparacion = datosReclamacionAut.get("tallerReparacion");
     this.partePerdida = datosReclamacionAut.get("partePerdida");
+    this.tipoPerdida = datosReclamacionAut.get("tipoPerdida");
+    this.sospechoso = Boolean.parseBoolean(datosReclamacionAut.get("sospechoso"));
+    this.descripcionSospecha = datosReclamacionAut.get("descripcionSospecha");
   }
 
   public ReclamacionAuto(List<Map<String, String>> datosReclamacionAut) {
@@ -188,6 +194,18 @@ public class ReclamacionAuto extends Reclamacion {
   public void setTipoDireccion(String tipoDireccion) {
     this.tipoDireccion = tipoDireccion;
   }
+
+  public String getTipoPerdida(){return  tipoPerdida;}
+
+  public void setTipoPerdida(String tipoPerdida){this.tipoPerdida = tipoPerdida;}
+
+  public boolean getSospechoso(){return sospechoso;}
+
+  public void setSospechoso(boolean tipoPerdida){this.sospechoso = sospechoso;}
+
+  public String getDescripcionSospecha(){return  descripcionSospecha;}
+
+  public void setDescripcionSospecha(String descripcionSospecha){this.descripcionSospecha = descripcionSospecha;}
 
   public List<ReclamacionAuto> getLstReclamacionAuto() {
     return lstReclamacionAuto;

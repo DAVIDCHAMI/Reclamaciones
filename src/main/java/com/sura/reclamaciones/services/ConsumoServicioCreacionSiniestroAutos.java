@@ -54,22 +54,19 @@ public class ConsumoServicioCreacionSiniestroAutos {
 
   private void asignarParametrosSiniestro(List<ReclamacionAuto> lstSiniestroParam) {
     creacionSiniestroAutosFactory.setPolicyNumber(lstSiniestroParam.get(campoDato).getNumPoliza());
-    creacionSiniestroAutosFactory.setAuthorUser(
-        lstSiniestroParam.get(campoDato).getIdentificacionAutor());
-    creacionSiniestroAutosFactory.setDescription(
-        lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
-    creacionSiniestroAutosFactory.setNotificationDate(
-        lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
     creacionSiniestroAutosFactory.setLossDate(lstSiniestroParam.get(campoDato).getFechaSiniestro());
-    creacionSiniestroAutosFactory.setLossCause(
-        lstSiniestroParam.get(campoDato).getCausaSiniestro());
+    creacionSiniestroAutosFactory.setNotificationDate(lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
+    creacionSiniestroAutosFactory.setLossType(lstSiniestroParam.get(campoDato).getTipoPerdida());
+    creacionSiniestroAutosFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaSiniestro());
+    creacionSiniestroAutosFactory.setDescription(lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
     creacionSiniestroAutosFactory.setMacaNumber(lstSiniestroParam.get(campoDato).getNumeroMaca());
-    creacionSiniestroAutosFactory.setFaultRating(
-        lstSiniestroParam.get(campoDato).getCodigoCulpabilidad());
+    creacionSiniestroAutosFactory.setFaultRating(lstSiniestroParam.get(campoDato).getCodigoCulpabilidad());
+    creacionSiniestroAutosFactory.setAuthorUser(lstSiniestroParam.get(campoDato).getIdentificacionAutor());
+    creacionSiniestroAutosFactory.setIsSuspect(lstSiniestroParam.get(campoDato).getSospechoso());
+    creacionSiniestroAutosFactory.setSuspectDesc(lstSiniestroParam.get(campoDato).getDescripcionSospecha());
     creacionSiniestroAutosFactory.setOriginCause(lstSiniestroParam.get(campoDato).getCausa());
     creacionSiniestroAutosFactory.setSegment(lstSiniestroParam.get(campoDato).getSegmento());
-    creacionSiniestroAutosFactory.setAuthorityTransit(
-        lstSiniestroParam.get(campoDato).getAutoridadTransito());
+    creacionSiniestroAutosFactory.setAuthorityTransit(lstSiniestroParam.get(campoDato).getAutoridadTransito());
   }
 
   private void asignarParametrosAutor(List<PersonaConductorAuto> lstConductor) {
