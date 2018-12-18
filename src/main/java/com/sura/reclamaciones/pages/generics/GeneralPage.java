@@ -65,20 +65,9 @@ public class GeneralPage extends PageObject {
   private String tblTransaccion =
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
-  @FindBy(xpath = "//table[@class='datePickerMonthSelector']//td[2]//div[@class='html-face']")
-  private WebElementFacade btnMesPrevio;
-
-  @FindBy(xpath = "//table[@class='datePickerMonthSelector']//td[4]//div[@class='html-face']")
-  private WebElementFacade btnMesPosterior;
-
-  @FindBy(xpath = "//table[@class='datePickerMonthSelector']//td[1]//div[@class='html-face']")
-  private WebElementFacade btnAnioPrevio;
-
-  @FindBy(xpath = "//table[@class='datePickerMonthSelector']//td[5]//div[@class='html-face']")
-  private WebElementFacade btnAnioPosterior;
-
   private String lstDinamico = "//li[.='COMODIN']";
-  private String auxLstUbicacion = "";
+  private String btnCambioMesAnio = "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
+  private String auxiliarReemplazo = "";
   private String diaMes =
       "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
   private String auxMes = "";
@@ -87,7 +76,7 @@ public class GeneralPage extends PageObject {
 
   protected WebDriver driver;
 
-  Map<String, Integer> map = new HashMap<String, Integer>();
+
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
@@ -201,8 +190,8 @@ public class GeneralPage extends PageObject {
     mnuDinamico
         .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
         .click();
-    auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
-    $(auxLstUbicacion).click();
+    auxiliarReemplazo = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
+    $(auxiliarReemplazo).click();
     realizarEsperaCarga();
   }
 
@@ -237,13 +226,13 @@ public class GeneralPage extends PageObject {
     return lstFila;
   }
 
-  public void enfocarVentana() {
+  public void enfocarVistaAutomatizacion() {
     for (String ventana : driver.getWindowHandles()) {
       driver.switchTo().window(ventana);
     }
   }
 
-  public void seleccionarDiaCalendarioAtr(String diaUsuario) {
+  public void seleccionarDiaCalendario(String diaUsuario) {
     auxMes = diaMes.replace(ConstanteGlobal.COMODIN, diaUsuario);
     $(auxMes).click();
   }
@@ -251,8 +240,9 @@ public class GeneralPage extends PageObject {
   public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
     int buscadorValor = valorMesActual - valorMesAnterior;
     int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN,"2");
     while (numeroClick < buscadorValor) {
-      btnMesPrevio.waitUntilVisible().click();
+      $(auxiliarReemplazo).waitUntilVisible().click();
       numeroClick++;
     }
   }
@@ -260,8 +250,9 @@ public class GeneralPage extends PageObject {
   public void seleecionarMesPosterior(int valorMesPosterior, int valorMesActual) {
     int buscadorValor = valorMesPosterior - valorMesActual;
     int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN,"4");
     while (numeroClick < buscadorValor) {
-      btnMesPosterior.waitUntilVisible().click();
+      $(auxiliarReemplazo).waitUntilVisible().click();
       numeroClick++;
     }
   }
@@ -269,8 +260,9 @@ public class GeneralPage extends PageObject {
   public void seleccionarAnioAnterior(int valorAnioAnterior, int valorAnioActual) {
     int buscadorValor = valorAnioActual - valorAnioAnterior;
     int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN,"1");
     while (numeroClick < buscadorValor) {
-      btnAnioPrevio.waitUntilVisible().click();
+      $(auxiliarReemplazo).waitUntilVisible().click();
       numeroClick++;
     }
   }
@@ -278,45 +270,14 @@ public class GeneralPage extends PageObject {
   public void seleccionarAnioPosterior(int valorAnioPosterior, int valorAnioActual) {
     int buscadorValor = valorAnioPosterior - valorAnioActual;
     int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN,"5");
     while (numeroClick < buscadorValor) {
-      btnAnioPosterior.waitUntilVisible().click();
+      $(auxiliarReemplazo).waitUntilVisible().click();
       numeroClick++;
     }
   }
 
-  public int valorarMes(String mes) {
-    map.put("Jan", 1);
-    map.put("Ene", 1);
-    map.put("Enero", 1);
-    map.put("Feb", 2);
-    map.put("Febrero", 2);
-    map.put("Mar", 3);
-    map.put("Marzo", 3);
-    map.put("Apr", 4);
-    map.put("Abr", 4);
-    map.put("Abril", 4);
-    map.put("May", 5);
-    map.put("Mayo", 5);
-    map.put("Jun", 6);
-    map.put("Junio", 6);
-    map.put("Jul", 7);
-    map.put("Julio", 7);
-    map.put("Aug", 8);
-    map.put("Ago", 8);
-    map.put("Agosto", 8);
-    map.put("Sep", 9);
-    map.put("Septiembre", 9);
-    map.put("Oct", 10);
-    map.put("Octubre", 10);
-    map.put("Nov", 11);
-    map.put("Noviembre", 11);
-    map.put("Dec", 12);
-    map.put("Dic", 12);
-    map.put("Diciembre", 12);
-    return map.get(mes);
-  }
 
-  public int valorarAnio(String anio) {
-    return Integer.parseInt(anio);
-  }
+
+
 }

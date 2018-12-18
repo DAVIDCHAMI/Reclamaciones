@@ -1,7 +1,10 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
+import static com.sura.reclamaciones.utils.Utilidades.*;
+
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.utils.Utilidades;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.annotation.Page;
@@ -128,24 +131,24 @@ public class InformacionBasicaPage extends GeneralPage {
     if ("0".equalsIgnoreCase(diaUsuario.substring(0, 1))) {
       diaUsuario = diaUsuario.substring(1, 2);
     }
-    int valorMesCalendarioAtr = generalPage.valorarMes(mesCalendarioAtr);
-    int valorMesUsuario = generalPage.valorarMes(mesUsuario);
-    int valorAnioCalendarioAtr = valorarAnio(anioCalendarioAtr);
-    int valorAnioUsuario = valorarAnio(anioUsuario);
+    int valorMesCalendarioAtr = Utilidades.valorarMes(mesCalendarioAtr);
+    int valorMesUsuario = Utilidades.valorarMes(mesUsuario);
+    int valorAnioCalendarioAtr = Utilidades.conversorCadenaEntero(anioCalendarioAtr);
+    int valorAnioUsuario = Utilidades.conversorCadenaEntero(anioUsuario);
     if (valorAnioUsuario < valorAnioCalendarioAtr) {
       seleccionarAnioAnterior(valorAnioUsuario, valorAnioCalendarioAtr);
     } else if (valorAnioUsuario > valorAnioCalendarioAtr) {
       seleccionarAnioPosterior(valorAnioUsuario, valorAnioCalendarioAtr);
     }
     if (valorMesUsuario == valorMesCalendarioAtr) {
-      seleccionarDiaCalendarioAtr(diaUsuario);
+      seleccionarDiaCalendario(diaUsuario);
     }
     if (valorMesUsuario < valorMesCalendarioAtr) {
       seleccionarMesAnterior(valorMesUsuario, valorMesCalendarioAtr);
-      seleccionarDiaCalendarioAtr(diaUsuario);
+      seleccionarDiaCalendario(diaUsuario);
     } else {
       seleecionarMesPosterior(valorMesUsuario, valorMesCalendarioAtr);
-      seleccionarDiaCalendarioAtr(diaUsuario);
+      seleccionarDiaCalendario(diaUsuario);
     }
   }
 }

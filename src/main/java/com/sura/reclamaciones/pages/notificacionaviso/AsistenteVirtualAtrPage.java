@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 public class AsistenteVirtualAtrPage extends GeneralPage {
 
   private String mnuAsistenteVirtual = "//span[contains(text(),'COMODIN')]";
-  private String auxMnuAsistenteVirtual = "";
+  private String auxiliarMnuAsistenteVirtual = "";
 
   @FindBy(xpath = "//img[@title='Asistente Virtual']")
   private WebElementFacade bntAsistenteVirtual;
@@ -39,27 +39,27 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
     super(driver);
   }
 
-  public void accederHerramientaAvisoEmpresa() {
+  public void accederAvisoEmpresa() {
     bntAsistenteVirtual.waitUntilVisible().click();
-    enfocarVentana();
+    enfocarVistaAutomatizacion();
     btnCerrarTour.waitUntilVisible().click();
-    auxMnuAsistenteVirtual =
+    auxiliarMnuAsistenteVirtual =
         mnuAsistenteVirtual.replace(
             ConstanteGlobal.COMODIN, ReclamacionConstante.ASISTENTE_VIRTUAL);
-    $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual =
+    $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
+    auxiliarMnuAsistenteVirtual =
         mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.HERRAMIENTAS);
-    $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual =
+    $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
+    auxiliarMnuAsistenteVirtual =
         mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.RECLAMACIONES);
-    $(auxMnuAsistenteVirtual).waitUntilVisible().click();
-    auxMnuAsistenteVirtual =
+    $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
+    auxiliarMnuAsistenteVirtual =
         mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.EMPRESAS);
-    $(auxMnuAsistenteVirtual).waitUntilVisible().click();
+    $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
   }
 
   public void seleccionarPlanListaProducto() {
-    enfocarVentana();
+    enfocarVistaAutomatizacion();
     lstProducto.waitUntilVisible().click();
     mnuOtroProducto.waitUntilVisible().click();
     btnAceptar.waitUntilVisible().click();

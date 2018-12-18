@@ -21,7 +21,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
 
   @Step
   public void diligenciarInformacionAsegurado(List<Persona> datosPersona) {
-    asistenteVirtualAtrPage.accederHerramientaAvisoEmpresa();
+    asistenteVirtualAtrPage.accederAvisoEmpresa();
     asistenteVirtualAtrPage.seleccionarPlanListaProducto();
     datosPersona.forEach(
         asegurado -> {

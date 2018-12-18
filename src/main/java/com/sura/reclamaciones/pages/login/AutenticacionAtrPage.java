@@ -43,7 +43,7 @@ public class AutenticacionAtrPage extends GeneralPage {
   @FindBy(xpath = "//option[@value='C']")
   private WebElementFacade lstCedula;
 
-  @FindBy(xpath = "//table[@width='36%']")
+  @FindBy(xpath = "//table[@class='bkgTeclado']//table//table")
   private WebElementFacade tblNumeros;
 
   @FindBy(xpath = "//img[@src='/SSAutenticacion/imagenes/btnIngresar.jpg']")
