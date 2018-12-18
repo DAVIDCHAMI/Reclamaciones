@@ -43,7 +43,7 @@ public class ReclamacionAuto extends Reclamacion {
     this.fechaNotificacionSiniestro = datosReclamacionAut.get("fechaNotificacionSiniestro");
     this.relacionAsegurado = datosReclamacionAut.get("relacionAsegurado");
     this.descripcionHechos = datosReclamacionAut.get("descripcionHechos");
-    this.causa = datosReclamacionAut.get("causa");
+    this.causa = datosReclamacionAut.get("origenCausa");
     this.vehiculoRetenido = datosReclamacionAut.get("vehiculoRetenido");
     this.autoridad = datosReclamacionAut.get("autoridad");
     this.culpabilidad = datosReclamacionAut.get("culpabilidad");
@@ -195,17 +195,29 @@ public class ReclamacionAuto extends Reclamacion {
     this.tipoDireccion = tipoDireccion;
   }
 
-  public String getTipoPerdida(){return  tipoPerdida;}
+  public String getTipoPerdida() {
+    return tipoPerdida;
+  }
 
-  public void setTipoPerdida(String tipoPerdida){this.tipoPerdida = tipoPerdida;}
+  public void setTipoPerdida(String tipoPerdida) {
+    this.tipoPerdida = tipoPerdida;
+  }
 
-  public boolean getSospechoso(){return sospechoso;}
+  public boolean getSospechoso() {
+    return sospechoso;
+  }
 
-  public void setSospechoso(boolean tipoPerdida){this.sospechoso = sospechoso;}
+  public void setSospechoso(boolean tipoPerdida) {
+    this.sospechoso = sospechoso;
+  }
 
-  public String getDescripcionSospecha(){return  descripcionSospecha;}
+  public String getDescripcionSospecha() {
+    return descripcionSospecha;
+  }
 
-  public void setDescripcionSospecha(String descripcionSospecha){this.descripcionSospecha = descripcionSospecha;}
+  public void setDescripcionSospecha(String descripcionSospecha) {
+    this.descripcionSospecha = descripcionSospecha;
+  }
 
   public List<ReclamacionAuto> getLstReclamacionAuto() {
     return lstReclamacionAuto;

@@ -32,7 +32,8 @@ public class ConsumoServicioCreacionAvisoAutoStep {
 
   @Step
   public void siniestrarPolizaAutos() {
-    consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
+    consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
+        lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
   }
 
   @Step
@@ -43,9 +44,7 @@ public class ConsumoServicioCreacionAvisoAutoStep {
                 ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA, "lesionado"));
     lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacionAuto();
     parametroPersonaConductorAuto =
-        new PersonaConductorAuto(
-            genericStep.getFilasModelo(
-                "persona_conductor", "conductor"));
+        new PersonaConductorAuto(genericStep.getFilasModelo("persona_conductor", "conductor"));
     lstConductor = parametroPersonaConductorAuto.getLstPersonaConductorAuto();
     reclamacionVehiculo =
         new Vehiculo(

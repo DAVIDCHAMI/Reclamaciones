@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PersonaConductorAuto extends Persona{
+public class PersonaConductorAuto extends Persona {
 
   private String numeroTrabajo;
   private String policyRole;

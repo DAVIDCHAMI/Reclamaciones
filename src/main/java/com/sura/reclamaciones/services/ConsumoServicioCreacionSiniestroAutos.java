@@ -55,18 +55,25 @@ public class ConsumoServicioCreacionSiniestroAutos {
   private void asignarParametrosSiniestro(List<ReclamacionAuto> lstSiniestroParam) {
     creacionSiniestroAutosFactory.setPolicyNumber(lstSiniestroParam.get(campoDato).getNumPoliza());
     creacionSiniestroAutosFactory.setLossDate(lstSiniestroParam.get(campoDato).getFechaSiniestro());
-    creacionSiniestroAutosFactory.setNotificationDate(lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
+    creacionSiniestroAutosFactory.setNotificationDate(
+        lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
     creacionSiniestroAutosFactory.setLossType(lstSiniestroParam.get(campoDato).getTipoPerdida());
-    creacionSiniestroAutosFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaSiniestro());
-    creacionSiniestroAutosFactory.setDescription(lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
+    creacionSiniestroAutosFactory.setLossCause(
+        lstSiniestroParam.get(campoDato).getCausaSiniestro());
+    creacionSiniestroAutosFactory.setDescription(
+        lstSiniestroParam.get(campoDato).getDescripcionHechosSiniestro());
     creacionSiniestroAutosFactory.setMacaNumber(lstSiniestroParam.get(campoDato).getNumeroMaca());
-    creacionSiniestroAutosFactory.setFaultRating(lstSiniestroParam.get(campoDato).getCodigoCulpabilidad());
-    creacionSiniestroAutosFactory.setAuthorUser(lstSiniestroParam.get(campoDato).getIdentificacionAutor());
+    creacionSiniestroAutosFactory.setFaultRating(
+        lstSiniestroParam.get(campoDato).getCodigoCulpabilidad());
+    creacionSiniestroAutosFactory.setAuthorUser(
+        lstSiniestroParam.get(campoDato).getIdentificacionAutor());
     creacionSiniestroAutosFactory.setIsSuspect(lstSiniestroParam.get(campoDato).getSospechoso());
-    creacionSiniestroAutosFactory.setSuspectDesc(lstSiniestroParam.get(campoDato).getDescripcionSospecha());
+    creacionSiniestroAutosFactory.setSuspectDesc(
+        lstSiniestroParam.get(campoDato).getDescripcionSospecha());
     creacionSiniestroAutosFactory.setOriginCause(lstSiniestroParam.get(campoDato).getCausa());
     creacionSiniestroAutosFactory.setSegment(lstSiniestroParam.get(campoDato).getSegmento());
-    creacionSiniestroAutosFactory.setAuthorityTransit(lstSiniestroParam.get(campoDato).getAutoridadTransito());
+    creacionSiniestroAutosFactory.setAuthorityTransit(
+        lstSiniestroParam.get(campoDato).getAutoridadTransito());
   }
 
   private void asignarParametrosAutor(List<PersonaConductorAuto> lstConductor) {
@@ -135,7 +142,8 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstConductor.get(campoDato).getSegundoNombre());
     creacionSiniestroAutosFactory.setLastNameDriver(
         lstConductor.get(campoDato).getPrimerApellido());
-    creacionSiniestroAutosFactory.setSecondLastNameDriver(lstConductor.get(campoDato).getSegundoApellido());
+    creacionSiniestroAutosFactory.setSecondLastNameDriver(
+        lstConductor.get(campoDato).getSegundoApellido());
     creacionSiniestroAutosFactory.setWorkNumberDriver(
         lstConductor.get(campoDato).getNumeroTrabajo());
     creacionSiniestroAutosFactory.setCellNumberDriver(lstConductor.get(campoDato).getCelular());
@@ -154,7 +162,8 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setCityDriver(lstConductor.get(campoDato).getCiudad());
   }
 
-  private void asignarParametrosDireccionContactoPrincipal(List<ReclamacionAuto> lstSiniestroParam) {
+  private void asignarParametrosDireccionContactoPrincipal(
+      List<ReclamacionAuto> lstSiniestroParam) {
     creacionSiniestroAutosFactory.setAddressLine1MainContact(
         lstSiniestroParam.get(campoDato).getDireccion());
     creacionSiniestroAutosFactory.setAddressTypeMainContact(
@@ -163,14 +172,17 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosVehiculo(List<Vehiculo> lstVehiculoParam) {
-    creacionSiniestroAutosFactory.setLicensePlateVehicle(lstVehiculoParam.get(campoDato).getPlaca());
+    creacionSiniestroAutosFactory.setLicensePlateVehicle(
+        lstVehiculoParam.get(campoDato).getPlaca());
     creacionSiniestroAutosFactory.setMakeVehicle(lstVehiculoParam.get(campoDato).getMarca());
     creacionSiniestroAutosFactory.setModelVehicle(lstVehiculoParam.get(campoDato).getModelo());
-    creacionSiniestroAutosFactory.setEngineNumberVehicle(lstVehiculoParam.get(campoDato).getMotor());
+    creacionSiniestroAutosFactory.setEngineNumberVehicle(
+        lstVehiculoParam.get(campoDato).getMotor());
     creacionSiniestroAutosFactory.setYearVehicle(lstVehiculoParam.get(campoDato).getAnio());
     creacionSiniestroAutosFactory.setColorVehicle(lstVehiculoParam.get(campoDato).getColor());
     creacionSiniestroAutosFactory.setVehicleType(lstVehiculoParam.get(campoDato).getTipoVehiculo());
-    creacionSiniestroAutosFactory.setFasecoldaCode(lstVehiculoParam.get(campoDato).getCodigoFasecolda());
+    creacionSiniestroAutosFactory.setFasecoldaCode(
+        lstVehiculoParam.get(campoDato).getCodigoFasecolda());
     creacionSiniestroAutosFactory.setVinVehicle(lstVehiculoParam.get(campoDato).getChasis());
   }
 
@@ -207,7 +219,8 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstPersonaLesionada.get(campoDato).getPrimerNombre());
     creacionSiniestroAutosFactory.setMiddleNameInjured(
         lstPersonaLesionada.get(campoDato).getSegundoNombre());
-    creacionSiniestroAutosFactory.setLastNameInjured(lstPersonaLesionada.get(campoDato).getPrimerApellido());
+    creacionSiniestroAutosFactory.setLastNameInjured(
+        lstPersonaLesionada.get(campoDato).getPrimerApellido());
     creacionSiniestroAutosFactory.setSecondLastNameInjured(
         lstPersonaLesionada.get(campoDato).getSegundoApellido());
     creacionSiniestroAutosFactory.setWorkNumberInjured(
@@ -222,9 +235,11 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstPersonaLesionada.get(campoDato).getNumDocumento());
   }
 
-  private void agregarDireccionLesionado(List<ReclamacionAuto> lstSiniestroParam){
-    creacionSiniestroAutosFactory.setAddressLine1Injured(lstSiniestroParam.get(campoDato).getDireccion());
-    creacionSiniestroAutosFactory.setAddressTypeInjured(lstSiniestroParam.get(campoDato).getTipoDireccion());
+  private void agregarDireccionLesionado(List<ReclamacionAuto> lstSiniestroParam) {
+    creacionSiniestroAutosFactory.setAddressLine1Injured(
+        lstSiniestroParam.get(campoDato).getDireccion());
+    creacionSiniestroAutosFactory.setAddressTypeInjured(
+        lstSiniestroParam.get(campoDato).getTipoDireccion());
     creacionSiniestroAutosFactory.setCityInjured(lstSiniestroParam.get(campoDato).getCiudad());
   }
 
@@ -240,9 +255,11 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstPersonaLesionada.get(campoDato).getDetalleParteCuerpo());
   }
 
-  private void asignarParametrosDireccionSiniestro(List<ReclamacionAuto> lstSiniestroParam){
-    creacionSiniestroAutosFactory.setCountryLossLocation(lstSiniestroParam.get(campoDato).getPais());
-    creacionSiniestroAutosFactory.setAddressLine1LossLocation(lstSiniestroParam.get(campoDato).getDireccion());
+  private void asignarParametrosDireccionSiniestro(List<ReclamacionAuto> lstSiniestroParam) {
+    creacionSiniestroAutosFactory.setCountryLossLocation(
+        lstSiniestroParam.get(campoDato).getPais());
+    creacionSiniestroAutosFactory.setAddressLine1LossLocation(
+        lstSiniestroParam.get(campoDato).getDireccion());
     creacionSiniestroAutosFactory.setCityLossLocation(lstSiniestroParam.get(campoDato).getCiudad());
   }
 

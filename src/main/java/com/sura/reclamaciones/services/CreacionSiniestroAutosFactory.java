@@ -18,6 +18,7 @@ import com.sura.service.creacionSiniestroAuto.gen.PrimaryAddress__;
 import com.sura.service.creacionSiniestroAuto.gen.Vehicle;
 import com.sura.service.creacionSiniestroAuto.gen.VehicleIncident;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CreacionSiniestroAutosFactory {
@@ -29,6 +30,7 @@ public class CreacionSiniestroAutosFactory {
   private String policyNumber;
   private String description;
   private String notificationDate;
+  private String lossType;
   private String lossDate;
   private String authorUser;
   private String lossCause;
@@ -109,7 +111,6 @@ public class CreacionSiniestroAutosFactory {
   private String taxIdAnt;
   private String emailAddress1Ant;
   private String cellNumberAnt;
-  private String lossType;
   private boolean isSuspect;
   private String suspectDesc;
 
@@ -393,9 +394,13 @@ public class CreacionSiniestroAutosFactory {
     this.lastNameDriver = lastNameDriver;
   }
 
-  public void setSecondLastNameDriver(String secondLastNameDriver){this.secondLastNameDriver = secondLastNameDriver;}
+  public void setSecondLastNameDriver(String secondLastNameDriver) {
+    this.secondLastNameDriver = secondLastNameDriver;
+  }
 
-  public String getSecondLastNameDriver(){return secondLastNameDriver;}
+  public String getSecondLastNameDriver() {
+    return secondLastNameDriver;
+  }
 
   public String getWorkNumberDriver() {
     return workNumberDriver;
@@ -597,9 +602,11 @@ public class CreacionSiniestroAutosFactory {
     this.middleNameInjured = middleNameInjured;
   }
 
-  public String getLastNameInjured(){return lastNameInjured;}
+  public String getLastNameInjured() {
+    return lastNameInjured;
+  }
 
-  public void setLastNameInjured(String lastNameInjured){
+  public void setLastNameInjured(String lastNameInjured) {
     this.lastNameInjured = lastNameInjured;
   }
 
@@ -763,9 +770,13 @@ public class CreacionSiniestroAutosFactory {
     this.emailAddress1Ant = emailAddress1Ant;
   }
 
-  public void setLossType(String lossType){this.lossType = lossType;}
+  public void setLossType(String lossType) {
+    this.lossType = lossType;
+  }
 
-  public String getLossType(){return lossType;}
+  public String getLossType() {
+    return lossType;
+  }
 
   public String getCellNumberAnt() {
     return cellNumberAnt;
@@ -826,23 +837,23 @@ public class CreacionSiniestroAutosFactory {
 
   Parametros paramAutoFactory() {
     Parametros parametro = new Parametros();
-    parametro.setAuthor(authorFactory());
-    parametro.setLossEstimate(lossEstimateFactory());
-    parametro.setMainContact(mainContanctFactory());
-    parametro.setLossType(getLossType());
-    parametro.setLobs(lobsFactory());
-    parametro.setDescription(getDescription());
-    parametro.setNotificationDate(getNotificationDate());
     parametro.setLossDate(getLossDate());
-    parametro.setAuthorUser(getAuthorUser());
+    parametro.setNotificationDate(getNotificationDate());
+    parametro.setLossType(getLossType());
     parametro.setLossCause(getLossCause());
+    parametro.setLobs(lobsFactory());
+    parametro.setMainContact(mainContanctFactory());
     parametro.setLossLocation(lossLocationFactory());
+    parametro.setDescription(getDescription());
     parametro.setMacaNumber(getMacaNumber());
     parametro.setFaultRating(getFaultRating());
+    parametro.setLossEstimate(lossEstimateFactory());
+    parametro.setAuthorUser(getAuthorUser());
     parametro.setIsSuspect(getIsSuspect());
     parametro.setSuspectDesc(getSuspectDesc());
     parametro.setOriginCause(getOriginCause());
     parametro.setSegment(getSegment());
+    parametro.setAuthor(authorFactory());
     parametro.setAuthorityTransit(getAuthorityTransit());
     return parametro;
   }
@@ -896,6 +907,7 @@ public class CreacionSiniestroAutosFactory {
     PersonalAuto personalAuto = new PersonalAuto();
     personalAuto.setVehicleIncidents(listVehicleIncidentsFactory());
     personalAuto.setInjuryIncident(listInjuryIncidentFactory());
+    personalAuto.setFixedPropertyIncident(Collections.emptyList());
     return personalAuto;
   }
 
