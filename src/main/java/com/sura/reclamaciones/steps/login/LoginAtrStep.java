@@ -13,8 +13,7 @@ import net.thucydides.core.annotations.Steps;
 import org.fluentlenium.core.annotation.Page;
 
 public class LoginAtrStep {
-  @Page
-  AutenticacionAtrPage autenticacionAtrPage;
+  @Page AutenticacionAtrPage autenticacionAtrPage;
   @Steps Credencial credencial;
   @Steps GenericStep genericStep;
 
@@ -33,7 +32,7 @@ public class LoginAtrStep {
   }
 
   @Step
-  public void iniciarSesionLab(String analista) throws IOException {
+  public void obtenerCredenciales(String analista) throws IOException {
     credencial = new Credencial(genericStep.getFilasModelo("credencial", analista));
     abrirClaims();
     iniciarSesionUAT(credencial.getCredenciales());

@@ -7,7 +7,6 @@ import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresa
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
-
 import net.thucydides.core.annotations.Steps;
 
 public class NotificacionAvisoSiniestroAtrDefinition {
@@ -20,6 +19,7 @@ public class NotificacionAvisoSiniestroAtrDefinition {
   public void diligenciarInformacionAsegurado(String cobertura) throws Throwable {
     Persona aseguradoAtr =
         new Persona(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
+    nuevaReclamacionAtrEmpresarialStep.accederAvisoAtr();
     nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionAsegurado(
         aseguradoAtr.getLstPersona());
   }

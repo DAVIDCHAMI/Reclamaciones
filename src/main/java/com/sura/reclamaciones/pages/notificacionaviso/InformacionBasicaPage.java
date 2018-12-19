@@ -7,7 +7,7 @@ import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Utilidades;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.fluentlenium.core.annotation.Page;
+
 import org.openqa.selenium.WebDriver;
 
 public class InformacionBasicaPage extends GeneralPage {
@@ -80,8 +80,6 @@ public class InformacionBasicaPage extends GeneralPage {
 
   @FindBy(className = "datePickerMonth")
   private WebElementFacade indicadorAnioMes;
-
-  @Page GeneralPage generalPage;
 
   public InformacionBasicaPage(WebDriver driver) {
     super(driver);

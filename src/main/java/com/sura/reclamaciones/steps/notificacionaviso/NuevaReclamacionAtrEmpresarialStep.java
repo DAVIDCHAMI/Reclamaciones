@@ -14,14 +14,23 @@ import org.slf4j.LoggerFactory;
 public class NuevaReclamacionAtrEmpresarialStep {
 
   @Page AsistenteVirtualAtrPage asistenteVirtualAtrPage;
+
   @Page BuscarPolizaPage buscarPolizaPage;
+
   @Page InformacionBasicaPage informacionBasicaPage;
+
   @Page InformacionReclamacionPage informacionReclamacionPage;
+
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   @Step
-  public void diligenciarInformacionAsegurado(List<Persona> datosPersona) {
+  public void accederAvisoAtr() {
+    asistenteVirtualAtrPage.accederAsistenteVirtual();
     asistenteVirtualAtrPage.accederAvisoEmpresa();
+  }
+
+  @Step
+  public void diligenciarInformacionAsegurado(List<Persona> datosPersona) {
     asistenteVirtualAtrPage.seleccionarPlanListaProducto();
     datosPersona.forEach(
         asegurado -> {

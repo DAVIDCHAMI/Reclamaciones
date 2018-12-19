@@ -138,7 +138,7 @@ public class BuscarPolizaPage extends GeneralPage {
   }
 
   public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr) {
-    enfocarVentana();
+    enfocarVistaAutomatizacion();
     txtTipoDocumentoAsegurado.waitUntilVisible().click();
     auxMnuTipoDocumentoAtr = mnuTipoDocumentoAtr.replace(ConstanteGlobal.COMODIN, tipoDocumentoAtr);
     $(auxMnuTipoDocumentoAtr).click();

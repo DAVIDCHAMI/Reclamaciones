@@ -60,5 +60,4 @@ public class Utilidades {
   public static int conversorCadenaEntero(String cadena) {
     return Integer.parseInt(cadena);
   }
-
 }

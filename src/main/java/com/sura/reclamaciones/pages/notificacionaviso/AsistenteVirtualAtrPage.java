@@ -39,10 +39,15 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
     super(driver);
   }
 
-  public void accederAvisoEmpresa() {
+  public void accederAsistenteVirtual() {
     bntAsistenteVirtual.waitUntilVisible().click();
     enfocarVistaAutomatizacion();
-    btnCerrarTour.waitUntilVisible().click();
+  }
+
+  public void accederAvisoEmpresa() {
+    if (btnCerrarTour.isVisible()) {
+      btnCerrarTour.click();
+    }
     auxiliarMnuAsistenteVirtual =
         mnuAsistenteVirtual.replace(
             ConstanteGlobal.COMODIN, ReclamacionConstante.ASISTENTE_VIRTUAL);

@@ -37,7 +37,7 @@ public class SetupStory {
   @Before("@ATR")
   public void seleccionarAmbienteATR() throws IOException {
     if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
-      loginAtrStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_ATR);
+      loginAtrStep.obtenerCredenciales(ConstanteGlobal.ANALISTA_RECLAMACION_ATR);
     }
   }
 }

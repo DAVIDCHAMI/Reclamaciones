@@ -5,9 +5,7 @@ import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.Tablas;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -66,7 +64,8 @@ public class GeneralPage extends PageObject {
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   private String lstDinamico = "//li[.='COMODIN']";
-  private String btnCambioMesAnio = "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
+  private String btnCambioMesAnio =
+      "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
   private String auxiliarReemplazo = "";
   private String diaMes =
       "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
@@ -75,8 +74,6 @@ public class GeneralPage extends PageObject {
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   protected WebDriver driver;
-
-
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
@@ -240,7 +237,7 @@ public class GeneralPage extends PageObject {
   public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
     int buscadorValor = valorMesActual - valorMesAnterior;
     int numeroClick = 0;
-    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN,"2");
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "2");
     while (numeroClick < buscadorValor) {
       $(auxiliarReemplazo).waitUntilVisible().click();
       numeroClick++;
@@ -250,7 +247,7 @@ public class GeneralPage extends PageObject {
   public void seleecionarMesPosterior(int valorMesPosterior, int valorMesActual) {
     int buscadorValor = valorMesPosterior - valorMesActual;
     int numeroClick = 0;
-    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN,"4");
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "4");
     while (numeroClick < buscadorValor) {
       $(auxiliarReemplazo).waitUntilVisible().click();
       numeroClick++;
@@ -260,7 +257,7 @@ public class GeneralPage extends PageObject {
   public void seleccionarAnioAnterior(int valorAnioAnterior, int valorAnioActual) {
     int buscadorValor = valorAnioActual - valorAnioAnterior;
     int numeroClick = 0;
-    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN,"1");
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "1");
     while (numeroClick < buscadorValor) {
       $(auxiliarReemplazo).waitUntilVisible().click();
       numeroClick++;
@@ -270,14 +267,10 @@ public class GeneralPage extends PageObject {
   public void seleccionarAnioPosterior(int valorAnioPosterior, int valorAnioActual) {
     int buscadorValor = valorAnioPosterior - valorAnioActual;
     int numeroClick = 0;
-    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN,"5");
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "5");
     while (numeroClick < buscadorValor) {
       $(auxiliarReemplazo).waitUntilVisible().click();
       numeroClick++;
     }
   }
-
-
-
-
 }
