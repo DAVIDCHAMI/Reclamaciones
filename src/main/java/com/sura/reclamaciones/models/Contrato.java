@@ -20,7 +20,7 @@ public class Contrato {
     this.nombreContrato = datosReaseguro.get("nombreContrato");
     this.deducibleMinimo = datosReaseguro.get("deducibleMinimo");
     this.porcentajeDeducibleMinimo = datosReaseguro.get("porcentajeDeducibleminimo");
-    this.porcentajeRetenido =datosReaseguro.get("porcentajeRetenido");
+    this.porcentajeRetenido = datosReaseguro.get("porcentajeRetenido");
   }
 
   public Contrato(List<Map<String, String>> datosContrato) {
@@ -51,7 +51,9 @@ public class Contrato {
     return porcentajeDeducibleMinimo;
   }
 
-  public String getPorcentajeRetenido(){return porcentajeRetenido;}
+  public String getPorcentajeRetenido() {
+    return porcentajeRetenido;
+  }
 
   private void asignarDatos(List<Map<String, String>> datosContrato) {
     for (Map<String, String> dato : datosContrato) {

@@ -6,7 +6,7 @@ Característica: Distribucion del reaseguro de un siniestro
   Quiero conocer la distribucion que tiene el reaseguro de un siniestro en cada movimiento financiero
   Para identificar el monto de los valores que corresponden a los diferentes reaseguradores de acuerdo a los contratos adquiridos con la compañía
 
-# @claimsEmpresarial
+ @claimsEmpresarial
 #  Esquema del escenario: Reaseguro de Constitucion de reserva - creación reserva
 #    Cuando se genere una reclamacion de un contrato tipo <Tipo Contrato Poliza>
 #    Entonces para la transaccion <Tipo Transaccion> se distribuye el reaseguro segun el retenido y el cedido de manera adecuada
@@ -24,6 +24,6 @@ Característica: Distribucion del reaseguro de un siniestro
 
   Ejemplos:
     | Tipo Contrato Poliza |  lineaReserva           | tipoPago | beneficiarioPago                    | metodoPago | soloSura | codigoRetencion |Tipo Transaccion   | Tipo Contrato 1       | Tipo Contrato 2       |
-    | MRC_01               | (1) 1ª parteContenido   | Final    |  PISOS Y MAS PISOS LTDA. CQLII      | Caja Sura  | No       | 0099            | reservaLiberacion | primeraTx18T03AH030EX | primeraTx18T03AH030CP |
+    | MRC_01               | (1) 1ª parteContenido   | Final    |  SOLO FAMILIAR LTDA. CQLII          | Caja Sura  | No       | 0099            | reservaLiberacion | primeraTx18T03AH030EX | primeraTx18T03AH030CP |
 
 

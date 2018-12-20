@@ -8,8 +8,8 @@ import static java.lang.Math.abs;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
-import cucumber.api.java.eo.Do;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -54,7 +54,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   }
 
   public boolean verificarRetenido(
-      String strPorcentajeRetenido, String strDeducible,
+      String strPorcentajeRetenido,
+      String strDeducible,
       String strPorcentajeDeducible,
       String strProporcionCuotaParte) {
     List<WebElement> lstReaseguroDetallado =
@@ -68,7 +69,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     Double dblValorRetenido =
         calcularRetenido(strValorReasegurado, strPorcentajeRetenido, strProporcionCuotaParte);
     Double dblValorRetenidoDeducible =
-        calcularRetenido(strValorDeducible,strPorcentajeRetenido, strProporcionCuotaParte);
+        calcularRetenido(strValorDeducible, strPorcentajeRetenido, strProporcionCuotaParte);
     for (WebElement aLstReaseguroDetallado : lstReaseguroDetallado) {
       String strNumeroTransaccion = aLstReaseguroDetallado.getText();
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
@@ -158,5 +159,54 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     Double dblPorcentaCuotaParte =
         Double.parseDouble(strProporcionCuotaParte) / Double.parseDouble(PORCIENTO.getValor());
     return Math.floor(dblPorcentajeCedido * dblValorReasegurado * dblPorcentaCuotaParte);
+  }
+
+  public boolean verificarReaseguro(
+      double dblRetencionPura,
+      String strTransaccion,
+      String porcentajeRetenido,
+      String deducibleMinimo,
+      String porcentajeDeducibleMinimo,
+      String proporcionCuotaParte) {
+
+    switch (strTransaccion) {
+      case "Reserva":
+        verificarReserva(dblRetencionPura,porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+        break;
+      case "Pago":
+        verificarReserva(dblRetencionPura,porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+        verificarPago();
+        break;
+        default:
+          return false;
+    }
+    return true;
+  }
+
+  private void verificarReserva(double dblRetencionPura, String porcentajeRetenido, String deducibleMinimo, String porcentajeDeducibleMinimo, String proporcionCuotaParte) {
+    verificarRetencionPura(dblRetencionPura);
+    verificarCedido(
+        porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+    verificarRetenido(
+        porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+  }
+
+  private boolean verificarPago() {
+    List<WebElement> lstReaseguroDetallado =
+        obtenerElementoTablaDatoDesconocido(
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 4);
+    for (int posicionElementoFila = 2;
+        lstReaseguroDetallado.size() > posicionElementoFila - 1;
+        posicionElementoFila++) {
+      String strValorPago =
+          lstReaseguroDetallado
+              .get(2)
+              .getText()
+              .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+      if (strValorPago.equals(Serenity.sessionVariableCalled(Variables.VALOR_RESERVA))) {
+        return true;
+      }
+    }
+    return false;
   }
 }
