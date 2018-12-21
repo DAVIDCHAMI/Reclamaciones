@@ -79,7 +79,7 @@ public class ReclamacionDefinition {
   @Dado("^que se tiene una poliza con las coberturas para Daños$")
   public void recibirReclamoArchivo(DataTable cobertura) throws IOException {
     reclamacionAuto =
-        new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionRC"));
+        new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "reclamacionArchivo"));
     vehiculo = new Vehiculo(genericStep.getFilasModelo("vehiculo", "autoReclamacionSimple"));
     consultarPoliza();
   }
