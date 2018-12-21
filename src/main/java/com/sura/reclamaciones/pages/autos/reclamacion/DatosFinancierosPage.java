@@ -36,7 +36,7 @@ public class DatosFinancierosPage extends GeneralPage {
                     Tablas.CABECERAS_CC,
                     Tablas.REGISTROS_CC,
                     datosLineaReserva.get(i).getLineaReserva(),
-                    datosLineaReserva.get(0).getColumnaDevolverTablaDatosFinancieros())
+                    datosLineaReserva.get(0).getDatoDevolverTablaDatosFinancieros())
                 .getText();
         if (valorReserva.equals(datosLineaReserva.get(i).getValorReserva())) {
           valorLineaReserva = true;

@@ -7,7 +7,7 @@ import java.util.Map;
 public class ExposicionesAutomaticasAutos {
 
   private String exposicionAutomatica;
-  private String columnaDevolverTablaExposiciones;
+  private String datoDevolverTablaExposiciones;
 
   private List<ExposicionesAutomaticasAutos> lstExposiciones = new ArrayList<>();
 
@@ -19,8 +19,8 @@ public class ExposicionesAutomaticasAutos {
       Map<String, String> datosExposicionAutomaticaReservaAutomatica) {
     this.exposicionAutomatica =
         datosExposicionAutomaticaReservaAutomatica.get("exposicionAutomatica");
-    this.columnaDevolverTablaExposiciones =
-        datosExposicionAutomaticaReservaAutomatica.get("columnaDevolverTablaExposiciones");
+    this.datoDevolverTablaExposiciones =
+        datosExposicionAutomaticaReservaAutomatica.get("datoDevolverTablaExposiciones");
   }
 
   public ExposicionesAutomaticasAutos(
@@ -36,8 +36,8 @@ public class ExposicionesAutomaticasAutos {
     return exposicionAutomatica;
   }
 
-  public String getColumnaDevolverTablaExposiciones() {
-    return columnaDevolverTablaExposiciones;
+  public String getDatoDevolverTablaExposiciones() {
+    return datoDevolverTablaExposiciones;
   }
 
   private void asignarDatos(List<Map<String, String>> datosExposicionAutomatica) {

@@ -66,7 +66,7 @@ public class NuevaReclamacionAutoStep {
   }
 
   @Step
-  public void crearExposionVehicular(
+  public void crearExposicionVehicular(
       List<ExposicionVehiculoTercero> datosExposicionTercero,
       List<Persona> datosPersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto) {

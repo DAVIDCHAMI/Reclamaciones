@@ -30,7 +30,7 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
                   Tablas.CABECERAS_CC,
                   Tablas.REGISTROS_CC,
                   datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
-                  datosExposicionesAutomaticas.get(i).getColumnaDevolverTablaExposiciones())
+                  datosExposicionesAutomaticas.get(i).getDatoDevolverTablaExposiciones())
               .getText();
       if (lineaReservaTbl.equals(datosExposicionesAutomaticas.get(i).getExposicionAutomatica())) {
         String valorReserva =
@@ -39,7 +39,7 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
                     Tablas.CABECERAS_CC,
                     Tablas.REGISTROS_CC,
                     datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
-                    datosExposicionesAutomaticas.get(0).getColumnaDevolverTablaExposiciones())
+                    datosExposicionesAutomaticas.get(0).getDatoDevolverTablaExposiciones())
                 .getText();
       } else {
         valorLineaReserva = false;
