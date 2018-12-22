@@ -12,6 +12,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
@@ -65,7 +66,7 @@ public class GeneralPage extends PageObject {
 
   private String lstDinamico = "//li[.='COMODIN']";
   private String btnCambioMesAnio =
-      "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
+      "//table[@class='datePickerMonthSelector']//td[COMODIN]//div[@class='html-face']";
   private String auxiliarReemplazo = "";
   private String diaMes =
       "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
@@ -271,6 +272,17 @@ public class GeneralPage extends PageObject {
     while (numeroClick < buscadorValor) {
       $(auxiliarReemplazo).waitUntilVisible().click();
       numeroClick++;
+    }
+  }
+
+  protected void resaltarElemento(WebElementFacade elemento) {
+    String atributoElemento = elemento.getAttribute("style");
+    for (int iteracion = 0; iteracion < 2; iteracion++) {
+      JavascriptExecutor ejecutor = (JavascriptExecutor) getDriver();
+      ejecutor.executeScript(
+          "arguments[0].setAttribute('style', arguments[1]);", elemento, "border: 5px solid red;");
+      ejecutor.executeScript(
+          "arguments[0].setAttribute('style', arguments[1]);", elemento, atributoElemento);
     }
   }
 }

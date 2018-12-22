@@ -1,7 +1,10 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.Persona;
+
+import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresarialStep;
 import cucumber.api.java.es.Cuando;
@@ -25,8 +28,13 @@ public class NotificacionAvisoSiniestroAtrDefinition {
   }
 
   @Cuando("^se genere un siniestro por causa (.*) con un valor de pretension de (.*)$")
-  public void diligenciarInformacionSiniestro(String causaSiniestro, String valorPretension) {
-    nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(causaSiniestro, "prueba");
+  public void diligenciarInformacionSiniestro(String causaSiniestro, String valorPretension)
+      throws Throwable {
+    ReclamacionEmpresarial informacionSiniestro =
+        new ReclamacionEmpresarial(
+            genericStep.getFilasModelo(ReclamacionConstante.RECLAMACION_EMPRESARIAL, "ATR"));
+    nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(
+        causaSiniestro, informacionSiniestro.getLstReclamo());
     nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();
     nuevaReclamacionAtrEmpresarialStep.diligenciarValorPretension(valorPretension);
   }

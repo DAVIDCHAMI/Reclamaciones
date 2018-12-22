@@ -40,26 +40,32 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   }
 
   public void accederAsistenteVirtual() {
+    resaltarElemento(bntAsistenteVirtual);
     bntAsistenteVirtual.waitUntilVisible().click();
     enfocarVistaAutomatizacion();
   }
 
   public void accederAvisoEmpresa() {
     if (btnCerrarTour.isVisible()) {
+      resaltarElemento(btnCerrarTour);
       btnCerrarTour.click();
     }
     auxiliarMnuAsistenteVirtual =
         mnuAsistenteVirtual.replace(
             ConstanteGlobal.COMODIN, ReclamacionConstante.ASISTENTE_VIRTUAL);
+    resaltarElemento($(auxiliarMnuAsistenteVirtual));
     $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
     auxiliarMnuAsistenteVirtual =
         mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.HERRAMIENTAS);
+    resaltarElemento($(auxiliarMnuAsistenteVirtual));
     $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
     auxiliarMnuAsistenteVirtual =
         mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.RECLAMACIONES);
+    resaltarElemento($(auxiliarMnuAsistenteVirtual));
     $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
     auxiliarMnuAsistenteVirtual =
         mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.EMPRESAS);
+    resaltarElemento($(auxiliarMnuAsistenteVirtual));
     $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
   }
 

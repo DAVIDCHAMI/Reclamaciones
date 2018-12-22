@@ -7,6 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class BuscarPolizaPage extends GeneralPage {
+
   private String lstTipoDocumento = "//li[.='COMODIN']";
   private String auxTipoDocumento = "";
   private String mnuTipoDocumentoAtr = "//option[contains(text(),'COMODIN')]";
@@ -139,9 +140,10 @@ public class BuscarPolizaPage extends GeneralPage {
 
   public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr) {
     enfocarVistaAutomatizacion();
-    txtTipoDocumentoAsegurado.waitUntilVisible().click();
+    realizarEsperaCarga();
+    txtTipoDocumentoAsegurado.waitUntilEnabled().waitUntilVisible().click();
     auxMnuTipoDocumentoAtr = mnuTipoDocumentoAtr.replace(ConstanteGlobal.COMODIN, tipoDocumentoAtr);
-    $(auxMnuTipoDocumentoAtr).click();
+    $(auxMnuTipoDocumentoAtr).waitUntilVisible().click();
     txtNumeroDocumentoAtr.waitUntilVisible().type(numDocumentoAtr);
     btnConsultarDatosAseguradoATR.waitUntilVisible().click();
   }

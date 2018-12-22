@@ -7,7 +7,6 @@ import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Utilidades;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-
 import org.openqa.selenium.WebDriver;
 
 public class InformacionBasicaPage extends GeneralPage {

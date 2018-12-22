@@ -80,7 +80,7 @@ public class InformacionReclamacionPage extends GeneralPage {
   @FindBy(xpath = "//td[@class='GMMMP1-BMTC GMMMP1-BOTC GMMMP1-BJUC']//input")
   private WebElementFacade txtValorPretensionAtr;
 
-  @FindBy(xpath = "//a[contains(.,'Enviar reclamación')]")
+  @FindBy(xpath = "//a[1][contains(.,'Enviar reclamación')]")
   private WebElementFacade btnEnviarReclamacion;
 
   @FindBy(xpath = "//div[@class='popupMiddleCenterInner popupContent']//tr[5]//div")

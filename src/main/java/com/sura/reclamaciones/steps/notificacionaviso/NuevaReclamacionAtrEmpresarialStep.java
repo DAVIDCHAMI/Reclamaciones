@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.models.Persona;
+
+import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
@@ -40,10 +42,18 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   @Step
-  public void diligenciarInformacionReclamacion(String causaSiniestro, String detalleHechos) {
-    informacionBasicaPage.seleccionarFechaAviso("2018/Nov/20" /*To do*/);
+  public void diligenciarInformacionReclamacion(
+      String causaSiniestro, List<ReclamacionEmpresarial> datosSiniestro) {
+    datosSiniestro.forEach(
+        datos -> {
+          informacionBasicaPage.seleccionarFechaAviso(datos.getFechaSiniestro());
+        });
     informacionReclamacionPage.seleccionarCausaSiniestroAtr(causaSiniestro);
-    informacionReclamacionPage.diligenciarDetalleHechosAtr(detalleHechos);
+    datosSiniestro.forEach(
+        datos -> {
+          informacionReclamacionPage.diligenciarDetalleHechosAtr(
+              datos.getDescripcionHechosSiniestro());
+        });
     informacionReclamacionPage.seleccionarCiudadSiniestro();
   }
 
