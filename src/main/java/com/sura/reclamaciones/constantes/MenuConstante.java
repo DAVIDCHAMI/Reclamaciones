@@ -7,4 +7,6 @@ public class MenuConstante {
   public static final String RESERVA = "Reserva";
   public static final String DATOS_FINANCIEROS = "Datos financieros";
   public static final String TRANSACCIONES = "Transacciones";
+
+  private MenuConstante() {}
 }
