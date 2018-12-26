@@ -117,7 +117,7 @@ public class InformacionReclamacionPage extends GeneralPage {
   public void finalizarSiniestro() {
     btnFinalizar.waitUntilVisible();
     btnFinalizar.click();
-    realizarEsperaCarga();
+    realizarEsperaFinalizarReclamacion();
   }
 
   public String obtenerTituloReclamacionGenerada() {
