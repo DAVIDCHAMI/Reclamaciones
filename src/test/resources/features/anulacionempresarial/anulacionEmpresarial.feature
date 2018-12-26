@@ -14,15 +14,15 @@ Característica: Anulacion Empresarial
 
     Ejemplos:
       | tipoProducto  | codigoRetencion |
-      |MRC_01         |0099             |
+#      |MRC_01         |0099             |
       |MRC_02         |0028             |
-      |HOGAR_01       |0023             |
-      |RC_01          |0099             |
+#      |HOGAR_01       |0023             |
+#      |RC_01          |0099             |
       |MRC_03         |0028             |
-      |HOGAR_02       |0023             |
-      |MRC_04         |0099             |
+#      |HOGAR_02       |0023             |
+#      |MRC_04         |0099             |
       |CUMPLIMIENTO_01|0028             |
-      |HOGAR_03       |0023             |
+#      |HOGAR_03       |0023             |
       |HOGAR_04       |0099             |
 
   @claimsEmpresarial
@@ -34,16 +34,16 @@ Característica: Anulacion Empresarial
 
     Ejemplos:
       | tipoProducto  | codigoRetencion |
-      |MRC_01         |0099             |
+#      |MRC_01         |0099             |
       |MRC_02         |0099             |
-      |HOGAR_01       |0099             |
-      |RC_01          |0099             |
-      |MRC_03         |0099             |
+#      |HOGAR_01       |0099             |
+#      |RC_01          |0099             |
+#      |MRC_03         |0099             |
       |HOGAR_02       |0099             |
       |MRC_04         |0099             |
-      |CUMPLIMIENTO_01|0099             |
+#      |CUMPLIMIENTO_01|0099             |
       |HOGAR_03       |0099             |
-      |HOGAR_04       |0099             |
+#      |HOGAR_04       |0099             |
 
 
 
