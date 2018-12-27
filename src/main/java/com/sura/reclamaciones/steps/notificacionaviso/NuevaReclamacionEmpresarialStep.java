@@ -51,7 +51,6 @@ public class NuevaReclamacionEmpresarialStep {
     MatcherAssert.assertThat(
         "No se ha obtenido el número de reclamación",
         verificar.equals(VALIDADOR_NUEVA_RECLAMACION));
-      System.out.println(VALIDADOR_NUEVA_RECLAMACION+ " Hola");
   }
 
   public void seleccionarNuevaReclamacion(String nombreOpcion, String subItem) {
