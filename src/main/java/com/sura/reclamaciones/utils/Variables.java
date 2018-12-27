@@ -6,7 +6,8 @@ public enum Variables {
   VALOR_RESERVA("valorReserva"),
   NUMERO_PAGINA("numeroPagina"),
   TIPO_ANULACION("tipoAnulacion"),
-  TIPO_CONTRATO_POLIZA("tipoContratoPoliza");
+  TIPO_PRODUCTO_EMPRESARIAL("tipoProductoEmpresarial");
+
 
   private String valor;
 
