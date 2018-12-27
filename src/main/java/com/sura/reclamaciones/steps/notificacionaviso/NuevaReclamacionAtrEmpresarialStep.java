@@ -52,7 +52,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
     datosSiniestro.forEach(
         datos -> {
           informacionReclamacionPage.diligenciarDetalleHechosAtr(
-              datos.getDescripcionHechosSiniestro());
+              datos.getDetalleHechos());
         });
     informacionReclamacionPage.seleccionarCiudadSiniestro();
   }
