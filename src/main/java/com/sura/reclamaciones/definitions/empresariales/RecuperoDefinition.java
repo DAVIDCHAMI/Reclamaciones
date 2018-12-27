@@ -25,10 +25,8 @@ public class RecuperoDefinition {
 
   @Dado("^que se tiene un siniestro con una reserva por (.*)$")
   public void navegarMenuRecupero(String strTipoReserva) throws Throwable {
-
     crearSiniestro.asignarValoresSiniestro (strTipoReserva);
     crearSiniestro.siniestrarPolizaEmpresarialAtr();
-
     recupero = new Recupero(genericStep.getFilasModelo("recupero", strTipoReserva));
     recuperoStep.seleccionarNumeroReclamacion(
            MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
