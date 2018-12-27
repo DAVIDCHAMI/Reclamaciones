@@ -19,14 +19,16 @@ import org.openqa.selenium.WebElement;
 public class RecuperoStep {
 
   @Page MenuRecuperoPage menuRecuperoPage;
+
   @Page CreacionRecuperoPage creacionRecuperoPage;
+
   @Page VerificacionRecuperoPage verificacionRecuperoPage;
+
   @Page MenuClaimPage menuClaimPage;
 
   @Step
   public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
       menuClaimPage.buscarReclamacion(reclamacion, Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
-
   }
 
   public void seleccionarRecupero() {

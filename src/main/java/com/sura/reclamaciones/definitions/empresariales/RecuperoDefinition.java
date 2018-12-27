@@ -16,10 +16,10 @@ import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINI
 public class RecuperoDefinition {
 
   @Steps RecuperoStep recuperoStep;
+
   @Steps GenericStep genericStep;
 
-  @Steps
-  ConsumoServicioCreacionSiniestroStep crearSiniestro;
+  @Steps ConsumoServicioCreacionSiniestroStep crearSiniestro;
 
   Recupero recupero;
 
