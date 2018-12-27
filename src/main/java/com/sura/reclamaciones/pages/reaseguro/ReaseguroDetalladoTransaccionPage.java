@@ -177,6 +177,9 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         verificarReserva(dblRetencionPura,porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
         verificarPago();
         break;
+      case "Recupero":
+        verificarReserva(dblRetencionPura,porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+        verificarPago();
         default:
           return false;
     }
@@ -194,10 +197,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   private boolean verificarPago() {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 4);
-    for (int posicionElementoFila = 2;
-        lstReaseguroDetallado.size() > posicionElementoFila - 1;
-        posicionElementoFila++) {
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
       String strValorPago =
           lstReaseguroDetallado
               .get(2)
@@ -206,7 +206,6 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       if (strValorPago.equals(Serenity.sessionVariableCalled(Variables.VALOR_RESERVA))) {
         return true;
       }
-    }
     return false;
   }
 }
