@@ -66,9 +66,9 @@ public class GeneralPage extends PageObject {
   private String lstDinamico = "//li[.='COMODIN']";
   private String auxLstUbicacion = "";
 
-  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
   protected WebDriver driver;
+
+  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
