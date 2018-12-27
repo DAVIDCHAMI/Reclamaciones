@@ -16,4 +16,5 @@ public class ReclamacionConstante {
   public static final String HERRAMIENTAS = "Herramientas";
   public static final String RECLAMACIONES = "Reclamaciones";
   public static final String EMPRESAS = "Empresas";
+  public static final String RECLAMACION_EMPRESARIAL = "reclamacion_empresarial";
 }
