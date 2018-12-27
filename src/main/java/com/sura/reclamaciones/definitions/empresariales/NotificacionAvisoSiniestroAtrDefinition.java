@@ -2,10 +2,13 @@ package com.sura.reclamaciones.definitions.empresariales;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
+import com.sura.reclamaciones.definitions.SetupStory;
 import com.sura.reclamaciones.models.Persona;
 
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.login.LoginClaimStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresarialStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -14,9 +17,19 @@ import net.thucydides.core.annotations.Steps;
 
 public class NotificacionAvisoSiniestroAtrDefinition {
 
-  @Steps NuevaReclamacionAtrEmpresarialStep nuevaReclamacionAtrEmpresarialStep;
+  @Steps
+  NuevaReclamacionAtrEmpresarialStep nuevaReclamacionAtrEmpresarialStep;
 
-  @Steps GenericStep genericStep;
+  @Steps
+  GenericStep genericStep;
+
+  @Steps
+  LoginClaimStep loginClaimStep;
+
+  @Steps
+  SetupStory setupStory;
+
+
 
   @Dado("^que tenemos una poliza de (.*)$")
   public void diligenciarInformacionAsegurado(String cobertura) throws Throwable {
@@ -40,8 +53,11 @@ public class NotificacionAvisoSiniestroAtrDefinition {
   }
 
   @Entonces("^se obtiene una reclamacion que podrá ser consultada en ClaimCenter$")
-  public void consultarSiniestro() {
-    nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
+  public void consultarSiniestro() throws Throwable{
+    String numeroReclamacion = nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
+    setupStory.seleccionarAmbienteEmpresarial();
+    //loginClaimStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_EMPRESARIAL);
+    nuevaReclamacionAtrEmpresarialStep.consultarReclamo(numeroReclamacion);
     //To Do
   }
 }

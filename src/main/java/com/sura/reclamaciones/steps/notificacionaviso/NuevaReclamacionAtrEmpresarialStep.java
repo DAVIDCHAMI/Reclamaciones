@@ -7,6 +7,7 @@ import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionReclamacionPage;
+import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.StepInterceptor;
@@ -22,6 +23,9 @@ public class NuevaReclamacionAtrEmpresarialStep {
   @Page InformacionBasicaPage informacionBasicaPage;
 
   @Page InformacionReclamacionPage informacionReclamacionPage;
+
+  @Page
+  ConsultaReclamacionPage consultaReclamacionPage;
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -71,8 +75,12 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   @Step
-  public void verificarSiniestroAtr() {
-    String numeroSiniestro = informacionReclamacionPage.obtenerNumeroSiniestroAtr();
-    //To Do
+  public String verificarSiniestroAtr() {
+    return informacionReclamacionPage.obtenerNumeroSiniestroAtr();
+  }
+
+  @Step
+  public void consultarReclamo(String numeroReclamacion){
+consultaReclamacionPage.buscarReclamacion(numeroReclamacion);
   }
 }
