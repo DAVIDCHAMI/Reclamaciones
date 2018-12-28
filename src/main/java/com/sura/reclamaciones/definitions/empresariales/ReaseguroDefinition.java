@@ -31,7 +31,7 @@ public class ReaseguroDefinition {
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
-  @Cuando("^se genere una reclamacion de un contrato tipo (.*)$")
+  @Cuando("^se genere una reclamación de un contrato tipo (.*)$")
   public void crearSiniestro(String tipoContratoPoliza) throws IOException {
     tipoContrato = tipoContratoPoliza;
     creacionSiniestro.asignarValoresSiniestro(tipoContratoPoliza);
@@ -65,9 +65,9 @@ public class ReaseguroDefinition {
   }
 
   @Entonces(
-      "^para la transaccion (.*) se distribuye el reaseguro segun el retenido y el cedido de manera adecuada$")
+      "^para la transacción (.*) se distribuye el reaseguro según el retenido y el cedido de manera adecuada$")
   public void verificarReaseguro(String tipoTransaccion) throws IOException {
-    Contrato contrato1 = new Contrato(genericStep.getFilasModelo("contrato", tipoContrato));
-    reaseguroStep.verificarReaseguro(contrato1.getLstContrato(), strTransaccion);
+    Contrato contrato = new Contrato(genericStep.getFilasModelo("contrato", tipoContrato));
+    reaseguroStep.verificarReaseguro(contrato.getLstContrato(), strTransaccion);
   }
 }

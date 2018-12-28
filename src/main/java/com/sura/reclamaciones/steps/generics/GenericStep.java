@@ -28,7 +28,6 @@ public class GenericStep {
     List<Map<String, String>> loadedData = testData.getData();
     String[] arrayDatosParaFiltrar = filtro.split(",");
     return filtrarDataCSV(arrayDatosParaFiltrar, loadedData);
-
   }
 
   public static List<Map<String, String>> filtrarDataCSV(
@@ -36,8 +35,7 @@ public class GenericStep {
     Utilidades utilidades = new Utilidades();
     return loadedData
         .stream()
-        .filter(
-            fila -> Utilidades.inArray(arr, fila.get(Variables.COLUMNA_FILTRO_CSV.getValor())))
+        .filter(fila -> Utilidades.inArray(arr, fila.get(Variables.COLUMNA_FILTRO_CSV.getValor())))
         .collect(Collectors.toList());
   }
 

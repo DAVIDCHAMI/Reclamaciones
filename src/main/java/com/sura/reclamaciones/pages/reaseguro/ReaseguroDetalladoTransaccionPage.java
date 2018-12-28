@@ -53,7 +53,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     return true;
   }
 
-  public boolean verificarRetenido(
+  public boolean verificarPorcentajeRetenido(
       String strPorcentajeRetenido,
       String strDeducible,
       String strPorcentajeDeducible,
@@ -65,11 +65,11 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         (obtenerDatoTablaCabecera(VALOR_REASEGURADO.getValor(), 2))
             .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     String strValorDeducible =
-        calcularDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
+        calcularValorDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
     Double dblValorRetenido =
-        calcularRetenido(strValorReasegurado, strPorcentajeRetenido, strProporcionCuotaParte);
+        calcularValorRetenido(strValorReasegurado, strPorcentajeRetenido, strProporcionCuotaParte);
     Double dblValorRetenidoDeducible =
-        calcularRetenido(strValorDeducible, strPorcentajeRetenido, strProporcionCuotaParte);
+        calcularValorRetenido(strValorDeducible, strPorcentajeRetenido, strProporcionCuotaParte);
     for (WebElement aLstReaseguroDetallado : lstReaseguroDetallado) {
       String strNumeroTransaccion = aLstReaseguroDetallado.getText();
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
@@ -88,7 +88,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     return true;
   }
 
-  public boolean verificarCedido(
+  public boolean verificarPorcentajeCedido(
       String strPorcentajeRetenido,
       String strDeducible,
       String strPorcentajeDeducible,
@@ -100,11 +100,11 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         (obtenerDatoTablaCabecera(VALOR_REASEGURADO.getValor(), 2))
             .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     String strValorDeducible =
-        calcularDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
+        calcularValorDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
     Double dblValorRetenido =
-        calcularRetenido(strValorReasegurado, strPorcentajeRetenido, strProporcionCuotaParte);
+        calcularValorRetenido(strValorReasegurado, strPorcentajeRetenido, strProporcionCuotaParte);
     Double dblValorRetenidoDeducible =
-        calcularRetenido(strValorDeducible, strPorcentajeRetenido, strProporcionCuotaParte);
+        calcularValorRetenido(strValorDeducible, strPorcentajeRetenido, strProporcionCuotaParte);
     for (WebElement aLstReaseguroDetallado : lstReaseguroDetallado) {
       String strNumeroTransaccion = aLstReaseguroDetallado.getText();
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
@@ -139,7 +139,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     return true;
   }
 
-  private String calcularDeducible(
+  private String calcularValorDeducible(
       String strValorReasegurado, String strDeducible, String strPorcentajeDeducible) {
     Double dblValorReasegurado = Double.parseDouble(strValorReasegurado);
     Double dblDeducible = Double.parseDouble(strDeducible);
@@ -151,7 +151,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     return String.valueOf(Math.floor(-dblValorDeducible));
   }
 
-  private double calcularRetenido(
+  private double calcularValorRetenido(
       String strValorReasegurado, String strPorcentajeCedido, String strProporcionCuotaParte) {
     Double dblValorReasegurado = Double.parseDouble(strValorReasegurado);
     Double dblPorcentajeCedido =
@@ -171,23 +171,38 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
     switch (strTransaccion) {
       case "Reserva":
-        verificarReserva(dblRetencionPura,porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+        verificarReserva(
+            dblRetencionPura,
+            porcentajeRetenido,
+            deducibleMinimo,
+            porcentajeDeducibleMinimo,
+            proporcionCuotaParte);
         break;
       case "Pago":
-        verificarReserva(dblRetencionPura,porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+        verificarReserva(
+            dblRetencionPura,
+            porcentajeRetenido,
+            deducibleMinimo,
+            porcentajeDeducibleMinimo,
+            proporcionCuotaParte);
         verificarPago();
         break;
-        default:
-          return false;
+      default:
+        return false;
     }
     return true;
   }
 
-  private void verificarReserva(double dblRetencionPura, String porcentajeRetenido, String deducibleMinimo, String porcentajeDeducibleMinimo, String proporcionCuotaParte) {
+  private void verificarReserva(
+      double dblRetencionPura,
+      String porcentajeRetenido,
+      String deducibleMinimo,
+      String porcentajeDeducibleMinimo,
+      String proporcionCuotaParte) {
     verificarRetencionPura(dblRetencionPura);
-    verificarCedido(
+    verificarPorcentajeCedido(
         porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
-    verificarRetenido(
+    verificarPorcentajeRetenido(
         porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
   }
 
