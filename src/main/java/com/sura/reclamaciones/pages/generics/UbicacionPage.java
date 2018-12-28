@@ -49,7 +49,7 @@ public class UbicacionPage extends GeneralPage {
   public void seleccionarCiudad(String ciudad) {
     txtCiudad.waitUntilVisible();
     realizarEsperaCarga();
-    txtCiudad.clear();
+    txtCiudad.waitUntilClickable().clear();
     txtCiudad.type(ciudad);
   }
 }
