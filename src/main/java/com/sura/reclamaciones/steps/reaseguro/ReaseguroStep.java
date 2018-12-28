@@ -28,14 +28,15 @@ public class ReaseguroStep {
   public void verificarReaseguro(List<Contrato> lstContrato1, String strTransaccion) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(REASEGURO_DETALLADO.getValor());
     lstContrato1.forEach(
-        verificador -> MatcherAssert.assertThat(
-            "El reaseguro no se distribuyo de forma correcta",
-            reaseguroDetalladoTransaccionPage.verificarReaseguro(
-                Double.parseDouble(RETENCION_PURA.getValor()),
-                strTransaccion,
-                verificador.getPorcentajeRetenido(),
-                verificador.getDeducibleMinimo(),
-                verificador.getPorcentajeDeducibleMinimo(),
-                verificador.getProporcionCuotaParte())));
+        verificador ->
+            MatcherAssert.assertThat(
+                "El reaseguro no se distribuyo de forma correcta",
+                reaseguroDetalladoTransaccionPage.verificarReaseguro(
+                    Double.parseDouble(RETENCION_PURA.getValor()),
+                    strTransaccion,
+                    verificador.getPorcentajeRetenido(),
+                    verificador.getDeducibleMinimo(),
+                    verificador.getPorcentajeDeducibleMinimo(),
+                    verificador.getProporcionCuotaParte())));
   }
 }

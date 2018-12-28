@@ -171,22 +171,42 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
     switch (strTransaccion) {
       case "Reserva":
-        verificarReserva(dblRetencionPura,porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+        verificarReserva(
+            dblRetencionPura,
+            porcentajeRetenido,
+            deducibleMinimo,
+            porcentajeDeducibleMinimo,
+            proporcionCuotaParte);
         break;
       case "Pago":
-        verificarReserva(dblRetencionPura,porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+        verificarReserva(
+            dblRetencionPura,
+            porcentajeRetenido,
+            deducibleMinimo,
+            porcentajeDeducibleMinimo,
+            proporcionCuotaParte);
         verificarPago();
         break;
       case "Recupero":
-        verificarReserva(dblRetencionPura,porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
+        verificarReserva(
+            dblRetencionPura,
+            porcentajeRetenido,
+            deducibleMinimo,
+            porcentajeDeducibleMinimo,
+            proporcionCuotaParte);
         verificarPago();
-        default:
-          return false;
+      default:
+        return false;
     }
     return true;
   }
 
-  private void verificarReserva(double dblRetencionPura, String porcentajeRetenido, String deducibleMinimo, String porcentajeDeducibleMinimo, String proporcionCuotaParte) {
+  private void verificarReserva(
+      double dblRetencionPura,
+      String porcentajeRetenido,
+      String deducibleMinimo,
+      String porcentajeDeducibleMinimo,
+      String proporcionCuotaParte) {
     verificarRetencionPura(dblRetencionPura);
     verificarCedido(
         porcentajeRetenido, deducibleMinimo, porcentajeDeducibleMinimo, proporcionCuotaParte);
@@ -198,14 +218,11 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
-      String strValorPago =
-          lstReaseguroDetallado
-              .get(2)
-              .getText();
-     List<WebElement> lstPago = obtenerFilaTabla(strValorPago,getTblPago());
-      if (strValorPago.equals(Serenity.sessionVariableCalled(Variables.VALOR_RESERVA))) {
-        return true;
-      }
+    String strValorPago = lstReaseguroDetallado.get(2).getText();
+    List<WebElement> lstPago = obtenerFilaTabla(strValorPago, getTblPago());
+    if (strValorPago.equals(Serenity.sessionVariableCalled(Variables.VALOR_RESERVA))) {
+      return true;
+    }
     return false;
   }
 }

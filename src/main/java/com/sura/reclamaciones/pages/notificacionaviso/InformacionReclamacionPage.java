@@ -121,6 +121,6 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public String obtenerTituloReclamacionGenerada() {
-   return spanNuevaReclamacion.waitUntilVisible().getText();
+    return spanNuevaReclamacion.waitUntilVisible().getText();
   }
 }

@@ -2,11 +2,9 @@ package com.sura.reclamaciones.definitions.empresariales;
 
 import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.Constantes.PAGO;
-import static com.sura.reclamaciones.utils.Constantes.RECLAMACION_MENU;
 import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
 import static com.sura.reclamaciones.utils.Constantes.RESERVA;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.models.Recupero;
@@ -34,7 +32,7 @@ public class ReaseguroDefinition {
   @Steps ConsumoServicioCreacionSiniestroStep creacionSiniestro;
 
   @Steps NuevoPagoStep nuevoPagoStep;
-  
+
   @Steps RecuperoStep recuperoStep;
 
   @Cuando("^se genere una reclamacion de un contrato tipo (.*)$")
@@ -71,13 +69,15 @@ public class ReaseguroDefinition {
   }
 
   @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")
-  public void realizarRecuperoSiniestroEmpresarial(String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException{
+  public void realizarRecuperoSiniestroEmpresarial(
+      String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException {
     strTransaccion = RECUPERO.getValor();
     Recupero recupero = new Recupero(genericStep.getFilasModelo("recupero", strTipoContrato));
     recuperoStep.seleccionarRecupero();
-    recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), strTipoRecupero, strCodigoRetencionRecupero);
+    recuperoStep.diligenciarCreacionRecupero(
+        recupero.getLstRecupero(), strTipoRecupero, strCodigoRetencionRecupero);
   }
-  
+
   @Entonces(
       "^para la transaccion (.*) se distribuye el reaseguro segun el retenido y el cedido de manera adecuada$")
   public void verificarReaseguro(String tipoTransaccion) throws IOException {
