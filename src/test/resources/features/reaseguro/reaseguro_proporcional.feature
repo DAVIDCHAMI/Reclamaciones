@@ -15,6 +15,7 @@ Característica: Distribucion del reaseguro de un siniestro
       | Tipo Contrato Poliza  | Tipo Transaccion    |
       | primeraTxProporcional | constitucionReserva |
       | MRC_01                | constitucionReserva |
+      | MRC_03                 | constitucionReserva |
 
   @claimsEmpresarial
   Esquema del escenario: Reaseguro Reserva de liberacion - Pago y liberacion de reserva

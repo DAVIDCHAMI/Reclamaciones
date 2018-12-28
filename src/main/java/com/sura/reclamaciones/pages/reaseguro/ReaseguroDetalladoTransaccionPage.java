@@ -143,7 +143,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String strValorReasegurado, String strDeducible, String strPorcentajeDeducible) {
     Double dblValorReasegurado = Double.parseDouble(strValorReasegurado);
     Double dblDeducible = Double.parseDouble(strDeducible);
-    Double dblPorcentaje = Double.parseDouble(strPorcentajeDeducible);
+    Double dblPorcentaje =
+        Double.parseDouble(strPorcentajeDeducible) / Double.parseDouble(PORCIENTO.getValor());
     Double dblValorDeducible = (dblValorReasegurado * dblPorcentaje);
     if (dblDeducible > dblValorDeducible) {
       return String.valueOf(Math.floor(-dblDeducible));
