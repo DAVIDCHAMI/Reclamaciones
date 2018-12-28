@@ -201,8 +201,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String strValorPago =
           lstReaseguroDetallado
               .get(2)
-              .getText()
-              .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+              .getText();
+     List<WebElement> lstPago = obtenerFilaTabla(strValorPago,getTblPago());
       if (strValorPago.equals(Serenity.sessionVariableCalled(Variables.VALOR_RESERVA))) {
         return true;
       }
