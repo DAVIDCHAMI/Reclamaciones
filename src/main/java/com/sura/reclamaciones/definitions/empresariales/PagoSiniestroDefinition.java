@@ -30,6 +30,10 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
+    pagoEmpresarial =
+        new PagoEmpresarial(
+            (genericStep.getFilasModelo(
+                "pago_empresarial", Serenity.sessionVariableCalled(TIPO_PRODUCTO_EMPRESARIAL))));
     nuevoPagoStep.consultarNumeroReclamacion();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
@@ -39,10 +43,6 @@ public class PagoSiniestroDefinition {
         aplicaSoloSura,
         codigoRetencion,
         pagoEmpresarial.getLstPago());
-    pagoEmpresarial =
-        new PagoEmpresarial(
-            (genericStep.getFilasModelo(
-                "pago_empresarial", Serenity.sessionVariableCalled(TIPO_PRODUCTO_EMPRESARIAL))));
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
