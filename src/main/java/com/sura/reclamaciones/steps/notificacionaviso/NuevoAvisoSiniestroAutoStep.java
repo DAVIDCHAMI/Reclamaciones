@@ -15,7 +15,7 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
-public class NuevaReclamacionAutoStep {
+public class NuevoAvisoSiniestroAutoStep {
 
   @Page private InformacionBasicaPage informacionBasicaPage;
   @Page private BuscarPolizaPage buscarPolizaPage;

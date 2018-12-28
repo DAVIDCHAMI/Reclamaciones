@@ -14,7 +14,7 @@ import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.hamcrest.MatcherAssert;
 
-public class ConsumoServicioCreacionAvisoAutoStep {
+public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
 
   List<ReclamacionAuto> lstReclamacionAuto;
   List<PersonaReclamacionAuto> lstPersonaLesionada;
