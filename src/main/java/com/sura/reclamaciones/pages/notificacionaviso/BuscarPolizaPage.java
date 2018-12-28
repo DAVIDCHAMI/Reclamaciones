@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -9,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 public class BuscarPolizaPage extends GeneralPage {
   private String lstTipoDocumento = "//li[.='COMODIN']";
   private String auxTipoDocumento = "";
-  private String mnuTipoDocumentoAtr = "//option[contains(text(),'COMODIN')]";
-  private String auxMnuTipoDocumentoAtr = "";
 
   @FindBy(
     xpath =
@@ -140,8 +139,7 @@ public class BuscarPolizaPage extends GeneralPage {
   public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr) {
     enfocarVistaAutomatizacion();
     txtTipoDocumentoAsegurado.waitUntilVisible().click();
-    auxMnuTipoDocumentoAtr = mnuTipoDocumentoAtr.replace(ConstanteGlobal.COMODIN, tipoDocumentoAtr);
-    $(auxMnuTipoDocumentoAtr).click();
+    navegarMenu(tipoDocumentoAtr, MenuConstante.MENU_TIPO_DOCUMENTO_ATR);
     txtNumeroDocumentoAtr.waitUntilVisible().type(numDocumentoAtr);
     btnConsultarDatosAseguradoATR.waitUntilVisible().click();
   }

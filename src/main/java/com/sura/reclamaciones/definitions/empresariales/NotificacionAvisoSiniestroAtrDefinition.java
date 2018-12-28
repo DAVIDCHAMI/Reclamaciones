@@ -7,6 +7,7 @@ import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresa
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class NotificacionAvisoSiniestroAtrDefinition {
@@ -16,7 +17,7 @@ public class NotificacionAvisoSiniestroAtrDefinition {
   @Steps GenericStep genericStep;
 
   @Dado("^que tenemos una poliza de (.*)$")
-  public void diligenciarInformacionAsegurado(String cobertura) throws Throwable {
+  public void diligenciarInformacionAsegurado(String cobertura) throws IOException {
     Persona aseguradoAtr =
         new Persona(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
     nuevaReclamacionAtrEmpresarialStep.accederAvisoAtr();

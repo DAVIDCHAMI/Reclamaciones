@@ -13,7 +13,9 @@ import net.thucydides.core.annotations.Steps;
 public class NotificacionAvisoSiniestroReclamacionDefinition {
 
   @Steps ReclamacionEmpresarial reclamo;
+
   @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionStep;
+
   @Steps GenericStep genericStep;
 
   @Dado("^que se tiene una poliza de (.*)$")
