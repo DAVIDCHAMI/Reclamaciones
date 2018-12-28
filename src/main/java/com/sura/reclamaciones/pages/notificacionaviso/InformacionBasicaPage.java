@@ -37,7 +37,7 @@ public class InformacionBasicaPage extends GeneralPage {
     xpath =
         " //a[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:ReportedBy_NameMenuIcon']"
   )
-  private WebElementFacade btnCotactManager;
+  private WebElementFacade btnContactManager;
 
   @FindBy(
     xpath =
