@@ -97,8 +97,8 @@ public class InformacionBasicaPage extends GeneralPage {
       lstAutorReporteCliente.click();
       realizarEsperaCarga();
     } else {
-      btnCotactManager.waitUntilClickable();
-      btnCotactManager.click();
+      btnContactManager.waitUntilClickable();
+      btnContactManager.click();
       btnBuscarContactoExistente.waitUntilClickable();
       btnBuscarContactoExistente.click();
       txtNit.waitUntilVisible();
@@ -122,8 +122,7 @@ public class InformacionBasicaPage extends GeneralPage {
   }
 
   public void seleccionarDiaCalendario(String diaUsuario) {
-    auxMes = diaMes.replace(ConstanteGlobal.COMODIN, diaUsuario);
-    $(auxMes).click();
+    navegarMenu(diaMes,diaUsuario);
   }
 
   public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
