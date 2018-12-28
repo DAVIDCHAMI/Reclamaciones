@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.pagos;
 
-import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
+import static com.sura.reclamaciones.utils.Constantes.PAGOS;
 import static com.sura.reclamaciones.utils.Variables.VALOR_RESERVA;
 import static org.junit.Assert.assertTrue;
 
@@ -8,6 +8,7 @@ import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
@@ -28,12 +29,14 @@ public class NuevoPagoStep {
 
   @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
+  @Page ResumenReclamacionPage resumenReclamacionPage;
+
   @Page MenuClaimPage menuClaimPage;
 
   @Step
-  public void consultarNumeroReclamacion(String strNumeroReclamacion) {
-    menuClaimPage.buscarReclamacion(RECLAMACION_MENU, strNumeroReclamacion);
-    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PagoConstante.PAGOS);
+  public void consultarNumeroReclamacion() {
+    resumenReclamacionPage.obtenerNumeroReclamacion();
+    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 
   @Step

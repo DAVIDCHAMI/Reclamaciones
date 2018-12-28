@@ -8,7 +8,6 @@ public enum Variables {
   TIPO_ANULACION("tipoAnulacion"),
   TIPO_PRODUCTO_EMPRESARIAL("tipoProductoEmpresarial");
 
-
   private String valor;
 
   private Variables(String valor) {

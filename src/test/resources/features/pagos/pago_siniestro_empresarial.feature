@@ -15,5 +15,5 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | lineaReserva          | tipoPago | beneficiarioPago          | metodoPago     | soloSura | codigoRetencion | Tipo y Cobertura                        | Causa          | Valor de Pretensión | Tipo de incidente |
-      | (1) 1ª parteContenido | Parcial  | SOLO FAMILIAR LTDA. CQLII | Pago por banco | Sí       | 0099            | Incendio con cobertura Daños materiales | Daños por agua | 3000000             | Contenido         |
+      | lineaReserva          | tipoPago | beneficiarioPago                | metodoPago     | soloSura | codigoRetencion | Tipo y Cobertura                        | Causa          | Valor de Pretensión | Tipo de incidente |
+      | (1) 1ª partePropiedad | Parcial  | MARTHA ENID ROJAS MARIACA CQLII | Pago por banco | Sí       | 0099            | Incendio con cobertura Daños materiales | Daños por agua | 5000000             | Propiedad         |
