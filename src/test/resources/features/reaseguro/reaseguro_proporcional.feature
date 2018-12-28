@@ -19,11 +19,11 @@ Característica: Distribucion del reaseguro de un siniestro
   @claimsEmpresarial
   Esquema del escenario: Reaseguro Reserva de liberacion - Pago y liberacion de reserva
   Dado se genere una reclamacion de un contrato tipo <Tipo Contrato Poliza>
-  Cuando  se realice al siniestro un pago <tipoPago> a un <beneficiarioPago> por medio de <metodoPago> el cual cuenta con una linea de reserva <lineaReserva> donde el responsable <soloSura> es Sura por una retención de <codigoRetencion>
+  Cuando  se realice al siniestro un pago <Tipo Pago> a un <Beneficiario Pago> por medio de <Metodo Pago> el cual cuenta con una linea de reserva <Linea Reserva> donde el responsable <¿Solo Sura?> es Sura por una retención de <Código Retencion>
   Entonces para la transaccion <Tipo Transaccion> se distribuye el reaseguro segun el retenido y el cedido de manera adecuada
 
   Ejemplos:
-    | Tipo Contrato Poliza |  lineaReserva           | tipoPago | beneficiarioPago                    | metodoPago | soloSura | codigoRetencion |Tipo Transaccion   | Tipo Contrato 1       | Tipo Contrato 2       |
-    | MRC_01               | (1) 1ª parteContenido   | Final    |  SOLO FAMILIAR LTDA. CQLII          | Caja Sura  | No       | 0099            | reservaLiberacion | primeraTx18T03AH030EX | primeraTx18T03AH030CP |
+    | Tipo Contrato Poliza |  Linea Reserva          | Tipo Pago | Beneficiario Pago                   | Metodo Pago | ¿Solo Sura?  | Código Retencion  |Tipo Transaccion   |
+    | MRC_01               | (1) 1ª parteContenido   | Final     |  SOLO FAMILIAR LTDA. CQLII          | Caja Sura   | No           | 0099              | reservaLiberacion |
 
 
