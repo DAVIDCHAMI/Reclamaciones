@@ -13,9 +13,11 @@ import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
 
-  @Steps NuevoPagoStep nuevoPagoStep;
+  @Steps
+  NuevoPagoStep nuevoPagoStep;
 
-  @Steps GenericStep genericStep;
+  @Steps
+  GenericStep genericStep;
 
   PagoEmpresarial pagoEmpresarial;
 

@@ -69,6 +69,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
   }
 
   public void obtenerElementoPantallaPago(String strElementoPantallaPago) {
+    
     rbtPago.waitUntilClickable();
     rbtPago
         .findElement(
