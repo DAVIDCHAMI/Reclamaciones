@@ -25,9 +25,9 @@ public class ReaseguroStep {
         Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor()));
   }
 
-  public void verificarReaseguro(List<Contrato> lstContrato1, String strTransaccion) {
+  public void verificarReaseguro(List<Contrato> lstContrato, String strTransaccion) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(REASEGURO_DETALLADO.getValor());
-    lstContrato1.forEach(
+    lstContrato.forEach(
         verificador ->
             MatcherAssert.assertThat(
                 "El reaseguro no se distribuyó de forma correcta",
