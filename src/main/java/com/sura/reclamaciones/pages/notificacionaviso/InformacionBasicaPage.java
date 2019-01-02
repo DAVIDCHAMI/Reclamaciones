@@ -2,13 +2,13 @@ package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.utils.Utilidades;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class InformacionBasicaPage extends GeneralPage {
 
-  //td[.='Nombre']/following-sibling::td//table//table//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputCell']/following-sibling::td/div
   @FindBy(
     xpath =
         "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputEl']"
@@ -37,7 +37,7 @@ public class InformacionBasicaPage extends GeneralPage {
     xpath =
         " //a[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:ReportedBy_NameMenuIcon']"
   )
-  private WebElementFacade btnCotactManager;
+  private WebElementFacade btnContactManager;
 
   @FindBy(
     xpath =
@@ -72,6 +72,19 @@ public class InformacionBasicaPage extends GeneralPage {
   @FindBy(xpath = "//li[contains(text(),'Amigo')]")
   private WebElementFacade lstAmigo;
 
+  @FindBy(id = "calendarfechaOcurrenciaInformacionSiniestroEmp")
+  private WebElementFacade calendarioFechaSiniestro;
+
+  @FindBy(className = "datePickerMonth")
+  private WebElementFacade indicadorAnioMes;
+
+  private String btnCambioMesAnio =
+      "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
+  private String diaMes =
+      "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
+  private String auxMes = "";
+  private String auxiliarReemplazo = "";
+
   public InformacionBasicaPage(WebDriver driver) {
     super(driver);
   }
@@ -84,8 +97,8 @@ public class InformacionBasicaPage extends GeneralPage {
       lstAutorReporteCliente.click();
       realizarEsperaCarga();
     } else {
-      btnCotactManager.waitUntilClickable();
-      btnCotactManager.click();
+      btnContactManager.waitUntilClickable();
+      btnContactManager.click();
       btnBuscarContactoExistente.waitUntilClickable();
       btnBuscarContactoExistente.click();
       txtNit.waitUntilVisible();
@@ -93,7 +106,7 @@ public class InformacionBasicaPage extends GeneralPage {
       btnBuscarNit.waitUntilClickable();
       btnBuscarNit.click();
       btnSeleccionarContacto.waitUntilClickable();
-      btnSeleccionarContacto.click();
+      btnSeleccionarContacto.click();l
       realizarEsperaCarga();
       btnRelacionAsegurado.waitUntilClickable();
       btnRelacionAsegurado.click();
@@ -106,5 +119,82 @@ public class InformacionBasicaPage extends GeneralPage {
     txtDetalleHechos.waitUntilVisible();
     txtDetalleHechos.type(detalle);
     continuarSiguientePantalla();
+  }
+
+  public void seleccionarDiaCalendario(String diaUsuario) {
+    navegarMenu(diaMes,diaUsuario);
+  }
+
+  public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
+    int buscadorValor = valorMesActual - valorMesAnterior;
+    int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "2");
+    while (numeroClick < buscadorValor) {
+      $(auxiliarReemplazo).waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public void seleecionarMesPosterior(int valorMesPosterior, int valorMesActual) {
+    int buscadorValor = valorMesPosterior - valorMesActual;
+    int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "4");
+    while (numeroClick < buscadorValor) {
+      $(auxiliarReemplazo).waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public void seleccionarAnioAnterior(int valorAnioAnterior, int valorAnioActual) {
+    int buscadorValor = valorAnioActual - valorAnioAnterior;
+    int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "1");
+    while (numeroClick < buscadorValor) {
+      $(auxiliarReemplazo).waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public void seleccionarAnioPosterior(int valorAnioPosterior, int valorAnioActual) {
+    int buscadorValor = valorAnioPosterior - valorAnioActual;
+    int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "5");
+    while (numeroClick < buscadorValor) {
+      $(auxiliarReemplazo).waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public void seleccionarFechaAviso(String fechaAviso) {
+    String diaUsuario = fechaAviso.substring(9, 11);
+    String mesUsuario = fechaAviso.substring(5, 8);
+    String anioUsuario = fechaAviso.substring(0, 4);
+    realizarEsperaCarga();
+    calendarioFechaSiniestro.waitUntilVisible().click();
+    String auxIndicadorAnioMes = indicadorAnioMes.getText();
+    String mesCalendarioAtr = auxIndicadorAnioMes.substring(5, 8);
+    String anioCalendarioAtr = auxIndicadorAnioMes.substring(0, 4);
+    if ("0".equalsIgnoreCase(diaUsuario.substring(0, 1))) {
+      diaUsuario = diaUsuario.substring(1, 2);
+    }
+    int valorMesCalendarioAtr = Utilidades.valorarMes(mesCalendarioAtr);
+    int valorMesUsuario = Utilidades.valorarMes(mesUsuario);
+    int valorAnioCalendarioAtr = Utilidades.conversorCadenaEntero(anioCalendarioAtr);
+    int valorAnioUsuario = Utilidades.conversorCadenaEntero(anioUsuario);
+    if (valorAnioUsuario < valorAnioCalendarioAtr) {
+      seleccionarAnioAnterior(valorAnioUsuario, valorAnioCalendarioAtr);
+    } else if (valorAnioUsuario > valorAnioCalendarioAtr) {
+      seleccionarAnioPosterior(valorAnioUsuario, valorAnioCalendarioAtr);
+    }
+    if (valorMesUsuario == valorMesCalendarioAtr) {
+      seleccionarDiaCalendario(diaUsuario);
+    }
+    if (valorMesUsuario < valorMesCalendarioAtr) {
+      seleccionarMesAnterior(valorMesUsuario, valorMesCalendarioAtr);
+      seleccionarDiaCalendario(diaUsuario);
+    } else {
+      seleecionarMesPosterior(valorMesUsuario, valorMesCalendarioAtr);
+      seleccionarDiaCalendario(diaUsuario);
+    }
   }
 }

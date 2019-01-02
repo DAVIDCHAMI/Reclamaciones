@@ -8,10 +8,7 @@ import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
-
-import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINIESTRO;
 
 public class RecuperoDefinition {
 
@@ -25,11 +22,11 @@ public class RecuperoDefinition {
 
   @Dado("^que se tiene un siniestro con una reserva por (.*)$")
   public void navegarMenuRecupero(String strTipoReserva) throws Throwable {
-    crearSiniestro.asignarValoresSiniestro (strTipoReserva);
+    crearSiniestro.asignarValoresSiniestro(strTipoReserva);
     crearSiniestro.siniestrarPolizaEmpresarialAtr();
     recupero = new Recupero(genericStep.getFilasModelo("recupero", strTipoReserva));
     recuperoStep.seleccionarNumeroReclamacion(
-           MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
+        MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();
   }
 
