@@ -41,10 +41,10 @@ public class NuevoPagoStep {
 
   @Step
   public void ingresarInformacionBeneficiarioPago(
+      String strLineaReserva,
       String strTipoPago,
       String strBeneficiarioPago,
       String strMetodoPago,
-      String strLineaReserva,
       String strPagoSoloSura,
       String strCodigoRetencion,
       List<PagoEmpresarial> lstPago) {
