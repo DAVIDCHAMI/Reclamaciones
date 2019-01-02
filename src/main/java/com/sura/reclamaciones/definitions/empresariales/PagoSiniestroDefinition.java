@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
 import static com.sura.reclamaciones.utils.Variables.TIPO_PRODUCTO_EMPRESARIAL;
+
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
