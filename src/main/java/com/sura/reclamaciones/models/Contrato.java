@@ -19,7 +19,7 @@ public class Contrato {
     this.proporcionCuotaParte = datosReaseguro.get("proporcionCuotaParte");
     this.nombreContrato = datosReaseguro.get("nombreContrato");
     this.deducibleMinimo = datosReaseguro.get("deducibleMinimo");
-    this.porcentajeDeducibleMinimo = datosReaseguro.get("porcentajeDeducibleminimo");
+    this.porcentajeDeducibleMinimo = datosReaseguro.get("porcentajeDeducibleMinimo");
     this.porcentajeRetenido = datosReaseguro.get("porcentajeRetenido");
   }
 

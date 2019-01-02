@@ -10,6 +10,7 @@ import com.sura.reclamaciones.pages.reaseguro.ReaseguroDetalladoTransaccionPage;
 import com.sura.reclamaciones.utils.Constantes;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
+import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
@@ -25,6 +26,7 @@ public class ReaseguroStep {
         Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor()));
   }
 
+  @Step
   public void verificarReaseguro(List<Contrato> lstContrato, String strTransaccion) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(REASEGURO_DETALLADO.getValor());
     lstContrato.forEach(
