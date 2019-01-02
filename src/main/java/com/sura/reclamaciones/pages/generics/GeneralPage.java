@@ -222,7 +222,7 @@ public class GeneralPage extends PageObject {
 
   public void enfocarVistaAutomatizacion() {
     for (String ventana : driver.getWindowHandles()) {
-      driver.switchTo().window(ventana);
+        driver.switchTo().window(ventana);
     }
   }
 

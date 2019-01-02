@@ -48,6 +48,8 @@ public class NotificacionAvisoSiniestroAtrDefinition {
             genericStep.getFilasModelo(ReclamacionConstante.RECLAMACION_EMPRESARIAL, "ATR"));
     nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(
         causaSiniestro, informacionSiniestro.getLstReclamo());
+    nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();
+    nuevaReclamacionAtrEmpresarialStep.diligenciarValorPretension(valorPretension);
   }
 
     @Entonces("^se obtiene una reclamación que podrá ser consultada en ClaimCenter$")

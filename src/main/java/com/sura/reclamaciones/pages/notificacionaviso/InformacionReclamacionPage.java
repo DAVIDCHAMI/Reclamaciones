@@ -2,6 +2,8 @@ package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import java.util.List;
+import java.util.Set;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -12,44 +14,44 @@ public class InformacionReclamacionPage extends GeneralPage {
   private String lstCausaSiniestroAtr = "//td[.='COMODIN']";
 
   @FindBy(
-    xpath =
-        "//span[@id='NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnInnerEl']"
+      xpath =
+          "//span[@id='NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnInnerEl']"
   )
   private WebElementFacade btnCerrar;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:LossEstimate-inputEl']"
+      xpath =
+          "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:LossEstimate-inputEl']"
   )
   private WebElementFacade txtValorPretension;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableFixedPropertyIncidentsLV_tb:Add-btnInnerEl']"
+      xpath =
+          "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableFixedPropertyIncidentsLV_tb:Add-btnInnerEl']"
   )
   private WebElementFacade btnIncidentePropiedad;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:FNOLSuraEditableContentPropertyIncidentsLV_tb:Add-btnInnerEl']"
+      xpath =
+          "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:FNOLSuraEditableContentPropertyIncidentsLV_tb:Add-btnInnerEl']"
   )
   private WebElementFacade btnIncidenteContenido;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableInjuryIncidentsLV_tb:Add-btnInnerEl']"
+      xpath =
+          "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableInjuryIncidentsLV_tb:Add-btnInnerEl']"
   )
   private WebElementFacade btnIncidenteLesiones;
 
   @FindBy(
-    xpath =
-        "//span[.='Aceptar']/span[@id='NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Update-btnInnerEl']"
+      xpath =
+          "//span[.='Aceptar']/span[@id='NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Update-btnInnerEl']"
   )
   private WebElementFacade btnAceptarIncPropiedad;
 
   @FindBy(
-    xpath =
-        "//span[.='Aceptar']/span[@id='NewPropertyContentsIncidentPopup:NewPropertyContentsIncidentScreen:Update-btnInnerEl']"
+      xpath =
+          "//span[.='Aceptar']/span[@id='NewPropertyContentsIncidentPopup:NewPropertyContentsIncidentScreen:Update-btnInnerEl']"
   )
   private WebElementFacade btnAceptarIncContenido;
 
@@ -60,8 +62,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   private WebElementFacade spanNuevaReclamacion;
 
   @FindBy(
-    xpath =
-        "//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:Claim_LossCause-inputCell']"
+      xpath =
+          "//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:Claim_LossCause-inputCell']"
   )
   private WebElementFacade mnuCausa;
 
@@ -158,7 +160,7 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   public void seleccionarCiudadSiniestro() {
     String ciudad = lblNombreCiudad.waitUntilVisible().getText();
-    txtCiudadSiniestro.waitUntilVisible().type(ciudad);
+    txtCiudadSiniestro.waitUntilVisible().typeAndEnter(ciudad);
   }
 
   public void ingresarValorPretensionAtr(String valorPretension) {
@@ -170,6 +172,9 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public String obtenerNumeroSiniestroAtr() {
-    return lblNumeroSiniestroAtr.waitUntilVisible().getText();
-  }
+    String numeroSiniestro = lblNumeroSiniestroAtr.waitUntilVisible().getText();
+     Set<String> ventana= driver.getWindowHandles();
+    enfocarVistaAutomatizacion();
+      return numeroSiniestro;
+    }
 }
