@@ -12,7 +12,7 @@ import cucumber.api.java.es.Entonces;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-public class NotificacionAvisoDefinition {
+public class NotificacionAvisoSiniestroReclamacionDefinition {
 
   @Steps ReclamacionEmpresarial reclamo;
 
