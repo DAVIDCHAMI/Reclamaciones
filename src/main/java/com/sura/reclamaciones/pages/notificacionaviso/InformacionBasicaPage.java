@@ -79,7 +79,7 @@ public class InformacionBasicaPage extends GeneralPage {
   private WebElementFacade indicadorAnioMes;
 
   private String btnCambioMesAnio =
-      "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
+      "//table[@class='datePickerMonthSelector']//td[COMODIN]//div[@class='html-face']";
   private String diaMes =
       "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
   private String auxMes = "";
@@ -106,7 +106,7 @@ public class InformacionBasicaPage extends GeneralPage {
       btnBuscarNit.waitUntilClickable();
       btnBuscarNit.click();
       btnSeleccionarContacto.waitUntilClickable();
-      btnSeleccionarContacto.click();l
+      btnSeleccionarContacto.click();
       realizarEsperaCarga();
       btnRelacionAsegurado.waitUntilClickable();
       btnRelacionAsegurado.click();
@@ -122,7 +122,7 @@ public class InformacionBasicaPage extends GeneralPage {
   }
 
   public void seleccionarDiaCalendario(String diaUsuario) {
-    navegarMenu(diaMes,diaUsuario);
+    navegarMenu(diaUsuario,diaMes);
   }
 
   public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {

@@ -138,7 +138,8 @@ public class BuscarPolizaPage extends GeneralPage {
 
   public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr) {
     enfocarVistaAutomatizacion();
-    txtTipoDocumentoAsegurado.waitUntilVisible().click();
+    realizarEsperaCarga();
+    txtTipoDocumentoAsegurado.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
     navegarMenu(tipoDocumentoAtr, MenuConstante.MENU_TIPO_DOCUMENTO_ATR);
     txtNumeroDocumentoAtr.waitUntilVisible().type(numDocumentoAtr);
     btnConsultarDatosAseguradoATR.waitUntilVisible().click();
