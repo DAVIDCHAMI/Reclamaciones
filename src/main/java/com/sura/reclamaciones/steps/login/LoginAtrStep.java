@@ -14,7 +14,9 @@ import org.fluentlenium.core.annotation.Page;
 
 public class LoginAtrStep {
   @Page AutenticacionAtrPage autenticacionAtrPage;
+
   @Steps Credencial credencial;
+
   @Steps GenericStep genericStep;
 
   @Step

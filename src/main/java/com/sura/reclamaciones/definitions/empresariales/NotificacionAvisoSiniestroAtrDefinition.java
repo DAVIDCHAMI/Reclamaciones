@@ -13,6 +13,7 @@ import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresa
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class NotificacionAvisoSiniestroAtrDefinition {
@@ -31,8 +32,8 @@ public class NotificacionAvisoSiniestroAtrDefinition {
 
 
 
-  @Dado("^que tenemos una poliza de (.*)$")
-  public void diligenciarInformacionAsegurado(String cobertura) throws Throwable {
+  @Dado("^que tenemos una póliza de (.*)$")
+  public void diligenciarInformacionAsegurado(String cobertura) throws IOException {
     Persona aseguradoAtr =
         new Persona(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
     nuevaReclamacionAtrEmpresarialStep.accederAvisoAtr();
@@ -40,6 +41,7 @@ public class NotificacionAvisoSiniestroAtrDefinition {
         aseguradoAtr.getLstPersona());
   }
 
+<<<<<<< HEAD
   @Cuando("^se genere un siniestro por causa (.*) con un valor de pretension de (.*)$")
   public void diligenciarInformacionSiniestro(String causaSiniestro, String valorPretension)
       throws Throwable {
@@ -48,16 +50,27 @@ public class NotificacionAvisoSiniestroAtrDefinition {
             genericStep.getFilasModelo(ReclamacionConstante.RECLAMACION_EMPRESARIAL, "ATR"));
     nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(
         causaSiniestro, informacionSiniestro.getLstReclamo());
+=======
+  @Cuando("^se genere un siniestro por causa (.*) con un valor de pretensión de (.*)$")
+  public void diligenciarInformacionSiniestro(String causaSiniestro, String valorPretension) {
+    nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(causaSiniestro, "prueba");
+>>>>>>> feature/automatizacionATR
     nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();
     nuevaReclamacionAtrEmpresarialStep.diligenciarValorPretension(valorPretension);
   }
 
+<<<<<<< HEAD
   @Entonces("^se obtiene una reclamacion que podrá ser consultada en ClaimCenter$")
   public void consultarSiniestro() throws Throwable{
     String numeroReclamacion = nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
     setupStory.seleccionarAmbienteEmpresarial();
     //loginClaimStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_EMPRESARIAL);
     nuevaReclamacionAtrEmpresarialStep.consultarReclamo(numeroReclamacion);
+=======
+  @Entonces("^se obtiene una reclamación que podrá ser consultada en ClaimCenter$")
+  public void consultarSiniestro() {
+    nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
+>>>>>>> feature/automatizacionATR
     //To Do
   }
 }

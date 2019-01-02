@@ -65,12 +65,8 @@ public class GeneralPage extends PageObject {
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   private String lstDinamico = "//li[.='COMODIN']";
-  private String btnCambioMesAnio =
-      "//table[@class='datePickerMonthSelector']//td[COMODIN]//div[@class='html-face']";
+
   private String auxiliarReemplazo = "";
-  private String diaMes =
-      "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
-  private String auxMes = "";
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -230,49 +226,20 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public void seleccionarDiaCalendario(String diaUsuario) {
-    auxMes = diaMes.replace(ConstanteGlobal.COMODIN, diaUsuario);
-    $(auxMes).click();
-  }
-
-  public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
-    int buscadorValor = valorMesActual - valorMesAnterior;
-    int numeroClick = 0;
-    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "2");
-    while (numeroClick < buscadorValor) {
-      $(auxiliarReemplazo).waitUntilVisible().click();
-      numeroClick++;
+  public void realizarEsperaFinalizarReclamacion() {
+    int numeroIntentos = ConstanteGlobal.NUMERO_INTENTOS_ESPERA_ELEMENTO;
+    while (numeroIntentos > 0) {
+      if (!pgrBarCarga.isPresent()) {
+        break;
+      }
+      numeroIntentos--;
     }
   }
 
-  public void seleecionarMesPosterior(int valorMesPosterior, int valorMesActual) {
-    int buscadorValor = valorMesPosterior - valorMesActual;
-    int numeroClick = 0;
-    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "4");
-    while (numeroClick < buscadorValor) {
-      $(auxiliarReemplazo).waitUntilVisible().click();
-      numeroClick++;
-    }
-  }
-
-  public void seleccionarAnioAnterior(int valorAnioAnterior, int valorAnioActual) {
-    int buscadorValor = valorAnioActual - valorAnioAnterior;
-    int numeroClick = 0;
-    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "1");
-    while (numeroClick < buscadorValor) {
-      $(auxiliarReemplazo).waitUntilVisible().click();
-      numeroClick++;
-    }
-  }
-
-  public void seleccionarAnioPosterior(int valorAnioPosterior, int valorAnioActual) {
-    int buscadorValor = valorAnioPosterior - valorAnioActual;
-    int numeroClick = 0;
-    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "5");
-    while (numeroClick < buscadorValor) {
-      $(auxiliarReemplazo).waitUntilVisible().click();
-      numeroClick++;
-    }
+  public void navegarMenu(String opcionMenu, String mnuNavegar) {
+    String auxiliarMnuNavegar = "";
+    auxiliarMnuNavegar = mnuNavegar.replace(ConstanteGlobal.COMODIN, opcionMenu);
+    $(auxiliarMnuNavegar).waitUntilVisible().click();
   }
 
   protected void resaltarElemento(WebElementFacade elemento) {

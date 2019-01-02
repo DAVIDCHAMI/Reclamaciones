@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -8,9 +8,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class AsistenteVirtualAtrPage extends GeneralPage {
-
-  private String mnuAsistenteVirtual = "//span[contains(text(),'COMODIN')]";
-  private String auxiliarMnuAsistenteVirtual = "";
 
   @FindBy(xpath = "//img[@title='Asistente Virtual']")
   private WebElementFacade bntAsistenteVirtual;
@@ -40,33 +37,18 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   }
 
   public void accederAsistenteVirtual() {
-    resaltarElemento(bntAsistenteVirtual);
     bntAsistenteVirtual.waitUntilVisible().click();
     enfocarVistaAutomatizacion();
   }
 
   public void accederAvisoEmpresa() {
     if (btnCerrarTour.isVisible()) {
-      resaltarElemento(btnCerrarTour);
       btnCerrarTour.click();
     }
-    auxiliarMnuAsistenteVirtual =
-        mnuAsistenteVirtual.replace(
-            ConstanteGlobal.COMODIN, ReclamacionConstante.ASISTENTE_VIRTUAL);
-    resaltarElemento($(auxiliarMnuAsistenteVirtual));
-    $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
-    auxiliarMnuAsistenteVirtual =
-        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.HERRAMIENTAS);
-    resaltarElemento($(auxiliarMnuAsistenteVirtual));
-    $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
-    auxiliarMnuAsistenteVirtual =
-        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.RECLAMACIONES);
-    resaltarElemento($(auxiliarMnuAsistenteVirtual));
-    $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
-    auxiliarMnuAsistenteVirtual =
-        mnuAsistenteVirtual.replace(ConstanteGlobal.COMODIN, ReclamacionConstante.EMPRESAS);
-    resaltarElemento($(auxiliarMnuAsistenteVirtual));
-    $(auxiliarMnuAsistenteVirtual).waitUntilVisible().click();
+    navegarMenu(ReclamacionConstante.ASISTENTE_VIRTUAL, MenuConstante.MENU_ASISTENTE_VIRTUAL);
+    navegarMenu(ReclamacionConstante.HERRAMIENTAS, MenuConstante.MENU_ASISTENTE_VIRTUAL);
+    navegarMenu(ReclamacionConstante.RECLAMACIONES, MenuConstante.MENU_ASISTENTE_VIRTUAL);
+    navegarMenu(ReclamacionConstante.EMPRESAS, MenuConstante.MENU_ASISTENTE_VIRTUAL);
   }
 
   public void seleccionarPlanListaProducto() {

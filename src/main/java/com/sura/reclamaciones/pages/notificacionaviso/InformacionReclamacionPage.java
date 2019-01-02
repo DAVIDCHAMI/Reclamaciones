@@ -61,7 +61,7 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   @FindBy(
     xpath =
-        "//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:Claim_LossCause2-inputCell']/following-sibling::td"
+        "//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:Claim_LossCause-inputCell']"
   )
   private WebElementFacade mnuCausa;
 
@@ -139,7 +139,7 @@ public class InformacionReclamacionPage extends GeneralPage {
   public void finalizarSiniestro() {
     btnFinalizar.waitUntilVisible();
     btnFinalizar.click();
-    realizarEsperaCarga();
+    realizarEsperaFinalizarReclamacion();
   }
 
   public String obtenerTituloReclamacionGenerada() {

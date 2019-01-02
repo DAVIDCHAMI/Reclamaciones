@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
-import static com.sura.reclamaciones.utils.Utilidades.*;
-
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Utilidades;
@@ -39,7 +37,7 @@ public class InformacionBasicaPage extends GeneralPage {
     xpath =
         " //a[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:ReportedBy_NameMenuIcon']"
   )
-  private WebElementFacade btnCotactManager;
+  private WebElementFacade btnContactManager;
 
   @FindBy(
     xpath =
@@ -80,6 +78,13 @@ public class InformacionBasicaPage extends GeneralPage {
   @FindBy(className = "datePickerMonth")
   private WebElementFacade indicadorAnioMes;
 
+  private String btnCambioMesAnio =
+      "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
+  private String diaMes =
+      "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
+  private String auxMes = "";
+  private String auxiliarReemplazo = "";
+
   public InformacionBasicaPage(WebDriver driver) {
     super(driver);
   }
@@ -92,8 +97,8 @@ public class InformacionBasicaPage extends GeneralPage {
       lstAutorReporteCliente.click();
       realizarEsperaCarga();
     } else {
-      btnCotactManager.waitUntilClickable();
-      btnCotactManager.click();
+      btnContactManager.waitUntilClickable();
+      btnContactManager.click();
       btnBuscarContactoExistente.waitUntilClickable();
       btnBuscarContactoExistente.click();
       txtNit.waitUntilVisible();
@@ -101,7 +106,7 @@ public class InformacionBasicaPage extends GeneralPage {
       btnBuscarNit.waitUntilClickable();
       btnBuscarNit.click();
       btnSeleccionarContacto.waitUntilClickable();
-      btnSeleccionarContacto.click();
+      btnSeleccionarContacto.click();l
       realizarEsperaCarga();
       btnRelacionAsegurado.waitUntilClickable();
       btnRelacionAsegurado.click();
@@ -114,6 +119,50 @@ public class InformacionBasicaPage extends GeneralPage {
     txtDetalleHechos.waitUntilVisible();
     txtDetalleHechos.type(detalle);
     continuarSiguientePantalla();
+  }
+
+  public void seleccionarDiaCalendario(String diaUsuario) {
+    navegarMenu(diaMes,diaUsuario);
+  }
+
+  public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
+    int buscadorValor = valorMesActual - valorMesAnterior;
+    int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "2");
+    while (numeroClick < buscadorValor) {
+      $(auxiliarReemplazo).waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public void seleecionarMesPosterior(int valorMesPosterior, int valorMesActual) {
+    int buscadorValor = valorMesPosterior - valorMesActual;
+    int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "4");
+    while (numeroClick < buscadorValor) {
+      $(auxiliarReemplazo).waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public void seleccionarAnioAnterior(int valorAnioAnterior, int valorAnioActual) {
+    int buscadorValor = valorAnioActual - valorAnioAnterior;
+    int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "1");
+    while (numeroClick < buscadorValor) {
+      $(auxiliarReemplazo).waitUntilVisible().click();
+      numeroClick++;
+    }
+  }
+
+  public void seleccionarAnioPosterior(int valorAnioPosterior, int valorAnioActual) {
+    int buscadorValor = valorAnioPosterior - valorAnioActual;
+    int numeroClick = 0;
+    auxiliarReemplazo = btnCambioMesAnio.replace(ConstanteGlobal.COMODIN, "5");
+    while (numeroClick < buscadorValor) {
+      $(auxiliarReemplazo).waitUntilVisible().click();
+      numeroClick++;
+    }
   }
 
   public void seleccionarFechaAviso(String fechaAviso) {
