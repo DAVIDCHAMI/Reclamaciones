@@ -106,7 +106,7 @@ public class InformacionBasicaPage extends GeneralPage {
       btnBuscarNit.waitUntilClickable();
       btnBuscarNit.click();
       btnSeleccionarContacto.waitUntilClickable();
-      btnSeleccionarContacto.click();l
+      btnSeleccionarContacto.click();
       realizarEsperaCarga();
       btnRelacionAsegurado.waitUntilClickable();
       btnRelacionAsegurado.click();
@@ -122,7 +122,7 @@ public class InformacionBasicaPage extends GeneralPage {
   }
 
   public void seleccionarDiaCalendario(String diaUsuario) {
-    navegarMenu(diaMes,diaUsuario);
+    navegarMenu(diaMes, diaUsuario);
   }
 
   public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
