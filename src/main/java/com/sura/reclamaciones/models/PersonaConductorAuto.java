@@ -11,6 +11,25 @@ public class PersonaConductorAuto extends Persona {
   private String ciudad;
   private String direccion;
   private String tipoDireccion;
+  private List<PersonaConductorAuto> lstPersonaConductorAuto = new ArrayList<>();
+
+  public PersonaConductorAuto() {
+    super();
+  }
+
+  public PersonaConductorAuto(List<Map<String, String>> datoPersonaConductorAuto) {
+    super();
+    asignarDatos(datoPersonaConductorAuto);
+  }
+
+  private PersonaConductorAuto(Map<String, String> datoPersonaConductorAuto) {
+    super(datoPersonaConductorAuto);
+    this.numeroTrabajo = datoPersonaConductorAuto.get("numeroTrabajo");
+    this.policyRole = datoPersonaConductorAuto.get("policyRole");
+    this.ciudad = datoPersonaConductorAuto.get("ciudad");
+    this.direccion = datoPersonaConductorAuto.get("direccion");
+    this.tipoDireccion = datoPersonaConductorAuto.get("tipoDireccion");
+  }
 
   public String getNumeroTrabajo() {
     return numeroTrabajo;
@@ -56,29 +75,9 @@ public class PersonaConductorAuto extends Persona {
     return lstPersonaConductorAuto;
   }
 
-  private List<PersonaConductorAuto> lstPersonaConductorAuto = new ArrayList<>();
-
-  public PersonaConductorAuto() {
-    super();
-  }
-
-  public PersonaConductorAuto(List<Map<String, String>> datoPersonaConductorAuto) {
-    super();
-    asignarDatos(datoPersonaConductorAuto);
-  }
-
   public void asignarDatos(List<Map<String, String>> datoPersonaConductorAuto) {
     for (Map<String, String> dato : datoPersonaConductorAuto) {
       lstPersonaConductorAuto.add(new PersonaConductorAuto(dato));
     }
-  }
-
-  private PersonaConductorAuto(Map<String, String> datoPersonaConductorAuto) {
-    super(datoPersonaConductorAuto);
-    this.numeroTrabajo = datoPersonaConductorAuto.get("numeroTrabajo");
-    this.policyRole = datoPersonaConductorAuto.get("policyRole");
-    this.ciudad = datoPersonaConductorAuto.get("ciudad");
-    this.direccion = datoPersonaConductorAuto.get("direccion");
-    this.tipoDireccion = datoPersonaConductorAuto.get("tipoDireccion");
   }
 }

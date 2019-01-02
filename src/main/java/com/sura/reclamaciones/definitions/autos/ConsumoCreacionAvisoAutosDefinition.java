@@ -9,8 +9,7 @@ import net.thucydides.core.annotations.Steps;
 
 public class ConsumoCreacionAvisoAutosDefinition {
 
-  @Steps
-  ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
+  @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
   @Dado("^que se tiene una póliza (.*) de autos$")
   public void parametrizarValoresSiniestro(String filtroCsv) throws IOException {

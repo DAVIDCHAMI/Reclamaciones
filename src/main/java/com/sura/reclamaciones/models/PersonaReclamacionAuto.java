@@ -21,6 +21,31 @@ public class PersonaReclamacionAuto extends Persona {
 
   private List<PersonaReclamacionAuto> lstPersonaReclamacionAuto = new ArrayList<>();
 
+  public PersonaReclamacionAuto() {
+    super();
+  }
+
+  private PersonaReclamacionAuto(Map<String, String> datoPersonaReclamacionAuto) {
+    super(datoPersonaReclamacionAuto);
+    this.numeroTrabajo = datoPersonaReclamacionAuto.get("numeroTrabajo");
+    this.policyRole = datoPersonaReclamacionAuto.get("policyRole");
+    this.ciudad = datoPersonaReclamacionAuto.get("ciudad");
+    this.direccion = datoPersonaReclamacionAuto.get("direccion");
+    this.tipoDireccion = datoPersonaReclamacionAuto.get("tipoDireccion");
+    this.parteLesionada = datoPersonaReclamacionAuto.get("parteLesionada");
+    this.descripcionLesion = datoPersonaReclamacionAuto.get("descripcionLesion");
+    this.gravedadLesion = datoPersonaReclamacionAuto.get("gravedadLesion");
+    this.lesionGeneral = datoPersonaReclamacionAuto.get("lesionGeneral");
+    this.detalleLesion = datoPersonaReclamacionAuto.get("detalleLesion");
+    this.parteCuerpo = datoPersonaReclamacionAuto.get("parteCuerpo");
+    this.detalleParteCuerpo = datoPersonaReclamacionAuto.get("detalleParteCuerpo");
+  }
+
+  public PersonaReclamacionAuto(List<Map<String, String>> datoPersonaReclamacionAuto) {
+    super();
+    asignarDatos(datoPersonaReclamacionAuto);
+  }
+
   public String getNumeroTrabajo() {
     return numeroTrabajo;
   }
@@ -121,34 +146,9 @@ public class PersonaReclamacionAuto extends Persona {
     return lstPersonaReclamacionAuto;
   }
 
-  public PersonaReclamacionAuto() {
-    super();
-  }
-
-  public PersonaReclamacionAuto(List<Map<String, String>> datoPersonaReclamacionAuto) {
-    super();
-    asignarDatos(datoPersonaReclamacionAuto);
-  }
-
   public void asignarDatos(List<Map<String, String>> datoPersonaReclamacionAuto) {
     for (Map<String, String> dato : datoPersonaReclamacionAuto) {
       lstPersonaReclamacionAuto.add(new PersonaReclamacionAuto(dato));
     }
-  }
-
-  private PersonaReclamacionAuto(Map<String, String> datoPersonaReclamacionAuto) {
-    super(datoPersonaReclamacionAuto);
-    this.numeroTrabajo = datoPersonaReclamacionAuto.get("numeroTrabajo");
-    this.policyRole = datoPersonaReclamacionAuto.get("policyRole");
-    this.ciudad = datoPersonaReclamacionAuto.get("ciudad");
-    this.direccion = datoPersonaReclamacionAuto.get("direccion");
-    this.tipoDireccion = datoPersonaReclamacionAuto.get("tipoDireccion");
-    this.parteLesionada = datoPersonaReclamacionAuto.get("parteLesionada");
-    this.descripcionLesion = datoPersonaReclamacionAuto.get("descripcionLesion");
-    this.gravedadLesion = datoPersonaReclamacionAuto.get("gravedadLesion");
-    this.lesionGeneral = datoPersonaReclamacionAuto.get("lesionGeneral");
-    this.detalleLesion = datoPersonaReclamacionAuto.get("detalleLesion");
-    this.parteCuerpo = datoPersonaReclamacionAuto.get("parteCuerpo");
-    this.detalleParteCuerpo = datoPersonaReclamacionAuto.get("detalleParteCuerpo");
   }
 }

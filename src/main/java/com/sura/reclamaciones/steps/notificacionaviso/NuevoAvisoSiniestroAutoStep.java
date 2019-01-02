@@ -34,7 +34,7 @@ public class NuevoAvisoSiniestroAutoStep {
           agregarInformacionPage.seleccionarCausa(dato.getOrigenCausa());
           agregarInformacionPage.seleccionarOrigen(dato.getOrigen());
           agregarInformacionPage.escribirValorPretension(dato.getValorPretension());
-          agregarInformacionPage.seleccionarIntervinoAutoridad(dato.getAutoridad());
+          agregarInformacionPage.seleccionarIntervinoAutoridad(dato.getAutoridadTransito());
         });
   }
 
@@ -52,7 +52,7 @@ public class NuevoAvisoSiniestroAutoStep {
     detalleVehiculoPage.agregarConductor();
     datosReclamacion.forEach(
         dato -> {
-          detalleVehiculoPage.seleccionarTaller(dato.getTaller());
+          detalleVehiculoPage.seleccionarTaller(dato.getTallerReparacion());
         });
     detalleVehiculoPage.volverPasoAnterior();
   }

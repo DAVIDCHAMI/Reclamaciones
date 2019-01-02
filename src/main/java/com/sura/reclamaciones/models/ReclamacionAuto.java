@@ -11,9 +11,7 @@ public class ReclamacionAuto extends Reclamacion {
   private String descripcionHechos;
   private String origenCausa;
   private String vehiculoRetenido;
-  private String autoridad;
   private String culpabilidad;
-  private String taller;
   private String valorPretension;
   private String mensajeValidador;
   private String pais;
@@ -45,9 +43,7 @@ public class ReclamacionAuto extends Reclamacion {
     this.descripcionHechos = datosReclamacionAut.get("descripcionHechos");
     this.origenCausa = datosReclamacionAut.get("origenCausa");
     this.vehiculoRetenido = datosReclamacionAut.get("vehiculoRetenido");
-    this.autoridad = datosReclamacionAut.get("autoridad");
     this.culpabilidad = datosReclamacionAut.get("culpabilidad");
-    this.taller = datosReclamacionAut.get("taller");
     this.valorPretension = datosReclamacionAut.get("valorPretension");
     this.mensajeValidador = datosReclamacionAut.get("mensajeValidador");
     this.pais = datosReclamacionAut.get("pais");
@@ -95,16 +91,8 @@ public class ReclamacionAuto extends Reclamacion {
     return vehiculoRetenido;
   }
 
-  public String getAutoridad() {
-    return autoridad;
-  }
-
   public String getCulpabilidad() {
     return culpabilidad;
-  }
-
-  public String getTaller() {
-    return taller;
   }
 
   public String getValorPretension() {

@@ -16,7 +16,5 @@ public class ConstanteGlobal {
   public static final String PARAMETROS_RECLAMACION_PERSONA = "persona_reclamacion_auto";
   public static final String PARAMETROS_RECLAMACION_VEHICULO = "vehiculo";
 
-  private ConstanteGlobal() {
-
-  }
+  private ConstanteGlobal() {}
 }

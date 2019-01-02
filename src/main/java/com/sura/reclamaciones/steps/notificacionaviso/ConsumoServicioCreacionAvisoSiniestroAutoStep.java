@@ -52,7 +52,7 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
                 ConstanteGlobal.PARAMETROS_RECLAMACION_VEHICULO, filtroSiniestroCsv));
     lstVehiculoParam = reclamacionVehiculo.getVehiculos();
     parametroAviso =
-        new ReclamacionAuto(genericStep.getFilasModelo("reclamacion_auto", "creacionAvisoWS"));
+        new ReclamacionAuto(genericStep.getFilasModelo("parametros_siniestro_autos", "creacionAvisoWS"));
     lstReclamacionAuto = parametroAviso.getLstReclamacionAuto();
   }
 
