@@ -6,10 +6,10 @@ import java.util.Map;
 
 public class Vehiculo {
   private String placa;
-  private String clase;
+  private String claseVehiculo;
   private String modelo;
   private String marca;
-  private String linea;
+  private String lineaVehiculo;
   private String motor;
   private String chasis;
   private int anio;
@@ -28,10 +28,10 @@ public class Vehiculo {
 
   private Vehiculo(Map<String, String> datosVehiculos) {
     this.placa = datosVehiculos.get("placa");
-    this.clase = datosVehiculos.get("clase");
+    this.claseVehiculo = datosVehiculos.get("claseVehiculo");
     this.modelo = datosVehiculos.get("modelo");
     this.marca = datosVehiculos.get("marca");
-    this.linea = datosVehiculos.get("linea");
+    this.lineaVehiculo = datosVehiculos.get("lineaVehiculo");
     this.motor = datosVehiculos.get("motor");
     this.chasis = datosVehiculos.get("chasis");
     this.anio = Integer.parseInt(datosVehiculos.get("anio"));
@@ -44,8 +44,8 @@ public class Vehiculo {
     return placa;
   }
 
-  public String getClase() {
-    return clase;
+  public String getClaseVehiculo() {
+    return claseVehiculo;
   }
 
   public String getModelo() {
@@ -56,8 +56,8 @@ public class Vehiculo {
     return marca;
   }
 
-  public String getLinea() {
-    return linea;
+  public String getLineaVehiculo() {
+    return lineaVehiculo;
   }
 
   public String getMotor() {

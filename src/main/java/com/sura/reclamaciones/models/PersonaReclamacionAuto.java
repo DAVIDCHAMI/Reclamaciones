@@ -43,7 +43,7 @@ public class PersonaReclamacionAuto extends Persona {
 
   public PersonaReclamacionAuto(List<Map<String, String>> datoPersonaReclamacionAuto) {
     super();
-    asignarDatos(datoPersonaReclamacionAuto);
+    asignarDatosPersona(datoPersonaReclamacionAuto);
   }
 
   public String getNumeroTrabajo() {
@@ -146,7 +146,7 @@ public class PersonaReclamacionAuto extends Persona {
     return lstPersonaReclamacionAuto;
   }
 
-  public void asignarDatos(List<Map<String, String>> datoPersonaReclamacionAuto) {
+  public void asignarDatosPersona(List<Map<String, String>> datoPersonaReclamacionAuto) {
     for (Map<String, String> dato : datoPersonaReclamacionAuto) {
       lstPersonaReclamacionAuto.add(new PersonaReclamacionAuto(dato));
     }

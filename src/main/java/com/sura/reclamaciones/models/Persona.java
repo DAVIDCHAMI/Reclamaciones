@@ -77,7 +77,7 @@ public class Persona {
     return lstPersona;
   }
 
-  private void asignarDatos(List<Map<String, String>> datosPersona) {
+  public void asignarDatos(List<Map<String, String>> datosPersona) {
     for (Map<String, String> dato : datosPersona) {
       lstPersona.add(new Persona(dato));
     }

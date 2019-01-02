@@ -17,11 +17,6 @@ public class PersonaConductorAuto extends Persona {
     super();
   }
 
-  public PersonaConductorAuto(List<Map<String, String>> datoPersonaConductorAuto) {
-    super();
-    asignarDatos(datoPersonaConductorAuto);
-  }
-
   private PersonaConductorAuto(Map<String, String> datoPersonaConductorAuto) {
     super(datoPersonaConductorAuto);
     this.numeroTrabajo = datoPersonaConductorAuto.get("numeroTrabajo");
@@ -75,7 +70,12 @@ public class PersonaConductorAuto extends Persona {
     return lstPersonaConductorAuto;
   }
 
-  public void asignarDatos(List<Map<String, String>> datoPersonaConductorAuto) {
+  public PersonaConductorAuto(List<Map<String, String>> datoPersonaConductorAuto) {
+    super();
+    asignarDatosConductor(datoPersonaConductorAuto);
+  }
+
+  public void asignarDatosConductor(List<Map<String, String>> datoPersonaConductorAuto) {
     for (Map<String, String> dato : datoPersonaConductorAuto) {
       lstPersonaConductorAuto.add(new PersonaConductorAuto(dato));
     }
