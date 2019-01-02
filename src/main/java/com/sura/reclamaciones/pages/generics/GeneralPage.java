@@ -48,10 +48,7 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade txtTransacciones;
 
-  @FindBy(
-    xpath =
-        "//div[@id ='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV' or @id='ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV']"
-  )
+  @FindBy(xpath = "//div[@class='x-panel x-panel-default x-grid']")
   private WebElementFacade tblVerificacion;
 
   @FindBy(xpath = "//input")
@@ -204,11 +201,11 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public String obtenerDatoTablaCabecera(String strDatoCabecera) {
+  public String obtenerDatoTablaCabecera(String strDatoCabecera, int posicionElemento) {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);
     int longitudTabla = elementoEncontrado.size();
-    return elementoEncontrado.get(longitudTabla - 1).getText();
+    return elementoEncontrado.get(longitudTabla - posicionElemento).getText();
   }
 
   public List<WebElement> obtenerFilaTabla(
@@ -219,5 +216,15 @@ public class GeneralPage extends PageObject {
         tblVerificacion.findElements(
             By.xpath(String.format(strXpathElementoTabla, strIdentificadorFila)));
     return lstFila;
+  }
+
+  public void realizarEsperaFinalizarReclamacion() {
+    int numeroIntentos = ConstanteGlobal.NUMERO_INTENTOS_ESPERA_ELEMENTO;
+    while (numeroIntentos > 0) {
+      if (!pgrBarCarga.isPresent()) {
+        break;
+      }
+      numeroIntentos--;
+    }
   }
 }

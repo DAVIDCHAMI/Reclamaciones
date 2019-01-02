@@ -1,4 +1,4 @@
-id;idFiltro;numPoliza;fechaSiniestro;fechaNotificacionSiniestro;relacionAsegurado;lugar;descripcionHechos;causaSiniestro;origenCausa;valorPretension;vehiculoRetenido;autoridadTransito;tallerReparacion;culpabilidad;mensajeValidador
+id;idFiltro;numPoliza;fechaSiniestro;fechaNotificacionSiniestro;relacionAsegurado;lugar;descripcionHechos;causaPerdida;origenCausa;valorPretension;vehiculoRetenido;autoridadTransito;tallerReparacion;culpabilidad;mensajeValidador
 1;reclamacionSimple;900000050442;Hoy;2018-07-05T09:46:53-05:00;Él mismo;Medellin;Prueba automática creación siniestro autos con afectación de póliza;Colisión con vehículo;Exceso de Velocidad;123145;;Nacional;ANDAR S.A.;Archivo;Nueva reclamación guardada
 
 

@@ -28,7 +28,7 @@ public abstract class Reclamacion {
     this.lugarSiniestro = datosReclamacion.get("lugarSiniestro");
     this.reservaTransaccion = datosReclamacion.get("reservaTransaccion");
     this.fechaAvisoSiniestro = datosReclamacion.get("fechaAviso");
-    this.causaSiniestro = datosReclamacion.get("causaSiniestro");
+    this.causaSiniestro = datosReclamacion.get("causaPerdida");
     this.descripcionHechosSiniestro = datosReclamacion.get("descripcionHechos");
     this.identificacionAutor = datosReclamacion.get("idAutor");
     this.valorPerdidaSiniestro = datosReclamacion.get("valorPerdida");
