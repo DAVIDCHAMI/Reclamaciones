@@ -48,7 +48,6 @@ public class ResumenReclamacionPage extends GeneralPage {
   public String validarExposicion() {
     String validadorExposicion;
     String validador;
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
     if (lnkTipoExposicion.isVisible()) {
       validador = lnkTipoExposicion.waitUntilVisible().getText();
       switch (validador) {
@@ -78,27 +77,5 @@ public class ResumenReclamacionPage extends GeneralPage {
       LOGGER.info("No se ha generado reserva en la sección de transacciones");
     }
     return validarReservaTransaccion;
-  }
-
-  public String validarExposicionAutos() {
-    String validadorExposicion;
-    String validador;
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
-    if (lnkTipoExposicion.isVisible()) {
-      validador = lnkTipoExposicion.waitUntilVisible().getText();
-      switch (validador) {
-        case ReclamacionConstante.EXPOSICION_CONTENIDO:
-        case ReclamacionConstante.EXPOSICION_PROPIEDAD:
-        case ReclamacionConstante.EXPOSICION_GENERAL:
-          validadorExposicion = ConstanteGlobal.SI;
-          break;
-        default:
-          validadorExposicion = ConstanteGlobal.NO;
-          break;
-      }
-    } else {
-      validadorExposicion = ConstanteGlobal.NO;
-    }
-    return validadorExposicion;
   }
 }

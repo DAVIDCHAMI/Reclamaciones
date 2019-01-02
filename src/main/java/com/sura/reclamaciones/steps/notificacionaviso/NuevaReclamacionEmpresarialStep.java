@@ -2,6 +2,7 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import static com.sura.reclamaciones.constantes.ReclamacionConstante.*;
 
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -74,6 +75,7 @@ public class NuevaReclamacionEmpresarialStep {
   }
 
   public void validarExposicionVisualizada(String exposicion) {
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
     String validar = resumenReclamacionPage.validarExposicion();
     MatcherAssert.assertThat(
         "No generó exposición, verificar las reglas de administración de exposiciones o data ingresada",

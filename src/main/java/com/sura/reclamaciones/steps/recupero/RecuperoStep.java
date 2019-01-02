@@ -10,7 +10,6 @@ import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
 import java.util.List;
-
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
@@ -28,7 +27,7 @@ public class RecuperoStep {
 
   @Step
   public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
-      menuClaimPage.buscarReclamacion(reclamacion, Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
+    menuClaimPage.buscarReclamacion(reclamacion, Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
   }
 
   public void seleccionarRecupero() {

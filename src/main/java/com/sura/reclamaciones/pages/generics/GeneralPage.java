@@ -227,14 +227,4 @@ public class GeneralPage extends PageObject {
             By.xpath(String.format(strXpathElementoTabla, strIdentificadorFila)));
     return lstFila;
   }
-
-  public void realizarEsperaFinalizarReclamacion() {
-    int numeroIntentos = ConstanteGlobal.NUMERO_INTENTOS_ESPERA_ELEMENTO;
-    while (numeroIntentos > 0) {
-      if (!pgrBarCarga.isPresent()) {
-        break;
-      }
-      numeroIntentos--;
-    }
-  }
 }
