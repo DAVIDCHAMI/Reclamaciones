@@ -3,7 +3,7 @@
 Característica: Distribución del reaseguro de un siniestro
 
   Como coordinador de empresariales
-  Quiero conocer la distribucion que tiene el reaseguro de un siniestro en cada movimiento financiero
+  Quiero conocer la distribución que tiene el reaseguro de un siniestro en cada movimiento financiero
   Para identificar el monto de los valores que corresponden a los diferentes reaseguradores de acuerdo a los contratos adquiridos con la compañía
 
  @claimsEmpresarial
