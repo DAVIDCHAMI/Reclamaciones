@@ -41,7 +41,7 @@ public class ReaseguroDefinition {
   }
 
   @Cuando(
-      "^se realice al siniestro un pago (.*) a un (.*) por medio de (.*) el cual cuenta con una linea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
+      "^se realice al siniestro un pago (.*) a un (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
   public void realizarPagoSiniestroEmpresarial(
       String lineaReserva,
       String tipoPago,

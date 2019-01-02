@@ -19,7 +19,7 @@ Característica: Distribución del reaseguro de un siniestro
   @claimsEmpresarial
   Esquema del escenario: Reaseguro Reserva de liberación - Pago y liberación de reserva
   Dado se genere una reclamación de un contrato tipo <Tipo Contrato Póliza>
-  Cuando  se realice al siniestro un pago <Tipo Pago> a un <Beneficiario Pago> por medio de <Método Pago> el cual cuenta con una linea de reserva <Línea Reserva> donde el responsable <¿Solo Sura?> es Sura por una retención de <Código Retención>
+  Cuando  se realice al siniestro un pago <Tipo Pago> a un <Beneficiario Pago> por medio de <Método Pago> el cual cuenta con una línea de reserva <Línea Reserva> donde el responsable <¿Solo Sura?> es Sura por una retención de <Código Retención>
   Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
 
   Ejemplos:
