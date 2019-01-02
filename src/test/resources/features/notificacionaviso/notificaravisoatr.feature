@@ -7,9 +7,9 @@ Característica: Notificacion de aviso de una reclamacion desde ATR
 
   @ATR
   Esquema del escenario: aviso
-    Dado que tenemos una poliza de <Tipo y Cobertura>
-    Cuando se genere un siniestro por causa <Causa> con un valor de pretension de <Valor de Pretensión>
-    Entonces se obtiene una reclamacion que podrá ser consultada en ClaimCenter
+    Dado que tenemos una póliza de <Tipo y Cobertura>
+    Cuando se genere un siniestro por causa <Causa> con un valor de pretensión de <Valor de Pretensión>
+    Entonces se obtiene una reclamación que podrá ser consultada en ClaimCenter
 
     Ejemplos:
       | Tipo y Cobertura | Causa                         | Valor de Pretensión |

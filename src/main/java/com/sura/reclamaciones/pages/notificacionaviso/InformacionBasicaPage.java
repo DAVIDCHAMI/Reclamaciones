@@ -106,7 +106,7 @@ public class InformacionBasicaPage extends GeneralPage {
       btnBuscarNit.waitUntilClickable();
       btnBuscarNit.click();
       btnSeleccionarContacto.waitUntilClickable();
-      btnSeleccionarContacto.click();
+      btnSeleccionarContacto.click();l
       realizarEsperaCarga();
       btnRelacionAsegurado.waitUntilClickable();
       btnRelacionAsegurado.click();

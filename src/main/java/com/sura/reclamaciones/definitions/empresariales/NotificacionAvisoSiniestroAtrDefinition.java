@@ -16,7 +16,7 @@ public class NotificacionAvisoSiniestroAtrDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Dado("^que tenemos una poliza de (.*)$")
+  @Dado("^que tenemos una póliza de (.*)$")
   public void diligenciarInformacionAsegurado(String cobertura) throws IOException {
     Persona aseguradoAtr =
         new Persona(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
@@ -25,14 +25,14 @@ public class NotificacionAvisoSiniestroAtrDefinition {
         aseguradoAtr.getLstPersona());
   }
 
-  @Cuando("^se genere un siniestro por causa (.*) con un valor de pretension de (.*)$")
+  @Cuando("^se genere un siniestro por causa (.*) con un valor de pretensión de (.*)$")
   public void diligenciarInformacionSiniestro(String causaSiniestro, String valorPretension) {
     nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(causaSiniestro, "prueba");
     nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();
     nuevaReclamacionAtrEmpresarialStep.diligenciarValorPretension(valorPretension);
   }
 
-  @Entonces("^se obtiene una reclamacion que podrá ser consultada en ClaimCenter$")
+  @Entonces("^se obtiene una reclamación que podrá ser consultada en ClaimCenter$")
   public void consultarSiniestro() {
     nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
     //To Do
