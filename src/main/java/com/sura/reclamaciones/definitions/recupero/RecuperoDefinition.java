@@ -22,16 +22,6 @@ public class RecuperoDefinition {
   @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
 
   Recupero recupero;
-//
-//  @Dado("^que se tiene un siniestro con una reserva por (.*)$")
-//  public void navegarMenuRecupero(String tipoReserva) throws IOException {
-//    nuevaReclamacionEmpresarialStep.seleccionarNuevaReclamacion();
-//
-//    recupero = new Recupero(genericStep.getFilasModelo("recupero", tipoReserva));
-//    recuperoStep.seleccionarNumeroReclamacion(
-//        MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
-//    recuperoStep.seleccionarRecupero();
-//  }
 
   @Cuando("^se genere un recupero de tipo (.*) con un código de retención (.*)$")
   public void diligenciarRecupero(String tipoRecupero, String codigoRetencion) throws IOException {
