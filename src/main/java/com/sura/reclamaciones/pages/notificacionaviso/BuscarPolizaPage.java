@@ -119,8 +119,7 @@ public class BuscarPolizaPage extends GeneralPage {
   }
 
   public void buscarPoliza() {
-    btnBuscar.waitUntilClickable();
-    btnBuscar.click();
+    btnBuscar.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
   }
 
   public void escribirPlaca(String placa) {
