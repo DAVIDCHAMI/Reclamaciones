@@ -13,7 +13,9 @@ import net.thucydides.core.annotations.Steps;
 public class ReclamacionDefinition {
 
   @Steps private GenericStep genericStep;
+
   @Steps private NuevoAvisoSiniestroAutoStep reclamacionStep;
+
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
 
