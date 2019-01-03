@@ -163,10 +163,49 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
                 porcentajeDeducibleMinimo,
                 proporcionCuotaParte);
         break;
+      case "Recupero":
+        blnTransaccion =
+            verificarRecupero(
+                dblRetencionPura,
+                porcentajeRetenido,
+                deducibleMinimo,
+                porcentajeDeducibleMinimo,
+                proporcionCuotaParte);
+        break;
       default:
         return blnTransaccion;
     }
     return blnTransaccion;
+  }
+
+  private boolean verificarRecupero(
+      double dblRetencionPura,
+      String porcentajeRetenido,
+      String deducibleMinimo,
+      String porcentajeDeducibleMinimo,
+      String proporcionCuotaParte) {
+    boolean verificacionRecupero =
+        verificarPago(
+            dblRetencionPura,
+            porcentajeRetenido,
+            deducibleMinimo,
+            porcentajeDeducibleMinimo,
+            proporcionCuotaParte);
+    List<WebElement> lstReaseguroDetallado =
+        obtenerElementoTablaDatoDesconocido(
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 4);
+    for (int posicionElementoFila = 5;
+        lstReaseguroDetallado.size() >= posicionElementoFila;
+        posicionElementoFila++) {
+      String strValorRecupero =
+          lstReaseguroDetallado
+              .get(4)
+              .getText()
+              .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+      verificacionRecupero =
+          (strValorRecupero.equals(Serenity.sessionVariableCalled(Variables.VALOR_RECUPERO)));
+    }
+    return verificacionRecupero;
   }
 
   private boolean verificarReserva(
