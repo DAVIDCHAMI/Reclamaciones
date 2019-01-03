@@ -3,7 +3,7 @@ package com.sura.reclamaciones.definitions.autos;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAutoStep;
+import com.sura.reclamaciones.steps.notificacionaviso.NuevoAvisoSiniestroAutoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -13,7 +13,9 @@ import net.thucydides.core.annotations.Steps;
 public class ReclamacionDefinition {
 
   @Steps private GenericStep genericStep;
-  @Steps private NuevaReclamacionAutoStep reclamacionStep;
+
+  @Steps private NuevoAvisoSiniestroAutoStep reclamacionStep;
+
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
 
