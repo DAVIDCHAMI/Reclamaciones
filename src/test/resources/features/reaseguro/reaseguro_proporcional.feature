@@ -24,7 +24,7 @@ Característica: Distribución del reaseguro de un siniestro
   Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
 
     Ejemplos:
-      | Tipo Contrato Póliza |  Línea Reserva          | Tipo Pago | Beneficiario Pago                   | Método Pago | ¿Solo Sura?  | Código Retencion  |Tipo Transacción  |
+      | Tipo Contrato Póliza |  Línea Reserva          | Tipo Pago | Beneficiario Pago                   | Método Pago | ¿Solo Sura?  | Código Retención  |Tipo Transacción  |
       | MRC_01               | (1) 1ª parteContenido   | Final     |  SOLO FAMILIAR LTDA. CQLII          | Caja Sura   | No           | 0099              | reservaLiberacion |
 
   @claimsEmpresarial
@@ -35,6 +35,6 @@ Característica: Distribución del reaseguro de un siniestro
     Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
 
     Ejemplos:
-    | Tipo Contrato Póliza |  Línea Reserva          | Tipo Pago | Beneficiario Pago                   | Método Pago | ¿Solo Sura?  | Código Retención  |Tipo Transacción   |
-    | MRC_01               | (1) 1ª parteContenido   | Final     |  SOLO FAMILIAR LTDA. CQLII          | Caja Sura   | No           | 0099              | reservaLiberacion |
+    | Tipo Contrato Póliza |  Línea Reserva          | Tipo Pago | Beneficiario Pago                   | Método Pago | ¿Solo Sura?  | Código Retención  |Tipo Transacción   |Tipo Recupero|Codigo Retención Recupero|
+    | MRC_01               | (1) 1ª parteContenido   | Final     |  SOLO FAMILIAR LTDA. CQLII          | Caja Sura   | No           | 0099              | reservaLiberacion |Salvamento   |0099                     |
 
