@@ -9,9 +9,7 @@ import com.sura.reclamaciones.pages.notificacionaviso.InformacionReclamacionPage
 import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.steps.StepInterceptor;
 import org.fluentlenium.core.annotation.Page;
-import org.slf4j.LoggerFactory;
 
 public class NuevaReclamacionAtrEmpresarialStep {
 
@@ -25,8 +23,6 @@ public class NuevaReclamacionAtrEmpresarialStep {
 
   @Page ConsultaReclamacionPage consultaReclamacionPage;
 
-  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
   @Step
   public void accederAvisoAtr() {
     asistenteVirtualAtrPage.accederAsistenteVirtual();
@@ -37,24 +33,19 @@ public class NuevaReclamacionAtrEmpresarialStep {
   public void diligenciarInformacionAsegurado(List<Persona> datosPersona) {
     asistenteVirtualAtrPage.seleccionarPlanListaProducto();
     datosPersona.forEach(
-        asegurado -> {
-          buscarPolizaPage.consultarDocumentoAtr(
-              asegurado.getTipoDocumento(), asegurado.getNumDocumento());
-        });
+        asegurado ->
+            buscarPolizaPage.consultarDocumentoAtr(
+                asegurado.getTipoDocumento(), asegurado.getNumDocumento()));
   }
 
   @Step
   public void diligenciarInformacionReclamacion(
       String causaSiniestro, List<ReclamacionEmpresarial> datosSiniestro) {
     datosSiniestro.forEach(
-        datos -> {
-          informacionBasicaPage.seleccionarFechaAviso(datos.getFechaSiniestro());
-        });
+        datos -> informacionBasicaPage.seleccionarFechaAviso(datos.getFechaSiniestro()));
     informacionReclamacionPage.seleccionarCausaSiniestroAtr(causaSiniestro);
     datosSiniestro.forEach(
-        datos -> {
-          informacionReclamacionPage.diligenciarDetalleHechosAtr(datos.getDetalleHechos());
-        });
+        datos -> informacionReclamacionPage.diligenciarDetalleHechosAtr(datos.getDetalleHechos()));
     informacionReclamacionPage.seleccionarCiudadSiniestro();
   }
 
@@ -77,7 +68,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   @Step
-  public void consultarReclamo(String numeroReclamacion) {
+  public void consultarSiniestro(String numeroReclamacion) {
     consultaReclamacionPage.buscarReclamacion(numeroReclamacion);
   }
 }
