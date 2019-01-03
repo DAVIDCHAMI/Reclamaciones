@@ -15,5 +15,5 @@ Característica:Recupero de una reclamacion
 
     Ejemplos:
 
-  | Tipo y Cobertura                       | Causa          | Valor de Pretensión | Tipo de incidente |   tipo recupero  |codigoRetencion|
-  | Incendio con cobertura Daños materiales| Daños por agua | 3000000             | Contenido         |Salvamento     |0099           |
+  | Tipo y Cobertura                       | Causa          | Valor de Pretensión | Tipo de incidente | tipo recupero  |codigoRetencion|
+  | Incendio con cobertura Daños materiales| Daños por agua | 3000000             | Contenido         | Salvamento     |0099           |

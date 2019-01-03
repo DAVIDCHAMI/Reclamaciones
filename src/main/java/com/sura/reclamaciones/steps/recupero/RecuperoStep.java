@@ -1,10 +1,12 @@
 package com.sura.reclamaciones.steps.recupero;
 
+import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
 import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.constantes.RecuperoConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
@@ -19,13 +21,12 @@ public class RecuperoStep {
   @Page CreacionRecuperoPage creacionRecuperoPage;
   @Page VerificacionRecuperoPage verificacionRecuperoPage;
   @Page MenuClaimPage menuClaimPage;
+  @Page ResumenReclamacionPage resumenReclamacionPage;
 
   @Step
-  public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
-    for (Recupero menu : lstRecupero) {
-      menuClaimPage.buscarReclamacion(reclamacion, menu.getNumeroReclamacion());
-    }
-  }
+  public void seleccionarNumeroReclamacion(String reclamacionMenu, List<Recupero> lstRecupero) {
+      resumenReclamacionPage.obtenerNumeroReclamacion();
+   }
 
   public void seleccionarRecupero() {
     menuRecuperoPage.ingresarMenuRecupero();
