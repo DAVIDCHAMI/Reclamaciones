@@ -20,6 +20,7 @@ public class ConstanteGlobal {
   public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO = 180;
   public static final String LISTA_CAUSA_SINIESTRO = "//li[.='COMODIN']";
   public static final String LISTA_CAUSA_SINIESTRO_ATR = "//td[.='COMODIN']";
+  public static final String EXPEDIENTE_CREADO_CON_EXITO = "Expediente creado con éxito";
 
   private ConstanteGlobal() {}
 }

@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
@@ -10,6 +11,7 @@ import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
 
 public class NuevaReclamacionAtrEmpresarialStep {
 
@@ -63,7 +65,12 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   @Step
-  public String verificarSiniestroAtr() {
+  public String verificarSiniestroCreadoAtr() {
+    MatcherAssert.assertThat(
+        "No se generó el número de siniestro en ATR",
+        asistenteVirtualAtrPage
+            .obtenerTituloExpedienteCreado()
+            .equalsIgnoreCase(ConstanteGlobal.EXPEDIENTE_CREADO_CON_EXITO));
     return informacionReclamacionPage.obtenerNumeroSiniestroAtr();
   }
 

@@ -35,7 +35,7 @@ public class NotificacionAvisoSiniestroAtrDefinition {
       throws IOException {
     ReclamacionEmpresarial informacionSiniestro =
         new ReclamacionEmpresarial(
-            genericStep.getFilasModelo(ReclamacionConstante.RECLAMACION_EMPRESARIAL, "ATR"));
+            genericStep.getFilasModelo(ReclamacionConstante.RECLAMACION_EMPRESARIAL, ReclamacionConstante.ATR));
     nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(
         causaSiniestro, informacionSiniestro.getLstReclamo());
     nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();
@@ -44,7 +44,7 @@ public class NotificacionAvisoSiniestroAtrDefinition {
 
   @Entonces("^se obtiene una reclamación que podrá ser consultada en ClaimCenter$")
   public void consultarSiniestro() throws IOException {
-    String numeroReclamacion = nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
+    String numeroReclamacion = nuevaReclamacionAtrEmpresarialStep.verificarSiniestroCreadoAtr();
     seleccionAmbiente.seleccionarAmbienteEmpresarial();
     nuevaReclamacionAtrEmpresarialStep.consultarSiniestro(numeroReclamacion);
   }
