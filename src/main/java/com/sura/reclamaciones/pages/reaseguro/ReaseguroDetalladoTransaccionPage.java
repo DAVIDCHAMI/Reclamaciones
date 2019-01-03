@@ -3,14 +3,13 @@ package com.sura.reclamaciones.pages.reaseguro;
 import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.Constantes.PORCIENTO;
 import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA_ENCABEZADO;
-import static com.sura.reclamaciones.utils.Constantes.SURA;
 import static com.sura.reclamaciones.utils.Constantes.VALOR_REASEGURADO;
 import static java.lang.Math.abs;
 
-import com.sura.reclamaciones.models.Reasegurador;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -54,34 +53,21 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     return true;
   }
 
-  public boolean verificarRetenido(
-      List<Reasegurador> lstReasegurador2,
-      String strDeducible,
-      String strPorcentajeDeducible,
-      String strProporcionCuotaParte) {
-    String strPorcentajeCedido = obtenerPorcentajeCedido(lstReasegurador2);
+  public boolean verificarPorcentajeRetenido(
+      Double dblValorRetenido, Double dblValorRetenidoDeducible) {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
-    String strValorReasegurado =
-        (obtenerDatoTablaCabecera(VALOR_REASEGURADO.getValor(), 2))
-            .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    String strValorDeducible =
-        calcularDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
-    Double dblValorRetenido =
-        calcularRetenido(strValorReasegurado, strPorcentajeCedido, strProporcionCuotaParte);
-    Double dblValorRetenidoDeducible =
-        calcularRetenido(strValorDeducible, strPorcentajeCedido, strProporcionCuotaParte);
     for (WebElement aLstReaseguroDetallado : lstReaseguroDetallado) {
       String strNumeroTransaccion = aLstReaseguroDetallado.getText();
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
       String strDatoPantalla =
           lstFilaTransaccion.get(5).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       Integer intDatoPantalla = Integer.parseInt(strDatoPantalla);
-      if ((intDatoPantalla >= Math.round(dblValorRetenido - dblRetencionPura))
-              && (intDatoPantalla <= Math.round(dblValorRetenido + dblRetencionPura))
-          || ((intDatoPantalla >= Math.round(dblValorRetenidoDeducible - dblRetencionPura))
-              && (intDatoPantalla <= Math.round(dblValorRetenidoDeducible + dblRetencionPura)))) {
+      if ((intDatoPantalla >= dblValorRetenido - dblRetencionPura)
+              && (intDatoPantalla <= dblValorRetenido + dblRetencionPura)
+          || ((intDatoPantalla >= dblValorRetenidoDeducible - dblRetencionPura)
+              && (intDatoPantalla <= dblValorRetenidoDeducible + dblRetencionPura))) {
         LOGGER.info("El retenido esta en el rango correcto");
       } else {
         return false;
@@ -90,24 +76,14 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     return true;
   }
 
-  public boolean verificarCedido(
-      List<Reasegurador> lstReasegurador2,
-      String strDeducible,
-      String strPorcentajeDeducible,
-      String strProporcionCuotaParte) {
-    String strPorcentajeCedido = obtenerPorcentajeCedido(lstReasegurador2);
+  public boolean verificarPorcentajeCedido(
+      String strValorReasegurado,
+      Double dblValorRetenido,
+      String strValorDeducible,
+      Double dblValorRetenidoDeducible) {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
-    String strValorReasegurado =
-        (obtenerDatoTablaCabecera(VALOR_REASEGURADO.getValor(), 2))
-            .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    String strValorDeducible =
-        calcularDeducible(strValorReasegurado, strDeducible, strPorcentajeDeducible);
-    Double dblValorRetenido =
-        calcularRetenido(strValorReasegurado, strPorcentajeCedido, strProporcionCuotaParte);
-    Double dblValorRetenidoDeducible =
-        calcularRetenido(strValorDeducible, strPorcentajeCedido, strProporcionCuotaParte);
     for (WebElement aLstReaseguroDetallado : lstReaseguroDetallado) {
       String strNumeroTransaccion = aLstReaseguroDetallado.getText();
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
@@ -115,25 +91,17 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
           lstFilaTransaccion.get(4).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       Integer intDatoPantalla = Integer.parseInt(strDatoPantalla);
       if ((intDatoPantalla
-                  >= Math.round(
-                      Double.parseDouble(strValorReasegurado)
-                          - dblValorRetenido
-                          - dblRetencionPura))
+                  >= Double.parseDouble(strValorReasegurado) - dblValorRetenido - dblRetencionPura)
               && (intDatoPantalla
-                  <= Math.round(
-                      Double.parseDouble(strValorReasegurado)
-                          - dblValorRetenido
-                          + dblRetencionPura))
+                  <= Double.parseDouble(strValorReasegurado) - dblValorRetenido + dblRetencionPura)
           || ((intDatoPantalla
-                  >= Math.round(
-                      Double.parseDouble(strValorDeducible)
-                          - dblValorRetenidoDeducible
-                          - dblRetencionPura))
+                  >= Double.parseDouble(strValorDeducible)
+                      - dblValorRetenidoDeducible
+                      + dblRetencionPura)
               && (intDatoPantalla
-                  <= Math.round(
-                      Double.parseDouble(strValorDeducible)
-                          - dblValorRetenidoDeducible
-                          + dblRetencionPura)))) {
+                  <= Double.parseDouble(strValorDeducible)
+                      - dblValorRetenidoDeducible
+                      - dblRetencionPura))) {
         LOGGER.info("El cedido esta en el rango correcto");
       } else {
         return false;
@@ -142,34 +110,116 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     return true;
   }
 
-  private String obtenerPorcentajeCedido(List<Reasegurador> lstReasegurador2) {
-    for (Reasegurador reasegurador : lstReasegurador2) {
-      if (reasegurador.getCodigoSura().equals(SURA.getValor())) {
-        return reasegurador.getPorcentajeParticipacion();
-      }
-    }
-    return null;
-  }
-
-  private String calcularDeducible(
+  private String calcularValorDeducible(
       String strValorReasegurado, String strDeducible, String strPorcentajeDeducible) {
     Double dblValorReasegurado = Double.parseDouble(strValorReasegurado);
     Double dblDeducible = Double.parseDouble(strDeducible);
-    Double dblPorcentaje = Double.parseDouble(strPorcentajeDeducible);
+    Double dblPorcentaje =
+        Double.parseDouble(strPorcentajeDeducible) / Double.parseDouble(PORCIENTO.getValor());
     Double dblValorDeducible = (dblValorReasegurado * dblPorcentaje);
-    if (dblDeducible > dblValorDeducible) {
-      return String.valueOf(Math.round(-dblDeducible));
+    if (dblValorReasegurado < dblDeducible) {
+      return String.valueOf(Math.floor(-dblValorReasegurado));
     }
-    return String.valueOf(Math.round(-dblValorDeducible));
+    if (dblDeducible > dblValorDeducible) {
+      return String.valueOf(Math.floor(-dblDeducible));
+    }
+    return String.valueOf(Math.floor(-dblValorDeducible));
   }
 
-  private Double calcularRetenido(
+  private double calcularValorRetenido(
       String strValorReasegurado, String strPorcentajeCedido, String strProporcionCuotaParte) {
     Double dblValorReasegurado = Double.parseDouble(strValorReasegurado);
     Double dblPorcentajeCedido =
         Double.parseDouble(strPorcentajeCedido) / Double.parseDouble(PORCIENTO.getValor());
     Double dblPorcentaCuotaParte =
         Double.parseDouble(strProporcionCuotaParte) / Double.parseDouble(PORCIENTO.getValor());
-    return dblPorcentajeCedido * dblValorReasegurado * dblPorcentaCuotaParte;
+    return Math.floor(dblPorcentajeCedido * dblValorReasegurado * dblPorcentaCuotaParte);
+  }
+
+  public boolean verificarReaseguro(
+      double dblRetencionPura,
+      String strTransaccion,
+      String porcentajeRetenido,
+      String deducibleMinimo,
+      String porcentajeDeducibleMinimo,
+      String proporcionCuotaParte) {
+    boolean blnTransaccion = false;
+    switch (strTransaccion) {
+      case "Reserva":
+        blnTransaccion =
+            verificarReserva(
+                dblRetencionPura,
+                porcentajeRetenido,
+                deducibleMinimo,
+                porcentajeDeducibleMinimo,
+                proporcionCuotaParte);
+        break;
+      case "Pago":
+        blnTransaccion =
+            verificarPago(
+                dblRetencionPura,
+                porcentajeRetenido,
+                deducibleMinimo,
+                porcentajeDeducibleMinimo,
+                proporcionCuotaParte);
+        break;
+      default:
+        return blnTransaccion;
+    }
+    return blnTransaccion;
+  }
+
+  private boolean verificarReserva(
+      double dblRetencionPura,
+      String porcentajeRetenido,
+      String deducibleMinimo,
+      String porcentajeDeducibleMinimo,
+      String proporcionCuotaParte) {
+    String strValorReasegurado =
+        (obtenerDatoTablaCabecera(VALOR_REASEGURADO.getValor(), 2))
+            .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    String strValorDeducible =
+        calcularValorDeducible(strValorReasegurado, deducibleMinimo, porcentajeDeducibleMinimo);
+    Double dblValorRetenido =
+        calcularValorRetenido(strValorReasegurado, porcentajeRetenido, proporcionCuotaParte);
+    Double dblValorRetenidoDeducible =
+        calcularValorRetenido(strValorDeducible, porcentajeRetenido, proporcionCuotaParte);
+    boolean blnRetencionPura = verificarRetencionPura(dblRetencionPura);
+    boolean blnPorcentajeCedido =
+        verificarPorcentajeCedido(
+            strValorReasegurado, dblValorRetenido, strValorDeducible, dblValorRetenidoDeducible);
+    boolean blnPorcentajeRetenido =
+        verificarPorcentajeRetenido(dblValorRetenido, dblValorRetenidoDeducible);
+    return blnRetencionPura && blnPorcentajeRetenido && blnPorcentajeCedido;
+  }
+
+  private boolean verificarPago(
+      double dblRetencionPura,
+      String porcentajeRetenido,
+      String deducibleMinimo,
+      String porcentajeDeducibleMinimo,
+      String proporcionCuotaParte) {
+    verificarReserva(
+        this.dblRetencionPura,
+        porcentajeRetenido,
+        deducibleMinimo,
+        porcentajeDeducibleMinimo,
+        proporcionCuotaParte);
+    List<WebElement> lstReaseguroDetallado =
+        obtenerElementoTablaDatoDesconocido(
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 4);
+    for (int posicionElementoFila = 2;
+        lstReaseguroDetallado.size() > posicionElementoFila - 1;
+        posicionElementoFila++) {
+      String strValorPago =
+          lstReaseguroDetallado
+              .get(2)
+              .getText()
+              .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+      if (strValorPago.equals(Serenity.sessionVariableCalled(Variables.VALOR_RESERVA))) {
+        return true;
+      }
+    }
+    return false;
   }
 }

@@ -1,2 +1,3 @@
-id;idFiltro;proporcionExcedente;proporcionCuotaParte;deducibleMinimo;porcentajeDeducibleminimo
-1;primeraTxProporcional;85.954862;14.045138;7812420;0.10
+id	;idFiltro														;proporcionExcedente			;proporcionCuotaParte		;deducibleMinimo		;porcentajeDeducibleMinimo		;porcentajeRetenido
+1		;primeraTxProporcional	;86.427321										;13.572679												;7812420										;10																							;15
+2		;MRC_01																;0																		;100																			;3906210										;10																						;15
