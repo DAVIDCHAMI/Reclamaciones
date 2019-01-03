@@ -22,8 +22,10 @@ import net.thucydides.core.annotations.Steps;
 
 public class ReaseguroDefinition {
 
-  private String strTipoContrato;
+  private String tipoContrato;
   private String strTransaccion;
+
+  PagoEmpresarial pagoEmpresarial;
 
   @Steps ReaseguroStep reaseguroStep;
 
@@ -36,6 +38,7 @@ public class ReaseguroDefinition {
   @Steps RecuperoStep recuperoStep;
 
   @Cuando("^se genere una reclamacion de un contrato tipo (.*)$")
+  @Cuando("^se genere una reclamación de un contrato tipo (.*)$")
   public void crearSiniestro(String tipoContratoPoliza) throws IOException {
     strTransaccion = RESERVA.getValor();
     strTipoContrato = tipoContratoPoliza;
@@ -45,7 +48,7 @@ public class ReaseguroDefinition {
   }
 
   @Cuando(
-      "^se realice al siniestro un pago (.*) a un (.*) por medio de (.*) el cual cuenta con una linea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
+      "^se realice al siniestro un pago (.*) a un (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
   public void realizarPagoSiniestroEmpresarial(
       String lineaReserva,
       String tipoPago,
@@ -79,8 +82,10 @@ public class ReaseguroDefinition {
   }
 
   @Entonces(
-      "^para la transaccion (.*) se distribuye el reaseguro segun el retenido y el cedido de manera adecuada$")
+      "^para la transacción (.*) se distribuye el reaseguro según el retenido y el cedido de manera adecuada$")
   public void verificarReaseguro(String tipoTransaccion) throws IOException {
+    Contrato contrato = new Contrato(genericStep.getFilasModelo("contrato", tipoContrato));
+    reaseguroStep.verificarReaseguro(contrato.getLstContrato(), strTransaccion);
     Contrato contrato1 = new Contrato(genericStep.getFilasModelo("contrato", strTipoContrato));
     reaseguroStep.verificarReaseguro(contrato1.getLstContrato(), strTransaccion);
   }

@@ -10,6 +10,7 @@ import com.sura.reclamaciones.pages.reaseguro.ReaseguroDetalladoTransaccionPage;
 import com.sura.reclamaciones.utils.Constantes;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
+import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
@@ -25,12 +26,13 @@ public class ReaseguroStep {
         Serenity.sessionVariableCalled(NUMERO_SINIESTRO.getValor()));
   }
 
-  public void verificarReaseguro(List<Contrato> lstContrato1, String strTransaccion) {
+  @Step
+  public void verificarReaseguro(List<Contrato> lstContrato, String strTransaccion) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(REASEGURO_DETALLADO.getValor());
-    lstContrato1.forEach(
+    lstContrato.forEach(
         verificador ->
             MatcherAssert.assertThat(
-                "El reaseguro no se distribuyo de forma correcta",
+                "El reaseguro no se distribuyó de forma correcta",
                 reaseguroDetalladoTransaccionPage.verificarReaseguro(
                     Double.parseDouble(RETENCION_PURA.getValor()),
                     strTransaccion,
