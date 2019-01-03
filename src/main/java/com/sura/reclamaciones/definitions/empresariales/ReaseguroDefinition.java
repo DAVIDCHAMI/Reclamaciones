@@ -25,8 +25,6 @@ public class ReaseguroDefinition {
   private String strTipoContrato;
   private String strTransaccion;
 
-  PagoEmpresarial pagoEmpresarial;
-
   @Steps ReaseguroStep reaseguroStep;
 
   @Steps GenericStep genericStep;
@@ -39,6 +37,7 @@ public class ReaseguroDefinition {
 
     @Cuando("^se genere una reclamación de un contrato tipo (.*)$")
   public void crearSiniestro(String tipoContratoPoliza) throws IOException {
+      strTransaccion = RESERVA.getValor();
     strTipoContrato = tipoContratoPoliza;
     creacionSiniestro.asignarValoresSiniestro(tipoContratoPoliza);
     creacionSiniestro.siniestrarPolizaEmpresarialAtr();
@@ -84,7 +83,5 @@ public class ReaseguroDefinition {
   public void verificarReaseguro(String tipoTransaccion) throws IOException {
     Contrato contrato = new Contrato(genericStep.getFilasModelo("contrato", strTipoContrato));
     reaseguroStep.verificarReaseguro(contrato.getLstContrato(), strTransaccion);
-    Contrato contrato1 = new Contrato(genericStep.getFilasModelo("contrato", strTipoContrato));
-    reaseguroStep.verificarReaseguro(contrato1.getLstContrato(), strTransaccion);
   }
 }
