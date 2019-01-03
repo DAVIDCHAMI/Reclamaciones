@@ -37,8 +37,7 @@ public class ReaseguroDefinition {
 
   @Steps RecuperoStep recuperoStep;
 
-  @Cuando("^se genere una reclamacion de un contrato tipo (.*)$")
-  @Cuando("^se genere una reclamación de un contrato tipo (.*)$")
+    @Cuando("^se genere una reclamación de un contrato tipo (.*)$")
   public void crearSiniestro(String tipoContratoPoliza) throws IOException {
     strTransaccion = RESERVA.getValor();
     strTipoContrato = tipoContratoPoliza;
