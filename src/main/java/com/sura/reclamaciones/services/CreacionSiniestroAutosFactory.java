@@ -46,7 +46,7 @@ public class CreacionSiniestroAutosFactory {
   private String documentTypeMainContact;
   private String taxIDMainContact;
   private String emailAddress1MainContact;
-  private String cellNumberMaincontact;
+  private String cellNumberMainContact;
   private String firstNameMainContact;
   private String middleNameMainContact;
   private String lastNameMainContact;
@@ -258,12 +258,12 @@ public class CreacionSiniestroAutosFactory {
     this.emailAddress1MainContact = emailAddress1MainContact;
   }
 
-  public String getCellNumberMaincontact() {
-    return cellNumberMaincontact;
+  public String getCellNumberMainContact() {
+    return cellNumberMainContact;
   }
 
-  public void setCellNumberMaincontact(String cellNumberMaincontact) {
-    this.cellNumberMaincontact = cellNumberMaincontact;
+  public void setCellNumberMainContact(String cellNumberMainContact) {
+    this.cellNumberMainContact = cellNumberMainContact;
   }
 
   public String getFirstNameMainContact() {
@@ -877,7 +877,7 @@ public class CreacionSiniestroAutosFactory {
     mainContact.setDocumentType(getDocumentTypeMainContact());
     mainContact.setTaxID(getTaxIDMainContact());
     mainContact.setEmailAddress1(getEmailAddress1MainContact());
-    mainContact.setCellNumber(getCellNumberMaincontact());
+    mainContact.setCellNumber(getCellNumberMainContact());
     mainContact.setPrimaryAddress(primaryAddress__Factory());
     mainContact.setFirstName(getFirstNameMainContact());
     mainContact.setMiddleName(getMiddleNameMainContact());

@@ -92,7 +92,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstPersonaReclamacionAuto.get(campoDato).getNumDocumento());
     creacionSiniestroAutosFactory.setEmailAddress1MainContact(
         lstPersonaReclamacionAuto.get(campoDato).getCorreoElectronico());
-    creacionSiniestroAutosFactory.setCellNumberMaincontact(
+    creacionSiniestroAutosFactory.setCellNumberMainContact(
         lstPersonaReclamacionAuto.get(campoDato).getCelular());
     creacionSiniestroAutosFactory.setFirstNameMainContact(
         lstPersonaReclamacionAuto.get(campoDato).getPrimerNombre());

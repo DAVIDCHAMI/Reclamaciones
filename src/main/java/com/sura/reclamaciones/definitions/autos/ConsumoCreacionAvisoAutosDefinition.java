@@ -21,7 +21,7 @@ public class ConsumoCreacionAvisoAutosDefinition {
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos();
   }
 
-  @Entonces("^se le brindara al reclamante el numero de reclamacion$")
+  @Entonces("^se le brindará al reclamante el número de reclamación$")
   public void verificarCreacionAviso() {
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
   }
