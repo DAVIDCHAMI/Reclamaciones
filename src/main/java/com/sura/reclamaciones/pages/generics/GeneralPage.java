@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -222,7 +223,7 @@ public class GeneralPage extends PageObject {
 
   public void enfocarVistaAutomatizacion() {
     for (String ventana : driver.getWindowHandles()) {
-        driver.switchTo().window(ventana);
+      driver.switchTo().window(ventana);
     }
   }
 
@@ -250,6 +251,15 @@ public class GeneralPage extends PageObject {
           "arguments[0].setAttribute('style', arguments[1]);", elemento, "border: 5px solid red;");
       ejecutor.executeScript(
           "arguments[0].setAttribute('style', arguments[1]);", elemento, atributoElemento);
+    }
+  }
+
+  public void cerrarNavegador() {
+    Set<String> ventana = driver.getWindowHandles();
+    while (ventana.size() != 1) {
+      enfocarVistaAutomatizacion();
+      ventana = driver.getWindowHandles();
+      driver.close();
     }
   }
 }

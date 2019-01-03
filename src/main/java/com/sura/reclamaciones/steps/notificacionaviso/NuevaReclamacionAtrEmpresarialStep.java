@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.models.Persona;
-
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
@@ -24,8 +23,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
 
   @Page InformacionReclamacionPage informacionReclamacionPage;
 
-  @Page
-  ConsultaReclamacionPage consultaReclamacionPage;
+  @Page ConsultaReclamacionPage consultaReclamacionPage;
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -55,8 +53,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
     informacionReclamacionPage.seleccionarCausaSiniestroAtr(causaSiniestro);
     datosSiniestro.forEach(
         datos -> {
-          informacionReclamacionPage.diligenciarDetalleHechosAtr(
-              datos.getDetalleHechos());
+          informacionReclamacionPage.diligenciarDetalleHechosAtr(datos.getDetalleHechos());
         });
     informacionReclamacionPage.seleccionarCiudadSiniestro();
   }
@@ -80,7 +77,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   @Step
-  public void consultarReclamo(String numeroReclamacion){
-consultaReclamacionPage.buscarReclamacion(numeroReclamacion);
+  public void consultarReclamo(String numeroReclamacion) {
+    consultaReclamacionPage.buscarReclamacion(numeroReclamacion);
   }
 }

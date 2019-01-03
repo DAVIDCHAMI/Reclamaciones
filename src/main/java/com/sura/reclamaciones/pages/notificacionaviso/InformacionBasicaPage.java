@@ -122,7 +122,7 @@ public class InformacionBasicaPage extends GeneralPage {
   }
 
   public void seleccionarDiaCalendario(String diaUsuario) {
-    navegarMenu(diaUsuario,diaMes);
+    navegarMenu(diaUsuario, diaMes);
   }
 
   public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
