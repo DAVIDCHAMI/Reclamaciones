@@ -15,5 +15,9 @@ public class ConstanteGlobal {
   public static final String PARAMETROS_SINIESTRO = "parametros_siniestro";
   public static final String PARAMETROS_PERSONA = "parametros_persona";
   public static final String ASEGURADO_ATR = "AseguradoATR";
+  public static final String PARAMETROS_RECLAMACION_PERSONA = "persona_reclamacion_auto";
+  public static final String PARAMETROS_RECLAMACION_VEHICULO = "vehiculo";
   public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO = 180;
+
+  private ConstanteGlobal() {}
 }

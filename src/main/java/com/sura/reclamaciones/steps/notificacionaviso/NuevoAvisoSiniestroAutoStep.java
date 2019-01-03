@@ -15,7 +15,7 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
-public class NuevaReclamacionAutoStep {
+public class NuevoAvisoSiniestroAutoStep {
 
   @Page private InformacionBasicaPage informacionBasicaPage;
   @Page private BuscarPolizaPage buscarPolizaPage;
@@ -30,11 +30,11 @@ public class NuevaReclamacionAutoStep {
         dato -> {
           agregarInformacionPage.cerrarVentanaEmergente();
           agregarInformacionPage.seleccionarLugar(dato.getLugarSiniestro());
-          agregarInformacionPage.escribirSucedido(dato.getSucedido());
-          agregarInformacionPage.seleccionarCausa(dato.getCausa());
+          agregarInformacionPage.escribirSucedido(dato.getDescripcionHechos());
+          agregarInformacionPage.seleccionarCausa(dato.getOrigenCausa());
           agregarInformacionPage.seleccionarOrigen(dato.getOrigen());
           agregarInformacionPage.escribirValorPretension(dato.getValorPretension());
-          agregarInformacionPage.seleccionarIntervinoAutoridad(dato.getAutoridad());
+          agregarInformacionPage.seleccionarIntervinoAutoridad(dato.getAutoridadTransito());
         });
   }
 
@@ -52,7 +52,7 @@ public class NuevaReclamacionAutoStep {
     detalleVehiculoPage.agregarConductor();
     datosReclamacion.forEach(
         dato -> {
-          detalleVehiculoPage.seleccionarTaller(dato.getTaller());
+          detalleVehiculoPage.seleccionarTaller(dato.getTallerReparacion());
         });
     detalleVehiculoPage.volverPasoAnterior();
   }
