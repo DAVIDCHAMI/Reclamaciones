@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.*;
@@ -9,17 +10,20 @@ import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import net.thucydides.core.annotations.Steps;
 
-public class NotificacionAvisoDefinition {
+public class NotificacionAvisoSiniestroReclamacionDefinition {
 
   @Steps ReclamacionEmpresarial reclamo;
+
   @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionStep;
+
   @Steps GenericStep genericStep;
 
   @Dado("^que se tiene una poliza de (.*)$")
   public void buscarPoliza(String tipoCobertura) throws Throwable {
     reclamo =
         new ReclamacionEmpresarial(
-            genericStep.getFilasModelo("reclamacion_empresarial", tipoCobertura));
+            genericStep.getFilasModelo(
+                ReclamacionConstante.RECLAMACION_EMPRESARIAL, tipoCobertura));
     nuevaReclamacionStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     nuevaReclamacionStep.buscarPolizaEmpresarial(reclamo.getLstReclamo());
