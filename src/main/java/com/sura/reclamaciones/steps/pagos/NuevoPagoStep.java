@@ -1,11 +1,14 @@
 package com.sura.reclamaciones.steps.pagos;
 
+import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
+import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
+import static com.sura.reclamaciones.utils.Constantes.CUENTA;
 import static com.sura.reclamaciones.utils.Constantes.PAGOS;
+import static com.sura.reclamaciones.utils.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.utils.Variables.VALOR_RESERVA;
 import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
@@ -53,7 +56,7 @@ public class NuevoPagoStep {
       introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
           diligenciador.getTipoBeneficiario());
       introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
-          strMetodoPago, PagoConstante.CUENTA, PagoConstante.SELECCIONAR);
+          strMetodoPago, CUENTA.getValor(), SELECCIONAR.getValor());
       introducirInformacionBeneficiarioPage.seleccionarPagoSura(strPagoSoloSura);
       introducirInformacionBeneficiarioPage.seleccionarPais(diligenciador.getPais());
       introducirInformacionBeneficiarioPage.seleccionarDepartamento(
@@ -66,8 +69,8 @@ public class NuevoPagoStep {
       introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
       introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
       introducirInformacionPagoPage.ingresarCodigoRetencion(
-          strCodigoRetencion, PagoConstante.CODIGO_RETENCION);
-      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, PagoConstante.CANTIDAD);
+          strCodigoRetencion, CODIGO_RETENCION.getValor());
+      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
       introducirInformacionPagoPage.irSiguientePantalla();
       establecerInstruccionPagoPage.ingresarFechaFactura();
       establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
@@ -82,7 +85,7 @@ public class NuevoPagoStep {
           String strNumeroTransaccion =
               verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
           menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-              MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
+              MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
           List<WebElement> lstFilaPago =
               verificacionDatosFinancierosPage.obtenerFilaTabla(
                   strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());

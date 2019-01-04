@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.pagos;
 
-import com.sura.reclamaciones.constantes.PagoConstante;
+import static com.sura.reclamaciones.utils.Constantes.TRANSFERENCIA_ELECTRONICA;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
@@ -57,7 +58,7 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
   public void seleccionarMetodoPago(String strMetodoPago, String strCuenta, String strSeleccionar) {
     obtenerElementoPantallaPago(strMetodoPago);
-    if (strMetodoPago.equals(PagoConstante.TRANSFERENCIA_ELECTRONICA)) {
+    if (strMetodoPago.equals(TRANSFERENCIA_ELECTRONICA.getValor())) {
       List<WebElement> elementoEncontrado =
           obtenerElementoTablaDatoDesconocido(tblCuentaElectronica, strCuenta, 1);
       elementoEncontrado

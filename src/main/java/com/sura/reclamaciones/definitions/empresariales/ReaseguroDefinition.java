@@ -12,7 +12,6 @@ import com.sura.reclamaciones.steps.reaseguro.ReaseguroStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
-
 import net.thucydides.core.annotations.Steps;
 
 public class ReaseguroDefinition {

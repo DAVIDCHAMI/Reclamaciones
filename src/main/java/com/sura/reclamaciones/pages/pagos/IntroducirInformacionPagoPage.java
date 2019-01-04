@@ -1,8 +1,9 @@
 package com.sura.reclamaciones.pages.pagos;
 
+import static com.sura.reclamaciones.utils.Constantes.PORCENTAJE;
+import static com.sura.reclamaciones.utils.Constantes.TIPO_PAGO;
 import static org.openqa.selenium.By.xpath;
 
-import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
@@ -101,8 +102,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   private Integer calcularCantidadPago(String strTipoPago) {
     double dblValorReserva = obtenerValorPagoReserva();
     Double dblCalculoVrReserva;
-    if (strTipoPago.equals(PagoConstante.TIPO_PAGO)) {
-      dblCalculoVrReserva = PagoConstante.PORCENTAJE * dblValorReserva;
+    if (strTipoPago.equals(TIPO_PAGO.getValor())) {
+      dblCalculoVrReserva = Double.parseDouble(PORCENTAJE.getValor()) * dblValorReserva;
     } else {
       dblCalculoVrReserva = dblValorReserva;
     }
