@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.services;
 
 import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.Persona;
@@ -150,7 +151,7 @@ public class ConsumoServicioCreacionSiniestro {
   private void obtenerResponse() {
     response = creacionSiniestroCliente.claimsResponse(crearRequest());
     LOGGER.info("Número de siniestro: " + response.getResult().getClaimNumber());
-    Serenity.setSessionVariable(ReclamacionConstante.NUMERO_SINIESTRO)
+    Serenity.setSessionVariable(SESION_CC_NUMERO_SINIESTRO.getValor())
         .to(response.getResult().getClaimNumber());
   }
 }

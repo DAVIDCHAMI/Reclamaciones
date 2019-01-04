@@ -4,6 +4,7 @@ import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINI
 import static com.sura.reclamaciones.utils.Constantes.PAGO;
 import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
 import static com.sura.reclamaciones.utils.Constantes.RESERVA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.PagoEmpresarial;
@@ -57,7 +58,7 @@ public class ReaseguroDefinition {
     strTransaccion = PAGO.getValor();
     PagoEmpresarial pagoEmpresarial =
         new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", strTipoContrato)));
-    nuevoPagoStep.consultarNumeroReclamacion(Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
+    nuevoPagoStep.consultarNumeroReclamacion(Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
         tipoPago,
