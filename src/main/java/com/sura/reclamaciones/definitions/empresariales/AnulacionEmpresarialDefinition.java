@@ -41,7 +41,7 @@ public class AnulacionEmpresarialDefinition {
     crearSiniestro.siniestrarPolizaEmpresarialAtr();
   }
 
-  @Y("^que se realice un pago, de un siniestro de una poliza empresarial con producto (.*) y código de retención (.*)$")
+  @Y("^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
   public void crearPago(String strTipoProducto, String strCodigoRetencion) throws IOException {
     pagoEmpresarial =
         new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", strTipoProducto)));
@@ -65,18 +65,18 @@ public class AnulacionEmpresarialDefinition {
             });
   }
 
-  @Cuando("^se realice la anulacion del pago$")
+  @Cuando("^se realice la anulación del pago$")
   public void anularPago() {
     anulacionEmpresarialStep.ingresarAnulacionPago(pagoEmpresarial.getLstPago());
   }
 
-  @Entonces("^se debe obtener la anulacion del pago, quedando en estado anulado$")
+  @Entonces("^se debe obtener la anulación del pago, quedando en estado anulado$")
   public void verificarAnulacionPago() {
     anulacionEmpresarialStep.verificarAnulacionRealizada(ESTADO_ANULACION.getValor());
   }
 
   @Y(
-      "^que se realice una transaccion de pago y una transaccion de recupero, de un siniestro de una poliza empresarial con producto (.*) y código de retención (.*)$")
+      "^que se realice una transacción de pago y una transacción de recupero, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
   public void crearPagoRecupero(String strTipoProducto, String strCodigoRetencion)
       throws IOException {
     pagoEmpresarial =
@@ -107,12 +107,12 @@ public class AnulacionEmpresarialDefinition {
     }
   }
 
-  @Cuando("^se realice la anulacion del recupero$")
+  @Cuando("^se realice la anulación del recupero$")
   public void realizarAnulacionTransaccion() {
     anulacionEmpresarialStep.ingresarAnulacionRecupero(recupero.getLstRecupero());
   }
 
-  @Entonces("^se debe obtener la anulacion del recupero, quedando en estado anulado$")
+  @Entonces("^se debe obtener la anulación del recupero, quedando en estado anulado$")
   public void verificarAnulacionRecupero() {
     anulacionEmpresarialStep.verificarAnulacionRealizada(ESTADO_ANULACION.getValor());
   }
