@@ -3,7 +3,6 @@ package com.sura.reclamaciones.services;
 import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
-import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.service.cliente.siniestro.CreacionSiniestroCliente;

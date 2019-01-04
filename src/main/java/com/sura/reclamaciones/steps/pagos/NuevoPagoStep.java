@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.steps.pagos;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
-import static com.sura.reclamaciones.utils.Variables.VALOR_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 import static org.junit.Assert.assertTrue;
 
@@ -84,7 +83,8 @@ public class NuevoPagoStep {
           List<WebElement> lstFilaPago =
               verificacionDatosFinancierosPage.obtenerFilaTabla(
                   strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
-          String strValorReserva = (Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
+          String strValorReserva =
+              (Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
           assertTrue(
               "El valor reservado no es igual al enviado",
               verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(

@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
+import static com.sura.reclamaciones.utils.NombresCsv.RECUPERO;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
@@ -25,7 +27,7 @@ public class RecuperoDefinition {
   public void navegarMenuRecupero(String strTipoReserva) throws IOException {
     crearSiniestro.asignarValoresSiniestro(strTipoReserva);
     crearSiniestro.siniestrarPolizaEmpresarialAtr();
-    recupero = new Recupero(genericStep.getFilasModelo("recupero", strTipoReserva));
+    recupero = new Recupero(genericStep.getFilasModelo(RECUPERO.getValor(), strTipoReserva));
     recuperoStep.seleccionarNumeroReclamacion(
         MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();

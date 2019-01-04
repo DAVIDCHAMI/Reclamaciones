@@ -121,7 +121,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%d')", intCalculoVrReserva));
           txtComentarioPago.click();
-          Serenity.setSessionVariable(SESION_CC_VALOR_RESERVA.getValor()).to(intCalculoVrReserva.toString());
+          Serenity.setSessionVariable(SESION_CC_VALOR_RESERVA.getValor())
+              .to(intCalculoVrReserva.toString());
         });
   }
 

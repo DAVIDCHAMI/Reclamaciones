@@ -1,9 +1,10 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.Constantes.PAGO;
 import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
 import static com.sura.reclamaciones.utils.Constantes.RESERVA;
+import static com.sura.reclamaciones.utils.NombresCsv.CONTRATO;
+import static com.sura.reclamaciones.utils.NombresCsv.PAGO_EMPRESARIAL;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.Contrato;
@@ -57,8 +58,10 @@ public class ReaseguroDefinition {
       throws IOException {
     strTransaccion = PAGO.getValor();
     PagoEmpresarial pagoEmpresarial =
-        new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", strTipoContrato)));
-    nuevoPagoStep.consultarNumeroReclamacion(Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
+        new PagoEmpresarial(
+            (genericStep.getFilasModelo(PAGO_EMPRESARIAL.getValor(), strTipoContrato)));
+    nuevoPagoStep.consultarNumeroReclamacion(
+        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
         tipoPago,
@@ -73,7 +76,8 @@ public class ReaseguroDefinition {
   public void realizarRecuperoSiniestroEmpresarial(
       String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException {
     strTransaccion = RECUPERO.getValor();
-    Recupero recupero = new Recupero(genericStep.getFilasModelo("recupero", strTipoContrato));
+    Recupero recupero =
+        new Recupero(genericStep.getFilasModelo(RECUPERO.getValor(), strTipoContrato));
     recuperoStep.seleccionarRecupero();
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), strTipoRecupero, strCodigoRetencionRecupero);
@@ -82,7 +86,8 @@ public class ReaseguroDefinition {
   @Entonces(
       "^para la transacción (.*) se distribuye el reaseguro según el retenido y el cedido de manera adecuada$")
   public void verificarReaseguro(String tipoTransaccion) throws IOException {
-    Contrato contrato = new Contrato(genericStep.getFilasModelo("contrato", strTipoContrato));
+    Contrato contrato =
+        new Contrato(genericStep.getFilasModelo(CONTRATO.getValor(), strTipoContrato));
     reaseguroStep.verificarReaseguro(contrato.getLstContrato(), strTransaccion);
   }
 }
