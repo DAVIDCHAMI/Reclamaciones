@@ -12,10 +12,12 @@ import cucumber.api.java.es.Entonces;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-public class NotificacionAvisoDefinition {
+public class NotificacionAvisoSiniestroReclamacionDefinition {
 
   @Steps ReclamacionEmpresarial reclamo;
+
   @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionStep;
+
   @Steps GenericStep genericStep;
 
   @Dado("^que se tiene una poliza de (.*)$")

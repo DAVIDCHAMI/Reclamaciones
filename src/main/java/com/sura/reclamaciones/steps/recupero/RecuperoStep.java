@@ -1,26 +1,30 @@
 package com.sura.reclamaciones.steps.recupero;
 
 
-import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
-import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
-import static org.junit.Assert.assertTrue;
-
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
-import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
+import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
+import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
+import static org.junit.Assert.assertTrue;
+
 public class RecuperoStep {
 
   @Page MenuRecuperoPage menuRecuperoPage;
+
   @Page CreacionRecuperoPage creacionRecuperoPage;
+
   @Page VerificacionRecuperoPage verificacionRecuperoPage;
+
   @Page MenuClaimPage menuClaimPage;
   @Page ResumenReclamacionPage resumenReclamacionPage;
 

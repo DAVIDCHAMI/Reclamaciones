@@ -1,24 +1,26 @@
-package com.sura.reclamaciones.definitions.recupero;
+package com.sura.reclamaciones.definitions.empresariales;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionSiniestroStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
-import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
-import java.io.IOException;
-
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
+
+import java.io.IOException;
 
 import static com.sura.reclamaciones.utils.Variables.TIPO_RESERVA;
 
 public class RecuperoDefinition {
 
   @Steps RecuperoStep recuperoStep;
+
   @Steps GenericStep genericStep;
+
   @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
 
   Recupero recupero;
