@@ -1,8 +1,10 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
@@ -24,6 +26,8 @@ public class NuevaReclamacionAtrEmpresarialStep {
   @Page InformacionReclamacionPage informacionReclamacionPage;
 
   @Page ConsultaReclamacionPage consultaReclamacionPage;
+
+  @Page MenuClaimPage menuClaimPage;
 
   @Step
   public void accederAvisoAtr() {
@@ -69,13 +73,17 @@ public class NuevaReclamacionAtrEmpresarialStep {
     MatcherAssert.assertThat(
         "No se generó el número de siniestro en ATR",
         asistenteVirtualAtrPage
-            .obtenerTituloExpedienteCreado()
-            .equalsIgnoreCase(ConstanteGlobal.EXPEDIENTE_CREADO_CON_EXITO));
+            .getLblTituloExpedienteCreado()
+            .equalsIgnoreCase(ConstanteGlobal.EXPEDIENTE_CREADO_EXITOSAMENTE));
     return informacionReclamacionPage.obtenerNumeroSiniestroAtr();
   }
 
   @Step
   public void consultarSiniestro(String numeroReclamacion) {
     consultaReclamacionPage.buscarReclamacion(numeroReclamacion);
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(MenuConstante.DETALLES_SINIESTRO);
+    MatcherAssert.assertThat(
+        "No se encontró el número de siniestro generado en ATR",
+        consultaReclamacionPage.getLblNumeroSiniestro().equalsIgnoreCase(numeroReclamacion));
   }
 }

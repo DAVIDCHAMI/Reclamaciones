@@ -35,7 +35,8 @@ public class NotificacionAvisoSiniestroAtrDefinition {
       throws IOException {
     ReclamacionEmpresarial informacionSiniestro =
         new ReclamacionEmpresarial(
-            genericStep.getFilasModelo(ReclamacionConstante.RECLAMACION_EMPRESARIAL, ReclamacionConstante.ATR));
+            genericStep.getFilasModelo(
+                ReclamacionConstante.RECLAMACION_EMPRESARIAL, ReclamacionConstante.ATR));
     nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(
         causaSiniestro, informacionSiniestro.getLstReclamo());
     nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();

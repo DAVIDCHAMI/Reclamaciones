@@ -12,7 +12,13 @@ import org.openqa.selenium.WebDriver;
 public class ConsultaReclamacionPage extends GeneralPage {
 
   @FindBy(xpath = "//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
-  WebElementFacade txtNumReclamacion;
+  private WebElementFacade txtNumReclamacion;
+
+  @FindBy(
+    id =
+        "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl"
+  )
+  private WebElementFacade lblNumeroSiniestro;
 
   @Page MenuClaimPage menuClaimPage;
 
@@ -22,5 +28,9 @@ public class ConsultaReclamacionPage extends GeneralPage {
 
   public void buscarReclamacion(String numeroReclamacion) {
     menuClaimPage.buscarReclamacion(RECLAMACION_MENU, numeroReclamacion);
+  }
+
+  public String getLblNumeroSiniestro() {
+    return lblNumeroSiniestro.waitUntilPresent().waitUntilVisible().getText();
   }
 }

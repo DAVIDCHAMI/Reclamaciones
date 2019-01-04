@@ -18,5 +18,4 @@ public class ReclamacionConstante {
   public static final String EMPRESAS = "Empresas";
   public static final String RECLAMACION_EMPRESARIAL = "reclamacion_empresarial";
   public static final String ATR = "ATR";
-
 }

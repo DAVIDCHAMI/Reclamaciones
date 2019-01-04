@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -96,9 +95,10 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarCausaSiniestro(String causa) {
+    String lstCausaSiniestroClaim = "//li[.='COMODIN']";
     mnuCausa.waitUntilPresent();
     mnuCausa.click();
-    navegarMenu(causa, ConstanteGlobal.LISTA_CAUSA_SINIESTRO);
+    navegarMenu(causa, lstCausaSiniestroClaim);
     realizarEsperaCarga();
   }
 
@@ -142,8 +142,9 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarCausaSiniestroAtr(String causa) {
+    String lstCausaSiniestroAtr = "//td[.='COMODIN']";
     txtCausaSiniestroAtr.waitUntilPresent().waitUntilClickable().click();
-    navegarMenu(causa, ConstanteGlobal.LISTA_CAUSA_SINIESTRO_ATR);
+    navegarMenu(causa, lstCausaSiniestroAtr);
   }
 
   public void diligenciarDetalleHechosAtr(String detalleHechos) {

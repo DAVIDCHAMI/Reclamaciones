@@ -240,7 +240,7 @@ public class GeneralPage extends PageObject {
   public void navegarMenu(String opcionMenu, String mnuNavegar) {
     String auxiliarMnuNavegar = "";
     auxiliarMnuNavegar = mnuNavegar.replace(ConstanteGlobal.COMODIN, opcionMenu);
-    $(auxiliarMnuNavegar).waitUntilVisible().click();
+    $(auxiliarMnuNavegar).waitUntilPresent().waitUntilVisible().click();
   }
 
   protected void resaltarElemento(WebElementFacade elemento) {
