@@ -64,7 +64,8 @@ public class GeneralPage extends PageObject {
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   private String lstDinamico = "//li[.='COMODIN']";
-  private String auxLstUbicacion = "";
+
+  private String auxiliarReemplazo = "";
 
   protected WebDriver driver;
 
@@ -182,8 +183,8 @@ public class GeneralPage extends PageObject {
     mnuDinamico
         .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
         .click();
-    auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
-    $(auxLstUbicacion).click();
+    auxiliarReemplazo = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
+    $(auxiliarReemplazo).click();
     realizarEsperaCarga();
   }
 
@@ -218,6 +219,12 @@ public class GeneralPage extends PageObject {
     return lstFila;
   }
 
+  public void enfocarVistaAutomatizacion() {
+    for (String ventana : driver.getWindowHandles()) {
+      driver.switchTo().window(ventana);
+    }
+  }
+
   public void realizarEsperaFinalizarReclamacion() {
     int numeroIntentos = ConstanteGlobal.NUMERO_INTENTOS_ESPERA_ELEMENTO;
     while (numeroIntentos > 0) {
@@ -226,5 +233,11 @@ public class GeneralPage extends PageObject {
       }
       numeroIntentos--;
     }
+  }
+
+  public void navegarMenu(String opcionMenu, String mnuNavegar) {
+    String auxiliarMnuNavegar = "";
+    auxiliarMnuNavegar = mnuNavegar.replace(ConstanteGlobal.COMODIN, opcionMenu);
+    $(auxiliarMnuNavegar).waitUntilVisible().click();
   }
 }

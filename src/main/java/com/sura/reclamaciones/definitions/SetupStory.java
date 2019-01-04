@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.steps.login.LoginAtrStep;
 import com.sura.reclamaciones.steps.login.LoginClaimStep;
 import com.sura.reclamaciones.utils.AmbientesUtil;
 import cucumber.api.java.Before;
@@ -10,6 +11,8 @@ import net.thucydides.core.annotations.Steps;
 public class SetupStory {
 
   @Steps LoginClaimStep loginClaimStep;
+
+  @Steps LoginAtrStep loginAtrStep;
 
   AmbientesUtil ambientesUtil = new AmbientesUtil();
 
@@ -28,6 +31,13 @@ public class SetupStory {
       loginClaimStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_AUTO);
     } else if (ConstanteGlobal.DESARROLLO.equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionAmbienteDllo();
+    }
+  }
+
+  @Before("@ATR")
+  public void seleccionarAmbienteATR() throws IOException {
+    if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
+      loginAtrStep.obtenerCredenciales(ConstanteGlobal.ANALISTA_RECLAMACION_ATR);
     }
   }
 }

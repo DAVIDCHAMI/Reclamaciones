@@ -1,4 +1,2 @@
-id;idFiltro;numeroReclamacion;pagador;lineaReserva;pais;departamento;ciudad;valorTransaccion;categoriaRecupero;estadoTransaccion;fechaComprobante
-1;Daños materiales_01;9180000015885;JOSE MARIA VASQUEZ CRESPO CQLII;(1) 1ª parteGeneral;Colombia;Antioquia;Medellin;15;Salvamento;Solicitado;
-2;Daños materiales_02;9180000024284;VICTOR HUGO SEPULVEDA VALLEJO CQLII;(1) 1ª partePropiedad;Colombia;Antioquia;Medellin;18;Subrogación;Solicitado;
-3;Daños materiales_03;9180000017862;FRANCISCO MANUEL BONILLA ROJAS CQLII;(1) 1ª parteGeneral;Colombia;Casanare;Bocas De Guanapalo (Miramar) (San Luis De Palenque);1000;Ingreso (otro);Solicitado;
+id;idFiltro;pagador;lineaReserva;pais;departamento;ciudad;valorTransaccion;categoriaRecupero;estadoTransaccion
+1;HOGAR_01;AURA JUDITH LOPEZ JULIO CQLII;(1) 1ª parteContenido;Colombia;Bolivar;Cartagena De Indias;9000000;Salvamento;Solicitado;
