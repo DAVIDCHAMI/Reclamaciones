@@ -4,7 +4,7 @@ import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.Constantes.PAGO;
 import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
 import static com.sura.reclamaciones.utils.Variables.TIPO_ANULACION;
-import static org.junit.Assert.assertTrue;
+
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
@@ -19,6 +19,7 @@ import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
 
 public class AnulacionEmpresarialStep {
 
@@ -40,13 +41,13 @@ public class AnulacionEmpresarialStep {
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
       detalleTransaccionPage.seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
-      assertTrue(
+      MatcherAssert.assertThat(
           "El estado de la transaccion no permite que sea anulada",
           detalleTransaccionPage.ingresarAnulacionEmpresarial(
               strNumeroTransaccion,
               diligenciador.getEstadoTransaccion(),
               Serenity.sessionVariableCalled(TIPO_ANULACION)));
-      assertTrue(
+      MatcherAssert.assertThat(
           "El número de transaccion, no tiene habilitado el boton de anular",
           detalleTransaccionPage.realizarAnulacion(Serenity.sessionVariableCalled(TIPO_ANULACION)));
       Serenity.setSessionVariable(NUMERO_TRANSACCION.getValor()).to(strNumeroTransaccion);
@@ -60,13 +61,13 @@ public class AnulacionEmpresarialStep {
         MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
     for (PagoEmpresarial diligenciador : lstPago) {
       String strNumeroTransaccion = verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
-      assertTrue(
+      MatcherAssert.assertThat(
           "El estado de la transaccion no permite que sea anulada",
           detalleTransaccionPage.ingresarAnulacionEmpresarial(
               strNumeroTransaccion,
               diligenciador.getEstadoTransaccion(),
               Serenity.sessionVariableCalled(TIPO_ANULACION)));
-      assertTrue(
+      MatcherAssert.assertThat(
           "El número de transaccion, no tiene habilitado el boton de anular",
           detalleTransaccionPage.realizarAnulacion(Serenity.sessionVariableCalled(TIPO_ANULACION)));
       Serenity.setSessionVariable(NUMERO_TRANSACCION.getValor()).to(strNumeroTransaccion);
@@ -80,7 +81,7 @@ public class AnulacionEmpresarialStep {
     if (strTipoAnulacion.equals(PAGO.getValor())) {
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
-      assertTrue(
+      MatcherAssert.assertThat(
           "El pago no quedo en estado anulado",
           verificacionDatosFinancierosPage.verificarEstadoAnulado(
               strAnulacionPago, strNumeroTransaccion, strTipoAnulacion));
@@ -89,7 +90,7 @@ public class AnulacionEmpresarialStep {
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
       verificacionDatosFinancierosPage.seleccionarTipoTransaccion(
           RecuperoConstante.TIPO_TRANSACCION);
-      assertTrue(
+      MatcherAssert.assertThat(
           "El recupero no quedo en estado anulado",
           verificacionDatosFinancierosPage.verificarEstadoAnulado(
               strAnulacionPago, strNumeroTransaccion, strTipoAnulacion));
