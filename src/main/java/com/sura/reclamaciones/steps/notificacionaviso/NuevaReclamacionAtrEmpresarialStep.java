@@ -4,6 +4,7 @@ import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
@@ -38,10 +39,14 @@ public class NuevaReclamacionAtrEmpresarialStep {
   @Step
   public void diligenciarInformacionAsegurado(List<Persona> datosPersona) {
     asistenteVirtualAtrPage.seleccionarPlanListaProducto();
+    buscarPolizaPage.enfocarVistaAutomatizacion();
+    buscarPolizaPage.realizarEsperaCarga();
     datosPersona.forEach(
         asegurado ->
-            buscarPolizaPage.consultarDocumentoAtr(
-                asegurado.getTipoDocumento(), asegurado.getNumDocumento()));
+            buscarPolizaPage.seleccionarDocumentoAseguradoAtr(asegurado.getTipoDocumento()));
+    datosPersona.forEach(
+        asegurado -> buscarPolizaPage.digitarDocumentoAseguradoAtr(asegurado.getNumDocumento()));
+    buscarPolizaPage.consultarDocumentoAseguradoAtr();
   }
 
   @Step

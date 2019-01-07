@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
-
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -136,13 +135,17 @@ public class BuscarPolizaPage extends GeneralPage {
     }
   }
 
-  public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr) {
+  public void seleccionarDocumentoAseguradoAtr(String tipoDocumentoAtr) {
     String lstTipoDocumentoAtr = "//option[contains(text(),'COMODIN')]";
-    enfocarVistaAutomatizacion();
-    realizarEsperaCarga();
     txtTipoDocumentoAsegurado.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
     navegarMenu(tipoDocumentoAtr, lstTipoDocumentoAtr);
+  }
+
+  public void digitarDocumentoAseguradoAtr(String numDocumentoAtr) {
     txtNumeroDocumentoAtr.waitUntilVisible().type(numDocumentoAtr);
+  }
+
+  public void consultarDocumentoAseguradoAtr() {
     btnConsultarDatosAseguradoATR.waitUntilVisible().click();
   }
 
