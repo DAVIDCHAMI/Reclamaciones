@@ -6,7 +6,6 @@ import static com.sura.reclamaciones.utils.Constantes.CUENTA;
 import static com.sura.reclamaciones.utils.Constantes.PAGOS;
 import static com.sura.reclamaciones.utils.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.utils.Variables.VALOR_RESERVA;
-import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoEmpresarial;
@@ -20,6 +19,7 @@ import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
 public class NuevoPagoStep {
@@ -90,11 +90,11 @@ public class NuevoPagoStep {
               verificacionDatosFinancierosPage.obtenerFilaTabla(
                   strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
           String strValorReserva = (Serenity.sessionVariableCalled(VALOR_RESERVA));
-          assertTrue(
+          MatcherAssert.assertThat(
               "El valor reservado no es igual al enviado",
               verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
                   strValorReserva, lstFilaPago));
-          assertTrue(
+          MatcherAssert.assertThat(
               "No llego a SAP el pago",
               verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
                   validador.getEstadoTransaccion(), lstFilaPago));
