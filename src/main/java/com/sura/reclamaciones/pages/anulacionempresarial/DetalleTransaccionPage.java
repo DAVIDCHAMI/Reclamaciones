@@ -24,30 +24,8 @@ public class DetalleTransaccionPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroPaginas;
 
-  @FindBy(xpath = "//span[@class='x-column-header-text'][contains(text(),'Número de pago')]")
-  private WebElementFacade lblNumeroPago;
-
-  @FindBy(xpath = "//a[@class='g-link x-component-after-title x-box-item']")
-  private WebElementFacade lnkPago;
-
   public DetalleTransaccionPage(WebDriver wdriver) {
     super(wdriver);
-  }
-
-  public boolean realizarAnulacion() {
-    if (btnAnular.isVisible()) {
-      btnAnular.waitUntilClickable();
-      btnAnular.click();
-      realizarEsperaCarga();
-      btnAnular.waitUntilClickable();
-      btnAnular.click();
-      realizarEsperaCarga();
-      btnAceptar.waitUntilClickable();
-      btnAceptar.click();
-      realizarEsperaCarga();
-      return true;
-    }
-    return false;
   }
 
   private void anularTransaccion() {
