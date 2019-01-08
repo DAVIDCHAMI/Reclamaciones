@@ -18,7 +18,6 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
 import java.io.IOException;
-
 import net.thucydides.core.annotations.Steps;
 
 public class ReaseguroDefinition {

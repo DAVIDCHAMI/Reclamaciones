@@ -67,9 +67,9 @@ public class GeneralPage extends PageObject {
 
   private String auxiliarReemplazo = "";
 
-  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
   protected WebDriver driver;
+
+  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
