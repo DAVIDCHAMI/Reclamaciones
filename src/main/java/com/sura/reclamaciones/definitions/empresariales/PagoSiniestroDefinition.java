@@ -31,10 +31,10 @@ public class PagoSiniestroDefinition {
       throws IOException {
     pagoEmpresarial =
         new PagoEmpresarial(
-            (genericStep
-                .getFilasModelo(
-                    String.valueOf(NombresCsv.PAGO_EMPRESARIAL),
-                    Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL))));
+            (genericStep.getFilasModelo(
+                String.valueOf(NombresCsv.PAGO_EMPRESARIAL),
+                Serenity.sessionVariableCalled(
+                    VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL))));
     nuevoPagoStep.consultarNumeroReclamacion();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,

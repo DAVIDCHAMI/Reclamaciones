@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.pages.pagos;
 
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 import static com.sura.reclamaciones.utils.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.utils.Constantes.TIPO_PAGO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
