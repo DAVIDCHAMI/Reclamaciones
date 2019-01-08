@@ -139,7 +139,7 @@ public class DetalleTransaccionPage extends GeneralPage {
     boolean estadoPago;
     estadoPago =
         ingresarAnulacion(
-            strNumeroTransaccion, strEstadoPrevio, Serenity.sessionVariableCalled(TIPO_ANULACION));
+            strNumeroTransaccion, strEstadoPrevio, strTipoAnulacion);
     return estadoPago;
   }
 }
