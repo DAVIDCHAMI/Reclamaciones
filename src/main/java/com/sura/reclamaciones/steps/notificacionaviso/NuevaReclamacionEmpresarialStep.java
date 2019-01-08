@@ -66,7 +66,7 @@ public class NuevaReclamacionEmpresarialStep {
   }
 
   public void seleccionarPropiedadImplicada() {
-      seleccionarPropiedadesImplicadasPage.seleccionarPropiedad();
+    seleccionarPropiedadesImplicadasPage.seleccionarPropiedad();
   }
 
   public void visualizarResumenReclamacion() {

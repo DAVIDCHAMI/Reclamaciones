@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.pagos;
 
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.constantes.PagoConstante;
@@ -120,7 +121,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%d')", intCalculoVrReserva));
           txtComentarioPago.click();
-          Serenity.setSessionVariable(Variables.VALOR_RESERVA).to(intCalculoVrReserva.toString());
+          Serenity.setSessionVariable(SESION_CC_VALOR_RESERVA.getValor())
+              .to(intCalculoVrReserva.toString());
         });
   }
 

@@ -1,5 +1,8 @@
 package com.sura.reclamaciones.pages.recupero;
 
+import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
+import static com.sura.reclamaciones.utils.Constantes.TIPO_TRANSACCION;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -8,15 +11,12 @@ import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
-import static com.sura.reclamaciones.utils.Constantes.TIPO_TRANSACCION;
 
 public class VerificacionRecuperoPage extends GeneralPage {
 
   @Page MenuClaimPage menuClaimPage;
 
-  private static String tblRecupero =
-      "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
+  private static String tblRecupero = "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   public VerificacionRecuperoPage(WebDriver driver) {
     super(driver);

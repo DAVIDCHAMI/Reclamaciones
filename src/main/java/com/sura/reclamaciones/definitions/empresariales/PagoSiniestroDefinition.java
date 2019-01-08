@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
 import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.NombresCsv.PAGO_EMPRESARIAL;
 
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
@@ -28,7 +29,8 @@ public class PagoSiniestroDefinition {
     creacionSiniestro.asignarValoresSiniestro(strTipoProducto);
     creacionSiniestro.siniestrarPolizaEmpresarialAtr();
     pagoEmpresarial =
-        new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", strTipoProducto)));
+        new PagoEmpresarial(
+            (genericStep.getFilasModelo(PAGO_EMPRESARIAL.getValor(), strTipoProducto)));
     nuevoPagoStep.consultarNumeroReclamacion(Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
   }
 
