@@ -14,8 +14,7 @@ import org.openqa.selenium.WebElement;
 
 public class VerificacionDatosFinancierosPage extends GeneralPage {
 
-  @Page
-  DetalleTransaccionPage detalleTransaccionPage;
+  @Page DetalleTransaccionPage detalleTransaccionPage;
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
   private WebElementFacade tblVerificacionPago;

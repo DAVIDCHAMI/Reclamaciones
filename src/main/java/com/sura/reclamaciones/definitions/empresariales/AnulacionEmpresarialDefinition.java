@@ -44,10 +44,12 @@ public class AnulacionEmpresarialDefinition {
     crearSiniestro.siniestrarPolizaEmpresarialAtr();
   }
 
-  @Y("^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
+  @Y(
+      "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
   public void crearPago(String strTipoProducto, String strCodigoRetencion) throws IOException {
     pagoEmpresarial =
-        new PagoEmpresarial((genericStep.getFilasModelo(PAGO_EMPRESARIAL.getValor(), strTipoProducto)));
+        new PagoEmpresarial(
+            (genericStep.getFilasModelo(PAGO_EMPRESARIAL.getValor(), strTipoProducto)));
     anulacionEmpresarial =
         new AnulacionEmpresarial(
             (genericStep.getFilasModelo(ANULACION_EMPRESARIAL.getValor(), strTipoProducto)));
@@ -83,7 +85,8 @@ public class AnulacionEmpresarialDefinition {
   public void crearPagoRecupero(String strTipoProducto, String strCodigoRetencion)
       throws IOException {
     pagoEmpresarial =
-        new PagoEmpresarial((genericStep.getFilasModelo(PAGO_EMPRESARIAL.getValor(), strTipoProducto)));
+        new PagoEmpresarial(
+            (genericStep.getFilasModelo(PAGO_EMPRESARIAL.getValor(), strTipoProducto)));
     anulacionEmpresarial =
         new AnulacionEmpresarial(
             (genericStep.getFilasModelo(ANULACION_EMPRESARIAL.getValor(), strTipoProducto)));

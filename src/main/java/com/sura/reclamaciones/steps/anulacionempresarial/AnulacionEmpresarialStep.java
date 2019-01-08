@@ -26,8 +26,7 @@ public class AnulacionEmpresarialStep {
 
   @Page DetalleTransaccionPage detalleTransaccionPage;
 
-  @Page
-  VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
   @Step
   public void ingresarAnulacionRecupero(List<Recupero> lstRecupero) {
@@ -48,7 +47,8 @@ public class AnulacionEmpresarialStep {
               Serenity.sessionVariableCalled(SESION_CC_TIPO_ANULACION.getValor())));
       MatcherAssert.assertThat(
           "El número de transaccion, no tiene habilitado el boton de anular",
-          detalleTransaccionPage.realizarAnulacion(Serenity.sessionVariableCalled(SESION_CC_TIPO_ANULACION.getValor())));
+          detalleTransaccionPage.realizarAnulacion(
+              Serenity.sessionVariableCalled(SESION_CC_TIPO_ANULACION.getValor())));
       Serenity.setSessionVariable(SESION_CC_NUMERO_TRANSACCION.getValor()).to(strNumeroTransaccion);
     }
   }
@@ -68,14 +68,16 @@ public class AnulacionEmpresarialStep {
               Serenity.sessionVariableCalled(SESION_CC_TIPO_ANULACION.getValor())));
       MatcherAssert.assertThat(
           "El número de transaccion, no tiene habilitado el boton de anular",
-          detalleTransaccionPage.realizarAnulacion(Serenity.sessionVariableCalled(SESION_CC_TIPO_ANULACION.getValor())));
+          detalleTransaccionPage.realizarAnulacion(
+              Serenity.sessionVariableCalled(SESION_CC_TIPO_ANULACION.getValor())));
       Serenity.setSessionVariable(NUMERO_TRANSACCION.getValor()).to(strNumeroTransaccion);
     }
   }
 
   @Step
   public void verificarAnulacionRealizada(String strAnulacionPago) {
-    String strNumeroTransaccion = Serenity.sessionVariableCalled(SESION_CC_NUMERO_TRANSACCION.getValor());
+    String strNumeroTransaccion =
+        Serenity.sessionVariableCalled(SESION_CC_NUMERO_TRANSACCION.getValor());
     String strTipoAnulacion = Serenity.sessionVariableCalled(SESION_CC_TIPO_ANULACION.getValor());
     if (strTipoAnulacion.equals(PAGO.getValor())) {
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
@@ -87,8 +89,7 @@ public class AnulacionEmpresarialStep {
     } else {
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
-      verificacionDatosFinancierosPage.seleccionarTipoTransaccion(
-          TIPO_TRANSACCION.getValor());
+      verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
       MatcherAssert.assertThat(
           "El recupero no quedo en estado anulado",
           verificacionDatosFinancierosPage.verificarEstadoAnulado(
@@ -96,4 +97,3 @@ public class AnulacionEmpresarialStep {
     }
   }
 }
-
