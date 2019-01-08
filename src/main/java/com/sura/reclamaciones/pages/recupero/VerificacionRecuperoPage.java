@@ -1,7 +1,9 @@
 package com.sura.reclamaciones.pages.recupero;
 
+import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
+import static com.sura.reclamaciones.utils.Constantes.TIPO_TRANSACCION;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.constantes.RecuperoConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import java.util.List;
@@ -21,12 +23,12 @@ public class VerificacionRecuperoPage extends GeneralPage {
   }
 
   public List<WebElement> obtenerListaRecupero() {
-    String strNumeroRecupero = obtenerDatoTablaCabecera(RecuperoConstante.NUMERO_TRANSACCION, 1);
+    String strNumeroRecupero = obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(), 1);
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
-    seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
+    seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
     List<WebElement> lstFilaRecupero;
     lstFilaRecupero = obtenerFilaTabla(strNumeroRecupero, tblRecupero);
     return lstFilaRecupero;

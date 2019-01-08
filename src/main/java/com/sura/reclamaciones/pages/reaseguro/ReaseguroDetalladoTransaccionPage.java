@@ -1,9 +1,11 @@
 package com.sura.reclamaciones.pages.reaseguro;
 
-import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.Constantes.PORCIENTO;
 import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA_ENCABEZADO;
 import static com.sura.reclamaciones.utils.Constantes.VALOR_REASEGURADO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 import static java.lang.Math.abs;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -32,7 +34,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   public boolean verificarRetencionPura(Double dblMaximoValorRetencionPura) {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
+            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 2);
     for (int posicionElementoFila = 0;
         lstReaseguroDetallado.size() > posicionElementoFila;
         posicionElementoFila++) {
@@ -57,7 +59,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       Double dblValorRetenido, Double dblValorRetenidoDeducible) {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
+            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 2);
     for (WebElement aLstReaseguroDetallado : lstReaseguroDetallado) {
       String strNumeroTransaccion = aLstReaseguroDetallado.getText();
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
@@ -83,7 +85,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       Double dblValorRetenidoDeducible) {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 2);
+            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 2);
     for (WebElement aLstReaseguroDetallado : lstReaseguroDetallado) {
       String strNumeroTransaccion = aLstReaseguroDetallado.getText();
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
@@ -163,10 +165,50 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
                 porcentajeDeducibleMinimo,
                 proporcionCuotaParte);
         break;
+      case "Recupero":
+        blnTransaccion =
+            verificarRecupero(
+                dblRetencionPura,
+                porcentajeRetenido,
+                deducibleMinimo,
+                porcentajeDeducibleMinimo,
+                proporcionCuotaParte);
+        break;
       default:
         return blnTransaccion;
     }
     return blnTransaccion;
+  }
+
+  private boolean verificarRecupero(
+      double dblRetencionPura,
+      String porcentajeRetenido,
+      String deducibleMinimo,
+      String porcentajeDeducibleMinimo,
+      String proporcionCuotaParte) {
+    boolean verificacionRecupero =
+        verificarPago(
+            dblRetencionPura,
+            porcentajeRetenido,
+            deducibleMinimo,
+            porcentajeDeducibleMinimo,
+            proporcionCuotaParte);
+    List<WebElement> lstReaseguroDetallado =
+        obtenerElementoTablaDatoDesconocido(
+            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
+    for (int posicionElementoFila = 5;
+        lstReaseguroDetallado.size() >= posicionElementoFila;
+        posicionElementoFila++) {
+      String strValorRecupero =
+          lstReaseguroDetallado
+              .get(4)
+              .getText()
+              .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+      verificacionRecupero =
+          (strValorRecupero.equals(
+              Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor())));
+    }
+    return verificacionRecupero;
   }
 
   private boolean verificarReserva(
@@ -207,7 +249,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         proporcionCuotaParte);
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 4);
+            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
     for (int posicionElementoFila = 2;
         lstReaseguroDetallado.size() > posicionElementoFila - 1;
         posicionElementoFila++) {
@@ -216,7 +258,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               .get(2)
               .getText()
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      if (strValorPago.equals(Serenity.sessionVariableCalled(Variables.VALOR_RESERVA))) {
+      if (strValorPago.equals(Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()))) {
         return true;
       }
     }
