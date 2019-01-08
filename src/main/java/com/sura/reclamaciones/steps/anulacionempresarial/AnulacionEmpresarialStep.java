@@ -3,12 +3,11 @@ package com.sura.reclamaciones.steps.anulacionempresarial;
 import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.Constantes.PAGO;
 import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
+import static com.sura.reclamaciones.utils.Constantes.TIPO_TRANSACCION;
 import static com.sura.reclamaciones.utils.Variables.TIPO_ANULACION;
-
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.PagoConstante;
-import com.sura.reclamaciones.constantes.RecuperoConstante;
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
@@ -40,7 +39,7 @@ public class AnulacionEmpresarialStep {
           detalleTransaccionPage.obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(), 1);
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
-      detalleTransaccionPage.seleccionarTipoTransaccion(RecuperoConstante.TIPO_TRANSACCION);
+      detalleTransaccionPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
       MatcherAssert.assertThat(
           "El estado de la transaccion no permite que sea anulada",
           detalleTransaccionPage.ingresarAnulacionEmpresarial(
@@ -89,7 +88,7 @@ public class AnulacionEmpresarialStep {
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
       verificacionDatosFinancierosPage.seleccionarTipoTransaccion(
-          RecuperoConstante.TIPO_TRANSACCION);
+          TIPO_TRANSACCION.getValor());
       MatcherAssert.assertThat(
           "El recupero no quedo en estado anulado",
           verificacionDatosFinancierosPage.verificarEstadoAnulado(
