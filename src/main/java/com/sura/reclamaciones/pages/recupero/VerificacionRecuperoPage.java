@@ -23,12 +23,10 @@ public class VerificacionRecuperoPage extends GeneralPage {
   }
 
   public List<WebElement> obtenerListaRecupero() {
-    irUltimaPagina();
     String strNumeroRecupero = obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(), 0);
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
-    irUltimaPagina();
     List<WebElement> lstFilaRecupero;
     lstFilaRecupero = obtenerFilaTabla(strNumeroRecupero, tblRecupero);
     return lstFilaRecupero;
