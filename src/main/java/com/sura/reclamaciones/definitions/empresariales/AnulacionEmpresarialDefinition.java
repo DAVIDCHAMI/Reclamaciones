@@ -1,7 +1,10 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.Constantes.ESTADO_ANULACION;
+import static com.sura.reclamaciones.utils.NombresCsv.ANULACION_EMPRESARIAL;
+import static com.sura.reclamaciones.utils.NombresCsv.PAGO_EMPRESARIAL;
+import static com.sura.reclamaciones.utils.NombresCsv.RECUPERO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.models.PagoEmpresarial;
@@ -44,16 +47,16 @@ public class AnulacionEmpresarialDefinition {
   @Y("^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
   public void crearPago(String strTipoProducto, String strCodigoRetencion) throws IOException {
     pagoEmpresarial =
-        new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", strTipoProducto)));
+        new PagoEmpresarial((genericStep.getFilasModelo(PAGO_EMPRESARIAL.getValor(), strTipoProducto)));
     anulacionEmpresarial =
         new AnulacionEmpresarial(
-            (genericStep.getFilasModelo("anulacion_empresarial", strTipoProducto)));
+            (genericStep.getFilasModelo(ANULACION_EMPRESARIAL.getValor(), strTipoProducto)));
     anulacionEmpresarial
         .getLstAnulacionEmpresarial()
         .forEach(
             ajustador -> {
               nuevoPagoStep.consultarNumeroReclamacion(
-                  Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
+                  Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
               nuevoPagoStep.ingresarInformacionBeneficiarioPago(
                   ajustador.getTipoPago(),
                   ajustador.getBeneficiarioPago(),
@@ -80,16 +83,16 @@ public class AnulacionEmpresarialDefinition {
   public void crearPagoRecupero(String strTipoProducto, String strCodigoRetencion)
       throws IOException {
     pagoEmpresarial =
-        new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", strTipoProducto)));
+        new PagoEmpresarial((genericStep.getFilasModelo(PAGO_EMPRESARIAL.getValor(), strTipoProducto)));
     anulacionEmpresarial =
         new AnulacionEmpresarial(
-            (genericStep.getFilasModelo("anulacion_empresarial", strTipoProducto)));
+            (genericStep.getFilasModelo(ANULACION_EMPRESARIAL.getValor(), strTipoProducto)));
     anulacionEmpresarial
         .getLstAnulacionEmpresarial()
         .forEach(
             ajustador -> {
               nuevoPagoStep.consultarNumeroReclamacion(
-                  Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
+                  Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
               nuevoPagoStep.ingresarInformacionBeneficiarioPago(
                   ajustador.getTipoPago(),
                   ajustador.getBeneficiarioPago(),
@@ -100,7 +103,7 @@ public class AnulacionEmpresarialDefinition {
                   pagoEmpresarial.getLstPago());
             });
     if (strTipoProducto.equals(strTipoProducto)) {
-      recupero = new Recupero(genericStep.getFilasModelo("recupero", strTipoProducto));
+      recupero = new Recupero(genericStep.getFilasModelo(RECUPERO.getValor(), strTipoProducto));
       recuperoStep.seleccionarRecupero();
       recuperoStep.diligenciarCreacionRecupero(
           recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
