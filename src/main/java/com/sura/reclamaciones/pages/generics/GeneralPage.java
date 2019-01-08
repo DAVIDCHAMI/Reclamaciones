@@ -254,7 +254,7 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public void cerrarNavegador() {
+  public void reiniciarNavegador() {
     Set<String> ventana = driver.getWindowHandles();
     while (ventana.size() != 1) {
       enfocarVistaAutomatizacion();
