@@ -7,7 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class AgregarInformacionSiniestroAutosPage extends GeneralPage {
+public class AgregarInformacionPage extends GeneralPage {
 
   @FindBy(
     id =
@@ -75,7 +75,7 @@ public class AgregarInformacionSiniestroAutosPage extends GeneralPage {
   )
   WebElementFacade btnAgregarPeaton;
 
-  public AgregarInformacionSiniestroAutosPage(WebDriver wdriver) {
+  public AgregarInformacionPage(WebDriver wdriver) {
     super(wdriver);
   }
 

@@ -64,7 +64,8 @@ public class GeneralPage extends PageObject {
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
   private String lstDinamico = "//li[.='COMODIN']";
-  private String auxLstUbicacion = "";
+
+  private String auxiliarReemplazo = "";
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -192,8 +193,8 @@ public class GeneralPage extends PageObject {
     mnuDinamico
         .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
         .click();
-    auxLstUbicacion = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
-    $(auxLstUbicacion).click();
+    auxiliarReemplazo = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
+    $(auxiliarReemplazo).click();
     realizarEsperaCarga();
   }
 
@@ -226,5 +227,17 @@ public class GeneralPage extends PageObject {
         tblVerificacion.findElements(
             By.xpath(String.format(strXpathElementoTabla, strIdentificadorFila)));
     return lstFila;
+  }
+
+  public void enfocarVistaAutomatizacion() {
+    for (String ventana : driver.getWindowHandles()) {
+      driver.switchTo().window(ventana);
+    }
+  }
+
+  public void navegarMenu(String opcionMenu, String mnuNavegar) {
+    String auxiliarMnuNavegar = "";
+    auxiliarMnuNavegar = mnuNavegar.replace(ConstanteGlobal.COMODIN, opcionMenu);
+    $(auxiliarMnuNavegar).waitUntilVisible().click();
   }
 }

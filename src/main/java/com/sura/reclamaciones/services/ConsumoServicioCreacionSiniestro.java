@@ -48,7 +48,7 @@ public class ConsumoServicioCreacionSiniestro {
     creacionSiniestroFactory.setLossDate(lstSiniestroParam.get(campoDato).getFechaSiniestro());
     creacionSiniestroFactory.setAuthorUser(
         lstSiniestroParam.get(campoDato).getIdentificacionAutor());
-    creacionSiniestroFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaSiniestro());
+    creacionSiniestroFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaPerdida());
   }
 
   private void asignarParametrosAutor(List<Persona> lstParametroPersona) {

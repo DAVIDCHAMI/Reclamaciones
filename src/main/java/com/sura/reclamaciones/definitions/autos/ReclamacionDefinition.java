@@ -8,7 +8,7 @@ import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAutoStep;
+import com.sura.reclamaciones.steps.notificacionaviso.NuevoAvisoSiniestroAutoStep;
 import cucumber.api.DataTable;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -20,7 +20,7 @@ public class ReclamacionDefinition {
 
   @Steps private GenericStep genericStep;
 
-  @Steps private NuevaReclamacionAutoStep reclamacionStep;
+  @Steps private NuevoAvisoSiniestroAutoStep reclamacionStep;
 
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
@@ -54,13 +54,13 @@ public class ReclamacionDefinition {
         new ExposicionVehiculoTercero(
             genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
     personaReclamacionAuto =
-        new Persona(genericStep.getFilasModelo("persona_reclamacion_auto", "conductor"));
+        new Persona(genericStep.getFilasModelo("parametros_persona_reclamacion_auto", "conductor"));
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionVehicular"));
     crearNuevaExposicionVehicular();
     personaReclamacionAuto =
-        new Persona(genericStep.getFilasModelo("persona_reclamacion_auto", "peaton"));
+        new Persona(genericStep.getFilasModelo("parametros_persona_reclamacion_auto", "peaton"));
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionLesiones"));
@@ -122,13 +122,13 @@ public class ReclamacionDefinition {
         new ExposicionVehiculoTercero(
             genericStep.getFilasModelo("responsabilidad_civil_vehiculo", "exposicionRcVehiculo"));
     personaReclamacionAuto =
-        new Persona(genericStep.getFilasModelo("persona_reclamacion_auto", "conductor"));
+        new Persona(genericStep.getFilasModelo("parametros_persona_reclamacion_auto", "conductor"));
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionVehicular"));
     crearNuevaExposicionVehicular();
     personaReclamacionAuto =
-        new Persona(genericStep.getFilasModelo("persona_reclamacion_auto", "peaton"));
+        new Persona(genericStep.getFilasModelo("parametros_persona_reclamacion_auto", "peaton"));
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo("direccion_reclamacion", "direccionExposicionLesiones"));

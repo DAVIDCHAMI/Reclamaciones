@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Persona {
+
+  private List<Persona> lstPersona = new ArrayList<>();
   private String primerNombre;
   private String segundoNombre;
   private String primerApellido;
@@ -14,6 +16,26 @@ public class Persona {
   private String correoElectronico;
   private String telefonoPrincipal;
   private String celular;
+
+  public Persona() {
+    super();
+  }
+
+  public Persona(Map<String, String> datosPersona) {
+    this.primerNombre = datosPersona.get("primerNombre");
+    this.segundoNombre = datosPersona.get("segundoNombre");
+    this.primerApellido = datosPersona.get("primerApellido");
+    this.segundoApellido = datosPersona.get("segundoApellido");
+    this.tipoDocumento = datosPersona.get("tipoDocumento");
+    this.numDocumento = datosPersona.get("numDocumento");
+    this.correoElectronico = datosPersona.get("correoElectronico");
+    this.telefonoPrincipal = datosPersona.get("telefonoPrincipal");
+    this.celular = datosPersona.get("celular");
+  }
+
+  public Persona(List<Map<String, String>> datosPersona) {
+    asignarDatos(datosPersona);
+  }
 
   public String getPrimerNombre() {
     return primerNombre;
@@ -51,29 +73,11 @@ public class Persona {
     return celular;
   }
 
-  public List<Persona> lstPersona = new ArrayList<>();
-
   public List<Persona> getLstPersona() {
     return lstPersona;
   }
 
-  public Persona(List<Map<String, String>> datosPersona) {
-    asignarDatos(datosPersona);
-  }
-
-  public Persona(Map<String, String> datosPersona) {
-    this.primerNombre = datosPersona.get("primerNombre");
-    this.segundoNombre = datosPersona.get("segundoNombre");
-    this.primerApellido = datosPersona.get("primerApellido");
-    this.segundoApellido = datosPersona.get("segundoApellido");
-    this.tipoDocumento = datosPersona.get("tipoDocumento");
-    this.numDocumento = datosPersona.get("numDocumento");
-    this.correoElectronico = datosPersona.get("correoElectronico");
-    this.telefonoPrincipal = datosPersona.get("telefonoPrincipal");
-    this.celular = datosPersona.get("celular");
-  }
-
-  private void asignarDatos(List<Map<String, String>> datosPersona) {
+  public void asignarDatos(List<Map<String, String>> datosPersona) {
     for (Map<String, String> dato : datosPersona) {
       lstPersona.add(new Persona(dato));
     }

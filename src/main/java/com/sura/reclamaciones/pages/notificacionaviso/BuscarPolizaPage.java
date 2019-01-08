@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -58,6 +59,27 @@ public class BuscarPolizaPage extends GeneralPage {
   )
   private WebElementFacade btnPoliza;
 
+  @FindBy(id = "snfPolizaInformacionAsegurado")
+  private WebElementFacade txtNumeroPolizaAtr;
+
+  @FindBy(id = "lnkConsultarAseguradoInformacionAsegurado")
+  private WebElementFacade btnConsultarDatosAseguradoATR;
+
+  @FindBy(id = "idAseguradoInformacionAsegurado")
+  private WebElementFacade txtNumeroDocumentoAtr;
+
+  @FindBy(id = "tipoIdInformacionAsegurado")
+  private WebElementFacade txtTipoDocumentoAsegurado;
+
+  @FindBy(id = "lnkConsultarPolizasInformacionSiniestroEmp")
+  private WebElementFacade btnConsultarPolizaAtr;
+
+  @FindBy(xpath = "//input[@name='Pólizas EmpresarialesOption']")
+  private WebElementFacade rbtPolizaAtr;
+
+  @FindBy(xpath = "//input[@name='RiesgosOption']")
+  private WebElementFacade rbtRiesgoPolizaAtr;
+
   public BuscarPolizaPage(WebDriver driver) {
     super(driver);
   }
@@ -114,5 +136,27 @@ public class BuscarPolizaPage extends GeneralPage {
       btnPoliza.click();
       realizarEsperaCarga();
     }
+  }
+
+  public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr) {
+    enfocarVistaAutomatizacion();
+    txtTipoDocumentoAsegurado.waitUntilVisible().click();
+    navegarMenu(tipoDocumentoAtr, MenuConstante.MENU_TIPO_DOCUMENTO_ATR);
+    txtNumeroDocumentoAtr.waitUntilVisible().type(numDocumentoAtr);
+    btnConsultarDatosAseguradoATR.waitUntilVisible().click();
+  }
+
+  public void consultarPolizaAseguradoAtr() {
+    btnConsultarPolizaAtr.waitUntilVisible().click();
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarPolizaAtr() {
+    rbtPolizaAtr.waitUntilVisible().click();
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarRiegoPolizaAtr() {
+    rbtRiesgoPolizaAtr.waitUntilVisible().click();
   }
 }

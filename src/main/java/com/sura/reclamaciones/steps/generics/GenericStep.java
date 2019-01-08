@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.steps.generics;
 
+import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
+
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
@@ -26,21 +28,16 @@ public class GenericStep {
   public static List<Map<String, String>> getDataCSVEnList(TestDataSource testData, String filtro) {
     List<Map<String, String>> loadedData = testData.getData();
     String[] arrayDatosParaFiltrar = filtro.split(",");
-    List<Map<String, String>> loadedDataFiltrada =
-        filtrarDataCSV(arrayDatosParaFiltrar, loadedData);
-    return loadedDataFiltrada;
+    return filtrarDataCSV(arrayDatosParaFiltrar, loadedData);
   }
 
   public static List<Map<String, String>> filtrarDataCSV(
       String[] arr, List<Map<String, String>> loadedData) {
     Utilidades utilidades = new Utilidades();
-    List<Map<String, String>> loadedDataFiltered =
-        loadedData
-            .stream()
-            .filter(
-                fila -> Utilidades.inArray(arr, fila.get(Variables.COLUMNA_FILTRO_CSV.getValor())))
-            .collect(Collectors.toList());
-    return loadedDataFiltered;
+    return loadedData
+        .stream()
+        .filter(fila -> Utilidades.inArray(arr, fila.get(Variables.COLUMNA_FILTRO_CSV.getValor())))
+        .collect(Collectors.toList());
   }
 
   public void generarRegistro(String valor, String tipoAviso) {
@@ -61,7 +58,7 @@ public class GenericStep {
         escribirAut.close();
       }
     } catch (Exception e) {
-      System.out.println("No se realizó el guardado del Log");
+      LOGGER.info("No se realizó el guardado del Log");
     }
   }
 }

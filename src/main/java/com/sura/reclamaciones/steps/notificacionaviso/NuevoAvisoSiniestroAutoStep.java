@@ -11,7 +11,7 @@ import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarExposicionLesionesPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionSiniestroAutosPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DatosFinancierosPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
@@ -24,13 +24,13 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
-public class NuevaReclamacionAutoStep {
+public class NuevoAvisoSiniestroAutoStep {
 
   @Page InformacionBasicaPage informacionBasicaPage;
 
   @Page BuscarPolizaPage buscarPolizaPage;
 
-  @Page AgregarInformacionSiniestroAutosPage agregarInformacionSiniestroAutosPage;
+  @Page AgregarInformacionPage agregarInformacionPage;
 
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
@@ -48,20 +48,20 @@ public class NuevaReclamacionAutoStep {
   public void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
     datosReclamacion.forEach(
         dato -> {
-          agregarInformacionSiniestroAutosPage.cerrarVentanaEmergente();
-          agregarInformacionSiniestroAutosPage.seleccionarLugar(dato.getLugarSiniestro());
-          agregarInformacionSiniestroAutosPage.escribirSucedido(dato.getSucedido());
-          agregarInformacionSiniestroAutosPage.seleccionarCausa(dato.getCausa());
-          agregarInformacionSiniestroAutosPage.seleccionarOrigen(dato.getOrigen());
-          agregarInformacionSiniestroAutosPage.escribirValorPretension(dato.getValorPretension());
-          agregarInformacionSiniestroAutosPage.seleccionarIntervinoAutoridad(dato.getAutoridad());
+          agregarInformacionPage.cerrarVentanaEmergente();
+          agregarInformacionPage.seleccionarLugar(dato.getLugarSiniestro());
+          agregarInformacionPage.escribirSucedido(dato.getDescripcionHechos());
+          agregarInformacionPage.seleccionarCausa(dato.getCausaPerdida());
+          agregarInformacionPage.seleccionarOrigen(dato.getOrigenCausa());
+          agregarInformacionPage.escribirValorPretension(dato.getValorPretension());
+          agregarInformacionPage.seleccionarIntervinoAutoridad(dato.getAutoridadTransito());
         });
   }
 
   @Step
   public void completarDatosReclamacionAutos(List<ReclamacionAuto> datosReclamacion) {
     for (ReclamacionAuto dato : datosReclamacion) {
-      agregarInformacionSiniestroAutosPage.seleccionarCulpabilidad(dato.getCulpabilidad());
+      agregarInformacionPage.seleccionarCulpabilidad(dato.getCulpabilidad());
     }
   }
 
@@ -70,7 +70,7 @@ public class NuevaReclamacionAutoStep {
       List<ExposicionVehiculoTercero> datosExposicionTercero,
       List<Persona> datosPersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto) {
-    agregarInformacionSiniestroAutosPage.agregarExposicionVehiculoTercero();
+    agregarInformacionPage.agregarExposicionVehiculoTercero();
     detalleVehiculoPage.agregarConductor();
     agregarPersonaConductor(datosPersonaReclamacion);
     agregarDireccionConductor(datosReclamacionAuto);
@@ -149,7 +149,7 @@ public class NuevaReclamacionAutoStep {
 
   @Step
   public void editarInformacionVehiculo(List<ReclamacionAuto> datosReclamacion) {
-    agregarInformacionSiniestroAutosPage.ingresarEdicionVehiculo();
+    agregarInformacionPage.ingresarEdicionVehiculo();
     detalleVehiculoPage.agregarConductor();
     detalleVehiculoPage.seleccionarConductorVehiculoAsegurado();
     datosReclamacion.forEach(
@@ -157,7 +157,7 @@ public class NuevaReclamacionAutoStep {
           if (!datoReclamacionAutos
               .getCulpabilidad()
               .equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
-            detalleVehiculoPage.seleccionarTaller(datoReclamacionAutos.getTaller());
+            detalleVehiculoPage.seleccionarTaller(datoReclamacionAutos.getTallerReparacion());
           }
         });
     detalleVehiculoPage.volverPasoAnterior();
@@ -189,7 +189,7 @@ public class NuevaReclamacionAutoStep {
   }
 
   public void finalizarReclamacionAutos() {
-    agregarInformacionSiniestroAutosPage.concluirReclamacion();
+    agregarInformacionPage.concluirReclamacion();
   }
 
   @Step

@@ -15,5 +15,9 @@ public class ReclamacionConstante {
   public static final String CULPABILIDAD_SOLO_RC = "Solo RC";
   public static final String NUMERO_SINIESTRO = "NumeroSiniestro";
   public static final String VERIFICADOR_NUMERO_SINIESTRO = "9180000";
+  public static final String ASISTENTE_VIRTUAL = "Asistente virtual";
+  public static final String HERRAMIENTAS = "Herramientas";
+  public static final String RECLAMACIONES = "Reclamaciones";
+  public static final String EMPRESAS = "Empresas";
   public static final String RECLAMACION_EMPRESARIAL = "reclamacion_empresarial";
 }
