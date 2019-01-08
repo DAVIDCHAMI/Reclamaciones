@@ -105,10 +105,10 @@ public class AnulacionEmpresarialDefinition {
                   strCodigoRetencion,
                   pagoEmpresarial.getLstPago());
             });
-      recupero = new Recupero(genericStep.getFilasModelo(RECUPERO.getValor(), strTipoProducto));
-      recuperoStep.seleccionarRecupero();
-      recuperoStep.diligenciarCreacionRecupero(
-          recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
+    recupero = new Recupero(genericStep.getFilasModelo(RECUPERO.getValor(), strTipoProducto));
+    recuperoStep.seleccionarRecupero();
+    recuperoStep.diligenciarCreacionRecupero(
+        recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
   }
 
   @Cuando("^se realice la anulación del recupero$")

@@ -1,11 +1,9 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
 import static com.sura.reclamaciones.utils.Constantes.PAGO;
-import static com.sura.reclamaciones.utils.Variables.TIPO_ANULACION;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
@@ -137,9 +135,7 @@ public class DetalleTransaccionPage extends GeneralPage {
   public boolean ingresarAnulacionEmpresarial(
       String strNumeroTransaccion, String strEstadoPrevio, String strTipoAnulacion) {
     boolean estadoPago;
-    estadoPago =
-        ingresarAnulacion(
-            strNumeroTransaccion, strEstadoPrevio, strTipoAnulacion);
+    estadoPago = ingresarAnulacion(strNumeroTransaccion, strEstadoPrevio, strTipoAnulacion);
     return estadoPago;
   }
 }

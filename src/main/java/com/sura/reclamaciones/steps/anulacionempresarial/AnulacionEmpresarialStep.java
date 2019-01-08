@@ -31,7 +31,7 @@ public class AnulacionEmpresarialStep {
 
   @Step
   public void ingresarAnulacionRecupero(List<Recupero> lstRecupero) {
-   strTipoAnulacion= RECUPERO.getValor();
+    strTipoAnulacion = RECUPERO.getValor();
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     for (Recupero diligenciador : lstRecupero) {
@@ -43,8 +43,7 @@ public class AnulacionEmpresarialStep {
       MatcherAssert.assertThat(
           "El estado de la transaccion no permite que sea anulada",
           detalleTransaccionPage.ingresarAnulacionEmpresarial(
-              strNumeroTransaccion,
-              diligenciador.getEstadoTransaccion(), strTipoAnulacion));
+              strNumeroTransaccion, diligenciador.getEstadoTransaccion(), strTipoAnulacion));
       MatcherAssert.assertThat(
           "El número de transaccion, no tiene habilitado el boton de anular",
           detalleTransaccionPage.realizarAnulacion(strTipoAnulacion));
@@ -54,7 +53,7 @@ public class AnulacionEmpresarialStep {
 
   @Step
   public void ingresarAnulacionPago(List<PagoEmpresarial> lstPago) {
-    strTipoAnulacion= PAGO.getValor();
+    strTipoAnulacion = PAGO.getValor();
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
     for (PagoEmpresarial diligenciador : lstPago) {
@@ -62,13 +61,10 @@ public class AnulacionEmpresarialStep {
       MatcherAssert.assertThat(
           "El estado de la transaccion no permite que sea anulada",
           detalleTransaccionPage.ingresarAnulacionEmpresarial(
-              strNumeroTransaccion,
-              diligenciador.getEstadoTransaccion(),
-             strTipoAnulacion));
+              strNumeroTransaccion, diligenciador.getEstadoTransaccion(), strTipoAnulacion));
       MatcherAssert.assertThat(
           "El número de transaccion, no tiene habilitado el boton de anular",
-          detalleTransaccionPage.realizarAnulacion(
-              strTipoAnulacion));
+          detalleTransaccionPage.realizarAnulacion(strTipoAnulacion));
       Serenity.setSessionVariable(NUMERO_TRANSACCION.getValor()).to(strNumeroTransaccion);
     }
   }
