@@ -1,11 +1,12 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.*;
-import com.sura.reclamaciones.utils.VariablesSesion;
+import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -22,8 +23,7 @@ public class NotificacionAvisoSiniestroReclamacionDefinition {
 
   @Dado("^que se tiene una poliza de (.*)$")
   public void buscarPoliza(String tipoCobertura) throws Throwable {
-    Serenity.setSessionVariable(VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL)
-        .to(tipoCobertura);
+    Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(tipoCobertura);
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
             genericStep.getFilasModelo(
