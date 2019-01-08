@@ -1,6 +1,19 @@
 package com.sura.reclamaciones.services;
 
-import com.sura.service.creacionSiniestro.gen.*;
+import com.sura.service.creacionSiniestro.gen.Author;
+import com.sura.service.creacionSiniestro.gen.CPLine;
+import com.sura.service.creacionSiniestro.gen.Claimant;
+import com.sura.service.creacionSiniestro.gen.ClaimsRequest;
+import com.sura.service.creacionSiniestro.gen.FixedPropertyIncident;
+import com.sura.service.creacionSiniestro.gen.Lobs;
+import com.sura.service.creacionSiniestro.gen.LossEstimate;
+import com.sura.service.creacionSiniestro.gen.LossLocation;
+import com.sura.service.creacionSiniestro.gen.MainContact;
+import com.sura.service.creacionSiniestro.gen.Params;
+import com.sura.service.creacionSiniestro.gen.PrimaryAddress;
+import com.sura.service.creacionSiniestro.gen.PrimaryAddress_;
+import com.sura.service.creacionSiniestro.gen.Property;
+import com.sura.service.creacionSiniestro.gen.PropertyContentsIncident;
 import java.util.ArrayList;
 import java.util.List;
 

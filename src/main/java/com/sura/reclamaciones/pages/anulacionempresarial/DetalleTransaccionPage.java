@@ -3,13 +3,14 @@ package com.sura.reclamaciones.pages.anulacionempresarial;
 import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
-import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class DetalleTransaccionPage extends GeneralPage {
 
