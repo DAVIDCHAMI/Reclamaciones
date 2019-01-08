@@ -1,9 +1,10 @@
 package com.sura.reclamaciones.steps.recupero;
 
 import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
+import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
 import static org.junit.Assert.assertTrue;
 
-import com.sura.reclamaciones.constantes.RecuperoConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
@@ -46,9 +47,9 @@ public class RecuperoStep {
           creacionRecuperoPage.seleccionarCiudad(formulario.getCiudad());
           creacionRecuperoPage.seleccionarCategoriaRecuperacion(tipoRecupero);
           creacionRecuperoPage.diligenciarCodigoRetencion(
-              codigoRetencion, RecuperoConstante.CODIGO_RETENCION);
+              codigoRetencion, CODIGO_RETENCION.getValor());
           creacionRecuperoPage.diligenciarCantidadRecupero(
-              formulario.getValorTransaccion(), RecuperoConstante.CANTIDAD);
+              formulario.getValorTransaccion(), CANTIDAD.getValor());
           creacionRecuperoPage.actualizarRecupero();
         });
   }

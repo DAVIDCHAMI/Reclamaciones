@@ -1,10 +1,10 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.utils.Variables.TIPO_PRODUCTO_EMPRESARIAL;
-
 import com.sura.reclamaciones.models.PagoEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
+import com.sura.reclamaciones.utils.NombresCsv;
+import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
@@ -32,9 +32,9 @@ public class PagoSiniestroDefinition {
     pagoEmpresarial =
         new PagoEmpresarial(
             (genericStep
-                .getFilasModelo( //TODO: Pendiente reemplazar dato del nombre del csv, va ir en un enum
-                    "pago_empresarial",
-                    Serenity.sessionVariableCalled(TIPO_PRODUCTO_EMPRESARIAL))));
+                .getFilasModelo(
+                    String.valueOf(NombresCsv.PAGO_EMPRESARIAL),
+                    Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL))));
     nuevoPagoStep.consultarNumeroReclamacion();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
