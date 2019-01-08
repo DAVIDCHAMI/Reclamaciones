@@ -23,7 +23,9 @@ public class VerificacionRecuperoPage extends GeneralPage {
   }
 
   public List<WebElement> obtenerListaRecupero() {
-    String strNumeroRecupero = obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(), 0);
+    String strNumeroRecupero = obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(), 1);
+    menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
+        MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
