@@ -16,15 +16,6 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
 
   @Page DetalleTransaccionPage detalleTransaccionPage;
 
-  @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
-  private WebElementFacade tblVerificacionPago;
-
-  @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
-  private WebElementFacade btnUltimaPagina;
-
-  @FindBy(xpath = "//span[@class='x-column-header-text'][contains(text(),'Número de pago')]")
-  private WebElementFacade lblNumeroPago;
-
   public VerificacionDatosFinancierosPage(WebDriver wdriver) {
     super(wdriver);
   }
@@ -48,7 +39,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     return false;
   }
 
-  private List<WebElement> irFilaAnulada(String strNumeroTransaccion, String strTipoAnulacion) {
+  private List<WebElement> obtenerFilaAnulada(String strNumeroTransaccion, String strTipoAnulacion) {
     List<WebElement> lstPago;
     if (strTipoAnulacion.equals(PAGO.getValor())) {
       lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblPago());
@@ -60,8 +51,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
 
   public boolean verificarEstadoAnulado(
       String strAnulacion, String strNumeroTransaccion, String strTipoAnulacion) {
-    irUltimaPagina();
-    List<WebElement> lstPago = irFilaAnulada(strNumeroTransaccion, strTipoAnulacion);
+       List<WebElement> lstPago = obtenerFilaAnulada(strNumeroTransaccion, strTipoAnulacion);
     for (int i = 0; i < lstPago.size(); i++) {
       if (lstPago.get(i).getText().equals(strAnulacion)) {
         return true;
