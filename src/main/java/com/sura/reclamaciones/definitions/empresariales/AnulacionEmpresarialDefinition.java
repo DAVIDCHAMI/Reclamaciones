@@ -105,7 +105,7 @@ public class AnulacionEmpresarialDefinition {
                   strCodigoRetencion,
                   pagoEmpresarial.getLstPago());
             });
-    if (strTipoProducto.equals(strTipoProducto)) {
+    if (strTipoProducto.equals(RECUPERO.getValor())) {
       recupero = new Recupero(genericStep.getFilasModelo(RECUPERO.getValor(), strTipoProducto));
       recuperoStep.seleccionarRecupero();
       recuperoStep.diligenciarCreacionRecupero(
