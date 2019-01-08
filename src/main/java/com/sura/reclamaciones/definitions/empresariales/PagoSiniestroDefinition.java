@@ -31,8 +31,10 @@ public class PagoSiniestroDefinition {
       throws IOException {
     pagoEmpresarial =
         new PagoEmpresarial(
-            (genericStep.getFilasModelo(
-                "pago_empresarial", Serenity.sessionVariableCalled(TIPO_PRODUCTO_EMPRESARIAL))));
+            (genericStep
+                .getFilasModelo( //TODO: Pendiente reemplazar dato del nombre del csv, va ir en un enum
+                    "pago_empresarial",
+                    Serenity.sessionVariableCalled(TIPO_PRODUCTO_EMPRESARIAL))));
     nuevoPagoStep.consultarNumeroReclamacion();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,

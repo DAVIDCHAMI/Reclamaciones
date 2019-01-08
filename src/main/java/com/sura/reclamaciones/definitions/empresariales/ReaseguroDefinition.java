@@ -49,7 +49,10 @@ public class ReaseguroDefinition {
       String codigoRetencion)
       throws IOException {
     pagoEmpresarial =
-        new PagoEmpresarial((genericStep.getFilasModelo("pago_empresarial", tipoContrato)));
+        new PagoEmpresarial(
+            (genericStep
+                .getFilasModelo( //TODO: Pendiente reemplazar dato del nombre del csv, va ir en un enum
+                    "pago_empresarial", tipoContrato)));
     nuevoPagoStep.consultarNumeroReclamacion();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
@@ -65,7 +68,11 @@ public class ReaseguroDefinition {
   @Entonces(
       "^para la transacción (.*) se distribuye el reaseguro según el retenido y el cedido de manera adecuada$")
   public void verificarReaseguro(String tipoTransaccion) throws IOException {
-    Contrato contrato = new Contrato(genericStep.getFilasModelo("contrato", tipoContrato));
+    Contrato contrato =
+        new Contrato(
+            genericStep
+                .getFilasModelo( //TODO: Pendiente reemplazar dato del nombre del csv, va ir en un enum
+                    "contrato", tipoContrato));
     reaseguroStep.verificarReaseguro(contrato.getLstContrato(), strTransaccion);
   }
 }
