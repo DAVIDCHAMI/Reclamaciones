@@ -4,11 +4,10 @@ import static com.sura.reclamaciones.utils.Constantes.PAGO;
 import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
 import static com.sura.reclamaciones.utils.Constantes.RESERVA;
 import static com.sura.reclamaciones.utils.NombresCsv.CONTRATO;
-import static com.sura.reclamaciones.utils.NombresCsv.PAGO_EMPRESARIAL;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.NombresCsv.PAGO_SINIESTRO;
 
 import com.sura.reclamaciones.models.Contrato;
-import com.sura.reclamaciones.models.PagoEmpresarial;
+import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionSiniestroStep;
@@ -19,7 +18,6 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
 import java.io.IOException;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class ReaseguroDefinition {
@@ -57,11 +55,9 @@ public class ReaseguroDefinition {
       String codigoRetencion)
       throws IOException {
     strTransaccion = PAGO.getValor();
-    PagoEmpresarial pagoEmpresarial =
-        new PagoEmpresarial(
-            (genericStep.getFilasModelo(PAGO_EMPRESARIAL.getValor(), strTipoContrato)));
-    nuevoPagoStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
+    PagoSiniestro pagoSiniestro =
+        new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), strTipoContrato)));
+    nuevoPagoStep.consultarNumeroReclamacion();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
         tipoPago,
@@ -69,7 +65,7 @@ public class ReaseguroDefinition {
         metodoPago,
         aplicaSoloSura,
         codigoRetencion,
-        pagoEmpresarial.getLstPago());
+        pagoSiniestro.getLstPago());
   }
 
   @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")
