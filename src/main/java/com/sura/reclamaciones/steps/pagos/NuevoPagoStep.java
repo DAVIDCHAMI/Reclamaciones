@@ -1,14 +1,17 @@
 package com.sura.reclamaciones.steps.pagos;
 
-import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
+import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
+import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
+import static com.sura.reclamaciones.utils.Constantes.CUENTA;
+import static com.sura.reclamaciones.utils.Constantes.PAGOS;
+import static com.sura.reclamaciones.utils.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
-import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.constantes.PagoConstante;
-import com.sura.reclamaciones.models.PagoEmpresarial;
+import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
+import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
@@ -16,6 +19,7 @@ import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
 public class NuevoPagoStep {
@@ -28,29 +32,31 @@ public class NuevoPagoStep {
 
   @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
+  @Page ResumenReclamacionPage resumenReclamacionPage;
+
   @Page MenuClaimPage menuClaimPage;
 
   @Step
-  public void consultarNumeroReclamacion(String strNumeroReclamacion) {
-    menuClaimPage.buscarReclamacion(RECLAMACION_MENU, strNumeroReclamacion);
-    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PagoConstante.PAGOS);
+  public void consultarNumeroReclamacion() {
+    resumenReclamacionPage.obtenerNumeroReclamacion();
+    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 
   @Step
   public void ingresarInformacionBeneficiarioPago(
+      String strLineaReserva,
       String strTipoPago,
       String strBeneficiarioPago,
       String strMetodoPago,
-      String strLineaReserva,
       String strPagoSoloSura,
       String strCodigoRetencion,
-      List<PagoEmpresarial> lstPago) {
-    for (PagoEmpresarial diligenciador : lstPago) {
+      List<PagoSiniestro> lstPago) {
+    for (PagoSiniestro diligenciador : lstPago) {
       introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
       introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
           diligenciador.getTipoBeneficiario());
       introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
-          strMetodoPago, PagoConstante.CUENTA, PagoConstante.SELECCIONAR);
+          strMetodoPago, CUENTA.getValor(), SELECCIONAR.getValor());
       introducirInformacionBeneficiarioPage.seleccionarPagoSura(strPagoSoloSura);
       introducirInformacionBeneficiarioPage.seleccionarPais(diligenciador.getPais());
       introducirInformacionBeneficiarioPage.seleccionarDepartamento(
@@ -63,8 +69,8 @@ public class NuevoPagoStep {
       introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
       introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
       introducirInformacionPagoPage.ingresarCodigoRetencion(
-          strCodigoRetencion, PagoConstante.CODIGO_RETENCION);
-      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, PagoConstante.CANTIDAD);
+          strCodigoRetencion, CODIGO_RETENCION.getValor());
+      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
       introducirInformacionPagoPage.irSiguientePantalla();
       establecerInstruccionPagoPage.ingresarFechaFactura();
       establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
@@ -73,23 +79,23 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void verificarPagoRealizado(List<PagoEmpresarial> lstPago) {
+  public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
     lstPago.forEach(
-        (PagoEmpresarial validador) -> {
+        (PagoSiniestro validador) -> {
           String strNumeroTransaccion =
               verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
           menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-              MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
+              MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
           List<WebElement> lstFilaPago =
               verificacionDatosFinancierosPage.obtenerFilaTabla(
                   strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
           String strValorReserva =
               (Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
-          assertTrue(
+          MatcherAssert.assertThat(
               "El valor reservado no es igual al enviado",
               verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
                   strValorReserva, lstFilaPago));
-          assertTrue(
+          MatcherAssert.assertThat(
               "No llego a SAP el pago",
               verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
                   validador.getEstadoTransaccion(), lstFilaPago));

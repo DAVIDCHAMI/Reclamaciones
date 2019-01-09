@@ -1,8 +1,10 @@
 package com.sura.reclamaciones.pages.generics;
 
+import static com.sura.reclamaciones.utils.Constantes.COP;
+import static com.sura.reclamaciones.utils.Constantes.NUMERO_PAGO;
 import static com.sura.reclamaciones.utils.Constantes.PAGO;
+import static com.sura.reclamaciones.utils.Constantes.USD;
 
-import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
@@ -19,15 +21,14 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
   }
 
   public String obtenerNumeroPagoRealizado() {
-    return obtenerDatoTablaCabecera(PagoConstante.NUMERO_PAGO, 1);
+    return obtenerDatoTablaCabecera(NUMERO_PAGO.getValor(), 1);
   }
 
   public boolean verificarPagoMenuTransaccion(String datoValidar, List<WebElement> lstFilaPago) {
     int i;
     for (i = 0; i < lstFilaPago.size(); i++) {
       String strDatoPantalla = lstFilaPago.get(i).getText();
-      if (strDatoPantalla.contains(PagoConstante.COP)
-          || strDatoPantalla.contains(PagoConstante.USD)) {
+      if (strDatoPantalla.contains(COP.getValor()) || strDatoPantalla.contains(USD.getValor())) {
         strDatoPantalla = strDatoPantalla.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       }
       if (strDatoPantalla.equals(datoValidar)) {

@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PagoEmpresarial extends Transacciones {
+public class PagoSiniestro extends Transacciones {
 
-  private List<PagoEmpresarial> lstPagoEmpresarial = new ArrayList<PagoEmpresarial>();
+  private List<PagoSiniestro> lstPagoSiniestro = new ArrayList<PagoSiniestro>();
   private String tipoBeneficiario;
   private String comentario;
   private String numeroFactura;
   private String tipoDireccion;
 
-  public PagoEmpresarial() {
+  public PagoSiniestro() {
     super();
   }
 
-  private PagoEmpresarial(Map<String, String> datosPagosEmpresariales) {
+  private PagoSiniestro(Map<String, String> datosPagosEmpresariales) {
     super(datosPagosEmpresariales);
     this.tipoBeneficiario = datosPagosEmpresariales.get("tipoBeneficiario");
     this.comentario = datosPagosEmpresariales.get("comentario");
@@ -24,7 +24,7 @@ public class PagoEmpresarial extends Transacciones {
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
   }
 
-  public PagoEmpresarial(List<Map<String, String>> datosPagosEmpresariales) {
+  public PagoSiniestro(List<Map<String, String>> datosPagosEmpresariales) {
     asignarDatos(datosPagosEmpresariales);
   }
 
@@ -44,13 +44,13 @@ public class PagoEmpresarial extends Transacciones {
     return tipoDireccion;
   }
 
-  public List<PagoEmpresarial> getLstPago() {
-    return lstPagoEmpresarial;
+  public List<PagoSiniestro> getLstPago() {
+    return lstPagoSiniestro;
   }
 
   private void asignarDatos(List<Map<String, String>> datosPagosEmpresarial) {
     for (Map<String, String> dato : datosPagosEmpresarial) {
-      lstPagoEmpresarial.add(new PagoEmpresarial(dato));
+      lstPagoSiniestro.add(new PagoSiniestro(dato));
     }
   }
 }

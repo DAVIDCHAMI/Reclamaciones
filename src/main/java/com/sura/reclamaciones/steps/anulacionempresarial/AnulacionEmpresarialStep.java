@@ -2,13 +2,13 @@ package com.sura.reclamaciones.steps.anulacionempresarial;
 
 import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.Constantes.PAGO;
+import static com.sura.reclamaciones.utils.Constantes.PAGOS;
 import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
 import static com.sura.reclamaciones.utils.Constantes.TIPO_TRANSACCION;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.constantes.PagoConstante;
-import com.sura.reclamaciones.models.PagoEmpresarial;
+import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -52,11 +52,11 @@ public class AnulacionEmpresarialStep {
   }
 
   @Step
-  public void ingresarAnulacionPago(List<PagoEmpresarial> lstPago) {
+  public void ingresarAnulacionPago(List<PagoSiniestro> lstPago) {
     strTipoAnulacion = PAGO.getValor();
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-        MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
-    for (PagoEmpresarial diligenciador : lstPago) {
+        MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
+    for (PagoSiniestro diligenciador : lstPago) {
       String strNumeroTransaccion = verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
       MatcherAssert.assertThat(
           "El estado de la transaccion no permite que sea anulada",
@@ -75,7 +75,7 @@ public class AnulacionEmpresarialStep {
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_TRANSACCION.getValor());
     if (strTipoAnulacion.equals(PAGO.getValor())) {
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-          MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
+          MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
       MatcherAssert.assertThat(
           "El pago no quedo en estado anulado",
           verificacionDatosFinancierosPage.verificarEstadoAnulado(
