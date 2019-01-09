@@ -18,12 +18,6 @@ public class DetalleTransaccionPage extends GeneralPage {
   @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Aceptar')]")
   private WebElementFacade btnAceptar;
 
-  @FindBy(
-    xpath =
-        "//div[@class='x-toolbar-text x-box-item x-toolbar-item x-toolbar-text-default'][contains(text(),'de')]"
-  )
-  private WebElementFacade lblNumeroPaginas;
-
   public DetalleTransaccionPage(WebDriver wdriver) {
     super(wdriver);
   }
