@@ -12,6 +12,7 @@ import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarExposicionLesionesPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.CrearServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DatosFinancierosPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
@@ -44,6 +45,8 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Page MenuClaimPage menuClaimPage;
 
+  @Page CrearServicioPage crearServicioPage;
+
   @Step
   public void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
     datosReclamacion.forEach(
@@ -75,7 +78,6 @@ public class NuevoAvisoSiniestroAutoStep {
     agregarPersonaConductor(datosPersonaReclamacion);
     agregarDireccionConductor(datosReclamacionAuto);
     agregarDatosExposicionTercero(datosExposicionTercero);
-    detalleVehiculoPage.volverPasoAnterior();
   }
 
   @Step
@@ -112,7 +114,12 @@ public class NuevoAvisoSiniestroAutoStep {
     for (ExposicionVehiculoTercero datosVehiculo : datosExposicionTercero) {
       detalleVehiculoPage.ingresarVehiculoTercero(datosVehiculo.getPlacaTercero());
       detalleVehiculoPage.recuperarInformacionVehiculo();
-      detalleVehiculoPage.seleccionarTaller(datosVehiculo.getTallerReparacionAsignado());
+      detalleVehiculoPage.seleccionarServicioTaller();
+      detalleVehiculoPage.agregarTaller();
+      detalleVehiculoPage.buscarProveedor();
+      crearServicioPage.seleccionarProveedor(datosVehiculo.getTallerReparacionAsignado());
+      detalleVehiculoPage.aceptarOpcion();
+      detalleVehiculoPage.volverPasoAnterior();
     }
   }
 
@@ -152,14 +159,19 @@ public class NuevoAvisoSiniestroAutoStep {
     agregarInformacionPage.ingresarEdicionVehiculo();
     detalleVehiculoPage.agregarConductor();
     detalleVehiculoPage.seleccionarConductorVehiculoAsegurado();
+    detalleVehiculoPage.seleccionarServicioTaller();
+    detalleVehiculoPage.agregarTaller();
+    detalleVehiculoPage.buscarProveedor();
+    detalleVehiculoPage.realizarEsperaCarga();
     datosReclamacion.forEach(
         datoReclamacionAutos -> {
           if (!datoReclamacionAutos
               .getCulpabilidad()
               .equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
-            detalleVehiculoPage.seleccionarTaller(datoReclamacionAutos.getTallerReparacion());
+            crearServicioPage.seleccionarProveedor(datoReclamacionAutos.getTallerReparacion());
           }
         });
+    detalleVehiculoPage.aceptarOpcion();
     detalleVehiculoPage.volverPasoAnterior();
   }
 
@@ -227,7 +239,7 @@ public class NuevoAvisoSiniestroAutoStep {
     nuevaReclamacionGuardadaPage.abrirReclamacion();
   }
 
-  public void consultarReservaResponsabilidadCivil(List<Reserva> lineaReserva) {
+  public void validarValorReservasResponsabilidadCivil(List<Reserva> lineaReserva) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(
         DatosFinancierosConstante.DATOS_FINANCIEROS);
     boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
@@ -235,7 +247,7 @@ public class NuevoAvisoSiniestroAutoStep {
         "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
   }
 
-  public void consultarValorReservaArchivo(List<Reserva> lineaReserva) {
+  public void validarValorReservasArchivo(List<Reserva> lineaReserva) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(
         DatosFinancierosConstante.DATOS_FINANCIEROS);
     boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);

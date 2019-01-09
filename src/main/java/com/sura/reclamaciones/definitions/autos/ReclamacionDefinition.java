@@ -73,7 +73,7 @@ public class ReclamacionDefinition {
             genericStep.getFilasModelo("exposicion_automatica", "exposicionesRC"));
     validarExposicionesAutomaticas();
     reserva = new Reserva(genericStep.getFilasModelo("linea_reserva", "rcVehiculoPeaton"));
-    reclamacionStep.consultarReservaResponsabilidadCivil(reserva.getLstReserva());
+    reclamacionStep.validarValorReservasResponsabilidadCivil(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una poliza con las coberturas para Daños$")
@@ -95,7 +95,7 @@ public class ReclamacionDefinition {
             genericStep.getFilasModelo("exposicion_automatica", "exposicionesArchivo"));
     validarExposicionesAutomaticas();
     reserva = new Reserva(genericStep.getFilasModelo("linea_reserva", "archivoSubrogacion"));
-    reclamacionStep.consultarValorReservaArchivo(reserva.getLstReserva());
+    reclamacionStep.validarValorReservasArchivo(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una poliza con las coberturas para Subrogación$")
@@ -141,7 +141,7 @@ public class ReclamacionDefinition {
             genericStep.getFilasModelo("exposicion_automatica", "exposicionesSoloRC"));
     validarExposicionesAutomaticas();
     reserva = new Reserva(genericStep.getFilasModelo("linea_reserva", "soloRC"));
-    reclamacionStep.consultarReservaResponsabilidadCivil(reserva.getLstReserva());
+    reclamacionStep.validarValorReservasResponsabilidadCivil(reserva.getLstReserva());
   }
 
   private void consultarPoliza() {

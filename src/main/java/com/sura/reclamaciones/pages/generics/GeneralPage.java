@@ -49,7 +49,7 @@ public class GeneralPage extends PageObject {
   private WebElementFacade txtTransacciones;
 
   @FindBy(xpath = "//div[@class='x-panel x-panel-default x-grid']")
-  public WebElementFacade tblVerificacion;
+  protected WebElementFacade tblVerificacion;
 
   @FindBy(xpath = "//input")
   private WebElementFacade mnuDinamico;
@@ -157,6 +157,7 @@ public class GeneralPage extends PageObject {
   public void aceptarOpcion() {
     btnAceptar.waitUntilVisible();
     btnAceptar.click();
+    realizarEsperaCarga();
   }
 
   public void continuarSiguientePantalla() {

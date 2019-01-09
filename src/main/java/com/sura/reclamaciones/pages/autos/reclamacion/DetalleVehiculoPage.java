@@ -164,21 +164,9 @@ public class DetalleVehiculoPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void seleccionarTaller(String taller) {
-    seleccionarServicioTaller();
-    agregarTaller();
-    buscarProveedor();
-    realizarEsperaCarga();
-    crearServicioPage.seleccionarProveedor(taller);
-    realizarEsperaCarga();
-    aceptarOpcion();
-    realizarEsperaCarga();
-  }
-
-  private void buscarProveedor() {
+  public void buscarProveedor() {
     btnBuscarProveedor.waitUntilVisible().click();
     realizarEsperaCarga();
-    btnBuscarProveedor.waitUntilVisible().click();
   }
 
   public void ingresarVehiculoTercero(String placa) {
@@ -191,11 +179,11 @@ public class DetalleVehiculoPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  private void agregarTaller() {
+  public void agregarTaller() {
     btnAgregarTaller.waitUntilVisible().click();
   }
 
-  private void seleccionarServicioTaller() {
+  public void seleccionarServicioTaller() {
     chkServicioTaller.waitUntilVisible().click();
   }
 
