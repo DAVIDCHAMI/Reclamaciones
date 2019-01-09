@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.reservas;
 
-import static com.sura.reclamaciones.constantes.MenuConstante.*;
+import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;

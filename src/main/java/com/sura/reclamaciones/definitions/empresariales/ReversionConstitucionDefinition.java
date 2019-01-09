@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.constantes.ReservaConstante.*;
-
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;

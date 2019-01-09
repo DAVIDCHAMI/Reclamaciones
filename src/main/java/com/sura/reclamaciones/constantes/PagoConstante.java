@@ -13,4 +13,6 @@ public class PagoConstante {
   public static final String COP = "COP";
   public static final String USD = "USD";
   public static final double PORCENTAJE = 0.20;
+
+  private PagoConstante() {}
 }
