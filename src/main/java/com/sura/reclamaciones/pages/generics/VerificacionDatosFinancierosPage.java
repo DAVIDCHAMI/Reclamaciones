@@ -6,8 +6,6 @@ import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,7 +37,8 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     return false;
   }
 
-  private List<WebElement> obtenerFilaAnulada(String strNumeroTransaccion, String strTipoAnulacion) {
+  private List<WebElement> obtenerFilaAnulada(
+      String strNumeroTransaccion, String strTipoAnulacion) {
     List<WebElement> lstPago;
     if (strTipoAnulacion.equals(PAGO.getValor())) {
       lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblPago());
@@ -51,7 +50,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
 
   public boolean verificarEstadoAnulado(
       String strAnulacion, String strNumeroTransaccion, String strTipoAnulacion) {
-       List<WebElement> lstPago = obtenerFilaAnulada(strNumeroTransaccion, strTipoAnulacion);
+    List<WebElement> lstPago = obtenerFilaAnulada(strNumeroTransaccion, strTipoAnulacion);
     for (int i = 0; i < lstPago.size(); i++) {
       if (lstPago.get(i).getText().equals(strAnulacion)) {
         return true;

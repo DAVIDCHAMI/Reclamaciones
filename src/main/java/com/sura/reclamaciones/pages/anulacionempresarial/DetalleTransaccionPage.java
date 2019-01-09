@@ -96,24 +96,18 @@ public class DetalleTransaccionPage extends GeneralPage {
     return true;
   }
 
-  private boolean ingresarAnulacion(
-      String strNumeroTransaccion, String strEstadoPrevio, String tipoAnulacion) {
+  public boolean ingresarAnulacionEmpresarial(
+      String strNumeroTransaccion, String strEstadoPrevio, String strTipoAnulacion) {
     boolean estadoPago;
     List<WebElement> lstTransaccion;
-    if (tipoAnulacion.equals(PAGO.getValor())) {
+    if (strTipoAnulacion.equals(PAGO.getValor())) {
       lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
     } else {
       lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
     }
     estadoPago =
-        ingresarNumeroAnular(lstTransaccion, strNumeroTransaccion, strEstadoPrevio, tipoAnulacion);
-    return estadoPago;
-  }
-
-  public boolean ingresarAnulacionEmpresarial(
-      String strNumeroTransaccion, String strEstadoPrevio, String strTipoAnulacion) {
-    boolean estadoPago;
-    estadoPago = ingresarAnulacion(strNumeroTransaccion, strEstadoPrevio, strTipoAnulacion);
+        ingresarNumeroAnular(
+            lstTransaccion, strNumeroTransaccion, strEstadoPrevio, strTipoAnulacion);
     return estadoPago;
   }
 }
