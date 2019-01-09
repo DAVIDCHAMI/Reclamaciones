@@ -21,7 +21,7 @@ public class PagoSiniestroDefinition {
   PagoSiniestro pagoSiniestro;
 
   @Cuando(
-      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una linea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
+      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
   public void generarPagoReclamacion(
       String tipoPago,
       String beneficiarioPago,
