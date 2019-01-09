@@ -44,14 +44,14 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   }
 
   public void accederAvisoEmpresa() {
-    String lstAsistenteVirtualAtr = " //span[contains(text(),'COMODIN')]";
+    String mnuAsistenteVirtual = " //span[contains(text(),'COMODIN')]";
     if (btnCerrarTour.isVisible()) {
       btnCerrarTour.click();
     }
-    navegarMenu(ReclamacionConstante.ASISTENTE_VIRTUAL, lstAsistenteVirtualAtr);
-    navegarMenu(ReclamacionConstante.HERRAMIENTAS, lstAsistenteVirtualAtr);
-    navegarMenu(ReclamacionConstante.RECLAMACIONES, lstAsistenteVirtualAtr);
-    navegarMenu(ReclamacionConstante.EMPRESAS, lstAsistenteVirtualAtr);
+    navegarMenu(ReclamacionConstante.ASISTENTE_VIRTUAL, mnuAsistenteVirtual);
+    navegarMenu(ReclamacionConstante.HERRAMIENTAS, mnuAsistenteVirtual);
+    navegarMenu(ReclamacionConstante.RECLAMACIONES, mnuAsistenteVirtual);
+    navegarMenu(ReclamacionConstante.EMPRESAS, mnuAsistenteVirtual);
   }
 
   public void seleccionarPlanListaProducto() {

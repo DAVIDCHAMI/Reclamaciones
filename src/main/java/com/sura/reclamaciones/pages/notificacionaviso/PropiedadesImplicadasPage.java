@@ -7,20 +7,20 @@ import org.openqa.selenium.WebDriver;
 
 public class PropiedadesImplicadasPage extends GeneralPage {
 
-  public PropiedadesImplicadasPage(WebDriver driver) {
-    super(driver);
-  }
-
   @FindBy(xpath = "//td/div[@class='x-grid-cell-inner ']/div")
   private WebElementFacade rbtPropiedad;
 
   @FindBy(xpath = "//span[@id='FNOLWizard:FNOLWizard_PickPolicyRiskUnitsScreen:ttlBar']")
   private WebElementFacade titlePropiedadesImplicadas;
 
+  public PropiedadesImplicadasPage(WebDriver driver) {
+    super(driver);
+  }
+
   public void seleccionarPropiedad() {
     if (titlePropiedadesImplicadas.isPresent()) {
-      rbtPropiedad.waitUntilVisible();
-      rbtPropiedad.click();
+      rbtPropiedad.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
+      realizarEsperaCarga();
       continuarSiguientePantalla();
     }
   }

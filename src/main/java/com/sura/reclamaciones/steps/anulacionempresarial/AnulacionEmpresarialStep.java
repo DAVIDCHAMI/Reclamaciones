@@ -1,12 +1,12 @@
 package com.sura.reclamaciones.steps.anulacionempresarial;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
+import static com.sura.reclamaciones.utils.Constantes.PAGOS;
 import static com.sura.reclamaciones.utils.Constantes.TIPO_TRANSACCION;
 import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.constantes.AnulacionConstante;
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.constantes.PagoConstante;
 import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
 import com.sura.reclamaciones.pages.anulacionempresarial.VerificacionDatosFinancierosPage;
@@ -29,7 +29,7 @@ public class AnulacionEmpresarialStep {
       menuClaimPage.buscarReclamacion(RECLAMACION_MENU, navegador.getNumeroReclamacion());
       if (tipoTransaccion.equals(AnulacionConstante.PAGO)) {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-            MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
+            MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
       } else {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
             MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
@@ -62,7 +62,7 @@ public class AnulacionEmpresarialStep {
     for (AnulacionEmpresarial validador : lstNumeroTransaccion) {
       if (strTipoAnulacion.equals(AnulacionConstante.PAGO)) {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-            MenuConstante.DATOS_FINANCIEROS, PagoConstante.PAGOS);
+            MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
         assertTrue(
             "El pago no quedo en estado anulado",
             verificacionDatosFinancierosPage.verificarEstadoAnulado(

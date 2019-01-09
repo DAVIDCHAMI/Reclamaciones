@@ -1,19 +1,18 @@
 package com.sura.reclamaciones.steps.recupero;
 
-import static com.sura.reclamaciones.constantes.ReclamacionConstante.NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
-import static org.junit.Assert.assertTrue;
 
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
 import java.util.List;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
 public class RecuperoStep {
@@ -26,9 +25,11 @@ public class RecuperoStep {
 
   @Page MenuClaimPage menuClaimPage;
 
+  @Page ResumenReclamacionPage resumenReclamacionPage;
+
   @Step
-  public void seleccionarNumeroReclamacion(String reclamacion, List<Recupero> lstRecupero) {
-    menuClaimPage.buscarReclamacion(reclamacion, Serenity.sessionVariableCalled(NUMERO_SINIESTRO));
+  public void seleccionarNumeroReclamacion(String reclamacionMenu, List<Recupero> lstRecupero) {
+    resumenReclamacionPage.obtenerNumeroReclamacion();
   }
 
   public void seleccionarRecupero() {
@@ -59,11 +60,11 @@ public class RecuperoStep {
     lstRecupero.forEach(
         (Recupero validador) -> {
           List<WebElement> lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
-          assertTrue(
+          MatcherAssert.assertThat(
               "No coincide la categoria del recupero",
               verificacionRecuperoPage.verificarRecupero(
                   validador.getCategoriaRecupero(), lstFilaRecupero));
-          assertTrue(
+          MatcherAssert.assertThat(
               "No llego a SAP el recupero",
               verificacionRecuperoPage.verificarRecupero(
                   validador.getEstadoTransaccion(), lstFilaRecupero));

@@ -1,9 +1,10 @@
 package com.sura.reclamaciones.utils;
 
 public enum NombresCsv {
-  PAGO_EMPRESARIAL("pago_empresarial"),
   CONTRATO("contrato"),
+  PAGO_SINIESTRO("pago_empresarial"),
   RECUPERO("recupero");
+
   private String valor;
 
   private NombresCsv(String valor) {

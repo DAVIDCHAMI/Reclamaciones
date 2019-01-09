@@ -58,10 +58,22 @@ public class AgregarInformacionPage extends GeneralPage {
     id =
         "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Description-inputEl"
   )
-  private WebElementFacade txtSucedio;
+  private WebElementFacade txtDescripcionHechos;
+
+  @FindBy(
+    id =
+        "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddVehicleButton-btnInnerEl"
+  )
+  private WebElementFacade btnAgregarVehiculo;
 
   @FindBy(xpath = ".//span[@class='g-underlined' and contains(.,'F')]")
   private WebElementFacade btnFinalizar;
+
+  @FindBy(
+    id =
+        "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPedestrianButton-btnInnerEl"
+  )
+  WebElementFacade btnAgregarPeaton;
 
   public AgregarInformacionPage(WebDriver wdriver) {
     super(wdriver);
@@ -76,7 +88,7 @@ public class AgregarInformacionPage extends GeneralPage {
   }
 
   public void escribirSucedido(String sucedido) {
-    txtSucedio.type(sucedido);
+    txtDescripcionHechos.type(sucedido);
     cmbCausaSiniestro.sendKeys(Keys.TAB);
     realizarEsperaCarga();
   }
@@ -108,6 +120,14 @@ public class AgregarInformacionPage extends GeneralPage {
     cmbCulpabilidad.sendKeys(Keys.ENTER);
   }
 
+  public void agregarExposicionVehiculoTercero() {
+    btnAgregarVehiculo.click();
+  }
+
+  public void agregarExposicionPersona() {
+    btnAgregarPeaton.waitUntilVisible().click();
+  }
+
   public void seleccionarLugar(String lugar) {
     cmbLugar.waitUntilClickable().click();
     seleccionarOpcionCombobox(lugar);
@@ -121,7 +141,8 @@ public class AgregarInformacionPage extends GeneralPage {
   }
 
   public void concluirReclamacion() {
+    btnFinalizar.waitUntilVisible();
     btnFinalizar.click();
-    realizarEsperaCarga();
+    realizarEsperaFinalizarReclamacion();
   }
 }

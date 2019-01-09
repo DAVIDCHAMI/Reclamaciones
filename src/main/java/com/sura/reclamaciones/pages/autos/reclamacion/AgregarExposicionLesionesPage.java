@@ -6,44 +6,19 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class DetalleVehiculoPage extends GeneralPage {
-
-  CrearServicioPage crearServicioPage;
+public class AgregarExposicionLesionesPage extends GeneralPage {
 
   @FindBy(
     xpath =
-        "//span[@class='x-btn-button']/span[@class='x-btn-inner x-btn-inner-center' and contains(.,'conductor')]"
+        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_true-inputEl']"
   )
-  WebElementFacade btnAgregarConductor;
+  WebElementFacade chkLesiones;
 
   @FindBy(
     xpath =
-        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:ClaimContactPerson-inputEl']/../following-sibling::td"
+        "//span[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPedestrianButton-btnInnerEl']"
   )
-  WebElementFacade cmbPersona;
-
-  @FindBy(
-    xpath =
-        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]//ul/li/following-sibling::li"
-  )
-  WebElementFacade lstNombrePersona;
-
-  @FindBy(xpath = "//input[@class='x-form-field x-form-checkbox x-form-cb']")
-  WebElementFacade chkServicioTaller;
-
-  @FindBy(
-    xpath = "//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Agregar Taller')]"
-  )
-  WebElementFacade btnAgregarTaller;
-
-  @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
-  WebElementFacade btnBuscarProveedor;
-
-  @FindBy(
-    id =
-        "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleDetailInputSet:Vehicle_LicensePlate-inputEl"
-  )
-  WebElementFacade txtPlaca;
+  WebElementFacade btnAgregarPeaton;
 
   @FindBy(
     xpath =
@@ -91,21 +66,35 @@ public class DetalleVehiculoPage extends GeneralPage {
   WebElementFacade txtDireccion;
 
   @FindBy(
-    id =
-        "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleDetailInputSet:fasecoldaGet-btnInnerEl"
+    xpath =
+        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:Severity-inputEl']"
   )
-  WebElementFacade btnRecuperarInformacion;
+  WebElementFacade cmbGravedadLesion;
 
-  public DetalleVehiculoPage(WebDriver wdriver) {
+  @FindBy(
+    xpath =
+        "//textarea[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:InjuryDescription-inputEl']"
+  )
+  WebElementFacade txtDescribirLesiones;
+
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:PrimaryInjuryType-inputEl']"
+  )
+  WebElementFacade cmbTipoLesion;
+
+  @FindBy(
+    xpath =
+        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:DetailedInjuryType-inputEl']"
+  )
+  WebElementFacade cmbDetalleLesion;
+
+  public AgregarExposicionLesionesPage(WebDriver wdriver) {
     super(wdriver);
   }
 
-  public void agregarConductor() {
-    btnAgregarConductor.waitUntilVisible().click();
-  }
-
-  public void seleccionarConductorVehiculoAsegurado() {
-    seleccionarConductor();
+  public void agregarPersonaLesionada() {
+    btnAgregarPeaton.waitUntilVisible().click();
   }
 
   public void seleccionarTipoDocumento(String tipoDocumento) {
@@ -125,7 +114,6 @@ public class DetalleVehiculoPage extends GeneralPage {
 
   public void ingresarPrimerApellido(String primerApellido) {
     txtPrimerApellido.sendKeys(primerApellido);
-    realizarEsperaCarga();
   }
 
   public void seleccionarDepartamento(String departamento) {
@@ -151,43 +139,38 @@ public class DetalleVehiculoPage extends GeneralPage {
     cmbTipoDireccion.clear();
     cmbTipoDireccion.sendKeys(tipoDireccion);
     cmbTipoDireccion.sendKeys(Keys.ENTER);
-    realizarEsperaCarga();
-    aceptarOpcion();
-    realizarEsperaCarga();
   }
 
-  private void seleccionarConductor() {
-    cmbPersona.waitUntilVisible().click();
-    lstNombrePersona.click();
-    realizarEsperaCarga();
-    aceptarOpcion();
-    realizarEsperaCarga();
+  public void seleccionarLesiones() {
+    chkLesiones.waitUntilVisible().click();
   }
 
-  public void buscarProveedor() {
-    btnBuscarProveedor.waitUntilVisible().click();
+  public void seleccionarGravedadLesion(String gravedadLesion) {
+    cmbGravedadLesion.clear();
+    cmbGravedadLesion.sendKeys(gravedadLesion);
+    cmbGravedadLesion.sendKeys(Keys.ENTER);
     realizarEsperaCarga();
   }
 
-  public void ingresarVehiculoTercero(String placa) {
-    txtPlaca.sendKeys(placa);
+  public void ingresarDescripcionLesiones(String describirLesiones) {
+    txtDescribirLesiones.sendKeys(describirLesiones);
+  }
+
+  public void seleccionarTipoLesion(String tipoLesion) {
+    cmbTipoLesion.clear();
+    cmbTipoLesion.sendKeys(tipoLesion);
+    cmbTipoLesion.sendKeys(Keys.ENTER);
     realizarEsperaCarga();
   }
 
-  public void recuperarInformacionVehiculo() {
-    btnRecuperarInformacion.waitUntilVisible().click();
+  public void seleccionarDetalleLesion(String detallesTipoLesion) {
+    cmbDetalleLesion.clear();
+    cmbDetalleLesion.sendKeys(detallesTipoLesion);
+    cmbDetalleLesion.sendKeys(Keys.ENTER);
     realizarEsperaCarga();
   }
 
-  public void agregarTaller() {
-    btnAgregarTaller.waitUntilVisible().click();
-  }
-
-  public void seleccionarServicioTaller() {
-    chkServicioTaller.waitUntilVisible().click();
-  }
-
-  public void volverPasoAnterior() {
+  public void finalizarExposicion() {
     aceptarOpcion();
     realizarEsperaCarga();
   }

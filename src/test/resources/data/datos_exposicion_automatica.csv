@@ -1,0 +1,7 @@
+id;idFiltro;exposicionAutomatica;valorReservaAutomatica;datoDevolverTablaExposiciones
+1;exposicionesArchivo;Daños;$3.000.000 (COP);Subtipo de cobertura
+3;exposicionesRC;Responsabilidad civil - daños a la persona;$3.600.000 (COP);Subtipo de cobertura
+4;exposicionesRC;Responsabilidad civil - daños al vehículo;$3.400.000 (COP);Subtipo de cobertura
+5;exposicionesRC;Daños;$3.000.000 (COP);Subtipo de cobertura
+6;exposicionesSoloRC;Responsabilidad civil - daños a la persona;$3.600.000 (COP);Subtipo de cobertura
+7;exposicionesSoloRC;Responsabilidad civil - daños al vehículo;$3.400.000 (COP);Subtipo de cobertura
