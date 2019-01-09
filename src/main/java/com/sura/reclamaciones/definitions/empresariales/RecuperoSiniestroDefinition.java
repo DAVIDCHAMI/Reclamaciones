@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.utils.Variables.SESION_CC_TIPO_RESERVA;
+import static com.sura.reclamaciones.utils.NombresCsv.RECUPERO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_RESERVA;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Recupero;
@@ -13,8 +14,7 @@ import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-
-public class RecuperoDefinition {
+public class RecuperoSiniestroDefinition {
 
   @Steps RecuperoStep recuperoStep;
 
@@ -29,7 +29,8 @@ public class RecuperoDefinition {
     recupero =
         new Recupero(
             genericStep.getFilasModelo(
-                "recupero", Serenity.sessionVariableCalled(SESION_CC_TIPO_RESERVA)));
+                RECUPERO.getValor(),
+                Serenity.sessionVariableCalled(SESION_CC_TIPO_RESERVA.getValor())));
     recuperoStep.seleccionarNumeroReclamacion(
         MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();

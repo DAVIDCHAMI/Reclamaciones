@@ -71,7 +71,6 @@ public class AnulacionEmpresarialStep {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
             MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
         verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
-        verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
         assertTrue(
             "El recupero no quedo en estado anulado",
             verificacionDatosFinancierosPage.verificarEstadoAnulado(

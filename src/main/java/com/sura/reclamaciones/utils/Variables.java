@@ -6,7 +6,6 @@ public enum Variables {
   VALOR_RESERVA("valorReserva"),
   NUMERO_PAGINA("numeroPagina"),
   TIPO_ANULACION("tipoAnulacion"),
-  SESION_CC_TIPO_RESERVA("tipoReserva"),
   TIPO_CONTRATO_POLIZA("tipoContratoPoliza"),
   VALOR_RECUPERO("valorRecupero");
 
