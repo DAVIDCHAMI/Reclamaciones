@@ -54,8 +54,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setNotificationDate(
         lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
     creacionSiniestroAutosFactory.setLossType(lstSiniestroParam.get(campoDato).getTipoPerdida());
-    creacionSiniestroAutosFactory.setLossCause(
-        lstSiniestroParam.get(campoDato).getCausaSiniestro());
+    creacionSiniestroAutosFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaPerdida());
     creacionSiniestroAutosFactory.setDescription(
         lstSiniestroParam.get(campoDato).getDescripcionHechos());
     creacionSiniestroAutosFactory.setMacaNumber(lstSiniestroParam.get(campoDato).getNumeroMaca());

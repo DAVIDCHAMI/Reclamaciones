@@ -18,6 +18,8 @@ public class ConstanteGlobal {
   public static final String PARAMETROS_RECLAMACION_PERSONA = "persona_reclamacion_auto";
   public static final String PARAMETROS_RECLAMACION_VEHICULO = "vehiculo";
   public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO = 180;
+  public static final String EMPRESARIALES = "Empresariales";
+  public static final String AUTOS = "Autos";
 
   private ConstanteGlobal() {}
 }
