@@ -8,7 +8,7 @@ import static com.sura.reclamaciones.utils.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.models.PagoEmpresarial;
+import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
@@ -50,8 +50,8 @@ public class NuevoPagoStep {
       String strMetodoPago,
       String strPagoSoloSura,
       String strCodigoRetencion,
-      List<PagoEmpresarial> lstPago) {
-    for (PagoEmpresarial diligenciador : lstPago) {
+      List<PagoSiniestro> lstPago) {
+    for (PagoSiniestro diligenciador : lstPago) {
       introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
       introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
           diligenciador.getTipoBeneficiario());
@@ -79,9 +79,9 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void verificarPagoRealizado(List<PagoEmpresarial> lstPago) {
+  public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
     lstPago.forEach(
-        (PagoEmpresarial validador) -> {
+        (PagoSiniestro validador) -> {
           String strNumeroTransaccion =
               verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
           menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
