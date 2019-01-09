@@ -1,0 +1,69 @@
+package com.sura.reclamaciones.constantes;
+
+public enum Constantes {
+  ACTIVIDADES("Actividades"),
+  ACTIVIDADES_INGLES("Activities"),
+  ANALISTA_RECLAMACION_AUTO("analistaReclamacionAuto"),
+  ANALISTA_RECLAMACION_EMPRESARIAL("analistaReclamacionEmp"),
+  CANTIDAD("Cantidad"),
+  CANTIDAD_PARTICIPACION_REASEGURADOR("$ Participación"),
+  CODIGO_RETENCION("Código de retención"),
+  COMODIN("COMODIN"),
+  COP("COP"),
+  CUENTA(""),
+  DATOS_FINANCIEROS("Datos financieros"),
+  DESARROLLO("dllo"),
+  ESPANOL("Spanish (CO)"),
+  ESTADO_ANULACION("Anulado"),
+  EXPOSICIONES("Exposiciones"),
+  FECHA_HOY("Hoy"),
+  IDENTIFICACION_REASEGURADOR("Identificación del reasegurador"),
+  INGLES("English (US)"),
+  LABORATORIO("uat"),
+  NIT("98630089"),
+  NO("no"),
+  NOMBRE_REASEGURADOR("Nombre del reasegurador"),
+  NUEVAS_RESERVAS_DISPONIBLES("Nuevas reservas disponibles"),
+  NUEVA_RECLAMACION_MENU("Nueva"),
+  NUMERO_CONTRATO("Número del contrato"),
+  NUMERO_DISTRIBUCION("Número distribución"),
+  NUMERO_PAGO("Número de pago"),
+  NUMERO_SINIESTRO("NumeroSiniestro"),
+  NUMERO_TRANSACCION("Número de transacción"),
+  PAGO("Pago"),
+  PAGOS("Pagos"),
+  PARAMETROS_PERSONA("parametros_persona"),
+  PARAMETROS_SINIESTRO("parametros_siniestro"),
+  PORCENTAJE("0.20"),
+  PORCENTAJE_PARTICIPACION_REASEGURADOR("% Participación"),
+  PORCIENTO("100"),
+  REASEGURO_DETALLADO("Reaseguro detallado"),
+  RECLAMACION_MENU("Re"),
+  RECUPERO("Recupero"),
+  RESERVA("Reserva"),
+  RETENCION_PURA("10"),
+  RETENCION_PURA_ENCABEZADO("Retención pura"),
+  REVERSION_CONSTITUCION("reversionConstitucion"),
+  SELECCIONAR("Seleccionar"),
+  SI("si"),
+  SURA("0000"),
+  TIPO_PAGO("Parcial"),
+  TIPO_TRANSACCION("Recuperaciones"),
+  TRANSACCIONES("Transacciones"),
+  TRANSFERENCIA_ELECTRONICA("Transferencia"),
+  US("(US)"),
+  USD("USD"),
+  VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
+  VALOR_REASEGURADO("Valor reasegurado"),
+  VERIFICADOR_NUMERO_SINIESTRO("9180000");
+
+  private String valor;
+
+  private Constantes(String valor) {
+    this.valor = valor;
+  }
+
+  public String getValor() {
+    return valor;
+  }
+}

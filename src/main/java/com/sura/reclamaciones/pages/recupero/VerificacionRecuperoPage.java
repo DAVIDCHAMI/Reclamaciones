@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.pages.recupero;
 
-import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
-import static com.sura.reclamaciones.utils.Constantes.TIPO_TRANSACCION;
+import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
+import static com.sura.reclamaciones.constantes.Constantes.TIPO_TRANSACCION;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;

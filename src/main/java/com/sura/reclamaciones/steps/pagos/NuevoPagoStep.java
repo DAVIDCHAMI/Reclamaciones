@@ -1,10 +1,10 @@
 package com.sura.reclamaciones.steps.pagos;
 
-import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
-import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
-import static com.sura.reclamaciones.utils.Constantes.CUENTA;
-import static com.sura.reclamaciones.utils.Constantes.PAGOS;
-import static com.sura.reclamaciones.utils.Constantes.SELECCIONAR;
+import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
+import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
+import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
+import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
+import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 
 import com.sura.reclamaciones.constantes.MenuConstante;

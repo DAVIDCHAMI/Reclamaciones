@@ -1,10 +1,10 @@
 package com.sura.reclamaciones.steps.anulacionempresarial;
 
-import static com.sura.reclamaciones.utils.Constantes.NUMERO_TRANSACCION;
-import static com.sura.reclamaciones.utils.Constantes.PAGO;
-import static com.sura.reclamaciones.utils.Constantes.PAGOS;
-import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
-import static com.sura.reclamaciones.utils.Constantes.TIPO_TRANSACCION;
+import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
+import static com.sura.reclamaciones.constantes.Constantes.PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
+import static com.sura.reclamaciones.constantes.Constantes.RECUPERO;
+import static com.sura.reclamaciones.constantes.Constantes.TIPO_TRANSACCION;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
 
 import com.sura.reclamaciones.constantes.MenuConstante;

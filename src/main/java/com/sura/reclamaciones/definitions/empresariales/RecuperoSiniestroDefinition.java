@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.utils.NombresCsv.RECUPERO;
+import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_RESERVA;
 
 import com.sura.reclamaciones.constantes.MenuConstante;

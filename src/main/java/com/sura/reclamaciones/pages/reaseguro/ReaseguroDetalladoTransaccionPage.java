@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.pages.reaseguro;
 
-import static com.sura.reclamaciones.utils.Constantes.PORCIENTO;
-import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA_ENCABEZADO;
-import static com.sura.reclamaciones.utils.Constantes.VALOR_REASEGURADO;
+import static com.sura.reclamaciones.constantes.Constantes.PORCIENTO;
+import static com.sura.reclamaciones.constantes.Constantes.RETENCION_PURA_ENCABEZADO;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_REASEGURADO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;

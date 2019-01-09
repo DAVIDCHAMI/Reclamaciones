@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.utils;
+package com.sura.reclamaciones.constantes;
 
 public enum NombresCsv {
   ANULACION_EMPRESARIAL("anulacion_empresarial"),

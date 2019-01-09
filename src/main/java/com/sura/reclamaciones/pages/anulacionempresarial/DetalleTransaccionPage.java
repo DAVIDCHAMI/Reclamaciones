@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
-import static com.sura.reclamaciones.utils.Constantes.PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.PAGO;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;

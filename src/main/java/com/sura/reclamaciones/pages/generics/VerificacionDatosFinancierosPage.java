@@ -1,9 +1,9 @@
 package com.sura.reclamaciones.pages.generics;
 
-import static com.sura.reclamaciones.utils.Constantes.COP;
-import static com.sura.reclamaciones.utils.Constantes.NUMERO_PAGO;
-import static com.sura.reclamaciones.utils.Constantes.PAGO;
-import static com.sura.reclamaciones.utils.Constantes.USD;
+import static com.sura.reclamaciones.constantes.Constantes.COP;
+import static com.sura.reclamaciones.constantes.Constantes.NUMERO_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.USD;
 
 import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
 import com.sura.reclamaciones.utils.Variables;
