@@ -10,6 +10,7 @@ import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresaria
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
@@ -22,7 +23,7 @@ public class NotificacionAvisoSiniestroDefinition {
   @Steps GenericStep genericStep;
 
   @Dado("^que se tiene una poliza de (.*)$")
-  public void buscarPoliza(String tipoCobertura) throws Throwable {
+  public void buscarPoliza(String tipoCobertura) throws IOException {
     Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(tipoCobertura);
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
