@@ -55,7 +55,10 @@ public enum Constantes {
   PORCIENTO("100"),
   RETENCION_PURA("10"),
   RETENCION_PURA_ENCABEZADO("Retención pura"),
-  SURA("0000");
+  SURA("0000"),
+  ITERACIONES_PAGO("3"),
+  ITERACIONES_RECUPERO("3"),
+  ITERACIONES_ANULACION("10");
 
   private String valor;
 

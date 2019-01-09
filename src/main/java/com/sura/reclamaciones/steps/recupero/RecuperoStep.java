@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.recupero;
 
 import com.sura.reclamaciones.models.Recupero;
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
@@ -28,6 +29,8 @@ public class RecuperoStep {
   @Page MenuClaimPage menuClaimPage;
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
+
+  @Page GeneralPage generalPage;
 
   @Step
   public void seleccionarNumeroReclamacion(String reclamacionMenu, List<Recupero> lstRecupero) {

@@ -240,4 +240,15 @@ public class GeneralPage extends PageObject {
     auxiliarMnuNavegar = mnuNavegar.replace(ConstanteGlobal.COMODIN, opcionMenu);
     $(auxiliarMnuNavegar).waitUntilVisible().click();
   }
+
+  public void actualizarPantalla (String datoValidar, WebElement valorElementoPantalla, String iteraciones){
+    int i;
+    String strDatoPantalla = valorElementoPantalla.getText();
+    for (i = 0; i < Integer.parseInt(iteraciones); i++) {
+
+      if (!strDatoPantalla.equals(datoValidar)) {
+        System.out.println("IMPRIMIR ESTO");
+      }
+    }
+
 }
