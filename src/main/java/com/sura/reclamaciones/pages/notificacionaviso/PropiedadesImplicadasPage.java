@@ -19,8 +19,8 @@ public class PropiedadesImplicadasPage extends GeneralPage {
 
   public void seleccionarPropiedad() {
     if (titlePropiedadesImplicadas.isPresent()) {
-      rbtPropiedad.waitUntilVisible();
-      rbtPropiedad.click();
+      rbtPropiedad.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
+      realizarEsperaCarga();
       continuarSiguientePantalla();
     }
   }
