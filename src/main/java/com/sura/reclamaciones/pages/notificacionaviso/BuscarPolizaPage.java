@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
-
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -121,6 +120,8 @@ public class BuscarPolizaPage extends GeneralPage {
   public void buscarPoliza() {
     btnBuscar.waitUntilClickable();
     btnBuscar.click();
+    realizarEsperaCarga();
+    continuarSiguientePantalla();
   }
 
   public void escribirPlaca(String placa) {

@@ -101,13 +101,15 @@ wrapper {
 task icTest(type: Test) {
     def env = (System.getProperty('env') ?: "dllo").trim()
     def app = (System.getProperty('app') ?: "ejemplos").trim()
-    def lote = (System.getProperty('lote') ?: "lote1").trim()
     def propertyValue = project.property("${app}TestFilter").toString().trim()
-    def filterRute = "*.runners.$env.${propertyValue}.${lote}*"
-    logger.lifecycle("Variablesk0 de ejecucion para icTest")
-    logger.lifecycle("env:$env, app:$app, lote:$lote, propertyValue:$propertyValue, filterRute:$filterRute")
+    def filterRute = "${propertyValue}.${env}.*"
+
+    logger.lifecycle("Variables de ejecucion para icTest")
+    logger.lifecycle("env:$env, app:$app, propertyValue:$propertyValue, filterRute:$filterRute")
+
     // Si ENV está vacio se hace el set en el valor por defecto
     systemProperties = ['ENV': env]
+
     filter {
         includeTestsMatching filterRute
         failOnNoMatchingTests = false
