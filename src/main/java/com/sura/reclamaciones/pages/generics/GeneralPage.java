@@ -244,11 +244,11 @@ public class GeneralPage extends PageObject {
 
   public void actualizarPantalla (String datoValidar, WebElement valorElementoPantalla, String iteraciones) {
     int i;
-    String strDatoPantalla = valorElementoPantalla.getText();
-    for (i = 0; i < Integer.parseInt(iteraciones); i++) {
 
+    for (i = 0; i < Integer.parseInt(iteraciones); i++) {
+      String strDatoPantalla = valorElementoPantalla.getText();
       if (!strDatoPantalla.equals(datoValidar)) {
-        System.out.println("IMPRIMIR ESTO");
+        driver.navigate().refresh();
       }
     }
   }

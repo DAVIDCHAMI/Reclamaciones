@@ -2,6 +2,7 @@ package com.sura.reclamaciones.steps.recupero;
 
 import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
+import static com.sura.reclamaciones.utils.Constantes.ITERACIONES_RECUPERO;
 
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -63,6 +64,8 @@ public class RecuperoStep {
     lstRecupero.forEach(
         (Recupero validador) -> {
           List<WebElement> lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
+            WebElement elementoXpath= lstFilaRecupero.get(5);
+            generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath, ITERACIONES_RECUPERO.getValor());
           MatcherAssert.assertThat(
               "No coincide la categoria del recupero",
               verificacionRecuperoPage.verificarRecupero(
