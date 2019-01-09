@@ -22,5 +22,6 @@ public class CrearServicioPage extends GeneralPage {
         obtenerElementoLista(
             tblProveedores, Tablas.CABECERAS_CC, Tablas.REGISTROS_CC, nombreProveedor, "");
     btnSeleccionar.findElement(By.tagName("a")).click();
+    realizarEsperaCarga();
   }
 }

@@ -17,7 +17,7 @@ public class ConsumoServicioCreacionSiniestroStep {
   List<ReclamacionEmpresarial> lstSiniestroParam;
   List<Persona> lstParametroPersona;
   ReclamacionEmpresarial parametroSiniestro = new ReclamacionEmpresarial();
-  Persona parametroPersona = new Persona();
+  Persona parametroPersona;
 
   GenericStep genericStep = new GenericStep();
 
