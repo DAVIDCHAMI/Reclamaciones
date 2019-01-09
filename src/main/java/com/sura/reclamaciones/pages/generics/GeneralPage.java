@@ -242,7 +242,7 @@ public class GeneralPage extends PageObject {
     $(auxiliarMnuNavegar).waitUntilVisible().click();
   }
 
-  public void actualizarPantalla (String datoValidar, WebElement valorElementoPantalla, String iteraciones){
+  public void actualizarPantalla (String datoValidar, WebElement valorElementoPantalla, String iteraciones) {
     int i;
     String strDatoPantalla = valorElementoPantalla.getText();
     for (i = 0; i < Integer.parseInt(iteraciones); i++) {
@@ -251,5 +251,5 @@ public class GeneralPage extends PageObject {
         System.out.println("IMPRIMIR ESTO");
       }
     }
-
+  }
 }
