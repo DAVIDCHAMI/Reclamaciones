@@ -10,8 +10,12 @@ public abstract class Reclamacion {
   private String fechaSiniestro;
   private String lugarSiniestro;
   private String reservaTransaccion;
+  private String departamento;
+  private String ciudad;
+  private String direccion;
+  private String tipoDireccion;
   private String fechaAvisoSiniestro;
-  private String causaSiniestro;
+  private String causaPerdida;
   private String descripcionHechosSiniestro;
   private String identificacionAutor;
   private String valorPerdidaSiniestro;
@@ -25,10 +29,14 @@ public abstract class Reclamacion {
     this.fechaSiniestro = datosReclamacion.get("fechaSiniestro");
     this.tipoPoliza = datosReclamacion.get("tipoPoliza");
     this.numPoliza = datosReclamacion.get("numPoliza");
-    this.lugarSiniestro = datosReclamacion.get("lugarSiniestro");
+    this.lugarSiniestro = datosReclamacion.get("lugar");
     this.reservaTransaccion = datosReclamacion.get("reservaTransaccion");
+    this.departamento = datosReclamacion.get("departamento");
+    this.ciudad = datosReclamacion.get("ciudad");
+    this.direccion = datosReclamacion.get("direccion");
+    this.tipoDireccion = datosReclamacion.get("tipoDireccion");
     this.fechaAvisoSiniestro = datosReclamacion.get("fechaAviso");
-    this.causaSiniestro = datosReclamacion.get("causaPerdida");
+    this.causaPerdida = datosReclamacion.get("causaPerdida");
     this.descripcionHechosSiniestro = datosReclamacion.get("descripcionHechos");
     this.identificacionAutor = datosReclamacion.get("idAutor");
     this.valorPerdidaSiniestro = datosReclamacion.get("valorPerdida");
@@ -60,12 +68,44 @@ public abstract class Reclamacion {
     return reservaTransaccion;
   }
 
+  public String getDepartamento() {
+    return departamento;
+  }
+
+  public void setDepartamento(String departamento) {
+    this.departamento = departamento;
+  }
+
+  public String getCiudad() {
+    return ciudad;
+  }
+
+  public void setCiudad(String ciudad) {
+    this.ciudad = ciudad;
+  }
+
+  public String getDireccion() {
+    return direccion;
+  }
+
+  public void setDireccion(String direccion) {
+    this.direccion = direccion;
+  }
+
+  public String getTipoDireccion() {
+    return tipoDireccion;
+  }
+
+  public void setTipoDireccion(String tipoDireccion) {
+    this.tipoDireccion = tipoDireccion;
+  }
+
   public String getFechaAvisoSiniestro() {
     return fechaAvisoSiniestro;
   }
 
-  public String getCausaSiniestro() {
-    return causaSiniestro;
+  public String getCausaPerdida() {
+    return causaPerdida;
   }
 
   public String getDescripcionHechosSiniestro() {

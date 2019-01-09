@@ -45,7 +45,6 @@ public class ResumenReclamacionPage extends GeneralPage {
   public String validarExposicion() {
     String validadorExposicion;
     String validador;
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
     if (lnkTipoExposicion.isVisible()) {
       validador = lnkTipoExposicion.waitUntilVisible().getText();
       switch (validador) {

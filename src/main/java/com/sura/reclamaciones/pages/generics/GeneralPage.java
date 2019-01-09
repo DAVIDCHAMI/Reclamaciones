@@ -49,7 +49,7 @@ public class GeneralPage extends PageObject {
   private WebElementFacade txtTransacciones;
 
   @FindBy(xpath = "//div[@class='x-panel x-panel-default x-grid']")
-  private WebElementFacade tblVerificacion;
+  protected WebElementFacade tblVerificacion;
 
   @FindBy(xpath = "//input")
   private WebElementFacade mnuDinamico;
@@ -144,9 +144,20 @@ public class GeneralPage extends PageObject {
     }
   }
 
+  public void realizarEsperaFinalizarReclamacion() {
+    int numeroIntentos = ConstanteGlobal.NUMERO_INTENTOS_ESPERA_ELEMENTO;
+    while (numeroIntentos > 0) {
+      if (!pgrBarCarga.isPresent()) {
+        break;
+      }
+      numeroIntentos--;
+    }
+  }
+
   public void aceptarOpcion() {
     btnAceptar.waitUntilVisible();
     btnAceptar.click();
+    realizarEsperaCarga();
   }
 
   public void continuarSiguientePantalla() {
@@ -222,16 +233,6 @@ public class GeneralPage extends PageObject {
   public void enfocarVistaAutomatizacion() {
     for (String ventana : driver.getWindowHandles()) {
       driver.switchTo().window(ventana);
-    }
-  }
-
-  public void realizarEsperaFinalizarReclamacion() {
-    int numeroIntentos = ConstanteGlobal.NUMERO_INTENTOS_ESPERA_ELEMENTO;
-    while (numeroIntentos > 0) {
-      if (!pgrBarCarga.isPresent()) {
-        break;
-      }
-      numeroIntentos--;
     }
   }
 
