@@ -9,4 +9,4 @@ import org.junit.runner.RunWith;
   features = "src/test/resources/features/recupero/recupero_siniestro.feature",
   glue = {"com.sura.reclamaciones.definitions"}
 )
-public class RecuperoRunner {}
+public class RecuperoSiniestroRunner {}

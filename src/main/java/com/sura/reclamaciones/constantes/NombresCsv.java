@@ -4,7 +4,7 @@ public enum NombresCsv {
   ANULACION_EMPRESARIAL("anulacion_empresarial"),
   CONTRATO("contrato"),
   PAGO_SINIESTRO("pago_empresarial"),
-  RECUPERO("recupero");
+  RECUPERO("recupero_siniestro");
 
   private String valor;
 
