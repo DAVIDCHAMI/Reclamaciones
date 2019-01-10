@@ -66,7 +66,7 @@ public class RecuperoStep {
     lstRecupero.forEach(
         (Recupero validador) -> {
           List<WebElement> lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
-          WebElement elementoXpath = lstFilaRecupero.get(5);
+          WebElement elementoXpath = lstFilaRecupero.get(9);
           generalPage.actualizarPantalla(
               validador.getEstadoTransaccion(), elementoXpath, ITERACIONES_RECUPERO.getValor());
           MatcherAssert.assertThat(

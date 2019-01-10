@@ -246,7 +246,7 @@ public class GeneralPage extends PageObject {
       String datoValidar, WebElement valorElementoPantalla, String iteraciones) {
     int i;
 
-    for (i = 0; i < Integer.parseInt(iteraciones); i++) {
+    for (i = 0; i <= Integer.parseInt(iteraciones); i++) {
       String strDatoPantalla = valorElementoPantalla.getText();
       if (!strDatoPantalla.equals(datoValidar)) {
         driver.navigate().refresh();

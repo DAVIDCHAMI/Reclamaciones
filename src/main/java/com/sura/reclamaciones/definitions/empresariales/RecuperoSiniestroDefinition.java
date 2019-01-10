@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_RESERVA;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
@@ -30,7 +31,7 @@ public class RecuperoSiniestroDefinition {
         new Recupero(
             genericStep.getFilasModelo(
                 RECUPERO.getValor(),
-                Serenity.sessionVariableCalled(SESION_CC_TIPO_RESERVA.getValor())));
+                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
     recuperoStep.seleccionarNumeroReclamacion(
         MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
     recuperoStep.seleccionarRecupero();
