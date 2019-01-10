@@ -7,8 +7,8 @@ Característica:Recupero de una reclamacion
 
   @claimsEmpresarial
   Esquema del escenario: recupero
-    Dado que se tiene una poliza de <Tipo y Cobertura>
-    Y se genere un siniestro por causal <causa> con un valor de pretension de <valor de Pretensión>
+    Dado que se tiene una póliza de <Tipo y Cobertura>
+    Y se genere un siniestro por causal <causa> con un valor de pretensión de <valor de Pretensión>
     Y un incidente de tipo <tipo de Incidente>
     Cuando se genere un recupero de tipo <tipo Recupero> con un código de retención <codigo Retencion>
     Entonces se obtiene un reintegro de dinero al siniestro
