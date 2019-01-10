@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.steps.generics;
 
-import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
-
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
@@ -58,7 +56,7 @@ public class GenericStep {
         escribirAut.close();
       }
     } catch (Exception e) {
-      LOGGER.info("No se realizó el guardado del Log");
+      Utilidades.getLogger().info("No se realizó el guardado del Log");
     }
   }
 }

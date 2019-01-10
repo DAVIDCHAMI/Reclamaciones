@@ -1,10 +1,10 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.cliente.siniestro.CreacionSiniestroCliente;
 import com.sura.service.creacionSiniestro.gen.ClaimsRequest;
 import com.sura.service.creacionSiniestro.gen.ClaimsResponse;
@@ -149,7 +149,7 @@ public class ConsumoServicioCreacionSiniestro {
 
   private void obtenerResponse() {
     response = creacionSiniestroCliente.claimsResponse(crearRequest());
-    LOGGER.info("Número de siniestro: " + response.getResult().getClaimNumber());
+    Utilidades.getLogger().info("Número de siniestro: " + response.getResult().getClaimNumber());
     Serenity.setSessionVariable(SESION_CC_NUMERO_SINIESTRO.getValor())
         .to(response.getResult().getClaimNumber());
   }
