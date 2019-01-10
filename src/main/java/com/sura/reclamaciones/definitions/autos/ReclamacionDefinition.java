@@ -40,7 +40,7 @@ public class ReclamacionDefinition {
     reclamacionStep.consultarPoliza(reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
   }
 
-  @Cuando("se genere un siniestro por la causa (.*) y la culpabilidad Responsabilidad Civil(.*)$")
+  @Cuando("se genere un siniestro por la causa y la culpabilidad Responsabilidad Civil$")
   public void ingresarDatosSiniestroResponsabilidadCivil(DataTable culpabilidad)throws IOException {
     reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
@@ -48,7 +48,7 @@ public class ReclamacionDefinition {
     reclamacionStep.completarDatosReclamacionAutos(reclamacionAuto.getLstReclamacionAuto());
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
-            genericStep.getFilasModelo(ConstanteGlobal.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO, "responsabilidad_Civil"));
+            genericStep.getFilasModelo(ConstanteGlobal.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO, "exposicionRcVehiculo"));
     personaReclamacionAuto =
         new Persona(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, "conductor"));
     direccionReclamacion =

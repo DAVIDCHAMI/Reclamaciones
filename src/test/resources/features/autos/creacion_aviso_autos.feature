@@ -14,8 +14,8 @@ Característica: Generación avisos de siniestros autos
     |Vehículo de reemplazo|
     |responsabilidad_Civil                     |
     Cuando se genere un siniestro por la causa y la culpabilidad Responsabilidad Civil
-    |Causa|Culpabilidad|
-    |Colisión con vehículo|responsabilidad_Civil|
+    |Causa|Culpabilidad||
+    |Colisión con vehículo|responsabilidad_Civil||
     Entonces se obtendran exposiciones automaticas y cada una con su respectiva reserva, según la culpabilidad marcada Responsabilidad Civil
     |Exposiciones|Reservas|
     |Daños       |300000  |
