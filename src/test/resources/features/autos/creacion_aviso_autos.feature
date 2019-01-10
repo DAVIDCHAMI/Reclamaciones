@@ -12,10 +12,10 @@ Característica: Generación avisos de siniestros autos
     |coberturas|
     |Daños     |
     |Vehículo de reemplazo|
-    |Responsabilidad Civil                     |
-    Cuando se genere un siniestro por la causa y la culpabilidad
+    |responsabilidad_Civil                     |
+    Cuando se genere un siniestro por la causa y la culpabilidad Responsabilidad Civil
     |Causa|Culpabilidad|
-    |Colisión con vehículo|Responsabilidad Civil|
+    |Colisión con vehículo|responsabilidad_Civil|
     Entonces se obtendran exposiciones automaticas y cada una con su respectiva reserva, según la culpabilidad marcada Responsabilidad Civil
     |Exposiciones|Reservas|
     |Daños       |300000  |
@@ -32,7 +32,7 @@ Característica: Generación avisos de siniestros autos
       |Responsabilidad Civil|
     Cuando se genere un siniestro por la causa y la culpabilidad
       |Causa|Culpabilidad|
-      |Amit, Disturbios o desorden civil|Archivo|
+      |Amit, Disturbios o desorden civil|archivo|
     Entonces se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
       |Daños       |300000  |
 
@@ -45,7 +45,7 @@ Característica: Generación avisos de siniestros autos
       |Responsabilidad Civil|
     Cuando se genere un siniestro por la causa y la culpabilidad
       |Causa|Culpabilidad|
-      |Colisión con vehículo|Subrogación|
+      |Colisión con vehículo|subrogación|
     Entonces se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
       |Exposiciones|Reservas|
       |Daños       |300000  |
@@ -59,7 +59,7 @@ Característica: Generación avisos de siniestros autos
       |Responsabilidad Civil|
     Cuando se genere un siniestro por la causa y la culpabilidad
       |Causa|Culpabilidad|
-      |Colisión con vehículo|Solo RC|
+      |Colisión con vehículo|solo_RC|
     Entonces se obtendran exposiciones automaticas de exposicion, y cada una con su respectiva reserva, según la culpabilidad marcada Solo Responsabilidad Civil
       |Exposiciones|Reservas|
       |Responsabilidad civil - daños a la persona|3600000|
