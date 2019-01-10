@@ -1,10 +1,10 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.utils.Constantes.PAGO;
-import static com.sura.reclamaciones.utils.Constantes.RECUPERO;
-import static com.sura.reclamaciones.utils.Constantes.RESERVA;
-import static com.sura.reclamaciones.utils.NombresCsv.CONTRATO;
-import static com.sura.reclamaciones.utils.NombresCsv.PAGO_SINIESTRO;
+import static com.sura.reclamaciones.constantes.Constantes.PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.RECUPERO;
+import static com.sura.reclamaciones.constantes.Constantes.RESERVA;
+import static com.sura.reclamaciones.constantes.NombresCsv.CONTRATO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.PagoSiniestro;

@@ -1,20 +1,20 @@
 package com.sura.reclamaciones.steps.pagos;
 
-import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
-import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
-import static com.sura.reclamaciones.utils.Constantes.CUENTA;
-import static com.sura.reclamaciones.utils.Constantes.PAGOS;
-import static com.sura.reclamaciones.utils.Constantes.SELECCIONAR;
+import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
+import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
+import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
+import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
+import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
-import com.sura.reclamaciones.pages.pagos.VerificacionDatosFinancierosPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;

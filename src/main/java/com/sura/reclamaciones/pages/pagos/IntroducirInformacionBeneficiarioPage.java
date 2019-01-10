@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.pagos;
 
-import static com.sura.reclamaciones.utils.Constantes.TRANSFERENCIA_ELECTRONICA;
+import static com.sura.reclamaciones.constantes.Constantes.TRANSFERENCIA_ELECTRONICA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
