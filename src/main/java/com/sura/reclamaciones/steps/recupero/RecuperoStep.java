@@ -28,7 +28,7 @@ public class RecuperoStep {
   @Page ResumenReclamacionPage resumenReclamacionPage;
 
   @Step
-  public void seleccionarNumeroReclamacion(String reclamacionMenu, List<Recupero> lstRecupero) {
+  public void seleccionarNumeroReclamacion() {
     resumenReclamacionPage.obtenerNumeroReclamacion();
   }
 
