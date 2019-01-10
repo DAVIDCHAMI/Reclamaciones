@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import static com.sura.reclamaciones.constantes.ReclamacionConstante.*;
+import static com.sura.reclamaciones.constantes.Constantes.FECHA_HOY;
+import static com.sura.reclamaciones.constantes.Constantes.VALIDADOR_NUEVA_RECLAMACION;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
@@ -22,13 +23,21 @@ import org.slf4j.LoggerFactory;
 public class NuevaReclamacionEmpresarialStep {
 
   @Page BuscarPolizaPage buscarPolizaPage;
+
   @Page MenuClaimPage menuClaimPage;
+
   @Page InformacionReclamacionPage informacionReclamacionPage;
+
   @Page InformacionBasicaPage informacionBasicaPage;
+
   @Page PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
+
   @Page ResumenReclamacionPage resumenReclamacionPage;
+
   @Page GeneralPage generalPage;
+
   @Steps UbicacionStep ubicacionStep;
+
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   public void diligenciarInformacionIncidente(
@@ -51,7 +60,7 @@ public class NuevaReclamacionEmpresarialStep {
     verificar = informacionReclamacionPage.obtenerTituloReclamacionGenerada();
     MatcherAssert.assertThat(
         "No se ha obtenido el número de reclamación",
-        verificar.equals(VALIDADOR_NUEVA_RECLAMACION));
+        verificar.equals(VALIDADOR_NUEVA_RECLAMACION.getValor()));
   }
 
   public void seleccionarNuevaReclamacion(String nombreOpcion, String subItem) {
@@ -87,7 +96,7 @@ public class NuevaReclamacionEmpresarialStep {
         poliza -> {
           buscarPolizaPage.seleccionarOpcionBuscarPoliza();
           buscarPolizaPage.escribirNumeroPoliza(poliza.getNumPoliza());
-          if (FECHA_HOY.equals(poliza.getFechaSiniestro())) {
+          if (FECHA_HOY.getValor().equals(poliza.getFechaSiniestro())) {
             buscarPolizaPage.seleccionarFechaHoySiniestro();
           } else {
             buscarPolizaPage.escribirFechaSiniestro(poliza.getFechaSiniestro());

@@ -3,7 +3,7 @@ package com.sura.reclamaciones.constantes;
 public enum NombresCsv {
   ANULACION_EMPRESARIAL("anulacion_empresarial"),
   CONTRATO("contrato"),
-  PAGO_SINIESTRO("pago_empresarial"),
+  PAGO_SINIESTRO("pago_siniestro"),
   RECUPERO("recupero_siniestro");
 
   private String valor;
