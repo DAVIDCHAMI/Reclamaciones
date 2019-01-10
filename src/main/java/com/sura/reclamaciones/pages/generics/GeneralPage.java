@@ -244,6 +244,10 @@ public class GeneralPage extends PageObject {
     $(auxiliarMnuNavegar).waitUntilPresent().waitUntilVisible().click();
   }
 
+  public void seleccionarOpcionTabla(WebElementFacade tblOpcion, String opcionSeleccionar){
+    tblOpcion.findElement(By.xpath("//td[.='"+ opcionSeleccionar +"']")).click();
+  }
+
   protected void resaltarElemento(WebElementFacade elemento) {
     String atributoElemento = elemento.getAttribute("style");
     for (int iteracion = 0; iteracion < 2; iteracion++) {
@@ -257,10 +261,10 @@ public class GeneralPage extends PageObject {
 
   public void reiniciarNavegador() {
     Set<String> ventana = driver.getWindowHandles();
-    while (ventana.size() != 1) {
+    do {
       enfocarVistaAutomatizacion();
       ventana = driver.getWindowHandles();
       driver.close();
-    }
+    } while (ventana.size() != 1);
   }
 }

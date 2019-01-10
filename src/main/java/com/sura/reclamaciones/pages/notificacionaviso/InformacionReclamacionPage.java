@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -82,6 +84,10 @@ public class InformacionReclamacionPage extends GeneralPage {
   @FindBy(xpath = "//div[@class='popupMiddleCenterInner popupContent']//tr[5]//div")
   private WebElementFacade lblNumeroSiniestroAtr;
 
+  @FindBy(xpath = "//div[@class='suggestPopupMiddleCenterInner suggestPopupContent']")
+  private WebElementFacade tblCausaSiniestroAtr;
+
+
   public InformacionReclamacionPage(WebDriver driver) {
     super(driver);
   }
@@ -95,7 +101,7 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarCausaSiniestro(String causa) {
-    String lstCausaSiniestroClaim = "//li[.='COMODIN']";
+   String lstCausaSiniestroClaim = "//li[.='COMODIN']";
     mnuCausa.waitUntilPresent();
     mnuCausa.click();
     navegarMenu(causa, lstCausaSiniestroClaim);
@@ -142,9 +148,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarCausaSiniestroAtr(String causa) {
-    String lstCausaSiniestroAtr = "//td[.='COMODIN']";
     txtCausaSiniestroAtr.waitUntilPresent().waitUntilClickable().click();
-    navegarMenu(causa, lstCausaSiniestroAtr);
+    seleccionarOpcionTabla(tblCausaSiniestroAtr, causa);
   }
 
   public void diligenciarDetalleHechosAtr(String detalleHechos) {
