@@ -82,7 +82,6 @@ public class InformacionBasicaPage extends GeneralPage {
       "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
   private String diaMes =
       "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
-  private String auxMes = "";
   private String auxiliarReemplazo = "";
 
   public InformacionBasicaPage(WebDriver driver) {
