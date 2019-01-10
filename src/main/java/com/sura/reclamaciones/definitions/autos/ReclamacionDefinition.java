@@ -36,7 +36,7 @@ public class ReclamacionDefinition {
   public void recibirReclamoResponsabilidadCivil(DataTable coberturas) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_RECLAMACION_AUTOS, "responsabilidadCivil"));
-    vehiculo = new Vehiculo(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_RECLAMACION_VEHICULO, "responsabilidadCivil"));
+    vehiculo = new Vehiculo(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_RECLAMACION_VEHICULO, "autoReclamacionSimple"));
     reclamacionStep.consultarPoliza(reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
   }
 
