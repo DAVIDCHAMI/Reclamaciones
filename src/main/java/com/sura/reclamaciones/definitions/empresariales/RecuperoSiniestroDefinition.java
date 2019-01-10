@@ -3,10 +3,8 @@ package com.sura.reclamaciones.definitions.empresariales;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -20,8 +18,6 @@ public class RecuperoSiniestroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
-
   Recupero recupero;
 
   @Cuando("^se genere un recupero de tipo (.*) con un código de retención (.*)$")
@@ -31,8 +27,7 @@ public class RecuperoSiniestroDefinition {
             genericStep.getFilasModelo(
                 RECUPERO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
-    recuperoStep.seleccionarNumeroReclamacion(
-        MenuConstante.RECLAMACION_MENU, recupero.getLstRecupero());
+    recuperoStep.seleccionarNumeroReclamacion();
     recuperoStep.seleccionarRecupero();
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
