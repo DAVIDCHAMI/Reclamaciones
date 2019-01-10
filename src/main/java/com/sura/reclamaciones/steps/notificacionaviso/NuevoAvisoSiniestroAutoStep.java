@@ -7,7 +7,6 @@ import com.sura.reclamaciones.models.ExposicionLesiones;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
 import com.sura.reclamaciones.models.Persona;
-import com.sura.reclamaciones.models.PersonaReclamacionAuto;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -235,7 +234,7 @@ public class NuevoAvisoSiniestroAutoStep {
   }
 
   @Step
-  public void  buscarPoliza() {
+  public void buscarPoliza() {
     buscarPolizaPage.buscarPoliza();
   }
 
@@ -244,6 +243,7 @@ public class NuevoAvisoSiniestroAutoStep {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
   }
+
   @Step
   public void consultarReclamacionAutos() {
     nuevaReclamacionGuardadaPage.abrirReclamacion();
@@ -257,7 +257,8 @@ public class NuevoAvisoSiniestroAutoStep {
     MatcherAssert.assertThat(
         "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
   }
- @Step
+
+  @Step
   public void validarValorReservasArchivo(List<Reserva> lineaReserva) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(
         DatosFinancierosConstante.DATOS_FINANCIEROS);
@@ -266,29 +267,27 @@ public class NuevoAvisoSiniestroAutoStep {
         "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
   }
 
-@Step
-public void consultarPoliza(List<ReclamacionAuto> reclamacionAuto, List<Vehiculo> vehiculo) {
-  seleccionarOpcionMenuPrincipal();
-  completarFormularioBuscarPoliza(reclamacionAuto, vehiculo);
-  buscarPoliza();
-  continuar();
+  @Step
+  public void consultarPoliza(List<ReclamacionAuto> reclamacionAuto, List<Vehiculo> vehiculo) {
+    seleccionarOpcionMenuPrincipal();
+    completarFormularioBuscarPoliza(reclamacionAuto, vehiculo);
+    buscarPoliza();
+    continuar();
   }
 
   @Step
-  public void continuar(){
+  public void continuar() {
     buscarPolizaPage.continuarSiguientePantalla();
   }
 
   @Step
-  public void crearNuevaExposicionLesiones(List<Persona> personaReclamacionAuto,List<ReclamacionAuto> reclamacionAuto,
+  public void crearNuevaExposicionLesiones(
+      List<Persona> personaReclamacionAuto,
+      List<ReclamacionAuto> reclamacionAuto,
       List<ExposicionLesiones> exposicionLesiones) {
-    crearExposicionLesiones(
-        personaReclamacionAuto,
-        reclamacionAuto,
-        exposicionLesiones);
+    crearExposicionLesiones(personaReclamacionAuto, reclamacionAuto, exposicionLesiones);
     finalizarReclamacionAutos();
     validarReclamacionAutos();
     consultarReclamacionAutos();
   }
-
 }

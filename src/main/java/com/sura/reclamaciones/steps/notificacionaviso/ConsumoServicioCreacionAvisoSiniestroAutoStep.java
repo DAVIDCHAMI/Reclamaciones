@@ -40,10 +40,14 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacionAuto(
             genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA, ConstanteGlobal.PARAMETRO_PERSONA_LESIONADA));
+                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA,
+                ConstanteGlobal.PARAMETRO_PERSONA_LESIONADA));
     lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacionAuto();
     parametroPersonaConductorAuto =
-        new PersonaReclamacionAuto(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA,ConstanteGlobal.PARAMETRO_PERSONA_CONDUCTOR));
+        new PersonaReclamacionAuto(
+            genericStep.getFilasModelo(
+                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA,
+                ConstanteGlobal.PARAMETRO_PERSONA_CONDUCTOR));
     lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacionAuto();
     reclamacionVehiculo =
         new Vehiculo(
@@ -52,7 +56,9 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
     lstVehiculoParam = reclamacionVehiculo.getVehiculos();
     parametroAviso =
         new ReclamacionAuto(
-            genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_SINIESTRO_AUTOS, ConstanteGlobal.PARAMETRO_CREACION_AVISO_AUTOS_WS));
+            genericStep.getFilasModelo(
+                ConstanteGlobal.PARAMETROS_SINIESTRO_AUTOS,
+                ConstanteGlobal.PARAMETRO_CREACION_AVISO_AUTOS_WS));
     lstReclamacionAuto = parametroAviso.getLstReclamacionAuto();
   }
 

@@ -41,7 +41,6 @@ public class Persona {
     this.ciudad = datosPersona.get("ciudad");
     this.direccion = datosPersona.get("direccion");
     this.tipoDireccion = datosPersona.get("tipoDireccion");
-
   }
 
   public Persona(List<Map<String, String>> datosPersona) {
@@ -84,15 +83,25 @@ public class Persona {
     return celular;
   }
 
-  public String getNumeroTrabajo(){return numeroTrabajo;}
+  public String getNumeroTrabajo() {
+    return numeroTrabajo;
+  }
 
-  public String getPolicyRole(){return  policyRole;}
+  public String getPolicyRole() {
+    return policyRole;
+  }
 
-  public String getCiudad(){return ciudad;}
+  public String getCiudad() {
+    return ciudad;
+  }
 
-  public String getDireccion(){return direccion;}
+  public String getDireccion() {
+    return direccion;
+  }
 
-  public String getTipoDireccion(){return tipoDireccion;}
+  public String getTipoDireccion() {
+    return tipoDireccion;
+  }
 
   public List<Persona> getLstPersona() {
     return lstPersona;
