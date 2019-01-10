@@ -22,7 +22,7 @@ public class NotificacionAvisoSiniestroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Dado("^que se tiene una poliza de (.*)$")
+  @Dado("^que se tiene una póliza de (.*)$")
   public void buscarPoliza(String tipoCobertura) throws IOException {
     Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(tipoCobertura);
     reclamacionEmpresarial =
@@ -34,7 +34,7 @@ public class NotificacionAvisoSiniestroDefinition {
     nuevaReclamacionEmpresarialStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
   }
 
-  @Cuando("^se genere un siniestro por causal (.*) con un valor de pretension de (.*)$")
+  @Cuando("^se genere un siniestro por causal (.*) con un valor de pretensión de (.*)$")
   public void tomarDatosSiniestro(String causaSiniestro, String valorPretension) {
     nuevaReclamacionEmpresarialStep.seleccionarPropiedadImplicada();
     nuevaReclamacionEmpresarialStep.diligenciarInformacionPersonal(

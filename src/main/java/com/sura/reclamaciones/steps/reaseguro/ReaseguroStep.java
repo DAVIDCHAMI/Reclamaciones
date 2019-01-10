@@ -1,13 +1,13 @@
 package com.sura.reclamaciones.steps.reaseguro;
 
-import static com.sura.reclamaciones.utils.Constantes.NUMERO_SINIESTRO;
-import static com.sura.reclamaciones.utils.Constantes.REASEGURO_DETALLADO;
-import static com.sura.reclamaciones.utils.Constantes.RETENCION_PURA;
+import static com.sura.reclamaciones.constantes.Constantes.NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.constantes.Constantes.REASEGURO_DETALLADO;
+import static com.sura.reclamaciones.constantes.Constantes.RETENCION_PURA;
 
+import com.sura.reclamaciones.constantes.Constantes;
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.reaseguro.ReaseguroDetalladoTransaccionPage;
-import com.sura.reclamaciones.utils.Constantes;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;

@@ -1,6 +1,10 @@
 package com.sura.reclamaciones.steps.modelosimplificado;
 
-import com.sura.reclamaciones.constantes.TransaccionModeloSimplificadoConstante;
+import static com.sura.reclamaciones.constantes.Constantes.CLAVE;
+import static com.sura.reclamaciones.constantes.Constantes.DRIVER;
+import static com.sura.reclamaciones.constantes.Constantes.URL;
+import static com.sura.reclamaciones.constantes.Constantes.USUARIO;
+
 import com.sura.reclamaciones.models.TransaccionModeloSimplificado;
 import com.sura.reclamaciones.sentenciassql.ConsultarTransaccionModeloSimplificado;
 import com.sura.reclamaciones.utils.ConexionBaseDatosUtil;
@@ -27,10 +31,7 @@ public class ConsultarTransaccionModeloSimplificadoStep {
   public Connection conectarBaseDatos() {
     conexion =
         ConexionBaseDatosUtil.conectarBaseDatos(
-            TransaccionModeloSimplificadoConstante.USUARIO,
-                TransaccionModeloSimplificadoConstante.CLAVE,
-            TransaccionModeloSimplificadoConstante.URL,
-                TransaccionModeloSimplificadoConstante.DRIVER);
+            USUARIO.getValor(), CLAVE.getValor(), URL.getValor(), DRIVER.getValor());
     return conexion;
   }
 

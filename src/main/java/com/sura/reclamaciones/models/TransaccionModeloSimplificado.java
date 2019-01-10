@@ -6,13 +6,19 @@ import java.util.Map;
 
 public class TransaccionModeloSimplificado {
 
-  public String numeroMovimientoFinanciero;
-  public String numeroReclamacion;
-  public String valorCedidoReaseguradoras;
-  public String valorNeto;
-  public String valorMovimientoFinanciero;
-  public String estadoMovimientoFinanciero;
-  public List<TransaccionModeloSimplificado> lstTransaccionModeloSimplificado = new ArrayList<>();
+  private String numeroMovimientoFinanciero;
+  private String numeroReclamacion;
+  private String valorCedidoReaseguradoras;
+  private String valorNeto;
+  private String valorMovimientoFinanciero;
+  private String estadoMovimientoFinanciero;
+  private List<TransaccionModeloSimplificado> lstTransaccionModeloSimplificado = new ArrayList<>();
+
+  public TransaccionModeloSimplificado() {}
+
+  public TransaccionModeloSimplificado(List<Map<String, String>> datosModeloSimplificado) {
+    asignarDatos(datosModeloSimplificado);
+  }
 
   private TransaccionModeloSimplificado(Map<String, String> datosModeloSimplificado) {
     if (datosModeloSimplificado.containsKey("NUMERORECLAMACION")) {
@@ -39,12 +45,6 @@ public class TransaccionModeloSimplificado {
     this.valorNeto = datosModeloSimplificado.get("valorNeto");
     this.estadoMovimientoFinanciero = datosModeloSimplificado.get("estadoMovimientoFinanciero");
   }
-
-  public TransaccionModeloSimplificado(List<Map<String, String>> datosModeloSimplificado) {
-    asignarDatos(datosModeloSimplificado);
-  }
-
-  public TransaccionModeloSimplificado() {}
 
   public String getTransaccion() {
     return numeroMovimientoFinanciero;

@@ -1,6 +1,7 @@
-package com.sura.reclamaciones.utils;
+package com.sura.reclamaciones.constantes;
 
 public enum NombresCsv {
+  ANULACION_EMPRESARIAL("anulacion_empresarial"),
   CONTRATO("contrato"),
   PAGO_SINIESTRO("pago_empresarial"),
   RECUPERO("recupero");
