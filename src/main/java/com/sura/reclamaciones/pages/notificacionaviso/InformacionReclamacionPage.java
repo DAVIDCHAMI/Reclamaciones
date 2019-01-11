@@ -1,8 +1,6 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import net.serenitybdd.core.Serenity;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -87,6 +85,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   @FindBy(xpath = "//div[@class='suggestPopupMiddleCenterInner suggestPopupContent']")
   private WebElementFacade tblCausaSiniestroAtr;
 
+  @FindBy(xpath = "//ul[@class='x-list-plain']")
+  private WebElementFacade lstCausasSiniestroClaim;
 
   public InformacionReclamacionPage(WebDriver driver) {
     super(driver);
@@ -101,10 +101,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarCausaSiniestro(String causa) {
-   String lstCausaSiniestroClaim = "//li[.='COMODIN']";
-    mnuCausa.waitUntilPresent();
-    mnuCausa.click();
-    navegarMenu(causa, lstCausaSiniestroClaim);
+    mnuCausa.waitUntilPresent().click();
+    seleccionarOpcionLista(lstCausasSiniestroClaim, causa);
     realizarEsperaCarga();
   }
 

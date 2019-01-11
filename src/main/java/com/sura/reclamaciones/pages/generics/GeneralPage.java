@@ -244,8 +244,12 @@ public class GeneralPage extends PageObject {
     $(auxiliarMnuNavegar).waitUntilPresent().waitUntilVisible().click();
   }
 
-  public void seleccionarOpcionTabla(WebElementFacade tblOpcion, String opcionSeleccionar){
-    tblOpcion.findElement(By.xpath("//td[.='"+ opcionSeleccionar +"']")).click();
+  public void seleccionarOpcionTabla(WebElementFacade tblOpcion, String opcionSeleccionar) {
+    tblOpcion.findElement(By.xpath("//td[.='" + opcionSeleccionar + "']")).click();
+  }
+
+  public void seleccionarOpcionLista(WebElementFacade lista, String opcionListaSeleccionar) {
+    lista.findElement(By.xpath("//li[.='" + opcionListaSeleccionar + "']")).click();
   }
 
   protected void resaltarElemento(WebElementFacade elemento) {
