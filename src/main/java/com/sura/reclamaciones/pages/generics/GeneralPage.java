@@ -242,15 +242,10 @@ public class GeneralPage extends PageObject {
     $(auxiliarMnuNavegar).waitUntilVisible().click();
   }
 
-  public void actualizarPantalla(
-      String datoValidar, WebElement valorElementoPantalla, String iteraciones) {
-    int i;
-
-    for (i = 0; i <= Integer.parseInt(iteraciones); i++) {
+  public void actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {
       String strDatoPantalla = valorElementoPantalla.getText();
       if (!strDatoPantalla.equals(datoValidar)) {
         driver.navigate().refresh();
       }
     }
   }
-}

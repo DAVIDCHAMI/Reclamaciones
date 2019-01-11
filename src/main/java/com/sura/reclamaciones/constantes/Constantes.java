@@ -62,7 +62,8 @@ public enum Constantes {
   USUARIO("GW_CONF"),
   VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
   VALOR_REASEGURADO("Valor reasegurado"),
-  VERIFICADOR_NUMERO_SINIESTRO("9180000");
+  VERIFICADOR_NUMERO_SINIESTRO("9180000"),
+  ENGLISH("English (US)");
 
   private String valor;
 

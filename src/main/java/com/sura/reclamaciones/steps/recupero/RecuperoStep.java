@@ -1,5 +1,9 @@
 package com.sura.reclamaciones.steps.recupero;
 
+import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
+import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
+
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -7,19 +11,15 @@ import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
+import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
-import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
-import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
-import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
-
-
 public class RecuperoStep {
+
+  List<WebElement> lstFilaRecupero;
 
   @Page MenuRecuperoPage menuRecuperoPage;
 
@@ -65,10 +65,12 @@ public class RecuperoStep {
   public void verificarCreacionRecupero(List<Recupero> lstRecupero) {
     lstRecupero.forEach(
         (Recupero validador) -> {
-          List<WebElement> lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
+          for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
+          lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
           WebElement elementoXpath = lstFilaRecupero.get(9);
-          generalPage.actualizarPantalla(
-              validador.getEstadoTransaccion(), elementoXpath, ITERACIONES_RECUPERO.getValor());
+            generalPage.actualizarPantalla(
+                validador.getEstadoTransaccion(), elementoXpath);
+          }
           MatcherAssert.assertThat(
               "No coincide la categoria del recupero",
               verificacionRecuperoPage.verificarRecupero(
