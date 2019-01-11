@@ -3,17 +3,13 @@ package com.sura.reclamaciones.pages.notificacionaviso;
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 
 public class ResumenReclamacionPage extends GeneralPage {
-
-  @Page MenuClaimPage menuClaimPage;
 
   @FindBy(
     xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"

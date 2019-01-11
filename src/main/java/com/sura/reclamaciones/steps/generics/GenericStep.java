@@ -34,7 +34,9 @@ public class GenericStep {
     Utilidades utilidades = new Utilidades();
     return loadedData
         .stream()
-        .filter(fila -> Utilidades.inArray(arr, fila.get(Variables.COLUMNA_FILTRO_CSV.getValor())))
+        .filter(
+            fila ->
+                Utilidades.filtrarArreglo(arr, fila.get(Variables.COLUMNA_FILTRO_CSV.getValor())))
         .collect(Collectors.toList());
   }
 

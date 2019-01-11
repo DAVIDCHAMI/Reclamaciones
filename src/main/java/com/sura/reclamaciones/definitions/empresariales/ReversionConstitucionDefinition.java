@@ -19,7 +19,7 @@ public class ReversionConstitucionDefinition {
   ReclamacionEmpresarial reserva;
 
   @Dado(
-      "^que se genera un siniestro del producto (.*) con causa (.*), valor de pretension (.*) y tipo incidente de (.*)$")
+      "^que se genera un siniestro del producto (.*) con causa (.*), valor de pretensión (.*) y tipo incidente de (.*)$")
   public void consultarReserva(
       String producto, String causa, String valorPretension, String tipoIncidente)
       throws IOException {

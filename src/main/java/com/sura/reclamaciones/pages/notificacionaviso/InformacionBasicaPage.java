@@ -17,12 +17,6 @@ public class InformacionBasicaPage extends GeneralPage {
 
   @FindBy(
     xpath =
-        "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li"
-  )
-  private WebElementFacade lstAutorReporte;
-
-  @FindBy(
-    xpath =
         "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li[2]"
   )
   private WebElementFacade lstAutorReporteCliente;
@@ -73,10 +67,10 @@ public class InformacionBasicaPage extends GeneralPage {
   private WebElementFacade lstAmigo;
 
   @FindBy(id = "calendarfechaOcurrenciaInformacionSiniestroEmp")
-  private WebElementFacade calendarioFechaSiniestro;
+  private WebElementFacade tblCalendarioFechaSiniestro;
 
   @FindBy(className = "datePickerMonth")
-  private WebElementFacade indicadorAnioMes;
+  private WebElementFacade lblAnioMes;
 
   private String btnCambioMesAnio =
       "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
@@ -114,7 +108,7 @@ public class InformacionBasicaPage extends GeneralPage {
     }
   }
 
-  public void escribirDetallehechos(String detalle) {
+  public void escribirDetalleHechos(String detalle) {
     txtDetalleHechos.waitUntilVisible();
     txtDetalleHechos.type(detalle);
     continuarSiguientePantalla();
@@ -169,8 +163,8 @@ public class InformacionBasicaPage extends GeneralPage {
     String mesUsuario = fechaAviso.substring(5, 8);
     String anioUsuario = fechaAviso.substring(0, 4);
     realizarEsperaCarga();
-    calendarioFechaSiniestro.waitUntilVisible().click();
-    String auxIndicadorAnioMes = indicadorAnioMes.getText();
+    tblCalendarioFechaSiniestro.waitUntilVisible().click();
+    String auxIndicadorAnioMes = lblAnioMes.getText();
     String mesCalendarioAtr = auxIndicadorAnioMes.substring(5, 8);
     String anioCalendarioAtr = auxIndicadorAnioMes.substring(0, 4);
     if ("0".equalsIgnoreCase(diaUsuario.substring(0, 1))) {

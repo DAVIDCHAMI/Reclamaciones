@@ -17,8 +17,6 @@ public class ConsumoServicioCreacionSiniestro {
   CreacionSiniestroFactory creacionSiniestroFactory = new CreacionSiniestroFactory();
   CreacionSiniestroCliente creacionSiniestroCliente = new CreacionSiniestroCliente();
   ClaimsResponse response;
-  List<ReclamacionEmpresarial> lstSiniestroParam;
-  List<Persona> lstParametroPersona;
 
   @RequestMapping
   public void asignarParametrosRequest(
