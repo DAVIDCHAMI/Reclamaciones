@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.utils;
 
-import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,7 +27,7 @@ public class ConexionBaseDatosUtil {
         | IllegalAccessException
         | InstantiationException
         | ClassNotFoundException e) {
-      LOGGER.info("No respondió la base de datos");
+      Utilidades.getLogger().info("No respondió la base de datos");
     }
     return conexion;
   }
