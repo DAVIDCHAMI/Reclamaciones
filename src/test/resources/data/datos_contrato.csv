@@ -1,4 +1,3 @@
-id	;idFiltro														;proporcionExcedente			;proporcionCuotaParte		;deducibleMinimo		;porcentajeDeducibleMinimo		;porcentajeRetenido
-2		;MRC_01																;0																					;100																			;3906210										;10																							;15
-3		;MRC_03																;33.7622566												;66.237434													;0																;15																							;15
-1		;Incendio con cobertura Daños materiales 	;86.427321										;13.572679												;7812420										;10																							;15
+id	;idFiltro																																						;proporcionExcedente			;proporcionCuotaParte		;deducibleMinimo		;porcentajeDeducibleMinimo		;porcentajeRetenido
+1		;Incendio con cobertura Daños materiales			 			;0																					;100																			;1562484										;10																									;15
+2		;Multiriesgo corporativo con cobertura basica		;33.762566													;66.237434													;1562484										;10																									;15
