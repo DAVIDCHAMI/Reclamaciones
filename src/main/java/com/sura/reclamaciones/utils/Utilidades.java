@@ -4,10 +4,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import net.thucydides.core.steps.StepInterceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Utilidades {
 
-  public static boolean inArray(String[] arr, String item) {
+  public Utilidades() {}
+
+  public static boolean filtrarArreglo(String[] arr, String item) {
     if (arr.length > 0) {
       for (String n : arr) {
         if (item.equals(n)) {
@@ -55,6 +60,10 @@ public class Utilidades {
     map.put("Dic", 12);
     map.put("Diciembre", 12);
     return map.get(mes);
+  }
+
+  public static Logger getLogger() {
+    return LoggerFactory.getLogger(StepInterceptor.class);
   }
 
   public static int conversorCadenaEntero(String cadena) {

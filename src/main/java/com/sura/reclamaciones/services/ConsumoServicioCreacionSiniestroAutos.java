@@ -1,12 +1,11 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
-
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PersonaConductorAuto;
 import com.sura.reclamaciones.models.PersonaReclamacionAuto;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.cliente.siniestro.CreacionSiniestroAutoCliente;
 import com.sura.service.creacionSiniestroAuto.gen.ClaimsAutoRequest;
 import com.sura.service.creacionSiniestroAuto.gen.ClaimsAutoResponse;
@@ -264,7 +263,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
 
   private void obtenerResponse() {
     response = creacionSiniestroAutoCliente.claimsResponse(crearRequest());
-    LOGGER.info("Número de siniestro: " + response.getResult().getClaimNumber());
+    Utilidades.getLogger().info("Número de siniestro: " + response.getResult().getClaimNumber());
     Serenity.setSessionVariable(ReclamacionConstante.NUMERO_SINIESTRO)
         .to(response.getResult().getClaimNumber());
   }

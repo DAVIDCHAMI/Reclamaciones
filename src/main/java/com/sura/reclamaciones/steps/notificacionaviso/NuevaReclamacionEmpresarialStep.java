@@ -71,7 +71,7 @@ public class NuevaReclamacionEmpresarialStep {
     datosAutor.forEach(
         autor -> {
           informacionBasicaPage.seleccionarAutorReporte();
-          informacionBasicaPage.escribirDetallehechos(autor.getDetalleHechos());
+          informacionBasicaPage.escribirDetalleHechos(autor.getDetalleHechos());
         });
   }
 
