@@ -15,7 +15,7 @@ Característica: Distribución del reaseguro de un siniestro
 
     Ejemplos:
       | Tipo y Cobertura                            | Tipo Transacción    |  Causa          | Valor de Pretensión | Tipo de incidente |
-      |  Incendio con cobertura Daños materiales    | constitucionReserva |  Daños por agua | 5000000             | Propiedad         |
+      | Incendio con cobertura Daños materiales     | constitucionReserva |  Daños por agua | 5000000             | Propiedad         |
 
   @claimsEmpresarial
   Esquema del escenario: Reaseguro Reserva de liberación - Pago y liberación de reserva
