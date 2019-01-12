@@ -72,15 +72,14 @@ public class NuevaReclamacionEmpresarialStep {
   }
 
   public void visualizarResumenReclamacion() {
-    String numeroReclamacion = resumenReclamacionPage.obtenerNumeroReclamacion();
+    resumenReclamacionPage.obtenerNumeroReclamacion();
   }
 
   public void validarExposicionVisualizada(String exposicion) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
-    String validar = resumenReclamacionPage.validarExposicion();
     MatcherAssert.assertThat(
         "No generó exposición, verificar las reglas de administración de exposiciones o data ingresada",
-        validar.equals(exposicion));
+        resumenReclamacionPage.validarExposicion().equals(exposicion));
   }
 
   public void buscarPolizaEmpresarial(List<ReclamacionEmpresarial> datosPolizaEmpresarial) {
