@@ -28,9 +28,7 @@ public class LoginAtrStep {
   @Step
   public void iniciarSesionUAT(List<Credencial> datosCredencial) {
     datosCredencial.forEach(
-        dato -> {
-          autenticacionAtrPage.iniciarSesionUAT(dato.getUsuario(), dato.getContrasena());
-        });
+        dato -> autenticacionAtrPage.iniciarSesionUAT(dato.getUsuario(), dato.getContrasena()));
   }
 
   @Step

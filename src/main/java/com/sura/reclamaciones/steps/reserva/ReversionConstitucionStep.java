@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.reserva;
 
-import static com.sura.reclamaciones.constantes.ReservaConstante.*;
+import static com.sura.reclamaciones.constantes.ReservaConstante.NUEVAS_RESERVAS_DISPONIBLES;
 
 import com.sura.reclamaciones.pages.reservas.AjusteReservaPage;
 import com.sura.reclamaciones.pages.reservas.TransaccionDatoFinancieroPage;

@@ -44,8 +44,7 @@ public class NotificacionAvisoSiniestroDefinition {
 
   @Cuando("^un incidente de tipo (.*)$")
   public void tomarTipoIncidente(String tipoIncidente) {
-    nuevaReclamacionEmpresarialStep.diligenciarInformacionIncidente(
-        reclamacionEmpresarial.getLstReclamo(), tipoIncidente);
+    nuevaReclamacionEmpresarialStep.diligenciarInformacionIncidente(tipoIncidente);
   }
 
   @Entonces("^se obtiene una reclamacion que (.*) genera exposicion$")

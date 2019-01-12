@@ -195,7 +195,7 @@ public class ReclamacionAuto extends Reclamacion {
     return sospechoso;
   }
 
-  public void setSospechoso(boolean tipoPerdida) {
+  public void setSospechoso(boolean sospechoso) {
     this.sospechoso = sospechoso;
   }
 

@@ -20,6 +20,10 @@ public class ConstanteGlobal {
   public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO = 180;
   public static final String EMPRESARIALES = "Empresariales";
   public static final String AUTOS = "Autos";
+  public static final boolean TRUE = true;
+  public static final boolean FALSE = false;
+  public static final String RUTA_LOG_EMPRESARIAL = "C:\\Log\\RegistrosEmpresarial.txt";
+  public static final String RUTA_LOG_AUTO = "C:\\Log\\RegistrosAutos.txt";
 
   private ConstanteGlobal() {}
 }

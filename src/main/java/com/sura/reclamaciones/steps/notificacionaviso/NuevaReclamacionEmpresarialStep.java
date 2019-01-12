@@ -15,10 +15,8 @@ import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.steps.generics.UbicacionStep;
 import java.util.List;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.steps.StepInterceptor;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
-import org.slf4j.LoggerFactory;
 
 public class NuevaReclamacionEmpresarialStep {
 
@@ -38,15 +36,9 @@ public class NuevaReclamacionEmpresarialStep {
 
   @Steps UbicacionStep ubicacionStep;
 
-  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
-  public void diligenciarInformacionIncidente(
-      List<ReclamacionEmpresarial> datosIncidente, String incidente) {
-    datosIncidente.forEach(
-        datos -> {
-          informacionReclamacionPage.seleccionarTipoIncidente(incidente);
-          informacionReclamacionPage.finalizarSiniestro();
-        });
+  public void diligenciarInformacionIncidente(String incidente) {
+    informacionReclamacionPage.seleccionarTipoIncidente(incidente);
+    informacionReclamacionPage.finalizarSiniestro();
   }
 
   public void seleccionarCausalIncidente(String causa, String valorPretension) {

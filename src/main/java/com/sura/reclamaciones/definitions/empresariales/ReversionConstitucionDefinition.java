@@ -32,8 +32,7 @@ public class ReversionConstitucionDefinition {
     reclamacionEmpresarialStep.seleccionarPropiedadImplicada();
     reclamacionEmpresarialStep.diligenciarInformacionPersonal(reserva.getLstReclamo());
     reclamacionEmpresarialStep.seleccionarCausalIncidente(causa, valorPretension);
-    reclamacionEmpresarialStep.diligenciarInformacionIncidente(
-        reserva.getLstReclamo(), tipoIncidente);
+    reclamacionEmpresarialStep.diligenciarInformacionIncidente(tipoIncidente);
     reclamacionEmpresarialStep.visualizarResumenReclamacion();
   }
 
