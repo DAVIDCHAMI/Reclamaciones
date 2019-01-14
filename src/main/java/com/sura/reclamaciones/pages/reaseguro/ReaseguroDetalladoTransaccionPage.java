@@ -25,9 +25,6 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   @FindBy(xpath = "//div[@class='x-container g-screen x-container-page x-table-layout-ct']")
   private WebElementFacade tblReaseguroDetalladoTransaccion;
 
-  @FindBy(xpath = "//a[@id='ReinsuranceTransactionDetailSummary:__crumb__']")
-  private WebElementFacade btnVolverReaseguroDetalladoTransaccion;
-
   public ReaseguroDetalladoTransaccionPage(WebDriver driver) {
     super(driver);
   }

@@ -5,6 +5,7 @@ import static com.sura.reclamaciones.constantes.Constantes.RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.RESERVA;
 import static com.sura.reclamaciones.constantes.NombresCsv.CONTRATO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
+import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.models.Contrato;
@@ -41,10 +42,10 @@ public class ReaseguroDefinition {
   @Cuando(
       "^se realice al siniestro un pago (.*) a un (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
   public void realizarPagoSiniestroEmpresarial(
-      String lineaReserva,
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
+      String lineaReserva,
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
@@ -67,7 +68,7 @@ public class ReaseguroDefinition {
       String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException {
     strTransaccion = RECUPERO.getValor();
     Recupero recupero =
-        new Recupero(genericStep.getFilasModelo(RECUPERO.getValor(), strTipoContrato));
+        new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoContrato));
     recuperoStep.seleccionarRecupero();
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), strTipoRecupero, strCodigoRetencionRecupero);
