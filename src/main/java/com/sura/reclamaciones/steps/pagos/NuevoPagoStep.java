@@ -3,12 +3,14 @@ package com.sura.reclamaciones.steps.pagos;
 import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
+import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
@@ -24,17 +26,28 @@ import org.openqa.selenium.WebElement;
 
 public class NuevoPagoStep {
 
-  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
+  List<WebElement> lstFilaPago;
 
-  @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
+  @Page
+  IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
 
-  @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
+  @Page
+  IntroducirInformacionPagoPage introducirInformacionPagoPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page
+  EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
 
-  @Page ResumenReclamacionPage resumenReclamacionPage;
+  @Page
+  VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-  @Page MenuClaimPage menuClaimPage;
+  @Page
+  ResumenReclamacionPage resumenReclamacionPage;
+
+  @Page
+  MenuClaimPage menuClaimPage;
+
+  @Page
+  GeneralPage generalPage;
 
   @Step
   public void consultarNumeroReclamacion() {
@@ -82,13 +95,19 @@ public class NuevoPagoStep {
   public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
     lstPago.forEach(
         (PagoSiniestro validador) -> {
-          String strNumeroTransaccion =
-              verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
-          menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-              MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
-          List<WebElement> lstFilaPago =
-              verificacionDatosFinancierosPage.obtenerFilaTabla(
-                  strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
+          for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
+            generalPage.realizarEsperaCarga();
+            String strNumeroTransaccion =
+                verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
+            lstFilaPago = verificacionDatosFinancierosPage.obtenerFilaTabla(
+                strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
+            WebElement elementoXpath = lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
+            boolean estado = generalPage.actualizarPantalla(
+                validador.getEstadoTransaccion(), elementoXpath);
+            if (estado == true) {
+              i = Integer.parseInt(ITERACIONES_PAGO.getValor());
+            }
+          }
           String strValorReserva =
               (Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
           MatcherAssert.assertThat(
