@@ -157,8 +157,8 @@ public class GeneralPage extends PageObject {
   }
 
   public void continuarSiguientePantalla() {
-    btnSiguiente.waitUntilClickable();
-    btnSiguiente.click();
+    realizarEsperaCarga();
+    btnSiguiente.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
   }
 

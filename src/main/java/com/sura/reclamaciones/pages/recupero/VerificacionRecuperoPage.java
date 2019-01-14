@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.pages.recupero;
 
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
-import static com.sura.reclamaciones.constantes.Constantes.TIPO_TRANSACCION;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -24,7 +23,6 @@ public class VerificacionRecuperoPage extends GeneralPage {
 
   public List<WebElement> obtenerListaRecupero() {
     String strNumeroRecupero = obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(), 1);
-   // seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
     List<WebElement> lstFilaRecupero;
     lstFilaRecupero = obtenerFilaTabla(strNumeroRecupero, tblRecupero);
     return lstFilaRecupero;
