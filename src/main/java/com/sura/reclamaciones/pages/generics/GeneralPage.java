@@ -19,8 +19,8 @@ import org.slf4j.LoggerFactory;
 public class GeneralPage extends PageObject {
 
   @FindBy(
-    xpath =
-        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul"
+      xpath =
+          "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul"
   )
   public WebElementFacade lstOpcionesCombobox;
 
@@ -28,8 +28,8 @@ public class GeneralPage extends PageObject {
   public WebElementFacade pgrBarCarga;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']"
+      xpath =
+          "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']"
   )
   private WebElementFacade btnSiguiente;
 
@@ -43,8 +43,8 @@ public class GeneralPage extends PageObject {
   private WebElementFacade btnFinalizar;
 
   @FindBy(
-    xpath =
-        "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
+      xpath =
+          "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
   )
   private WebElementFacade txtTransacciones;
 
@@ -242,10 +242,12 @@ public class GeneralPage extends PageObject {
     $(auxiliarMnuNavegar).waitUntilVisible().click();
   }
 
-  public void actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {
-      String strDatoPantalla = valorElementoPantalla.getText();
-      if (!strDatoPantalla.equals(datoValidar)) {
-        driver.navigate().refresh();
-      }
+  public boolean actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {
+    String strDatoPantalla = valorElementoPantalla.getText();
+    if (!strDatoPantalla.equals(datoValidar)) {
+      driver.navigate().refresh();
+      return false;
     }
+    return true;
   }
+}

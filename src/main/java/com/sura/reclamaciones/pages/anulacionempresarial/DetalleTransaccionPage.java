@@ -104,4 +104,13 @@ public class DetalleTransaccionPage extends GeneralPage {
             lstTransaccion, strNumeroTransaccion, strEstadoPrevio, strTipoAnulacion);
     return estadoPago;
   }
+
+  public boolean validarAnulacion(String tipoAnulacion) {
+    if (btnAnular.containsElements(
+      By.xpath(
+    "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'enable')]"))) {
+    return true;
+    }
+    return false;
+  }
 }
