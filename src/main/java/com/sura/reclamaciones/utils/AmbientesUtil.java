@@ -14,8 +14,7 @@ public class AmbientesUtil {
   public String getAmbiente() {
     String envVariable = getEnv();
     logger.info("Ambiente en que corre el proceso. $ENV: " + envVariable);
-    String ambienteValidado = ambientesValidos(envVariable);
-    return ambienteValidado;
+    return ambientesValidos(envVariable);
   }
 
   protected String getEnv() {

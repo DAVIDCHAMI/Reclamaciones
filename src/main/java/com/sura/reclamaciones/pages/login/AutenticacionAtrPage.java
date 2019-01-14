@@ -20,10 +20,6 @@ import org.openqa.selenium.WebDriver;
 })
 public class AutenticacionAtrPage extends GeneralPage {
 
-  public AutenticacionAtrPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   private String btnClave =
       "//img[@src='/SSAutenticacion/imagenes/teclado/btnTec_COMODIN_off.gif']";
   private String auxiliarBtnClave = "";
@@ -48,6 +44,10 @@ public class AutenticacionAtrPage extends GeneralPage {
 
   @FindBy(xpath = "//img[@src='/SSAutenticacion/imagenes/btnIngresar.jpg']")
   private WebElementFacade btnIngresar;
+
+  public AutenticacionAtrPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
   public void iniciarSesionUAT(String usuario, String contrasena) {
     lstTipoDocumento.click();

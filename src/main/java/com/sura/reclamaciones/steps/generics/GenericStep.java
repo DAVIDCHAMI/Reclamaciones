@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.steps.generics;
 
-import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
-
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
@@ -36,7 +34,9 @@ public class GenericStep {
     Utilidades utilidades = new Utilidades();
     return loadedData
         .stream()
-        .filter(fila -> Utilidades.inArray(arr, fila.get(Variables.COLUMNA_FILTRO_CSV.getValor())))
+        .filter(
+            fila ->
+                Utilidades.filtrarArreglo(arr, fila.get(Variables.COLUMNA_FILTRO_CSV.getValor())))
         .collect(Collectors.toList());
   }
 
@@ -58,7 +58,7 @@ public class GenericStep {
         escribirAut.close();
       }
     } catch (Exception e) {
-      LOGGER.info("No se realizó el guardado del Log");
+      Utilidades.getLogger().info("No se realizó el guardado del Log");
     }
   }
 }
