@@ -246,6 +246,17 @@ public class NotificacionAvisoSiniestroAutoDefinition<$> {
     reclamacionStep.validarValorReservasResponsabilidadCivil(reserva.getLstReserva());
   }
 
+  @Entonces(
+      "^se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva$")
+  public void generarReclamacionSoloResponsabilidadCivil(DataTable reservas) throws IOException {
+    validarExposicionesAutomaticas();
+    reserva =
+        new Reserva(
+            genericStep.getFilasModelo(
+                ConstanteGlobal.PARAMETRO_LINEA_RESERVA, reclamacion_Solo_Responsabilidad_Civil));
+    reclamacionStep.validarValorReservasResponsabilidadCivil(reserva.getLstReserva());
+  }
+
   private void crearNuevaExposicionVehicular() {
     reclamacionStep.crearExposicionVehicular(
         exposicionVehiculoTercero.getLstExposicionTerceros(),

@@ -61,7 +61,7 @@ Característica: Generación avisos de siniestros autos
     Cuando se genere un siniestro por la causa y la culpabilidad SoloRC con Responsabilidad_civil_daños_persona y Responsabilidad_civil_daños_vehículo
   |Causa|Culpabilidad|Responsabilidad_civil_daños_persona|Responsabilidad_civil_daños_vehículo|
       |Colisión con vehículo|solo_RC|peaton_daños_persona|conductor_daños_vehículo|
-    Entonces se obtendrán las exposiciones automáticas para casa tipo de responsabilidad, con su restectiva reserva
+    Entonces se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva
     |valor_reserva_rc_lesiones|valor_reserva_rc_vehículo|
     |3600000                  |3400000                  |
 
