@@ -1,4 +1,4 @@
 id;idFiltro;pagador;lineaReserva;pais;departamento;ciudad;valorTransaccion;categoriaRecupero;estadoTransaccion
-1;Incendio con cobertura Daños materiales;MARTHA ENID ROJAS MARIACA CQLII;(1) 1ª parteContenido;Colombia;Antioquia;Medellin;15;Salvamento;Solicitado
-2;Daños materiales_02;9180000024284;VICTOR HUGO SEPULVEDA VALLEJO CQLII;(1) 1ª partePropiedad;Colombia;Antioquia;Medellin;18;Subrogación;Solicitado
-3;Daños materiales_03;9180000017862;FRANCISCO MANUEL BONILLA ROJAS CQLII;(1) 1ª parteGeneral;Colombia;Casanare;Bocas De Guanapalo (Miramar) (San Luis De Palenque);1000;Ingreso (otro);Solicitado
+1;Incendio con cobertura Daños materiales;MARTHA ENID ROJAS MARIACA CQLII;(1) 1ª parteContenido;Colombia;Antioquia;Medellin;12000000;Salvamento;Solicitado
+2;Multiriesgo corporativo con cobertura basica;ROBIN EDULFO BAUTISTA ALVAREZ CQLII;(1) 1ª partePropiedad;Colombia;Antioquia;Medellin;18500000;Subrogación;Solicitado
+3;Hogar con cobertura básica;AURA JUDITH LOPEZ JULIO CQLII;(1) 1ª partePropiedad;Colombia;Cauca;Popayán;2450000;Ingreso (otro);Solicitado

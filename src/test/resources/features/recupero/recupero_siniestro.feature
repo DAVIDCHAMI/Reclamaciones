@@ -16,4 +16,7 @@ Característica:Recupero de una reclamacion
     Ejemplos:
 
   | Tipo y Cobertura                       | causa          | valor de Pretensión | tipo de Incidente | tipo Recupero  |codigo Retencion|
-  | Incendio con cobertura Daños materiales| Daños por agua | 3000000             | Contenido         | Salvamento     |0099           |
+  | Incendio con cobertura Daños materiales| Daños por agua | 3000000             | Contenido         | Salvamento     |0099            |
+  | Multiriesgo corporativo con cobertura basica | Incendio | 5000000             |Propiedad          | Subrogación    |0099            |
+  | Hogar con cobertura básica             | Incendio       | 4500000             |Propiedad          | Ingreso (otro) |0088            |
+  | Cumplimiento con cobertura Cumplimiento del contrato | Incendio       | 4500000             |Propiedad          | Ingreso (otro) |0088            |
