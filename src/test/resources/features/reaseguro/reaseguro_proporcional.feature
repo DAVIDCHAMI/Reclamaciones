@@ -15,7 +15,7 @@ Característica: Distribución del reaseguro de un siniestro
 
     Ejemplos:
     | Tipo y Cobertura                            | Tipo Transacción    |  Causa          | Valor de Pretensión | Tipo de incidente |
-    | Incendio con cobertura Daños materiales     | constitucionReserva |  Daños por agua | 4000000             | Propiedad         |
+    | Incendio con cobertura Daños materiales     | constitucionReserva |  Daños por agua | 3000000             | Propiedad         |
 
  @claimsEmpresarial
   Esquema del escenario: Reaseguro Reserva de liberación - Pago y liberación de reserva
@@ -27,7 +27,7 @@ Característica: Distribución del reaseguro de un siniestro
 
     Ejemplos:
     | Tipo y Cobertura                                  |  Línea Reserva         | Tipo Pago | Beneficiario Pago             | Método Pago     | ¿Solo Sura?  | Código Retención  |Tipo Transacción   | Causa      | Valor de Pretensión | Tipo de incidente |
-    | Multiriesgo corporativo con cobertura basica      | (1) 1ª partePropiedad  | Final     | CLUB LOS TRIUNFADORES CQLII  | Pago por banco  | No           | 0099              | reservaLiberacion  | Incendio     |5000000            |Propiedad          |
+    | Multiriesgo corporativo con cobertura basica      | (1) 1ª partePropiedad  | Final     | CLUB LOS TRIUNFADORES CQLII  | Pago por banco  | No           | 0099              | reservaLiberacion  | Incendio     |3000000            |Propiedad          |
 
   @claimsEmpresarial
   Esquema del escenario: Reaseguro  del Recupero
