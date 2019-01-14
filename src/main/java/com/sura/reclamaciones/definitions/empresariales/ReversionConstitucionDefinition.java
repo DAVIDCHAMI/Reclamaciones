@@ -8,6 +8,7 @@ import com.sura.reclamaciones.steps.reserva.ReversionConstitucionStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class ReversionConstitucionDefinition {
@@ -18,10 +19,10 @@ public class ReversionConstitucionDefinition {
   ReclamacionEmpresarial reserva;
 
   @Dado(
-      "^que se genera un siniestro del producto (.*) con causa (.*), valor de pretension (.*) y tipo incidente de (.*)$")
+      "^que se genera un siniestro del producto (.*) con causa (.*), valor de pretensión (.*) y tipo incidente de (.*)$")
   public void consultarReserva(
       String producto, String causa, String valorPretension, String tipoIncidente)
-      throws Throwable {
+      throws IOException {
     reserva =
         new ReclamacionEmpresarial(
             genericStep.getFilasModelo("reclamacion_empresarial", "AvisoEmpresariales"));

@@ -9,6 +9,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESER
 import static java.lang.Math.abs;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
@@ -46,8 +47,11 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       }
       if (dblRetencionPura >= -dblMaximoValorRetencionPura
           && dblRetencionPura <= dblMaximoValorRetencionPura) {
-        LOGGER.info(
-            "El elemento " + posicionElementoFila + "esta en el rango permitido de retencion pura");
+        Utilidades.getLogger()
+            .info(
+                "El elemento "
+                    + posicionElementoFila
+                    + "esta en el rango permitido de retencion pura");
       } else {
         return false;
       }
@@ -70,7 +74,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               && (intDatoPantalla <= dblValorRetenido + dblRetencionPura)
           || ((intDatoPantalla >= dblValorRetenidoDeducible - dblRetencionPura)
               && (intDatoPantalla <= dblValorRetenidoDeducible + dblRetencionPura))) {
-        LOGGER.info("El retenido esta en el rango correcto");
+        Utilidades.getLogger().info("El retenido esta en el rango correcto");
       } else {
         return false;
       }
@@ -104,7 +108,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
                   <= Double.parseDouble(strValorDeducible)
                       - dblValorRetenidoDeducible
                       - dblRetencionPura))) {
-        LOGGER.info("El cedido esta en el rango correcto");
+        Utilidades.getLogger().info("El cedido esta en el rango correcto");
       } else {
         return false;
       }
