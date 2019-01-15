@@ -3,7 +3,7 @@ package com.sura.reclamaciones.definitions.empresariales;
 import static com.sura.reclamaciones.constantes.Constantes.ESTADO_ANULACION;
 import static com.sura.reclamaciones.constantes.NombresCsv.ANULACION_EMPRESARIAL;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
-import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO;
+import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.models.PagoSiniestro;
@@ -99,7 +99,8 @@ public class AnulacionEmpresarialDefinition {
                   strCodigoRetencion,
                   pagoSiniestro.getLstPago());
             });
-    recupero = new Recupero(genericStep.getFilasModelo(RECUPERO.getValor(), strTipoProducto));
+    recupero =
+        new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoProducto));
     recuperoStep.seleccionarRecupero();
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
