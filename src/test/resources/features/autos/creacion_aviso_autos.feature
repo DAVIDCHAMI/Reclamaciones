@@ -17,11 +17,6 @@ Característica: Generación avisos de siniestros autos
       |Causa|Culpabilidad|Responsabilidad_civil_daños_persona|Responsabilidad_civil_daños_vehículo|
       |Colisión con vehículo|responsabilidad_Civil|peaton_daños_persona|conductor_daños_vehículo|
     Entonces se obtendrán exposiciones automáticas y cada una con su respectiva reserva, según la culpabilidad marcada Responsabilidad Civil
-      |Exposiciones|Reservas|
-      |Daños       |300000  |
-      |Responsabilidad civil - daños a la persona|3600000|
-      |Responsabilidad civil - daños al vehículo |3400000|
-      |Vehiculo de reemplazo                     |       |
 
   @claimsAuto
   @pruebaRegresion
@@ -34,8 +29,6 @@ Característica: Generación avisos de siniestros autos
       |Causa|Culpabilidad|
       |Amit, Disturbios o desorden civil|archivo|
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
-      |Exposición|Reserva|
-      |Daños     |300000 |
 
   @claimsAuto
   @pruebaRegresion
@@ -48,8 +41,6 @@ Característica: Generación avisos de siniestros autos
       |Causa|Culpabilidad|
       |Colisión con vehículo|subrogación|
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
-      |Exposiciones|Reservas|
-      |Daños       |300000  |
 
   @claimsAuto
   @pruebaRegresion
@@ -62,7 +53,6 @@ Característica: Generación avisos de siniestros autos
   |Causa|Culpabilidad|Responsabilidad_civil_daños_persona|Responsabilidad_civil_daños_vehículo|
       |Colisión con vehículo|solo_RC|peaton_daños_persona|conductor_daños_vehículo|
     Entonces se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva
-    |valor_reserva_rc_lesiones|valor_reserva_rc_vehículo|
-    |3600000                  |3400000                  |
+
 
 

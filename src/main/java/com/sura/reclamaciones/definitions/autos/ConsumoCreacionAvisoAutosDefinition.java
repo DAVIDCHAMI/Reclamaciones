@@ -45,8 +45,7 @@ public class ConsumoCreacionAvisoAutosDefinition {
                 ConstanteGlobal.PARAMETRO_PERSONA_CONDUCTOR));
     lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacionAuto();
     reclamacionVehiculo =
-        new Vehiculo(
-            genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_RECLAMACION_VEHICULO, filtroCsv));
+        new Vehiculo(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_VEHICULO, filtroCsv));
     lstVehiculoParam = reclamacionVehiculo.getVehiculos();
     parametroAviso =
         new ReclamacionAuto(

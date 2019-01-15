@@ -14,7 +14,7 @@ public class ConstanteGlobal {
   public static final String PARAMETROS_PERSONA = "parametros_persona";
   public static final String PARAMETROS_RECLAMACION_PERSONA = "persona_reclamacion_auto";
   public static final String PARAMETROS_RECLAMACION = "reclamacion_auto";
-  public static final String PARAMETROS_RECLAMACION_VEHICULO = "vehiculo";
+  public static final String PARAMETROS_VEHICULO = "vehiculo";
   public static final String PARAMETRO_PERSONA_LESIONADA = "lesionado";
   public static final String PARAMETRO_PERSONA_CONDUCTOR = "conductor";
   public static final String PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO =
