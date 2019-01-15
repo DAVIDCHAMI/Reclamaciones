@@ -16,6 +16,11 @@ public class Persona {
   private String correoElectronico;
   private String telefonoPrincipal;
   private String celular;
+  private String numeroTrabajo;
+  private String policyRole;
+  private String ciudad;
+  private String direccion;
+  private String tipoDireccion;
 
   public Persona() {
     super();
@@ -31,6 +36,11 @@ public class Persona {
     this.correoElectronico = datosPersona.get("correoElectronico");
     this.telefonoPrincipal = datosPersona.get("telefonoPrincipal");
     this.celular = datosPersona.get("celular");
+    this.numeroTrabajo = datosPersona.get("numeroTrabajo");
+    this.policyRole = datosPersona.get("policyRole");
+    this.ciudad = datosPersona.get("ciudad");
+    this.direccion = datosPersona.get("direccion");
+    this.tipoDireccion = datosPersona.get("tipoDireccion");
   }
 
   public Persona(List<Map<String, String>> datosPersona) {
@@ -71,6 +81,26 @@ public class Persona {
 
   public String getCelular() {
     return celular;
+  }
+
+  public String getNumeroTrabajo() {
+    return numeroTrabajo;
+  }
+
+  public String getPolicyRole() {
+    return policyRole;
+  }
+
+  public String getCiudad() {
+    return ciudad;
+  }
+
+  public String getDireccion() {
+    return direccion;
+  }
+
+  public String getTipoDireccion() {
+    return tipoDireccion;
   }
 
   public List<Persona> getLstPersona() {
