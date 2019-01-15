@@ -11,7 +11,8 @@ import org.openqa.selenium.WebElement;
 
 public class VerificacionRecuperoPage extends GeneralPage {
 
-  @Page MenuClaimPage menuClaimPage;
+  @Page
+  MenuClaimPage menuClaimPage;
 
   private static String tblRecupero =
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";

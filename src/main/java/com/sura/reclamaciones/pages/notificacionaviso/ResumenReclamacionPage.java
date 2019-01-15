@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 public class ResumenReclamacionPage extends GeneralPage {
 
   @FindBy(
-    xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
+      xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
   )
   private WebElementFacade divNumeroReclamacion;
 
@@ -20,8 +20,8 @@ public class ResumenReclamacionPage extends GeneralPage {
   private WebElementFacade lnkTipoExposicion;
 
   @FindBy(
-    xpath =
-        "//a[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount']"
+      xpath =
+          "//a[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount']"
   )
   private WebElementFacade lnkReservaTransaccion;
 

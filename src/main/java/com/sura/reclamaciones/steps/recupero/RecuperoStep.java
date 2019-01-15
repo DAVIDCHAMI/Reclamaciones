@@ -81,10 +81,11 @@ public class RecuperoStep {
           for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
             generalPage.realizarEsperaCarga();
             lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
-            WebElement elementoXpath = lstFilaRecupero.get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
-            boolean estado =  generalPage.actualizarPantalla(
+            WebElement elementoXpath = lstFilaRecupero
+                .get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
+            boolean estadoTransaccionPantalla = generalPage.actualizarPantalla(
                 validador.getEstadoTransaccion(), elementoXpath);
-            if (estado == true){
+            if (estadoTransaccionPantalla == true) {
               i = Integer.parseInt(ITERACIONES_RECUPERO.getValor());
             }
           }

@@ -22,21 +22,29 @@ import org.slf4j.LoggerFactory;
 
 public class NuevaReclamacionEmpresarialStep {
 
-  @Page BuscarPolizaPage buscarPolizaPage;
+  @Page
+  BuscarPolizaPage buscarPolizaPage;
 
-  @Page MenuClaimPage menuClaimPage;
+  @Page
+  MenuClaimPage menuClaimPage;
 
-  @Page InformacionReclamacionPage informacionReclamacionPage;
+  @Page
+  InformacionReclamacionPage informacionReclamacionPage;
 
-  @Page InformacionBasicaPage informacionBasicaPage;
+  @Page
+  InformacionBasicaPage informacionBasicaPage;
 
-  @Page PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
+  @Page
+  PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
 
-  @Page ResumenReclamacionPage resumenReclamacionPage;
+  @Page
+  ResumenReclamacionPage resumenReclamacionPage;
 
-  @Page GeneralPage generalPage;
+  @Page
+  GeneralPage generalPage;
 
-  @Steps UbicacionStep ubicacionStep;
+  @Steps
+  UbicacionStep ubicacionStep;
 
   public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 

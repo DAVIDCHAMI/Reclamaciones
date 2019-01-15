@@ -14,9 +14,11 @@ import net.thucydides.core.annotations.Steps;
 
 public class RecuperoSiniestroDefinition {
 
-  @Steps RecuperoStep recuperoStep;
+  @Steps
+  RecuperoStep recuperoStep;
 
-  @Steps GenericStep genericStep;
+  @Steps
+  GenericStep genericStep;
 
   Recupero recupero;
 
