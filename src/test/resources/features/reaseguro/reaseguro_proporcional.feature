@@ -38,3 +38,11 @@ Característica: Distribución del reaseguro de un siniestro
     | Tipo Contrato Póliza |  Línea Reserva          | Tipo Pago | Beneficiario Pago                   | Método Pago | ¿Solo Sura?  | Código Retención  |Tipo Transacción   |Tipo Recupero|Codigo Retención Recupero|
     | MRC_01               | (1) 1ª parteContenido   | Final     |  SOLO FAMILIAR LTDA. CQLII          | Caja Sura   | No           | 0099              | reservaLiberacion |Salvamento   |0099                     |
 
+  @claimsEmpresarial
+ Esquema del escenario: Reaseguro Reversion de liberacion - Anulacion de pago y reversion de reserva
+#   Dado que se tiene una poliza empresarial con contrato <Tipo Contrato Reaseguro>
+#  Cuando se genere una reclamacion de la poliza por causal <Causa> con un valor de pretension de <Valor de Pretension> e incidente de tipo <Tipo de incidente>
+#  Y se genere un pago <tipoPago> a un <beneficiarioPago> por medio de <metodoPago> el cual cuenta con una linea de reserva <lineaReserva> donde el responsable <soloSura> es Sura por una retencion de <codigoRetencion>
+#  Y se genere una transaccion de Anulacion de pago
+#   Entonces para el <Tipo Transaccion> se distribuye el reaseguro por cada contrato y cada reasegurador
+
