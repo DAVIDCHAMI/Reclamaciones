@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
@@ -59,10 +61,12 @@ public class DetalleTransaccionPage extends GeneralPage {
       String strNumeroTransaccion,
       String strEstadoPrevio,
       String tipoAnulacion) {
-    for (WebElement aLstPago : lstTransaccion)
-      if (tipoAnulacion.equals(PAGO.getValor())) {
-        if (aLstPago.getText().equals(strNumeroTransaccion)
-            && lstTransaccion.get(5).getText().equals(strEstadoPrevio)) {
+    for (WebElement aLstPago : lstTransaccion){
+      for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
+       WebElement datoValidar =
+            lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
+        boolean estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, datoValidar);
+        if (estadoTransaccionPantalla == true) {
           aLstPago.click();
           aLstPago
               .findElement(
@@ -71,16 +75,14 @@ public class DetalleTransaccionPage extends GeneralPage {
                           "//a[@class='g-actionable'][contains(text(),'%s')]",
                           strNumeroTransaccion)))
               .click();
-          return true;
-        } else {
-          return false;
+          i = Integer.parseInt(ITERACIONES_PAGO.getValor());
         }
-      } else {
+      }
         if (aLstPago.getText().equals(strNumeroTransaccion)
             && lstTransaccion.get(9).getText().equals(strEstadoPrevio)) {
           aLstPago
               .findElement(
-                  By.xpath(String.format("//a[@class='g-actionable'][contains(text(),'$')]")))
+                  By.xpath("//a[@class='g-actionable'][contains(text(),'$')]"))
               .click();
           return true;
         } else {

@@ -1,11 +1,12 @@
-id		;idFiltro							;tipoPago		;lineaReserva											;beneficiarioPago																								;metodoPago					;soloSura
-1			;MRC_01									;Final					;(1) 1ª parteContenido		;SOLO FAMILIAR LTDA. CQLII  											  ;Pago por banco	;No
-2			;MRC_02									;Parcial			;(1) 1ª partePropiedad		;PISOS Y MAS PISOS LTDA. CQLII									 	;Caja Sura						;Sí
-3 		;HOGAR_01							;Final					;(1) 1ª parteContenido		;AURA JUDITH LOPEZ JULIO CQLII										 ;Caja Sura						;No
-4			;RC_01										;Parcial			;(1) 1ª parteGeneral				;INDUSTRIALES S.A. CQLII																	;Pago por banco	;Si
-5			;MRC_03									;Final					;(1) 1ª parteContenido		;CLUB LOS TRIUNFADORES CQLII													;Caja Sura						;No
-6			;HOGAR_02							;Parcial			;(1) 1ª parteContenido		;NOEMY DEL SOCORRO ROQUEME CASTAÑO CQLII ;Pago por banco	;Si
-7			;MRC_04									;Final					;(1) 1ª parteContenido		;REASEGUROS LTDA. CQLII																		;Caja Sura						;No
-8			;CUMPLIMIENTO_01;Parcial			;(1) 1ª parteGeneral				;JUGUETERIAS CQLII																							;Pago por banco ;Si
-9 		;HOGAR_03							;Final	    ;(1) 1ª parteContenido		;JESUS ANTONIO GOMEZ CAÑIZARES CQLII					;Caja Sura						;No
-10 	;HOGAR_04							;Parcial			;(1) 1ª parteContenido		;EL SOL DE HOY LTDA. CQLII 														;Transferencia		;No
+id		;idFiltro																																					;tipoPago		;lineaReserva											;beneficiarioPago																								;metodoPago						;soloSura
+1			;MRC_01																																							;Final					;(1) 1ª parteContenido		;SOLO FAMILIAR LTDA. CQLII  											  ;Pago por banco		;No
+2			;MRC_02																																							;Parcial			;(1) 1ª partePropiedad		;PISOS Y MAS PISOS LTDA. CQLII									 	;Caja Sura							;Sí
+3 		;HOGAR_01																																					;Final					;(1) 1ª parteContenido		;AURA JUDITH LOPEZ JULIO CQLII										 ;Caja Sura							;No
+4			;RC_01																																								;Parcial			;(1) 1ª parteGeneral				;INDUSTRIALES S.A. CQLII																	;Pago por banco		;Si
+5			;MRC_03																																							;Final					;(1) 1ª parteContenido		;CLUB LOS TRIUNFADORES CQLII													;Caja Sura							;No
+6			;HOGAR_02																																					;Parcial			;(1) 1ª parteContenido		;NOEMY DEL SOCORRO ROQUEME CASTAÑO CQLII ;Pago por banco		;Si
+7			;MRC_04																																							;Final					;(1) 1ª parteContenido		;REASEGUROS LTDA. CQLII																		;Caja Sura							;No
+8			;CUMPLIMIENTO_01																														;Parcial			;(1) 1ª parteGeneral				;JUGUETERIAS CQLII																							;Pago por banco 	;Si
+9 		;HOGAR_03																																					;Final	    ;(1) 1ª parteContenido		;JESUS ANTONIO GOMEZ CAÑIZARES CQLII					;Caja Sura							;No
+10 	;HOGAR_04																																					;Parcial			;(1) 1ª parteContenido		;EL SOL DE HOY LTDA. CQLII 														;Transferencia			;No
+11	;Multiriesgo corporativo con cobertura basica		;Final 				;(1) 1ª partePropiedad 	;CLUB LOS TRIUNFADORES CQLII 												;Pago por banco  ;No

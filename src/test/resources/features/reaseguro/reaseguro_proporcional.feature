@@ -47,10 +47,10 @@ Característica: Distribución del reaseguro de un siniestro
     Dado que se tiene una póliza de <Tipo y Cobertura>
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
     Y un incidente de tipo <Tipo de incidente>
-    Cuando  se realice al siniestro un pago <Tipo Pago> a un <Beneficiario Pago> por medio de <Método Pago> el cual cuenta con una línea de reserva <Línea Reserva> donde el responsable <¿Solo Sura?> es Sura por una retención de <Código Retención>#  Y se genere una transaccion de Anulacion de pago
-    Y se realice la anulación del pago
+    Y que se realice un pago, de un siniestro de una póliza empresarial con producto <Tipo y Cobertura> y código de retención <Código Retención Pago>
+    Cuando se realice la anulación del pago
     Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
 
     Ejemplos:
-  | Tipo y Cobertura                                  |  Línea Reserva         | Tipo Pago | Beneficiario Pago             | Método Pago     | ¿Solo Sura?  | Código Retención  |Tipo Transacción   | Causa      | Valor de Pretensión | Tipo de incidente |
-  | Multiriesgo corporativo con cobertura basica      | (1) 1ª partePropiedad  | Final     | CLUB LOS TRIUNFADORES CQLII  | Pago por banco  | No           | 0099              | reservaLiberacion  | Incendio     |3000000            |Propiedad          |
+  | Tipo y Cobertura                                     | Código Retención Pago |Tipo Transacción   | Causa      | Valor de Pretensión | Tipo de incidente |
+  | Multiriesgo corporativo con cobertura basica         | 0099              | reservaLiberacion  | Incendio       |3000000              |Propiedad          |
