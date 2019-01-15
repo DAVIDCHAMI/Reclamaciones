@@ -58,12 +58,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         calcularValorRetenido(strValorPantalla, porcentajeRetenido, proporcionCuotaParte);
       Double dblDatoPantalla =
         Double.parseDouble(lstFilaTransaccion.get(4).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), ""));
-    if ((dblDatoPantalla >=(Math.round(Double.parseDouble(strValorPantalla) - dblValorRetenido - dblRetencionPura)))&&(dblDatoPantalla <=(Math.round(Double.parseDouble(strValorPantalla) - dblValorRetenido + dblRetencionPura)))){
-      Utilidades.getLogger().info("El cedido esta en el rango correcto");
-      return true;
-    } else {
-      return false;
-    }
+    return ((dblDatoPantalla >=(Math.round(Double.parseDouble(strValorPantalla) - dblValorRetenido - dblRetencionPura)))&&(dblDatoPantalla <=(Math.round(Double.parseDouble(strValorPantalla) - dblValorRetenido + dblRetencionPura))));
   }
 
   private String calcularValorDeducible(
@@ -193,15 +188,9 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
   private boolean verificarPorcentajeRetenido(
       List<WebElement> lstFilaTransaccion, Double dblValorRetenido) {
-    String strDatoPantalla =
-        lstFilaTransaccion.get(5).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    if ((strDatoPantalla.equals(String.valueOf(Math.round(dblValorRetenido - dblRetencionPura))))){
-      Utilidades.getLogger().info("El retenido esta en el rango correcto");
-      return true;
-    } else {
-      return false;
-    }
-
+    Double dblDatoPantalla =
+      Double.parseDouble(lstFilaTransaccion.get(5).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), ""));
+    return ((dblDatoPantalla >=(Math.round(dblValorRetenido - dblRetencionPura)))&&(dblDatoPantalla <=(Math.round(dblValorRetenido + dblRetencionPura))));
   }
 
   private boolean verificarPago(
