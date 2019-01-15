@@ -62,8 +62,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
       "^se genere un siniestro por la causa y la culpabilidad Responsabilidad_civil_daños_persona y Responsabilidad_civil_daños_vehículo$")
   public void ingresarDatosSiniestroResponsabilidadCivil(DataTable parametrosSiniestro)
       throws IOException {
-    RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2).toString();
-    RESPONSABILIDAD_CIVIL_VEHICULO = parametrosSiniestro.raw().get(1).get(3).toString();
+    RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2);
+    RESPONSABILIDAD_CIVIL_VEHICULO = parametrosSiniestro.raw().get(1).get(3);
     reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.editarInformacionVehiculo(reclamacionAuto.getLstReclamacionAuto());
@@ -116,7 +116,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
 
   @Entonces(
       "^se obtendrán exposiciones automáticas y cada una con su respectiva reserva, según la culpabilidad marcada Responsabilidad Civil$")
-  public void generarReclamacionResponsabilidadCivil(DataTable reservas) throws IOException {
+  public void generarReclamacionResponsabilidadCivil() throws IOException {
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
@@ -140,10 +140,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
 
   @Entonces(
       "^se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo$")
-  public void generarReclamacionArchivo(DataTable reservas) throws IOException {
-    reclamacionStep.finalizarReclamacionAutos();
-    reclamacionStep.validarReclamacionAutos();
-    reclamacionStep.consultarReclamacionAutos();
+  public void generarReclamacionArchivo() throws IOException {
     exposicionesAutomaticasAutos =
         new ExposicionesAutomaticasAutos(
             genericStep.getFilasModelo(
@@ -188,8 +185,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
       "^se genere un siniestro por la causa y la culpabilidad SoloRC con Responsabilidad_civil_daños_persona y Responsabilidad_civil_daños_vehículo$")
   public void ingresarDatosSiniestroSoloResponsabilidadCivil(DataTable parametrosSiniestro)
       throws IOException {
-    RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2).toString();
-    RESPONSABILIDAD_CIVIL_VEHICULO = parametrosSiniestro.raw().get(1).get(3).toString();
+    RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2);
+    RESPONSABILIDAD_CIVIL_VEHICULO = parametrosSiniestro.raw().get(1).get(3);
     reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.editarInformacionVehiculo(reclamacionAuto.getLstReclamacionAuto());
@@ -235,17 +232,13 @@ public class NotificacionAvisoSiniestroAutoDefinition {
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETROS_EXPOSICION_AUTOMATICA,
                 EXPOSICIONES_SOLO_RESPONSABILIDAD_CIVIL));
-    validarExposicionesAutomaticas();
-    reserva =
-        new Reserva(
-            genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETRO_LINEA_RESERVA, RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL));
-    reclamacionStep.validarValorReservasResponsabilidadCivil(reserva.getLstReserva());
   }
 
   @Entonces(
       "^se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva$")
-  public void generarReclamacionSoloResponsabilidadCivil(DataTable reservas) throws IOException {
+  public void generarReclamacionSoloResponsabilidadCivil() throws IOException {
+    reclamacionStep.validarReclamacionAutos();
+    reclamacionStep.consultarReclamacionAutos();
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
