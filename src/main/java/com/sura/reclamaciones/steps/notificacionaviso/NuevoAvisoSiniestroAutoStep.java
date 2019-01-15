@@ -165,20 +165,22 @@ public class NuevoAvisoSiniestroAutoStep {
     agregarInformacionPage.ingresarEdicionVehiculo();
     detalleVehiculoPage.agregarConductor();
     detalleVehiculoPage.seleccionarConductorVehiculoAsegurado();
-    detalleVehiculoPage.seleccionarServicioTaller();
-    detalleVehiculoPage.agregarTaller();
-    detalleVehiculoPage.buscarProveedor();
-    detalleVehiculoPage.realizarEsperaCarga();
     datosReclamacion.forEach(
         datoReclamacionAutos -> {
           if (!datoReclamacionAutos
               .getCulpabilidad()
               .equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
+            detalleVehiculoPage.seleccionarServicioTaller();
+            detalleVehiculoPage.agregarTaller();
+            detalleVehiculoPage.buscarProveedor();
+            detalleVehiculoPage.realizarEsperaCarga();
             crearServicioPage.seleccionarProveedor(datoReclamacionAutos.getTallerReparacion());
+            detalleVehiculoPage.aceptarOpcion();
+            detalleVehiculoPage.volverPasoAnterior();
+          } else {
+            detalleVehiculoPage.aceptarOpcion();
           }
         });
-    detalleVehiculoPage.aceptarOpcion();
-    detalleVehiculoPage.volverPasoAnterior();
   }
 
   @Step
