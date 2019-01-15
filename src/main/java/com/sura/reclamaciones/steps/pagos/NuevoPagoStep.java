@@ -28,26 +28,19 @@ public class NuevoPagoStep {
 
   List<WebElement> lstFilaPago;
 
-  @Page
-  IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
+  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
 
-  @Page
-  IntroducirInformacionPagoPage introducirInformacionPagoPage;
+  @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
 
-  @Page
-  EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
+  @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
 
-  @Page
-  VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-  @Page
-  ResumenReclamacionPage resumenReclamacionPage;
+  @Page ResumenReclamacionPage resumenReclamacionPage;
 
-  @Page
-  MenuClaimPage menuClaimPage;
+  @Page MenuClaimPage menuClaimPage;
 
-  @Page
-  GeneralPage generalPage;
+  @Page GeneralPage generalPage;
 
   @Step
   public void consultarNumeroReclamacion() {
@@ -99,12 +92,14 @@ public class NuevoPagoStep {
             generalPage.realizarEsperaCarga();
             String strNumeroTransaccion =
                 verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
-            lstFilaPago = verificacionDatosFinancierosPage.obtenerFilaTabla(
-                strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
-            WebElement elementoXpath = lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
-            boolean estado = generalPage.actualizarPantalla(
-                validador.getEstadoTransaccion(), elementoXpath);
-            if (estado == true) {
+            lstFilaPago =
+                verificacionDatosFinancierosPage.obtenerFilaTabla(
+                    strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
+            WebElement elementoXpath =
+                lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
+            boolean estadoTransaccionPantalla =
+                generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
+            if (estadoTransaccionPantalla == true) {
               i = Integer.parseInt(ITERACIONES_PAGO.getValor());
             }
           }
