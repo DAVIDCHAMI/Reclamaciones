@@ -237,4 +237,13 @@ public class GeneralPage extends PageObject {
     auxiliarMnuNavegar = mnuNavegar.replace(ConstanteGlobal.COMODIN, opcionMenu);
     $(auxiliarMnuNavegar).waitUntilVisible().click();
   }
+
+  public boolean actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {
+    String strDatoPantalla = valorElementoPantalla.getText();
+    if (!strDatoPantalla.equals(datoValidar)) {
+      driver.navigate().refresh();
+      return false;
+    }
+    return true;
+  }
 }
