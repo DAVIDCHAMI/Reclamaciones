@@ -48,10 +48,15 @@ public class AnulacionEmpresarialDefinition {
       "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
   public void crearPago(String strTipoProducto, String strCodigoRetencion) throws IOException {
     pagoSiniestro =
-        new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(),Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
+        new PagoSiniestro(
+            (genericStep.getFilasModelo(
+                PAGO_SINIESTRO.getValor(),
+                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     anulacionEmpresarial =
         new AnulacionEmpresarial(
-            (genericStep.getFilasModelo(ANULACION_EMPRESARIAL.getValor(), Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
+            (genericStep.getFilasModelo(
+                ANULACION_EMPRESARIAL.getValor(),
+                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     anulacionEmpresarial
         .getLstAnulacionEmpresarial()
         .forEach(
@@ -70,7 +75,7 @@ public class AnulacionEmpresarialDefinition {
 
   @Cuando("^se realice la anulación del pago$")
   public void anularPago() {
-       anulacionEmpresarialStep.ingresarAnulacionPago(pagoSiniestro.getLstPago());
+    anulacionEmpresarialStep.ingresarAnulacionPago(pagoSiniestro.getLstPago());
   }
 
   @Entonces("^se debe obtener la anulación del pago, quedando en estado anulado$")

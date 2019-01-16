@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 
@@ -56,54 +57,35 @@ public class DetalleTransaccionPage extends GeneralPage {
     }
   }
 
-  private boolean ingresarNumeroAnular(
-      List<WebElement> lstTransaccion,
-      String strNumeroTransaccion,
-      String strEstadoPrevio,
-      String tipoAnulacion) {
-    for (WebElement aLstPago : lstTransaccion){
+  public boolean ingresarAnulacionEmpresarial(
+      String strNumeroTransaccion, String strEstadoPrevio, String strTipoAnulacion) {
+    List<WebElement> lstTransaccion;
+    boolean estadoTransaccionPantalla = false;
+    if (strTipoAnulacion.equals(PAGO.getValor())) {
       for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
-       WebElement datoValidar =
+        realizarEsperaCarga();
+        lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
+        WebElement elementoXpath =
             lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
-        boolean estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, datoValidar);
-        if (estadoTransaccionPantalla == true) {
-          aLstPago.click();
-          aLstPago
-              .findElement(
-                  By.xpath(
-                      String.format(
-                          "//a[@class='g-actionable'][contains(text(),'%s')]",
-                          strNumeroTransaccion)))
-              .click();
+        estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
+        if (estadoTransaccionPantalla) {
+          lstTransaccion.get(0).click();
           i = Integer.parseInt(ITERACIONES_PAGO.getValor());
         }
       }
-        if (aLstPago.getText().equals(strNumeroTransaccion)
-            && lstTransaccion.get(9).getText().equals(strEstadoPrevio)) {
-          aLstPago
-              .findElement(
-                  By.xpath("//a[@class='g-actionable'][contains(text(),'$')]"))
-              .click();
-          return true;
-        } else {
-          return false;
+    } else {
+      for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
+        realizarEsperaCarga();
+        lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
+        WebElement elementoXpath =
+            lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
+        estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
+        if (estadoTransaccionPantalla) {
+          lstTransaccion.get(0).click();
+          i = Integer.parseInt(ITERACIONES_RECUPERO.getValor());
         }
       }
-    return true;
-  }
-
-  public boolean ingresarAnulacionEmpresarial(
-      String strNumeroTransaccion, String strEstadoPrevio, String strTipoAnulacion) {
-    boolean estadoPago;
-    List<WebElement> lstTransaccion;
-    if (strTipoAnulacion.equals(PAGO.getValor())) {
-      lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
-    } else {
-      lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
     }
-    estadoPago =
-        ingresarNumeroAnular(
-            lstTransaccion, strNumeroTransaccion, strEstadoPrevio, strTipoAnulacion);
-    return estadoPago;
+    return estadoTransaccionPantalla;
   }
 }

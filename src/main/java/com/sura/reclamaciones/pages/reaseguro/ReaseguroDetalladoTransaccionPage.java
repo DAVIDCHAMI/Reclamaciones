@@ -90,10 +90,19 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         blnTransaccion =
             verificarRecupero(dblRetencionPura, porcentajeRetenido, proporcionCuotaParte);
         break;
+      case "Anulacion Pago":
+        blnTransaccion =
+            verificarAnulacion(dblRetencionPura, porcentajeRetenido, proporcionCuotaParte);
       default:
         return blnTransaccion;
     }
     return blnTransaccion;
+  }
+
+  private boolean verificarAnulacion(
+      double dblRetencionPura, String porcentajeRetenido, String proporcionCuotaParte) {
+    return false;
+    //To do
   }
 
   private boolean verificarRecupero(
