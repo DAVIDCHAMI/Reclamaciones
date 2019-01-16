@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.models.PersonaReclamacionAuto;
+import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestroAutos;
@@ -21,8 +21,8 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
   @Step
   public void siniestrarPolizaAutos(
       List<ReclamacionAuto> lstReclamacionAuto,
-      List<PersonaReclamacionAuto> lstPersonaLesionada,
-      List<PersonaReclamacionAuto> lstConductor,
+      List<PersonaReclamacion> lstPersonaLesionada,
+      List<PersonaReclamacion> lstConductor,
       List<Vehiculo> lstVehiculoParam) {
     consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);

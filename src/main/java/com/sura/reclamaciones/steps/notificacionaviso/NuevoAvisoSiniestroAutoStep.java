@@ -6,7 +6,7 @@ import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ExposicionLesiones;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
-import com.sura.reclamaciones.models.Persona;
+import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -71,7 +71,7 @@ public class NuevoAvisoSiniestroAutoStep {
   @Step
   public void crearExposicionVehicular(
       List<ExposicionVehiculoTercero> datosExposicionTercero,
-      List<Persona> datosPersonaReclamacion,
+      List<PersonaReclamacion> datosPersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto) {
     agregarInformacionPage.agregarExposicionVehiculoTercero();
     detalleVehiculoPage.agregarConductor();
@@ -82,7 +82,7 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Step
   public void crearExposicionLesiones(
-      List<Persona> datopersonaReclamacion,
+      List<PersonaReclamacion> datopersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto,
       List<ExposicionLesiones> datosExposicionLesiones) {
     agregarExposicionLesionesPage.agregarPersonaLesionada();
@@ -92,8 +92,8 @@ public class NuevoAvisoSiniestroAutoStep {
   }
 
   @Step
-  private void agregarPersonaConductor(List<Persona> datosPersonaReclamacion) {
-    for (Persona conductorVehiculoAfectado : datosPersonaReclamacion) {
+  private void agregarPersonaConductor(List<PersonaReclamacion> datosPersonaReclamacion) {
+    for (PersonaReclamacion conductorVehiculoAfectado : datosPersonaReclamacion) {
       detalleVehiculoPage.seleccionarTipoDocumento(conductorVehiculoAfectado.getTipoDocumento());
       detalleVehiculoPage.ingresarNumeroDocumento(conductorVehiculoAfectado.getNumDocumento());
       detalleVehiculoPage.ingresarPrimerNombre(conductorVehiculoAfectado.getPrimerNombre());
@@ -127,8 +127,8 @@ public class NuevoAvisoSiniestroAutoStep {
   }
 
   @Step
-  private void agregarPersonaLesionada(List<Persona> datopersonaReclamacion) {
-    for (Persona personaLesionada : datopersonaReclamacion) {
+  private void agregarPersonaLesionada(List<PersonaReclamacion> datopersonaReclamacion) {
+    for (PersonaReclamacion personaLesionada : datopersonaReclamacion) {
       agregarExposicionLesionesPage.seleccionarTipoDocumento(personaLesionada.getTipoDocumento());
       agregarExposicionLesionesPage.ingresarNumeroDocumento(personaLesionada.getNumDocumento());
       agregarExposicionLesionesPage.ingresarPrimerNombre(personaLesionada.getPrimerNombre());
@@ -284,7 +284,7 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Step
   public void crearNuevaExposicionLesiones(
-      List<Persona> personaReclamacionAuto,
+      List<PersonaReclamacion> personaReclamacionAuto,
       List<ReclamacionAuto> reclamacionAuto,
       List<ExposicionLesiones> exposicionLesiones) {
     crearExposicionLesiones(personaReclamacionAuto, reclamacionAuto, exposicionLesiones);

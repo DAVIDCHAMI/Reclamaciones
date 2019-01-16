@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PersonaReclamacionAuto extends Persona {
+public class PersonaReclamacion extends Persona {
 
   private String parteLesionada;
   private String gravedadLesion;
@@ -14,26 +14,26 @@ public class PersonaReclamacionAuto extends Persona {
   private String parteCuerpo;
   private String detalleParteCuerpo;
 
-  private List<PersonaReclamacionAuto> lstPersonaReclamacionAuto = new ArrayList<>();
+  private List<PersonaReclamacion> lstPersonaReclamacion = new ArrayList<>();
 
-  public PersonaReclamacionAuto() {
+  public PersonaReclamacion() {
     super();
   }
 
-  private PersonaReclamacionAuto(Map<String, String> datoPersonaReclamacionAuto) {
-    super(datoPersonaReclamacionAuto);
-    this.parteLesionada = datoPersonaReclamacionAuto.get("parteLesionada");
-    this.descripcionLesion = datoPersonaReclamacionAuto.get("descripcionLesion");
-    this.gravedadLesion = datoPersonaReclamacionAuto.get("gravedadLesion");
-    this.lesionGeneral = datoPersonaReclamacionAuto.get("lesionGeneral");
-    this.detalleLesion = datoPersonaReclamacionAuto.get("detalleLesion");
-    this.parteCuerpo = datoPersonaReclamacionAuto.get("parteCuerpo");
-    this.detalleParteCuerpo = datoPersonaReclamacionAuto.get("detalleParteCuerpo");
+  private PersonaReclamacion(Map<String, String> datoPersonaReclamacion) {
+    super(datoPersonaReclamacion);
+    this.parteLesionada = datoPersonaReclamacion.get("parteLesionada");
+    this.descripcionLesion = datoPersonaReclamacion.get("descripcionLesion");
+    this.gravedadLesion = datoPersonaReclamacion.get("gravedadLesion");
+    this.lesionGeneral = datoPersonaReclamacion.get("lesionGeneral");
+    this.detalleLesion = datoPersonaReclamacion.get("detalleLesion");
+    this.parteCuerpo = datoPersonaReclamacion.get("parteCuerpo");
+    this.detalleParteCuerpo = datoPersonaReclamacion.get("detalleParteCuerpo");
   }
 
-  public PersonaReclamacionAuto(List<Map<String, String>> datoPersonaReclamacionAuto) {
+  public PersonaReclamacion(List<Map<String, String>> datoPersonaReclamacion) {
     super();
-    asignarDatosPersona(datoPersonaReclamacionAuto);
+    asignarDatosPersona(datoPersonaReclamacion);
   }
 
   public String getParteLesionada() {
@@ -92,13 +92,13 @@ public class PersonaReclamacionAuto extends Persona {
     this.detalleParteCuerpo = detalleParteCuerpo;
   }
 
-  public List<PersonaReclamacionAuto> getLstPersonaReclamacionAuto() {
-    return lstPersonaReclamacionAuto;
+  public List<PersonaReclamacion> getLstPersonaReclamacion() {
+    return lstPersonaReclamacion;
   }
 
-  public void asignarDatosPersona(List<Map<String, String>> datoPersonaReclamacionAuto) {
-    for (Map<String, String> dato : datoPersonaReclamacionAuto) {
-      lstPersonaReclamacionAuto.add(new PersonaReclamacionAuto(dato));
+  public void asignarDatosPersona(List<Map<String, String>> datoPersonaReclamacion) {
+    for (Map<String, String> dato : datoPersonaReclamacion) {
+      lstPersonaReclamacion.add(new PersonaReclamacion(dato));
     }
   }
 }

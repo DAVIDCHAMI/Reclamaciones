@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Persona {
+abstract class Persona {
 
   private List<Persona> lstPersona = new ArrayList<>();
   private String primerNombre;
@@ -41,10 +41,6 @@ public class Persona {
     this.ciudad = datosPersona.get("ciudad");
     this.direccion = datosPersona.get("direccion");
     this.tipoDireccion = datosPersona.get("tipoDireccion");
-  }
-
-  public Persona(List<Map<String, String>> datosPersona) {
-    asignarDatos(datosPersona);
   }
 
   public String getPrimerNombre() {
@@ -105,11 +101,5 @@ public class Persona {
 
   public List<Persona> getLstPersona() {
     return lstPersona;
-  }
-
-  public void asignarDatos(List<Map<String, String>> datosPersona) {
-    for (Map<String, String> dato : datosPersona) {
-      lstPersona.add(new Persona(dato));
-    }
   }
 }

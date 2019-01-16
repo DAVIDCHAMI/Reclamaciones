@@ -4,7 +4,7 @@ import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.models.ExposicionLesiones;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
-import com.sura.reclamaciones.models.Persona;
+import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -26,7 +26,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
   private ExposicionVehiculoTercero exposicionVehiculoTercero;
-  private Persona personaReclamacionAuto;
+  private PersonaReclamacion personaReclamacion;
   private ExposicionLesiones exposicionLesiones;
   private Reserva reserva;
   private ReclamacionAuto direccionReclamacion;
@@ -73,8 +73,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO,
                 RESPONSABILIDAD_CIVIL_VEHICULO));
-    personaReclamacionAuto =
-        new Persona(
+    personaReclamacion =
+        new PersonaReclamacion(
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETROS_PERSONA, RESPONSABILIDAD_CIVIL_VEHICULO));
     direccionReclamacion =
@@ -82,8 +82,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETROS_DIRECCION_SINIESTRO, DIRECCION_EXPOSICION_VEHICULAR));
     crearNuevaExposicionVehicular();
-    personaReclamacionAuto =
-        new Persona(
+    personaReclamacion =
+        new PersonaReclamacion(
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETROS_PERSONA, RESPONSABILIDAD_CIVIL_LESIONES));
     direccionReclamacion =
@@ -96,27 +96,19 @@ public class NotificacionAvisoSiniestroAutoDefinition {
                 ConstanteGlobal.PARAMETRO_RESPONSABILIDAD_CIVIL_LESIONES,
                 RESPONSABILIDAD_CIVIL_LESIONES));
     reclamacionStep.crearNuevaExposicionLesiones(
-        personaReclamacionAuto.getLstPersona(),
+        personaReclamacion.getLstPersonaReclamacion(),
         reclamacionAuto.getLstReclamacionAuto(),
         exposicionLesiones.getLstExposicionLesiones());
-    exposicionesAutomaticasAutos =
-        new ExposicionesAutomaticasAutos(
-            genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_EXPOSICION_AUTOMATICA,
-                EXPOSICIONES_RESPONSABILIDAD_CIVIL));
-  }
-
-  @Cuando("se genere un siniestro por la causa y la culpabilidad$")
-  public void ingresarDatosSiniestro(DataTable culpabilidad) {
-    reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
-    reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
-    reclamacionStep.editarInformacionVehiculo(reclamacionAuto.getLstReclamacionAuto());
-    reclamacionStep.completarDatosReclamacionAutos(reclamacionAuto.getLstReclamacionAuto());
   }
 
   @Entonces(
       "^se obtendrán exposiciones automáticas y cada una con su respectiva reserva, según la culpabilidad marcada Responsabilidad Civil$")
   public void generarReclamacionResponsabilidadCivil() throws IOException {
+    exposicionesAutomaticasAutos =
+        new ExposicionesAutomaticasAutos(
+            genericStep.getFilasModelo(
+                ConstanteGlobal.PARAMETROS_EXPOSICION_AUTOMATICA,
+                EXPOSICIONES_RESPONSABILIDAD_CIVIL));
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
@@ -136,6 +128,16 @@ public class NotificacionAvisoSiniestroAutoDefinition {
             genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_VEHICULO, RECLAMACION_ARCHIVO));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
+  }
+
+  @Cuando("se genere un siniestro por la causa y la culpabilidad$")
+  public void ingresarDatosSiniestro(DataTable culpabilidad) {
+    reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
+    reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
+    reclamacionStep.editarInformacionVehiculo(reclamacionAuto.getLstReclamacionAuto());
+    reclamacionStep.completarDatosReclamacionAutos(reclamacionAuto.getLstReclamacionAuto());
+    reclamacionStep.finalizarReclamacionAutos();
+    reclamacionStep.consultarReclamacionAutos();
   }
 
   @Entonces(
@@ -196,8 +198,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO,
                 RESPONSABILIDAD_CIVIL_VEHICULO));
-    personaReclamacionAuto =
-        new Persona(
+    personaReclamacion =
+        new PersonaReclamacion(
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETROS_PERSONA, RESPONSABILIDAD_CIVIL_VEHICULO));
     direccionReclamacion =
@@ -205,8 +207,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETROS_DIRECCION_SINIESTRO, DIRECCION_EXPOSICION_VEHICULAR));
     crearNuevaExposicionVehicular();
-    personaReclamacionAuto =
-        new Persona(
+    personaReclamacion =
+        new PersonaReclamacion(
             genericStep.getFilasModelo(
                 ConstanteGlobal.PARAMETROS_PERSONA, RESPONSABILIDAD_CIVIL_LESIONES));
     direccionReclamacion =
@@ -219,26 +221,19 @@ public class NotificacionAvisoSiniestroAutoDefinition {
                 ConstanteGlobal.PARAMETRO_RESPONSABILIDAD_CIVIL_LESIONES,
                 RESPONSABILIDAD_CIVIL_LESIONES));
     reclamacionStep.crearNuevaExposicionLesiones(
-        personaReclamacionAuto.getLstPersona(),
+        personaReclamacion.getLstPersonaReclamacion(),
         reclamacionAuto.getLstReclamacionAuto(),
         exposicionLesiones.getLstExposicionLesiones());
-    exposicionesAutomaticasAutos =
-        new ExposicionesAutomaticasAutos(
-            genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_EXPOSICION_AUTOMATICA,
-                EXPOSICIONES_RESPONSABILIDAD_CIVIL));
-    exposicionesAutomaticasAutos =
-        new ExposicionesAutomaticasAutos(
-            genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_EXPOSICION_AUTOMATICA,
-                EXPOSICIONES_SOLO_RESPONSABILIDAD_CIVIL));
   }
 
   @Entonces(
       "^se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva$")
   public void generarReclamacionSoloResponsabilidadCivil() throws IOException {
-    reclamacionStep.validarReclamacionAutos();
-    reclamacionStep.consultarReclamacionAutos();
+    exposicionesAutomaticasAutos =
+        new ExposicionesAutomaticasAutos(
+            genericStep.getFilasModelo(
+                ConstanteGlobal.PARAMETROS_EXPOSICION_AUTOMATICA,
+                EXPOSICIONES_SOLO_RESPONSABILIDAD_CIVIL));
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
@@ -250,7 +245,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   private void crearNuevaExposicionVehicular() {
     reclamacionStep.crearExposicionVehicular(
         exposicionVehiculoTercero.getLstExposicionTerceros(),
-        personaReclamacionAuto.getLstPersona(),
+        personaReclamacion.getLstPersonaReclamacion(),
         direccionReclamacion.getLstReclamacionAuto());
   }
 

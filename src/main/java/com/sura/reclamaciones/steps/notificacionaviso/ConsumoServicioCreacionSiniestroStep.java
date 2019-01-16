@@ -2,7 +2,7 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.models.Persona;
+import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
@@ -15,9 +15,9 @@ import org.hamcrest.MatcherAssert;
 public class ConsumoServicioCreacionSiniestroStep {
 
   List<ReclamacionEmpresarial> lstSiniestroParam;
-  List<Persona> lstParametroPersona;
+  List<PersonaReclamacion> lstParametroPersona;
   ReclamacionEmpresarial parametroSiniestro = new ReclamacionEmpresarial();
-  Persona parametroPersona;
+  PersonaReclamacion parametroPersona;
 
   GenericStep genericStep = new GenericStep();
 
@@ -37,9 +37,9 @@ public class ConsumoServicioCreacionSiniestroStep {
             genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_SINIESTRO, filtroSiniestroCsv));
     lstSiniestroParam = parametroSiniestro.getLstReclamo();
     parametroPersona =
-        new Persona(
+        new PersonaReclamacion(
             genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, filtroSiniestroCsv));
-    lstParametroPersona = parametroPersona.getLstPersona();
+    lstParametroPersona = parametroPersona.getLstPersonaReclamacion();
   }
 
   public void verificarSiniestro() {

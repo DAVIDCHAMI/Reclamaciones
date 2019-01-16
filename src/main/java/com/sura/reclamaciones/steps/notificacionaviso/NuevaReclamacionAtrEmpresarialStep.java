@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import com.sura.reclamaciones.models.Persona;
+import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
@@ -30,7 +30,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   @Step
-  public void diligenciarInformacionAsegurado(List<Persona> datosPersona) {
+  public void diligenciarInformacionAsegurado(List<PersonaReclamacion> datosPersona) {
     asistenteVirtualAtrPage.seleccionarPlanListaProducto();
     datosPersona.forEach(
         asegurado -> {
