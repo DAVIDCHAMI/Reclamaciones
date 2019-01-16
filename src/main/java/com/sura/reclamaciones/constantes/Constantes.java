@@ -22,7 +22,7 @@ public enum Constantes {
   FECHA_HOY("Hoy"),
   IDENTIFICACION_REASEGURADOR("Identificación del reasegurador"),
   INGLES("English (US)"),
-  ITERACIONES_ANULACION("10"),
+  ITERACIONES_ANULACION("20"),
   ITERACIONES_PAGO("10"),
   ITERACIONES_RECUPERO("3"),
   LABORATORIO("uat"),

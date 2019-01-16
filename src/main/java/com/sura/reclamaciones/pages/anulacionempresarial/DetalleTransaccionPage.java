@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.anulacionempresarial;
 
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_ANULACION;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
@@ -39,22 +40,28 @@ public class DetalleTransaccionPage extends GeneralPage {
 
   public boolean realizarAnulacion(String tipoAnulacion) {
     if (tipoAnulacion.equals(PAGO.getValor())) {
-      if (btnAnular.containsElements(
-          By.xpath(
-              "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'disabled')]"))) {
-        return false;
-      } else {
-        anularTransaccion();
-        return true;
+      for (int i = 0; i <= Integer.parseInt(ITERACIONES_ANULACION.getValor()); i++) {
+        if (btnAnular.containsElements(
+            By.xpath(
+                "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'disabled')]"))) {
+          driver.navigate().refresh();
+        } else {
+          anularTransaccion();
+          return true;
+        }
       }
     } else {
-      if (btnAnular.isVisible()) {
-        anularTransaccion();
-        return true;
-      } else {
-        return false;
+      for (int i = 0; i <= Integer.parseInt(ITERACIONES_ANULACION.getValor()); i++) {
+        if (btnAnular.isVisible()) {
+          anularTransaccion();
+          return true;
+        } else {
+          driver.navigate().refresh();
+          return false;
+        }
       }
     }
+    return false;
   }
 
   public boolean ingresarAnulacionEmpresarial(
@@ -70,6 +77,14 @@ public class DetalleTransaccionPage extends GeneralPage {
         estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
         if (estadoTransaccionPantalla) {
           lstTransaccion.get(0).click();
+          lstTransaccion
+              .get(0)
+              .findElement(
+                  By.xpath(
+                      String.format(
+                          "//a[@class='g-actionable'][contains(text(),'%s')]",
+                          strNumeroTransaccion)))
+              .click();
           i = Integer.parseInt(ITERACIONES_PAGO.getValor());
         }
       }
