@@ -16,7 +16,6 @@ import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.slf4j.LoggerFactory;
 
 public class GeneralPage extends PageObject {
 
@@ -70,8 +69,6 @@ public class GeneralPage extends PageObject {
   private String auxiliarReemplazo = "";
 
   protected WebDriver driver;
-
-  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
@@ -270,5 +267,14 @@ public class GeneralPage extends PageObject {
       ventana = driver.getWindowHandles();
       driver.close();
     } while (ventana.size() != 1);
+  }
+
+  public boolean actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {
+    String strDatoPantalla = valorElementoPantalla.getText();
+    if (!strDatoPantalla.equals(datoValidar)) {
+      driver.navigate().refresh();
+      return false;
+    }
+    return true;
   }
 }

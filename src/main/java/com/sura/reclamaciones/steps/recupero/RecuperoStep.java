@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.steps.recupero;
 
-import static com.sura.reclamaciones.utils.Constantes.CANTIDAD;
-import static com.sura.reclamaciones.utils.Constantes.CODIGO_RETENCION;
+import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
+import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -28,7 +28,7 @@ public class RecuperoStep {
   @Page ResumenReclamacionPage resumenReclamacionPage;
 
   @Step
-  public void seleccionarNumeroReclamacion(String reclamacionMenu, List<Recupero> lstRecupero) {
+  public void seleccionarNumeroReclamacion() {
     resumenReclamacionPage.obtenerNumeroReclamacion();
   }
 

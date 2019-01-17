@@ -1,12 +1,10 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.pages.generics.GeneralPage.LOGGER;
-
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.models.PersonaConductorAuto;
 import com.sura.reclamaciones.models.PersonaReclamacionAuto;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.cliente.siniestro.CreacionSiniestroAutoCliente;
 import com.sura.service.creacionSiniestroAuto.gen.ClaimsAutoRequest;
 import com.sura.service.creacionSiniestroAuto.gen.ClaimsAutoResponse;
@@ -24,7 +22,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
   public void asignarParametrosRequest(
       List<ReclamacionAuto> lstSiniestroParam,
       List<PersonaReclamacionAuto> lstPersonaLesionada,
-      List<PersonaConductorAuto> lstConductor,
+      List<PersonaReclamacionAuto> lstConductor,
       List<Vehiculo> lstVehiculoParam) {
     asignarParametrosSiniestro(lstSiniestroParam);
     asignarParametrosAutor(lstConductor);
@@ -71,7 +69,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstSiniestroParam.get(campoDato).getAutoridadTransito());
   }
 
-  private void asignarParametrosAutor(List<PersonaConductorAuto> lstConductor) {
+  private void asignarParametrosAutor(List<PersonaReclamacionAuto> lstConductor) {
     creacionSiniestroAutosFactory.setDocumentType(lstConductor.get(campoDato).getTipoDocumento());
     creacionSiniestroAutosFactory.setTaxIDAuthor(lstConductor.get(campoDato).getNumDocumento());
   }
@@ -84,7 +82,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosContactoPrincipal(
-      List<PersonaConductorAuto> lstPersonaReclamacionAuto) {
+      List<PersonaReclamacionAuto> lstPersonaReclamacionAuto) {
     creacionSiniestroAutosFactory.setDocumentTypeMainContact(
         lstPersonaReclamacionAuto.get(campoDato).getTipoDocumento());
     creacionSiniestroAutosFactory.setTaxIDMainContact(
@@ -107,7 +105,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstPersonaReclamacionAuto.get(campoDato).getPolicyRole());
   }
 
-  private void asignarParametrosDireccionPrincipal(List<PersonaConductorAuto> lstConductor) {
+  private void asignarParametrosDireccionPrincipal(List<PersonaReclamacionAuto> lstConductor) {
     creacionSiniestroAutosFactory.setAddressLine1MainContact(
         lstConductor.get(campoDato).getDireccion());
     creacionSiniestroAutosFactory.setAddressTypeMainContact(
@@ -131,7 +129,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
         lstSiniestroParam.get(campoDato).getRelacionAsegurado());
   }
 
-  private void asignarParametrosConductorVehiculo(List<PersonaConductorAuto> lstConductor) {
+  private void asignarParametrosConductorVehiculo(List<PersonaReclamacionAuto> lstConductor) {
     creacionSiniestroAutosFactory.setFirstNameDriver(lstConductor.get(campoDato).getPrimerNombre());
     creacionSiniestroAutosFactory.setMiddleNameDriver(
         lstConductor.get(campoDato).getSegundoNombre());
@@ -150,7 +148,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setTaxIDDriver(lstConductor.get(campoDato).getNumDocumento());
   }
 
-  private void asignarParametrosDireccionConductor(List<PersonaConductorAuto> lstConductor) {
+  private void asignarParametrosDireccionConductor(List<PersonaReclamacionAuto> lstConductor) {
     creacionSiniestroAutosFactory.setAddressLine1Driver(lstConductor.get(campoDato).getDireccion());
     creacionSiniestroAutosFactory.setAddressTypeDriver(
         lstConductor.get(campoDato).getTipoDireccion());
@@ -181,7 +179,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setVinVehicle(lstVehiculoParam.get(campoDato).getChasis());
   }
 
-  private void asignarParametrosReclamante(List<PersonaConductorAuto> lstConductor) {
+  private void asignarParametrosReclamante(List<PersonaReclamacionAuto> lstConductor) {
     creacionSiniestroAutosFactory.setDocumentTypeAnt(
         lstConductor.get(campoDato).getTipoDocumento());
     creacionSiniestroAutosFactory.setContactNameAnt(lstConductor.get(campoDato).getPrimerNombre());
@@ -264,7 +262,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
 
   private void obtenerResponse() {
     response = creacionSiniestroAutoCliente.claimsResponse(crearRequest());
-    LOGGER.info("Número de siniestro: " + response.getResult().getClaimNumber());
+    Utilidades.getLogger().info("Número de siniestro: " + response.getResult().getClaimNumber());
     Serenity.setSessionVariable(ReclamacionConstante.NUMERO_SINIESTRO)
         .to(response.getResult().getClaimNumber());
   }

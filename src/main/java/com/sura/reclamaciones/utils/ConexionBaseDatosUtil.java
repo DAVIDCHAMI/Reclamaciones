@@ -27,7 +27,7 @@ public class ConexionBaseDatosUtil {
         | IllegalAccessException
         | InstantiationException
         | ClassNotFoundException e) {
-      e.printStackTrace();
+      Utilidades.getLogger().info("No respondió la base de datos");
     }
     return conexion;
   }
@@ -47,8 +47,6 @@ public class ConexionBaseDatosUtil {
         }
         lstFila.add(fila);
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
     } finally {
       resultSet.close();
       statement.close();

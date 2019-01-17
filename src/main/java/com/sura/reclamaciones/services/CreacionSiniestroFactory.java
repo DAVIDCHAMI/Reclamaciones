@@ -64,7 +64,8 @@ public class CreacionSiniestroFactory {
   private boolean fixedPropertyIncident;
   private boolean propertyContentsIncident;
 
-  public CreacionSiniestroFactory() {}
+  public CreacionSiniestroFactory() { //Constructor
+  }
 
   public String getLossDate() {
     return lossDate;

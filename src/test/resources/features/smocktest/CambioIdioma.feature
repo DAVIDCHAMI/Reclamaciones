@@ -10,6 +10,5 @@ Característica: Cambio de idioma
 
   @claims
   Escenario: Cambio de idioma us
-    Dado que estoy listo para trabajar reclamaciones
     Cuando cambie el idioma a us
     Entonces el idioma de reclamaciones debe ser us
