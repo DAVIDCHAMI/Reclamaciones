@@ -8,6 +8,7 @@ import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
@@ -41,14 +42,18 @@ public class DetalleTransaccionPage extends GeneralPage {
   public boolean realizarAnulacion(String tipoAnulacion) {
     if (tipoAnulacion.equals(PAGO.getValor())) {
       for (int i = 0; i <= Integer.parseInt(ITERACIONES_ANULACION.getValor()); i++) {
+        int count=0;
         if (btnAnular.containsElements(
             By.xpath(
                 "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'disabled')]"))) {
-          driver.navigate().refresh();
+        realizarEsperaCarga();
+        driver.navigate().refresh();
         } else {
           anularTransaccion();
+          System.out.print(count);
           return true;
         }
+        count ++;
       }
     } else {
       for (int i = 0; i <= Integer.parseInt(ITERACIONES_ANULACION.getValor()); i++) {
@@ -57,7 +62,6 @@ public class DetalleTransaccionPage extends GeneralPage {
           return true;
         } else {
           driver.navigate().refresh();
-          return false;
         }
       }
     }
