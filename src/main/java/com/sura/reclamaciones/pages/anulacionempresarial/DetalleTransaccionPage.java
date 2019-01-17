@@ -100,7 +100,11 @@ public class DetalleTransaccionPage extends GeneralPage {
             lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
         estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
         if (estadoTransaccionPantalla) {
-          lstTransaccion.get(0).click();
+          lstTransaccion.get(2).click();
+          lstTransaccion.get(2)
+                .findElement(
+                    By.xpath("//a[@class='g-actionable'][contains(text(),'$')]"))
+                .click();
           i = Integer.parseInt(ITERACIONES_RECUPERO.getValor());
         }
       }

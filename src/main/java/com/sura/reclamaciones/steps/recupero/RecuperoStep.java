@@ -46,7 +46,7 @@ public class RecuperoStep {
           creacionRecuperoPage.seleccionarPais(formulario.getPais());
           creacionRecuperoPage.seleccionarDepartamento(formulario.getDepartamento());
           creacionRecuperoPage.seleccionarCiudad(formulario.getCiudad());
-          creacionRecuperoPage.seleccionarCategoriaRecuperacion(tipoRecupero);
+          creacionRecuperoPage.seleccionarCategoriaRecuperacion(formulario.getCategoriaRecupero());
           creacionRecuperoPage.diligenciarCodigoRetencion(
               codigoRetencion, CODIGO_RETENCION.getValor());
           creacionRecuperoPage.diligenciarCantidadRecupero(

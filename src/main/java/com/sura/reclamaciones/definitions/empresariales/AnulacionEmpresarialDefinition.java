@@ -88,26 +88,26 @@ public class AnulacionEmpresarialDefinition {
   public void crearPagoRecupero(String strTipoProducto, String strCodigoRetencion)
       throws IOException {
     pagoSiniestro =
-        new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), strTipoProducto)));
+        new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(),  Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     anulacionEmpresarial =
         new AnulacionEmpresarial(
-            (genericStep.getFilasModelo(ANULACION_EMPRESARIAL.getValor(), strTipoProducto)));
+            (genericStep.getFilasModelo(ANULACION_EMPRESARIAL.getValor(), Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     anulacionEmpresarial
         .getLstAnulacionEmpresarial()
         .forEach(
             ajustador -> {
               nuevoPagoStep.consultarNumeroReclamacion();
               nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+                  ajustador.getLineaReserva(),
                   ajustador.getTipoPago(),
                   ajustador.getBeneficiarioPago(),
                   ajustador.getMetodoPago(),
-                  ajustador.getLineaReserva(),
                   ajustador.getSoloSura(),
                   strCodigoRetencion,
                   pagoSiniestro.getLstPago());
             });
     recupero =
-        new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoProducto));
+        new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(),  Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
     recuperoStep.seleccionarRecupero();
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);

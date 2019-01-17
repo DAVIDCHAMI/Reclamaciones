@@ -42,18 +42,18 @@ Característica: Distribución del reaseguro de un siniestro
 #    | Tipo y Cobertura                         |  Línea Reserva          | Tipo Pago | Beneficiario Pago                   | Método Pago | ¿Solo Sura?  | Código Retención Pago  |Tipo Transacción   |Tipo Recupero|Código Retención Recupero|  Causa               | Valor de Pretensión | Tipo de incidente |
 #    | Incendio con cobertura Daños materiales  | (1) 1ª parteContenido   | Final     |   MARTHA ENID ROJAS MARIACA CQLII   | Caja Sura   | No           | 0010                   | reservaLiberacion |Salvamento   |0099                     | Daños por agua       |3000000              |Contenido          |
 
-  @claimsEmpresarial
- Esquema del escenario: Reaseguro Reversion de liberacion - Anulacion de pago y reversion de reserva
-    Dado que se tiene una póliza de <Tipo y Cobertura>
-    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
-    Y un incidente de tipo <Tipo de incidente>
-    Y que se realice un pago, de un siniestro de una póliza empresarial con producto <Tipo y Cobertura> y código de retención <Código Retención Pago>
-    Cuando se realice la anulación del pago
-    Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
-
-    Ejemplos:
-  | Tipo y Cobertura                                     | Código Retención Pago |Tipo Transacción   | Causa      | Valor de Pretensión | Tipo de incidente |
-  | Multiriesgo corporativo con cobertura basica         | 0099              | reservaLiberacion  | Incendio       |3000000              |Propiedad          |
+#  @claimsEmpresarial
+# Esquema del escenario: Reaseguro Reversion de liberacion - Anulacion de pago y reversion de reserva
+#    Dado que se tiene una póliza de <Tipo y Cobertura>
+#    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
+#    Y un incidente de tipo <Tipo de incidente>
+#    Y que se realice un pago, de un siniestro de una póliza empresarial con producto <Tipo y Cobertura> y código de retención <Código Retención Pago>
+#    Cuando se realice la anulación del pago
+#    Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
+#
+#    Ejemplos:
+#  | Tipo y Cobertura                                     | Código Retención Pago |Tipo Transacción   | Causa      | Valor de Pretensión | Tipo de incidente |
+#  | Multiriesgo corporativo con cobertura basica         | 0099              | reservaLiberacion  | Incendio       |3000000              |Propiedad          |
 
   @claimsEmpresarial
   Esquema del escenario: anulacion  recupero

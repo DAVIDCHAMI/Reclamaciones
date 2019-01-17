@@ -93,6 +93,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       case "Anulacion Pago":
         blnTransaccion =
             verificarAnulacion(dblRetencionPura, porcentajeRetenido, proporcionCuotaParte);
+        break;
       default:
         return blnTransaccion;
     }
