@@ -15,12 +15,16 @@ public enum Constantes {
   DATOS_FINANCIEROS("Datos financieros"),
   DESARROLLO("dllo"),
   DRIVER("oracle.jdbc.driver.OracleDriver"),
+  ENGLISH("English (US)"),
   ESPANOL("Spanish (CO)"),
   ESTADO_ANULACION("Anulado"),
   EXPOSICIONES("Exposiciones"),
   FECHA_HOY("Hoy"),
   IDENTIFICACION_REASEGURADOR("Identificación del reasegurador"),
   INGLES("English (US)"),
+  ITERACIONES_ANULACION("10"),
+  ITERACIONES_PAGO("10"),
+  ITERACIONES_RECUPERO("3"),
   LABORATORIO("uat"),
   NIT("98630089"),
   NO("no"),
@@ -53,14 +57,14 @@ public enum Constantes {
   TIPO_TRANSACCION("Recuperaciones"),
   TRANSACCIONES("Transacciones"),
   TRANSFERENCIA_ELECTRONICA("Transferencia"),
+  UBICACION_ESTADO_PAGO("5"),
   URL("jdbc:oracle:thin:@clustercsl01:1537/labgwcc"),
   US("(US)"),
   USD("USD"),
   USUARIO("GW_CONF"),
   VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
   VALOR_REASEGURADO("Valor reasegurado"),
-  VERIFICADOR_NUMERO_SINIESTRO("9180000"),
-  ENGLISH("English (US)");
+  VERIFICADOR_NUMERO_SINIESTRO("9180000");
 
   private String valor;
 
