@@ -77,9 +77,8 @@ public class RecuperoStep {
                 .get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
             boolean estadoTransaccionPantalla = generalPage.actualizarPantalla(
                 validador.getEstadoTransaccion(), elementoXpath);
-            if (estadoTransaccionPantalla) {
+            if (estadoTransaccionPantalla)
               i = Integer.parseInt(ITERACIONES_RECUPERO.getValor());
-            }
           }
           MatcherAssert.assertThat(
               "No coincide la categoria del recupero",
