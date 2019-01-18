@@ -15,36 +15,26 @@ import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.steps.generics.UbicacionStep;
 import java.util.List;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.steps.StepInterceptor;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
-import org.slf4j.LoggerFactory;
 
 public class NuevaReclamacionEmpresarialStep {
 
-  @Page
-  BuscarPolizaPage buscarPolizaPage;
+  @Page BuscarPolizaPage buscarPolizaPage;
 
-  @Page
-  MenuClaimPage menuClaimPage;
+  @Page MenuClaimPage menuClaimPage;
 
-  @Page
-  InformacionReclamacionPage informacionReclamacionPage;
+  @Page InformacionReclamacionPage informacionReclamacionPage;
 
-  @Page
-  InformacionBasicaPage informacionBasicaPage;
+  @Page InformacionBasicaPage informacionBasicaPage;
 
-  @Page
-  PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
+  @Page PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
 
-  @Page
-  ResumenReclamacionPage resumenReclamacionPage;
+  @Page ResumenReclamacionPage resumenReclamacionPage;
 
-  @Page
-  GeneralPage generalPage;
+  @Page GeneralPage generalPage;
 
-  @Steps
-  UbicacionStep ubicacionStep;
+  @Steps UbicacionStep ubicacionStep;
 
   public void diligenciarInformacionIncidente(
       List<ReclamacionEmpresarial> datosIncidente, String incidente) {

@@ -21,20 +21,15 @@ public class RecuperoStep {
 
   List<WebElement> lstFilaRecupero;
 
-  @Page
-  CreacionRecuperoPage creacionRecuperoPage;
+  @Page CreacionRecuperoPage creacionRecuperoPage;
 
-  @Page
-  GeneralPage generalPage;
+  @Page GeneralPage generalPage;
 
-  @Page
-  MenuRecuperoPage menuRecuperoPage;
+  @Page MenuRecuperoPage menuRecuperoPage;
 
-  @Page
-  ResumenReclamacionPage resumenReclamacionPage;
+  @Page ResumenReclamacionPage resumenReclamacionPage;
 
-  @Page
-  VerificacionRecuperoPage verificacionRecuperoPage;
+  @Page VerificacionRecuperoPage verificacionRecuperoPage;
 
   @Step
   public void seleccionarNumeroReclamacion() {
@@ -71,12 +66,11 @@ public class RecuperoStep {
           for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
             generalPage.realizarEsperaCarga();
             lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
-            WebElement elementoXpath = lstFilaRecupero
-                .get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
-            boolean estadoTransaccionPantalla = generalPage.actualizarPantalla(
-                validador.getEstadoTransaccion(), elementoXpath);
-            if (estadoTransaccionPantalla)
-              i = Integer.parseInt(ITERACIONES_RECUPERO.getValor());
+            WebElement elementoXpath =
+                lstFilaRecupero.get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
+            boolean estadoTransaccionPantalla =
+                generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
+            if (estadoTransaccionPantalla) break;
           }
           MatcherAssert.assertThat(
               "No coincide la categoria del recupero",

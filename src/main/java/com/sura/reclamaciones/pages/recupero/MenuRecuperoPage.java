@@ -11,14 +11,14 @@ public class MenuRecuperoPage extends GeneralPage {
   private WebElementFacade btnAcciones;
 
   @FindBy(
-      xpath =
-          "//a[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans-itemEl']"
+    xpath =
+        "//a[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans-itemEl']"
   )
   private WebElementFacade mnuOtros;
 
   @FindBy(
-      xpath =
-          "//span[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans:ClaimMenuActions_NewTransaction_RecoverySet-textEl']"
+    xpath =
+        "//span[@id='Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewOtherTrans:ClaimMenuActions_NewTransaction_RecoverySet-textEl']"
   )
   private WebElementFacade mnuRecuperos;
 
