@@ -1,25 +1,25 @@
 package com.sura.reclamaciones.definitions.autos;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
+
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
+import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.models.PersonaReclamacionAuto;
+import com.sura.reclamaciones.models.ReclamacionAuto;
+import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
-import java.io.IOException;
-import java.util.List;
-import com.sura.reclamaciones.models.ReclamacionAuto;
-import com.sura.reclamaciones.models.PersonaReclamacionAuto;
-import com.sura.reclamaciones.models.Vehiculo;
-import net.serenitybdd.core.Serenity;
-import com.sura.reclamaciones.models.PagoSiniestro;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
+import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
-public class PagoSiniestroDefinition
-{
+public class PagoSiniestroDefinition {
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
   @Steps GenericStep genericStep;
   @Steps NuevoPagoStep nuevoPagoStep;
@@ -63,14 +63,21 @@ public class PagoSiniestroDefinition
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
   }
 
-  @Cuando("^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la linea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
-  public void crearPagoAutos(String tipoPago, String beneficiarioPago, String metodoPago, String lineaReserva, String aplicaSoloSura, String codigoRetencion) throws IOException {
+  @Cuando(
+      "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la linea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
+  public void crearPagoAutos(
+      String tipoPago,
+      String beneficiarioPago,
+      String metodoPago,
+      String lineaReserva,
+      String aplicaSoloSura,
+      String codigoRetencion)
+      throws IOException {
     nuevoPagoStep.consultarNumeroReclamacionAutos(
         Serenity.sessionVariableCalled(ReclamacionConstante.NUMERO_SINIESTRO));
     pagoSiniestro =
         new PagoSiniestro(
-            (genericStep.getFilasModelo(
-                String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
+            (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
         tipoPago,
@@ -82,12 +89,7 @@ public class PagoSiniestroDefinition
   }
 
   @Entonces("^se obtiene el pago del beneficiario$")
-  public void verificarPagoAutos()
-  {
+  public void verificarPagoAutos() {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
-
 }
-
-
-

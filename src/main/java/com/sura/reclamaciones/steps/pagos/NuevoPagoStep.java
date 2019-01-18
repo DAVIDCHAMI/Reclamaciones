@@ -118,10 +118,8 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void consultarNumeroReclamacionAutos(String numReclamacion)
-  {
-    menuClaimPage.buscarReclamacion(MenuConstante
-        .RECLAMACION_MENU,numReclamacion);
+  public void consultarNumeroReclamacionAutos(String numReclamacion) {
+    menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 }
