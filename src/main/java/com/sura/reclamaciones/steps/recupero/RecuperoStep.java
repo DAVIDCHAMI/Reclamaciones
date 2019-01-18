@@ -2,9 +2,11 @@ package com.sura.reclamaciones.steps.recupero;
 
 import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
+import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECUPERO;
 
 import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
@@ -17,15 +19,17 @@ import org.openqa.selenium.WebElement;
 
 public class RecuperoStep {
 
-  @Page MenuRecuperoPage menuRecuperoPage;
+  List<WebElement> lstFilaRecupero;
 
   @Page CreacionRecuperoPage creacionRecuperoPage;
 
-  @Page VerificacionRecuperoPage verificacionRecuperoPage;
+  @Page GeneralPage generalPage;
 
-  @Page MenuClaimPage menuClaimPage;
+  @Page MenuRecuperoPage menuRecuperoPage;
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
+
+  @Page VerificacionRecuperoPage verificacionRecuperoPage;
 
   @Step
   public void seleccionarNumeroReclamacion() {
@@ -59,7 +63,15 @@ public class RecuperoStep {
   public void verificarCreacionRecupero(List<Recupero> lstRecupero) {
     lstRecupero.forEach(
         (Recupero validador) -> {
-          List<WebElement> lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
+          for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
+            generalPage.realizarEsperaCarga();
+            lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
+            WebElement elementoXpath =
+                lstFilaRecupero.get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
+            boolean estadoTransaccionPantalla =
+                generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
+            if (estadoTransaccionPantalla) break;
+          }
           MatcherAssert.assertThat(
               "No coincide la categoria del recupero",
               verificacionRecuperoPage.verificarRecupero(
