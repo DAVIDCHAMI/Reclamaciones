@@ -23,9 +23,9 @@ public class DetalleTransaccionPage extends GeneralPage {
   }
 
   private void anularTransaccion() {
-    //btnAnular.waitUntilClickable();
-    //btnAnular.click();
-    //realizarEsperaCarga();
+    btnAnular.waitUntilClickable();
+    btnAnular.click();
+    realizarEsperaCarga();
     btnAnular.waitUntilClickable();
     btnAnular.click();
     realizarEsperaCarga();
@@ -103,14 +103,5 @@ public class DetalleTransaccionPage extends GeneralPage {
         ingresarNumeroAnular(
             lstTransaccion, strNumeroTransaccion, strEstadoPrevio, strTipoAnulacion);
     return estadoPago;
-  }
-
-  public boolean validarAnulacion(String tipoAnulacion) {
-    if (btnAnular.containsElements(
-      By.xpath(
-    "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'enable')]"))) {
-    return true;
-    }
-    return false;
   }
 }

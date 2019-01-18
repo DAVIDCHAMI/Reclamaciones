@@ -23,19 +23,11 @@ public class RecuperoStep {
 
   List<WebElement> lstFilaRecupero;
 
-  private String strTipoAnulacion;
-
   @Page
   CreacionRecuperoPage creacionRecuperoPage;
 
   @Page
-  DetalleTransaccionPage detalleTransaccionPage;
-
-  @Page
   GeneralPage generalPage;
-
-  @Page
-  MenuClaimPage menuClaimPage;
 
   @Page
   MenuRecuperoPage menuRecuperoPage;
@@ -85,7 +77,7 @@ public class RecuperoStep {
                 .get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
             boolean estadoTransaccionPantalla = generalPage.actualizarPantalla(
                 validador.getEstadoTransaccion(), elementoXpath);
-            if (estadoTransaccionPantalla == true) {
+            if (estadoTransaccionPantalla) {
               i = Integer.parseInt(ITERACIONES_RECUPERO.getValor());
             }
           }

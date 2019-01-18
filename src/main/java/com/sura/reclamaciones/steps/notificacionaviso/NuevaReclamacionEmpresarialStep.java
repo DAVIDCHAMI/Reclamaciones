@@ -46,8 +46,6 @@ public class NuevaReclamacionEmpresarialStep {
   @Steps
   UbicacionStep ubicacionStep;
 
-  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
   public void diligenciarInformacionIncidente(
       List<ReclamacionEmpresarial> datosIncidente, String incidente) {
     datosIncidente.forEach(

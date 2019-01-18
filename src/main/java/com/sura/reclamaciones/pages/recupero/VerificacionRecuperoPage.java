@@ -16,7 +16,6 @@ public class VerificacionRecuperoPage extends GeneralPage {
 
   private static String tblRecupero =
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
-  private String strNumeroRecupero;
 
   public VerificacionRecuperoPage(WebDriver driver) {
     super(driver);
