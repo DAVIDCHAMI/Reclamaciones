@@ -1,5 +1,16 @@
 package com.sura.reclamaciones.runners.uat.claimcenter.lote2autos;
 
-public class PagoSiniestroAutosRunner {
+import cucumber.api.CucumberOptions;
+import net.serenitybdd.cucumber.CucumberWithSerenity;
+import org.junit.runner.RunWith;
 
+@RunWith(CucumberWithSerenity.class)
+@CucumberOptions(
+    features = "src/test/resources/features/pagos/pago_siniestro_empresarial.feature",
+    glue = {"com.sura.reclamaciones.definitions"},
+    tags = {"@claimsAuto"}
+)
+
+public class PagoSiniestroAutosRunner
+{
 }
