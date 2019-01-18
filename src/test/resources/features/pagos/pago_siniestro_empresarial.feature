@@ -6,7 +6,6 @@ Característica: Realizar pago de un siniestro
   Para responderle al cliente por su siniestro
 
   @claimsEmpresarial
-
   Esquema del escenario: Pago siniestro empresarial
     Dado que se tiene una póliza de <Tipo y Cobertura>
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
@@ -23,3 +22,13 @@ Característica: Realizar pago de un siniestro
       | (1) 1ª parteGeneral   | Final        | HERMANOS LTDA. CQLII              | Pago por banco  | No                 | 0023                | Responsabilidad Civil Predios y operaciones          | Responsabilidad civil del asegurado | 3000000             | General           |
       | (1) 1ª parteContenido | Final        | JUAN CARLOS PALACIO RAMIREZ CQLII | Pago por banco  | No                 | 0099                | Transportes automáticos de mercancía                 | Amit/ huelga, conmoción civil       | 4000000             | Contenido         |
       | (1) 1ª parteContenido | Final        | CUATRO TEMPORADAS S.A. CQLII      | Pago por banco  | No                 | 0079                | Sustracción con cobertura Sustracción con violencia  | Causas varias                       | 4000000             | Contenido         |
+
+  @claimsAuto
+  Esquema del escenario: Crear pago del siniestro autos
+    Dado que se tiene un siniestro de <tipoReserva> con un tipo de cobertura de <tipoCobertura>
+    Cuando se genere un pago <tipoPago> al beneficiario <beneficiarioPago> por el medio de pago <metodoPago> sobre la linea de reserva <lineaReserva> donde el responsable <soloSura> es Sura con una retención de <codigoRetencionPago>
+    Entonces se obtiene el pago del beneficiario
+    
+    Ejemplos:
+      |tipoReserva    | lineaReserva          | tipoPago  | beneficiarioPago | metodoPago | codigoRetencionPago | soloSura | tipoCobertura         |
+      |creacionAvisoWS| (1) 1ª parteVehículo  | Parcial   | SOFIA JARAMILLO  | Caja Sura  | 0099                | No       | Perdida Parcial Daños |
