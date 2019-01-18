@@ -100,7 +100,7 @@ public class NuevoPagoStep {
                 lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
             boolean estadoTransaccionPantalla =
                 generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
-            if (estadoTransaccionPantalla == true) {
+            if (estadoTransaccionPantalla) {
               i = Integer.parseInt(ITERACIONES_PAGO.getValor());
             }
           }
