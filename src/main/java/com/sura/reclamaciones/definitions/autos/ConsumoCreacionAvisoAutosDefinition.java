@@ -35,14 +35,12 @@ public class ConsumoCreacionAvisoAutosDefinition {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                NombresCsv.PARAMETROS_RECLAMACION_PERSONA,
-                NombresCsv.PARAMETRO_PERSONA_LESIONADA));
+                NombresCsv.PARAMETROS_RECLAMACION_PERSONA, NombresCsv.PARAMETRO_PERSONA_LESIONADA));
     lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacion();
     parametroPersonaConductorAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                NombresCsv.PARAMETROS_RECLAMACION_PERSONA,
-                NombresCsv.PARAMETRO_PERSONA_CONDUCTOR));
+                NombresCsv.PARAMETROS_RECLAMACION_PERSONA, NombresCsv.PARAMETRO_PERSONA_CONDUCTOR));
     lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacion();
     reclamacionVehiculo =
         new Vehiculo(genericStep.getFilasModelo(NombresCsv.PARAMETROS_VEHICULO, filtroCsv));

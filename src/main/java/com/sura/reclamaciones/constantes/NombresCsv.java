@@ -22,7 +22,6 @@ public enum NombresCsv {
   public static final String PARAMETROS_DIRECCION_SINIESTRO = "direccion_reclamacion";
   public static final String PARAMETRO_CREACION_AVISO_AUTOS_WS = "creacionAvisoWS";
 
-
   private String valor;
 
   private NombresCsv(String valor) {

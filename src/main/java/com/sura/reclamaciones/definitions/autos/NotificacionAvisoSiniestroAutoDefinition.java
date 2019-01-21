@@ -107,8 +107,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     exposicionesAutomaticasAutos =
         new ExposicionesAutomaticasAutos(
             genericStep.getFilasModelo(
-                NombresCsv.PARAMETROS_EXPOSICION_AUTOMATICA,
-                EXPOSICIONES_RESPONSABILIDAD_CIVIL));
+                NombresCsv.PARAMETROS_EXPOSICION_AUTOMATICA, EXPOSICIONES_RESPONSABILIDAD_CIVIL));
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
@@ -121,8 +120,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   public void recibirReclamoArchivo(DataTable cobertura) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(
-            genericStep.getFilasModelo(
-                NombresCsv.PARAMETROS_RECLAMACION, RECLAMACION_ARCHIVO));
+            genericStep.getFilasModelo(NombresCsv.PARAMETROS_RECLAMACION, RECLAMACION_ARCHIVO));
     vehiculo =
         new Vehiculo(
             genericStep.getFilasModelo(NombresCsv.PARAMETROS_VEHICULO, RECLAMACION_ARCHIVO));
@@ -150,8 +148,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
-            genericStep.getFilasModelo(
-                NombresCsv.PARAMETRO_LINEA_RESERVA, LINEA_RESERVA_ARCHIVO));
+            genericStep.getFilasModelo(NombresCsv.PARAMETRO_LINEA_RESERVA, LINEA_RESERVA_ARCHIVO));
     reclamacionStep.validarValorReservasArchivo(reserva.getLstReserva());
   }
 
@@ -159,12 +156,10 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   public void recibirReclamoSubrogacion(DataTable cobertura) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(
-            genericStep.getFilasModelo(
-                NombresCsv.PARAMETROS_RECLAMACION, RECLAMACION_SUBROGACION));
+            genericStep.getFilasModelo(NombresCsv.PARAMETROS_RECLAMACION, RECLAMACION_SUBROGACION));
     vehiculo =
         new Vehiculo(
-            genericStep.getFilasModelo(
-                NombresCsv.PARAMETROS_VEHICULO, RECLAMACION_SUBROGACION));
+            genericStep.getFilasModelo(NombresCsv.PARAMETROS_VEHICULO, RECLAMACION_SUBROGACION));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
   }
