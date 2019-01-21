@@ -42,18 +42,18 @@ public class DetalleTransaccionPage extends GeneralPage {
   public boolean realizarAnulacion(String tipoAnulacion) {
     if (tipoAnulacion.equals(PAGO.getValor())) {
       for (int i = 0; i <= Integer.parseInt(ITERACIONES_ANULACION.getValor()); i++) {
-        int count=0;
+        int count = 0;
         if (btnAnular.containsElements(
             By.xpath(
                 "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'disabled')]"))) {
-        realizarEsperaCarga();
-        driver.navigate().refresh();
+          realizarEsperaCarga();
+          driver.navigate().refresh();
         } else {
           anularTransaccion();
           System.out.print(count);
           return true;
         }
-        count ++;
+        count++;
       }
     } else {
       for (int i = 0; i <= Integer.parseInt(ITERACIONES_ANULACION.getValor()); i++) {
