@@ -6,18 +6,18 @@ Característica: Distribución del reaseguro de un siniestro
   Quiero conocer la distribución que tiene el reaseguro de un siniestro en cada movimiento financiero
   Para identificar el monto de los valores que corresponden a los diferentes reaseguradores de acuerdo a los contratos adquiridos con la compañía
 
- @claimsEmpresarial
- Esquema del escenario: Reaseguro de Constitución de reserva - creación reserva
-    Dado  que se tiene una póliza de <Tipo y Cobertura>
-    Cuando se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
-    Y un incidente de tipo <Tipo de incidente>
-    Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
-
-    Ejemplos:
-    | Tipo y Cobertura                            | Tipo Transacción    |  Causa           | Valor de Pretensión | Tipo de incidente |
+# @claimsEmpresarial
+# Esquema del escenario: Reaseguro de Constitución de reserva - creación reserva
+#    Dado  que se tiene una póliza de <Tipo y Cobertura>
+#    Cuando se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
+#    Y un incidente de tipo <Tipo de incidente>
+#    Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
+#
+#    Ejemplos:
+#    | Tipo y Cobertura                            | Tipo Transacción    |  Causa           | Valor de Pretensión | Tipo de incidente |
 #    | Incendio con cobertura Daños materiales     | constitucionReserva |  Daños por agua  |  2000000            | Propiedad         |
 #    | Amit                                        | constitucionReserva |  Amit/ huelga    |  2000               | Contenido         |
-    | Hogar terremoto	                          |	constitucionReserva |  Terremoto,temblor o erupción   |  3000000            | Propiedad         |
+#    | Hogar terremoto	                          |	constitucionReserva |  Terremoto,temblor o erupción   |  3000000            | Propiedad         |
 
  #  @claimsEmpresarial
 #  Esquema del escenario: Reaseguro Reserva de liberación - Pago y liberación de reserva
@@ -57,15 +57,15 @@ Característica: Distribución del reaseguro de un siniestro
 #  | Tipo y Cobertura                                     | Código Retención Pago |Tipo Transacción   | Causa      | Valor de Pretensión | Tipo de incidente |
 #  | Multiriesgo corporativo con cobertura basica         | 0099              | reservaLiberacion  | Incendio       |3000000              |Propiedad          |
 #
-#  @claimsEmpresarial
-#  Esquema del escenario: anulacion  recupero
-#    Dado que se tiene una póliza de <Tipo y Cobertura>
-#    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
-#    Y un incidente de tipo <Tipo de incidente>
-#    Y que se realice una transacción de pago y una transacción de recupero, de un siniestro de una póliza empresarial con producto <Tipo y Cobertura> y código de retención <Código Retención>
-#    Cuando se realice la anulación del recupero
-#    Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
-#
-#    Ejemplos:
-#    | Tipo y Cobertura                         | Código Retención  |Tipo Transacción   |Tipo Recupero|Código Retención Recupero|  Causa               | Valor de Pretensión | Tipo de incidente |
-#    | Incendio con cobertura Daños materiales  |  0099                   | reservaLiberacion |Salvamento   |0099                     | Daños por agua       |3000000              |Contenido          |
+  @claimsEmpresarial
+  Esquema del escenario: anulacion  recupero
+    Dado que se tiene una póliza de <Tipo y Cobertura>
+    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
+    Y un incidente de tipo <Tipo de incidente>
+    Y que se realice una transacción de pago y una transacción de recupero, de un siniestro de una póliza empresarial con producto <Tipo y Cobertura> y código de retención <Código Retención>
+    Cuando se realice la anulación del recupero
+    Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
+
+    Ejemplos:
+    | Tipo y Cobertura                         | Código Retención  |Tipo Transacción   |  Causa               | Valor de Pretensión | Tipo de incidente |
+    | Incendio con cobertura Daños materiales  |  0099             | reservaLiberacion | Daños por agua       |3000000              |Contenido          |
