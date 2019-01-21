@@ -29,6 +29,7 @@ public enum Constantes {
   TIPO_TRANSACCION("Recuperaciones"),
   TRANSFERENCIA_ELECTRONICA("Transferencia"),
   UBICACION_ESTADO_PAGO("5"),
+  UBICACION_ESTADO_RECUPERO("9"),
   URL("jdbc:oracle:thin:@clustercsl01:1537/labgwcc"),
   USD("USD"),
   USUARIO("GW_CONF"),

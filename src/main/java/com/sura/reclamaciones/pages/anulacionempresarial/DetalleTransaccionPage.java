@@ -5,10 +5,10 @@ import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECUPERO;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
@@ -97,14 +97,10 @@ public class DetalleTransaccionPage extends GeneralPage {
         realizarEsperaCarga();
         lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
         WebElement elementoXpath =
-            lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
+            lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
         estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
         if (estadoTransaccionPantalla) {
           lstTransaccion.get(2).click();
-          lstTransaccion.get(2)
-                .findElement(
-                    By.xpath("//a[@class='g-actionable'][contains(text(),'$')]"))
-                .click();
           i = Integer.parseInt(ITERACIONES_RECUPERO.getValor());
         }
       }

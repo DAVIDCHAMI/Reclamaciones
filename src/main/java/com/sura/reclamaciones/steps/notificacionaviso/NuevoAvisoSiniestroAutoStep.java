@@ -91,6 +91,7 @@ public class NuevoAvisoSiniestroAutoStep {
     agregarDatosExposicionLesiones(datosExposicionLesiones);
   }
 
+  @Step
   private void agregarPersonaConductor(List<Persona> datosPersonaReclamacion) {
     for (Persona conductorVehiculoAfectado : datosPersonaReclamacion) {
       detalleVehiculoPage.seleccionarTipoDocumento(conductorVehiculoAfectado.getTipoDocumento());
@@ -100,6 +101,7 @@ public class NuevoAvisoSiniestroAutoStep {
     }
   }
 
+  @Step
   private void agregarDireccionConductor(List<ReclamacionAuto> datosReclamacionAuto) {
     for (ReclamacionAuto direccionConductor : datosReclamacionAuto) {
       detalleVehiculoPage.seleccionarDepartamento(direccionConductor.getDepartamento());
@@ -109,6 +111,7 @@ public class NuevoAvisoSiniestroAutoStep {
     }
   }
 
+  @Step
   private void agregarDatosExposicionTercero(
       List<ExposicionVehiculoTercero> datosExposicionTercero) {
     for (ExposicionVehiculoTercero datosVehiculo : datosExposicionTercero) {
@@ -123,6 +126,7 @@ public class NuevoAvisoSiniestroAutoStep {
     }
   }
 
+  @Step
   private void agregarPersonaLesionada(List<Persona> datopersonaReclamacion) {
     for (Persona personaLesionada : datopersonaReclamacion) {
       agregarExposicionLesionesPage.seleccionarTipoDocumento(personaLesionada.getTipoDocumento());
@@ -132,6 +136,7 @@ public class NuevoAvisoSiniestroAutoStep {
     }
   }
 
+  @Step
   private void agregarDireccionLesionado(List<ReclamacionAuto> datosReclamacionAuto) {
     for (ReclamacionAuto direccionLesionado : datosReclamacionAuto) {
       agregarExposicionLesionesPage.seleccionarDepartamento(direccionLesionado.getDepartamento());
@@ -141,6 +146,7 @@ public class NuevoAvisoSiniestroAutoStep {
     }
   }
 
+  @Step
   private void agregarDatosExposicionLesiones(List<ExposicionLesiones> datosExposicionLesiones) {
     for (ExposicionLesiones lesionesPersona : datosExposicionLesiones) {
       agregarExposicionLesionesPage.seleccionarLesiones();
@@ -159,20 +165,22 @@ public class NuevoAvisoSiniestroAutoStep {
     agregarInformacionPage.ingresarEdicionVehiculo();
     detalleVehiculoPage.agregarConductor();
     detalleVehiculoPage.seleccionarConductorVehiculoAsegurado();
-    detalleVehiculoPage.seleccionarServicioTaller();
-    detalleVehiculoPage.agregarTaller();
-    detalleVehiculoPage.buscarProveedor();
-    detalleVehiculoPage.realizarEsperaCarga();
     datosReclamacion.forEach(
         datoReclamacionAutos -> {
           if (!datoReclamacionAutos
               .getCulpabilidad()
               .equals(ReclamacionConstante.CULPABILIDAD_SOLO_RC)) {
+            detalleVehiculoPage.seleccionarServicioTaller();
+            detalleVehiculoPage.agregarTaller();
+            detalleVehiculoPage.buscarProveedor();
+            detalleVehiculoPage.realizarEsperaCarga();
             crearServicioPage.seleccionarProveedor(datoReclamacionAutos.getTallerReparacion());
+            detalleVehiculoPage.aceptarOpcion();
+            detalleVehiculoPage.volverPasoAnterior();
+          } else {
+            detalleVehiculoPage.aceptarOpcion();
           }
         });
-    detalleVehiculoPage.aceptarOpcion();
-    detalleVehiculoPage.volverPasoAnterior();
   }
 
   @Step
@@ -185,6 +193,7 @@ public class NuevoAvisoSiniestroAutoStep {
         });
   }
 
+  @Step
   public void validarReclamacionAutos() {
     String mensajeValidado = nuevaReclamacionGuardadaPage.obtenerMensajeValidador();
     MatcherAssert.assertThat(
@@ -192,6 +201,7 @@ public class NuevoAvisoSiniestroAutoStep {
         mensajeValidado.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
   }
 
+  @Step
   public void validarExposicion(List<ExposicionesAutomaticasAutos> datosExposicionAutomatica) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DatosFinancierosConstante.EXPOSICIONES);
     boolean exposicionAutomatica =
@@ -200,6 +210,7 @@ public class NuevoAvisoSiniestroAutoStep {
         "No coinciden todos los valores de las líneas de reserva", exposicionAutomatica);
   }
 
+  @Step
   public void finalizarReclamacionAutos() {
     agregarInformacionPage.concluirReclamacion();
   }
@@ -235,10 +246,12 @@ public class NuevoAvisoSiniestroAutoStep {
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
   }
 
+  @Step
   public void consultarReclamacionAutos() {
     nuevaReclamacionGuardadaPage.abrirReclamacion();
   }
 
+  @Step
   public void validarValorReservasResponsabilidadCivil(List<Reserva> lineaReserva) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(
         DatosFinancierosConstante.DATOS_FINANCIEROS);
@@ -247,11 +260,36 @@ public class NuevoAvisoSiniestroAutoStep {
         "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
   }
 
+  @Step
   public void validarValorReservasArchivo(List<Reserva> lineaReserva) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(
         DatosFinancierosConstante.DATOS_FINANCIEROS);
     boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
     MatcherAssert.assertThat(
         "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
+  }
+
+  @Step
+  public void consultarPoliza(List<ReclamacionAuto> reclamacionAuto, List<Vehiculo> vehiculo) {
+    seleccionarOpcionMenuPrincipal();
+    completarFormularioBuscarPoliza(reclamacionAuto, vehiculo);
+    buscarPoliza();
+    continuar();
+  }
+
+  @Step
+  public void continuar() {
+    buscarPolizaPage.continuarSiguientePantalla();
+  }
+
+  @Step
+  public void crearNuevaExposicionLesiones(
+      List<Persona> personaReclamacionAuto,
+      List<ReclamacionAuto> reclamacionAuto,
+      List<ExposicionLesiones> exposicionLesiones) {
+    crearExposicionLesiones(personaReclamacionAuto, reclamacionAuto, exposicionLesiones);
+    finalizarReclamacionAutos();
+    validarReclamacionAutos();
+    consultarReclamacionAutos();
   }
 }
