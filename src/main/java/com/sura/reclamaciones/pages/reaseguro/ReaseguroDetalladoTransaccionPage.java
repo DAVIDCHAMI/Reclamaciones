@@ -72,8 +72,6 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       Double dblMaximoRetencioPura,
       String strTransaccion,
       String porcentajeRetenido,
-      String deducibleMinimo,
-      String porcentajeDeducibleMinimo,
       String proporcionCuotaParte) {
     boolean blnTransaccion = false;
     switch (strTransaccion) {
