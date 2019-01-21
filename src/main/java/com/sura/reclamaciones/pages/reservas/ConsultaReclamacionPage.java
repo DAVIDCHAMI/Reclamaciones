@@ -11,9 +11,6 @@ import org.openqa.selenium.WebDriver;
 
 public class ConsultaReclamacionPage extends GeneralPage {
 
-  @FindBy(xpath = "//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
-  private WebElementFacade txtNumReclamacion;
-
   @FindBy(
     id =
         "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl"

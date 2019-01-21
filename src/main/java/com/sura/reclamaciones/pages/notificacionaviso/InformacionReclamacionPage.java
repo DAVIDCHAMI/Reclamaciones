@@ -169,7 +169,7 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   public String obtenerNumeroSiniestroAtr() {
     String numeroSiniestro = lblNumeroSiniestroAtr.waitUntilVisible().getText();
-    reiniciarNavegador();
+    cerrarNavegador();
     return numeroSiniestro;
   }
 }
