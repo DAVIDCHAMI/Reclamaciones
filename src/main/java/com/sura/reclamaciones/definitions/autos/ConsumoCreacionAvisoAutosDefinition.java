@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.definitions.autos;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.NombresCsv;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -35,23 +35,23 @@ public class ConsumoCreacionAvisoAutosDefinition {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA,
-                ConstanteGlobal.PARAMETRO_PERSONA_LESIONADA));
+                NombresCsv.PARAMETROS_RECLAMACION_PERSONA,
+                NombresCsv.PARAMETRO_PERSONA_LESIONADA));
     lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacion();
     parametroPersonaConductorAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA,
-                ConstanteGlobal.PARAMETRO_PERSONA_CONDUCTOR));
+                NombresCsv.PARAMETROS_RECLAMACION_PERSONA,
+                NombresCsv.PARAMETRO_PERSONA_CONDUCTOR));
     lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacion();
     reclamacionVehiculo =
-        new Vehiculo(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_VEHICULO, filtroCsv));
+        new Vehiculo(genericStep.getFilasModelo(NombresCsv.PARAMETROS_VEHICULO, filtroCsv));
     lstVehiculoParam = reclamacionVehiculo.getVehiculos();
     parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_SINIESTRO_AUTOS,
-                ConstanteGlobal.PARAMETRO_CREACION_AVISO_AUTOS_WS));
+                NombresCsv.PARAMETROS_SINIESTRO_AUTOS,
+                NombresCsv.PARAMETRO_CREACION_AVISO_AUTOS_WS));
     lstReclamacionAuto = parametroAviso.getLstReclamacionAuto();
   }
 

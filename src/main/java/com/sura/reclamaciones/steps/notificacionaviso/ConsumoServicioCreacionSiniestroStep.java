@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.NombresCsv;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
@@ -34,11 +34,11 @@ public class ConsumoServicioCreacionSiniestroStep {
   public void asignarValoresSiniestro(String filtroSiniestroCsv) throws IOException {
     parametroSiniestro =
         new ReclamacionEmpresarial(
-            genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_SINIESTRO, filtroSiniestroCsv));
+            genericStep.getFilasModelo(NombresCsv.PARAMETROS_SINIESTRO, filtroSiniestroCsv));
     lstSiniestroParam = parametroSiniestro.getLstReclamo();
     parametroPersona =
         new PersonaReclamacion(
-            genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, filtroSiniestroCsv));
+            genericStep.getFilasModelo(NombresCsv.PARAMETROS_PERSONA, filtroSiniestroCsv));
     lstParametroPersona = parametroPersona.getLstPersonaReclamacion();
   }
 
