@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Recupero extends Transacciones {
+
   private List<Recupero> lstRecupero = new ArrayList<>();
   private String pagador;
   private String lineaRecupero;

@@ -6,11 +6,6 @@ import java.util.Map;
 
 public class PersonaReclamacionAuto extends Persona {
 
-  private String numeroTrabajo;
-  private String policyRole;
-  private String ciudad;
-  private String direccion;
-  private String tipoDireccion;
   private String parteLesionada;
   private String gravedadLesion;
   private String descripcionLesion;
@@ -27,11 +22,6 @@ public class PersonaReclamacionAuto extends Persona {
 
   private PersonaReclamacionAuto(Map<String, String> datoPersonaReclamacionAuto) {
     super(datoPersonaReclamacionAuto);
-    this.numeroTrabajo = datoPersonaReclamacionAuto.get("numeroTrabajo");
-    this.policyRole = datoPersonaReclamacionAuto.get("policyRole");
-    this.ciudad = datoPersonaReclamacionAuto.get("ciudad");
-    this.direccion = datoPersonaReclamacionAuto.get("direccion");
-    this.tipoDireccion = datoPersonaReclamacionAuto.get("tipoDireccion");
     this.parteLesionada = datoPersonaReclamacionAuto.get("parteLesionada");
     this.descripcionLesion = datoPersonaReclamacionAuto.get("descripcionLesion");
     this.gravedadLesion = datoPersonaReclamacionAuto.get("gravedadLesion");
@@ -44,46 +34,6 @@ public class PersonaReclamacionAuto extends Persona {
   public PersonaReclamacionAuto(List<Map<String, String>> datoPersonaReclamacionAuto) {
     super();
     asignarDatosPersona(datoPersonaReclamacionAuto);
-  }
-
-  public String getNumeroTrabajo() {
-    return numeroTrabajo;
-  }
-
-  public void setNumeroTrabajo(String numeroTrabajo) {
-    this.numeroTrabajo = numeroTrabajo;
-  }
-
-  public String getPolicyRole() {
-    return policyRole;
-  }
-
-  public void setPolicyRole(String policyRole) {
-    this.policyRole = policyRole;
-  }
-
-  public String getCiudad() {
-    return ciudad;
-  }
-
-  public void setCiudad(String ciudad) {
-    this.ciudad = ciudad;
-  }
-
-  public String getDireccion() {
-    return direccion;
-  }
-
-  public void setDireccion(String direccion) {
-    this.direccion = direccion;
-  }
-
-  public String getTipoDireccion() {
-    return tipoDireccion;
-  }
-
-  public void setTipoDireccion(String tipoDireccion) {
-    this.tipoDireccion = tipoDireccion;
   }
 
   public String getParteLesionada() {
