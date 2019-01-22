@@ -1,15 +1,11 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.constantes.Constantes.ANULACION;
-import static com.sura.reclamaciones.constantes.Constantes.PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.RESERVA;
 import static com.sura.reclamaciones.constantes.NombresCsv.CONTRATO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
-import com.sura.reclamaciones.constantes.Constantes;
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Recupero;
@@ -22,7 +18,7 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
 import java.io.IOException;
-import java.util.stream.Stream;
+
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 

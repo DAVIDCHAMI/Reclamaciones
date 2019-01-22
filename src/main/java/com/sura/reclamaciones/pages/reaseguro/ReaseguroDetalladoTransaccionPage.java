@@ -86,8 +86,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       case "Recupero":
         blnTransaccion =
             verificarRecupero(dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte);
-      case "Anulacion Pago" :
-        case "Anulacion Recupero":
+      case "Anulacion Pago":
+      case "Anulacion Recupero":
         blnTransaccion =
             verificarAnulacion(dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte);
         break;
@@ -124,7 +124,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       blnValorRecupero = strValorRecupero.equals(SESION_CC_VALOR_RECUPERO);
     }
-    return blnVerificacionRecupero&& blnValorRecupero;
+    return blnVerificacionRecupero && blnValorRecupero;
   }
 
   private boolean verificarReserva(
@@ -180,8 +180,9 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               .get(2)
               .getText()
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      blnValorPago = strValorPago.equals(Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
+      blnValorPago =
+          strValorPago.equals(Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
     }
-      return blnVerificarPago && blnValorPago;
+    return blnVerificarPago && blnValorPago;
   }
 }
