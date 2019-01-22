@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import com.sura.reclamaciones.constantes.NombresCsv;
+import static com.sura.reclamaciones.constantes.NombresCsv.*;
+
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresarialStep;
@@ -20,7 +21,7 @@ public class NotificacionAvisoSiniestroAtrDefinition {
   public void diligenciarInformacionAsegurado(String cobertura) throws IOException {
     PersonaReclamacion aseguradoAtr =
         new PersonaReclamacion(
-            genericStep.getFilasModelo(NombresCsv.PARAMETROS_PERSONA, cobertura));
+            genericStep.getFilasModelo(PARAMETROS_PERSONA.getValor(), cobertura));
     nuevaReclamacionAtrEmpresarialStep.accederAvisoAtr();
     nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionAsegurado(
         aseguradoAtr.getLstPersonaReclamacion());

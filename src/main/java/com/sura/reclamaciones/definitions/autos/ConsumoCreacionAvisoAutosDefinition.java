@@ -1,6 +1,12 @@
 package com.sura.reclamaciones.definitions.autos;
 
-import com.sura.reclamaciones.constantes.NombresCsv;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_CREACION_AVISO_AUTOS_WS;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_CONDUCTOR;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_LESIONADA;
+
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -35,21 +41,21 @@ public class ConsumoCreacionAvisoAutosDefinition {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                NombresCsv.PARAMETROS_RECLAMACION_PERSONA, NombresCsv.PARAMETRO_PERSONA_LESIONADA));
+                PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_LESIONADA.getValor()));
     lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacion();
     parametroPersonaConductorAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                NombresCsv.PARAMETROS_RECLAMACION_PERSONA, NombresCsv.PARAMETRO_PERSONA_CONDUCTOR));
+                PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_CONDUCTOR.getValor()));
     lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacion();
     reclamacionVehiculo =
-        new Vehiculo(genericStep.getFilasModelo(NombresCsv.PARAMETROS_VEHICULO, filtroCsv));
+        new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), filtroCsv));
     lstVehiculoParam = reclamacionVehiculo.getVehiculos();
     parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
-                NombresCsv.PARAMETROS_SINIESTRO_AUTOS,
-                NombresCsv.PARAMETRO_CREACION_AVISO_AUTOS_WS));
+                PARAMETROS_SINIESTRO_AUTOS.getValor(),
+                PARAMETRO_CREACION_AVISO_AUTOS_WS.getValor()));
     lstReclamacionAuto = parametroAviso.getLstReclamacionAuto();
   }
 
