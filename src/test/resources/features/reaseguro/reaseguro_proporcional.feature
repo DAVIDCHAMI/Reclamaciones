@@ -58,7 +58,7 @@ Característica: Distribución del reaseguro de un siniestro
   | Multiriesgo corporativo con cobertura basica         | 0099                  | Anulacion Pago        | Incendio       |3000000              |Propiedad          |
 
   @claimsEmpresarial
-  Esquema del escenario: anulacion  recupero
+  Esquema del escenario: anulacion recupero
     Dado que se tiene una póliza de <Tipo y Cobertura>
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
     Y un incidente de tipo <Tipo de incidente>
@@ -68,4 +68,4 @@ Característica: Distribución del reaseguro de un siniestro
 
     Ejemplos:
     | Tipo y Cobertura                         | Código Retención  |Tipo Transacción           |  Causa               | Valor de Pretensión | Tipo de incidente |
-    | Incendio con cobertura Daños materiales  |  0099             |Anulación Recupero         | Daños por agua       |3000000              |Contenido          |
+    | Incendio con cobertura Daños materiales  |  0099             |Anulacion Recupero         | Daños por agua       |3000000              |Contenido          |
