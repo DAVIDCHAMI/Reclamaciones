@@ -35,4 +35,3 @@ public class ExpedicionPolizaAutoIndividualServicioDefinition {
     MatcherAssert.assertThat("La póliza no fue expedida", numeroJob.contains("0"));
   }
 }
-
