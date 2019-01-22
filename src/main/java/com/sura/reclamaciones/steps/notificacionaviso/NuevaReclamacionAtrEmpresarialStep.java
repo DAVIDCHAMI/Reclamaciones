@@ -1,15 +1,19 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Persona;
+import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionReclamacionPage;
+import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.steps.StepInterceptor;
 import org.fluentlenium.core.annotation.Page;
-import org.slf4j.LoggerFactory;
+import org.hamcrest.MatcherAssert;
 
 public class NuevaReclamacionAtrEmpresarialStep {
 
@@ -21,7 +25,9 @@ public class NuevaReclamacionAtrEmpresarialStep {
 
   @Page InformacionReclamacionPage informacionReclamacionPage;
 
-  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+  @Page ConsultaReclamacionPage consultaReclamacionPage;
+
+  @Page MenuClaimPage menuClaimPage;
 
   @Step
   public void accederAvisoAtr() {
@@ -32,18 +38,24 @@ public class NuevaReclamacionAtrEmpresarialStep {
   @Step
   public void diligenciarInformacionAsegurado(List<Persona> datosPersona) {
     asistenteVirtualAtrPage.seleccionarPlanListaProducto();
+    buscarPolizaPage.enfocarVistaAutomatizacion();
+    buscarPolizaPage.realizarEsperaCarga();
     datosPersona.forEach(
-        asegurado -> {
-          buscarPolizaPage.consultarDocumentoAtr(
-              asegurado.getTipoDocumento(), asegurado.getNumDocumento());
-        });
+        asegurado ->
+            buscarPolizaPage.seleccionarDocumentoAseguradoAtr(asegurado.getTipoDocumento()));
+    datosPersona.forEach(
+        asegurado -> buscarPolizaPage.digitarDocumentoAseguradoAtr(asegurado.getNumDocumento()));
+    buscarPolizaPage.consultarDocumentoAseguradoAtr();
   }
 
   @Step
-  public void diligenciarInformacionReclamacion(String causaSiniestro, String detalleHechos) {
-    informacionBasicaPage.seleccionarFechaAviso("2018/Nov/20" /*To do*/);
+  public void diligenciarInformacionReclamacion(
+      String causaSiniestro, List<ReclamacionEmpresarial> datosSiniestro) {
+    datosSiniestro.forEach(
+        datos -> informacionBasicaPage.seleccionarFechaAviso(datos.getFechaSiniestro()));
     informacionReclamacionPage.seleccionarCausaSiniestroAtr(causaSiniestro);
-    informacionReclamacionPage.diligenciarDetalleHechosAtr(detalleHechos);
+    datosSiniestro.forEach(
+        datos -> informacionReclamacionPage.diligenciarDetalleHechosAtr(datos.getDetalleHechos()));
     informacionReclamacionPage.seleccionarCiudadSiniestro();
   }
 
@@ -61,8 +73,21 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   @Step
-  public void verificarSiniestroAtr() {
-    String numeroSiniestro = informacionReclamacionPage.obtenerNumeroSiniestroAtr();
-    //To Do
+  public String verificarSiniestroCreadoAtr() {
+    MatcherAssert.assertThat(
+        "No se generó el número de siniestro en ATR",
+        asistenteVirtualAtrPage
+            .getLblTituloExpedienteCreado()
+            .equalsIgnoreCase(ConstanteGlobal.EXPEDIENTE_CREADO_EXITOSAMENTE));
+    return informacionReclamacionPage.obtenerNumeroSiniestroAtr();
+  }
+
+  @Step
+  public void consultarSiniestro(String numeroReclamacion) {
+    consultaReclamacionPage.buscarReclamacion(numeroReclamacion);
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(MenuConstante.DETALLES_SINIESTRO);
+    MatcherAssert.assertThat(
+        "No se encontró el número de siniestro generado en ATR",
+        consultaReclamacionPage.getLblNumeroSiniestro().equalsIgnoreCase(numeroReclamacion));
   }
 }

@@ -135,12 +135,17 @@ public class BuscarPolizaPage extends GeneralPage {
     }
   }
 
-  public void consultarDocumentoAtr(String tipoDocumentoAtr, String numDocumentoAtr) {
-    String mnuTipoDocumentoAseguradoAtr = "//option[contains(text(),'COMODIN')]";
-    enfocarVistaAutomatizacion();
-    txtTipoDocumentoAsegurado.waitUntilVisible().click();
-    navegarMenu(tipoDocumentoAtr, mnuTipoDocumentoAseguradoAtr);
-    txtNumeroDocumentoAtr.waitUntilPresent().waitUntilVisible().type(numDocumentoAtr);
+  public void seleccionarDocumentoAseguradoAtr(String tipoDocumentoAtr) {
+    String lstTipoDocumentoAtr = "//option[contains(text(),'COMODIN')]";
+    txtTipoDocumentoAsegurado.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
+    navegarMenu(tipoDocumentoAtr, lstTipoDocumentoAtr);
+  }
+
+  public void digitarDocumentoAseguradoAtr(String numDocumentoAtr) {
+    txtNumeroDocumentoAtr.waitUntilVisible().type(numDocumentoAtr);
+  }
+
+  public void consultarDocumentoAseguradoAtr() {
     btnConsultarDatosAseguradoATR.waitUntilVisible().click();
   }
 

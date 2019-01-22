@@ -27,6 +27,7 @@ public class ConstanteGlobal {
   public static final String PARAMETROS_DIRECCION_SINIESTRO = "direccion_reclamacion";
   public static final String PARAMETRO_CREACION_AVISO_AUTOS_WS = "creacionAvisoWS";
   public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO = 180;
+  public static final String EXPEDIENTE_CREADO_EXITOSAMENTE = "Expediente creado con éxito";
   public static final String EMPRESARIALES = "Empresariales";
 
   private ConstanteGlobal() {}
