@@ -8,9 +8,11 @@ public enum Constantes {
   COMODIN("COMODIN"),
   COP("COP"),
   CUENTA(""),
+  DATOS_FINANCIEROS("Datos financieros"),
   DRIVER("oracle.jdbc.driver.OracleDriver"),
   ENGLISH("English (US)"),
   ESTADO_ANULACION("Anulado"),
+  EXPOSICIONES("Exposiciones"),
   FECHA_HOY("Hoy"),
   ITERACIONES_ANULACION("20"),
   ITERACIONES_PAGO("10"),
@@ -34,9 +36,7 @@ public enum Constantes {
   URL("jdbc:oracle:thin:@clustercsl01:1537/labgwcc"),
   USD("USD"),
   USUARIO("GW_CONF"),
-  VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
-  DATOS_FINANCIEROS("Datos financieros"),
-  EXPOSICIONES("Exposiciones");
+  VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada");
 
   private String valor;
 
