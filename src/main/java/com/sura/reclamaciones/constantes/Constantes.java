@@ -12,7 +12,7 @@ public enum Constantes {
   ENGLISH("English (US)"),
   ESTADO_ANULACION("Anulado"),
   FECHA_HOY("Hoy"),
-  ITERACIONES_ANULACION("100"),
+  ITERACIONES_ANULACION("20"),
   ITERACIONES_PAGO("10"),
   ITERACIONES_RECUPERO("3"),
   NUMERO_PAGO("Número de pago"),
@@ -34,7 +34,9 @@ public enum Constantes {
   URL("jdbc:oracle:thin:@clustercsl01:1537/labgwcc"),
   USD("USD"),
   USUARIO("GW_CONF"),
-  VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada");
+  VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
+  DATOS_FINANCIEROS("Datos financieros"),
+  EXPOSICIONES("Exposiciones");
 
   private String valor;
 
