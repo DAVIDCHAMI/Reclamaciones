@@ -2,6 +2,7 @@ package com.sura.reclamaciones.pages.generics;
 
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
+import static com.sura.reclamaciones.utils.EnumConstantes.MENSAJE_TRABAJO_SIN_GUARDAR;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.Tablas;
@@ -17,8 +18,8 @@ import org.openqa.selenium.WebElement;
 public class GeneralPage extends PageObject {
 
   @FindBy(
-    xpath =
-        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul"
+      xpath =
+          "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul"
   )
   public WebElementFacade lstOpcionesCombobox;
 
@@ -26,8 +27,8 @@ public class GeneralPage extends PageObject {
   public WebElementFacade pgrBarCarga;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']"
+      xpath =
+          "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']"
   )
   private WebElementFacade btnSiguiente;
 
@@ -41,8 +42,8 @@ public class GeneralPage extends PageObject {
   private WebElementFacade btnFinalizar;
 
   @FindBy(
-    xpath =
-        "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
+      xpath =
+          "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
   )
   private WebElementFacade txtTransacciones;
 
@@ -61,9 +62,15 @@ public class GeneralPage extends PageObject {
   private String tblTransaccion =
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
+  @FindBy(xpath = "//div[@class='x-panel x-layer x-panel-default x-menu x-border-box']")
+  public WebElementFacade lstOpcionesGenerales;
+
   private String lstDinamico = "//li[.='COMODIN']";
 
   private String auxiliarReemplazo = "";
+
+  @FindBy(className = "x-message-box")
+  WebElementFacade popGuidewire;
 
   protected WebDriver driver;
 
@@ -236,6 +243,19 @@ public class GeneralPage extends PageObject {
     String auxiliarMnuNavegar = "";
     auxiliarMnuNavegar = mnuNavegar.replace(ConstanteGlobal.COMODIN, opcionMenu);
     $(auxiliarMnuNavegar).waitUntilVisible().click();
+  }
+
+  public void seleccionarOpcionMenuGeneral(String opcion) {
+    WebElement elemento =
+        lstOpcionesGenerales.findElement(By.xpath(".//span[contains(text(), '" + opcion + "')]"));
+    waitFor(elemento).waitUntilClickable().click();
+  }
+
+  public void seleccionarOpcionPopupGuidewire(String opcion) {
+    if (popGuidewire.isCurrentlyVisible()) {
+      popGuidewire.findElement(By.xpath(String.format(".//a[.='%s']", opcion))).click();
+      waitForTextToDisappear(MENSAJE_TRABAJO_SIN_GUARDAR.getValor());
+    }
   }
 
   public boolean actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {
