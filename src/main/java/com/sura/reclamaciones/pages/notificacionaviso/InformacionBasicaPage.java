@@ -73,7 +73,7 @@ public class InformacionBasicaPage extends GeneralPage {
   private WebElementFacade lblAnioMes;
 
   private String btnCambioMesAnio =
-      "//table[@class='datePickerMonthSelector']//td['COMODIN']//div[@class='html-face']";
+      "//table[@class='datePickerMonthSelector']//td[COMODIN]//div[@class='html-face']";
   private String diaMes =
       "//td[@class='datePickerDay ' or @class='datePickerDay datePickerDayIsWeekend '][contains(text(),'COMODIN')]";
   private String auxiliarReemplazo = "";
@@ -115,7 +115,7 @@ public class InformacionBasicaPage extends GeneralPage {
   }
 
   public void seleccionarDiaCalendario(String diaUsuario) {
-    navegarMenu(diaMes, diaUsuario);
+    navegarMenu(diaUsuario, diaMes);
   }
 
   public void seleccionarMesAnterior(int valorMesAnterior, int valorMesActual) {
