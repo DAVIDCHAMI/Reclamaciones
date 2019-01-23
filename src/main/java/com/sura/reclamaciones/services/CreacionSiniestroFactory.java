@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.services;
 
+import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.service.creacionSiniestro.gen.Author;
 import com.sura.service.creacionSiniestro.gen.CPLine;
 import com.sura.service.creacionSiniestro.gen.Claimant;
@@ -417,10 +418,10 @@ public class CreacionSiniestroFactory {
   CPLine cpLineFactory() {
     CPLine cpLine = new CPLine();
     cpLine.setPolicySystemId(getPolicySystemId());
-    if (fixedPropertyIncident == true) {
+    if (fixedPropertyIncident == ConstanteGlobal.TRUE) {
       cpLine.setFixedPropertyIncident(listFixedPropertyIncidentFactory());
     }
-    if (propertyContentsIncident == true) {
+    if (propertyContentsIncident == ConstanteGlobal.TRUE) {
       cpLine.setPropertyContentsIncident(listPropertyContentsIncidentFactory());
     }
     return cpLine;
@@ -428,33 +429,33 @@ public class CreacionSiniestroFactory {
 
   public List<FixedPropertyIncident> listFixedPropertyIncidentFactory() {
     List<FixedPropertyIncident> listFixedPropertyIncident = new ArrayList<FixedPropertyIncident>();
-    FixedPropertyIncident fixedPropertyIncident = fixedPropertyIncidentFactory();
-    listFixedPropertyIncident.add(fixedPropertyIncident);
+    FixedPropertyIncident fixedPropertyIncidentFac = fixedPropertyIncidentFactory();
+    listFixedPropertyIncident.add(fixedPropertyIncidentFac);
     return listFixedPropertyIncident;
   }
 
   FixedPropertyIncident fixedPropertyIncidentFactory() {
-    FixedPropertyIncident fixedPropertyIncident = new FixedPropertyIncident();
-    fixedPropertyIncident.setDescription("Justificación valor total reclamado");
-    fixedPropertyIncident.setIsPolicyProperty(true);
-    fixedPropertyIncident.setProperty(propertyFactory());
-    fixedPropertyIncident.setClaimant(claimantFactory());
-    fixedPropertyIncident.setPropertyDesc("Justificación valor total reclamado");
-    return fixedPropertyIncident;
+    FixedPropertyIncident fixedPropertyIncidentFac = new FixedPropertyIncident();
+    fixedPropertyIncidentFac.setDescription("Justificación valor total reclamado");
+    fixedPropertyIncidentFac.setIsPolicyProperty(true);
+    fixedPropertyIncidentFac.setProperty(propertyFactory());
+    fixedPropertyIncidentFac.setClaimant(claimantFactory());
+    fixedPropertyIncidentFac.setPropertyDesc("Justificación valor total reclamado");
+    return fixedPropertyIncidentFac;
   }
 
   public List<PropertyContentsIncident> listPropertyContentsIncidentFactory() {
     List<PropertyContentsIncident> listPropertyContentsIncident =
         new ArrayList<PropertyContentsIncident>();
-    PropertyContentsIncident propertyContentsIncident = PropertyContentsIncident();
-    listPropertyContentsIncident.add(propertyContentsIncident);
+    PropertyContentsIncident propertyContentsIncidentFac = propertyContentsIncident();
+    listPropertyContentsIncident.add(propertyContentsIncidentFac);
     return listPropertyContentsIncident;
   }
 
-  PropertyContentsIncident PropertyContentsIncident() {
-    PropertyContentsIncident propertyContentsIncident = new PropertyContentsIncident();
-    propertyContentsIncident.setDescription("Justificación valor total reclamado");
-    return propertyContentsIncident;
+  PropertyContentsIncident propertyContentsIncident() {
+    PropertyContentsIncident propertyContentsIncidentFac = new PropertyContentsIncident();
+    propertyContentsIncidentFac.setDescription("Justificación valor total reclamado");
+    return propertyContentsIncidentFac;
   }
 
   Property propertyFactory() {
@@ -472,16 +473,16 @@ public class CreacionSiniestroFactory {
     claimant.setTaxID(getTaxIdAnt());
     claimant.setEmailAddress1(getEmailAddress1Ant());
     claimant.setCellNumber(getCellNumberAnt());
-    claimant.setPrimaryAddress(primaryAddressFactory_());
+    claimant.setPrimaryAddress(primaryAddressFactoryAnt());
     return claimant;
   }
 
-  PrimaryAddress_ primaryAddressFactory_() {
-    PrimaryAddress_ primaryAddress_ = new PrimaryAddress_();
-    primaryAddress_.setState(getStateAnt());
-    primaryAddress_.setAddressLine1(getAddressLine1Ant());
-    primaryAddress_.setCity(getCityAnt());
-    return primaryAddress_;
+  PrimaryAddress_ primaryAddressFactoryAnt() {
+    PrimaryAddress_ primaryAddressAnt = new PrimaryAddress_();
+    primaryAddressAnt.setState(getStateAnt());
+    primaryAddressAnt.setAddressLine1(getAddressLine1Ant());
+    primaryAddressAnt.setCity(getCityAnt());
+    return primaryAddressAnt;
   }
 
   MainContact mainContactFactory() {
@@ -491,11 +492,11 @@ public class CreacionSiniestroFactory {
     mainContact.setTaxID(getTaxIdMainContact());
     mainContact.setEmailAddress1(getEmailAddress1MainContact());
     mainContact.setCellNumber(getCellNumberMainContact());
-    mainContact.setPrimaryAddress(primaryAddressFactory());
+    mainContact.setPrimaryAddress(primaryAddressFactoryMainContact());
     return mainContact;
   }
 
-  PrimaryAddress primaryAddressFactory() {
+  PrimaryAddress primaryAddressFactoryMainContact() {
     PrimaryAddress primaryAddress = new PrimaryAddress();
     primaryAddress.setState(getStateMainContact());
     primaryAddress.setAddressLine1(getAddressLine1MainContact());
