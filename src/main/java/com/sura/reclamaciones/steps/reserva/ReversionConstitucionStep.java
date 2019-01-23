@@ -10,6 +10,7 @@ import org.hamcrest.MatcherAssert;
 public class ReversionConstitucionStep {
 
   @Page AjusteReservaPage ajusteReservaPage;
+
   @Page TransaccionDatoFinancieroPage transaccionDatoFinancieroPage;
 
   public void ajustarReserva(String valorAjustar) {

@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
     name = "uat",
     url =
         "https://arlappslab.suramericana.com/SSAutenticacion/faces/autenticacion/paginaAutenticacion.jspx?cdApp=SURACOM&cookies=false"
-  ),
+  )
 })
 public class AutenticacionAtrPage extends GeneralPage {
 
