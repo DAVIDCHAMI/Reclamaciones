@@ -7,11 +7,13 @@ import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -242,7 +244,35 @@ public class GeneralPage extends PageObject {
   public void navegarMenu(String opcionMenu, String mnuNavegar) {
     String auxiliarMnuNavegar = "";
     auxiliarMnuNavegar = mnuNavegar.replace(ConstanteGlobal.COMODIN, opcionMenu);
-    $(auxiliarMnuNavegar).waitUntilVisible().click();
+    $(auxiliarMnuNavegar).waitUntilPresent().waitUntilVisible().click();
+  }
+
+  public void seleccionarOpcionTabla(WebElementFacade tblOpcion, String opcionSeleccionar) {
+    tblOpcion.findElement(By.xpath("//td[.='" + opcionSeleccionar + "']")).click();
+  }
+
+  public void seleccionarOpcionLista(WebElementFacade lista, String opcionListaSeleccionar) {
+    lista.findElement(By.xpath("//li[.='" + opcionListaSeleccionar + "']")).click();
+  }
+
+  protected void resaltarElemento(WebElementFacade elemento) {
+    String atributoElemento = elemento.getAttribute("style");
+    for (int iteracion = 0; iteracion < 2; iteracion++) {
+      JavascriptExecutor ejecutor = (JavascriptExecutor) getDriver();
+      ejecutor.executeScript(
+          "arguments[0].setAttribute('style', arguments[1]);", elemento, "border: 5px solid red;");
+      ejecutor.executeScript(
+          "arguments[0].setAttribute('style', arguments[1]);", elemento, atributoElemento);
+    }
+  }
+
+  public void cerrarNavegador() {
+    Set<String> ventana;
+    do {
+      enfocarVistaAutomatizacion();
+      ventana = driver.getWindowHandles();
+      driver.close();
+    } while (ventana.size() != 1);
   }
 
   public void seleccionarOpcionMenuGeneral(String opcion) {

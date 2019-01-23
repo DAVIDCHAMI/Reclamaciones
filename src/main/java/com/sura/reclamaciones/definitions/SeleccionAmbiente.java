@@ -8,7 +8,7 @@ import cucumber.api.java.Before;
 import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
-public class SetupStory {
+public class SeleccionAmbiente {
 
   @Steps LoginClaimStep loginClaimStep;
 
