@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.login;
 
+import static com.sura.reclamaciones.constantes.NombresCsv.CREDENCIAL;
 import static net.serenitybdd.core.pages.PageObject.withParameters;
 
 import com.sura.reclamaciones.models.Credencial;
@@ -28,14 +29,12 @@ public class LoginAtrStep {
   @Step
   public void iniciarSesionUAT(List<Credencial> datosCredencial) {
     datosCredencial.forEach(
-        dato -> {
-          autenticacionAtrPage.iniciarSesionUAT(dato.getUsuario(), dato.getContrasena());
-        });
+        dato -> autenticacionAtrPage.iniciarSesionUAT(dato.getUsuario(), dato.getContrasena()));
   }
 
   @Step
   public void obtenerCredenciales(String analista) throws IOException {
-    credencial = new Credencial(genericStep.getFilasModelo("credencial", analista));
+    credencial = new Credencial(genericStep.getFilasModelo(CREDENCIAL.getValor(), analista));
     abrirClaims();
     iniciarSesionUAT(credencial.getCredenciales());
   }

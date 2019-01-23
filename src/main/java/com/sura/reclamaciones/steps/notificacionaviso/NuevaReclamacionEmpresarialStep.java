@@ -36,13 +36,9 @@ public class NuevaReclamacionEmpresarialStep {
 
   @Steps UbicacionStep ubicacionStep;
 
-  public void diligenciarInformacionIncidente(
-      List<ReclamacionEmpresarial> datosIncidente, String incidente) {
-    datosIncidente.forEach(
-        datos -> {
-          informacionReclamacionPage.seleccionarTipoIncidente(incidente);
-          informacionReclamacionPage.finalizarSiniestro();
-        });
+  public void diligenciarInformacionIncidente(String incidente) {
+    informacionReclamacionPage.seleccionarTipoIncidente(incidente);
+    informacionReclamacionPage.finalizarSiniestro();
   }
 
   public void seleccionarCausalIncidente(String causa, String valorPretension) {
@@ -81,10 +77,9 @@ public class NuevaReclamacionEmpresarialStep {
 
   public void validarExposicionVisualizada(String exposicion) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
-    String validar = resumenReclamacionPage.validarExposicion();
     MatcherAssert.assertThat(
         "No generó exposición, verificar las reglas de administración de exposiciones o data ingresada",
-        validar.equals(exposicion));
+        resumenReclamacionPage.validarExposicion().equals(exposicion));
   }
 
   public void buscarPolizaEmpresarial(List<ReclamacionEmpresarial> datosPolizaEmpresarial) {
