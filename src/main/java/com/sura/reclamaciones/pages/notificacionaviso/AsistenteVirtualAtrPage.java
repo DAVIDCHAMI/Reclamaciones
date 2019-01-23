@@ -31,6 +31,9 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   @FindBy(xpath = "//div[contains(.,'Bienvenido al Tour')]/a[2]")
   private WebElementFacade btnCerrarTour;
 
+  @FindBy(xpath = "//div[contains(text(),'Expediente creado')]")
+  private WebElementFacade lblTituloExpedienteCreado;
+
   public AsistenteVirtualAtrPage(WebDriver driver) {
     super(driver);
   }
@@ -56,5 +59,9 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
     lstProducto.waitUntilVisible().click();
     mnuOtroProducto.waitUntilVisible().click();
     btnAceptar.waitUntilVisible().click();
+  }
+
+  public String getLblTituloExpedienteCreado() {
+    return lblTituloExpedienteCreado.waitUntilPresent().waitUntilVisible().getText();
   }
 }

@@ -11,6 +11,7 @@ public class ConstanteGlobal {
   public static final String NO = "no";
   public static final String NIT = "98630089";
   public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO = 180;
+  public static final String EXPEDIENTE_CREADO_EXITOSAMENTE = "Expediente creado con éxito";
   public static final String EMPRESARIALES = "Empresariales";
 
   private ConstanteGlobal() {}
