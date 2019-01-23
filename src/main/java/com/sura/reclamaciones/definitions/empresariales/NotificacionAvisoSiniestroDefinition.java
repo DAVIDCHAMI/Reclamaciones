@@ -44,18 +44,17 @@ public class NotificacionAvisoSiniestroDefinition {
 
   @Cuando("^un incidente de tipo (.*)$")
   public void tomarTipoIncidente(String tipoIncidente) {
-    nuevaReclamacionEmpresarialStep.diligenciarInformacionIncidente(
-        reclamacionEmpresarial.getLstReclamo(), tipoIncidente);
+    nuevaReclamacionEmpresarialStep.diligenciarInformacionIncidente(tipoIncidente);
   }
 
-  @Entonces("^se obtiene una reclamacion que (.*) genera exposicion$")
+  @Entonces("^se obtiene una reclamación que (.*) genera exposición$")
   public void verificarExposicion(String exposicion) {
     nuevaReclamacionEmpresarialStep.validarReclamacion();
     nuevaReclamacionEmpresarialStep.visualizarResumenReclamacion();
     nuevaReclamacionEmpresarialStep.validarExposicionVisualizada(exposicion);
   }
 
-  @Entonces("^que (.*) genera reserva con un monto (.*), envia correo y se asigna a un analista$")
+  @Entonces("^que (.*) genera reserva con un monto (.*), envía correo y se asigna a un analista$")
   public void verificarReserva(String reserva, String monto) {
     nuevaReclamacionEmpresarialStep.validarReservaDatosFinancieros(
         reclamacionEmpresarial.getLstReclamo());
