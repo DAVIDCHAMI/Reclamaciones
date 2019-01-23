@@ -86,6 +86,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       case "Recupero":
         blnTransaccion =
             verificarRecupero(dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte);
+        break;
       case "Anulacion Pago":
       case "Anulacion Recupero":
         blnTransaccion =
