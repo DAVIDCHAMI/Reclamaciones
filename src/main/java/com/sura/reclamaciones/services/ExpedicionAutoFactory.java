@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.services;
 
-import com.sura.reclamaciones.utils.EnumValoresServicio;
+import com.sura.reclamaciones.constantes.EnumValoresServicio;
 import com.sura.service.expedicionIndividual.gen.Account;
 import com.sura.service.expedicionIndividual.gen.Address;
 import com.sura.service.expedicionIndividual.gen.BillingData;
@@ -62,7 +62,9 @@ public class ExpedicionAutoFactory {
   private String valorPerdidaLlaves;
   private String valorAsistencia;
 
-  public ExpedicionAutoFactory() {}
+  public ExpedicionAutoFactory() {
+    //constructor
+  }
 
   public String getMethod() {
     return method;

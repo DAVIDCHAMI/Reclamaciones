@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.pages.generics;
 
-import com.sura.reclamaciones.utils.EnumConstantes;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -57,10 +56,6 @@ public class MenuPolicyPage extends GeneralPage {
     mnuSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
   }
 
-  public void ingresarComandoPolicy(String comando) {
-    txtComandoPolicy.type(comando).sendKeys(Keys.ENTER);
-  }
-
   public void buscarJobNumber(String jobNumber) {
     getDriver().findElement(By.tagName("body")).sendKeys(Keys.chord(Keys.ALT, "p"));
     txtJobNumber.sendKeys(jobNumber, Keys.ENTER);
@@ -71,21 +66,5 @@ public class MenuPolicyPage extends GeneralPage {
     WebElement elemento =
         mnuPrincipalGuidewire.findElement(By.xpath(".//span[@id=':TabLinkMenuButton-btnIconEl']"));
     waitFor(elemento).waitUntilClickable().click();
-  }
-
-  public void cerrarSesionGuidewire() {
-    seleccionarMenuGeneral();
-    seleccionarOpcionMenuGeneral("Cerrar sesión");
-    seleccionarOpcionPopupGuidewire(EnumConstantes.ACEPTAR.getValor());
-  }
-
-  public void seleccionarMenuAcciones() {
-    mnuAccionesPrincipal.click();
-  }
-
-  public void seleccionarOpcionMenuAcciones(String opcionMenuAcciones) {
-    lstOpcionMenuAccionesPrincipal
-        .find(By.xpath(".//a[contains(.,'" + opcionMenuAcciones + "')]"))
-        .click();
   }
 }

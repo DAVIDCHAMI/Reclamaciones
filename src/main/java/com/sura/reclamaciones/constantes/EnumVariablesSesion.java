@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.utils;
+package com.sura.reclamaciones.constantes;
 
 public enum EnumVariablesSesion {
   SESION_GC_PLACA("placa"),

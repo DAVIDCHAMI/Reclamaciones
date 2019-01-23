@@ -5,13 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 public class ExpedicionAuto {
-  private String id;
   private String version;
-  private String method;
-  private String planCode;
+  private String metodo;
+  private String codigoPlan;
   private String valorCotizar;
   private String fasecolda;
-  private String year;
+  private String anio;
   private String ciudadCirculacion;
   private String accesorio;
   private boolean ceroKms;
@@ -41,11 +40,11 @@ public class ExpedicionAuto {
 
   public ExpedicionAuto(Map<String, String> datosExpedicion) {
     this.version = datosExpedicion.get("version");
-    this.method = datosExpedicion.get("method");
-    this.planCode = datosExpedicion.get("planCode");
+    this.metodo = datosExpedicion.get("method");
+    this.codigoPlan = datosExpedicion.get("codigoPlan");
     this.valorCotizar = datosExpedicion.get("valorCotizar");
     this.fasecolda = datosExpedicion.get("fasecolda");
-    this.year = datosExpedicion.get("ano");
+    this.anio = datosExpedicion.get("ano");
     this.ciudadCirculacion = datosExpedicion.get("ciudadCirculacion");
     this.accesorio = datosExpedicion.get("accesorios");
     this.ceroKms = Boolean.parseBoolean(datosExpedicion.get("ceroKms"));
@@ -134,8 +133,8 @@ public class ExpedicionAuto {
     return version;
   }
 
-  public String getMethod() {
-    return method;
+  public String getMetodo() {
+    return metodo;
   }
 
   public String getValorCotizar() {
@@ -146,8 +145,8 @@ public class ExpedicionAuto {
     return fasecolda;
   }
 
-  public String getYear() {
-    return year;
+  public String getAnio() {
+    return anio;
   }
 
   public String getCiudadCirculacion() {
@@ -226,7 +225,7 @@ public class ExpedicionAuto {
     return expedicionTotal;
   }
 
-  public String getPlanCode() {
-    return planCode;
+  public String getCodigoPlan() {
+    return codigoPlan;
   }
 }

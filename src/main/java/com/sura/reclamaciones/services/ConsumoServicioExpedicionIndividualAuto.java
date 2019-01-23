@@ -1,13 +1,12 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.utils.EnumVariablesSesion.*;
-import static com.sura.reclamaciones.utils.EnumVariablesSesion.SESION_FECHA_INICIO_VIGENCIA;
-import static com.sura.reclamaciones.utils.EnumVariablesSesion.SESION_GC_PLACA;
-import static com.sura.reclamaciones.utils.EnumVariablesSesion.SESION_SERV_JOB_NUMBER;
-import static com.sura.reclamaciones.utils.EnumVariablesSesion.SESION_SERV_NRO_POLIZA;
+import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_FECHA_INICIO_VIGENCIA;
+import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_GC_PLACA;
+import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_SERV_JOB_NUMBER;
+import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_SERV_NRO_POLIZA;
 
+import com.sura.reclamaciones.constantes.EnumConfiguraciones;
 import com.sura.reclamaciones.models.ExpedicionAuto;
-import com.sura.reclamaciones.utils.EnumConfiguraciones;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.cliente.expedicion.ExpedicionAutosIndividualCliente;
 import com.sura.service.expedicionIndividual.gen.ExpedicionAutosParametros;
@@ -15,12 +14,10 @@ import com.sura.service.expedicionIndividual.gen.ExpedicionIndividualAutosRespon
 import com.sura.service.expedicionIndividual.gen.QuotingData;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
-import net.thucydides.core.steps.StepInterceptor;
 import org.joda.time.DateTime;
-import org.slf4j.LoggerFactory;
 
 public class ConsumoServicioExpedicionIndividualAuto {
-  public static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
   List<ExpedicionAuto> lstParametros;
   ExpedicionAutoFactory expedicionAutoFactory;
   ExpedicionAutosIndividualCliente expedicion;
@@ -41,8 +38,8 @@ public class ConsumoServicioExpedicionIndividualAuto {
     for (ExpedicionAuto oExpedicion : this.lstParametros) {
       expedicionAutoFactory = new ExpedicionAutoFactory();
       expedicionAutoFactory.setJsonrpc(oExpedicion.getVersion());
-      expedicionAutoFactory.setMethod(oExpedicion.getMethod());
-      expedicionAutoFactory.setPlanCode(oExpedicion.getPlanCode());
+      expedicionAutoFactory.setMethod(oExpedicion.getMetodo());
+      expedicionAutoFactory.setPlanCode(oExpedicion.getCodigoPlan());
       expedicionAutoFactory.setAmount(oExpedicion.getValorCotizar());
       expedicionAutoFactory.setIdCustom(utilidades.generarAleatoriosNumeros(12));
       expedicionAutoFactory.setFechaInicioVigencia(
@@ -56,7 +53,7 @@ public class ConsumoServicioExpedicionIndividualAuto {
       Serenity.setSessionVariable(SESION_GC_PLACA.getValor())
           .to(expedicionAutoFactory.getLicense());
       expedicionAutoFactory.setFasecoldaCode(oExpedicion.getFasecolda());
-      expedicionAutoFactory.setYear(oExpedicion.getYear());
+      expedicionAutoFactory.setYear(oExpedicion.getAnio());
       expedicionAutoFactory.setcityCirculationCode(oExpedicion.getCiudadCirculacion());
       expedicionAutoFactory.setAccesorios(oExpedicion.getAccesorio());
       expedicionAutoFactory.setCeroKms(oExpedicion.isCeroKms());

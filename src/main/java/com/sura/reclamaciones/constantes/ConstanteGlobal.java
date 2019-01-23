@@ -28,6 +28,8 @@ public class ConstanteGlobal {
   public static final String PARAMETRO_CREACION_AVISO_AUTOS_WS = "creacionAvisoWS";
   public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO = 180;
   public static final String EMPRESARIALES = "Empresariales";
+  public static final String FECHA_ACTUAL = "fechaActual";
+  public static final String VALOR_CERO = "0";
 
   private ConstanteGlobal() {}
 }

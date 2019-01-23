@@ -4,8 +4,8 @@ public enum NombresCsv {
   ANULACION_EMPRESARIAL("anulacion_empresarial"),
   CONTRATO("contrato"),
   PAGO_SINIESTRO("pago_siniestro"),
+  EXPEDICION_AUTOS("expedicion_autos"),
   RECUPERO_SINIESTRO("recupero_siniestro");
-  public static final String POLIZA = "expedicion_autos";
 
   private String valor;
 
