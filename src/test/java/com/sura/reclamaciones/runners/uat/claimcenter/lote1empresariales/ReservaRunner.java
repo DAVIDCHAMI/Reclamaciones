@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-  features = "src/test/resources/features/reservas/reversion_constitucion",
+  features = "src/test/resources/features/reservas/reversion_constitucion.feature",
   glue = {"com.sura.reclamaciones.definitions"}
 )
 public class ReservaRunner {}
