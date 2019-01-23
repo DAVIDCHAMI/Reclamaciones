@@ -36,10 +36,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   }
 
   private boolean verificarPorcentajeCedido(
-      List<WebElement> lstFilaTransaccion,
-      int posicionElementoFila,
-      String porcentajeRetenido,
-      String proporcionCuotaParte) {
+      List<WebElement> lstFilaTransaccion, String porcentajeRetenido, String proporcionCuotaParte) {
     String strValorPantalla =
         lstFilaTransaccion.get(2).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     dblValorRetenido =
@@ -143,8 +140,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
       blnRetencionPura = verificarRetencionPura(lstFilaTransaccion, dblMaximoRetencioPura);
       blnPorcentajeCedido =
-          verificarPorcentajeCedido(
-              lstFilaTransaccion, posicionElementoFila, porcentajeRetenido, proporcionCuotaParte);
+          verificarPorcentajeCedido(lstFilaTransaccion, porcentajeRetenido, proporcionCuotaParte);
       blnPorcentajeRetenido = verificarPorcentajeRetenido(lstFilaTransaccion, dblValorRetenido);
       if (!(blnRetencionPura && blnPorcentajeRetenido && blnPorcentajeCedido)) {
         break;
