@@ -57,7 +57,7 @@ public class GenericStep {
         escribirAut.write("\r\n");
         escribirAut.close();
       }
-    } catch (Exception e) {
+    } catch (IOException e) {
       Utilidades.getLogger().info("No se realizó el guardado del Log");
     }
   }

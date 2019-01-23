@@ -42,7 +42,7 @@ public enum Constantes {
 
   private String valor;
 
-  private Constantes(String valor) {
+  Constantes(String valor) {
     this.valor = valor;
   }
 
