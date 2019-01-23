@@ -1,6 +1,13 @@
 package com.sura.reclamaciones.definitions.autos;
 
-import static com.sura.reclamaciones.constantes.NombresCsv.*;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_DIRECCION_SINIESTRO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_EXPOSICION_AUTOMATICA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_PERSONA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_LINEA_RESERVA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_LESIONES;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 
 import com.sura.reclamaciones.models.ExposicionLesiones;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
