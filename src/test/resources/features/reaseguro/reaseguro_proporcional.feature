@@ -45,7 +45,7 @@ Característica: Distribución del reaseguro de un siniestro
     | Incendio con cobertura Daños materiales  | (1) 1ª parteContenido   | Final     |   MARTHA ENID ROJAS MARIACA CQLII   | Caja Sura   | No           | 0010                   | Recupero          |Salvamento   |0099                     | Daños por agua       |3000000              |Contenido          |
 
   @claimsEmpresarial
- Esquema del escenario: Reaseguro Reversion de liberacion - Anulacion de pago y reversion de reserva
+ Esquema del escenario: Reaseguro Reversión de liberación - Anulación de pago y reversión de reserva
     Dado que se tiene una póliza de <Tipo y Cobertura>
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
     Y un incidente de tipo <Tipo de incidente>
@@ -58,7 +58,7 @@ Característica: Distribución del reaseguro de un siniestro
   | Multiriesgo corporativo con cobertura basica         | 0099                  | Anulacion Pago        | Incendio       |3000000              |Propiedad          |
 
   @claimsEmpresarial
-  Esquema del escenario: anulacion recupero
+  Esquema del escenario: Reaseguro Anulación de recupero
     Dado que se tiene una póliza de <Tipo y Cobertura>
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
     Y un incidente de tipo <Tipo de incidente>
