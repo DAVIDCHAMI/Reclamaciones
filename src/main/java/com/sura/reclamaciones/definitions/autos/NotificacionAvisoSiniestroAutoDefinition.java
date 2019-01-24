@@ -121,7 +121,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Reserva(
             genericStep.getFilasModelo(
                 PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL));
-    reclamacionStep.validarValorReservasResponsabilidadCivil(reserva.getLstReserva());
+    reclamacionStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Daños$")
@@ -157,7 +157,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     reserva =
         new Reserva(
             genericStep.getFilasModelo(PARAMETRO_LINEA_RESERVA.getValor(), LINEA_RESERVA_ARCHIVO));
-    reclamacionStep.validarValorReservasArchivo(reserva.getLstReserva());
+    reclamacionStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Subrogación$")
@@ -199,7 +199,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Reserva(
             genericStep.getFilasModelo(
                 PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL));
-    reclamacionStep.validarValorReservasResponsabilidadCivil(reserva.getLstReserva());
+    reclamacionStep.validarValorReservas(reserva.getLstReserva());
   }
 
   private void crearNuevaExposicionVehicular() {

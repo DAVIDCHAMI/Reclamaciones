@@ -252,16 +252,7 @@ public class NuevoAvisoSiniestroAutoStep {
   }
 
   @Step
-  public void validarValorReservasResponsabilidadCivil(List<Reserva> lineaReserva) {
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(
-        DatosFinancierosConstante.DATOS_FINANCIEROS);
-    boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
-    MatcherAssert.assertThat(
-        "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
-  }
-
-  @Step
-  public void validarValorReservasArchivo(List<Reserva> lineaReserva) {
+  public void validarValorReservas(List<Reserva> lineaReserva) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(
         DatosFinancierosConstante.DATOS_FINANCIEROS);
     boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
