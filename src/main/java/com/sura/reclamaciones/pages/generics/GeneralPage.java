@@ -63,6 +63,9 @@ public class GeneralPage extends PageObject {
   private String tblTransaccion =
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
+  @FindBy(xpath = "//div[@class='x-panel x-layer x-panel-default x-menu x-border-box']")
+  public WebElementFacade lstOpcionesGenerales;
+
   private String lstDinamico = "//li[.='COMODIN']";
 
   private String auxiliarReemplazo = "";
@@ -266,6 +269,12 @@ public class GeneralPage extends PageObject {
       ventana = driver.getWindowHandles();
       driver.close();
     } while (ventana.size() != 1);
+  }
+
+  public void seleccionarOpcionMenuGeneral(String opcion) {
+    WebElement elemento =
+        lstOpcionesGenerales.findElement(By.xpath(".//span[contains(text(), '" + opcion + "')]"));
+    waitFor(elemento).waitUntilClickable().click();
   }
 
   public boolean actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {
