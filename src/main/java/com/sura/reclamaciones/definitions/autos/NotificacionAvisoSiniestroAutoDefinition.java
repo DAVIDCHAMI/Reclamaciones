@@ -67,7 +67,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   }
 
   @Cuando(
-      "^se genere un siniestro por la causa y la culpabilidad Responsabilidad_civil_daños_persona y Responsabilidad_civil_daños_vehículo$")
+      "^se genere un siniestro por la causa y la culpabilidad Responsabilidad civil daños persona y Responsabilidad civil daños vehículo$")
   public void ingresarDatosSiniestroResponsabilidadCivil(DataTable parametrosSiniestro)
       throws IOException {
     RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2);
@@ -187,7 +187,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   }
 
   @Cuando(
-      "^se genere un siniestro por la causa y la culpabilidad SoloRC con Responsabilidad_civil_daños_persona y Responsabilidad_civil_daños_vehículo$")
+      "^se genere un siniestro por la causa y la culpabilidad SoloRC con Responsabilidad civil daños persona y Responsabilidad civil daños vehículo$")
   public void ingresarDatosSiniestroSoloResponsabilidadCivil(DataTable parametrosSiniestro)
       throws IOException {
     RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2);
