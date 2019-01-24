@@ -71,9 +71,6 @@ public class GeneralPage extends PageObject {
 
   private String auxiliarReemplazo = "";
 
-  @FindBy(className = "x-message-box")
-  WebElementFacade popGuidewire;
-
   protected WebDriver driver;
 
   public GeneralPage(WebDriver wdriver) {
