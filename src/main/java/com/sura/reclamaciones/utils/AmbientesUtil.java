@@ -1,19 +1,17 @@
 package com.sura.reclamaciones.utils;
 
+import net.thucydides.core.util.EnvironmentVariables;
+import net.thucydides.core.util.SystemEnvironmentVariables;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.thucydides.core.util.EnvironmentVariables;
-import net.thucydides.core.util.SystemEnvironmentVariables;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AmbientesUtil {
-  final Logger logger = LoggerFactory.getLogger(AmbientesUtil.class);
 
   public String getAmbiente() {
     String envVariable = getEnv();
-    logger.info("Ambiente en que corre el proceso. $ENV: " + envVariable);
+    Utilidades.getLogger().info("Ambiente en que corre el proceso. $ENV: " + envVariable);
     return ambientesValidos(envVariable);
   }
 

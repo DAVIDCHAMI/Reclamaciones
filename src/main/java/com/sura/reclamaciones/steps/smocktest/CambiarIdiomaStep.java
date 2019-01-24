@@ -5,6 +5,9 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
+import static com.sura.reclamaciones.constantes.Constantes.ACTIVIDADES;
+import static com.sura.reclamaciones.constantes.Constantes.ACTIVITIES;
+
 public class CambiarIdiomaStep {
 
   @Page CambiarIdiomaPage cambiarIdiomaPage;
@@ -19,12 +22,12 @@ public class CambiarIdiomaStep {
   @Step
   public void comprobarTextoPantalla() {
     String tipoIdioma = cambiarIdiomaPage.seleccionarIdioma();
-    if (tipoIdioma.equals("Actividades")) {
+    if (tipoIdioma.equals(ACTIVIDADES.getValor())) {
       MatcherAssert.assertThat(
-          "No cambio el idioma en la aplicacion", tipoIdioma.equals("Actividades"));
+          "No cambio el idioma en la aplicacion", tipoIdioma.equals(ACTIVIDADES.getValor()));
     } else {
       MatcherAssert.assertThat(
-          "No cambio el idioma en la aplicacion", tipoIdioma.equals("Activities"));
+          "No cambio el idioma en la aplicacion", tipoIdioma.equals(ACTIVITIES.getValor()));
     }
   }
 }

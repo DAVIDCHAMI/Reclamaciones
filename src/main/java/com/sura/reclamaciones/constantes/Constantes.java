@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.constantes;
 
 public enum Constantes {
+  ACTIVIDADES("Actividades"),
+  ACTIVITIES("Activities"),
   ANULACION("Anulacion"),
   CANTIDAD("Cantidad"),
   CLAVE("cor3sur4"),
@@ -40,7 +42,7 @@ public enum Constantes {
 
   private String valor;
 
-  private Constantes(String valor) {
+  Constantes(String valor) {
     this.valor = valor;
   }
 
