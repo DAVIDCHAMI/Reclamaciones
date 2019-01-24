@@ -2,7 +2,7 @@ package com.sura.reclamaciones.services;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
-import com.sura.reclamaciones.models.Persona;
+import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.cliente.siniestro.CreacionSiniestroCliente;
@@ -20,7 +20,8 @@ public class ConsumoServicioCreacionSiniestro {
 
   @RequestMapping
   public void asignarParametrosRequest(
-      List<ReclamacionEmpresarial> lstSiniestroParam, List<Persona> lstParametroPersona) {
+      List<ReclamacionEmpresarial> lstSiniestroParam,
+      List<PersonaReclamacion> lstParametroPersona) {
     asignarParametrosSiniestro(lstSiniestroParam);
     asignarParametrosAutor(lstParametroPersona);
     asignarParametrosValorPerdida(lstSiniestroParam);
@@ -49,7 +50,7 @@ public class ConsumoServicioCreacionSiniestro {
     creacionSiniestroFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaPerdida());
   }
 
-  private void asignarParametrosAutor(List<Persona> lstParametroPersona) {
+  private void asignarParametrosAutor(List<PersonaReclamacion> lstParametroPersona) {
     creacionSiniestroFactory.setDocumentTypeAuthor(
         lstParametroPersona.get(campoDato).getTipoDocumento());
     creacionSiniestroFactory.setTaxIdAuthor(lstParametroPersona.get(campoDato).getNumDocumento());
@@ -63,7 +64,7 @@ public class ConsumoServicioCreacionSiniestro {
         lstSiniestroParam.get(campoDato).getTipoMonedaPoliza());
   }
 
-  private void asignarParametrosContactoPrincipal(List<Persona> lstParametroPersona) {
+  private void asignarParametrosContactoPrincipal(List<PersonaReclamacion> lstParametroPersona) {
     creacionSiniestroFactory.setDocumentTypeMainContact(
         lstParametroPersona.get(campoDato).getTipoDocumento());
     creacionSiniestroFactory.setContactNameMainContact(
@@ -110,7 +111,7 @@ public class ConsumoServicioCreacionSiniestro {
     creacionSiniestroFactory.setCityProperty(lstSiniestroParam.get(campoDato).getCiudad());
   }
 
-  private void asignarParametrosReclamante(List<Persona> lstParametroPersona) {
+  private void asignarParametrosReclamante(List<PersonaReclamacion> lstParametroPersona) {
     creacionSiniestroFactory.setDocumentTypeAnt(
         lstParametroPersona.get(campoDato).getTipoDocumento());
     creacionSiniestroFactory.setContactNameAnt(

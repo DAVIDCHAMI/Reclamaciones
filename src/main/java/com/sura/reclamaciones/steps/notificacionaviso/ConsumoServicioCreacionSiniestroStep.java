@@ -1,8 +1,10 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_PERSONA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO;
+
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.models.Persona;
+import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
@@ -15,9 +17,9 @@ import org.hamcrest.MatcherAssert;
 public class ConsumoServicioCreacionSiniestroStep {
 
   List<ReclamacionEmpresarial> lstSiniestroParam;
-  List<Persona> lstParametroPersona;
+  List<PersonaReclamacion> lstParametroPersona;
   ReclamacionEmpresarial parametroSiniestro = new ReclamacionEmpresarial();
-  Persona parametroPersona;
+  PersonaReclamacion parametroPersona;
 
   GenericStep genericStep = new GenericStep();
 
@@ -34,12 +36,12 @@ public class ConsumoServicioCreacionSiniestroStep {
   public void asignarValoresSiniestro(String filtroSiniestroCsv) throws IOException {
     parametroSiniestro =
         new ReclamacionEmpresarial(
-            genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_SINIESTRO, filtroSiniestroCsv));
+            genericStep.getFilasModelo(PARAMETROS_SINIESTRO.getValor(), filtroSiniestroCsv));
     lstSiniestroParam = parametroSiniestro.getLstReclamo();
     parametroPersona =
-        new Persona(
-            genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, filtroSiniestroCsv));
-    lstParametroPersona = parametroPersona.getLstPersona();
+        new PersonaReclamacion(
+            genericStep.getFilasModelo(PARAMETROS_PERSONA.getValor(), filtroSiniestroCsv));
+    lstParametroPersona = parametroPersona.getLstPersonaReclamacion();
   }
 
   public void verificarSiniestro() {

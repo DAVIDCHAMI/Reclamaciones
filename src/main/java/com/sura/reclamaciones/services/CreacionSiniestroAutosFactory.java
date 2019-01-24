@@ -811,26 +811,10 @@ public class CreacionSiniestroAutosFactory {
     return crearSiniestroAutoRequest;
   }
 
-  ClaimsAutoRequest creacionSiniestroAutoBadRequestFactory() {
-    ClaimsAutoRequest claimsAutoRequest = new ClaimsAutoRequest();
-    claimsAutoRequest.setId(ID_SERVICIO_CLAIM);
-    claimsAutoRequest.setMethod(METHOD_CREATE_CLAIM);
-    claimsAutoRequest.setParams(listBadParamFactory());
-    claimsAutoRequest.setJsonrpc(JSONRPC_2);
-    return claimsAutoRequest;
-  }
-
   public List<Object> listParamFactory() {
     List<Object> listParams = new ArrayList<Object>();
     Parametros parametro = paramAutoFactory();
     listParams.add(getPolicyNumber());
-    listParams.add(parametro);
-    return listParams;
-  }
-
-  public List<Object> listBadParamFactory() {
-    List<java.lang.Object> listParams = new ArrayList<java.lang.Object>();
-    Parametros parametro = paramAutoFactory();
     listParams.add(parametro);
     return listParams;
   }
