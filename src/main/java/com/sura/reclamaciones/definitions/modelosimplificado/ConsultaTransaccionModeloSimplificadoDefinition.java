@@ -28,18 +28,18 @@ public class ConsultaTransaccionModeloSimplificadoDefinition {
   }
 
   @Cuando("^la transaccion se ha efectuado$")
-  public void ejecutarConsultaModeloSimplificado() throws SQLException, IOException {
+  public void ejecutarConsultaModeloSimplificado() throws IOException {
     transaccionModeloSimplificado =
         new TransaccionModeloSimplificado(
             genericStep.getFilasModelo("reaseguro_modelo_simplificado", movimientoFinanciero));
+  }
+
+  @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
+  public void obtenerDatosModeloSimplificado() throws SQLException {
     transaccionModeloSimplificadoBD =
         new TransaccionModeloSimplificado(
             conexionBDStep.consultarModeloSimplificado(
                 transaccionModeloSimplificado.getlstModeloSimplificado(), movimientoFinanciero));
-  }
-
-  @Entonces("^en las fuentes del tablero deben quedar correctos los valores de reaseguro$")
-  public void obtenerDatosModeloSimplificado() {
     conexionBDStep.verficarConsultaModeloSimplificado(
         transaccionModeloSimplificadoBD.getlstModeloSimplificado(),
         transaccionModeloSimplificado.getlstModeloSimplificado());

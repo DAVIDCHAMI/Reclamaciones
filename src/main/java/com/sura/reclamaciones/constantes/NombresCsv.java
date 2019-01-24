@@ -10,7 +10,7 @@ public enum NombresCsv {
 
   private String valor;
 
-  private NombresCsv(String valor) {
+  NombresCsv(String valor) {
     this.valor = valor;
   }
 
