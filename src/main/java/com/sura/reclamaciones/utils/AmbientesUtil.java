@@ -1,11 +1,10 @@
 package com.sura.reclamaciones.utils;
 
-import net.thucydides.core.util.EnvironmentVariables;
-import net.thucydides.core.util.SystemEnvironmentVariables;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import net.thucydides.core.util.EnvironmentVariables;
+import net.thucydides.core.util.SystemEnvironmentVariables;
 
 public class AmbientesUtil {
 

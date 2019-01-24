@@ -255,8 +255,7 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Step
   public void validarValorReservas(List<Reserva> lineaReserva) {
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(
-        DatosFinancierosConstante.DATOS_FINANCIEROS);
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS.getValor());
     boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
     MatcherAssert.assertThat(
         "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
