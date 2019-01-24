@@ -281,13 +281,6 @@ public class GeneralPage extends PageObject {
     waitFor(elemento).waitUntilClickable().click();
   }
 
-  public void seleccionarOpcionPopupGuidewire(String opcion) {
-    if (popGuidewire.isCurrentlyVisible()) {
-      popGuidewire.findElement(By.xpath(String.format(".//a[.='%s']", opcion))).click();
-      waitForTextToDisappear(MENSAJE_TRABAJO_SIN_GUARDAR.getValor());
-    }
-  }
-
   public boolean actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {
     String strDatoPantalla = valorElementoPantalla.getText();
     if (!strDatoPantalla.equals(datoValidar)) {
