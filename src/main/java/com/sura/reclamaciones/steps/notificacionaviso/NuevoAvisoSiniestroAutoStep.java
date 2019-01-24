@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.DatosFinancierosConstante;
+import static com.sura.reclamaciones.constantes.Constantes.DATOS_FINANCIEROS;
+import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ExposicionLesiones;
@@ -203,7 +205,7 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Step
   public void validarExposicion(List<ExposicionesAutomaticasAutos> datosExposicionAutomatica) {
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DatosFinancierosConstante.EXPOSICIONES);
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
     boolean exposicionAutomatica =
         exposicionesAutomaticasPage.validarExposiciones(datosExposicionAutomatica);
     MatcherAssert.assertThat(

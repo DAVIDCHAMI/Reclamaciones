@@ -10,7 +10,7 @@ public enum Tablas {
 
   private String xpath;
 
-  private Tablas(String xpath) {
+  Tablas(String xpath) {
     this.xpath = xpath;
   }
 

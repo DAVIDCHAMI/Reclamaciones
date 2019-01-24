@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.constantes.Constantes.PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.RESERVA;
 import static com.sura.reclamaciones.constantes.NombresCsv.CONTRATO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
@@ -27,7 +25,6 @@ public class ReaseguroDefinition {
 
   private String strTipoContrato =
       Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor());
-  private String strTransaccion = RESERVA.getValor();
 
   @Steps ReaseguroStep reaseguroStep;
 
@@ -49,7 +46,6 @@ public class ReaseguroDefinition {
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
-    strTransaccion = PAGO.getValor();
     PagoSiniestro pagoSiniestro =
         new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), strTipoContrato)));
     nuevoPagoStep.consultarNumeroReclamacion();
@@ -66,7 +62,6 @@ public class ReaseguroDefinition {
   @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")
   public void realizarRecuperoSiniestroEmpresarial(
       String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException {
-    strTransaccion = RECUPERO.getValor();
     Recupero recupero =
         new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoContrato));
     recuperoStep.seleccionarRecupero();
@@ -76,7 +71,7 @@ public class ReaseguroDefinition {
 
   @Entonces(
       "^para la transacción (.*) se distribuye el reaseguro según el retenido y el cedido de manera adecuada$")
-  public void verificarReaseguro(String tipoTransaccion) throws IOException {
+  public void verificarReaseguro(String strTransaccion) throws IOException {
     if (strTransaccion.equals(RESERVA.getValor())) {
       nuevaReclamacionEmpresarialStep.visualizarResumenReclamacion();
     }
