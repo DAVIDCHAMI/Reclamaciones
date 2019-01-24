@@ -186,49 +186,6 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
   }
 
-  @Cuando(
-      "^se genere un siniestro por la causa y la culpabilidad SoloRC con Responsabilidad civil daños persona y Responsabilidad civil daños vehículo$")
-  public void ingresarDatosSiniestroSoloResponsabilidadCivil(DataTable parametrosSiniestro)
-      throws IOException {
-    RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2);
-    RESPONSABILIDAD_CIVIL_VEHICULO = parametrosSiniestro.raw().get(1).get(3);
-    reclamacionStep.seleccionarNombreAutorReporte(reclamacionAuto.getLstReclamacionAuto());
-    reclamacionStep.completarDetalleSiniestro(reclamacionAuto.getLstReclamacionAuto());
-    reclamacionStep.editarInformacionVehiculo(reclamacionAuto.getLstReclamacionAuto());
-    reclamacionStep.completarDatosReclamacionAutos(reclamacionAuto.getLstReclamacionAuto());
-    exposicionVehiculoTercero =
-        new ExposicionVehiculoTercero(
-            genericStep.getFilasModelo(
-                PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
-                RESPONSABILIDAD_CIVIL_VEHICULO));
-    personaReclamacion =
-        new PersonaReclamacion(
-            genericStep.getFilasModelo(
-                PARAMETROS_PERSONA.getValor(), RESPONSABILIDAD_CIVIL_VEHICULO));
-    direccionReclamacion =
-        new ReclamacionAuto(
-            genericStep.getFilasModelo(
-                PARAMETROS_DIRECCION_SINIESTRO.getValor(), DIRECCION_EXPOSICION_VEHICULAR));
-    crearNuevaExposicionVehicular();
-    personaReclamacion =
-        new PersonaReclamacion(
-            genericStep.getFilasModelo(
-                PARAMETROS_PERSONA.getValor(), RESPONSABILIDAD_CIVIL_LESIONES));
-    direccionReclamacion =
-        new ReclamacionAuto(
-            genericStep.getFilasModelo(
-                PARAMETROS_DIRECCION_SINIESTRO.getValor(), DIRECCION_EXPOSICION_LESIONES));
-    exposicionLesiones =
-        new ExposicionLesiones(
-            genericStep.getFilasModelo(
-                PARAMETRO_RESPONSABILIDAD_CIVIL_LESIONES.getValor(),
-                RESPONSABILIDAD_CIVIL_LESIONES));
-    reclamacionStep.crearNuevaExposicionLesiones(
-        personaReclamacion.getLstPersonaReclamacion(),
-        reclamacionAuto.getLstReclamacionAuto(),
-        exposicionLesiones.getLstExposicionLesiones());
-  }
-
   @Entonces(
       "^se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva$")
   public void generarReclamacionSoloResponsabilidadCivil() throws IOException {
