@@ -5,6 +5,7 @@ public enum NombresCsv {
   CONTRATO("contrato"),
   PAGO_SINIESTRO("pago_siniestro"),
   PARAMETROS_SINIESTRO("parametros_siniestro"),
+  EXPEDICION_AUTOS("expedicion_autos"),
   RECUPERO_SINIESTRO("recupero_siniestro"),
   PARAMETROS_PERSONA("parametros_persona"),
   PARAMETROS_RECLAMACION_PERSONA("persona_reclamacion_auto"),

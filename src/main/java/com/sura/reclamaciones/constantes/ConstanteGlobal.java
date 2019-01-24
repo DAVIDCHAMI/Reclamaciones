@@ -17,6 +17,8 @@ public class ConstanteGlobal {
   public static final boolean TRUE = true;
   public static final String RUTA_LOG_EMPRESARIAL = "C:\\Log\\RegistrosEmpresarial.txt";
   public static final String RUTA_LOG_AUTO = "C:\\Log\\RegistrosAutos.txt";
+  public static final String FECHA_ACTUAL = "fechaActual";
+  public static final String VALOR_CERO = "0";
 
   private ConstanteGlobal() {}
 }
