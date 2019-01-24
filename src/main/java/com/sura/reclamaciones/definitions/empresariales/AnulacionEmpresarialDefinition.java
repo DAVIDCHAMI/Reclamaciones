@@ -83,44 +83,6 @@ public class AnulacionEmpresarialDefinition {
     anulacionEmpresarialStep.verificarAnulacionRealizada(ESTADO_ANULACION.getValor());
   }
 
-  @Y(
-      "^que se realice una transacción de pago y una transacción de recupero, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
-  public void crearPagoRecupero(String strTipoProducto, String strCodigoRetencion)
-      throws IOException {
-    pagoSiniestro =
-        new PagoSiniestro(
-            (genericStep.getFilasModelo(
-                PAGO_SINIESTRO.getValor(),
-                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
-    anulacionEmpresarial =
-        new AnulacionEmpresarial(
-            (genericStep.getFilasModelo(
-                ANULACION_EMPRESARIAL.getValor(),
-                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
-    anulacionEmpresarial
-        .getLstAnulacionEmpresarial()
-        .forEach(
-            ajustador -> {
-              nuevoPagoStep.consultarNumeroReclamacion();
-              nuevoPagoStep.ingresarInformacionBeneficiarioPago(
-                  ajustador.getLineaReserva(),
-                  ajustador.getTipoPago(),
-                  ajustador.getBeneficiarioPago(),
-                  ajustador.getMetodoPago(),
-                  ajustador.getSoloSura(),
-                  strCodigoRetencion,
-                  pagoSiniestro.getLstPago());
-            });
-    recupero =
-        new Recupero(
-            genericStep.getFilasModelo(
-                RECUPERO_SINIESTRO.getValor(),
-                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
-    recuperoStep.seleccionarRecupero();
-    recuperoStep.diligenciarCreacionRecupero(
-        recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
-  }
-
   @Cuando("^se realice la anulación del recupero$")
   public void realizarAnulacionTransaccion() {
     anulacionEmpresarialStep.ingresarAnulacionRecupero(recupero.getLstRecupero());
@@ -129,5 +91,18 @@ public class AnulacionEmpresarialDefinition {
   @Entonces("^se debe obtener la anulación del recupero, quedando en estado anulado$")
   public void verificarAnulacionRecupero() {
     anulacionEmpresarialStep.verificarAnulacionRealizada(ESTADO_ANULACION.getValor());
+  }
+
+  @Y("^una transacción de recupero, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
+  public void crearRecuperoAvisoSiniestro(String strTipoProducto, String strCodigoRetencion)
+      throws IOException {
+    recupero =
+        new Recupero(
+            genericStep.getFilasModelo(
+                RECUPERO_SINIESTRO.getValor(),
+                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
+    recuperoStep.seleccionarRecupero();
+    recuperoStep.diligenciarCreacionRecupero(
+        recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
   }
 }
