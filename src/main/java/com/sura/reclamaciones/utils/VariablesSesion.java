@@ -10,7 +10,7 @@ public enum VariablesSesion {
 
   private String valor;
 
-  private VariablesSesion(String valor) {
+  VariablesSesion(String valor) {
     this.valor = valor;
   }
 
