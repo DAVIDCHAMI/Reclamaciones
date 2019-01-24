@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.pages.generics;
 
-import static com.sura.reclamaciones.constantes.EnumConstantes.MENSAJE_TRABAJO_SIN_GUARDAR;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
