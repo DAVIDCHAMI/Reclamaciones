@@ -1,7 +1,13 @@
 package com.sura.reclamaciones.definitions.autos;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
-import com.sura.reclamaciones.models.PersonaReclamacionAuto;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_CREACION_AVISO_AUTOS_WS;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_CONDUCTOR;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_LESIONADA;
+
+import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
@@ -16,12 +22,12 @@ import net.thucydides.core.annotations.Steps;
 public class ConsumoCreacionAvisoAutosDefinition {
 
   List<ReclamacionAuto> lstReclamacionAuto;
-  List<PersonaReclamacionAuto> lstPersonaLesionada;
-  List<PersonaReclamacionAuto> lstConductor;
+  List<PersonaReclamacion> lstPersonaLesionada;
+  List<PersonaReclamacion> lstConductor;
   List<Vehiculo> lstVehiculoParam;
   ReclamacionAuto parametroAviso = new ReclamacionAuto();
-  PersonaReclamacionAuto parametroPersonaReclamacionAuto = new PersonaReclamacionAuto();
-  PersonaReclamacionAuto parametroPersonaConductorAuto = new PersonaReclamacionAuto();
+  PersonaReclamacion parametroPersonaReclamacionAuto = new PersonaReclamacion();
+  PersonaReclamacion parametroPersonaConductorAuto = new PersonaReclamacion();
   Vehiculo reclamacionVehiculo = new Vehiculo();
 
   GenericStep genericStep = new GenericStep();
@@ -33,25 +39,23 @@ public class ConsumoCreacionAvisoAutosDefinition {
   @Dado("^que se tiene una póliza (.*) de autos$")
   public void parametrizarValoresSiniestro(String filtroCsv) throws IOException {
     parametroPersonaReclamacionAuto =
-        new PersonaReclamacionAuto(
+        new PersonaReclamacion(
             genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA,
-                ConstanteGlobal.PARAMETRO_PERSONA_LESIONADA));
-    lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacionAuto();
+                PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_LESIONADA.getValor()));
+    lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacion();
     parametroPersonaConductorAuto =
-        new PersonaReclamacionAuto(
+        new PersonaReclamacion(
             genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_RECLAMACION_PERSONA,
-                ConstanteGlobal.PARAMETRO_PERSONA_CONDUCTOR));
-    lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacionAuto();
+                PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_CONDUCTOR.getValor()));
+    lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacion();
     reclamacionVehiculo =
-        new Vehiculo(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_VEHICULO, filtroCsv));
+        new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), filtroCsv));
     lstVehiculoParam = reclamacionVehiculo.getVehiculos();
     parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
-                ConstanteGlobal.PARAMETROS_SINIESTRO_AUTOS,
-                ConstanteGlobal.PARAMETRO_CREACION_AVISO_AUTOS_WS));
+                PARAMETROS_SINIESTRO_AUTOS.getValor(),
+                PARAMETRO_CREACION_AVISO_AUTOS_WS.getValor()));
     lstReclamacionAuto = parametroAviso.getLstReclamacionAuto();
   }
 

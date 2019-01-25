@@ -2,7 +2,7 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.models.Persona;
+import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.AsistenteVirtualAtrPage;
@@ -36,7 +36,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
   }
 
   @Step
-  public void diligenciarInformacionAsegurado(List<Persona> datosPersona) {
+  public void diligenciarInformacionAsegurado(List<PersonaReclamacion> datosPersona) {
     asistenteVirtualAtrPage.seleccionarPlanListaProducto();
     buscarPolizaPage.enfocarVistaAutomatizacion();
     buscarPolizaPage.realizarEsperaCarga();
