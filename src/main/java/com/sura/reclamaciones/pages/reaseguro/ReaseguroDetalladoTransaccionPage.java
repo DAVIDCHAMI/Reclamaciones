@@ -4,6 +4,7 @@ import static com.sura.reclamaciones.constantes.Constantes.PORCIENTO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
+import static java.lang.Math.abs;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
@@ -30,7 +31,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       List<WebElement> lstFilaTransaccion, Double dblMaximoValorRetencionPura) {
     String strRetencionPura =
         lstFilaTransaccion.get(6).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    dblRetencionPura = Double.parseDouble(strRetencionPura);
+    dblRetencionPura = abs(Double.parseDouble(strRetencionPura));
     return (dblRetencionPura >= -dblMaximoValorRetencionPura
         && dblRetencionPura <= dblMaximoValorRetencionPura);
   }
@@ -106,8 +107,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
   private boolean verificarRecupero(
       Double dblMaximoRetencioPura, String porcentajeRetenido, String proporcionCuotaParte) {
-    boolean blnVerificacionRecupero =
-        verificarPago(dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte);
+   // boolean blnVerificacionRecupero =
+   //     verificarPago(dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte);
     boolean blnValorRecupero = false;
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
@@ -122,7 +123,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       blnValorRecupero = strValorRecupero.equals(SESION_CC_VALOR_RECUPERO);
     }
-    return blnVerificacionRecupero && blnValorRecupero;
+    return blnValorRecupero;
   }
 
   private boolean verificarReserva(
@@ -163,8 +164,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
   private boolean verificarPago(
       Double dblMaximoRetencioPura, String porcentajeRetenido, String proporcionCuotaParte) {
-    boolean blnVerificarPago =
-        verificarReserva(dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte);
+    //boolean blnVerificarPago =
+    //    verificarReserva(dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte);
     boolean blnValorPago = false;
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
@@ -180,6 +181,6 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       blnValorPago =
           strValorPago.equals(Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
     }
-    return blnVerificarPago && blnValorPago;
+    return blnValorPago;
   }
 }
