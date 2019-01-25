@@ -121,7 +121,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               .get(4)
               .getText()
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      blnValorRecupero = strValorRecupero.equals(SESION_CC_VALOR_RECUPERO);
+      blnValorRecupero = strValorRecupero.equals(Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO));
     }
     return blnValorRecupero;
   }
