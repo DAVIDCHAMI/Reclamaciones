@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import net.thucydides.core.steps.stepdata.CSVTestDataSource;
 import net.thucydides.core.steps.stepdata.TestDataSource;
@@ -41,16 +42,21 @@ public class GenericStep {
 
   public void generarRegistro(String valor, String tipoAviso) {
     try {
+      ResourceBundle rutaEmpresarial =
+          ResourceBundle.getBundle(ConstanteGlobal.RUTA_LOG_EMPRESARIAL);
+      String registroEmpresarial = rutaEmpresarial.getString("RegistrosEmpresarial");
       Date date = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
       if (tipoAviso.equalsIgnoreCase(ConstanteGlobal.EMPRESARIALES)) {
-        File archivoLogEmpresarial = new File(ConstanteGlobal.RUTA_LOG_EMPRESARIAL);
+        File archivoLogEmpresarial = new File(registroEmpresarial, "");
         FileWriter escribirEmp = new FileWriter(archivoLogEmpresarial, ConstanteGlobal.TRUE);
         escribirEmp.write(valor + " " + horaFormateada.format(date));
         escribirEmp.write("\r\n");
         escribirEmp.close();
       } else {
-        File archivoLogAuto = new File(ConstanteGlobal.RUTA_LOG_AUTO);
+        ResourceBundle rutaAuto = ResourceBundle.getBundle(ConstanteGlobal.RUTA_LOG_AUTO);
+        String registroAuto = rutaAuto.getString("RegistrosAutos");
+        File archivoLogAuto = new File(registroAuto, "");
         FileWriter escribirAut = new FileWriter(archivoLogAuto, ConstanteGlobal.TRUE);
         escribirAut.write(valor + " " + horaFormateada.format(date));
         escribirAut.write("\r\n");
