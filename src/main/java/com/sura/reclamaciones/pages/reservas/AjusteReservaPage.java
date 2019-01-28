@@ -58,7 +58,7 @@ public class AjusteReservaPage extends GeneralPage {
           evaluateJavascript(
               String.format("$('input[name|=\"NewAmount\"]').val('%s')", montoAjusteReserva));
           btnGuardarAjusteReserva.click();
-          realizarEsperaCarga();
+        realizarEsperaCarga();
         });
   }
 

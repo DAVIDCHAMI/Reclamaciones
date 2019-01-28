@@ -93,7 +93,8 @@ public class AnulacionEmpresarialDefinition {
     anulacionEmpresarialStep.verificarAnulacionRealizada(ESTADO_ANULACION.getValor());
   }
 
-  @Y("^una transacción de recupero, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
+  @Y(
+      "^una transacción de recupero, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
   public void crearRecuperoAvisoSiniestro(String strTipoProducto, String strCodigoRetencion)
       throws IOException {
     recupero =
