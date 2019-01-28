@@ -105,12 +105,12 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     for (int posicionElementoFila = 6;
         lstReaseguroDetallado.size() >= posicionElementoFila;
         posicionElementoFila++) {
-      String strValorRecupero =
+      String strValorAnulacionRecupero =
           lstReaseguroDetallado
               .get(4)
               .getText()
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    blnValorAnulacion = strValorRecupero.equals("-"+Serenity.sessionVariableCalled((SESION_CC_VALOR_RECUPERO.getValor())));
+    blnValorAnulacion = strValorAnulacionRecupero.equals("-"+Serenity.sessionVariableCalled((SESION_CC_VALOR_RECUPERO.getValor())));
   }
     return blnValorAnulacion;
   }
