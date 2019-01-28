@@ -94,8 +94,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
             verificarAnulacionRecupero(
                 dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte);
         break;
-      case "Reversion Constitución":
-        blnTransaccion =verificarReversionConstitucion();
+      case "Reversión Constitución":
+        blnTransaccion = verificarReversionConstitucion();
       default:
         return blnTransaccion;
     }
@@ -103,7 +103,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   }
 
   private boolean verificarReversionConstitucion() {
-    boolean blnValorReversion=true;
+    boolean blnValorReversion = true;
     return blnValorReversion;
   }
 

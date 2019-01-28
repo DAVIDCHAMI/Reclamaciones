@@ -28,8 +28,7 @@ public class ReversionConstitucionDefinition {
   public void consultarReserva(
       String producto, String causa, String valorPretension, String tipoIncidente)
       throws IOException {
-    Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())
-        .to(producto);
+    Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(producto);
     ReclamacionEmpresarial reserva =
         new ReclamacionEmpresarial(
             genericStep.getFilasModelo(RECLAMACION_EMPRESARIAL.getValor(), producto));
