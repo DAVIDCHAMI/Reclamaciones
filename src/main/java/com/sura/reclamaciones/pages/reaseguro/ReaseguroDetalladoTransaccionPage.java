@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.reaseguro;
 
+import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCIENTO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
@@ -10,6 +11,7 @@ import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -104,6 +106,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
   private boolean verificarReversionConstitucion() {
     boolean blnValorReversion = true;
+
     return blnValorReversion;
   }
 
@@ -187,9 +190,6 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       blnPorcentajeCedido =
           verificarPorcentajeCedido(lstFilaTransaccion, porcentajeRetenido, proporcionCuotaParte);
       blnPorcentajeRetenido = verificarPorcentajeRetenido(lstFilaTransaccion, dblValorRetenido);
-      if (!(blnRetencionPura && blnPorcentajeRetenido && blnPorcentajeCedido)) {
-        break;
-      }
     }
     return blnRetencionPura && blnPorcentajeRetenido && blnPorcentajeCedido;
   }
@@ -208,21 +208,23 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
   private boolean verificarPago(
       Double dblMaximoRetencioPura, String porcentajeRetenido, String proporcionCuotaParte) {
-    boolean blnValorPago = false;
+    boolean blnPago = false;
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
-    for (int posicionElementoFila = 2;
-        lstReaseguroDetallado.size() > posicionElementoFila - 1;
-        posicionElementoFila++) {
-      String strValorPago =
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 1);
+    WebElement lstFilaPago= lstReaseguroDetallado.get(lstReaseguroDetallado.size());
+    String strValorPago =
           lstReaseguroDetallado
               .get(2)
-              .getText()
-              .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      blnValorPago =
-          strValorPago.equals(Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
-    }
-    return blnValorPago;
+              .getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+      String strNumeroReclamacion = obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(),1);
+      List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroReclamacion, getTblPago());
+      boolean blnRetencionPura = verificarRetencionPura(lstFilaTransaccion, dblMaximoRetencioPura);
+      boolean blnPorcentajeCedido =
+          verificarPorcentajeCedido(lstFilaTransaccion, porcentajeRetenido, proporcionCuotaParte);
+      boolean blnPorcentajeRetenido = verificarPorcentajeRetenido(lstFilaTransaccion, dblValorRetenido);
+    boolean blnValorPago = strValorPago.equals(Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
+    blnPago= blnValorPago;
+    return blnPago;
   }
 }
