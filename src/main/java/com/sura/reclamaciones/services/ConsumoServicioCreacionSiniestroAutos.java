@@ -1,5 +1,9 @@
 package com.sura.reclamaciones.services;
 
+import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_FECHA_SINIESTRO;
+import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_SERV_NRO_PLACA;
+import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_SERV_NRO_POLIZA;
+
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
@@ -47,10 +51,12 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosSiniestro(List<ReclamacionAuto> lstSiniestroParam) {
-    creacionSiniestroAutosFactory.setPolicyNumber(lstSiniestroParam.get(campoDato).getNumPoliza());
-    creacionSiniestroAutosFactory.setLossDate(lstSiniestroParam.get(campoDato).getFechaSiniestro());
+    creacionSiniestroAutosFactory.setPolicyNumber(
+        Serenity.sessionVariableCalled(SESION_SERV_NRO_POLIZA.getValor()));
+    creacionSiniestroAutosFactory.setLossDate(
+        Serenity.sessionVariableCalled(SESION_FECHA_SINIESTRO.getValor()));
     creacionSiniestroAutosFactory.setNotificationDate(
-        lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
+        Serenity.sessionVariableCalled(SESION_FECHA_SINIESTRO.getValor()));
     creacionSiniestroAutosFactory.setLossType(lstSiniestroParam.get(campoDato).getTipoPerdida());
     creacionSiniestroAutosFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaPerdida());
     creacionSiniestroAutosFactory.setDescription(
@@ -166,7 +172,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
 
   private void asignarParametrosVehiculo(List<Vehiculo> lstVehiculoParam) {
     creacionSiniestroAutosFactory.setLicensePlateVehicle(
-        lstVehiculoParam.get(campoDato).getPlaca());
+        Serenity.sessionVariableCalled(SESION_SERV_NRO_PLACA.getValor()));
     creacionSiniestroAutosFactory.setMakeVehicle(lstVehiculoParam.get(campoDato).getMarca());
     creacionSiniestroAutosFactory.setModelVehicle(lstVehiculoParam.get(campoDato).getModelo());
     creacionSiniestroAutosFactory.setEngineNumberVehicle(
