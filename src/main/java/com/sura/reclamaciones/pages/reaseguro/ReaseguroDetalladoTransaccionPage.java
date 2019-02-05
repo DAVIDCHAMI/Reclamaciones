@@ -120,7 +120,6 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
   private boolean verificarReversionConstitucion() {
     boolean blnValorReversion = true;
-
     return blnValorReversion;
   }
 
