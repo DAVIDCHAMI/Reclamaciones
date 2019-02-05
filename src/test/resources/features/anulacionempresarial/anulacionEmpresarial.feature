@@ -16,7 +16,7 @@ Característica: Anulacion Empresarial
 
     Ejemplos:
       | Tipo y Cobertura                                     | Código Retención Pago   | Causa      | Valor de Pretensión | Tipo de incidente |
-      | Multiriesgo corporativo con cobertura basica         | 0028                    | Incendio       |3000000              |Propiedad          |
+      | Multiriesgo corporativo con cobertura básica         | 0028                    | Incendio       |3000000              |Propiedad          |
 
   @claimsEmpresarial
   Esquema del escenario: anulacion  recupero
