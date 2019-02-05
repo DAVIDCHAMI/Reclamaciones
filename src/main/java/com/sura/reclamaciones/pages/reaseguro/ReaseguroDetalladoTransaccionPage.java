@@ -60,7 +60,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
           lstFilaTransaccion.get(2).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     }
     dblValorRetenido =
-        calcularValorRetenido(strValorPantalla, porcentajeRetenido, proporcionCuotaParte);
+       abs(calcularValorRetenido(strValorPantalla, porcentajeRetenido, proporcionCuotaParte));
     Double dblDatoPantalla =
         abs(
             Double.parseDouble(
@@ -70,10 +70,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
                     .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "")));
     return ((dblDatoPantalla
             >= (Math.round(
-                Double.parseDouble(strValorPantalla) - dblValorRetenido - dblRetencionPura)))
+                abs(Double.parseDouble(strValorPantalla)) - dblValorRetenido - dblRetencionPura)))
         && (dblDatoPantalla
             <= (Math.round(
-                Double.parseDouble(strValorPantalla) - dblValorRetenido + dblRetencionPura))));
+                abs(Double.parseDouble(strValorPantalla)) - dblValorRetenido + dblRetencionPura))));
   }
 
   private double calcularValorRetenido(
