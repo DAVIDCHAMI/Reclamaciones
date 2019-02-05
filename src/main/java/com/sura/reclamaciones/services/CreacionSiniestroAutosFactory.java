@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.services;
 
+import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_SERV_NRO_POLIZA;
+
 import com.sura.service.creacionSiniestroAuto.gen.Author;
 import com.sura.service.creacionSiniestroAuto.gen.BodyPartDetail;
 import com.sura.service.creacionSiniestroAuto.gen.ClaimsAutoRequest;
@@ -20,6 +22,7 @@ import com.sura.service.creacionSiniestroAuto.gen.VehicleIncident;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 
 public class CreacionSiniestroAutosFactory {
 
@@ -811,26 +814,10 @@ public class CreacionSiniestroAutosFactory {
     return crearSiniestroAutoRequest;
   }
 
-  ClaimsAutoRequest creacionSiniestroAutoBadRequestFactory() {
-    ClaimsAutoRequest claimsAutoRequest = new ClaimsAutoRequest();
-    claimsAutoRequest.setId(ID_SERVICIO_CLAIM);
-    claimsAutoRequest.setMethod(METHOD_CREATE_CLAIM);
-    claimsAutoRequest.setParams(listBadParamFactory());
-    claimsAutoRequest.setJsonrpc(JSONRPC_2);
-    return claimsAutoRequest;
-  }
-
   public List<Object> listParamFactory() {
     List<Object> listParams = new ArrayList<Object>();
     Parametros parametro = paramAutoFactory();
-    listParams.add(getPolicyNumber());
-    listParams.add(parametro);
-    return listParams;
-  }
-
-  public List<Object> listBadParamFactory() {
-    List<java.lang.Object> listParams = new ArrayList<java.lang.Object>();
-    Parametros parametro = paramAutoFactory();
+    listParams.add(Serenity.sessionVariableCalled(SESION_SERV_NRO_POLIZA.getValor()));
     listParams.add(parametro);
     return listParams;
   }
@@ -928,6 +915,7 @@ public class CreacionSiniestroAutosFactory {
     vehicleIncident.setDriverRelation(getDriverRelationVehicleIncident());
     vehicleIncident.setDriver(driverFactory());
     vehicleIncident.setVehicle(vehicleFactory());
+    vehicleIncident.setPassengers(Collections.emptyList());
     return vehicleIncident;
   }
 

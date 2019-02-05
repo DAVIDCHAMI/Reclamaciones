@@ -31,7 +31,6 @@ public class GenericStep {
 
   public static List<Map<String, String>> filtrarDataCSV(
       String[] arr, List<Map<String, String>> loadedData) {
-    Utilidades utilidades = new Utilidades();
     return loadedData
         .stream()
         .filter(
@@ -45,20 +44,20 @@ public class GenericStep {
       Date date = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
       if (tipoAviso.equalsIgnoreCase(ConstanteGlobal.EMPRESARIALES)) {
-        File archivoLogEmpresarial = new File("C:\\Log\\RegistrosEmpresarial.txt");
-        FileWriter escribirEmp = new FileWriter(archivoLogEmpresarial, true);
+        File archivoLogEmpresarial = new File(ConstanteGlobal.RUTA_LOG_EMPRESARIAL);
+        FileWriter escribirEmp = new FileWriter(archivoLogEmpresarial, ConstanteGlobal.TRUE);
         escribirEmp.write(valor + " " + horaFormateada.format(date));
         escribirEmp.write("\r\n");
         escribirEmp.close();
       } else {
-        File archivoLogAuto = new File("C:\\Log\\RegistrosAutos.txt");
-        FileWriter escribirAut = new FileWriter(archivoLogAuto, true);
+        File archivoLogAuto = new File(ConstanteGlobal.RUTA_LOG_AUTO);
+        FileWriter escribirAut = new FileWriter(archivoLogAuto, ConstanteGlobal.TRUE);
         escribirAut.write(valor + " " + horaFormateada.format(date));
         escribirAut.write("\r\n");
         escribirAut.close();
       }
     } catch (Exception e) {
-      Utilidades.getLogger().info("No se realizó el guardado del Log");
+      Utilidades.getLogger().info("No se realizó el guardado del Log", e);
     }
   }
 }

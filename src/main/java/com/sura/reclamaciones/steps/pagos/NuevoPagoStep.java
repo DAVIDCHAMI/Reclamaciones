@@ -100,9 +100,7 @@ public class NuevoPagoStep {
                 lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
             boolean estadoTransaccionPantalla =
                 generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
-            if (estadoTransaccionPantalla) {
-              i = Integer.parseInt(ITERACIONES_PAGO.getValor());
-            }
+            if (estadoTransaccionPantalla) break;
           }
           String strValorReserva =
               (Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));

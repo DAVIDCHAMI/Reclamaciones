@@ -11,7 +11,7 @@ public enum Variables {
 
   private String valor;
 
-  private Variables(String valor) {
+  Variables(String valor) {
     this.valor = valor;
   }
 

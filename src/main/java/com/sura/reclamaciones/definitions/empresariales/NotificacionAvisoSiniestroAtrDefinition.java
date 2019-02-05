@@ -1,7 +1,11 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
-import com.sura.reclamaciones.models.Persona;
+import static com.sura.reclamaciones.constantes.NombresCsv.*;
+
+import com.sura.reclamaciones.constantes.ReclamacionConstante;
+import com.sura.reclamaciones.definitions.SeleccionAmbiente;
+import com.sura.reclamaciones.models.PersonaReclamacion;
+import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresarialStep;
 import cucumber.api.java.es.Cuando;
@@ -16,25 +20,35 @@ public class NotificacionAvisoSiniestroAtrDefinition {
 
   @Steps GenericStep genericStep;
 
+  @Steps SeleccionAmbiente seleccionAmbiente;
+
   @Dado("^que tenemos una póliza de (.*)$")
   public void diligenciarInformacionAsegurado(String cobertura) throws IOException {
-    Persona aseguradoAtr =
-        new Persona(genericStep.getFilasModelo(ConstanteGlobal.PARAMETROS_PERSONA, cobertura));
+    PersonaReclamacion aseguradoAtr =
+        new PersonaReclamacion(
+            genericStep.getFilasModelo(PARAMETROS_PERSONA.getValor(), cobertura));
     nuevaReclamacionAtrEmpresarialStep.accederAvisoAtr();
     nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionAsegurado(
-        aseguradoAtr.getLstPersona());
+        aseguradoAtr.getLstPersonaReclamacion());
   }
 
   @Cuando("^se genere un siniestro por causa (.*) con un valor de pretensión de (.*)$")
-  public void diligenciarInformacionSiniestro(String causaSiniestro, String valorPretension) {
-    nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(causaSiniestro, "prueba");
+  public void diligenciarInformacionSiniestro(String causaSiniestro, String valorPretension)
+      throws IOException {
+    ReclamacionEmpresarial informacionSiniestro =
+        new ReclamacionEmpresarial(
+            genericStep.getFilasModelo(
+                ReclamacionConstante.RECLAMACION_EMPRESARIAL, ReclamacionConstante.ATR));
+    nuevaReclamacionAtrEmpresarialStep.diligenciarInformacionReclamacion(
+        causaSiniestro, informacionSiniestro.getLstReclamo());
     nuevaReclamacionAtrEmpresarialStep.consultarPolizaAtr();
     nuevaReclamacionAtrEmpresarialStep.diligenciarValorPretension(valorPretension);
   }
 
   @Entonces("^se obtiene una reclamación que podrá ser consultada en ClaimCenter$")
-  public void consultarSiniestro() {
-    nuevaReclamacionAtrEmpresarialStep.verificarSiniestroAtr();
-    //To Do
+  public void consultarSiniestro() throws IOException {
+    String numeroReclamacion = nuevaReclamacionAtrEmpresarialStep.verificarSiniestroCreadoAtr();
+    seleccionAmbiente.seleccionarAmbienteEmpresarial();
+    nuevaReclamacionAtrEmpresarialStep.consultarSiniestro(numeroReclamacion);
   }
 }

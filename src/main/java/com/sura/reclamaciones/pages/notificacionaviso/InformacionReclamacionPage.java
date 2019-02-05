@@ -1,15 +1,11 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class InformacionReclamacionPage extends GeneralPage {
-
-  private String lstCausaSiniestro = "//li[.='COMODIN']";
-  private String lstCausaSiniestroAtr = "//td[.='COMODIN']";
 
   @FindBy(
     xpath =
@@ -80,11 +76,17 @@ public class InformacionReclamacionPage extends GeneralPage {
   @FindBy(xpath = "//td[@class='GMMMP1-BMTC GMMMP1-BOTC GMMMP1-BJUC']//input")
   private WebElementFacade txtValorPretensionAtr;
 
-  @FindBy(xpath = "//a[contains(.,'Enviar reclamación')]")
+  @FindBy(xpath = "//a[1][contains(.,'Enviar reclamación')]")
   private WebElementFacade btnEnviarReclamacion;
 
   @FindBy(xpath = "//div[@class='popupMiddleCenterInner popupContent']//tr[5]//div")
   private WebElementFacade lblNumeroSiniestroAtr;
+
+  @FindBy(xpath = "//div[@class='suggestPopupMiddleCenterInner suggestPopupContent']")
+  private WebElementFacade tblCausaSiniestroAtr;
+
+  @FindBy(xpath = "//ul[@class='x-list-plain']")
+  private WebElementFacade lstCausasSiniestroClaim;
 
   public InformacionReclamacionPage(WebDriver driver) {
     super(driver);
@@ -99,11 +101,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public void seleccionarCausaSiniestro(String causa) {
-    mnuCausa.waitUntilPresent();
-    mnuCausa.click();
-    lstCausaSiniestro = lstCausaSiniestro.replace(ConstanteGlobal.COMODIN, causa);
-    $(lstCausaSiniestro).waitUntilVisible();
-    $(lstCausaSiniestro).click();
+    mnuCausa.waitUntilPresent().click();
+    seleccionarOpcionLista(lstCausasSiniestroClaim, causa);
     realizarEsperaCarga();
   }
 
@@ -148,8 +147,7 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   public void seleccionarCausaSiniestroAtr(String causa) {
     txtCausaSiniestroAtr.waitUntilPresent().waitUntilClickable().click();
-    lstCausaSiniestroAtr = lstCausaSiniestroAtr.replace(ConstanteGlobal.COMODIN, causa);
-    $(lstCausaSiniestroAtr).waitUntilVisible().click();
+    seleccionarOpcionTabla(tblCausaSiniestroAtr, causa);
   }
 
   public void diligenciarDetalleHechosAtr(String detalleHechos) {
@@ -158,7 +156,7 @@ public class InformacionReclamacionPage extends GeneralPage {
 
   public void seleccionarCiudadSiniestro() {
     String ciudad = lblNombreCiudad.waitUntilVisible().getText();
-    txtCiudadSiniestro.waitUntilVisible().type(ciudad);
+    txtCiudadSiniestro.waitUntilVisible().typeAndEnter(ciudad);
   }
 
   public void ingresarValorPretensionAtr(String valorPretension) {
@@ -170,6 +168,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   }
 
   public String obtenerNumeroSiniestroAtr() {
-    return lblNumeroSiniestroAtr.waitUntilVisible().getText();
+    String numeroSiniestro = lblNumeroSiniestroAtr.waitUntilVisible().getText();
+    cerrarNavegador();
+    return numeroSiniestro;
   }
 }

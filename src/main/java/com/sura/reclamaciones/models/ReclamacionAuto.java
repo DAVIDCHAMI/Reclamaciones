@@ -29,6 +29,17 @@ public class ReclamacionAuto extends Reclamacion {
   private String tipoPerdida;
   private boolean sospechoso;
   private String descripcionSospecha;
+  private String departamento;
+
+  @Override
+  public String getDepartamento() {
+    return departamento;
+  }
+
+  @Override
+  public void setDepartamento(String departamento) {
+    this.departamento = departamento;
+  }
 
   private List<ReclamacionAuto> lstReclamacionAuto = new ArrayList<>();
 
@@ -61,7 +72,8 @@ public class ReclamacionAuto extends Reclamacion {
     this.tipoPerdida = datosReclamacionAut.get("tipoPerdida");
     this.sospechoso = Boolean.parseBoolean(datosReclamacionAut.get("sospechoso"));
     this.descripcionSospecha = datosReclamacionAut.get("descripcionSospecha");
-  }
+    this.departamento = datosReclamacionAut.get("departamento");
+      }
 
   public ReclamacionAuto(List<Map<String, String>> datosReclamacionAut) {
     asignarDatos(datosReclamacionAut);
@@ -195,7 +207,7 @@ public class ReclamacionAuto extends Reclamacion {
     return sospechoso;
   }
 
-  public void setSospechoso(boolean tipoPerdida) {
+  public void setSospechoso(boolean sospechoso) {
     this.sospechoso = sospechoso;
   }
 

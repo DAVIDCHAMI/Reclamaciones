@@ -10,24 +10,18 @@ public class ConstanteGlobal {
   public static final String SI = "si";
   public static final String NO = "no";
   public static final String NIT = "98630089";
-  public static final String PARAMETROS_SINIESTRO = "parametros_siniestro";
-  public static final String PARAMETROS_PERSONA = "parametros_persona";
-  public static final String PARAMETROS_RECLAMACION_PERSONA = "persona_reclamacion_auto";
-  public static final String PARAMETROS_RECLAMACION = "reclamacion_auto";
-  public static final String PARAMETROS_VEHICULO = "vehiculo";
-  public static final String PARAMETRO_PERSONA_LESIONADA = "lesionado";
-  public static final String PARAMETRO_PERSONA_CONDUCTOR = "conductor";
-  public static final String PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO =
-      "responsabilidad_civil_vehiculo";
-  public static final String PARAMETRO_RESPONSABILIDAD_CIVIL_LESIONES =
-      "responsabilidad_civil_lesiones";
-  public static final String PARAMETROS_SINIESTRO_AUTOS = "parametros_siniestro_autos";
-  public static final String PARAMETROS_EXPOSICION_AUTOMATICA = "exposicion_automatica";
-  public static final String PARAMETRO_LINEA_RESERVA = "linea_reserva";
-  public static final String PARAMETROS_DIRECCION_SINIESTRO = "direccion_reclamacion";
-  public static final String PARAMETRO_CREACION_AVISO_AUTOS_WS = "creacionAvisoWS";
   public static final int NUMERO_INTENTOS_ESPERA_ELEMENTO = 180;
+  public static final String EXPEDIENTE_CREADO_EXITOSAMENTE = "Expediente creado con éxito";
   public static final String EMPRESARIALES = "Empresariales";
+  public static final String AUTOS = "Autos";
+  public static final boolean TRUE = true;
+  public static final String RUTA_LOG_EMPRESARIAL = "C:\\Log\\RegistrosEmpresarial.txt";
+  public static final String RUTA_LOG_AUTO = "C:\\Log\\RegistrosAutos.txt";
+  public static final String FECHA_ACTUAL = "fechaActual";
+  public static final String NUMERO_DIAS_VENCIMIENTO = "3";
+  public static final String VALOR_CERO = "0";
+  public static final String VALOR_ANTERIOR = ".";
+  public static final String NUEVO_VALOR = "-05:00";
 
   private ConstanteGlobal() {}
 }
