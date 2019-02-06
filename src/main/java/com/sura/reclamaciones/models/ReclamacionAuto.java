@@ -73,7 +73,7 @@ public class ReclamacionAuto extends Reclamacion {
     this.sospechoso = Boolean.parseBoolean(datosReclamacionAut.get("sospechoso"));
     this.descripcionSospecha = datosReclamacionAut.get("descripcionSospecha");
     this.departamento = datosReclamacionAut.get("departamento");
-      }
+  }
 
   public ReclamacionAuto(List<Map<String, String>> datosReclamacionAut) {
     asignarDatos(datosReclamacionAut);

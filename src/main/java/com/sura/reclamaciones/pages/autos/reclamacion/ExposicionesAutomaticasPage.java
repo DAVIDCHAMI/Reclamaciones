@@ -13,10 +13,18 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
   WebElementFacade tblExposicionesAutomaticas;
 
+  @FindBy(xpath = "//a[contains(text(),'Vehículo')]")
+  WebElementFacade exposicionAutomatica;
+
   private boolean valorLineaReserva = true;
 
   public ExposicionesAutomaticasPage(WebDriver wdriver) {
     super(wdriver);
+  }
+
+  public void seleccionarExposicion() {
+    exposicionAutomatica.click();
+    realizarEsperaCarga();
   }
 
   public boolean validarExposiciones(

@@ -3,6 +3,7 @@ package com.sura.reclamaciones.steps.pagos;
 import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
+import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
@@ -11,6 +12,8 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESER
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
@@ -42,6 +45,10 @@ public class NuevoPagoStep {
   @Page MenuClaimPage menuClaimPage;
 
   @Page GeneralPage generalPage;
+
+  @Page ExposicionesAutomaticasPage exposicionesAutomaticasAutos;
+
+  @Page DetalleExposicionAutomaticaPage detalleExposicionAutomaticaPage;
 
   @Step
   public void consultarNumeroReclamacion() {
@@ -118,6 +125,25 @@ public class NuevoPagoStep {
   @Step
   public void consultarNumeroReclamacionAutos(String numReclamacion) {
     menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
+  }
+
+  @Step
+  public void seleccionarPagos() {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
+  }
+
+  @Step
+  public void ingresarSeleccionarExposicionAutomatica() {
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
+    exposicionesAutomaticasAutos.seleccionarExposicion();
+  }
+
+  @Step
+  public void declararReclamacionPerdidaTotal() {
+    detalleExposicionAutomaticaPage.declararReclamacionPerdidaTotal();
+  }
+
+  public void ingresarEstadoLegalReclamacion() {
+    detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
   }
 }

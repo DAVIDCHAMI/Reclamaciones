@@ -29,9 +29,8 @@ import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
-    @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
-  @Steps
-  ConsumoServicioExpedicionAutoStep consumoServicioExpedicionAutoStep;
+  @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
+  @Steps ConsumoServicioExpedicionAutoStep consumoServicioExpedicionAutoStep;
   @Steps GenericStep genericStep;
   @Steps NuevoPagoStep nuevoPagoStep;
   @Steps PagoSiniestro pagoSiniestro;
@@ -91,6 +90,10 @@ public class PagoSiniestroDefinition {
       throws IOException {
     nuevoPagoStep.consultarNumeroReclamacionAutos(
         Serenity.sessionVariableCalled(ReclamacionConstante.NUMERO_SINIESTRO));
+    nuevoPagoStep.ingresarSeleccionarExposicionAutomatica();
+    nuevoPagoStep.declararReclamacionPerdidaTotal();
+    nuevoPagoStep.ingresarEstadoLegalReclamacion();
+    nuevoPagoStep.seleccionarPagos();
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));

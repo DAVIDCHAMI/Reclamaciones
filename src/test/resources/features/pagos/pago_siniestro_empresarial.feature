@@ -30,5 +30,7 @@ Característica: Realizar pago de un siniestro
     Entonces se obtiene el pago del beneficiario
     
     Ejemplos:
-      |tipoReserva    | lineaReserva          | tipoPago  | beneficiarioPago | metodoPago | codigoRetencionPago | soloSura | tipoCobertura         |
-      |creacionAvisoWS| (1) 1ª parteVehículo  | Parcial   | SOFIA JARAMILLO  | Caja Sura  | 0099                | No       | Perdida Parcial Daños |
+      |tipoReserva    | lineaReserva          | tipoPago  | beneficiarioPago | metodoPago | codigoRetencionPago | soloSura | tipoCobertura      |
+      |creacionAvisoWS| (2) 1ª parteVehículo  | Parcial   | LEONARDO JESUS OSPINO DIAZ CQLII | Caja Sura  | 0099| No       | Perdida total Daños|
+      |creacionAvisoWS| (2) 1ª parteVehículo  | Final     | LEONARDO JESUS OSPINO DIAZ CQLII | Caja Sura  | 0099| No       | Perdida total Daños|
+      |creacionAvisoWS| (1) 3ª parteLesiones corporales  | Parcial   | JHON FEOR FEOR FEOR | Pago por banco  | 0099| Sí       | RC Lesión a Persona|

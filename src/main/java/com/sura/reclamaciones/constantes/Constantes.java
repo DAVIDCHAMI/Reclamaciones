@@ -38,6 +38,7 @@ public enum Constantes {
   URL("jdbc:oracle:thin:@clustercsl01:1537/labgwcc"),
   USD("USD"),
   USUARIO("GW_CONF"),
+  ESTADO_LEGAL("Rematricula a nombre de Suramericana"),
   VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada");
 
   private String valor;
