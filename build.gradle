@@ -108,7 +108,7 @@ task icTest(type: Test) {
     logger.lifecycle("Variables de ejecucion para icTest")
     logger.lifecycle("env:$env, app:$app, propertyValue:$propertyValue, filterRute:$filterRute")
 
-    // Si ENV está vacio se hace el set en el valor por defecto
+    // Si ENV estï¿½ vacio se hace el set en el valor por defecto
     systemProperties = ['ENV': env]
 
     filter {
@@ -131,15 +131,7 @@ task unitTest(type: Test) {
     classpath = sourceSets.unitTest.runtimeClasspath
     outputs.upToDateWhen { false }
     reports.html.destination = file("${reporting.baseDir}/${name}")
-    
-    jacoco {
-    	append = false
-    	destinationFile = file("jacoco/jacocoTest.exec")
-    }
-    
 }
-
-jacocoTestReport.dependsOn(unitTest)
 
 task installCerts(type: Exec) {
     def java_home = System.getenv("JAVA_HOME")
