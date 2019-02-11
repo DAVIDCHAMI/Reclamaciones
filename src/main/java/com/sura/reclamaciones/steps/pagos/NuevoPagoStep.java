@@ -5,6 +5,7 @@ import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.LINEA_RESERVA_LESIONES_CORPORALES;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
@@ -86,8 +87,10 @@ public class NuevoPagoStep {
           strCodigoRetencion, CODIGO_RETENCION.getValor());
       introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
       introducirInformacionPagoPage.irSiguientePantalla();
-      establecerInstruccionPagoPage.ingresarFechaFactura();
-      establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
+      if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
+        establecerInstruccionPagoPage.ingresarFechaFactura();
+        establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
+      }
       establecerInstruccionPagoPage.finalizarProceso();
     }
   }
@@ -128,12 +131,12 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void seleccionarPagos() {
+  public void crearNuevoPago() {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 
   @Step
-  public void ingresarSeleccionarExposicionAutomatica() {
+  public void seleccionarExposicionAutomatica() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
     exposicionesAutomaticasAutos.seleccionarExposicion();
   }

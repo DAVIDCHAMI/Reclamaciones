@@ -90,10 +90,10 @@ public class PagoSiniestroDefinition {
       throws IOException {
     nuevoPagoStep.consultarNumeroReclamacionAutos(
         Serenity.sessionVariableCalled(ReclamacionConstante.NUMERO_SINIESTRO));
-    nuevoPagoStep.ingresarSeleccionarExposicionAutomatica();
+    nuevoPagoStep.seleccionarExposicionAutomatica();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
-    nuevoPagoStep.seleccionarPagos();
+    nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));

@@ -27,6 +27,7 @@ public enum Constantes {
   PORCIENTO("100"),
   REASEGURO_DETALLADO("Reaseguro detallado"),
   RECUPERO("Recupero"),
+  LINEA_RESERVA_LESIONES_CORPORALES("(1) 3ª parteLesiones"),
   RESERVA("Reserva"),
   RETENCION_PURA("10"),
   SELECCIONAR("Seleccionar"),

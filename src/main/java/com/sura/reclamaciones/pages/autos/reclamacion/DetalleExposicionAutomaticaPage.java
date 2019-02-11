@@ -3,6 +3,7 @@ package com.sura.reclamaciones.pages.autos.reclamacion;
 import static com.sura.reclamaciones.constantes.Constantes.ESTADO_LEGAL;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -71,7 +72,10 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
     realizarEsperaCarga();
     btnEditar.click();
     realizarEsperaCarga();
-    cmbEstadoLegal.waitUntilClickable().sendKeys(ESTADO_LEGAL.getValor());
+    cmbEstadoLegal.waitUntilClickable().click();
+    cmbEstadoLegal
+        .findElement(By.xpath("//li[contains(.,'" + ESTADO_LEGAL.getValor() + "')]"))
+        .click();
     realizarEsperaCarga();
     btnActualizar.click();
     realizarEsperaCarga();
