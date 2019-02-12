@@ -129,7 +129,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     boolean blnReaseguro = false;
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 1);
+            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
     for (int posicionElementoFila = lstReaseguroDetallado.size() - 1;
         lstReaseguroDetallado.size() > posicionElementoFila;
         posicionElementoFila++) {
