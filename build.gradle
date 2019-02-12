@@ -24,6 +24,7 @@ apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'
 apply plugin: 'org.sonarqube'
 apply plugin: 'com.github.sherter.google-java-format'
+apply plugin: 'jacoco'
 
 // Configuraciones para Pruebas unitarias
 sourceSets {
@@ -107,7 +108,7 @@ task icTest(type: Test) {
     logger.lifecycle("Variables de ejecucion para icTest")
     logger.lifecycle("env:$env, app:$app, propertyValue:$propertyValue, filterRute:$filterRute")
 
-    // Si ENV está vacio se hace el set en el valor por defecto
+    // Si ENV est� vacio se hace el set en el valor por defecto
     systemProperties = ['ENV': env]
 
     filter {
