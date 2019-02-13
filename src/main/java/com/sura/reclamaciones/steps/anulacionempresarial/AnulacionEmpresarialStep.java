@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.steps.anulacionempresarial;
 
-import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 import static com.sura.reclamaciones.constantes.Constantes.RECUPERO;
@@ -36,7 +35,8 @@ public class AnulacionEmpresarialStep {
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     for (Recupero diligenciador : lstRecupero) {
       String strNumeroTransaccion =
-          detalleTransaccionPage.obtenerDatoTablaCabecera(SESION_CC_NUMERO_TRANSACCION.getValor(), 1);
+          detalleTransaccionPage.obtenerDatoTablaCabecera(
+              SESION_CC_NUMERO_TRANSACCION.getValor(), 1);
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
       detalleTransaccionPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());

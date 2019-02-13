@@ -6,7 +6,7 @@ Característica: Distribución del reaseguro de un siniestro
   Quiero conocer la distribución que tiene el reaseguro de un siniestro en cada movimiento financiero
   Para identificar el monto de los valores que corresponden a los diferentes reaseguradores de acuerdo a los contratos adquiridos con la compañía
 
-# @claimsEmpresarial
+ @claimsEmpresarial
   Esquema del escenario: Reaseguro de Constitución de reserva - creación reserva
     Dado  que se tiene una póliza de <Tipo y Cobertura>
     Cuando se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
@@ -75,7 +75,7 @@ Característica: Distribución del reaseguro de un siniestro
 #    Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de pretensión> y tipo incidente de <Tipo de incidente>
 #    Cuando se ajuste la reserva con un valor de <Monto del ajuste>
 #    Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
-#
+
 #    Ejemplos:
 #      | Tipo y Cobertura                             | Causa             | Valor de pretensión | Tipo de incidente | Monto del ajuste | Tipo Transacción       |
 #      | Multiriesgo corporativo con cobertura básica | Rotura de vidrios | 2000000             | Propiedad         | 4000000          | Reversión Constitución |

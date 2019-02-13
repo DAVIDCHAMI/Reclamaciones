@@ -4,6 +4,7 @@ public enum Constantes {
   ACTIVIDADES("Actividades"),
   ACTIVITIES("Activities"),
   ANULACION("Anulacion"),
+  ANULACION_PAGO("Anulación Pago"),
   CANTIDAD("Cantidad"),
   CLAVE("cor3sur4"),
   CODIGO_RETENCION("Código de retención"),

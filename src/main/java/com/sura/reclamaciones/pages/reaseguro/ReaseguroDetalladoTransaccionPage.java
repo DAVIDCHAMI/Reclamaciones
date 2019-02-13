@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.reaseguro;
 
+import static com.sura.reclamaciones.constantes.Constantes.ANULACION_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCIENTO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
@@ -60,7 +61,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
           lstFilaTransaccion.get(2).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     }
     dblValorRetenido =
-       abs(calcularValorRetenido(strValorPantalla, porcentajeRetenido, proporcionCuotaParte));
+        abs(calcularValorRetenido(strValorPantalla, porcentajeRetenido, proporcionCuotaParte));
     Double dblDatoPantalla =
         abs(
             Double.parseDouble(
@@ -108,7 +109,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       case "Anulación Pago":
       case "Anulación Recupero":
         blnTransaccion =
-            verificarAnulacion(dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte);
+            verificarAnulacion(
+                dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte, strTransaccion);
         break;
       case "Reversión Constitución":
         blnTransaccion = verificarReversionConstitucion();
@@ -124,7 +126,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   }
 
   private boolean verificarAnulacion(
-      Double dblMaximoRetencioPura, String porcentajeRetenido, String proporcionCuotaParte) {
+      Double dblMaximoRetencioPura,
+      String porcentajeRetenido,
+      String proporcionCuotaParte,
+      String strTransaccion) {
     boolean blnValorAnulacion = false;
     boolean blnReaseguro = false;
     List<WebElement> lstReaseguroDetallado =
@@ -143,9 +148,15 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       blnReaseguro =
           verificarDistribucionReaseguro(
               dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte, lstFilaTransaccion);
-      blnValorAnulacion =
-          strValorAnulacion.equals(
-              "-" + Serenity.sessionVariableCalled((SESION_CC_VALOR_RESERVA.getValor())));
+      if (strTransaccion.equals(ANULACION_PAGO)) {
+        blnValorAnulacion =
+            strValorAnulacion.equals(
+                Serenity.sessionVariableCalled((SESION_CC_VALOR_RESERVA.getValor())));
+      } else {
+        blnValorAnulacion =
+            strValorAnulacion.equals(
+                Serenity.sessionVariableCalled((SESION_CC_VALOR_RECUPERO.getValor())));
+      }
     }
     return blnValorAnulacion && blnReaseguro;
   }
@@ -248,7 +259,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       boolean blnReaseguro =
           verificarDistribucionReaseguro(
               dblMaximoRetencioPura, porcentajeRetenido, proporcionCuotaParte, lstFilaTransaccion);
-    blnValorPago =
+      blnValorPago =
           strValorPago.equals(Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
       blnValorPago = blnValorPago && blnReaseguro;
     }
