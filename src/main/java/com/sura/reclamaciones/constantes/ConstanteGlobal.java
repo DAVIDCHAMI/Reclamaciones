@@ -7,6 +7,7 @@ public class ConstanteGlobal {
   public static final String ANALISTA_RECLAMACION_AUTO = "analistaReclamacionAuto";
   public static final String ANALISTA_RECLAMACION_EMPRESARIAL = "analistaReclamacionEmp";
   public static final String ANALISTA_RECLAMACION_ATR = "analistaReclamacionEmpAtr";
+  public static final String ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO = "superUsuario";
   public static final String SI = "si";
   public static final String NO = "no";
   public static final String NIT = "98630089";

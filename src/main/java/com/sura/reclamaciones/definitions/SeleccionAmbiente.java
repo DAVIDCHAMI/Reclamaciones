@@ -25,6 +25,15 @@ public class SeleccionAmbiente {
     }
   }
 
+  @Before("@claimsEmpresarialSuperUsuario")
+  public void seleccionarAmbienteEmpresarialSuperUsuario() throws IOException {
+    if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
+      loginClaimStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO);
+    } else if (ConstanteGlobal.DESARROLLO.equals(ambientesUtil.getAmbiente())) {
+      loginClaimStep.iniciarSesionAmbienteDllo();
+    }
+  }
+
   @Before("@claimsAuto")
   public void seleccionarAmbienteAuto() throws IOException {
     if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
