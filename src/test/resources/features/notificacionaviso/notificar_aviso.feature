@@ -15,10 +15,9 @@ Característica: Notificación de aviso de una reclamación
 
     Ejemplos:
       | Tipo y Cobertura                                     | Causa                         | Valor de Pretensión | Tipo de incidente | ¿Genera exposición? | ¿Genera reserva? | Monto de la reserva |
-#      | Multiriesgo corporativo con cobertura básica         | Rotura de vidrios             | 2000000             | Propiedad         | si                  | si               | 1218758             |
-#      | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                | 200000              |                   | si                  | si               | 200000              |
-#      | Plan Empresario Sura con Amit                        | Amit/ huelga, conmoción civil | 4000000             | Contenido         | si                  | si               | 3600000             |
-#      | Incendio con cobertura Daños materiales              | Daños por agua                | 3000000             | Contenido         | si                  | si               | 1437516             |
-       |PES Emergente Incendio	                              | Incendio                      | 3000000             | Contenido         | si                  | si               | 300000              |
-       |PES Emergente Amit                                    | Amit/ huelga, conmoción civil | 4000000             | Contenido         | si                  | si               | 3600000             |
-       |PES Emergente Terremoto		                          | Terremoto                     | 5000000             |Propiedad          |si                   |si                |                     |
+      | Multiriesgo corporativo con cobertura básica         | Rotura de vidrios             | 2000000             | Propiedad         | si                  | si               | 1218758             |
+      | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                | 200000              |                   | si                  | si               | 200000              |
+      | Plan Empresario Sura con Amit                        | Amit/ huelga, conmoción civil | 4000000             | Contenido         | si                  | si               | 3600000             |
+      | Incendio con cobertura Daños materiales              | Daños por agua                | 3000000             | Contenido         | si                  | si               | 1437516             |
+      |PES Emergente Incendio	                            | Incendio                      | 3000000             | Contenido         | si                  | si               | 300000              |
+      |PES Emergente Amit                                    | Amit/ huelga, conmoción civil | 4000000             | Contenido         | si                  | si               | 3600000             |

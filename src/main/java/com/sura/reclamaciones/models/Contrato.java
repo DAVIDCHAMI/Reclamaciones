@@ -13,6 +13,7 @@ public class Contrato {
   private String deducibleMinimo;
   private String porcentajeDeducibleMinimo;
   private String porcentajeRetenido;
+  private String porcentajeCoaseguroCedido;
 
   public Contrato(Map<String, String> datosReaseguro) {
     this.proporcionExcendente = datosReaseguro.get("proporcionExcedente");
@@ -21,6 +22,7 @@ public class Contrato {
     this.deducibleMinimo = datosReaseguro.get("deducibleMinimo");
     this.porcentajeDeducibleMinimo = datosReaseguro.get("porcentajeDeducibleMinimo");
     this.porcentajeRetenido = datosReaseguro.get("porcentajeRetenido");
+    this.porcentajeCoaseguroCedido =datosReaseguro.get("porcentajeCoaseguroCedido");
   }
 
   public Contrato(List<Map<String, String>> datosContrato) {
@@ -49,6 +51,10 @@ public class Contrato {
 
   public String getPorcentajeDeducibleMinimo() {
     return porcentajeDeducibleMinimo;
+  }
+
+  public String getPorcentajeCoaseguroCedido(){
+    return  porcentajeCoaseguroCedido;
   }
 
   public String getPorcentajeRetenido() {

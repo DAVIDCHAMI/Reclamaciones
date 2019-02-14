@@ -15,9 +15,9 @@ Característica: Anulacion Empresarial
     Entonces se debe obtener la anulación del pago, quedando en estado anulado
 
     Ejemplos:
-      | Tipo y Cobertura                                     | Código Retención Pago   | Causa      | Valor de Pretensión | Tipo de incidente |
-      | Multiriesgo corporativo con cobertura básica         | 0028                    | Incendio       |3000000              |Propiedad          |
-
+      | Tipo y Cobertura                                     | Código Retención Pago   | Causa                                 | Valor de Pretensión | Tipo de incidente |
+      | Multiriesgo corporativo con cobertura básica         | 0028                    | Incendio                              |3000000              |Propiedad          |
+      |PES Emergente	Responsabilidad civil                | 0010                    |Responsabilidad civil del asegurado    |5000000              |Propiedad          |
   @claimsEmpresarial
   Esquema del escenario: anulacion  recupero
     Dado que se tiene una póliza de <Tipo y Cobertura>
@@ -29,8 +29,8 @@ Característica: Anulacion Empresarial
     Entonces se debe obtener la anulación del recupero, quedando en estado anulado
 
     Ejemplos:
-      | Tipo y Cobertura                         | Código Retención Pago            |  Causa               | Valor de Pretensión | Tipo de incidente |Código Retención Recupero|
-      | Incendio con cobertura Daños materiales  |  0028                            | Daños por agua       |3000000              |Contenido          |0099                     |
-
+      | Tipo y Cobertura                             | Código Retención Pago            |  Causa               | Valor de Pretensión | Tipo de incidente |Código Retención Recupero|
+      | Incendio con cobertura Daños materiales      |  0028                            | Daños por agua       |3000000              |Contenido          |0099                     |
+      |PES Emergente Daño Interno Maquinaria y equipo|  0099                            | Daños por agua       |4000000              |Contenido          |0099                     |
 
 
