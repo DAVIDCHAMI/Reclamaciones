@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.definitions.autos;
 
+import static com.sura.reclamaciones.constantes.Constantes.TIPO_POLIZA;
 import static com.sura.reclamaciones.constantes.NombresCsv.EXPEDICION_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA;
@@ -24,57 +25,57 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
-import java.util.List;
+
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
+
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
+
   @Steps ConsumoServicioExpedicionAutoStep consumoServicioExpedicionAutoStep;
+
   @Steps GenericStep genericStep;
+
   @Steps NuevoPagoStep nuevoPagoStep;
+
   @Steps PagoSiniestro pagoSiniestro;
+
   String cobertura;
-  List<ReclamacionAuto> lstReclamacionAuto;
-  List<PersonaReclamacion> lstPersonaLesionada;
-  List<PersonaReclamacion> lstConductor;
-  List<Vehiculo> lstVehiculoParam;
-  ReclamacionAuto parametroAviso = new ReclamacionAuto();
-  PersonaReclamacion parametroPersonaReclamacionAuto = new PersonaReclamacion();
-  PersonaReclamacion parametroPersonaConductorAuto = new PersonaReclamacion();
-  Vehiculo reclamacionVehiculo = new Vehiculo();
 
   @Dado("^que se tiene un siniestro de (.*) con un tipo de cobertura de (.*)$")
-  public void crearSiniestroAutos(String filtroCsv, String tipoCobertura) throws IOException {
+  public void crearSiniestroAutos(String tipoReserva, String tipoCobertura) throws IOException {
     cobertura = tipoCobertura;
-    parametroPersonaReclamacionAuto =
+    PersonaReclamacion parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
                 PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_LESIONADA.getValor()));
-    lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacion();
-    parametroPersonaConductorAuto =
+    parametroPersonaReclamacionAuto.getLstPersonaReclamacion();
+    PersonaReclamacion parametroPersonaConductorAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
                 PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_CONDUCTOR.getValor()));
-    lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacion();
-    reclamacionVehiculo =
-        new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), filtroCsv));
-    lstVehiculoParam = reclamacionVehiculo.getVehiculos();
-    parametroAviso =
+    parametroPersonaConductorAuto.getLstPersonaReclamacion();
+    Vehiculo reclamacionVehiculo =
+        new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), tipoReserva));
+    reclamacionVehiculo.getVehiculos();
+    ReclamacionAuto parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
                 PARAMETROS_SINIESTRO_AUTOS.getValor(),
                 PARAMETRO_CREACION_AVISO_AUTOS_WS.getValor()));
-    lstReclamacionAuto = parametroAviso.getLstReclamacionAuto();
-    String tipoPoliza = "póliza de auto";
-    ExpedicionAuto expedicionAuto =
-        new ExpedicionAuto(genericStep.getFilasModelo(EXPEDICION_AUTOS.getValor(), tipoPoliza));
+    parametroAviso.getLstReclamacionAuto();
+       ExpedicionAuto expedicionAuto =
+        new ExpedicionAuto(genericStep.getFilasModelo(EXPEDICION_AUTOS.getValor(), TIPO_POLIZA.getValor()));
     consumoServicioExpedicionAutoStep.consumirServicioExpedicion(
         expedicionAuto.getLstExpedicion(),
         Integer.parseInt(ConstanteGlobal.NUMERO_DIAS_VENCIMIENTO),
         ConstanteGlobal.FECHA_ACTUAL);
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
-        lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
+        parametroAviso.getLstReclamacionAuto(),
+        parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
+        parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
+        reclamacionVehiculo.getVehiculos());
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
   }
 

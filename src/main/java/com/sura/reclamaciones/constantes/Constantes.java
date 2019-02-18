@@ -23,6 +23,7 @@ public enum Constantes {
   NUMERO_TRANSACCION("Número de transacción"),
   PAGO("Pago"),
   PAGOS("Pagos"),
+  TIPO_POLIZA("póliza de auto"),
   PORCENTAJE("0.20"),
   PORCIENTO("100"),
   REASEGURO_DETALLADO("Reaseguro detallado"),
