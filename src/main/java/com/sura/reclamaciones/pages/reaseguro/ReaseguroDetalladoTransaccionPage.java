@@ -203,7 +203,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               porcentajeRetenido,
               proporcionCuotaParte,
               porcentajeCoaseguroCedido);
-      String strValorTransaccion = obtenerValorTransaccion(lstReaseguroDetallado.get(posicionElementoFila).getText());
+      String strValorTransaccion =
+          obtenerValorTransaccion(lstReaseguroDetallado.get(posicionElementoFila).getText());
       if (strTransaccion.equals(ANULACION_PAGO)) {
         blnValorAnulacion =
             strValorTransaccion.equals(
@@ -254,7 +255,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               porcentajeRetenido,
               proporcionCuotaParte,
               porcentajeCoaseguroCedido);
-      String strValorTransaccion = obtenerValorTransaccion(lstReaseguroDetallado.get(posicionElementoFila).getText());
+      String strValorTransaccion =
+          obtenerValorTransaccion(lstReaseguroDetallado.get(posicionElementoFila).getText());
       blnValorRecupero =
           strValorTransaccion.equals(
               Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor()));
@@ -327,9 +329,11 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               porcentajeRetenido,
               proporcionCuotaParte,
               porcentajeCoaseguroCedido);
-      String strValorTransaccion = obtenerValorTransaccion(lstReaseguroDetallado.get(posicionElementoFila).getText());
+      String strValorTransaccion =
+          obtenerValorTransaccion(lstReaseguroDetallado.get(posicionElementoFila).getText());
       blnValorPago =
-          strValorTransaccion.equals(Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
+          strValorTransaccion.equals(
+              Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
       blnValorPago = blnValorPago && blnReaseguro;
     }
     return blnValorPago;
@@ -337,7 +341,9 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
   private String obtenerValorTransaccion(String strNumeroReclamacion) {
     List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroReclamacion, getTblPago());
-    return lstFilaTransaccion.get(2).getText()
+    return lstFilaTransaccion
+        .get(2)
+        .getText()
         .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
   }
 }
