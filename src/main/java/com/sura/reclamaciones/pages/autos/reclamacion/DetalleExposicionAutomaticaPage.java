@@ -14,7 +14,7 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
     id =
         "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:SubView_AutoTotalLossCalculatorCardTab-btnInnerEl"
   )
-  WebElementFacade calculadoraPerdidaTotal;
+  WebElementFacade lblCalculadoraPerdidaTotal;
 
   @FindBy(id = "ExposureDetail:ExposureDetailScreen:Edit-btnInnerEl")
   WebElementFacade btnEditar;
@@ -55,14 +55,29 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
     super(wdriver);
   }
 
-  public void declararReclamacionPerdidaTotal() {
-    calculadoraPerdidaTotal.click();
+  public void seleccionarCalculadoraPerdidaTotal(){
+    lblCalculadoraPerdidaTotal.waitUntilClickable().click();
     realizarEsperaCarga();
+  }
+
+  public void editarCalculadoraPerdidaTotal(){
     btnEditar.click();
     realizarEsperaCarga();
+  }
+
+  public void seleccionarIncineracionTotalVehiculo(){
     rbtIncineracionTotalVehiculo.click();
+  }
+
+  public void seleccionarMotorDestruidoFuego(){
     rbtMotorDestruidoFuego.click();
+  }
+
+  public void seleccionarHabitaculoPasajerosIncinerado(){
     rbtHabitaculoPasajerosIncineradoTotalmente.click();
+  }
+
+  public void actualizarCalculadoraPerdidaTotal() {
     btnActualizar.click();
     realizarEsperaCarga();
   }

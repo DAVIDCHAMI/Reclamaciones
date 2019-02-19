@@ -148,7 +148,7 @@ public class ConsumoServicioCreacionSiniestro {
 
   private void obtenerResponse() {
     response = creacionSiniestroCliente.claimsResponse(crearRequest());
-    Utilidades.getLogger().info("Número de siniestro: " + response.getResult().getClaimNumber());
+    Utilidades.getLogger().info(String.format("[contains(.,'Número de siniestro: ')]"+ response.getResult().getClaimNumber()));
     Serenity.setSessionVariable(SESION_CC_NUMERO_SINIESTRO.getValor())
         .to(response.getResult().getClaimNumber());
   }

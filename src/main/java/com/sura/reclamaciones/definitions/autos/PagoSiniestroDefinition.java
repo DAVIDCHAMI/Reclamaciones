@@ -25,7 +25,6 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
-
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
@@ -61,17 +60,18 @@ public class PagoSiniestroDefinition {
             genericStep.getFilasModelo(
                 PARAMETROS_SINIESTRO_AUTOS.getValor(),
                 PARAMETRO_CREACION_AVISO_AUTOS_WS.getValor()));
-       ExpedicionAuto expedicionAuto =
-        new ExpedicionAuto(genericStep.getFilasModelo(EXPEDICION_AUTOS.getValor(), TIPO_POLIZA.getValor()));
+    ExpedicionAuto expedicionAuto =
+        new ExpedicionAuto(
+            genericStep.getFilasModelo(EXPEDICION_AUTOS.getValor(), TIPO_POLIZA.getValor()));
     consumoServicioExpedicionAutoStep.consumirServicioExpedicion(
         expedicionAuto.getLstExpedicion(),
-        Integer.parseInt(ConstanteGlobal.NUMERO_DIAS_VENCIMIENTO),
+        (ConstanteGlobal.NUMERO_DIAS_VENCIMIENTO),
         ConstanteGlobal.FECHA_ACTUAL);
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         parametroAviso.getLstReclamacionAuto(),
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
         parametroPersonaConductorAuto.getLstPersonaReclamacion(),
-        reclamacionVehiculo.getVehiculos());
+        reclamacionVehiculo.getLstVehiculos());
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
   }
 

@@ -1,14 +1,14 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_FECHA_INICIO_VIGENCIA;
-import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_FECHA_SINIESTRO;
-import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_GC_PLACA;
-import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_SERV_JOB_NUMBER;
-import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_SERV_NRO_PLACA;
-import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_SERV_NRO_POLIZA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_FECHA_INICIO_VIGENCIA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_FECHA_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_GC_PLACA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_JOB_NUMBER;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_NRO_PLACA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_NRO_POLIZA;
 
+import com.sura.reclamaciones.constantes.Configuraciones;
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
-import com.sura.reclamaciones.constantes.EnumConfiguraciones;
 import com.sura.reclamaciones.models.ExpedicionAuto;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.cliente.expedicion.ExpedicionAutosIndividualCliente;
@@ -51,8 +51,8 @@ public class ConsumoServicioExpedicionIndividualAuto {
           .to(expedicionAutoFactory.getFechaInicioVigencia());
       expedicionAutoFactory.setLicense(
           Utilidades.generarPlaca(
-              EnumConfiguraciones.CANTIDAD_LETRAS.getValor(),
-              EnumConfiguraciones.CANTIDAD_NUMEROS.getValor()));
+              Configuraciones.CANTIDAD_LETRAS.getValor(),
+              Configuraciones.CANTIDAD_NUMEROS.getValor()));
       Serenity.setSessionVariable(SESION_GC_PLACA.getValor())
           .to(expedicionAutoFactory.getLicense());
       expedicionAutoFactory.setFasecoldaCode(oExpedicion.getFasecolda());

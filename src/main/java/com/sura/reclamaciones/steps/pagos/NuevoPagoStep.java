@@ -33,26 +33,23 @@ public class NuevoPagoStep {
 
   List<WebElement> lstFilaPago;
 
-  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
-
-  @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
-
-  @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
-
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
-
-  @Page ResumenReclamacionPage resumenReclamacionPage;
-
   @Page MenuClaimPage menuClaimPage;
-
-  @Page GeneralPage generalPage;
-
-  @Page ExposicionesAutomaticasPage exposicionesAutomaticasAutos;
 
   @Page DetalleExposicionAutomaticaPage detalleExposicionAutomaticaPage;
 
+  @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
+
+  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
+
+  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+
+  @Page ExposicionesAutomaticasPage exposicionesAutomaticasPage;
+
+  @Page GeneralPage generalPage;
+
   @Step
   public void consultarNumeroReclamacion() {
+    ResumenReclamacionPage resumenReclamacionPage = null;
     resumenReclamacionPage.obtenerNumeroReclamacion();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
@@ -66,6 +63,8 @@ public class NuevoPagoStep {
       String strPagoSoloSura,
       String strCodigoRetencion,
       List<PagoSiniestro> lstPago) {
+
+    EstablecerInstruccionPagoPage establecerInstruccionPagoPage = null;
     for (PagoSiniestro diligenciador : lstPago) {
       introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
       introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
@@ -97,7 +96,7 @@ public class NuevoPagoStep {
 
   @Step
   public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
-    lstPago.forEach(
+            lstPago.forEach(
         (PagoSiniestro validador) -> {
           for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
             generalPage.realizarEsperaCarga();
@@ -138,12 +137,17 @@ public class NuevoPagoStep {
   @Step
   public void seleccionarExposicionAutomatica() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
-    exposicionesAutomaticasAutos.seleccionarExposicion();
+    exposicionesAutomaticasPage.seleccionarExposicion();
   }
 
   @Step
   public void declararReclamacionPerdidaTotal() {
-    detalleExposicionAutomaticaPage.declararReclamacionPerdidaTotal();
+    detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
+    detalleExposicionAutomaticaPage.editarCalculadoraPerdidaTotal();
+    detalleExposicionAutomaticaPage.seleccionarIncineracionTotalVehiculo();
+    detalleExposicionAutomaticaPage.seleccionarMotorDestruidoFuego();
+    detalleExposicionAutomaticaPage.seleccionarHabitaculoPasajerosIncinerado();
+    detalleExposicionAutomaticaPage.actualizarCalculadoraPerdidaTotal();
   }
 
   public void ingresarEstadoLegalReclamacion() {

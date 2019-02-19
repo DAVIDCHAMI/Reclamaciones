@@ -18,7 +18,7 @@ public class ConstanteGlobal {
   public static final String RUTA_LOG_EMPRESARIAL = "C:\\Log\\RegistrosEmpresarial.txt";
   public static final String RUTA_LOG_AUTO = "C:\\Log\\RegistrosAutos.txt";
   public static final String FECHA_ACTUAL = "fechaActual";
-  public static final String NUMERO_DIAS_VENCIMIENTO = "3";
+  public static final int NUMERO_DIAS_VENCIMIENTO = 3;
   public static final String VALOR_CERO = "0";
   public static final String VALOR_ANTERIOR = ".";
   public static final String NUEVO_VALOR = "-05:00";

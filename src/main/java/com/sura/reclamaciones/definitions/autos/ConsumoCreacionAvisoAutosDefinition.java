@@ -55,7 +55,7 @@ public class ConsumoCreacionAvisoAutosDefinition {
     lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacion();
     reclamacionVehiculo =
         new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), filtroCsv));
-    lstVehiculoParam = reclamacionVehiculo.getVehiculos();
+    lstVehiculoParam = reclamacionVehiculo.getLstVehiculos();
     parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
@@ -71,7 +71,7 @@ public class ConsumoCreacionAvisoAutosDefinition {
         new ExpedicionAuto(genericsStep.getFilasModelo(EXPEDICION_AUTOS.getValor(), tipoPoliza));
     consumoServicioExpedicionAutoStep.consumirServicioExpedicion(
         expedicionAuto.getLstExpedicion(),
-        Integer.parseInt(ConstanteGlobal.NUMERO_DIAS_VENCIMIENTO),
+        ConstanteGlobal.NUMERO_DIAS_VENCIMIENTO,
         ConstanteGlobal.FECHA_ACTUAL);
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);

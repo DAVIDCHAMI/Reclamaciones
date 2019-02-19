@@ -15,7 +15,6 @@ public class ReclamacionAuto extends Reclamacion {
   private String valorPretension;
   private String mensajeValidador;
   private String pais;
-  private String ciudad;
   private String direccion;
   private String tipoDireccion;
   private String numeroMaca;
@@ -29,17 +28,6 @@ public class ReclamacionAuto extends Reclamacion {
   private String tipoPerdida;
   private boolean sospechoso;
   private String descripcionSospecha;
-  private String departamento;
-
-  @Override
-  public String getDepartamento() {
-    return departamento;
-  }
-
-  @Override
-  public void setDepartamento(String departamento) {
-    this.departamento = departamento;
-  }
 
   private List<ReclamacionAuto> lstReclamacionAuto = new ArrayList<>();
 
@@ -58,7 +46,6 @@ public class ReclamacionAuto extends Reclamacion {
     this.valorPretension = datosReclamacionAut.get("valorPretension");
     this.mensajeValidador = datosReclamacionAut.get("mensajeValidador");
     this.pais = datosReclamacionAut.get("pais");
-    this.ciudad = datosReclamacionAut.get("ciudad");
     this.direccion = datosReclamacionAut.get("direccion");
     this.tipoDireccion = datosReclamacionAut.get("tipoDireccion");
     this.numeroMaca = datosReclamacionAut.get("numeroMaca");
@@ -72,7 +59,6 @@ public class ReclamacionAuto extends Reclamacion {
     this.tipoPerdida = datosReclamacionAut.get("tipoPerdida");
     this.sospechoso = Boolean.parseBoolean(datosReclamacionAut.get("sospechoso"));
     this.descripcionSospecha = datosReclamacionAut.get("descripcionSospecha");
-    this.departamento = datosReclamacionAut.get("departamento");
   }
 
   public ReclamacionAuto(List<Map<String, String>> datosReclamacionAut) {
@@ -113,10 +99,6 @@ public class ReclamacionAuto extends Reclamacion {
 
   public String getPais() {
     return pais;
-  }
-
-  public String getCiudad() {
-    return ciudad;
   }
 
   public String getDireccion() {

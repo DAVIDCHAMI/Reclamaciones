@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.definitions.expedicionpolizaindividual;
 
-import static com.sura.reclamaciones.constantes.EnumVariablesSesion.SESION_SERV_JOB_NUMBER;
 import static com.sura.reclamaciones.constantes.NombresCsv.*;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_JOB_NUMBER;
 
 import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.models.ExpedicionAuto;
