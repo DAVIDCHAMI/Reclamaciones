@@ -50,21 +50,17 @@ public class PagoSiniestroDefinition {
         new PersonaReclamacion(
             genericStep.getFilasModelo(
                 PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_LESIONADA.getValor()));
-    parametroPersonaReclamacionAuto.getLstPersonaReclamacion();
     PersonaReclamacion parametroPersonaConductorAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
                 PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_CONDUCTOR.getValor()));
-    parametroPersonaConductorAuto.getLstPersonaReclamacion();
     Vehiculo reclamacionVehiculo =
         new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), tipoReserva));
-    reclamacionVehiculo.getVehiculos();
     ReclamacionAuto parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
                 PARAMETROS_SINIESTRO_AUTOS.getValor(),
                 PARAMETRO_CREACION_AVISO_AUTOS_WS.getValor()));
-    parametroAviso.getLstReclamacionAuto();
        ExpedicionAuto expedicionAuto =
         new ExpedicionAuto(genericStep.getFilasModelo(EXPEDICION_AUTOS.getValor(), TIPO_POLIZA.getValor()));
     consumoServicioExpedicionAutoStep.consumirServicioExpedicion(
@@ -74,7 +70,7 @@ public class PagoSiniestroDefinition {
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         parametroAviso.getLstReclamacionAuto(),
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
-        parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
+        parametroPersonaConductorAuto.getLstPersonaReclamacion(),
         reclamacionVehiculo.getVehiculos());
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
   }
