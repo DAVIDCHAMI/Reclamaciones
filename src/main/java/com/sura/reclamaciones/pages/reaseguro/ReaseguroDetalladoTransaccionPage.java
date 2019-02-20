@@ -108,7 +108,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String proporcionCuotaParte,
       String porcentajeCoaseguroCedido) {
     String strValorPantalla;
-    if (lstFilaTransaccion.size() > 11) {
+    double dblDatoPantalla;
+     if (lstFilaTransaccion.size() > 11) {
       strValorPantalla =
           lstFilaTransaccion
               .get(13)
@@ -125,13 +126,23 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
                 porcentajeRetenido,
                 proporcionCuotaParte,
                 porcentajeCoaseguroCedido));
-    double dblDatoPantalla =
-        abs(
-            Double.parseDouble(
-                lstFilaTransaccion
-                    .get(4)
-                    .getText()
-                    .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "")));
+    if (porcentajeCoaseguroCedido.equals("0")) {
+       dblDatoPantalla =
+          abs(
+              Double.parseDouble(
+                  lstFilaTransaccion
+                      .get(4)
+                      .getText()
+                      .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "")));
+    } else {
+      dblDatoPantalla =
+          abs(
+              Double.parseDouble(
+                  lstFilaTransaccion
+                      .get(4)
+                      .getText()
+                      .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "")))*(Double.parseDouble(porcentajeCoaseguroCedido) / Double.parseDouble(PORCIENTO.getValor()));
+    }
     return ((dblDatoPantalla
             >= (Math.round(
                 abs(Double.parseDouble(strValorPantalla)) - dblValorRetenido - dblRetencionPura)))
@@ -255,8 +266,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               porcentajeRetenido,
               proporcionCuotaParte,
               porcentajeCoaseguroCedido);
-      String strValorTransaccion =
-          obtenerValorTransaccion(lstReaseguroDetallado.get(posicionElementoFila).getText());
+      String strValorTransaccion =lstReaseguroDetallado.get(posicionElementoFila).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
       blnValorRecupero =
           strValorTransaccion.equals(
               Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor()));
