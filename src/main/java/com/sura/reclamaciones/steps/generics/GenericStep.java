@@ -40,28 +40,18 @@ public class GenericStep {
         .collect(Collectors.toList());
   }
 
-  public void generarRegistro(String valor, String tipoAviso) {
+  public void generarArchivo(String valor) {
     try {
-      ResourceBundle rutaEmpresarial =
-          ResourceBundle.getBundle(ConstanteGlobal.RUTA_LOG_EMPRESARIAL);
-      String registroEmpresarial = rutaEmpresarial.getString("RegistrosEmpresarial");
-      Date date = new Date();
+      ResourceBundle rutaRegistro =
+          ResourceBundle.getBundle(ConstanteGlobal.RUTA_REGISTRO);
+      String registroEmpresarial = rutaRegistro.getString("Registros");
+      Date fecha = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-      if (tipoAviso.equalsIgnoreCase(ConstanteGlobal.EMPRESARIALES)) {
-        File archivoLogEmpresarial = new File(registroEmpresarial, "");
-        FileWriter escribirEmp = new FileWriter(archivoLogEmpresarial, ConstanteGlobal.TRUE);
-        escribirEmp.write(valor + " " + horaFormateada.format(date));
-        escribirEmp.write("\r\n");
-        escribirEmp.close();
-      } else {
-        ResourceBundle rutaAuto = ResourceBundle.getBundle(ConstanteGlobal.RUTA_LOG_AUTO);
-        String registroAuto = rutaAuto.getString("RegistrosAutos");
-        File archivoLogAuto = new File(registroAuto, "");
-        FileWriter escribirAut = new FileWriter(archivoLogAuto, ConstanteGlobal.TRUE);
-        escribirAut.write(valor + " " + horaFormateada.format(date));
-        escribirAut.write("\r\n");
-        escribirAut.close();
-      }
+      File archivoLog = new File(registroEmpresarial, "");
+      FileWriter escribirDato = new FileWriter(archivoLog, ConstanteGlobal.TRUE);
+      escribirDato.write(valor + " " + horaFormateada.format(fecha));
+      escribirDato.write("\r\n");
+      escribirDato.close();
     } catch (Exception e) {
       Utilidades.getLogger().info("No se realizó el guardado del Log", e);
     }
