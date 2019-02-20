@@ -55,25 +55,25 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
     super(wdriver);
   }
 
-  public void seleccionarCalculadoraPerdidaTotal(){
+  public void seleccionarCalculadoraPerdidaTotal() {
     lblCalculadoraPerdidaTotal.waitUntilClickable().click();
     realizarEsperaCarga();
   }
 
-  public void editarCalculadoraPerdidaTotal(){
+  public void editarCalculadoraPerdidaTotal() {
     btnEditar.click();
     realizarEsperaCarga();
   }
 
-  public void seleccionarIncineracionTotalVehiculo(){
+  public void seleccionarIncineracionTotalVehiculo() {
     rbtIncineracionTotalVehiculo.click();
   }
 
-  public void seleccionarMotorDestruidoFuego(){
+  public void seleccionarMotorDestruidoFuego() {
     rbtMotorDestruidoFuego.click();
   }
 
-  public void seleccionarHabitaculoPasajerosIncinerado(){
+  public void seleccionarHabitaculoPasajerosIncinerado() {
     rbtHabitaculoPasajerosIncineradoTotalmente.click();
   }
 
@@ -82,17 +82,26 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
+  public void seleccionarDetalleExposicion() {
+    lblDetallesExposicion.waitUntilClickable().click();
+    realizarEsperaCarga();
+  }
+
+  public void editarDetalleExposición() {
+    btnEditar.waitUntilClickable().click();
+    realizarEsperaCarga();
+  }
+
   public void ingresarEstadoLegalReclamacion() {
-    lblDetallesExposicion.click();
-    realizarEsperaCarga();
-    btnEditar.click();
-    realizarEsperaCarga();
     cmbEstadoLegal.waitUntilClickable().click();
     cmbEstadoLegal
         .findElement(By.xpath("//li[contains(.,'" + ESTADO_LEGAL.getValor() + "')]"))
         .click();
     realizarEsperaCarga();
-    btnActualizar.click();
+  }
+
+  public void actualizarDetalleExposicion() {
+    btnActualizar.waitUntilClickable().click();
     realizarEsperaCarga();
   }
 }

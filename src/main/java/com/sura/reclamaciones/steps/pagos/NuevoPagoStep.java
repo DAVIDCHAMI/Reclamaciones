@@ -45,6 +45,8 @@ public class NuevoPagoStep {
 
   @Page ExposicionesAutomaticasPage exposicionesAutomaticasPage;
 
+  @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
+
   @Page GeneralPage generalPage;
 
   @Step
@@ -63,8 +65,6 @@ public class NuevoPagoStep {
       String strPagoSoloSura,
       String strCodigoRetencion,
       List<PagoSiniestro> lstPago) {
-
-    EstablecerInstruccionPagoPage establecerInstruccionPagoPage = null;
     for (PagoSiniestro diligenciador : lstPago) {
       introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
       introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
@@ -96,7 +96,7 @@ public class NuevoPagoStep {
 
   @Step
   public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
-            lstPago.forEach(
+    lstPago.forEach(
         (PagoSiniestro validador) -> {
           for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
             generalPage.realizarEsperaCarga();
@@ -151,6 +151,9 @@ public class NuevoPagoStep {
   }
 
   public void ingresarEstadoLegalReclamacion() {
+    detalleExposicionAutomaticaPage.seleccionarDetalleExposicion();
+    detalleExposicionAutomaticaPage.editarDetalleExposición();
     detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
+    detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
   }
 }

@@ -25,12 +25,12 @@ Característica: Realizar pago de un siniestro
 
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos
-    Dado que se tiene un siniestro de <tipoReserva> con un tipo de cobertura de <tipoCobertura>
+    Dado que se tiene un siniestro de <origen> con un tipo de cobertura de <tipoCobertura>
     Cuando se genere un pago <tipoPago> al beneficiario <beneficiarioPago> por el medio de pago de <metodoPago> sobre la linea de reserva <lineaReserva> donde el responsable <soloSura> es Sura con una retención de <codigoRetencionPago>
     Entonces se obtiene el pago del beneficiario
     
     Ejemplos:
-      |tipoReserva    | lineaReserva                    | tipoPago  | beneficiarioPago                 | metodoPago      | codigoRetencionPago | soloSura | tipoCobertura      |
+      |origen         | lineaReserva                    | tipoPago  | beneficiarioPago                 | metodoPago      | codigoRetencionPago | soloSura | tipoCobertura      |
       |creacionAvisoWS| (1) 3ª parteLesiones corporales | Parcial   | JHON FEOR FEOR FEOR              | Pago por banco  | 0099                | No       | RC Lesión a Persona|
       |creacionAvisoWS| (2) 1ª parteVehículo            | Parcial   | LEONARDO JESUS OSPINO DIAZ CQLII | Caja Sura       | 0099                | No       | Perdida total Daños|
       |creacionAvisoWS| (2) 1ª parteVehículo            | Final     | LEONARDO JESUS OSPINO DIAZ CQLII | Caja Sura       | 0099                | No       | Perdida total Daños|
