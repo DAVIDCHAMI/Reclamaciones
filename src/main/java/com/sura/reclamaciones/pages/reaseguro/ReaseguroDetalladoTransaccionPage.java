@@ -87,10 +87,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   private boolean verificarRetencionPura(
       List<WebElement> lstFilaTransaccion, Double dblMaximoValorRetencionPura) {
     String strRetencionPura;
-    if (lstFilaTransaccion.size() > 10) {
+    if (lstFilaTransaccion.size() > 11) {
       strRetencionPura =
           lstFilaTransaccion
-              .get(16)
+              .get(17)
               .getText()
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     } else {
@@ -108,10 +108,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String proporcionCuotaParte,
       String porcentajeCoaseguroCedido) {
     String strValorPantalla;
-    if (lstFilaTransaccion.size() > 10) {
+    if (lstFilaTransaccion.size() > 11) {
       strValorPantalla =
           lstFilaTransaccion
-              .get(12)
+              .get(13)
               .getText()
               .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     } else {
@@ -290,12 +290,12 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
   private boolean verificarPorcentajeRetenido(
       List<WebElement> lstFilaTransaccion, Double dblValorRetenido) {
     double dblDatoPantalla;
-    if (lstFilaTransaccion.size() > 10) {
+    if (lstFilaTransaccion.size() > 11) {
       dblDatoPantalla =
           abs(
               Double.parseDouble(
                   lstFilaTransaccion
-                      .get(15)
+                      .get(16)
                       .getText()
                       .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "")));
     } else {
