@@ -80,6 +80,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
                 porcentajeRetenido,
                 proporcionCuotaParte,
                 porcentajeCoaseguroCedido);
+      break;
       default:
         return blnTransaccion;
     }
