@@ -42,8 +42,7 @@ public class GenericStep {
 
   public void generarArchivo(String valor) {
     try {
-      ResourceBundle rutaRegistro =
-          ResourceBundle.getBundle(ConstanteGlobal.RUTA_REGISTRO);
+      ResourceBundle rutaRegistro = ResourceBundle.getBundle(ConstanteGlobal.RUTA_REGISTRO);
       String registroEmpresarial = rutaRegistro.getString("Registros");
       Date fecha = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

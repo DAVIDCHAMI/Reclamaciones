@@ -131,20 +131,20 @@ public class NuevoAvisoSiniestroAutoStep {
   @Step
   private void agregarPersonaLesionada(List<PersonaReclamacion> datopersonaReclamacion) {
     for (PersonaReclamacion personaLesionada : datopersonaReclamacion) {
-      agregarExposicionLesionesPage.seleccionarTipoDocumento(personaLesionada.getTipoDocumento());
-      agregarExposicionLesionesPage.ingresarNumeroDocumento(personaLesionada.getNumDocumento());
-      agregarExposicionLesionesPage.ingresarPrimerNombre(personaLesionada.getPrimerNombre());
-      agregarExposicionLesionesPage.ingresarPrimerApellido(personaLesionada.getPrimerApellido());
+      detalleVehiculoPage.seleccionarTipoDocumento(personaLesionada.getTipoDocumento());
+      detalleVehiculoPage.ingresarNumeroDocumento(personaLesionada.getNumDocumento());
+      detalleVehiculoPage.ingresarPrimerNombre(personaLesionada.getPrimerNombre());
+      detalleVehiculoPage.ingresarPrimerApellido(personaLesionada.getPrimerApellido());
     }
   }
 
   @Step
   private void agregarDireccionLesionado(List<ReclamacionAuto> datosReclamacionAuto) {
     for (ReclamacionAuto direccionLesionado : datosReclamacionAuto) {
-      agregarExposicionLesionesPage.seleccionarDepartamento(direccionLesionado.getDepartamento());
-      agregarExposicionLesionesPage.seleccionarCiudad(direccionLesionado.getCiudad());
-      agregarExposicionLesionesPage.ingresarDireccion(direccionLesionado.getDireccion());
-      agregarExposicionLesionesPage.seleccionarTipoDireccion(direccionLesionado.getTipoDireccion());
+      detalleVehiculoPage.seleccionarDepartamento(direccionLesionado.getDepartamento());
+      detalleVehiculoPage.seleccionarCiudad(direccionLesionado.getCiudad());
+      detalleVehiculoPage.ingresarDireccion(direccionLesionado.getDireccion());
+      detalleVehiculoPage.seleccionarTipoDireccion(direccionLesionado.getTipoDireccion());
     }
   }
 
