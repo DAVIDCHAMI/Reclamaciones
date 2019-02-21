@@ -8,6 +8,7 @@ public enum Constantes {
   CANTIDAD("Cantidad"),
   CLAVE("cor3sur4"),
   CODIGO_RETENCION("Código de retención"),
+  CERO("0"),
   COMODIN("COMODIN"),
   COP("COP"),
   CUENTA(""),

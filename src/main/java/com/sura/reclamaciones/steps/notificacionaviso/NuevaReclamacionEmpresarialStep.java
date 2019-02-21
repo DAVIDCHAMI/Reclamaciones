@@ -2,6 +2,7 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import static com.sura.reclamaciones.constantes.Constantes.FECHA_HOY;
 import static com.sura.reclamaciones.constantes.Constantes.VALIDADOR_NUEVA_RECLAMACION;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA_CONSTITUCION;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
@@ -14,6 +15,7 @@ import com.sura.reclamaciones.pages.notificacionaviso.PropiedadesImplicadasPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.steps.generics.UbicacionStep;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
@@ -85,6 +87,7 @@ public class NuevaReclamacionEmpresarialStep {
   public void buscarPolizaEmpresarial(List<ReclamacionEmpresarial> datosPolizaEmpresarial) {
     datosPolizaEmpresarial.forEach(
         poliza -> {
+          Serenity.setSessionVariable(SESION_CC_VALOR_RESERVA_CONSTITUCION.getValor()).to(poliza.getReservaTransaccion());
           buscarPolizaPage.seleccionarOpcionBuscarPoliza();
           buscarPolizaPage.escribirNumeroPoliza(poliza.getNumPoliza());
           if (FECHA_HOY.getValor().equals(poliza.getFechaSiniestro())) {

@@ -6,7 +6,8 @@ public enum VariablesSesion {
   SESION_CC_TIPO_PRODUCTO_EMPRESARIAL("tipoProductoEmpresarial"),
   SESION_CC_TIPO_RESERVA("tipoReserva"),
   SESION_CC_VALOR_RECUPERO("ValorRecupero"),
-  SESION_CC_VALOR_RESERVA("valorReserva");
+  SESION_CC_VALOR_RESERVA("valorReserva"),
+  SESION_CC_VALOR_RESERVA_CONSTITUCION("valorReservaConstitución");
 
   private String valor;
 
