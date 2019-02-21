@@ -87,7 +87,8 @@ public class NuevaReclamacionEmpresarialStep {
   public void buscarPolizaEmpresarial(List<ReclamacionEmpresarial> datosPolizaEmpresarial) {
     datosPolizaEmpresarial.forEach(
         poliza -> {
-          Serenity.setSessionVariable(SESION_CC_VALOR_RESERVA_CONSTITUCION.getValor()).to(poliza.getReservaTransaccion());
+          Serenity.setSessionVariable(SESION_CC_VALOR_RESERVA_CONSTITUCION.getValor())
+              .to(poliza.getReservaTransaccion());
           buscarPolizaPage.seleccionarOpcionBuscarPoliza();
           buscarPolizaPage.escribirNumeroPoliza(poliza.getNumPoliza());
           if (FECHA_HOY.getValor().equals(poliza.getFechaSiniestro())) {

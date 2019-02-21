@@ -117,8 +117,7 @@ public class CreacionRecuperoPage extends GeneralPage {
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%s')", montoRecupero));
         });
-    Serenity.setSessionVariable(SESION_CC_VALOR_RECUPERO.getValor())
-        .to(montoRecupero);
+    Serenity.setSessionVariable(SESION_CC_VALOR_RECUPERO.getValor()).to(montoRecupero);
   }
 
   public void actualizarRecupero() {

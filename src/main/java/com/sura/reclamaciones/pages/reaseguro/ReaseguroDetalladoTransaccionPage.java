@@ -4,6 +4,7 @@ import static com.sura.reclamaciones.constantes.Constantes.ANULACION_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.CERO;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCIENTO;
+import static com.sura.reclamaciones.utils.Variables.FORMATEAR_MONTOS;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
@@ -11,7 +12,6 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESER
 import static java.lang.Math.abs;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -91,13 +91,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     String strRetencionPura;
     if (lstFilaTransaccion.size() > 11) {
       strRetencionPura =
-          lstFilaTransaccion
-              .get(17)
-              .getText()
-              .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+          lstFilaTransaccion.get(17).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     } else {
       strRetencionPura =
-          lstFilaTransaccion.get(6).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+          lstFilaTransaccion.get(6).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     }
     dblRetencionPura = abs(Double.parseDouble(strRetencionPura));
     return (dblRetencionPura >= -dblMaximoValorRetencionPura
@@ -111,15 +108,12 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String porcentajeCoaseguroCedido) {
     String strValorPantalla;
     double dblValorCedido;
-     if (lstFilaTransaccion.size() > 11) {
+    if (lstFilaTransaccion.size() > 11) {
       strValorPantalla =
-          lstFilaTransaccion
-              .get(13)
-              .getText()
-              .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+          lstFilaTransaccion.get(13).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     } else {
       strValorPantalla =
-          lstFilaTransaccion.get(2).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+          lstFilaTransaccion.get(2).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     }
     dblValorRetenido =
         abs(
@@ -128,24 +122,21 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
                 porcentajeRetenido,
                 proporcionCuotaParte,
                 porcentajeCoaseguroCedido));
-       double dblDatoPantalla =
-          abs(
-              Double.parseDouble(
-                  lstFilaTransaccion
-                      .get(4)
-                      .getText()
-                      .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "")));
-    if (porcentajeCoaseguroCedido.equals(CERO.getValor())){
+    double dblDatoPantalla =
+        abs(
+            Double.parseDouble(
+                lstFilaTransaccion.get(4).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "")));
+    if (porcentajeCoaseguroCedido.equals(CERO.getValor())) {
       dblValorCedido = abs(Double.parseDouble(strValorPantalla)) - dblValorRetenido;
-    }else{
-      dblValorCedido = (abs(Double.parseDouble(strValorPantalla))*(Double.parseDouble(porcentajeCoaseguroCedido) / Double.parseDouble(PORCIENTO.getValor())))- dblValorRetenido;
+    } else {
+      dblValorCedido =
+          (abs(Double.parseDouble(strValorPantalla))
+                  * (Double.parseDouble(porcentajeCoaseguroCedido)
+                      / Double.parseDouble(PORCIENTO.getValor())))
+              - dblValorRetenido;
     }
-    return ((dblDatoPantalla
-            >= (Math.round(
-                dblValorCedido- dblRetencionPura)))
-        && (dblDatoPantalla
-            <= (Math.round(
-                dblValorCedido + dblRetencionPura))));
+    return ((dblDatoPantalla >= (Math.round(dblValorCedido - dblRetencionPura)))
+        && (dblDatoPantalla <= (Math.round(dblValorCedido + dblRetencionPura))));
   }
 
   private double calcularValorRetenido(
@@ -178,16 +169,18 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
-      blnReaseguro =
-          verificarDistribucionReaseguro(
-              dblMaximoRetencioPura,
-              porcentajeRetenido,
-              proporcionCuotaParte,
-              strPorcentajeCoaseguroCedido, 2);
-      String strValorTransaccion =lstReaseguroDetallado.get(2).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      blnValorReversion =
-          strValorTransaccion.equals(
-              Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA_CONSTITUCION.getValor()));
+    blnReaseguro =
+        verificarDistribucionReaseguro(
+            dblMaximoRetencioPura,
+            porcentajeRetenido,
+            proporcionCuotaParte,
+            strPorcentajeCoaseguroCedido,
+            2);
+    String strValorTransaccion =
+        lstReaseguroDetallado.get(2).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
+    blnValorReversion =
+        strValorTransaccion.equals(
+            Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA_CONSTITUCION.getValor()));
     return blnValorReversion && blnReaseguro;
   }
 
@@ -210,17 +203,21 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               dblMaximoRetencioPura,
               porcentajeRetenido,
               proporcionCuotaParte,
-              porcentajeCoaseguroCedido, 1);
+              porcentajeCoaseguroCedido,
+              1);
       String strValorTransaccion =
-          obtenerValorTransaccion(lstReaseguroDetallado.get(posicionElementoFila).getText());
-      if (strTransaccion.equals(ANULACION_PAGO)) {
+          lstReaseguroDetallado
+              .get(posicionElementoFila)
+              .getText()
+              .replaceAll(FORMATEAR_MONTOS.getValor(), "");
+      if (strTransaccion.equals(ANULACION_PAGO.getValor())) {
         blnValorAnulacion =
             strValorTransaccion.equals(
-                Serenity.sessionVariableCalled((SESION_CC_VALOR_RESERVA.getValor())));
+                "-" + Serenity.sessionVariableCalled((SESION_CC_VALOR_RESERVA.getValor())));
       } else {
         blnValorAnulacion =
             strValorTransaccion.equals(
-                Serenity.sessionVariableCalled((SESION_CC_VALOR_RECUPERO.getValor())));
+                "-" + Serenity.sessionVariableCalled((SESION_CC_VALOR_RECUPERO.getValor())));
       }
     }
     return blnValorAnulacion && blnReaseguro;
@@ -230,8 +227,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       Double dblMaximoRetencioPura,
       String porcentajeRetenido,
       String proporcionCuotaParte,
-      String porcentajeCoaseguroCedido, int intFilaTransaccion) {
-    String strNumeroReclamacion = obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(), intFilaTransaccion);
+      String porcentajeCoaseguroCedido,
+      int intFilaTransaccion) {
+    String strNumeroReclamacion =
+        obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(), intFilaTransaccion);
     List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroReclamacion, getTblPago());
     boolean blnRetencionPura = verificarRetencionPura(lstFilaTransaccion, dblMaximoRetencioPura);
     boolean blnPorcentajeCedido =
@@ -262,8 +261,13 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               dblMaximoRetencioPura,
               porcentajeRetenido,
               proporcionCuotaParte,
-              porcentajeCoaseguroCedido, 1);
-      String strValorTransaccion =lstReaseguroDetallado.get(posicionElementoFila).getText().replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+              porcentajeCoaseguroCedido,
+              1);
+      String strValorTransaccion =
+          lstReaseguroDetallado
+              .get(posicionElementoFila)
+              .getText()
+              .replaceAll(FORMATEAR_MONTOS.getValor(), "");
       blnValorRecupero =
           strValorTransaccion.equals(
               Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor()));
@@ -289,7 +293,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               dblMaximoRetencioPura,
               porcentajeRetenido,
               proporcionCuotaParte,
-              porcentajeCoaseguroCedido, 1);
+              porcentajeCoaseguroCedido,
+              1);
     }
     return blnReaseguro;
   }
@@ -304,15 +309,12 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
                   lstFilaTransaccion
                       .get(16)
                       .getText()
-                      .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "")));
+                      .replaceAll(FORMATEAR_MONTOS.getValor(), "")));
     } else {
       dblDatoPantalla =
           abs(
               Double.parseDouble(
-                  lstFilaTransaccion
-                      .get(5)
-                      .getText()
-                      .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "")));
+                  lstFilaTransaccion.get(5).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "")));
     }
     return ((dblDatoPantalla >= (Math.round(dblValorRetenido - dblRetencionPura)))
         && (dblDatoPantalla <= (Math.round(dblValorRetenido + dblRetencionPura))));
@@ -335,7 +337,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               dblMaximoRetencioPura,
               porcentajeRetenido,
               proporcionCuotaParte,
-              porcentajeCoaseguroCedido, 1);
+              porcentajeCoaseguroCedido,
+              1);
       String strValorTransaccion =
           obtenerValorTransaccion(lstReaseguroDetallado.get(posicionElementoFila).getText());
       blnValorPago =
@@ -348,9 +351,6 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
   private String obtenerValorTransaccion(String strNumeroReclamacion) {
     List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroReclamacion, getTblPago());
-    return lstFilaTransaccion
-        .get(2)
-        .getText()
-        .replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    return lstFilaTransaccion.get(2).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
   }
 }
