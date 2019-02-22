@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.runners.uat.claimcenter.lote2autos;
+package com.sura.reclamaciones.runners.uat.claimcenter.lote1autos;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;

@@ -15,7 +15,10 @@ public class ConstanteGlobal {
   public static final boolean TRUE = true;
   public static final String RUTA_REGISTRO = "C:\\Log\\RegistroDatos.txt";
   public static final String FECHA_ACTUAL = "fechaActual";
+  public static final String NUMERO_DIAS_VENCIMIENTO = "3";
   public static final String VALOR_CERO = "0";
+  public static final String VALOR_ANTERIOR = ".";
+  public static final String NUEVO_VALOR = "-05:00";
 
   private ConstanteGlobal() {}
 }
