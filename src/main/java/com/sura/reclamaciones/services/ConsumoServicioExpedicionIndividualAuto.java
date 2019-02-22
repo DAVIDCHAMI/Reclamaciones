@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.services;
 
+import static com.sura.reclamaciones.constantes.Constantes.NUEVO_VALOR;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_ANTERIOR;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_FECHA_INICIO_VIGENCIA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_FECHA_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_GC_PLACA;
@@ -8,7 +10,6 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_NRO_PLACA
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_NRO_POLIZA;
 
 import com.sura.reclamaciones.constantes.Configuraciones;
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.models.ExpedicionAuto;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.cliente.expedicion.ExpedicionAutosIndividualCliente;
@@ -105,7 +106,7 @@ public class ConsumoServicioExpedicionIndividualAuto {
     fechaSiniestro = fechaSiniestro.toDateTime().minusDays(1);
     fechaAvisoSiniestro = fechaSiniestro.toString().substring(0, 20);
     fechaAvisoSiniestro =
-        fechaAvisoSiniestro.replace(ConstanteGlobal.VALOR_ANTERIOR, ConstanteGlobal.NUEVO_VALOR);
+        fechaAvisoSiniestro.replace(VALOR_ANTERIOR.getValor(), NUEVO_VALOR.getValor());
     Serenity.setSessionVariable(SESION_SERV_JOB_NUMBER.getValor()).to(jobNumberJson);
     Serenity.setSessionVariable(SESION_SERV_NRO_POLIZA.getValor()).to(nroPoliza);
     Serenity.setSessionVariable(SESION_SERV_NRO_PLACA.getValor()).to(nroPlaca);

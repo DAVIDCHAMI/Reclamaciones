@@ -165,7 +165,27 @@ public enum Constantes {
   OPERACION_EMISION_POLIZA("Emisión de póliza"),
   IVA_CARGOS_FACTURAS("IVA"),
   CONSULTA_POLIZA_MASIVA_SI("Si"),
-  CONSULTA_POLIZA_MASIVA_NO("No");
+  CONSULTA_POLIZA_MASIVA_NO("No"),
+  LABORATORIO("uat"),
+  DESARROLLO("dllo"),
+  ANALISTA_RECLAMACION_AUTO("analistaReclamacionAuto"),
+  ANALISTA_RECLAMACION_EMPRESARIAL("analistaReclamacionEmp"),
+  ANALISTA_RECLAMACION_ATR("analistaReclamacionEmpAtr"),
+  SI("si"),
+  NO("no"),
+  NIT("98630089"),
+  NUMERO_INTENTOS_ESPERA_ELEMENTO("180"),
+  EXPEDIENTE_CREADO_EXITOSAMENTE("Expediente creado con éxito"),
+  EMPRESARIALES("Empresariales"),
+  AUTOS("Autos"),
+  TRUE("true"),
+  RUTA_LOG_EMPRESARIAL("C:\\Log\\RegistrosEmpresarial.txt"),
+  RUTA_LOG_AUTO("C:\\Log\\RegistrosAutos.txt"),
+  FECHA_ACTUAL("fechaActual"),
+  NUMERO_DIAS_VENCIMIENTO("3"),
+  VALOR_CERO("0"),
+  VALOR_ANTERIOR("."),
+  NUEVO_VALOR("-05:00");
 
   private String valor;
 

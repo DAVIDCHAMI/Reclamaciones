@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.definitions.autos;
 
+import static com.sura.reclamaciones.constantes.Constantes.FECHA_ACTUAL;
+import static com.sura.reclamaciones.constantes.Constantes.NUMERO_DIAS_VENCIMIENTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.EXPEDICION_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
@@ -8,7 +10,6 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_CREACION_AV
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_CONDUCTOR;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_LESIONADA;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.models.ExpedicionAuto;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
@@ -71,8 +72,8 @@ public class ConsumoCreacionAvisoAutosDefinition {
         new ExpedicionAuto(genericsStep.getFilasModelo(EXPEDICION_AUTOS.getValor(), tipoPoliza));
     consumoServicioExpedicionAutoStep.consumirServicioExpedicion(
         expedicionAuto.getLstExpedicion(),
-        ConstanteGlobal.NUMERO_DIAS_VENCIMIENTO,
-        ConstanteGlobal.FECHA_ACTUAL);
+        Integer.parseInt(NUMERO_DIAS_VENCIMIENTO.getValor()),
+        FECHA_ACTUAL.getValor());
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
   }

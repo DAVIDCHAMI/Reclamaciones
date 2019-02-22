@@ -1,9 +1,10 @@
 package com.sura.reclamaciones.pages.generics;
 
+import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
+import static com.sura.reclamaciones.constantes.Constantes.NUMERO_INTENTOS_ESPERA_ELEMENTO;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
 import java.util.Set;
@@ -146,7 +147,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void realizarEsperaFinalizarReclamacion() {
-    int numeroIntentos = ConstanteGlobal.NUMERO_INTENTOS_ESPERA_ELEMENTO;
+    int numeroIntentos = Integer.parseInt(NUMERO_INTENTOS_ESPERA_ELEMENTO.getValor());
     while (numeroIntentos > 0) {
       if (!pgrBarCarga.isPresent()) {
         break;
@@ -195,7 +196,7 @@ public class GeneralPage extends PageObject {
     mnuDinamico
         .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
         .click();
-    auxiliarReemplazo = lstDinamico.replace(ConstanteGlobal.COMODIN, ubicacion);
+    auxiliarReemplazo = lstDinamico.replace(COMODIN.getValor(), ubicacion);
     $(auxiliarReemplazo).click();
     realizarEsperaCarga();
   }
@@ -239,7 +240,7 @@ public class GeneralPage extends PageObject {
 
   public void navegarMenu(String opcionMenu, String mnuNavegar) {
     String auxiliarMnuNavegar = "";
-    auxiliarMnuNavegar = mnuNavegar.replace(ConstanteGlobal.COMODIN, opcionMenu);
+    auxiliarMnuNavegar = mnuNavegar.replace(COMODIN.getValor(), opcionMenu);
     $(auxiliarMnuNavegar).waitUntilPresent().waitUntilVisible().click();
   }
 
