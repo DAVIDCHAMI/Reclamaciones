@@ -49,23 +49,19 @@ public class ExpedicionAutoFactory {
   private String suavizacion;
   private String descuentoxUso;
   private String tipoVehiculo;
-  private String valorLimiteDanioTercero;
-  private String valorDeducibleDanioTercero;
-  private String valorPerdidaTotalDaniosCarro;
-  private String valorPerdidaParcialDaniosCarro;
-  private String valorGastoTransporteDaniosCarro;
-  private String valorSustraccionTotal;
-  private String valorSustraccionParcial;
-  private String valorSustraccionGasTrans;
-  private String valorPerdidaParcialVehiculoReemplazo;
-  private String valorPerdidaTotalVehiculoReemplazo;
-  private String valorAccidenteConductor;
-  private String valorPerdidaLlave;
-  private String valorAsistencias;
-
-  public ExpedicionAutoFactory() {
-    //constructor
-  }
+  private String valorLimiteDanoTercero;
+  private String valorDeducibleDanoTercero;
+  private String valorPerdidaTotalDanosCarro;
+  private String valorPerdidaParcialDanosCarro;
+  private String valorGastoTransporteDanosCarro;
+  private String valorHurtoTotal;
+  private String valorHurtoParcial;
+  private String valorHurtoGasTrans;
+  private String valorPerdidaParcialCarroReemplazo;
+  private String valorPerdidaTotalCarroReemplazo;
+  private String valorAccidentesConductor;
+  private String valorPerdidaLlaves;
+  private String valorAsistencia;
 
   public String getMethod() {
     return method;
@@ -235,108 +231,108 @@ public class ExpedicionAutoFactory {
     this.tipoVehiculo = value;
   }
 
-  public String getValorLimiteDanioTercero() {
-    return valorLimiteDanioTercero;
+  public String getValorLimiteDanoTercero() {
+    return valorLimiteDanoTercero;
   }
 
-  public void setValorLimiteDanoTercero(String valorLimiteDanioTercero) {
-    this.valorLimiteDanioTercero = valorLimiteDanioTercero;
+  public void setValorLimiteDanoTercero(String valorLimiteDanoTercero) {
+    this.valorLimiteDanoTercero = valorLimiteDanoTercero;
   }
 
   public String getValorDeducibleDanoTercero() {
-    return valorDeducibleDanioTercero;
+    return valorDeducibleDanoTercero;
   }
 
   public void setValorDeducibleDanoTercero(String valorDeducibleDanoTercero) {
-    this.valorDeducibleDanioTercero = valorDeducibleDanoTercero;
+    this.valorDeducibleDanoTercero = valorDeducibleDanoTercero;
   }
 
   public String getValorPerdidaTotalDanosCarro() {
-    return valorPerdidaTotalDaniosCarro;
+    return valorPerdidaTotalDanosCarro;
   }
 
   public void setValorPerdidaTotalDanosCarro(String valorPerdidaTotalDanosCarro) {
-    this.valorPerdidaTotalDaniosCarro = valorPerdidaTotalDanosCarro;
+    this.valorPerdidaTotalDanosCarro = valorPerdidaTotalDanosCarro;
   }
 
-  public String getValorPerdidaParcialDaniosCarro() {
-    return valorPerdidaParcialDaniosCarro;
+  public String getValorPerdidaParcialDanosCarro() {
+    return valorPerdidaParcialDanosCarro;
   }
 
   public void setValorPerdidaParcialDanosCarro(String valorPerdidaParcialDanosCarro) {
-    this.valorPerdidaParcialDaniosCarro = valorPerdidaParcialDanosCarro;
+    this.valorPerdidaParcialDanosCarro = valorPerdidaParcialDanosCarro;
   }
 
   public String getValorGastoTransporteDanosCarro() {
-    return valorGastoTransporteDaniosCarro;
+    return valorGastoTransporteDanosCarro;
   }
 
   public void setValorGastoTransporteDanosCarro(String valorGastoTransporteDanosCarro) {
-    this.valorGastoTransporteDaniosCarro = valorGastoTransporteDanosCarro;
+    this.valorGastoTransporteDanosCarro = valorGastoTransporteDanosCarro;
   }
 
   public String getValorHurtoTotal() {
-    return valorSustraccionTotal;
+    return valorHurtoTotal;
   }
 
   public void setValorHurtoTotal(String valorHurtoTotal) {
-    this.valorSustraccionTotal = valorHurtoTotal;
+    this.valorHurtoTotal = valorHurtoTotal;
   }
 
   public String getValorHurtoParcial() {
-    return valorSustraccionParcial;
+    return valorHurtoParcial;
   }
 
   public void setValorHurtoParcial(String valorHurtoParcial) {
-    this.valorSustraccionParcial = valorHurtoParcial;
+    this.valorHurtoParcial = valorHurtoParcial;
   }
 
   public String getValorHurtoGasTrans() {
-    return valorSustraccionGasTrans;
+    return valorHurtoGasTrans;
   }
 
   public void setValorHurtoGasTrans(String valorHurtoGasTrans) {
-    this.valorSustraccionGasTrans = valorHurtoGasTrans;
+    this.valorHurtoGasTrans = valorHurtoGasTrans;
   }
 
   public String getValorPerdidaParcialCarroReemplazo() {
-    return valorPerdidaParcialVehiculoReemplazo;
+    return valorPerdidaParcialCarroReemplazo;
   }
 
   public void setValorPerdidaParcialCarroReemplazo(String valorPerdidaParcialCarroReemplazo) {
-    this.valorPerdidaParcialVehiculoReemplazo = valorPerdidaParcialCarroReemplazo;
+    this.valorPerdidaParcialCarroReemplazo = valorPerdidaParcialCarroReemplazo;
   }
 
   public String getValorPerdidaTotalCarroReemplazo() {
-    return valorPerdidaTotalVehiculoReemplazo;
+    return valorPerdidaTotalCarroReemplazo;
   }
 
   public void setValorPerdidaTotalCarroReemplazo(String valorPerdidaTotalCarroReemplazo) {
-    this.valorPerdidaTotalVehiculoReemplazo = valorPerdidaTotalCarroReemplazo;
+    this.valorPerdidaTotalCarroReemplazo = valorPerdidaTotalCarroReemplazo;
   }
 
   public String getValorAccidentesConductor() {
-    return valorAccidenteConductor;
+    return valorAccidentesConductor;
   }
 
   public void setValorAccidentesConductor(String valorAccidentesConductor) {
-    this.valorAccidenteConductor = valorAccidentesConductor;
+    this.valorAccidentesConductor = valorAccidentesConductor;
   }
 
   public String getValorPerdidaLlaves() {
-    return valorPerdidaLlave;
+    return valorPerdidaLlaves;
   }
 
   public void setValorPerdidaLlaves(String valorPerdidaLlaves) {
-    this.valorPerdidaLlave = valorPerdidaLlaves;
+    this.valorPerdidaLlaves = valorPerdidaLlaves;
   }
 
   public String getValorAsistencia() {
-    return valorAsistencias;
+    return valorAsistencia;
   }
 
   public void setValorAsistencia(String valorAsistencia) {
-    this.valorAsistencias = valorAsistencia;
+    this.valorAsistencia = valorAsistencia;
   }
 
   public ExpedicionAutosParametros expedicionAutosParametrosFactory() {
@@ -385,11 +381,11 @@ public class ExpedicionAutoFactory {
   }
 
   private List<Object> policyComissionsFactory() {
-    return new ArrayList<Object>();
+    return new ArrayList<>();
   }
 
   private List<Object> additionalInterestFactory() {
-    return new ArrayList<Object>();
+    return new ArrayList<>();
   }
 
   private BillingData billingDataFactory() {
@@ -427,51 +423,48 @@ public class ExpedicionAutoFactory {
   }
 
   private List<VehicleCoverage> vehiclesCoveragesFactory() {
-    List<VehicleCoverage> vehicleCoverages = new ArrayList<VehicleCoverage>();
+    List<VehicleCoverage> vehicleCoverages = new ArrayList<>();
     List<Pair<String, String>> termsNamesPar =
         Arrays.asList(
-            new Pair<String, String>(
+            new Pair<>(
                 EnumValoresServicio.COB_DANO_TERCERO_LIMITE.getValue(),
-                getValorLimiteDanioTercero()),
-            new Pair<String, String>(
+                getValorLimiteDanoTercero()),
+            new Pair<>(
                 EnumValoresServicio.COB_DANO_TERCERO_DEDUCIBLE.getValue(),
                 getValorDeducibleDanoTercero()));
     List<Pair<String, String>> termsNamesDanos =
         Arrays.asList(
-            new Pair<String, String>(
+            new Pair<>(
                 EnumValoresServicio.COB_DANOS_CARRO_PTOTAL.getValue(),
                 getValorPerdidaTotalDanosCarro()),
-            new Pair<String, String>(
+            new Pair<>(
                 EnumValoresServicio.COB_DANOS_CARRO_PPARCIAL.getValue(),
-                getValorPerdidaParcialDaniosCarro()),
-            new Pair<String, String>(
+                getValorPerdidaParcialDanosCarro()),
+            new Pair<>(
                 EnumValoresServicio.COB_DANOS_CARRO_GTRANSPORTE.getValue(),
                 getValorGastoTransporteDanosCarro()));
     List<Pair<String, String>> termsNamesHurto =
         Arrays.asList(
-            new Pair<String, String>(
-                EnumValoresServicio.COB_HURTO_CARRO_PTOTAL.getValue(), getValorHurtoTotal()),
-            new Pair<String, String>(
+            new Pair<>(EnumValoresServicio.COB_HURTO_CARRO_PTOTAL.getValue(), getValorHurtoTotal()),
+            new Pair<>(
                 EnumValoresServicio.COB_HURTO_CARRO_PPARCIAL.getValue(), getValorHurtoParcial()),
-            new Pair<String, String>(
+            new Pair<>(
                 EnumValoresServicio.COB_HURTO_CARRO_GTRANSPORTE.getValue(),
                 getValorHurtoGasTrans()));
     List<Pair<String, String>> termsNamesLlaves =
         Arrays.asList(
-            new Pair<String, String>(
-                EnumValoresServicio.COB_PERDIDA_LLAVES.getValue(), getValorPerdidaLlaves()),
-            new Pair<String, String>(
+            new Pair<>(EnumValoresServicio.COB_PERDIDA_LLAVES.getValue(), getValorPerdidaLlaves()),
+            new Pair<>(
                 EnumValoresServicio.COB_VREEMPLAZO_PERD_TOTAL.getValue(),
                 getValorPerdidaTotalCarroReemplazo()));
     List<Pair<String, String>> termsNamesReemplazo =
         Arrays.asList(
-            new Pair<String, String>(
+            new Pair<>(
                 EnumValoresServicio.COB_VREEMPLAZO_PERD_PARCIAL.getValue(),
                 getValorPerdidaParcialCarroReemplazo()));
     List<Pair<String, String>> termsNamesAsistencia =
         Arrays.asList(
-            new Pair<String, String>(
-                EnumValoresServicio.COB_ASISTENCIA.getValue(), getValorAsistencia()));
+            new Pair<>(EnumValoresServicio.COB_ASISTENCIA.getValue(), getValorAsistencia()));
     VehicleCoverage coveragePar =
         vehicleCoverageFactory(
             EnumValoresServicio.PA_DANOS_TERCEROS.getValue(),
@@ -531,11 +524,16 @@ public class ExpedicionAutoFactory {
     return vehicleCoverage;
   }
 
-  private List<Coverage> coverageAccidentesFactory(String coverageID) {
+  private void coverageSelectId(String coverageId) {
     Coverage coverage = new Coverage();
-    coverage.setPublicID(coverageID);
+    coverage.setPublicID(coverageId);
     coverage.setSelected(true);
     coverage.setUpdated(true);
+  }
+
+  private List<Coverage> coverageAccidentesFactory(String coverageID) {
+    Coverage coverage = new Coverage();
+    coverageSelectId(coverageID);
     List<Term> terms =
         Arrays.asList(
             termFactory(
@@ -543,24 +541,22 @@ public class ExpedicionAutoFactory {
                     EnumValoresServicio.COB_ACCIDENTES_CONDUCTOR.getValue(),
                     getValorAccidentesConductor())));
     coverage.setTerms(terms);
-    List<Coverage> coverages = new ArrayList<Coverage>();
+    List<Coverage> coverages = new ArrayList<>();
     coverages.add(coverage);
     return coverages;
   }
 
   private List<Coverage> coverageFactory(String coverageID, List<Pair<String, String>> termsName) {
     Coverage coverage = new Coverage();
-    coverage.setPublicID(coverageID);
-    coverage.setSelected(true);
-    coverage.setUpdated(true);
+    coverageSelectId(coverageID);
     coverage.setTerms(termsFactory(termsName));
-    List<Coverage> coverages = new ArrayList<Coverage>();
+    List<Coverage> coverages = new ArrayList<>();
     coverages.add(coverage);
     return coverages;
   }
 
   private List<Term> termsFactory(List<Pair<String, String>> termsName) {
-    List<Term> terms = new ArrayList<Term>();
+    List<Term> terms = new ArrayList<>();
     for (Pair termName : termsName) {
       Term term = termFactory(termName);
       terms.add(term);
@@ -578,7 +574,7 @@ public class ExpedicionAutoFactory {
   }
 
   private List<Vehicle> vehiclesFactory() {
-    List<Vehicle> list = new ArrayList<Vehicle>();
+    List<Vehicle> list = new ArrayList<>();
     list.add(vehicleFactory());
     return list;
   }
@@ -626,7 +622,7 @@ public class ExpedicionAutoFactory {
   }
 
   private List<Modifier> modifiersFactory() {
-    List<Modifier> modifiers = new ArrayList<Modifier>();
+    List<Modifier> modifiers = new ArrayList<>();
     Modifier modifierPABlindado = modifierBooleanFactory("PABlindado", false);
     Modifier modifierPABoniComercial =
         modifierBigDecimalFactory("PABoniComercial", Integer.parseInt(getBonificacionComercial()));
@@ -638,20 +634,23 @@ public class ExpedicionAutoFactory {
     return modifiers;
   }
 
-  private Modifier modifierBigDecimalFactory(String nombre, Integer valor) {
+  public void modifierValue(String nombre, boolean valor) {
     Modifier modifier = new Modifier();
     modifier.setCodeModifier(nombre);
     modifier.setTypeModifier("BO");
+    modifier.setBooleanValue(valor);
+  }
+
+  private Modifier modifierBigDecimalFactory(String nombre, Integer valor) {
+    Modifier modifier = new Modifier();
+    modifierValue(nombre, false);
     modifier.setBigDecimalValue(valor);
-    modifier.setBooleanValue(false);
     return modifier;
   }
 
   private Modifier modifierBooleanFactory(String nombre, boolean valor) {
     Modifier modifier = new Modifier();
-    modifier.setCodeModifier(nombre);
-    modifier.setTypeModifier("BO");
-    modifier.setBooleanValue(valor);
+    modifierValue(nombre, valor);
     return modifier;
   }
 
@@ -684,7 +683,7 @@ public class ExpedicionAutoFactory {
   }
 
   private List<Driver> driversFactory() {
-    List<Driver> list = new ArrayList<Driver>();
+    List<Driver> list = new ArrayList<>();
     Driver driver = new Driver();
     driver.setPerson(personFactory());
     driver.setAccount(accountFactory());
