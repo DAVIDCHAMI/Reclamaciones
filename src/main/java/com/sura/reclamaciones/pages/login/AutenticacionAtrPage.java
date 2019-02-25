@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.login;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -54,7 +55,7 @@ public class AutenticacionAtrPage extends GeneralPage {
     lstCedula.click();
     for (int cadenaString = 0; cadenaString < 4; cadenaString++) {
       String digito = contrasena.substring(cadenaString, cadenaString + 1);
-      auxiliarBtnClave = btnClave.replace(ConstanteGlobal.COMODIN, digito);
+      auxiliarBtnClave = btnClave.replace(COMODIN.getValor(), digito);
       $(auxiliarBtnClave).click();
       txtClave.click();
     }

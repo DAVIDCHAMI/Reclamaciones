@@ -11,12 +11,20 @@ import org.openqa.selenium.WebDriver;
 public class ExposicionesAutomaticasPage extends GeneralPage {
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
-  WebElementFacade tblExposicionesAutomaticas;
+  private WebElementFacade tblExposicionesAutomaticas;
+
+  @FindBy(xpath = "//a[contains(text(),'Vehículo')]")
+  private WebElementFacade exposicionAutomatica;
 
   private boolean valorLineaReserva = true;
 
   public ExposicionesAutomaticasPage(WebDriver wdriver) {
     super(wdriver);
+  }
+
+  public void seleccionarExposicion() {
+    exposicionAutomatica.click();
+    realizarEsperaCarga();
   }
 
   public boolean validarExposiciones(
@@ -33,14 +41,13 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
                   datosExposicionesAutomaticas.get(i).getDatoDevolverTablaExposiciones())
               .getText();
       if (lineaReservaTbl.equals(datosExposicionesAutomaticas.get(i).getExposicionAutomatica())) {
-        String valorReserva =
-            obtenerElementoLista(
-                    tblExposicionesAutomaticas,
-                    Tablas.CABECERAS_CC,
-                    Tablas.REGISTROS_CC,
-                    datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
-                    datosExposicionesAutomaticas.get(0).getDatoDevolverTablaExposiciones())
-                .getText();
+        obtenerElementoLista(
+                tblExposicionesAutomaticas,
+                Tablas.CABECERAS_CC,
+                Tablas.REGISTROS_CC,
+                datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
+                datosExposicionesAutomaticas.get(0).getDatoDevolverTablaExposiciones())
+            .getText();
       } else {
         valorLineaReserva = false;
         break;

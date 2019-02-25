@@ -1,6 +1,11 @@
 package com.sura.reclamaciones.definitions;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_ATR;
+import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_AUTO;
+import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL;
+import static com.sura.reclamaciones.constantes.Constantes.DESARROLLO;
+import static com.sura.reclamaciones.constantes.Constantes.LABORATORIO;
+
 import com.sura.reclamaciones.steps.login.LoginAtrStep;
 import com.sura.reclamaciones.steps.login.LoginClaimStep;
 import com.sura.reclamaciones.utils.AmbientesUtil;
@@ -18,26 +23,26 @@ public class SeleccionAmbiente {
 
   @Before("@claimsEmpresarial")
   public void seleccionarAmbienteEmpresarial() throws IOException {
-    if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
-      loginClaimStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_EMPRESARIAL);
-    } else if (ConstanteGlobal.DESARROLLO.equals(ambientesUtil.getAmbiente())) {
+    if (LABORATORIO.getValor().equals(ambientesUtil.getAmbiente())) {
+      loginClaimStep.iniciarSesionLab(ANALISTA_RECLAMACION_EMPRESARIAL.getValor());
+    } else if (DESARROLLO.getValor().equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionAmbienteDllo();
     }
   }
 
   @Before("@claimsAuto")
   public void seleccionarAmbienteAuto() throws IOException {
-    if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
-      loginClaimStep.iniciarSesionLab(ConstanteGlobal.ANALISTA_RECLAMACION_AUTO);
-    } else if (ConstanteGlobal.DESARROLLO.equals(ambientesUtil.getAmbiente())) {
+    if (LABORATORIO.getValor().equals(ambientesUtil.getAmbiente())) {
+      loginClaimStep.iniciarSesionLab(ANALISTA_RECLAMACION_AUTO.getValor());
+    } else if (DESARROLLO.getValor().equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionAmbienteDllo();
     }
   }
 
   @Before("@ATR")
   public void seleccionarAmbienteATR() throws IOException {
-    if (ConstanteGlobal.LABORATORIO.equals(ambientesUtil.getAmbiente())) {
-      loginAtrStep.obtenerCredenciales(ConstanteGlobal.ANALISTA_RECLAMACION_ATR);
+    if (LABORATORIO.getValor().equals(ambientesUtil.getAmbiente())) {
+      loginAtrStep.obtenerCredenciales(ANALISTA_RECLAMACION_ATR.getValor());
     }
   }
 }

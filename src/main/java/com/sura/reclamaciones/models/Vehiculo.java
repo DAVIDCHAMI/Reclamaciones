@@ -100,7 +100,7 @@ public class Vehiculo {
     this.codigoFasecolda = codigoFasecolda;
   }
 
-  public List<Vehiculo> getVehiculos() {
+  public List<Vehiculo> getLstVehiculos() {
     return vehiculos;
   }
 

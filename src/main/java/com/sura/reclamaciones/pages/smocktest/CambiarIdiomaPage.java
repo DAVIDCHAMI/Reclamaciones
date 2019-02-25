@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.pages.smocktest;
 
+import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.constantes.Constantes.ENGLISH;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -48,10 +48,10 @@ public class CambiarIdiomaPage extends GeneralPage {
 
   public String seleccionarIdioma() {
     if (linkSeleccionarLenguaje.getText().equals(ENGLISH.getValor())) {
-      tipoIdioma = tipoIdioma.replace(ConstanteGlobal.COMODIN, "Spanish (CO)");
+      tipoIdioma = tipoIdioma.replace(COMODIN.getValor(), "Spanish (CO)");
       $(tipoIdioma).click();
     } else {
-      tipoIdioma = tipoIdioma.replace(ConstanteGlobal.COMODIN, "(US)");
+      tipoIdioma = tipoIdioma.replace(COMODIN.getValor(), "(US)");
       $(tipoIdioma).click();
     }
     return letraComprobante.waitUntilVisible().getText();
