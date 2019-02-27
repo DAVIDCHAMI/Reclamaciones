@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.services;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.Constantes.TRUE;
+
 import com.sura.service.creacionSiniestro.gen.Author;
 import com.sura.service.creacionSiniestro.gen.CPLine;
 import com.sura.service.creacionSiniestro.gen.Claimant;
@@ -415,10 +416,10 @@ public class CreacionSiniestroFactory {
   CPLine cpLineFactory() {
     CPLine cpLine = new CPLine();
     cpLine.setPolicySystemId(getPolicySystemId());
-    if (fixedPropertyIncident == ConstanteGlobal.TRUE) {
+    if (fixedPropertyIncident == Boolean.parseBoolean(TRUE.getValor())) {
       cpLine.setFixedPropertyIncident(listFixedPropertyIncidentFactory());
     }
-    if (propertyContentsIncident == ConstanteGlobal.TRUE) {
+    if (propertyContentsIncident == Boolean.parseBoolean(TRUE.getValor())) {
       cpLine.setPropertyContentsIncident(listPropertyContentsIncidentFactory());
     }
     return cpLine;

@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.Constantes.NO;
+import static com.sura.reclamaciones.constantes.Constantes.SI;
+
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Utilidades;
@@ -49,14 +51,14 @@ public class ResumenReclamacionPage extends GeneralPage {
         case ReclamacionConstante.EXPOSICION_CONTENIDO:
         case ReclamacionConstante.EXPOSICION_PROPIEDAD:
         case ReclamacionConstante.EXPOSICION_GENERAL:
-          validadorExposicion = ConstanteGlobal.SI;
+          validadorExposicion = SI.getValor();
           break;
         default:
-          validadorExposicion = ConstanteGlobal.NO;
+          validadorExposicion = NO.getValor();
           break;
       }
     } else {
-      validadorExposicion = ConstanteGlobal.NO;
+      validadorExposicion = NO.getValor();
     }
     return validadorExposicion;
   }

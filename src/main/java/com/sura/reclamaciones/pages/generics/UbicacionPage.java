@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.generics;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -35,14 +36,14 @@ public class UbicacionPage extends GeneralPage {
   public void seleccionarPais(String pais) {
     mnuPais.waitUntilVisible();
     mnuPais.click();
-    auxLstUbicacion = lstUbicacion.replace(ConstanteGlobal.COMODIN, pais);
+    auxLstUbicacion = lstUbicacion.replace(COMODIN.getValor(), pais);
     $(auxLstUbicacion).click();
   }
 
   public void seleccionarDepartamento(String departamento) {
     mnuDepartamento.waitUntilVisible();
     mnuDepartamento.click();
-    auxLstUbicacion = lstUbicacion.replace(ConstanteGlobal.COMODIN, departamento);
+    auxLstUbicacion = lstUbicacion.replace(COMODIN.getValor(), departamento);
     $(auxLstUbicacion).click();
   }
 

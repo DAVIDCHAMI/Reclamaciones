@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.steps.generics;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.io.File;

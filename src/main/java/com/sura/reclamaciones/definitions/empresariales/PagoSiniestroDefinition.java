@@ -36,6 +36,7 @@ public class PagoSiniestroDefinition {
                 String.valueOf(PAGO_SINIESTRO.getValor()),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     nuevoPagoStep.consultarNumeroReclamacion();
+    nuevoPagoStep.crearNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
         tipoPago,

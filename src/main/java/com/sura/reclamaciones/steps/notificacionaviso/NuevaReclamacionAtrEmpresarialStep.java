@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.Constantes.EXPEDIENTE_CREADO_EXITOSAMENTE;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
@@ -78,7 +79,7 @@ public class NuevaReclamacionAtrEmpresarialStep {
         "No se generó el número de siniestro en ATR",
         asistenteVirtualAtrPage
             .getLblTituloExpedienteCreado()
-            .equalsIgnoreCase(ConstanteGlobal.EXPEDIENTE_CREADO_EXITOSAMENTE));
+            .equalsIgnoreCase(EXPEDIENTE_CREADO_EXITOSAMENTE.getValor()));
     return informacionReclamacionPage.obtenerNumeroSiniestroAtr();
   }
 
