@@ -2,7 +2,7 @@ package com.sura.reclamaciones.pages.reaseguro;
 
 import static com.sura.reclamaciones.constantes.Constantes.ANULACION_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.CERO;
-import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
+import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION_REASEGURO;
 import static com.sura.reclamaciones.constantes.Constantes.PORCIENTO;
 import static com.sura.reclamaciones.utils.Variables.FORMATEAR_MONTOS;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
@@ -80,7 +80,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
                 porcentajeRetenido,
                 proporcionCuotaParte,
                 porcentajeCoaseguroCedido);
-      break;
+        break;
       default:
         return blnTransaccion;
     }
@@ -231,7 +231,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String porcentajeCoaseguroCedido,
       int intFilaTransaccion) {
     String strNumeroReclamacion =
-        obtenerDatoTablaCabecera(NUMERO_TRANSACCION.getValor(), intFilaTransaccion);
+        obtenerDatoTablaCabecera(NUMERO_TRANSACCION_REASEGURO.getValor(), intFilaTransaccion);
     List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroReclamacion, getTblPago());
     boolean blnRetencionPura = verificarRetencionPura(lstFilaTransaccion, dblMaximoRetencioPura);
     boolean blnPorcentajeCedido =
@@ -329,7 +329,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     boolean blnValorPago = false;
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION.getValor(), 1);
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION_REASEGURO.getValor(), 1);
     for (int posicionElementoFila = lstReaseguroDetallado.size() - 1;
         lstReaseguroDetallado.size() > posicionElementoFila;
         posicionElementoFila++) {

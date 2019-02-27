@@ -23,6 +23,7 @@ public enum Constantes {
   ITERACIONES_RECUPERO("3"),
   NUMERO_PAGO("Número de pago"),
   NUMERO_TRANSACCION("Número de transacción"),
+  NUMERO_TRANSACCION_REASEGURO("Número transacción"),
   PAGO("Pago"),
   PAGOS("Pagos"),
   TIPO_POLIZA("póliza de auto"),
