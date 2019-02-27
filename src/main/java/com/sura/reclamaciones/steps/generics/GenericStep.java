@@ -1,6 +1,10 @@
 package com.sura.reclamaciones.steps.generics;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.Constantes.EMPRESARIALES;
+import static com.sura.reclamaciones.constantes.Constantes.RUTA_LOG_AUTO;
+import static com.sura.reclamaciones.constantes.Constantes.RUTA_LOG_EMPRESARIAL;
+import static com.sura.reclamaciones.constantes.Constantes.TRUE;
+
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.io.File;
@@ -43,15 +47,17 @@ public class GenericStep {
     try {
       Date date = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-      if (tipoAviso.equalsIgnoreCase(ConstanteGlobal.EMPRESARIALES)) {
-        File archivoLogEmpresarial = new File(ConstanteGlobal.RUTA_LOG_EMPRESARIAL);
-        FileWriter escribirEmp = new FileWriter(archivoLogEmpresarial, ConstanteGlobal.TRUE);
+      if (tipoAviso.equalsIgnoreCase(EMPRESARIALES.getValor())) {
+        File archivoLogEmpresarial = new File(RUTA_LOG_EMPRESARIAL.getValor());
+        FileWriter escribirEmp =
+            new FileWriter(archivoLogEmpresarial, Boolean.parseBoolean(TRUE.getValor()));
         escribirEmp.write(valor + " " + horaFormateada.format(date));
         escribirEmp.write("\r\n");
         escribirEmp.close();
       } else {
-        File archivoLogAuto = new File(ConstanteGlobal.RUTA_LOG_AUTO);
-        FileWriter escribirAut = new FileWriter(archivoLogAuto, ConstanteGlobal.TRUE);
+        File archivoLogAuto = new File(RUTA_LOG_AUTO.getValor());
+        FileWriter escribirAut =
+            new FileWriter(archivoLogAuto, Boolean.parseBoolean(TRUE.getValor()));
         escribirAut.write(valor + " " + horaFormateada.format(date));
         escribirAut.write("\r\n");
         escribirAut.close();

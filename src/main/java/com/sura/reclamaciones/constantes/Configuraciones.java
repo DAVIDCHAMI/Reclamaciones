@@ -1,12 +1,12 @@
 package com.sura.reclamaciones.constantes;
 
-public enum EnumConfiguraciones {
+public enum Configuraciones {
   CANTIDAD_LETRAS(4),
   CANTIDAD_NUMEROS(3);
 
   private int valor;
 
-  private EnumConfiguraciones(int valor) {
+  private Configuraciones(int valor) {
     this.valor = valor;
   }
 

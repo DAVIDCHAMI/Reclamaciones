@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.pages.recupero;
 
+import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
@@ -91,7 +91,7 @@ public class CreacionRecuperoPage extends GeneralPage {
 
   public void seleccionarCategoriaRecuperacion(String recupero) {
     txtCategoriaRecuperacion.click();
-    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(ConstanteGlobal.COMODIN, recupero);
+    auxiliarSeleccionarOpcion = seleccionarOpcion.replace(COMODIN.getValor(), recupero);
     $(auxiliarSeleccionarOpcion).click();
     realizarEsperaCarga();
   }

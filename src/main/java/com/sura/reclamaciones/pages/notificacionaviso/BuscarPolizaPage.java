@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.notificacionaviso;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -96,7 +97,7 @@ public class BuscarPolizaPage extends GeneralPage {
   public void seleccionarTipoDocumento(String tipoDocumento) {
     mnuTipoDocumento.waitUntilVisible();
     mnuTipoDocumento.click();
-    auxTipoDocumento = lstTipoDocumento.replace(ConstanteGlobal.COMODIN, tipoDocumento);
+    auxTipoDocumento = lstTipoDocumento.replace(COMODIN.getValor(), tipoDocumento);
     $(auxTipoDocumento).click();
   }
 
