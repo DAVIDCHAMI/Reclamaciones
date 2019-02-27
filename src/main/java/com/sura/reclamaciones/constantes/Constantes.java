@@ -22,7 +22,7 @@ public enum Constantes {
   ITERACIONES_PAGO("10"),
   ITERACIONES_RECUPERO("3"),
   NUMERO_PAGO("Número de pago"),
-  NUMERO_TRANSACCION("Número transacción"),
+  NUMERO_TRANSACCION("Número de transacción"),
   PAGO("Pago"),
   PAGOS("Pagos"),
   PORCENTAJE("0.20"),
