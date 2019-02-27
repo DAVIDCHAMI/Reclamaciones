@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.steps.generics;
 
+import static com.sura.reclamaciones.constantes.Constantes.RUTA_LOG_EMPRESARIAL;
+
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.io.File;
@@ -41,12 +43,12 @@ public class GenericStep {
 
   public void generarArchivo(String valor) {
     try {
-      ResourceBundle rutaRegistro = ResourceBundle.getBundle(ConstanteGlobal.RUTA_REGISTRO);
+      ResourceBundle rutaRegistro = ResourceBundle.getBundle(RUTA_LOG_EMPRESARIAL.getValor());
       String registroEmpresarial = rutaRegistro.getString("Registros");
       Date fecha = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
       File archivoLog = new File(registroEmpresarial, "");
-      FileWriter escribirDato = new FileWriter(archivoLog, ConstanteGlobal.TRUE);
+      FileWriter escribirDato = new FileWriter(archivoLog, true);
       escribirDato.write(valor + " " + horaFormateada.format(fecha));
       escribirDato.write("\r\n");
       escribirDato.close();
