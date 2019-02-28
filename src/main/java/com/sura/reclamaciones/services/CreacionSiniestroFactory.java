@@ -37,10 +37,10 @@ public class CreacionSiniestroFactory {
   private String stateProperty;
   private String addressLine1Property;
   private String cityProperty;
-  private String documentTypeAnt;
-  private String contactNameAnt;
-  private String taxIdAnt;
-  private String emailAddress1Ant;
+  private String documentTypeAnts;
+  private String contactNameAnts;
+  private String taxIdAnts;
+  private String emailAddress1Ants;
   private String cellNumberAnt;
   private String stateAnt;
   private String addressLine1Ant;
@@ -65,9 +65,6 @@ public class CreacionSiniestroFactory {
   private String nameAuthor;
   private boolean fixedPropertyIncident;
   private boolean propertyContentsIncident;
-
-  public CreacionSiniestroFactory() { //Constructor
-  }
 
   public String getLossDate() {
     return lossDate;
@@ -145,36 +142,36 @@ public class CreacionSiniestroFactory {
     this.cityProperty = cityProperty;
   }
 
-  public String getDocumentTypeAnt() {
-    return documentTypeAnt;
+  public String getDocumentTypeAnts() {
+    return documentTypeAnts;
   }
 
-  public void setDocumentTypeAnt(String documentTypeAnt) {
-    this.documentTypeAnt = documentTypeAnt;
+  public void setDocumentTypeAnts(String documentTypeAnts) {
+    this.documentTypeAnts = documentTypeAnts;
   }
 
-  public String getContactNameAnt() {
-    return contactNameAnt;
+  public String getContactNameAnts() {
+    return contactNameAnts;
   }
 
-  public void setContactNameAnt(String contactNameAnt) {
-    this.contactNameAnt = contactNameAnt;
+  public void setContactNameAnts(String contactNameAnts) {
+    this.contactNameAnts = contactNameAnts;
   }
 
-  public String getTaxIdAnt() {
-    return taxIdAnt;
+  public String getTaxIdAnts() {
+    return taxIdAnts;
   }
 
-  public void setTaxIdAnt(String taxIdAnt) {
-    this.taxIdAnt = taxIdAnt;
+  public void setTaxIdAnts(String taxIdAnts) {
+    this.taxIdAnts = taxIdAnts;
   }
 
-  public String getEmailAddress1Ant() {
-    return emailAddress1Ant;
+  public String getEmailAddress1Ants() {
+    return emailAddress1Ants;
   }
 
-  public void setEmailAddress1Ant(String emailAddress1Ant) {
-    this.emailAddress1Ant = emailAddress1Ant;
+  public void setEmailAddress1Ants(String emailAddress1Ants) {
+    this.emailAddress1Ants = emailAddress1Ants;
   }
 
   public String getCellNumberAnt() {
@@ -469,10 +466,10 @@ public class CreacionSiniestroFactory {
 
   Claimant claimantFactory() {
     Claimant claimant = new Claimant();
-    claimant.setDocumentType(getDocumentTypeAnt());
-    claimant.setContactName(getContactNameAnt());
-    claimant.setTaxID(getTaxIdAnt());
-    claimant.setEmailAddress1(getEmailAddress1Ant());
+    claimant.setDocumentType(getDocumentTypeAnts());
+    claimant.setContactName(getContactNameAnts());
+    claimant.setTaxID(getTaxIdAnts());
+    claimant.setEmailAddress1(getEmailAddress1Ants());
     claimant.setCellNumber(getCellNumberAnt());
     claimant.setPrimaryAddress(primaryAddressFactoryAnt());
     return claimant;

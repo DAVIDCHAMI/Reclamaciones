@@ -63,10 +63,6 @@ public class ExpedicionAutoFactory {
   private String valorPerdidaLlaves;
   private String valorAsistencia;
 
-  public ExpedicionAutoFactory() {
-    //constructor
-  }
-
   public String getMethod() {
     return method;
   }
@@ -529,11 +525,16 @@ public class ExpedicionAutoFactory {
     return vehicleCoverage;
   }
 
-  private List<Coverage> coverageAccidentesFactory(String coverageID) {
+  private void coverageSelectId(String coverageId) {
     Coverage coverage = new Coverage();
-    coverage.setPublicID(coverageID);
+    coverage.setPublicID(coverageId);
     coverage.setSelected(true);
     coverage.setUpdated(true);
+  }
+
+  private List<Coverage> coverageAccidentesFactory(String coverageID) {
+    Coverage coverage = new Coverage();
+    coverageSelectId(coverageID);
     List<Term> terms =
         Arrays.asList(
             termFactory(
@@ -548,9 +549,7 @@ public class ExpedicionAutoFactory {
 
   private List<Coverage> coverageFactory(String coverageID, List<Pair<String, String>> termsName) {
     Coverage coverage = new Coverage();
-    coverage.setPublicID(coverageID);
-    coverage.setSelected(true);
-    coverage.setUpdated(true);
+    coverageSelectId(coverageID);
     coverage.setTerms(termsFactory(termsName));
     List<Coverage> coverages = new ArrayList<Coverage>();
     coverages.add(coverage);
@@ -636,20 +635,23 @@ public class ExpedicionAutoFactory {
     return modifiers;
   }
 
-  private Modifier modifierBigDecimalFactory(String nombre, Integer valor) {
+  public void modifierValue(String nombre, boolean valor) {
     Modifier modifier = new Modifier();
     modifier.setCodeModifier(nombre);
     modifier.setTypeModifier("BO");
+    modifier.setBooleanValue(valor);
+  }
+
+  private Modifier modifierBigDecimalFactory(String nombre, Integer valor) {
+    Modifier modifier = new Modifier();
+    modifierValue(nombre, false);
     modifier.setBigDecimalValue(valor);
-    modifier.setBooleanValue(false);
     return modifier;
   }
 
   private Modifier modifierBooleanFactory(String nombre, boolean valor) {
     Modifier modifier = new Modifier();
-    modifier.setCodeModifier(nombre);
-    modifier.setTypeModifier("BO");
-    modifier.setBooleanValue(valor);
+    modifierValue(nombre, valor);
     return modifier;
   }
 

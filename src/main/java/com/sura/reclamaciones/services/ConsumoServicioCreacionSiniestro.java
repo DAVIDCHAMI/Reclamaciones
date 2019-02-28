@@ -112,12 +112,12 @@ public class ConsumoServicioCreacionSiniestro {
   }
 
   private void asignarParametrosReclamante(List<PersonaReclamacion> lstParametroPersona) {
-    creacionSiniestroFactory.setDocumentTypeAnt(
+    creacionSiniestroFactory.setDocumentTypeAnts(
         lstParametroPersona.get(campoDato).getTipoDocumento());
-    creacionSiniestroFactory.setContactNameAnt(
+    creacionSiniestroFactory.setContactNameAnts(
         lstParametroPersona.get(campoDato).getPrimerNombre());
-    creacionSiniestroFactory.setTaxIdAnt(lstParametroPersona.get(campoDato).getNumDocumento());
-    creacionSiniestroFactory.setEmailAddress1Ant(
+    creacionSiniestroFactory.setTaxIdAnts(lstParametroPersona.get(campoDato).getNumDocumento());
+    creacionSiniestroFactory.setEmailAddress1Ants(
         lstParametroPersona.get(campoDato).getCorreoElectronico());
     creacionSiniestroFactory.setCellNumberAnt(lstParametroPersona.get(campoDato).getCelular());
   }
