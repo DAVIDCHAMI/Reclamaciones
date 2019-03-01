@@ -152,7 +152,7 @@ public class NuevoPagoStep {
 
   public void ingresarEstadoLegalReclamacion() {
     detalleExposicionAutomaticaPage.seleccionarDetalleExposicion();
-    detalleExposicionAutomaticaPage.editarDetalleExposición();
+    detalleExposicionAutomaticaPage.editarDetalleExposicion();
     detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
   }

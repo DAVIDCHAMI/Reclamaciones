@@ -11,11 +11,9 @@ import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.anulacionempresarial.AnulacionEmpresarialStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionSiniestroStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
-import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
 import java.io.IOException;
@@ -32,17 +30,9 @@ public class AnulacionEmpresarialDefinition {
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
-  @Steps ConsumoServicioCreacionSiniestroStep crearSiniestro;
-
   Recupero recupero;
   AnulacionEmpresarial anulacionEmpresarial;
   PagoSiniestro pagoSiniestro;
-
-  @Dado("^que se cree un siniestro de (.*)$")
-  public void crearSiniestro(String strTipoProducto) throws IOException {
-    crearSiniestro.asignarValoresSiniestro(strTipoProducto);
-    crearSiniestro.siniestrarPolizaEmpresarialAtr();
-  }
 
   @Y(
       "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
