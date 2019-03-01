@@ -49,10 +49,11 @@ public class NuevoPagoStep {
 
   @Page GeneralPage generalPage;
 
+  @Page ResumenReclamacionPage resumenReclamacionPage;
+
   @Step
   public void consultarNumeroReclamacion() {
-    ResumenReclamacionPage resumenReclamacionPage = null;
-    resumenReclamacionPage.obtenerNumeroReclamacion();
+     resumenReclamacionPage.obtenerNumeroReclamacion();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 
