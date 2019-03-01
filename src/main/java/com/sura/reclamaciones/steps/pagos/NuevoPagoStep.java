@@ -49,9 +49,10 @@ public class NuevoPagoStep {
 
   @Page GeneralPage generalPage;
 
+  @Page ResumenReclamacionPage resumenReclamacionPage;
+
   @Step
   public void consultarNumeroReclamacion() {
-    ResumenReclamacionPage resumenReclamacionPage = null;
     resumenReclamacionPage.obtenerNumeroReclamacion();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
@@ -152,7 +153,7 @@ public class NuevoPagoStep {
 
   public void ingresarEstadoLegalReclamacion() {
     detalleExposicionAutomaticaPage.seleccionarDetalleExposicion();
-    detalleExposicionAutomaticaPage.editarDetalleExposición();
+    detalleExposicionAutomaticaPage.editarDetalleExposicion();
     detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
   }
