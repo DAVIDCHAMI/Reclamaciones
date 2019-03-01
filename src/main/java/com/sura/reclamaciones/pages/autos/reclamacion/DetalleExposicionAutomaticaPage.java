@@ -87,7 +87,7 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void editarDetalleExposición() {
+  public void editarDetalleExposicion() {
     btnEditar.waitUntilClickable().click();
     realizarEsperaCarga();
   }
