@@ -10,8 +10,6 @@ import org.slf4j.LoggerFactory;
 
 public class Utilidades {
 
-  public Utilidades() {}
-
   public static boolean filtrarArreglo(String[] arr, String item) {
     if (arr.length > 0) {
       for (String n : arr) {

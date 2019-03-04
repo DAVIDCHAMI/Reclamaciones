@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.services;
 
-import com.sura.reclamaciones.constantes.EnumValoresServicio;
+import com.sura.reclamaciones.constantes.ValoresServicio;
 import com.sura.service.expedicionIndividual.gen.Account;
 import com.sura.service.expedicionIndividual.gen.Address;
 import com.sura.service.expedicionIndividual.gen.BillingData;
@@ -62,10 +62,6 @@ public class ExpedicionAutoFactory {
   private String valorAccidentesConductor;
   private String valorPerdidaLlaves;
   private String valorAsistencia;
-
-  public ExpedicionAutoFactory() {
-    //constructor
-  }
 
   public String getMethod() {
     return method;
@@ -431,80 +427,78 @@ public class ExpedicionAutoFactory {
     List<Pair<String, String>> termsNamesPar =
         Arrays.asList(
             new Pair<String, String>(
-                EnumValoresServicio.COB_DANO_TERCERO_LIMITE.getValue(),
-                getValorLimiteDanoTercero()),
+                ValoresServicio.COB_DANO_TERCERO_LIMITE.getValue(), getValorLimiteDanoTercero()),
             new Pair<String, String>(
-                EnumValoresServicio.COB_DANO_TERCERO_DEDUCIBLE.getValue(),
+                ValoresServicio.COB_DANO_TERCERO_DEDUCIBLE.getValue(),
                 getValorDeducibleDanoTercero()));
     List<Pair<String, String>> termsNamesDanos =
         Arrays.asList(
             new Pair<String, String>(
-                EnumValoresServicio.COB_DANOS_CARRO_PTOTAL.getValue(),
+                ValoresServicio.COB_DANOS_CARRO_PTOTAL.getValue(),
                 getValorPerdidaTotalDanosCarro()),
             new Pair<String, String>(
-                EnumValoresServicio.COB_DANOS_CARRO_PPARCIAL.getValue(),
+                ValoresServicio.COB_DANOS_CARRO_PPARCIAL.getValue(),
                 getValorPerdidaParcialDanosCarro()),
             new Pair<String, String>(
-                EnumValoresServicio.COB_DANOS_CARRO_GTRANSPORTE.getValue(),
+                ValoresServicio.COB_DANOS_CARRO_GTRANSPORTE.getValue(),
                 getValorGastoTransporteDanosCarro()));
     List<Pair<String, String>> termsNamesHurto =
         Arrays.asList(
             new Pair<String, String>(
-                EnumValoresServicio.COB_HURTO_CARRO_PTOTAL.getValue(), getValorHurtoTotal()),
+                ValoresServicio.COB_HURTO_CARRO_PTOTAL.getValue(), getValorHurtoTotal()),
             new Pair<String, String>(
-                EnumValoresServicio.COB_HURTO_CARRO_PPARCIAL.getValue(), getValorHurtoParcial()),
+                ValoresServicio.COB_HURTO_CARRO_PPARCIAL.getValue(), getValorHurtoParcial()),
             new Pair<String, String>(
-                EnumValoresServicio.COB_HURTO_CARRO_GTRANSPORTE.getValue(),
-                getValorHurtoGasTrans()));
+                ValoresServicio.COB_HURTO_CARRO_GTRANSPORTE.getValue(), getValorHurtoGasTrans()));
     List<Pair<String, String>> termsNamesLlaves =
         Arrays.asList(
             new Pair<String, String>(
-                EnumValoresServicio.COB_PERDIDA_LLAVES.getValue(), getValorPerdidaLlaves()),
+                ValoresServicio.COB_PERDIDA_LLAVES.getValue(), getValorPerdidaLlaves()),
             new Pair<String, String>(
-                EnumValoresServicio.COB_VREEMPLAZO_PERD_TOTAL.getValue(),
+                ValoresServicio.COB_VREEMPLAZO_PERD_TOTAL.getValue(),
                 getValorPerdidaTotalCarroReemplazo()));
     List<Pair<String, String>> termsNamesReemplazo =
         Arrays.asList(
             new Pair<String, String>(
-                EnumValoresServicio.COB_VREEMPLAZO_PERD_PARCIAL.getValue(),
+                ValoresServicio.COB_VREEMPLAZO_PERD_PARCIAL.getValue(),
                 getValorPerdidaParcialCarroReemplazo()));
     List<Pair<String, String>> termsNamesAsistencia =
         Arrays.asList(
             new Pair<String, String>(
-                EnumValoresServicio.COB_ASISTENCIA.getValue(), getValorAsistencia()));
+                ValoresServicio.COB_ASISTENCIA.getValue(), getValorAsistencia()));
     VehicleCoverage coveragePar =
         vehicleCoverageFactory(
-            EnumValoresServicio.PA_DANOS_TERCEROS.getValue(),
-            EnumValoresServicio.VALOR_PA_DANOS_TERCEROS_COB.getValue(),
+            ValoresServicio.PA_DANOS_TERCEROS.getValue(),
+            ValoresServicio.VALOR_PA_DANOS_TERCEROS_COB.getValue(),
             termsNamesPar);
     VehicleCoverage coverageDanos =
         vehicleCoverageFactory(
-            EnumValoresServicio.PA_DANOS_ALCARROGRP.getValue(),
-            EnumValoresServicio.VALOR_PA_DANOS_COB.getValue(),
+            ValoresServicio.PA_DANOS_ALCARROGRP.getValue(),
+            ValoresServicio.VALOR_PA_DANOS_COB.getValue(),
             termsNamesDanos);
     VehicleCoverage coverageHurto =
         vehicleCoverageFactory(
-            EnumValoresServicio.PA_HURTO_ALCARROGRP.getValue(),
-            EnumValoresServicio.VALOR_PA_HURTO_COB.getValue(),
+            ValoresServicio.PA_HURTO_ALCARROGRP.getValue(),
+            ValoresServicio.VALOR_PA_HURTO_COB.getValue(),
             termsNamesHurto);
     VehicleCoverage coverageAccidentes =
         vehicleCoverageAccidentesFactory(
-            EnumValoresServicio.PA_ACCIDENTES.getValue(),
-            EnumValoresServicio.VALOR_PA_ACCIDENTES_COB.getValue());
+            ValoresServicio.PA_ACCIDENTES.getValue(),
+            ValoresServicio.VALOR_PA_ACCIDENTES_COB.getValue());
     VehicleCoverage coverageLlaves =
         vehicleCoverageFactory(
-            EnumValoresServicio.PA_LLAVES.getValue(),
-            EnumValoresServicio.VALOR_PA_PERDLLA_COB.getValue(),
+            ValoresServicio.PA_LLAVES.getValue(),
+            ValoresServicio.VALOR_PA_PERDLLA_COB.getValue(),
             termsNamesLlaves);
     VehicleCoverage coverageReemplazo =
         vehicleCoverageFactory(
-            EnumValoresServicio.PA_CARRO_DEREEMPLAZO.getValue(),
-            EnumValoresServicio.VALOR_PA_CARRORE_COB.getValue(),
+            ValoresServicio.PA_CARRO_DEREEMPLAZO.getValue(),
+            ValoresServicio.VALOR_PA_CARRORE_COB.getValue(),
             termsNamesReemplazo);
     VehicleCoverage coverageAsistencia =
         vehicleCoverageFactory(
-            EnumValoresServicio.PA_ASISTENCIA.getValue(),
-            EnumValoresServicio.VALOR_PA_ASISTENCIA_COB.getValue(),
+            ValoresServicio.PA_ASISTENCIA.getValue(),
+            ValoresServicio.VALOR_PA_ASISTENCIA_COB.getValue(),
             termsNamesAsistencia);
     vehicleCoverages.add(coveragePar);
     vehicleCoverages.add(coverageDanos);
@@ -531,16 +525,21 @@ public class ExpedicionAutoFactory {
     return vehicleCoverage;
   }
 
-  private List<Coverage> coverageAccidentesFactory(String coverageID) {
+  private void coverageSelectId(String coverageId) {
     Coverage coverage = new Coverage();
-    coverage.setPublicID(coverageID);
+    coverage.setPublicID(coverageId);
     coverage.setSelected(true);
     coverage.setUpdated(true);
+  }
+
+  private List<Coverage> coverageAccidentesFactory(String coverageID) {
+    Coverage coverage = new Coverage();
+    coverageSelectId(coverageID);
     List<Term> terms =
         Arrays.asList(
             termFactory(
                 new Pair<String, String>(
-                    EnumValoresServicio.COB_ACCIDENTES_CONDUCTOR.getValue(),
+                    ValoresServicio.COB_ACCIDENTES_CONDUCTOR.getValue(),
                     getValorAccidentesConductor())));
     coverage.setTerms(terms);
     List<Coverage> coverages = new ArrayList<Coverage>();
@@ -550,9 +549,7 @@ public class ExpedicionAutoFactory {
 
   private List<Coverage> coverageFactory(String coverageID, List<Pair<String, String>> termsName) {
     Coverage coverage = new Coverage();
-    coverage.setPublicID(coverageID);
-    coverage.setSelected(true);
-    coverage.setUpdated(true);
+    coverageSelectId(coverageID);
     coverage.setTerms(termsFactory(termsName));
     List<Coverage> coverages = new ArrayList<Coverage>();
     coverages.add(coverage);
@@ -638,20 +635,23 @@ public class ExpedicionAutoFactory {
     return modifiers;
   }
 
-  private Modifier modifierBigDecimalFactory(String nombre, Integer valor) {
+  public void modifierValue(String nombre, boolean valor) {
     Modifier modifier = new Modifier();
     modifier.setCodeModifier(nombre);
     modifier.setTypeModifier("BO");
+    modifier.setBooleanValue(valor);
+  }
+
+  private Modifier modifierBigDecimalFactory(String nombre, Integer valor) {
+    Modifier modifier = new Modifier();
+    modifierValue(nombre, false);
     modifier.setBigDecimalValue(valor);
-    modifier.setBooleanValue(false);
     return modifier;
   }
 
   private Modifier modifierBooleanFactory(String nombre, boolean valor) {
     Modifier modifier = new Modifier();
-    modifier.setCodeModifier(nombre);
-    modifier.setTypeModifier("BO");
-    modifier.setBooleanValue(valor);
+    modifierValue(nombre, valor);
     return modifier;
   }
 

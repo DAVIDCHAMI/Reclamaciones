@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.generics;
 
-import com.sura.reclamaciones.constantes.ConstanteGlobal;
+import static com.sura.reclamaciones.constantes.Constantes.RUTA_LOG_EMPRESARIAL;
+
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.io.File;
@@ -11,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import net.thucydides.core.steps.stepdata.CSVTestDataSource;
 import net.thucydides.core.steps.stepdata.TestDataSource;
@@ -39,23 +41,17 @@ public class GenericStep {
         .collect(Collectors.toList());
   }
 
-  public void generarRegistro(String valor, String tipoAviso) {
+  public void generarArchivo(String valor) {
     try {
-      Date date = new Date();
+      ResourceBundle rutaRegistro = ResourceBundle.getBundle(RUTA_LOG_EMPRESARIAL.getValor());
+      String registroEmpresarial = rutaRegistro.getString("Registros");
+      Date fecha = new Date();
       DateFormat horaFormateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-      if (tipoAviso.equalsIgnoreCase(ConstanteGlobal.EMPRESARIALES)) {
-        File archivoLogEmpresarial = new File(ConstanteGlobal.RUTA_LOG_EMPRESARIAL);
-        FileWriter escribirEmp = new FileWriter(archivoLogEmpresarial, ConstanteGlobal.TRUE);
-        escribirEmp.write(valor + " " + horaFormateada.format(date));
-        escribirEmp.write("\r\n");
-        escribirEmp.close();
-      } else {
-        File archivoLogAuto = new File(ConstanteGlobal.RUTA_LOG_AUTO);
-        FileWriter escribirAut = new FileWriter(archivoLogAuto, ConstanteGlobal.TRUE);
-        escribirAut.write(valor + " " + horaFormateada.format(date));
-        escribirAut.write("\r\n");
-        escribirAut.close();
-      }
+      File archivoLog = new File(registroEmpresarial, "");
+      FileWriter escribirDato = new FileWriter(archivoLog, true);
+      escribirDato.write(valor + " " + horaFormateada.format(fecha));
+      escribirDato.write("\r\n");
+      escribirDato.close();
     } catch (Exception e) {
       Utilidades.getLogger().info("No se realizó el guardado del Log", e);
     }

@@ -63,7 +63,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
             genericStep.getFilasModelo(
                 PARAMETROS_VEHICULO.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL));
     reclamacionStep.consultarPoliza(
-        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
+        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
 
   @Cuando(
@@ -133,7 +133,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Vehiculo(
             genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), RECLAMACION_ARCHIVO));
     reclamacionStep.consultarPoliza(
-        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
+        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
 
   @Cuando("se genere un siniestro por la causa y la culpabilidad$")
@@ -169,7 +169,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Vehiculo(
             genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), RECLAMACION_SUBROGACION));
     reclamacionStep.consultarPoliza(
-        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
+        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Solo Responsabilidad Civil$")
@@ -183,7 +183,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
             genericStep.getFilasModelo(
                 PARAMETROS_VEHICULO.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL));
     reclamacionStep.consultarPoliza(
-        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getVehiculos());
+        reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
 
   @Entonces(

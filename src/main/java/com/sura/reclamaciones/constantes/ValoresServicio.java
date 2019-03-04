@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.constantes;
 
-public enum EnumValoresServicio {
+public enum ValoresServicio {
   VALOR_PA_DANOS_TERCEROS_COB("PARCCov"),
   VALOR_PA_DANOS_COB("PADanosCov"),
   VALOR_PA_HURTO_COB("PAHurtoCov"),
@@ -31,7 +31,7 @@ public enum EnumValoresServicio {
 
   private final String Codigo;
 
-  private EnumValoresServicio(String codigo) {
+  private ValoresServicio(String codigo) {
     this.Codigo = codigo;
   }
 

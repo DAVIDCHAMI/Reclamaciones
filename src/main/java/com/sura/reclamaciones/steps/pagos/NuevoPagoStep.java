@@ -3,13 +3,18 @@ package com.sura.reclamaciones.steps.pagos;
 import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
+import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.LINEA_RESERVA_LESIONES_CORPORALES;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
@@ -28,19 +33,23 @@ public class NuevoPagoStep {
 
   List<WebElement> lstFilaPago;
 
-  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
+  @Page MenuClaimPage menuClaimPage;
+
+  @Page DetalleExposicionAutomaticaPage detalleExposicionAutomaticaPage;
 
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
 
-  @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
+  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
 
   @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-  @Page ResumenReclamacionPage resumenReclamacionPage;
+  @Page ExposicionesAutomaticasPage exposicionesAutomaticasPage;
 
-  @Page MenuClaimPage menuClaimPage;
+  @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
 
   @Page GeneralPage generalPage;
+
+  @Page ResumenReclamacionPage resumenReclamacionPage;
 
   @Step
   public void consultarNumeroReclamacion() {
@@ -78,8 +87,10 @@ public class NuevoPagoStep {
           strCodigoRetencion, CODIGO_RETENCION.getValor());
       introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
       introducirInformacionPagoPage.irSiguientePantalla();
-      establecerInstruccionPagoPage.ingresarFechaFactura();
-      establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
+      if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
+        establecerInstruccionPagoPage.ingresarFechaFactura();
+        establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
+      }
       establecerInstruccionPagoPage.finalizarProceso();
     }
   }
@@ -112,5 +123,38 @@ public class NuevoPagoStep {
               verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
                   validador.getEstadoTransaccion(), lstFilaPago));
         });
+  }
+
+  @Step
+  public void consultarNumeroReclamacionAutos(String numReclamacion) {
+    menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
+  }
+
+  @Step
+  public void crearNuevoPago() {
+    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
+  }
+
+  @Step
+  public void seleccionarExposicionAutomatica() {
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
+    exposicionesAutomaticasPage.seleccionarExposicion();
+  }
+
+  @Step
+  public void declararReclamacionPerdidaTotal() {
+    detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
+    detalleExposicionAutomaticaPage.editarCalculadoraPerdidaTotal();
+    detalleExposicionAutomaticaPage.seleccionarIncineracionTotalVehiculo();
+    detalleExposicionAutomaticaPage.seleccionarMotorDestruidoFuego();
+    detalleExposicionAutomaticaPage.seleccionarHabitaculoPasajerosIncinerado();
+    detalleExposicionAutomaticaPage.actualizarCalculadoraPerdidaTotal();
+  }
+
+  public void ingresarEstadoLegalReclamacion() {
+    detalleExposicionAutomaticaPage.seleccionarDetalleExposicion();
+    detalleExposicionAutomaticaPage.editarDetalleExposicion();
+    detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
+    detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
   }
 }
