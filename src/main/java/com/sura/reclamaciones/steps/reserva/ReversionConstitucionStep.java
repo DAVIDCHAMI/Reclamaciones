@@ -20,7 +20,7 @@ public class ReversionConstitucionStep {
   }
 
   public void crearNuevaLineaReserva(){
-    
+
   }
 
   public void verificarAjusteReserva(String deducible) {
