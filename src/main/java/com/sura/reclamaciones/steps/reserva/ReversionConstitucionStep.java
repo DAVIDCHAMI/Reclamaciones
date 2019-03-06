@@ -19,6 +19,10 @@ public class ReversionConstitucionStep {
     ajusteReservaPage.cerrarAdvertenciaLimiteAgregado();
   }
 
+  public void crearNuevaLineaReserva(){
+    
+  }
+
   public void verificarAjusteReserva(String deducible) {
     String deducibleVisualizado;
     deducibleVisualizado = transaccionDatoFinancieroPage.obtenerDeducibleReversionConstitucion();

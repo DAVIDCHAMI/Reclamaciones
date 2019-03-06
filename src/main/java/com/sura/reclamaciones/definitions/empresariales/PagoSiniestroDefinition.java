@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
+import com.sura.reclamaciones.steps.reserva.ReversionConstitucionStep;
 import cucumber.api.PendingException;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -18,12 +19,15 @@ public class PagoSiniestroDefinition {
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
+  @Steps
+  ReversionConstitucionStep reversionConstitucionStep;
+
   @Steps GenericStep genericStep;
 
   PagoSiniestro pagoSiniestro;
 
   @Cuando(
-      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
+      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) por (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
   public void generarPagoReclamacion(
       String tipoPago,
       String beneficiarioPago,
@@ -38,6 +42,7 @@ public class PagoSiniestroDefinition {
                 String.valueOf(PAGO_SINIESTRO.getValor()),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     nuevoPagoStep.consultarNumeroReclamacion();
+   // reversionConstitucionStep;
     nuevoPagoStep.crearNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
@@ -55,7 +60,7 @@ public class PagoSiniestroDefinition {
     throw new PendingException();
   }
 
-  @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
+  @Entonces("^(.*) se genera una orden de pago para que le sea entregado al usuario$")
   public void verificarPago() {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
