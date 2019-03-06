@@ -6,8 +6,10 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
+import cucumber.api.PendingException;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
+import cucumber.api.java.es.Y;
 import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
@@ -47,8 +49,15 @@ public class PagoSiniestroDefinition {
         pagoSiniestro.getLstPago());
   }
 
+  @Y("^(.*) es riesgo consultable$")
+  public void esRiesgoConsultableEsRiesgoConsultable() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+  }
+
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
   public void verificarPago() {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
+
 }
