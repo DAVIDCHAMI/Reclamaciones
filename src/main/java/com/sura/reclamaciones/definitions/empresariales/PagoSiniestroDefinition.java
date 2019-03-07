@@ -33,8 +33,10 @@ public class PagoSiniestroDefinition {
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
+      String tipoCosto,
       String aplicaSoloSura,
-      String codigoRetencion)
+      String codigoRetencion
+      )
       throws IOException {
     pagoSiniestro =
         new PagoSiniestro(
@@ -42,7 +44,7 @@ public class PagoSiniestroDefinition {
                 String.valueOf(PAGO_SINIESTRO.getValor()),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     nuevoPagoStep.consultarNumeroReclamacion();
-   // reversionConstitucionStep;
+    reversionConstitucionStep.crearNuevaLineaReserva(lineaReserva);
     nuevoPagoStep.crearNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
@@ -55,13 +57,11 @@ public class PagoSiniestroDefinition {
   }
 
   @Y("^(.*) es riesgo consultable$")
-  public void esRiesgoConsultableEsRiesgoConsultable() throws Throwable {
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException();
+  public void esRiesgoConsultable() throws Throwable {
   }
 
   @Entonces("^(.*) se genera una orden de pago para que le sea entregado al usuario$")
-  public void verificarPago() {
+  public void verificarPago(String aplicaOrdenPago) {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 

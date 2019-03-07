@@ -1,17 +1,32 @@
 package com.sura.reclamaciones.steps.reserva;
 
+import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
+import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 import static com.sura.reclamaciones.constantes.ReservaConstante.NUEVAS_RESERVAS_DISPONIBLES;
 
+import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.reservas.AjusteReservaPage;
 import com.sura.reclamaciones.pages.reservas.TransaccionDatoFinancieroPage;
+import java.util.List;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.WebElement;
 
 public class ReversionConstitucionStep {
 
-  @Page AjusteReservaPage ajusteReservaPage;
+  List<WebElement> lstFilaReserva;
 
-  @Page TransaccionDatoFinancieroPage transaccionDatoFinancieroPage;
+  @Page
+  AjusteReservaPage ajusteReservaPage;
+
+  @Page GeneralPage generalPage;
+
+  @Page
+  MenuClaimPage menuClaimPage;
+
+  @Page
+  TransaccionDatoFinancieroPage transaccionDatoFinancieroPage;
 
   public void ajustarReserva(String valorAjustar) {
     ajusteReservaPage.ajustarReserva();
@@ -19,8 +34,10 @@ public class ReversionConstitucionStep {
     ajusteReservaPage.cerrarAdvertenciaLimiteAgregado();
   }
 
-  public void crearNuevaLineaReserva(){
-
+  public void crearNuevaLineaReserva(String strExposicion ) {
+    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
+    lstFilaReserva = generalPage.obtenerElementoTablaDatoDesconocido(ajusteReservaPage.getTblLineaReserva(),strExposicion, 0);
+    ajusteReservaPage.crearNuevaLineaReserva();
   }
 
   public void verificarAjusteReserva(String deducible) {

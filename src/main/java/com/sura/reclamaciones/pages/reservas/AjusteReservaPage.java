@@ -20,7 +20,7 @@ public class AjusteReservaPage extends GeneralPage {
   private WebElementFacade btnQuitarLineaReserva;
 
   @FindBy(
-    xpath = "//div[@id='NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV']"
+      xpath = "//div[@id='NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV']"
   )
   private WebElementFacade tblLineaReserva;
 
@@ -28,15 +28,20 @@ public class AjusteReservaPage extends GeneralPage {
   private WebElementFacade btnGuardarAjusteReserva;
 
   @FindBy(
-    xpath =
-        "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
+      xpath =
+          "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
   )
   private WebElementFacade btnCerrarAdvertencia;
 
-  @Page MenuClaimPage menuClaimPage;
+  @Page
+  MenuClaimPage menuClaimPage;
 
   public AjusteReservaPage(WebDriver driver) {
     super(driver);
+  }
+
+  public WebElementFacade getTblLineaReserva() {
+    return tblLineaReserva;
   }
 
   public void ajustarReserva() {
@@ -45,6 +50,11 @@ public class AjusteReservaPage extends GeneralPage {
       chkLineaReserva.click();
       btnQuitarLineaReserva.waitUntilClickable().click();
     }
+  }
+
+  public void crearNuevaLineaReserva() {
+    realizarEsperaCarga();
+
   }
 
   public void diligenciarCantidadAjusteReserva(

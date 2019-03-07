@@ -11,7 +11,7 @@ Característica: Realizar pago de un siniestro
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
     Y un incidente de tipo <Tipo de incidente>
     Cuando se realice un pago <Tipo de pago> a <Beneficiario del pago> por medio de <Método del pago> el cual cuenta con una línea de reserva <Línea de Reserva> por <Tipo de costo> donde el responsable <¿Es pago soloSura?> es Sura por una retención de <Código de Retención>
-    Y <¿Es riesgo consultable?> es riesgo consultable
+    #Y <¿Es riesgo consultable?> es riesgo consultable
     Entonces <¿Se genera orden de pago?> se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
