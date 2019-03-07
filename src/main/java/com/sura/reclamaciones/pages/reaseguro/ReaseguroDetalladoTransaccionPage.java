@@ -185,23 +185,30 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
-    blnReaseguro =
-        verificarDistribucionReaseguro(
-            dblMaximoRetencioPura,
-            porcentajeRetenido,
-            proporcionCuotaParte,
-            porcentajeCoaseguroCedido,
-            1);
-    String strValorTransaccion =
-        lstReaseguroDetallado.get(5).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
-    if (strTransaccion.equals(ANULACION_PAGO.getValor())) {
-      blnValorAnulacion =
-          strValorTransaccion.equals(
-              "-" + Serenity.sessionVariableCalled((SESION_CC_VALOR_RESERVA.getValor())));
-    } else {
-      blnValorAnulacion =
-          strValorTransaccion.equals(
-              "-" + Serenity.sessionVariableCalled((SESION_CC_VALOR_RECUPERO.getValor())));
+    for (int posicionElementoFila = lstReaseguroDetallado.size() - 1;
+        lstReaseguroDetallado.size() > posicionElementoFila;
+        posicionElementoFila++) {
+      blnReaseguro =
+          verificarDistribucionReaseguro(
+              dblMaximoRetencioPura,
+              porcentajeRetenido,
+              proporcionCuotaParte,
+              porcentajeCoaseguroCedido,
+              1);
+      String strValorTransaccion =
+          lstReaseguroDetallado
+              .get(posicionElementoFila)
+              .getText()
+              .replaceAll(FORMATEAR_MONTOS.getValor(), "");
+      if (strTransaccion.equals(ANULACION_PAGO.getValor())) {
+        blnValorAnulacion =
+            strValorTransaccion.equals(
+                "-" + Serenity.sessionVariableCalled((SESION_CC_VALOR_RESERVA.getValor())));
+      } else {
+        blnValorAnulacion =
+            strValorTransaccion.equals(
+                "-" + Serenity.sessionVariableCalled((SESION_CC_VALOR_RECUPERO.getValor())));
+      }
     }
     return blnValorAnulacion && blnReaseguro;
   }
@@ -232,19 +239,26 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
-    boolean blnReaseguro =
-        verificarDistribucionReaseguro(
-            dblMaximoRetencioPura,
-            porcentajeRetenido,
-            proporcionCuotaParte,
-            porcentajeCoaseguroCedido,
-            1);
-    String strValorTransaccion =
-        lstReaseguroDetallado.get(3).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
-    blnValorRecupero =
-        strValorTransaccion.equals(
-            Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor()));
-    blnValorRecupero = blnValorRecupero && blnReaseguro;
+    for (int posicionElementoFila = lstReaseguroDetallado.size() - 1;
+        lstReaseguroDetallado.size() > posicionElementoFila;
+        posicionElementoFila++) {
+      boolean blnReaseguro =
+          verificarDistribucionReaseguro(
+              dblMaximoRetencioPura,
+              porcentajeRetenido,
+              proporcionCuotaParte,
+              porcentajeCoaseguroCedido,
+              1);
+      String strValorTransaccion =
+          lstReaseguroDetallado
+              .get(posicionElementoFila)
+              .getText()
+              .replaceAll(FORMATEAR_MONTOS.getValor(), "");
+      blnValorRecupero =
+          strValorTransaccion.equals(
+              Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor()));
+      blnValorRecupero = blnValorRecupero && blnReaseguro;
+    }
     return blnValorRecupero;
   }
 
