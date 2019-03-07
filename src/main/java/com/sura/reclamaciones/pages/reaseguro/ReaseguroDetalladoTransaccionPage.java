@@ -35,19 +35,19 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     super(driver);
   }
 
-  public void setDblMaximoRetencioPura(Double dblMaximoRetencioPura) {
+  private void setDblMaximoRetencioPura(Double dblMaximoRetencioPura) {
     this.dblMaximoRetencioPura = dblMaximoRetencioPura;
   }
 
-  public void setPorcentajeRetenido(String porcentajeRetenido) {
+  private void setPorcentajeRetenido(String porcentajeRetenido) {
     this.porcentajeRetenido = porcentajeRetenido;
   }
 
-  public void setProporcionCuotaParte(String proporcionCuotaParte) {
+  private void setProporcionCuotaParte(String proporcionCuotaParte) {
     this.proporcionCuotaParte = proporcionCuotaParte;
   }
 
-  public void setPorcentajeCoaseguroCedido(String porcentajeCoaseguroCedido) {
+  private void setPorcentajeCoaseguroCedido(String porcentajeCoaseguroCedido) {
     this.porcentajeCoaseguroCedido = porcentajeCoaseguroCedido;
   }
 
@@ -62,7 +62,6 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     setPorcentajeRetenido(porcentajeRetenido);
     setProporcionCuotaParte(proporcionCuotaParte);
     setPorcentajeCoaseguroCedido(porcentajeCoaseguroCedido);
-
     switch (strTransaccion) {
       case "Reserva":
         blnTransaccion = verificarReserva();
