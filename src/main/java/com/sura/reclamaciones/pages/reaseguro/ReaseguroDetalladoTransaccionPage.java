@@ -193,7 +193,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
             porcentajeCoaseguroCedido,
             1);
     String strValorTransaccion =
-        lstReaseguroDetallado.get(1).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
+        lstReaseguroDetallado.get(5).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     if (strTransaccion.equals(ANULACION_PAGO.getValor())) {
       blnValorAnulacion =
           strValorTransaccion.equals(
@@ -240,7 +240,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
             porcentajeCoaseguroCedido,
             1);
     String strValorTransaccion =
-        lstReaseguroDetallado.get(1).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
+        lstReaseguroDetallado.get(3).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     blnValorRecupero =
         strValorTransaccion.equals(
             Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor()));
@@ -300,7 +300,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
             proporcionCuotaParte,
             porcentajeCoaseguroCedido,
             1);
-    String strValorTransaccion = obtenerValorTransaccion(lstReaseguroDetallado.get(1).getText());
+    String strValorTransaccion = obtenerValorTransaccion(lstReaseguroDetallado.get(3).getText());
     blnValorPago =
         strValorTransaccion.equals(
             Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
