@@ -130,8 +130,8 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     } else {
       dblValorCedido =
           (abs(Double.parseDouble(strValorPantallaReaseguro))
-              * (Double.parseDouble(porcentajeCoaseguroCedido)
-              / Double.parseDouble(PORCIENTO.getValor())))
+                  * (Double.parseDouble(porcentajeCoaseguroCedido)
+                      / Double.parseDouble(PORCIENTO.getValor())))
               - dblValorRetenido;
     }
     return ((dblDatoPantalla >= (Math.round(dblValorCedido - dblRetencionPura)))
