@@ -107,19 +107,19 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String porcentajeRetenido,
       String proporcionCuotaParte,
       String porcentajeCoaseguroCedido) {
-    String strValorPantalla;
+    String strValorPantallaReaseguro;
     double dblValorCedido;
     if (lstFilaTransaccion.size() > 11) {
-      strValorPantalla =
+      strValorPantallaReaseguro =
           lstFilaTransaccion.get(13).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     } else {
-      strValorPantalla =
+      strValorPantallaReaseguro =
           lstFilaTransaccion.get(2).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     }
     dblValorRetenido =
         abs(
             calcularValorRetenido(
-                strValorPantalla,
+                strValorPantallaReaseguro,
                 porcentajeRetenido,
                 proporcionCuotaParte,
                 porcentajeCoaseguroCedido));
@@ -128,10 +128,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
             Double.parseDouble(
                 lstFilaTransaccion.get(4).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "")));
     if (porcentajeCoaseguroCedido.equals(CERO.getValor())) {
-      dblValorCedido = abs(Double.parseDouble(strValorPantalla)) - dblValorRetenido;
+      dblValorCedido = abs(Double.parseDouble(strValorPantallaReaseguro)) - dblValorRetenido;
     } else {
       dblValorCedido =
-          (abs(Double.parseDouble(strValorPantalla))
+          (abs(Double.parseDouble(strValorPantallaReaseguro))
                   * (Double.parseDouble(porcentajeCoaseguroCedido)
                       / Double.parseDouble(PORCIENTO.getValor())))
               - dblValorRetenido;
