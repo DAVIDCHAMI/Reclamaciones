@@ -37,13 +37,13 @@ public class AnulacionEmpresarialDefinition {
   @Y(
       "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
   public void crearPago(String strTipoProducto, String strCodigoRetencion) throws IOException {
-    AnulacionEmpresarial anulacionEmpresarial;
+
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
-    anulacionEmpresarial =
+    AnulacionEmpresarial anulacionEmpresarial =
         new AnulacionEmpresarial(
             (genericStep.getFilasModelo(
                 ANULACION_EMPRESARIAL.getValor(),
