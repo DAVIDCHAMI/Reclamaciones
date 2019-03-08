@@ -68,7 +68,7 @@ public class AjusteReservaPage extends GeneralPage {
   }
 
   public void diligenciarNuevaLineaReserva(
-      String montoAjusteReserva, String encabezadoColumnaDevolver) {
+      String valorCampoLineaReserva, String encabezadoColumnaDevolver) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -2);

@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.reserva;
 
+import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_LINEA_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 import static com.sura.reclamaciones.constantes.ReservaConstante.NUEVAS_RESERVAS_DISPONIBLES;
@@ -34,11 +35,10 @@ public class ReversionConstitucionStep {
     ajusteReservaPage.cerrarAdvertenciaLimiteAgregado();
   }
 
-  public void crearNuevaLineaReserva(String strNombreColumna ) {
+  public void crearNuevaLineaReserva(String valorCampo ) {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
-    ajusteReservaPage.diligenciarNuevaLineaReserva(valorCampo, );
+    ajusteReservaPage.diligenciarNuevaLineaReserva(valorCampo, EXPOSICION_LINEA_RESERVA.getValor());
     //lstFilaReserva = generalPage.obtenerElementoTablaDatoDesconocido(ajusteReservaPage.getTblLineaReserva(),strNombreColumna, -2);
-    ajusteReservaPage.crearNuevaLineaReserva();
   }
 
   public void verificarAjusteReserva(String deducible) {
