@@ -52,11 +52,6 @@ public class AjusteReservaPage extends GeneralPage {
     }
   }
 
-  public void crearNuevaLineaReserva() {
-    realizarEsperaCarga();
-
-  }
-
   public void diligenciarCantidadAjusteReserva(
       String montoAjusteReserva, String encabezadoColumnaDevolver) {
     realizarEsperaCarga();
@@ -71,6 +66,23 @@ public class AjusteReservaPage extends GeneralPage {
           realizarEsperaCarga();
         });
   }
+
+  public void diligenciarNuevaLineaReserva(
+      String montoAjusteReserva, String encabezadoColumnaDevolver) {
+    realizarEsperaCarga();
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -2);
+    elementoEncontrado.forEach(
+        elemento -> {
+          elemento.click();
+          evaluateJavascript(
+              String.format("$('input[name|=\"NewAmount\"]').val('%s')", montoAjusteReserva));
+          btnGuardarAjusteReserva.click();
+          realizarEsperaCarga();
+        });
+  }
+
+
 
   public void cerrarAdvertenciaLimiteAgregado() {
     if (btnCerrarAdvertencia.isVisible()) {
