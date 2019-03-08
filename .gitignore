@@ -26,3 +26,6 @@ out/
 
 # Log file
 *.log
+.scannerwork/report-task.txt
+.scannerwork/.sonar_lock
+.scannerwork/
