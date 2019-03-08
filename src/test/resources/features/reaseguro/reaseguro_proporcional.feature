@@ -8,7 +8,7 @@ Característica: Distribución del reaseguro de un siniestro
 
   @claimsEmpresarial
   Esquema del escenario: Reaseguro de Constitución de reserva - creación reserva
-    Dado  que se tiene una póliza de <Tipo y Cobertura>L
+    Dado  que se tiene una póliza de <Tipo y Cobertura>
     Cuando se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
     Y un incidente de tipo <Tipo de incidente>
     Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
