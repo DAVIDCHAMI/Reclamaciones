@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.constantes;
 
 public enum Constantes {
-  ACTIVIDADES("Reclamaciones"),
-  ACTIVITIES("Claims"),
+  ACTIVIDADES("Actividades"),
+  ACTIVITIES("Activities"),
   ANULACION("Anulacion"),
   CANTIDAD("Cantidad"),
   CLAVE("cor3sur4"),
