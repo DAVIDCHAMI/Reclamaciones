@@ -76,7 +76,7 @@ public class AjusteReservaPage extends GeneralPage {
         elemento -> {
           elemento.click();
           evaluateJavascript(
-              String.format("$('input[name|=\"NewAmount\"]').val('%s')", montoAjusteReserva));
+              String.format("$('input[name|=\"NewAmount\"]').val('%s')", valorCampoLineaReserva));
           btnGuardarAjusteReserva.click();
           realizarEsperaCarga();
         });

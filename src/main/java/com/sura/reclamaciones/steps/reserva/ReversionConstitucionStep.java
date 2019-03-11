@@ -35,9 +35,10 @@ public class ReversionConstitucionStep {
     ajusteReservaPage.cerrarAdvertenciaLimiteAgregado();
   }
 
-  public void crearNuevaLineaReserva(String valorCampo ) {
+  public void crearNuevaLineaReserva(String lineaReserva, String tipoCosto,
+      String categoriaCosto, String valorNuevaReserva) {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
-    ajusteReservaPage.diligenciarNuevaLineaReserva(valorCampo, EXPOSICION_LINEA_RESERVA.getValor());
+    ajusteReservaPage.diligenciarNuevaLineaReserva(lineaReserva, EXPOSICION_LINEA_RESERVA.getValor());
     //lstFilaReserva = generalPage.obtenerElementoTablaDatoDesconocido(ajusteReservaPage.getTblLineaReserva(),strNombreColumna, -2);
   }
 

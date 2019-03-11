@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
+import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
@@ -33,7 +35,7 @@ public class PagoSiniestroDefinition {
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
-      String tipoCosto,
+      String categoriaCosto,
       String aplicaSoloSura,
       String codigoRetencion
       )
@@ -44,7 +46,7 @@ public class PagoSiniestroDefinition {
                 String.valueOf(PAGO_SINIESTRO.getValor()),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     nuevoPagoStep.consultarNumeroReclamacion();
-    reversionConstitucionStep.crearNuevaLineaReserva(lineaReserva);
+    reversionConstitucionStep.crearNuevaLineaReserva(lineaReserva, TIPO_COSTO_RESERVA.getValor(), categoriaCosto, VALOR_NUEVA_RESERVA.getValor());
     nuevoPagoStep.crearNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
