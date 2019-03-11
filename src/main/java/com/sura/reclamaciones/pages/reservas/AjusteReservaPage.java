@@ -20,7 +20,7 @@ public class AjusteReservaPage extends GeneralPage {
   private WebElementFacade btnQuitarLineaReserva;
 
   @FindBy(
-      xpath = "//div[@id='NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV']"
+      id = "NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV"
   )
   private WebElementFacade tblLineaReserva;
 
@@ -40,8 +40,8 @@ public class AjusteReservaPage extends GeneralPage {
     super(driver);
   }
 
-  public WebElementFacade getTblLineaReserva() {
-    return tblLineaReserva;
+  public String getTblLineaReserva() {
+    return String.valueOf(tblLineaReserva);
   }
 
   public void ajustarReserva() {
@@ -56,7 +56,7 @@ public class AjusteReservaPage extends GeneralPage {
       String montoAjusteReserva, String encabezadoColumnaDevolver) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -1);
+       obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -1);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
@@ -71,7 +71,7 @@ public class AjusteReservaPage extends GeneralPage {
       String valorCampoLineaReserva, String encabezadoColumnaDevolver) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -2);
+        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -1);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
