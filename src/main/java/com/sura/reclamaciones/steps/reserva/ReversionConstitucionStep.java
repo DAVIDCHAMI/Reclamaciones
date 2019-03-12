@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.reserva;
 
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_LINEA_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_CAMPO;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 import static com.sura.reclamaciones.constantes.ReservaConstante.NUEVAS_RESERVAS_DISPONIBLES;
@@ -20,7 +21,7 @@ public class ReversionConstitucionStep {
 
   List<WebElement> lstFilaReserva;
 
-  String strNombreLineaReserva= "Ninguna (nivel de reclamación)";
+  //String strNombreLineaReserva= "Ninguna (nivel de reclamación)";
 
   @Page
   AjusteReservaPage ajusteReservaPage;
@@ -45,10 +46,8 @@ public class ReversionConstitucionStep {
   public void crearNuevaLineaReserva(String lineaReserva, String tipoCosto,
       String categoriaCosto, String valorNuevaReserva) {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
-    lstFilaReserva = verificacionDatosFinancierosPage.obtenerFilaTabla(strNombreLineaReserva, ajusteReservaPage.getTblLineaReserva());
-    //List<WebElement> lineaNuevaReserva = generalPage.obtenerElementoTablaDatoDesconocido((WebElementFacade) lstFilaReserva, EXPOSICION_LINEA_RESERVA.getValor(), -1);
-   // ajusteReservaPage.diligenciarNuevaLineaReserva(lineaReserva, EXPOSICION_LINEA_RESERVA.getValor());
-    //lstFilaReserva = generalPage.obtenerElementoTablaDatoDesconocido(ajusteReservaPage.getTblLineaReserva(),strNombreColumna, -2);
+    ajusteReservaPage.diligenciarNuevaLineaReserva(lineaReserva, EXPOSICION_LINEA_RESERVA.getValor());
+    ajusteReservaPage.diligenciarNuevaLineaReserva(tipoCosto,TIPO_COSTO_CAMPO.getValor());
   }
 
   public void verificarAjusteReserva(String deducible) {

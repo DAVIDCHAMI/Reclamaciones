@@ -163,6 +163,7 @@ public enum Constantes {
   TAG_FACTURA_RIESGO("<NumerofacturaRiesgo>"),
   TASA_COMISION("Tasa de comisión"),
   TIPO("Tipo"),
+  TIPO_COSTO_CAMPO("Tipo de costo"),
   TIPO_COSTO_RESERVA("Gasto - A&O (ajuste y otros)"),
   TIPO_PAGO("Parcial"),
   TIPO_POLIZA("póliza de auto"),

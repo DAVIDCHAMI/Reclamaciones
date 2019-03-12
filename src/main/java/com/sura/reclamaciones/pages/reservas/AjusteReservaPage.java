@@ -33,8 +33,16 @@ public class AjusteReservaPage extends GeneralPage {
   )
   private WebElementFacade btnCerrarAdvertencia;
 
+  @FindBy(
+      xpath = "//ul[@class='x-list-plain']"
+  )
+  private WebElementFacade listExposicion;
+
   @Page
   MenuClaimPage menuClaimPage;
+
+  @Page
+  GeneralPage generalPage;
 
   public AjusteReservaPage(WebDriver driver) {
     super(driver);
@@ -71,15 +79,10 @@ public class AjusteReservaPage extends GeneralPage {
       String valorCampoLineaReserva, String encabezadoColumnaDevolver) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -1);
-    elementoEncontrado.forEach(
-        elemento -> {
-          elemento.click();
-          evaluateJavascript(
-              String.format("$('input[name|=\"NewAmount\"]').val('%s')", valorCampoLineaReserva));
-          btnGuardarAjusteReserva.click();
-          realizarEsperaCarga();
-        });
+        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, 0);//ponerlo como constante el 1
+    WebElement filaNuevaReserva= elementoEncontrado.get(1);//ponerlo como constante el 1
+    filaNuevaReserva.click();
+    generalPage.seleccionarOpcionLista(listExposicion,valorCampoLineaReserva);
   }
 
 
