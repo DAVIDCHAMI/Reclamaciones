@@ -24,6 +24,7 @@ public enum Constantes {
   CANCELAR_AHORA("Cancelar ahora"),
   CANCELAR_CONTROL_POLICY("Cancelar"),
   CANTIDAD("Cantidad"),
+  CATEGORIA_COSTO_CAMPO("Categoría de costo"),
   CLAVE("cor3sur4"),
   CODIGO_RETENCION("Código de retención"),
   CODIGO_RIESGO("CODIGO RIESGO"),

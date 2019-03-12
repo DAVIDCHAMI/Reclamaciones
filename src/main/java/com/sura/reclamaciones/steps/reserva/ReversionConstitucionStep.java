@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.reserva;
 
+import static com.sura.reclamaciones.constantes.Constantes.CATEGORIA_COSTO_CAMPO;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_LINEA_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_CAMPO;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
@@ -48,6 +49,7 @@ public class ReversionConstitucionStep {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
     ajusteReservaPage.diligenciarNuevaLineaReserva(lineaReserva, EXPOSICION_LINEA_RESERVA.getValor());
     ajusteReservaPage.diligenciarNuevaLineaReserva(tipoCosto,TIPO_COSTO_CAMPO.getValor());
+    ajusteReservaPage.diligenciarNuevaLineaReserva(categoriaCosto,CATEGORIA_COSTO_CAMPO.getValor());
   }
 
   public void verificarAjusteReserva(String deducible) {
