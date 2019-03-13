@@ -128,6 +128,7 @@ public enum Constantes {
   PORCENTAJE("0.20"),
   PORCENTAJE_DE_CESION("Porcentaje de cesión (%)"),
   PORCIENTO("100"),
+  POSICION_COLUMNA_RESERVA("0"),
   PRIMA("Prima"),
   PRIMA_BRUTA_CEDIDA("Prima bruta cedida"),
   PRIMA_TOTAL("Prima total"),

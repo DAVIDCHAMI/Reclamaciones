@@ -2,8 +2,8 @@ package com.sura.reclamaciones.steps.reserva;
 
 import static com.sura.reclamaciones.constantes.Constantes.CATEGORIA_COSTO_CAMPO;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_LINEA_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.POSICION_COLUMNA_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_CAMPO;
-import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA_CAMPO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 import static com.sura.reclamaciones.constantes.ReservaConstante.NUEVAS_RESERVAS_DISPONIBLES;
@@ -14,7 +14,6 @@ import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.reservas.AjusteReservaPage;
 import com.sura.reclamaciones.pages.reservas.TransaccionDatoFinancieroPage;
 import java.util.List;
-import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
@@ -31,7 +30,8 @@ public class ReversionConstitucionStep {
   @Page
   VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-  @Page GeneralPage generalPage;
+  @Page
+  GeneralPage generalPage;
 
   @Page
   MenuClaimPage menuClaimPage;
@@ -42,16 +42,21 @@ public class ReversionConstitucionStep {
   public void ajustarReserva(String valorAjustar) {
     ajusteReservaPage.ajustarReserva();
     ajusteReservaPage.diligenciarCantidadAjusteReserva(valorAjustar, NUEVAS_RESERVAS_DISPONIBLES);
-    ajusteReservaPage.cerrarAdvertenciaLimiteAgregado();
   }
 
   public void crearNuevaLineaReserva(String lineaReserva, String tipoCosto,
       String categoriaCosto, String valorNuevaReserva) {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
-    ajusteReservaPage.diligenciarNuevaLineaReserva(lineaReserva, EXPOSICION_LINEA_RESERVA.getValor());
-    ajusteReservaPage.diligenciarNuevaLineaReserva(tipoCosto,TIPO_COSTO_CAMPO.getValor());
-    ajusteReservaPage.diligenciarNuevaLineaReserva(categoriaCosto,CATEGORIA_COSTO_CAMPO.getValor());
-    ajusteReservaPage.diligenciarNuevaLineaReserva(valorNuevaReserva,VALOR_NUEVA_RESERVA_CAMPO.getValor());
+    ajusteReservaPage
+        .diligenciarCampoLineaReserva(lineaReserva, EXPOSICION_LINEA_RESERVA.getValor(),
+            Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
+    ajusteReservaPage.diligenciarCampoLineaReserva(tipoCosto, TIPO_COSTO_CAMPO.getValor(),
+        Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
+    ajusteReservaPage.diligenciarCampoLineaReserva(categoriaCosto, CATEGORIA_COSTO_CAMPO.getValor(),
+        Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
+    ajusteReservaPage
+        .diligenciarCampoLineaReserva(valorNuevaReserva, VALOR_NUEVA_RESERVA_CAMPO.getValor(),
+            -1);
   }
 
   public void verificarAjusteReserva(String deducible) {
