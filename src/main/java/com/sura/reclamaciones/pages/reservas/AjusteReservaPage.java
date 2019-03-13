@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.reservas;
 
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA_CAMPO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -64,7 +65,7 @@ public class AjusteReservaPage extends GeneralPage {
       String montoAjusteReserva, String encabezadoColumnaDevolver) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-       obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -1);
+        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -1);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
@@ -79,12 +80,16 @@ public class AjusteReservaPage extends GeneralPage {
       String valorCampoLineaReserva, String encabezadoColumnaDevolver) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, 0);//ponerlo como constante el 1
-    WebElement filaNuevaReserva= elementoEncontrado.get(1);//ponerlo como constante el 1
+        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, 0);//ponerlo como constante el 0
+    WebElement filaNuevaReserva = elementoEncontrado.get(1);//ponerlo como constante el 1
     filaNuevaReserva.click();
-    generalPage.seleccionarOpcionLista(listExposicion,valorCampoLineaReserva);
+    if (encabezadoColumnaDevolver.equals(VALOR_NUEVA_RESERVA_CAMPO.getValor())) {
+      evaluateJavascript(
+          String.format("$('input[name|=\"NewAmount\"]').val('%s')", valorCampoLineaReserva));
+    } else { generalPage.seleccionarOpcionLista(listExposicion, valorCampoLineaReserva); }
+    btnGuardarAjusteReserva.click();
+    realizarEsperaCarga();
   }
-
 
 
   public void cerrarAdvertenciaLimiteAgregado() {

@@ -185,6 +185,7 @@ public enum Constantes {
   VALOR_ANTERIOR("."),
   VALOR_CERO("0"),
   VALOR_NUEVA_RESERVA("4000000"),
+  VALOR_NUEVA_RESERVA_CAMPO("Nuevas reservas disponibles"),
   VALOR_RETEFUENTE("Valor retefuente"),
   VALOR_RETENIDO_CUOTA_PARTE("Valor retenido cuota parte"),
   VEHICULOS("Vehículos"),
