@@ -77,20 +77,20 @@ public class AjusteReservaPage extends GeneralPage {
   }
 
   public void diligenciarCampoLineaReserva(
-      String valorCampoLineaReserva, String encabezadoColumnaDevolver,Integer pocisionColumnaReserva) {
+      String valorCampoLineaReserva, String encabezadoColumnaDevolver,
+      Integer pocisionColumnaReserva) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, pocisionColumnaReserva);
-    int ubicacionFilaNuevaReserva = elementoEncontrado.size();
-    WebElement filaNuevaReserva = elementoEncontrado.get(ubicacionFilaNuevaReserva-1);
-    realizarEsperaCarga();
-    filaNuevaReserva.click();
+        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver,
+            pocisionColumnaReserva);
+    int ubicacionFilaNuevaReserva = elementoEncontrado.size() - 1;
+    WebElement filaNuevaReserva = elementoEncontrado.get(ubicacionFilaNuevaReserva);
     if (encabezadoColumnaDevolver.equals(VALOR_NUEVA_RESERVA_CAMPO.getValor())) {
-      evaluateJavascript(
-          String.format("$('input[name|=\"NewAmount\"]').val('%s')", valorCampoLineaReserva));
-      btnGuardarAjusteReserva.click();
-      realizarEsperaCarga();
-    } else { generalPage.seleccionarOpcionLista(listExposicion, valorCampoLineaReserva); }
+      diligenciarCantidadAjusteReserva(valorCampoLineaReserva,encabezadoColumnaDevolver);
+    } else {
+      filaNuevaReserva.click();
+      generalPage.seleccionarOpcionLista(listExposicion, valorCampoLineaReserva);
+    }
   }
 
   public void cerrarAdvertenciaLimiteAgregado() {

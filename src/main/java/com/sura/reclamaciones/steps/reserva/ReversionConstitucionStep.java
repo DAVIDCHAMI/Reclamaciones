@@ -1,9 +1,11 @@
 package com.sura.reclamaciones.steps.reserva;
 
 import static com.sura.reclamaciones.constantes.Constantes.CATEGORIA_COSTO_CAMPO;
+import static com.sura.reclamaciones.constantes.Constantes.COP;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_LINEA_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.POSICION_COLUMNA_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_CAMPO;
+import static com.sura.reclamaciones.constantes.Constantes.TIPO_MONEDA_RESERVA_CAMPO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA_CAMPO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 import static com.sura.reclamaciones.constantes.ReservaConstante.NUEVAS_RESERVAS_DISPONIBLES;
@@ -50,9 +52,9 @@ public class ReversionConstitucionStep {
     ajusteReservaPage
         .diligenciarCampoLineaReserva(lineaReserva, EXPOSICION_LINEA_RESERVA.getValor(),
             Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
-    ajusteReservaPage.diligenciarCampoLineaReserva(tipoCosto, TIPO_COSTO_CAMPO.getValor(),
-        Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
     ajusteReservaPage.diligenciarCampoLineaReserva(categoriaCosto, CATEGORIA_COSTO_CAMPO.getValor(),
+        Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
+    ajusteReservaPage.diligenciarCampoLineaReserva(tipoCosto, TIPO_COSTO_CAMPO.getValor(),
         Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
     ajusteReservaPage
         .diligenciarCampoLineaReserva(valorNuevaReserva, VALOR_NUEVA_RESERVA_CAMPO.getValor(),
