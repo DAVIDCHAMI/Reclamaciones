@@ -1,11 +1,10 @@
 package com.sura.reclamaciones.steps.reserva;
 
 import static com.sura.reclamaciones.constantes.Constantes.CATEGORIA_COSTO_CAMPO;
-import static com.sura.reclamaciones.constantes.Constantes.COP;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_LINEA_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.POSICION_VALOR_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.POSICION_COLUMNA_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_CAMPO;
-import static com.sura.reclamaciones.constantes.Constantes.TIPO_MONEDA_RESERVA_CAMPO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA_CAMPO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 import static com.sura.reclamaciones.constantes.ReservaConstante.NUEVAS_RESERVAS_DISPONIBLES;
@@ -43,7 +42,8 @@ public class ReversionConstitucionStep {
 
   public void ajustarReserva(String valorAjustar) {
     ajusteReservaPage.ajustarReserva();
-    ajusteReservaPage.diligenciarCantidadAjusteReserva(valorAjustar, NUEVAS_RESERVAS_DISPONIBLES);
+    ajusteReservaPage.diligenciarCampoLineaReserva(valorAjustar, NUEVAS_RESERVAS_DISPONIBLES, Integer.parseInt(
+        POSICION_VALOR_RESERVA.getValor()) );
   }
 
   public void crearNuevaLineaReserva(String lineaReserva, String tipoCosto,
@@ -58,7 +58,7 @@ public class ReversionConstitucionStep {
         Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
     ajusteReservaPage
         .diligenciarCampoLineaReserva(valorNuevaReserva, VALOR_NUEVA_RESERVA_CAMPO.getValor(),
-            -1);
+            Integer.parseInt(POSICION_VALOR_RESERVA.getValor()));
   }
 
   public void verificarAjusteReserva(String deducible) {

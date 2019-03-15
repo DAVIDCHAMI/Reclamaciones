@@ -61,21 +61,6 @@ public class AjusteReservaPage extends GeneralPage {
     }
   }
 
-  public void diligenciarCantidadAjusteReserva(
-      String montoAjusteReserva, String encabezadoColumnaDevolver) {
-    realizarEsperaCarga();
-    List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver, -1);
-    elementoEncontrado.forEach(
-        elemento -> {
-          elemento.click();
-          evaluateJavascript(
-              String.format("$('input[name|=\"NewAmount\"]').val('%s')", montoAjusteReserva));
-          btnGuardarAjusteReserva.click();
-          realizarEsperaCarga();
-        });
-  }
-
   public void diligenciarCampoLineaReserva(
       String valorCampoLineaReserva, String encabezadoColumnaDevolver,
       Integer pocisionColumnaReserva) {
@@ -85,10 +70,13 @@ public class AjusteReservaPage extends GeneralPage {
             pocisionColumnaReserva);
     int ubicacionFilaNuevaReserva = elementoEncontrado.size() - 1;
     WebElement filaNuevaReserva = elementoEncontrado.get(ubicacionFilaNuevaReserva);
+    filaNuevaReserva.click();
     if (encabezadoColumnaDevolver.equals(VALOR_NUEVA_RESERVA_CAMPO.getValor())) {
-      diligenciarCantidadAjusteReserva(valorCampoLineaReserva,encabezadoColumnaDevolver);
+      evaluateJavascript(
+          String.format("$('input[name|=\"NewAmount\"]').val('%s')", valorCampoLineaReserva));
+      btnGuardarAjusteReserva.click();
+      realizarEsperaCarga();
     } else {
-      filaNuevaReserva.click();
       generalPage.seleccionarOpcionLista(listExposicion, valorCampoLineaReserva);
     }
   }
