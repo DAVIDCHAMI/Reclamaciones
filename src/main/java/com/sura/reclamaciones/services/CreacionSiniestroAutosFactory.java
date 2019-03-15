@@ -817,7 +817,7 @@ public class CreacionSiniestroAutosFactory {
   public List<Object> listParamFactory() {
     List<Object> listParams = new ArrayList<Object>();
     Parametros parametro = paramAutoFactory();
-    listParams.add(Serenity.sessionVariableCalled(SESION_SERV_NRO_POLIZA.getValor()));
+    listParams.add(getPolicyNumber());
     listParams.add(parametro);
     return listParams;
   }

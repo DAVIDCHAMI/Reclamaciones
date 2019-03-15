@@ -61,13 +61,6 @@ public class PagoSiniestroDefinition {
             genericStep.getFilasModelo(
                 PARAMETROS_SINIESTRO_AUTOS.getValor(),
                 PARAMETRO_CREACION_AVISO_AUTOS_WS.getValor()));
-    ExpedicionAuto expedicionAuto =
-        new ExpedicionAuto(
-            genericStep.getFilasModelo(EXPEDICION_AUTOS.getValor(), TIPO_POLIZA.getValor()));
-    consumoServicioExpedicionAutoStep.consumirServicioExpedicion(
-        expedicionAuto.getLstExpedicion(),
-        Integer.parseInt((NUMERO_DIAS_VENCIMIENTO.getValor())),
-        FECHA_ACTUAL.getValor());
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         parametroAviso.getLstReclamacionAuto(),
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
@@ -76,7 +69,7 @@ public class PagoSiniestroDefinition {
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
   }
 
-  @Cuando(
+  @Dado(
       "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la linea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
   public void crearPagoAutos(
       String tipoPago,
@@ -106,7 +99,6 @@ public class PagoSiniestroDefinition {
   }
 
   @Entonces("^se obtiene el pago del beneficiario$")
-  public void verificarPagoAutos() {
-    nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
+  public void verificarPagoAutos() {nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 }
