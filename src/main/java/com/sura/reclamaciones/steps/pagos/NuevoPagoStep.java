@@ -54,7 +54,6 @@ public class NuevoPagoStep {
   @Step
   public void consultarNumeroReclamacion() {
     resumenReclamacionPage.obtenerNumeroReclamacion();
-    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 
   @Step
@@ -156,5 +155,9 @@ public class NuevoPagoStep {
     detalleExposicionAutomaticaPage.editarDetalleExposicion();
     detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
+  }
+
+  public void riesgoConsultable() {
+
   }
 }

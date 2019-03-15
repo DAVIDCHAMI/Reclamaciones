@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
+import static com.sura.reclamaciones.constantes.Constantes.SI;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
@@ -11,6 +12,7 @@ import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.reserva.ReversionConstitucionStep;
 import cucumber.api.PendingException;
 import cucumber.api.java.es.Cuando;
+import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
 import java.io.IOException;
@@ -19,17 +21,19 @@ import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
 
-  @Steps NuevoPagoStep nuevoPagoStep;
+  @Steps
+  NuevoPagoStep nuevoPagoStep;
 
   @Steps
   ReversionConstitucionStep reversionConstitucionStep;
 
-  @Steps GenericStep genericStep;
+  @Steps
+  GenericStep genericStep;
 
   PagoSiniestro pagoSiniestro;
 
   @Cuando(
-      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) por (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
+      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) por (.*) donde el responsable (.*) es Sura por una retención de (.*) el asegurado (.*) es riesgo consultable$")
   public void generarPagoReclamacion(
       String tipoPago,
       String beneficiarioPago,
@@ -37,8 +41,9 @@ public class PagoSiniestroDefinition {
       String lineaReserva,
       String categoriaCosto,
       String aplicaSoloSura,
-      String codigoRetencion
-      )
+      String codigoRetencion,
+      String riesgoConsultable
+  )
       throws IOException {
     pagoSiniestro =
         new PagoSiniestro(
@@ -46,7 +51,11 @@ public class PagoSiniestroDefinition {
                 String.valueOf(PAGO_SINIESTRO.getValor()),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     nuevoPagoStep.consultarNumeroReclamacion();
-    reversionConstitucionStep.crearNuevaLineaReserva(lineaReserva, TIPO_COSTO_RESERVA.getValor(), categoriaCosto, VALOR_NUEVA_RESERVA.getValor());
+    if (riesgoConsultable.equals(SI.getValor())) {
+      reversionConstitucionStep
+          .crearNuevaLineaReserva(lineaReserva, TIPO_COSTO_RESERVA.getValor(), categoriaCosto,
+              VALOR_NUEVA_RESERVA.getValor());
+    }
     nuevoPagoStep.crearNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
@@ -56,10 +65,6 @@ public class PagoSiniestroDefinition {
         aplicaSoloSura,
         codigoRetencion,
         pagoSiniestro.getLstPago());
-  }
-
-  @Y("^(.*) es riesgo consultable$")
-  public void esRiesgoConsultable() throws Throwable {
   }
 
   @Entonces("^(.*) se genera una orden de pago para que le sea entregado al usuario$")
