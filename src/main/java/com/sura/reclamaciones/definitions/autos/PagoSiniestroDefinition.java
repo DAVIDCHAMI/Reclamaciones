@@ -1,19 +1,6 @@
 package com.sura.reclamaciones.definitions.autos;
 
-import static com.sura.reclamaciones.constantes.Constantes.FECHA_ACTUAL;
-import static com.sura.reclamaciones.constantes.Constantes.NUMERO_DIAS_VENCIMIENTO;
-import static com.sura.reclamaciones.constantes.Constantes.TIPO_POLIZA;
-import static com.sura.reclamaciones.constantes.NombresCsv.EXPEDICION_AUTOS;
-import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_CREACION_AVISO_AUTOS_WS;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_CONDUCTOR;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_LESIONADA;
-
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.models.ExpedicionAuto;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
@@ -22,12 +9,14 @@ import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.poliza.ConsumoServicioExpedicionAutoStep;
-import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
-import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
+
+import java.io.IOException;
+
+import static com.sura.reclamaciones.constantes.NombresCsv.*;
 
 public class PagoSiniestroDefinition {
 
@@ -99,6 +88,8 @@ public class PagoSiniestroDefinition {
   }
 
   @Entonces("^se obtiene el pago del beneficiario$")
-  public void verificarPagoAutos() {nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
+  public void verificarPagoAutos()
+  {
+    nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 }
