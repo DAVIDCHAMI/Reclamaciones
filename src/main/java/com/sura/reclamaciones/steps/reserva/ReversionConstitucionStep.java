@@ -23,8 +23,6 @@ public class ReversionConstitucionStep {
 
   List<WebElement> lstFilaReserva;
 
-  //String strNombreLineaReserva= "Ninguna (nivel de reclamación)";
-
   @Page
   AjusteReservaPage ajusteReservaPage;
 
