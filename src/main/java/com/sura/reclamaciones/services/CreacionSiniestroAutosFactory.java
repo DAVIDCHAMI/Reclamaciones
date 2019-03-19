@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_NRO_POLIZA;
-
 import com.sura.service.creacionSiniestroAuto.gen.Author;
 import com.sura.service.creacionSiniestroAuto.gen.BodyPartDetail;
 import com.sura.service.creacionSiniestroAuto.gen.ClaimsAutoRequest;
@@ -22,7 +20,6 @@ import com.sura.service.creacionSiniestroAuto.gen.VehicleIncident;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import net.serenitybdd.core.Serenity;
 
 public class CreacionSiniestroAutosFactory {
 

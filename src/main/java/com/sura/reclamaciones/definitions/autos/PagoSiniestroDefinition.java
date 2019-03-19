@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.definitions.autos;
 
+import static com.sura.reclamaciones.constantes.NombresCsv.*;
+
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.PersonaReclamacion;
@@ -11,12 +13,9 @@ import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.poliza.ConsumoServicioExpedicionAutoStep;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
-
-import java.io.IOException;
-
-import static com.sura.reclamaciones.constantes.NombresCsv.*;
 
 public class PagoSiniestroDefinition {
 
@@ -88,8 +87,7 @@ public class PagoSiniestroDefinition {
   }
 
   @Entonces("^se obtiene el pago del beneficiario$")
-  public void verificarPagoAutos()
-  {
+  public void verificarPagoAutos() {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 }

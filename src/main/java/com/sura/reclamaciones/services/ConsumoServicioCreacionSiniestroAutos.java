@@ -1,9 +1,5 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_FECHA_SINIESTRO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_NRO_PLACA;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_NRO_POLIZA;
-
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
@@ -53,7 +49,8 @@ public class ConsumoServicioCreacionSiniestroAutos {
   private void asignarParametrosSiniestro(List<ReclamacionAuto> lstSiniestroParam) {
     creacionSiniestroAutosFactory.setPolicyNumber(lstSiniestroParam.get(campoDato).getNumPoliza());
     creacionSiniestroAutosFactory.setLossDate(lstSiniestroParam.get(campoDato).getFechaSiniestro());
-    creacionSiniestroAutosFactory.setNotificationDate(lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
+    creacionSiniestroAutosFactory.setNotificationDate(
+        lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
     creacionSiniestroAutosFactory.setLossType(lstSiniestroParam.get(campoDato).getTipoPerdida());
     creacionSiniestroAutosFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaPerdida());
     creacionSiniestroAutosFactory.setDescription(
@@ -168,7 +165,8 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosVehiculo(List<Vehiculo> lstVehiculoParam) {
-    creacionSiniestroAutosFactory.setLicensePlateVehicle(lstVehiculoParam.get(campoDato).getPlaca());
+    creacionSiniestroAutosFactory.setLicensePlateVehicle(
+        lstVehiculoParam.get(campoDato).getPlaca());
     creacionSiniestroAutosFactory.setMakeVehicle(lstVehiculoParam.get(campoDato).getMarca());
     creacionSiniestroAutosFactory.setModelVehicle(lstVehiculoParam.get(campoDato).getModelo());
     creacionSiniestroAutosFactory.setEngineNumberVehicle(
