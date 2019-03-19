@@ -31,7 +31,7 @@ public class PagoSiniestroDefinition {
   PagoSiniestro pagoSiniestro;
 
   @Cuando(
-      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) por (.*) donde el responsable (.*) es Sura por una retención de (.*) el asegurado (.*) es riesgo consultable$")
+      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) por (.*) y (.*) donde el responsable (.*) es Sura por una retención de (.*) el asegurado (.*) es riesgo consultable$")
   public void generarPagoReclamacion(
       String tipoPago,
       String beneficiarioPago,
@@ -40,7 +40,8 @@ public class PagoSiniestroDefinition {
       String categoriaCosto,
       String aplicaSoloSura,
       String codigoRetencion,
-      String riesgoConsultable
+      String riesgoConsultable,
+      String tipoCosto
   )
       throws IOException {
     pagoSiniestro =
@@ -51,7 +52,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.consultarNumeroReclamacion();
     if ((riesgoConsultable.equals(SI_RIESGO_CONSULTABLE.getValor()))&&(categoriaCosto.equals(TIPO_CATEGORIA_COSTO.getValor()))){
       reversionConstitucionStep
-          .crearNuevaLineaReserva(lineaReserva, TIPO_COSTO_RESERVA_GASTO.getValor(), categoriaCosto,
+          .crearNuevaLineaReserva(lineaReserva,tipoCosto, categoriaCosto,
               VALOR_NUEVA_RESERVA.getValor());
     }
     nuevoPagoStep.crearNuevoPago();
