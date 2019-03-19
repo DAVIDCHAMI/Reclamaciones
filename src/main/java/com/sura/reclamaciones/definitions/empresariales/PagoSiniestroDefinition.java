@@ -31,17 +31,18 @@ public class PagoSiniestroDefinition {
   PagoSiniestro pagoSiniestro;
 
   @Cuando(
-      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) por (.*) y (.*) donde el responsable (.*) es Sura por una retención de (.*) el asegurado (.*) es riesgo consultable$")
+      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) por (.*) de (.*) por valor igual a (.*) donde el responsable (.*) es Sura por una retención de (.*) el asegurado (.*) es riesgo consultable$")
   public void generarPagoReclamacion(
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
       String categoriaCosto,
+      String tipoCosto,
+      String valorNuevaReserva,
       String aplicaSoloSura,
       String codigoRetencion,
-      String riesgoConsultable,
-      String tipoCosto
+      String riesgoConsultable
   )
       throws IOException {
     pagoSiniestro =
@@ -50,10 +51,8 @@ public class PagoSiniestroDefinition {
                 String.valueOf(PAGO_SINIESTRO.getValor()),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     nuevoPagoStep.consultarNumeroReclamacion();
-    if ((riesgoConsultable.equals(SI_RIESGO_CONSULTABLE.getValor()))&&(categoriaCosto.equals(TIPO_CATEGORIA_COSTO.getValor()))){
-      reversionConstitucionStep
-          .crearNuevaLineaReserva(lineaReserva,tipoCosto, categoriaCosto,
-              VALOR_NUEVA_RESERVA.getValor());
+    if ((riesgoConsultable.equals(SI_RIESGO_CONSULTABLE.getValor()))&&(categoriaCosto.contains(TIPO_CATEGORIA_COSTO.getValor()))){
+      reversionConstitucionStep.crearNuevaLineaReserva(lineaReserva,tipoCosto, categoriaCosto, valorNuevaReserva);
     }
     nuevoPagoStep.crearNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(

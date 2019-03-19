@@ -169,7 +169,7 @@ public enum Constantes {
   TIPO("Tipo"),
   TIPO_COSTO_CAMPO("Tipo de costo"),
   TIPO_COSTO_RESERVA_GASTO("Gasto - A&O (ajuste y otros)"),
-  TIPO_CATEGORIA_COSTO("Gastos de siniestro"),
+  TIPO_CATEGORIA_COSTO("Gasto"),
   TIPO_PAGO("Parcial"),
   TIPO_POLIZA("póliza de auto"),
   TIPO_TRANSACCION("Recuperaciones"),
