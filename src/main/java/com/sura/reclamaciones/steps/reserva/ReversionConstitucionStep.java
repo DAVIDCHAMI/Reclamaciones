@@ -1,9 +1,11 @@
 package com.sura.reclamaciones.steps.reserva;
 
 import static com.sura.reclamaciones.constantes.Constantes.CATEGORIA_COSTO_CAMPO;
+import static com.sura.reclamaciones.constantes.Constantes.DEDUCIBLE_GASTO;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_LINEA_RESERVA;
-import static com.sura.reclamaciones.constantes.Constantes.POSICION_VALOR_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.POSICION_COLUMNA_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.POSICION_VALOR_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.TIPO_CATEGORIA_COSTO_GASTO;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_CAMPO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA_CAMPO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
@@ -40,8 +42,9 @@ public class ReversionConstitucionStep {
 
   public void ajustarReserva(String valorAjustar) {
     ajusteReservaPage.ajustarReserva();
-    ajusteReservaPage.diligenciarCampoLineaReserva(valorAjustar, NUEVAS_RESERVAS_DISPONIBLES, Integer.parseInt(
-        POSICION_VALOR_RESERVA.getValor()) );
+    ajusteReservaPage
+        .diligenciarCampoLineaReserva(valorAjustar, NUEVAS_RESERVAS_DISPONIBLES, Integer.parseInt(
+            POSICION_VALOR_RESERVA.getValor()));
   }
 
   public void crearNuevaLineaReserva(String lineaReserva, String tipoCosto,
@@ -59,9 +62,13 @@ public class ReversionConstitucionStep {
             Integer.parseInt(POSICION_VALOR_RESERVA.getValor()));
   }
 
-  public void verificarAjusteReserva(String deducible) {
+  public void verificarAjusteReserva(String categoriaCosto, String deducible) {
     String deducibleVisualizado;
-    deducibleVisualizado = transaccionDatoFinancieroPage.obtenerDeducibleReversionConstitucion();
+    if (categoriaCosto.contains(TIPO_CATEGORIA_COSTO_GASTO.getValor())) {
+      deducibleVisualizado = DEDUCIBLE_GASTO.getValor();
+    } else {
+      deducibleVisualizado = transaccionDatoFinancieroPage.obtenerDeducibleReversionConstitucion();
+    }
     MatcherAssert.assertThat(
         "Se esperaba un deducible de: "
             + deducible
@@ -69,4 +76,5 @@ public class ReversionConstitucionStep {
             + deducibleVisualizado,
         deducibleVisualizado.equals(deducible));
   }
+
 }

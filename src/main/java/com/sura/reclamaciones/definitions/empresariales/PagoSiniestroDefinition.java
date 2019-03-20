@@ -1,9 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
 import static com.sura.reclamaciones.constantes.Constantes.SI_RIESGO_CONSULTABLE;
-import static com.sura.reclamaciones.constantes.Constantes.TIPO_CATEGORIA_COSTO;
-import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_RESERVA_GASTO;
-import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.TIPO_CATEGORIA_COSTO_GASTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
@@ -51,7 +49,8 @@ public class PagoSiniestroDefinition {
                 String.valueOf(PAGO_SINIESTRO.getValor()),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     nuevoPagoStep.consultarNumeroReclamacion();
-    if ((riesgoConsultable.equals(SI_RIESGO_CONSULTABLE.getValor()))&&(categoriaCosto.contains(TIPO_CATEGORIA_COSTO.getValor()))){
+    if ((riesgoConsultable.equals(SI_RIESGO_CONSULTABLE.getValor()))&&(categoriaCosto.contains(
+        TIPO_CATEGORIA_COSTO_GASTO.getValor()))){
       reversionConstitucionStep.crearNuevaLineaReserva(lineaReserva,tipoCosto, categoriaCosto, valorNuevaReserva);
     }
     nuevoPagoStep.crearNuevoPago();

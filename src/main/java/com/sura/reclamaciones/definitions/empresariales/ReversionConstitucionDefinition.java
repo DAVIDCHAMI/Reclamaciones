@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
+import static com.sura.reclamaciones.constantes.Constantes.TIPO_CATEGORIA_COSTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECLAMACION_EMPRESARIAL;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
@@ -47,6 +48,6 @@ public class ReversionConstitucionDefinition {
   @Entonces(
       "^se obtiene una reversión de constitución y el deducible es generado por un valor (.*)$")
   public void verificarReversionConstitucion(String deducible) {
-    reversionConstitucionStep.verificarAjusteReserva(deducible);
+    reversionConstitucionStep.verificarAjusteReserva( TIPO_CATEGORIA_COSTO.getValor(), deducible);
   }
 }
