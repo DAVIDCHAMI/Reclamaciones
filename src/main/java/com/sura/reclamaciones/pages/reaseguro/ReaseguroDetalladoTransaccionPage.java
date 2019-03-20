@@ -164,13 +164,17 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
             tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
-    blnReaseguro =
-        verificarDistribucionReaseguro(
-            dblMaximoRetencioPura,
-            porcentajeRetenido,
-            proporcionCuotaParte,
-            porcentajeCoaseguroCedido,
-            2);
+    for (int posicionElementoFila = 0;
+        lstReaseguroDetallado.size() > posicionElementoFila;
+        posicionElementoFila++) {
+      blnReaseguro =
+          verificarDistribucionReaseguro(
+              dblMaximoRetencioPura,
+              porcentajeRetenido,
+              proporcionCuotaParte,
+              porcentajeCoaseguroCedido,
+              posicionElementoFila + 1);
+    }
     String strValorTransaccion =
         lstReaseguroDetallado.get(2).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     blnValorReversion =
@@ -219,9 +223,9 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String proporcionCuotaParte,
       String porcentajeCoaseguroCedido,
       int intFilaTransaccion) {
-    String strNumeroReclamacion =
+    String strNumeroTransaccion =
         obtenerDatoTablaCabecera(NUMERO_TRANSACCION_REASEGURO.getValor(), intFilaTransaccion);
-    List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroReclamacion, getTblPago());
+    List<WebElement> lstFilaTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
     boolean blnRetencionPura = verificarRetencionPura(lstFilaTransaccion, dblMaximoRetencioPura);
     boolean blnPorcentajeCedido =
         verificarPorcentajeCedido(
