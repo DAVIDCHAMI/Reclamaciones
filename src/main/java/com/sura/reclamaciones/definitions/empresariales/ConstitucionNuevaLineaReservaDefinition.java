@@ -8,21 +8,22 @@ import net.thucydides.core.annotations.Steps;
 
 public class ConstitucionNuevaLineaReservaDefinition {
 
-  @Steps
-  ReversionConstitucionStep reversionConstitucionStep;
+  @Steps ReversionConstitucionStep reversionConstitucionStep;
 
-  @Steps
-  NuevoPagoStep nuevoPagoStep;
+  @Steps NuevoPagoStep nuevoPagoStep;
 
-  @Cuando("^se crea una nueva Línea de reserva por la Exposición de (.*) por (.*) de (.*) por un valor de (.*)$")
-  public void crearNuevaLineaReserva(String lineaReserva, String categoriaCosto, String tipoCosto, String valorNuevaReserva) throws Throwable {
-    nuevoPagoStep.consultarNumeroReclamacion();
-    reversionConstitucionStep.crearNuevaLineaReserva(lineaReserva,tipoCosto, categoriaCosto, valorNuevaReserva);
+  @Cuando(
+      "^se crea una nueva Línea de reserva por la Exposición de (.*) por (.*) de (.*) por un valor de (.*)$")
+  public void crearNuevaLineaReserva(
+      String lineaReserva, String categoriaCosto, String tipoCosto, String valorNuevaReserva)
+      throws Throwable {
+    reversionConstitucionStep.crearNuevaLineaReserva(
+        lineaReserva, tipoCosto, categoriaCosto, valorNuevaReserva);
   }
 
   @Entonces("^se genera una nueva Línea de reserva de (.*) con un deducible de (.*)$")
   public void verificarConstitucionNuevaLineaReserva(String categoriaCosto, String deducible)
       throws Throwable {
-    reversionConstitucionStep.verificarAjusteReserva(categoriaCosto,deducible);
+    reversionConstitucionStep.verificarAjusteReserva(categoriaCosto, deducible);
   }
 }

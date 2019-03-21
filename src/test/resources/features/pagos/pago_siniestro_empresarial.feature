@@ -7,15 +7,13 @@ Característica: Realizar pago de un siniestro
 
   @claimsEmpresarial
   Esquema del escenario: Pago siniestro empresarial
-    Dado que se tiene una póliza de <Tipo y Cobertura>
-    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
-    Y un incidente de tipo <Tipo de incidente>
+    Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
     Cuando se realice un pago <Tipo de pago> a <Beneficiario del pago> por medio de <Método del pago> el cual cuenta con una línea de reserva <Línea de Reserva> donde el responsable <¿Es pago soloSura?> es Sura por una retención de <Código de Retención>
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
       | Línea de Reserva      | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                                     | Causa                               | Valor de Pretensión | Tipo de incidente |
- #      | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | Sí                 | 0010                | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
+       | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | Sí                 | 0010                | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
 #      | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII       | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura basica         | Incendio                            | 5000000             | Propiedad         |
 #      | (1) 1ª partePropiedad | Final        | AURA JUDITH LOPEZ JULIO CQLII     | Caja Sura       | No                 | 0023                | Hogar con cobertura básica                           | Incendio                            | 2000000             | Propiedad         |
 #      | (1) 1ª parteGeneral   | Parcial      | TODO EN VERDE CQLII               | Caja Sura       | No                 | 0023                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                      | 3000000             | General           |
@@ -26,9 +24,7 @@ Característica: Realizar pago de un siniestro
 
   @claimsEmpresarial
   Esquema del escenario: Pago siniestro empresarial a un Riesgo Consultable
-    Dado que se tiene una póliza de <Tipo y Cobertura>
-    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
-    Y un incidente de tipo <Tipo de incidente>
+    Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
     Y el asegurado o algún tercero de la póliza tiene marca de riesgo consultable
     Cuando se crea una nueva Línea de reserva por la Exposición de <Exposición> por <Categoría de costo> de <Tipo de costo> por un valor de <Valor de Pretensión>
     Y se realice un pago <Tipo de pago> a <Beneficiario del pago> por medio de <Método del pago> el cual cuenta con una línea de reserva <Línea de Reserva> donde el responsable <¿Es pago soloSura?> es Sura por una retención de <Código de Retención>

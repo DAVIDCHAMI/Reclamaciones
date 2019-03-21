@@ -157,7 +157,5 @@ public class NuevoPagoStep {
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
   }
 
-  public void riesgoConsultable() {
-
-  }
+  public void riesgoConsultable() {}
 }

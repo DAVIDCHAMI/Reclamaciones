@@ -20,30 +20,24 @@ public class AjusteReservaPage extends GeneralPage {
   @FindBy(xpath = "//span[@id='NewReserveSet:NewReserveSetScreen:Remove-btnInnerEl']")
   private WebElementFacade btnQuitarLineaReserva;
 
-  @FindBy(
-      id = "NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV"
-  )
+  @FindBy(id = "NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV")
   private WebElementFacade tblLineaReserva;
 
   @FindBy(xpath = "//span[@id='NewReserveSet:NewReserveSetScreen:Update-btnInnerEl']")
   private WebElementFacade btnGuardarAjusteReserva;
 
   @FindBy(
-      xpath =
-          "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
+    xpath =
+        "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
   )
   private WebElementFacade btnCerrarAdvertencia;
 
-  @FindBy(
-      xpath = "//ul[@class='x-list-plain']"
-  )
+  @FindBy(xpath = "//ul[@class='x-list-plain']")
   private WebElementFacade listExposicion;
 
-  @Page
-  MenuClaimPage menuClaimPage;
+  @Page MenuClaimPage menuClaimPage;
 
-  @Page
-  GeneralPage generalPage;
+  @Page GeneralPage generalPage;
 
   public AjusteReservaPage(WebDriver driver) {
     super(driver);
@@ -62,12 +56,13 @@ public class AjusteReservaPage extends GeneralPage {
   }
 
   public void diligenciarCampoLineaReserva(
-      String valorCampoLineaReserva, String encabezadoColumnaDevolver,
+      String valorCampoLineaReserva,
+      String encabezadoColumnaDevolver,
       Integer pocisionColumnaReserva) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblLineaReserva, encabezadoColumnaDevolver,
-            pocisionColumnaReserva);
+        obtenerElementoTablaDatoDesconocido(
+            tblLineaReserva, encabezadoColumnaDevolver, pocisionColumnaReserva);
     int ubicacionFilaNuevaReserva = elementoEncontrado.size() - 1;
     WebElement filaNuevaReserva = elementoEncontrado.get(ubicacionFilaNuevaReserva);
     filaNuevaReserva.click();
