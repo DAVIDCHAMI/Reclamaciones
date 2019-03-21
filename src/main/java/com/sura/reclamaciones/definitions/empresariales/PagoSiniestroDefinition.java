@@ -1,48 +1,42 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
-import com.sura.reclamaciones.steps.reserva.ReversionConstitucionStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
-  @Steps ReversionConstitucionStep reversionConstitucionStep;
-
   @Steps GenericStep genericStep;
 
   PagoSiniestro pagoSiniestro;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
-  public void identificarRiesgoConsultable() throws Throwable {}
+  public void identificarRiesgoConsultable(){}
 
   @Cuando(
-      "^se realice un pago (.*) a (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
-  public void generarPagoReclamacion(
+      "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la linea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
+  public void crearPagoAutos(
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
+      String cobertura,
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
+    nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
         new PagoSiniestro(
-            (genericStep.getFilasModelo(
-                String.valueOf(PAGO_SINIESTRO.getValor()),
-                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
-    nuevoPagoStep.crearNuevoPago();
+            (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
         tipoPago,
