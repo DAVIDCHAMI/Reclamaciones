@@ -25,41 +25,43 @@ public class ReversionConstitucionStep {
 
   List<WebElement> lstFilaReserva;
 
-  @Page
-  AjusteReservaPage ajusteReservaPage;
+  @Page AjusteReservaPage ajusteReservaPage;
 
-  @Page
-  VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-  @Page
-  GeneralPage generalPage;
+  @Page GeneralPage generalPage;
 
-  @Page
-  MenuClaimPage menuClaimPage;
+  @Page MenuClaimPage menuClaimPage;
 
-  @Page
-  TransaccionDatoFinancieroPage transaccionDatoFinancieroPage;
+  @Page TransaccionDatoFinancieroPage transaccionDatoFinancieroPage;
 
   public void ajustarReserva(String valorAjustar) {
     ajusteReservaPage.ajustarReserva();
-    ajusteReservaPage
-        .diligenciarCampoLineaReserva(valorAjustar, NUEVAS_RESERVAS_DISPONIBLES, Integer.parseInt(
-            POSICION_VALOR_RESERVA.getValor()));
+    ajusteReservaPage.diligenciarCampoLineaReserva(
+        valorAjustar,
+        NUEVAS_RESERVAS_DISPONIBLES,
+        Integer.parseInt(POSICION_VALOR_RESERVA.getValor()));
   }
 
-  public void crearNuevaLineaReserva(String lineaReserva, String tipoCosto,
-      String categoriaCosto, String valorNuevaReserva) {
+  public void crearNuevaLineaReserva(
+      String lineaReserva, String tipoCosto, String categoriaCosto, String valorNuevaReserva) {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
-    ajusteReservaPage
-        .diligenciarCampoLineaReserva(lineaReserva, EXPOSICION_LINEA_RESERVA.getValor(),
-            Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
-    ajusteReservaPage.diligenciarCampoLineaReserva(categoriaCosto, CATEGORIA_COSTO_CAMPO.getValor(),
+    ajusteReservaPage.diligenciarCampoLineaReserva(
+        lineaReserva,
+        EXPOSICION_LINEA_RESERVA.getValor(),
         Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
-    ajusteReservaPage.diligenciarCampoLineaReserva(tipoCosto, TIPO_COSTO_CAMPO.getValor(),
+    ajusteReservaPage.diligenciarCampoLineaReserva(
+        categoriaCosto,
+        CATEGORIA_COSTO_CAMPO.getValor(),
         Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
-    ajusteReservaPage
-        .diligenciarCampoLineaReserva(valorNuevaReserva, VALOR_NUEVA_RESERVA_CAMPO.getValor(),
-            Integer.parseInt(POSICION_VALOR_RESERVA.getValor()));
+    ajusteReservaPage.diligenciarCampoLineaReserva(
+        tipoCosto,
+        TIPO_COSTO_CAMPO.getValor(),
+        Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
+    ajusteReservaPage.diligenciarCampoLineaReserva(
+        valorNuevaReserva,
+        VALOR_NUEVA_RESERVA_CAMPO.getValor(),
+        Integer.parseInt(POSICION_VALOR_RESERVA.getValor()));
   }
 
   public void verificarAjusteReserva(String categoriaCosto, String deducible) {
@@ -76,5 +78,4 @@ public class ReversionConstitucionStep {
             + deducibleVisualizado,
         deducibleVisualizado.equals(deducible));
   }
-
 }

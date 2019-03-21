@@ -156,5 +156,4 @@ public class NuevoPagoStep {
     detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
   }
-
 }

@@ -7,8 +7,7 @@ import net.thucydides.core.annotations.Steps;
 
 public class ConstitucionNuevaLineaReservaDefinition {
 
-  @Steps
-  ReversionConstitucionStep reversionConstitucionStep;
+  @Steps ReversionConstitucionStep reversionConstitucionStep;
 
   @Cuando(
       "^se crea una nueva Línea de reserva por la Exposición de (.*) por (.*) de (.*) por un valor de (.*)$")
@@ -22,5 +21,4 @@ public class ConstitucionNuevaLineaReservaDefinition {
   public void verificarConstitucionNuevaLineaReserva(String categoriaCosto, String deducible) {
     reversionConstitucionStep.verificarAjusteReserva(categoriaCosto, deducible);
   }
-
 }

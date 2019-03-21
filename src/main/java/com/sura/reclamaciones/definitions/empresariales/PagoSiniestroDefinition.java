@@ -20,7 +20,7 @@ public class PagoSiniestroDefinition {
   PagoSiniestro pagoSiniestro;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
-  public void identificarRiesgoConsultable(){}
+  public void identificarRiesgoConsultable() {}
 
   @Cuando(
       "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la linea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
@@ -47,8 +47,8 @@ public class PagoSiniestroDefinition {
         pagoSiniestro.getLstPago());
   }
 
-  @Entonces("^(.*)se genera una orden de pago para que le sea entregado al usuario$")
-  public void verificarPago(String aplicaOrdenPago) {
+  @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
+  public void verificarPago() {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 }
