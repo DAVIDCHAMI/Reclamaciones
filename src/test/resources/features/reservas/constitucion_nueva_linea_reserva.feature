@@ -1,5 +1,5 @@
 # language: es
-Característica: Reversión de constitución o ajuste manual de la reserva de un siniestro
+Característica: Constitución de una nueva línea de reserva de un siniestro
 
   Como analista de reclamaciones
   Quiero que sea posible realizar ajustes en las reservas

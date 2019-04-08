@@ -58,11 +58,11 @@ public class AjusteReservaPage extends GeneralPage {
   public void diligenciarCampoLineaReserva(
       String valorCampoLineaReserva,
       String encabezadoColumnaDevolver,
-      Integer pocisionColumnaReserva) {
+      Integer posicionColumnaReserva) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
-            tblLineaReserva, encabezadoColumnaDevolver, pocisionColumnaReserva);
+            tblLineaReserva, encabezadoColumnaDevolver, posicionColumnaReserva);
     int ubicacionFilaNuevaReserva = elementoEncontrado.size() - 1;
     WebElement filaNuevaReserva = elementoEncontrado.get(ubicacionFilaNuevaReserva);
     filaNuevaReserva.click();
