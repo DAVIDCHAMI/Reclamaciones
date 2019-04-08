@@ -6,7 +6,6 @@ Característica: Realizar pago de un siniestro
   Para responderle al cliente por su siniestro
 
   @claimsEmpresarial
-
   Esquema del escenario: Pago siniestro empresarial
     Dado que se tiene una póliza de <Tipo y Cobertura>
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>

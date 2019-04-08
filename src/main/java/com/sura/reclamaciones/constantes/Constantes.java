@@ -174,6 +174,7 @@ public enum Constantes {
   ANALISTA_RECLAMACION_AUTO("analistaReclamacionAuto"),
   ANALISTA_RECLAMACION_EMPRESARIAL("analistaReclamacionEmp"),
   ANALISTA_RECLAMACION_ATR("analistaReclamacionEmpAtr"),
+  ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO("superUsuario"),
   SI("si"),
   NO("no"),
   NIT("98630089"),
