@@ -16,7 +16,7 @@ Característica: Realizar pago de un siniestro
     Ejemplos:
       | Línea de Reserva      | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                                     | Causa                               | Valor de Pretensión | Tipo de incidente |
       | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | Sí                 | 0010                | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
-      | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII       | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura basica         | Incendio                            | 5000000             | Propiedad         |
+      | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII       | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica         | Incendio                            | 5000000             | Propiedad         |
       | (1) 1ª partePropiedad | Final        | AURA JUDITH LOPEZ JULIO CQLII     | Caja Sura       | No                 | 0023                | Hogar con cobertura básica                           | Incendio                            | 2000000             | Propiedad         |
       | (1) 1ª parteGeneral   | Parcial      | TODO EN VERDE CQLII               | Caja Sura       | No                 | 0023                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                      | 3000000             | General           |
       | (1) 1ª parteGeneral   | Final        | HERMANOS LTDA. CQLII              | Pago por banco  | No                 | 0023                | Responsabilidad Civil Predios y operaciones          | Responsabilidad civil del asegurado | 3000000             | General           |
@@ -28,7 +28,7 @@ Característica: Realizar pago de un siniestro
     Dado que se tiene un siniestro de <Origen> con un tipo de cobertura de <Tipo de cobertura>
     Cuando se genere un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la linea de reserva <Línea de reserva> donde el responsable <Solo Sura> es Sura con una retención de <Código de retención pago>
     Entonces se obtiene el pago del beneficiario
-    
+
     Ejemplos:
       |Origen         | Línea de reserva                | Tipo de pago| Beneficiario de pago             | Método de pago  | Código de retención pago | Solo Sura| Tipo de cobertura  |
       |creacionAvisoWS| (1) 3ª parteLesiones corporales | Parcial     | JHON FEOR FEOR FEOR              | Pago por banco  | 0099                     | No       | RC Lesión a Persona|
