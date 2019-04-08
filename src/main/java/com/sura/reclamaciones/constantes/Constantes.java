@@ -14,6 +14,7 @@ public enum Constantes {
   ANALISTA_RECLAMACION_ATR("analistaReclamacionEmpAtr"),
   ANALISTA_RECLAMACION_AUTO("analistaReclamacionAuto"),
   ANALISTA_RECLAMACION_EMPRESARIAL("analistaReclamacionEmp"),
+  ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO("superUsuario"),
   ANULACION("Anulacion"),
   APROBAR_CONTROL_POLICY("Aprobar"),
   ARCHIVO_DE_POLIZA("Archivo de póliza"),

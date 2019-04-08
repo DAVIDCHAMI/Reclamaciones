@@ -16,19 +16,19 @@ public class ExpedicionAuto {
   private boolean ceroKms;
   private String bonificacionComercial;
   private String bonificacionTecnica;
-  private String valorLimiteDanoTercero;
-  private String valorDeducibleDanoTercero;
-  private String valorPerdidaTotalDanosCarro;
-  private String valorPerdidaParcialDanosCarro;
-  private String valorGastoTransporteDanosCarro;
-  private String valorHurtoTotal;
-  private String valorHurtoParcial;
-  private String valorHurtoGasTrans;
-  private String valorPerdidaParcialCarroReemplazo;
-  private String valorPerdidaTotalCarroReemplazo;
-  private String valorAccidentesConductor;
-  private String valorPerdidaLlaves;
-  private String valorAsistencia;
+  private String valorLimiteDanioTercero;
+  private String valorDeducibleDanioTercero;
+  private String valorPerdidaTotalDaniosCarro;
+  private String valorPerdidaParcialDaniosCarro;
+  private String valorGastoTransporteDaniosCarro;
+  private String valorSustraccionTotal;
+  private String valorSustraccionParcial;
+  private String valorHurtoGastoTransporte;
+  private String valorPerdidaParcialVehiculoReemplazo;
+  private String valorPerdidaTotalVehiculoReemplazo;
+  private String valorAccidenteConductor;
+  private String valorPerdidaLlave;
+  private String valorAsistencias;
   private String expedicionTotal;
   private List<ExpedicionAuto> lstExpedicion = new ArrayList<>();
 
@@ -50,20 +50,21 @@ public class ExpedicionAuto {
     this.ceroKms = Boolean.parseBoolean(datosExpedicion.get("ceroKms"));
     this.bonificacionComercial = datosExpedicion.get("bonificacionComercial");
     this.bonificacionTecnica = datosExpedicion.get("bonificacionTecnica");
-    this.valorLimiteDanoTercero = datosExpedicion.get("valorLimiteDanoTercero");
-    this.valorDeducibleDanoTercero = datosExpedicion.get("valorDeducibleDanoTercero");
-    this.valorPerdidaTotalDanosCarro = datosExpedicion.get("valorPerdidaTotalDanosCarro");
-    this.valorPerdidaParcialDanosCarro = datosExpedicion.get("valorPerdidaParcialDanosCarro");
-    this.valorGastoTransporteDanosCarro = datosExpedicion.get("valorGastoTransporteDanosCarro");
-    this.valorHurtoTotal = datosExpedicion.get("valorHurtoTotal");
-    this.valorHurtoParcial = datosExpedicion.get("valorHurtoParcial");
-    this.valorHurtoGasTrans = datosExpedicion.get("valorHurtoGasTrans");
-    this.valorPerdidaParcialCarroReemplazo =
+    this.valorLimiteDanioTercero = datosExpedicion.get("valorLimiteDanoTercero");
+    this.valorDeducibleDanioTercero = datosExpedicion.get("valorDeducibleDanoTercero");
+    this.valorPerdidaTotalDaniosCarro = datosExpedicion.get("valorPerdidaTotalDanosCarro");
+    this.valorPerdidaParcialDaniosCarro = datosExpedicion.get("valorPerdidaParcialDanosCarro");
+    this.valorGastoTransporteDaniosCarro = datosExpedicion.get("valorGastoTransporteDanosCarro");
+    this.valorSustraccionTotal = datosExpedicion.get("valorHurtoTotal");
+    this.valorSustraccionParcial = datosExpedicion.get("valorHurtoParcial");
+    this.valorHurtoGastoTransporte = datosExpedicion.get("valorHurtoGasTrans");
+    this.valorPerdidaParcialVehiculoReemplazo =
         datosExpedicion.get("valorPerdidaParcialCarroReemplazo");
-    this.valorPerdidaTotalCarroReemplazo = datosExpedicion.get("valorPerdidaTotalCarroReemplazo");
-    this.valorAccidentesConductor = datosExpedicion.get("valorAccidentesConductor");
-    this.valorPerdidaLlaves = datosExpedicion.get("valorPerdidaLlaves");
-    this.valorAsistencia = datosExpedicion.get("valorAsistencia");
+    this.valorPerdidaTotalVehiculoReemplazo =
+        datosExpedicion.get("valorPerdidaTotalCarroReemplazo");
+    this.valorAccidenteConductor = datosExpedicion.get("valorAccidentesConductor");
+    this.valorPerdidaLlave = datosExpedicion.get("valorPerdidaLlaves");
+    this.valorAsistencias = datosExpedicion.get("valorAsistencia");
     this.expedicionTotal = datosExpedicion.get("ExpedicionTotal");
   }
 
@@ -78,55 +79,55 @@ public class ExpedicionAuto {
   }
 
   public void setValorLimiteDanoTercero(String valorLimiteDanoTercero) {
-    this.valorLimiteDanoTercero = valorLimiteDanoTercero;
+    this.valorLimiteDanioTercero = valorLimiteDanoTercero;
   }
 
   public void setValorDeducibleDanoTercero(String valorDeducibleDanoTercero) {
-    this.valorDeducibleDanoTercero = valorDeducibleDanoTercero;
+    this.valorDeducibleDanioTercero = valorDeducibleDanoTercero;
   }
 
   public void setValorPerdidaTotalDanosCarro(String valorPerdidaTotalDanosCarro) {
-    this.valorPerdidaTotalDanosCarro = valorPerdidaTotalDanosCarro;
+    this.valorPerdidaTotalDaniosCarro = valorPerdidaTotalDanosCarro;
   }
 
   public void setValorPerdidaParcialDanosCarro(String valorPerdidaParcialDanosCarro) {
-    this.valorPerdidaParcialDanosCarro = valorPerdidaParcialDanosCarro;
+    this.valorPerdidaParcialDaniosCarro = valorPerdidaParcialDanosCarro;
   }
 
   public void setValorGastoTransporteDanosCarro(String valorGastoTransporteDanosCarro) {
-    this.valorGastoTransporteDanosCarro = valorGastoTransporteDanosCarro;
+    this.valorGastoTransporteDaniosCarro = valorGastoTransporteDanosCarro;
   }
 
   public void setValorHurtoTotal(String valorHurtoTotal) {
-    this.valorHurtoTotal = valorHurtoTotal;
+    this.valorSustraccionTotal = valorHurtoTotal;
   }
 
   public void setValorHurtoParcial(String valorHurtoParcial) {
-    this.valorHurtoParcial = valorHurtoParcial;
+    this.valorSustraccionParcial = valorHurtoParcial;
   }
 
   public void setValorHurtoGasTrans(String valorHurtoGasTrans) {
-    this.valorHurtoGasTrans = valorHurtoGasTrans;
+    this.valorHurtoGastoTransporte = valorHurtoGasTrans;
   }
 
   public void setValorPerdidaParcialCarroReemplazo(String valorPerdidaParcialCarroReemplazo) {
-    this.valorPerdidaParcialCarroReemplazo = valorPerdidaParcialCarroReemplazo;
+    this.valorPerdidaParcialVehiculoReemplazo = valorPerdidaParcialCarroReemplazo;
   }
 
   public void setValorPerdidaTotalCarroReemplazo(String valorPerdidaTotalCarroReemplazo) {
-    this.valorPerdidaTotalCarroReemplazo = valorPerdidaTotalCarroReemplazo;
+    this.valorPerdidaTotalVehiculoReemplazo = valorPerdidaTotalCarroReemplazo;
   }
 
   public void setValorAccidentesConductor(String valorAccidentesConductor) {
-    this.valorAccidentesConductor = valorAccidentesConductor;
+    this.valorAccidenteConductor = valorAccidentesConductor;
   }
 
   public void setValorPerdidaLlaves(String valorPerdidaLlaves) {
-    this.valorPerdidaLlaves = valorPerdidaLlaves;
+    this.valorPerdidaLlave = valorPerdidaLlaves;
   }
 
   public void setValorAsistencia(String valorAsistencia) {
-    this.valorAsistencia = valorAsistencia;
+    this.valorAsistencias = valorAsistencia;
   }
 
   public String getVersion() {
@@ -170,55 +171,55 @@ public class ExpedicionAuto {
   }
 
   public String getValorLimiteDanoTercero() {
-    return valorLimiteDanoTercero;
+    return valorLimiteDanioTercero;
   }
 
   public String getValorDeducibleDanoTercero() {
-    return valorDeducibleDanoTercero;
+    return valorDeducibleDanioTercero;
   }
 
   public String getValorPerdidaTotalDanosCarro() {
-    return valorPerdidaTotalDanosCarro;
+    return valorPerdidaTotalDaniosCarro;
   }
 
   public String getValorPerdidaParcialDanosCarro() {
-    return valorPerdidaParcialDanosCarro;
+    return valorPerdidaParcialDaniosCarro;
   }
 
   public String getValorGastoTransporteDanosCarro() {
-    return valorGastoTransporteDanosCarro;
+    return valorGastoTransporteDaniosCarro;
   }
 
   public String getValorHurtoTotal() {
-    return valorHurtoTotal;
+    return valorSustraccionTotal;
   }
 
   public String getValorHurtoParcial() {
-    return valorHurtoParcial;
+    return valorSustraccionParcial;
   }
 
   public String getValorHurtoGasTrans() {
-    return valorHurtoGasTrans;
+    return valorHurtoGastoTransporte;
   }
 
   public String getValorPerdidaParcialCarroReemplazo() {
-    return valorPerdidaParcialCarroReemplazo;
+    return valorPerdidaParcialVehiculoReemplazo;
   }
 
   public String getValorPerdidaTotalCarroReemplazo() {
-    return valorPerdidaTotalCarroReemplazo;
+    return valorPerdidaTotalVehiculoReemplazo;
   }
 
   public String getValorAccidentesConductor() {
-    return valorAccidentesConductor;
+    return valorAccidenteConductor;
   }
 
   public String getValorPerdidaLlaves() {
-    return valorPerdidaLlaves;
+    return valorPerdidaLlave;
   }
 
   public String getValorAsistencia() {
-    return valorAsistencia;
+    return valorAsistencias;
   }
 
   public String getExpedicionTotal() {

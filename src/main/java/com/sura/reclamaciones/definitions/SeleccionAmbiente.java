@@ -3,6 +3,7 @@ package com.sura.reclamaciones.definitions;
 import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_ATR;
 import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_AUTO;
 import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL;
+import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO;
 import static com.sura.reclamaciones.constantes.Constantes.DESARROLLO;
 import static com.sura.reclamaciones.constantes.Constantes.LABORATORIO;
 
@@ -26,6 +27,15 @@ public class SeleccionAmbiente {
     if (LABORATORIO.getValor().equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionLab(ANALISTA_RECLAMACION_EMPRESARIAL.getValor());
     } else if (DESARROLLO.getValor().equals(ambientesUtil.getAmbiente())) {
+      loginClaimStep.iniciarSesionAmbienteDllo();
+    }
+  }
+
+  @Before("@claimsEmpresarialSuperUsuario")
+  public void seleccionarAmbienteEmpresarialSuperUsuario() throws IOException {
+    if (LABORATORIO.equals(ambientesUtil.getAmbiente())) {
+      loginClaimStep.iniciarSesionLab(ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO.getValor());
+    } else if (DESARROLLO.equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionAmbienteDllo();
     }
   }
