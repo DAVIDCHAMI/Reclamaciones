@@ -2,6 +2,7 @@ package com.sura.reclamaciones.pages.reservas;
 
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA_CAMPO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -59,7 +60,7 @@ public class AjusteReservaPage extends GeneralPage {
       String valorCampoLineaReserva,
       String encabezadoColumnaDevolver,
       Integer posicionColumnaReserva) {
-
+    withTimeoutOf(30, SECONDS).waitFor(tblLineaReserva);
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
             tblLineaReserva, encabezadoColumnaDevolver, posicionColumnaReserva);
