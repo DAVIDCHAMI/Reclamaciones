@@ -105,19 +105,19 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
       String porcentajeRetenido,
       String proporcionCuotaParte,
       String porcentajeCoaseguroCedido) {
-    String strValorPantallaReaseguro;
+    String strValorTransaccion;
     double dblValorCedido;
     if (lstFilaTransaccion.size() > 11) {
-      strValorPantallaReaseguro =
+      strValorTransaccion =
           lstFilaTransaccion.get(13).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     } else {
-      strValorPantallaReaseguro =
+      strValorTransaccion =
           lstFilaTransaccion.get(2).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "");
     }
     dblValorRetenido =
         abs(
             calcularValorRetenido(
-                strValorPantallaReaseguro,
+                strValorTransaccion,
                 porcentajeRetenido,
                 proporcionCuotaParte,
                 porcentajeCoaseguroCedido));
@@ -126,10 +126,10 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
             Double.parseDouble(
                 lstFilaTransaccion.get(4).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "")));
     if (porcentajeCoaseguroCedido.equals(CERO.getValor())) {
-      dblValorCedido = abs(Double.parseDouble(strValorPantallaReaseguro)) - dblValorRetenido;
+      dblValorCedido = abs(Double.parseDouble(strValorTransaccion)) - dblValorRetenido;
     } else {
       dblValorCedido =
-          (abs(Double.parseDouble(strValorPantallaReaseguro))
+          (abs(Double.parseDouble(strValorTransaccion))
                   * (Double.parseDouble(porcentajeCoaseguroCedido)
                       / Double.parseDouble(PORCIENTO.getValor())))
               - dblValorRetenido;
@@ -280,7 +280,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               porcentajeRetenido,
               proporcionCuotaParte,
               porcentajeCoaseguroCedido,
-              1);
+              posicionElementoFila);
     }
     return blnReaseguro;
   }
