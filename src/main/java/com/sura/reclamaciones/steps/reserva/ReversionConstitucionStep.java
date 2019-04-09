@@ -46,6 +46,7 @@ public class ReversionConstitucionStep {
   public void crearNuevaLineaReserva(
       String lineaReserva, String tipoCosto, String categoriaCosto, String valorNuevaReserva) {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
+    generalPage.realizarEsperaCarga();
     ajusteReservaPage.diligenciarCampoLineaReserva(
         lineaReserva,
         EXPOSICION_LINEA_RESERVA.getValor(),

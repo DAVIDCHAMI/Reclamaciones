@@ -60,7 +60,7 @@ public class AjusteReservaPage extends GeneralPage {
       String valorCampoLineaReserva,
       String encabezadoColumnaDevolver,
       Integer posicionColumnaReserva) {
-    withTimeoutOf(30, SECONDS).waitFor(tblLineaReserva);
+    realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
             tblLineaReserva, encabezadoColumnaDevolver, posicionColumnaReserva);
@@ -75,6 +75,7 @@ public class AjusteReservaPage extends GeneralPage {
     } else {
       generalPage.seleccionarOpcionLista(listExposicion, valorCampoLineaReserva);
     }
+    realizarEsperaCarga();
   }
 
   public void cerrarAdvertenciaLimiteAgregado() {
