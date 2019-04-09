@@ -20,7 +20,9 @@ public class PagoSiniestroDefinition {
   PagoSiniestro pagoSiniestro;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
-  public void identificarRiesgoConsultable() {}
+  public void identificarRiesgoConsultable() {
+    //TODO: Falta adaptar con la automatización de marcación de audotoría
+  }
 
   @Cuando(
       "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la linea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura con una retención de (.*)$")

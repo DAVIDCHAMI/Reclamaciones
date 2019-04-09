@@ -2,7 +2,6 @@ package com.sura.reclamaciones.pages.reservas;
 
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA_CAMPO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
