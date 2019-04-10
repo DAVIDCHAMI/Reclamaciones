@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.reservas;
 
 import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_VALOR_NUEVA_RESERVA_EMPRESARIALES;
+import static com.sura.reclamaciones.constantes.Constantes.POSICION_VALOR_RESERVA_EMPRESARIALES;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -27,17 +28,19 @@ public class AjusteReservaPage extends GeneralPage {
   private WebElementFacade btnGuardarAjusteReserva;
 
   @FindBy(
-    xpath =
-        "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
+      xpath =
+          "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
   )
   private WebElementFacade btnCerrarAdvertencia;
 
   @FindBy(xpath = "//ul[@class='x-list-plain']")
   private WebElementFacade listExposicion;
 
-  @Page MenuClaimPage menuClaimPage;
+  @Page
+  MenuClaimPage menuClaimPage;
 
-  @Page GeneralPage generalPage;
+  @Page
+  GeneralPage generalPage;
 
   public AjusteReservaPage(WebDriver driver) {
     super(driver);
@@ -63,10 +66,12 @@ public class AjusteReservaPage extends GeneralPage {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
             tblLineaReserva, encabezadoColumnaDevolver, posicionColumnaReserva);
-    int ubicacionFilaNuevaReserva = elementoEncontrado.size() - 1;
+    int ubicacionFilaNuevaReserva = elementoEncontrado.size() + Integer
+        .parseInt(POSICION_VALOR_RESERVA_EMPRESARIALES.getValor());
     WebElement filaNuevaReserva = elementoEncontrado.get(ubicacionFilaNuevaReserva);
     filaNuevaReserva.click();
-    if (encabezadoColumnaDevolver.equals(NOMBRE_CAMPO_VALOR_NUEVA_RESERVA_EMPRESARIALES.getValor())) {
+    if (encabezadoColumnaDevolver
+        .equals(NOMBRE_CAMPO_VALOR_NUEVA_RESERVA_EMPRESARIALES.getValor())) {
       evaluateJavascript(
           String.format("$('input[name|=\"NewAmount\"]').val('%s')", valorCampoLineaReserva));
       btnGuardarAjusteReserva.click();
