@@ -240,36 +240,37 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
 
   private boolean verificarRecupero() {
     boolean blnValorRecupero = false;
+    boolean blnReaseguro = false;
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
-    for (int posicionElementoFila = lstReaseguroDetallado.size() - 1;
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION_REASEGURO.getValor(), 3);
+    for (int posicionElementoFila = 0;
         lstReaseguroDetallado.size() > posicionElementoFila;
         posicionElementoFila++) {
-      boolean blnReaseguro =
+      blnReaseguro =
           verificarDistribucionReaseguro(
               dblMaximoRetencioPura,
               porcentajeRetenido,
               proporcionCuotaParte,
               porcentajeCoaseguroCedido,
-              1);
+              posicionElementoFila+1);
+    }
       String strValorTransaccion =
-          lstReaseguroDetallado
-              .get(posicionElementoFila)
-              .getText()
-              .replaceAll(FORMATEAR_MONTOS.getValor(), "");
+           lstReaseguroDetallado
+               .get(lstReaseguroDetallado.size()-1)
+               .getText()
+               .replaceAll(FORMATEAR_MONTOS.getValor(), "");
       blnValorRecupero =
           strValorTransaccion.equals(
               Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor()));
       blnValorRecupero = blnValorRecupero && blnReaseguro;
-    }
     return blnValorRecupero;
   }
 
   private boolean verificarReserva() {
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 2);
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION_REASEGURO.getValor(), 2);
     boolean blnReaseguro = false;
     for (int posicionElementoFila = 0;
         lstReaseguroDetallado.size() > posicionElementoFila;
@@ -280,7 +281,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               porcentajeRetenido,
               proporcionCuotaParte,
               porcentajeCoaseguroCedido,
-              posicionElementoFila);
+              posicionElementoFila+1);
     }
     return blnReaseguro;
   }
