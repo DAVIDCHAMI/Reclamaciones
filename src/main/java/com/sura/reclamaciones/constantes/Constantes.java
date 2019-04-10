@@ -78,7 +78,7 @@ public enum Constantes {
   INFORMACION_COLA_TRABAJO("Información de cola de trabajo"),
   INICIO("Inicio"),
   ITERACIONES_ANULACION("20"),
-  ITERACIONES_PAGO("10"),
+  ITERACIONES_PAGO("20"),
   ITERACIONES_RECUPERO("3"),
   IVA("Iva"),
   IVA_CARGOS_FACTURAS("IVA"),
