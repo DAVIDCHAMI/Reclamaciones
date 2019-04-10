@@ -12,9 +12,9 @@ Característica: Constitución de una línea de reserva de un siniestro
     Entonces se genera una nueva Línea de reserva de <Categoría de costo> con un deducible de <Deducible>
     Ejemplos:
 
-      | Tipo y Cobertura                                    | Causa         | Tipo de incidente | Exposición                                     | Categoría de costo  | Tipo de costo                | Valor de Pretensión | Deducible |
-      | Sustracción con cobertura Sustracción con violencia | Causas varias | Contenido         | (1) 1ª parteContenido - CUATRO TEMPORADAS S.A. CQLII | Gastos de siniestro | Gasto - A&O (ajuste y otros) | 4000000             | 0         |
-
+      | Tipo y Cobertura                                     | Causa          | Tipo de incidente | Exposición                                           | Categoría de costo  | Tipo de costo                | Valor de Pretensión | Deducible |
+      | Sustracción con cobertura Sustracción con violencia  | Causas varias  | Contenido         | (1) 1ª parteContenido - CUATRO TEMPORADAS S.A. CQLII | Gastos de siniestro | Gasto - A&O (ajuste y otros) | 4000000             | 0         |
+      | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII            | Gastos de siniestro | Gasto - A&O (ajuste y otros) | 3000000             | 0         |
 
   @claimsEmpresarial
   Esquema del escenario: reversión de constitución

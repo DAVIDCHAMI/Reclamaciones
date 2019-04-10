@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.reservas;
 
-import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA_CAMPO;
+import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_VALOR_NUEVA_RESERVA_EMPRESARIALES;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -66,11 +66,10 @@ public class AjusteReservaPage extends GeneralPage {
     int ubicacionFilaNuevaReserva = elementoEncontrado.size() - 1;
     WebElement filaNuevaReserva = elementoEncontrado.get(ubicacionFilaNuevaReserva);
     filaNuevaReserva.click();
-    if (encabezadoColumnaDevolver.equals(VALOR_NUEVA_RESERVA_CAMPO.getValor())) {
+    if (encabezadoColumnaDevolver.equals(NOMBRE_CAMPO_VALOR_NUEVA_RESERVA_EMPRESARIALES.getValor())) {
       evaluateJavascript(
           String.format("$('input[name|=\"NewAmount\"]').val('%s')", valorCampoLineaReserva));
       btnGuardarAjusteReserva.click();
-      realizarEsperaCarga();
     } else {
       generalPage.seleccionarOpcionLista(listExposicion, valorCampoLineaReserva);
     }

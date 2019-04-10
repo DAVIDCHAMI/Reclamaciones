@@ -13,12 +13,13 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de Reserva      | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                                     | Causa                               | Valor de Pretensión | Tipo de incidente |
-      | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | Sí                 | 0010                | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
+      | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | No                 | 0010                | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
       | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII       | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica         | Incendio                            | 5000000             | Propiedad         |
       | (1) 1ª partePropiedad | Final        | AURA JUDITH LOPEZ JULIO CQLII     | Caja Sura       | No                 | 0023                | Hogar con cobertura básica                           | Incendio                            | 2000000             | Propiedad         |
       | (1) 1ª parteGeneral   | Parcial      | TODO EN VERDE CQLII               | Caja Sura       | No                 | 0023                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                      | 3000000             | General           |
       | (1) 1ª parteGeneral   | Final        | HERMANOS LTDA. CQLII              | Pago por banco  | No                 | 0023                | Responsabilidad Civil Predios y operaciones          | Responsabilidad civil del asegurado | 3000000             | General           |
       | (1) 1ª parteContenido | Final        | JUAN CARLOS PALACIO RAMIREZ CQLII | Pago por banco  | No                 | 0099                | Transportes automáticos de mercancía                 | Amit/ huelga, conmoción civil       | 4000000             | Contenido         |
+      | (1) 1ª parteContenido | Parcial      | PINTORES S.A. CQLII II            | Pago por banco  | No                 | 0023                | Sustracción con cobertura Sustracción con violencia  | Causas varias                       | 4000000             | Contenido         |
 
 
   @claimsEmpresarial
@@ -30,8 +31,9 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva                                                                                            | Tipo de pago | Beneficiario de pago   | Método de pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                                    | Causa         | Valor de Pretensión | Tipo de incidente | Exposición                                           | Categoría de costo  | Tipo de costo                | ¿Genera orden de pago? |
-      | (1) 1ª parteContenido - CUATRO TEMPORADAS S.A. CQLII; Gasto - A&O (ajuste y otros)/Gastos de siniestro; COP | Parcial      | PINTORES S.A. CQLII II | Pago por banco | No                 | 0079                | Sustracción con cobertura Sustracción con violencia | Causas varias | 4000000             | Contenido         | (1) 1ª parteContenido - CUATRO TEMPORADAS S.A. CQLII | Gastos de siniestro | Gasto - A&O (ajuste y otros) | Si                     |
+      | Línea de reserva                                                                                            | Tipo de pago | Beneficiario de pago   | Método de pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                                     | Causa          | Valor de Pretensión | Tipo de incidente | Exposición                                           | Categoría de costo  | Tipo de costo                | ¿Genera orden de pago? |
+      | (1) 1ª parteGeneral - TODO EN VERDE CQLII; Gasto - A&O (ajuste y otros)/Gastos de siniestro; COP            | Parcial      | TODO EN VERDE CQLII    | Pago por banco | No                 | 0023                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII            | Gastos de siniestro | Gasto - A&O (ajuste y otros) | Si                     |
+      | (1) 1ª parteContenido - CUATRO TEMPORADAS S.A. CQLII; Gasto - A&O (ajuste y otros)/Gastos de siniestro; COP | Parcial      | PINTORES S.A. CQLII II | Pago por banco | No                 | 0023                | Sustracción con cobertura Sustracción con violencia  | Causas varias  | 4000000             | Contenido         | (1) 1ª parteContenido - CUATRO TEMPORADAS S.A. CQLII | Gastos de siniestro | Gasto - A&O (ajuste y otros) | Si                     |
 
 
   @claimsAuto

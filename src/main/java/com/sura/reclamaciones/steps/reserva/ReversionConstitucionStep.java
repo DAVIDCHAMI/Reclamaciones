@@ -1,13 +1,13 @@
 package com.sura.reclamaciones.steps.reserva;
 
-import static com.sura.reclamaciones.constantes.Constantes.CATEGORIA_COSTO_CAMPO;
-import static com.sura.reclamaciones.constantes.Constantes.DEDUCIBLE_GASTO;
-import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_LINEA_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_CATEGORIA_COSTO_RESERVA_EMPRESARIALES;
+import static com.sura.reclamaciones.constantes.Constantes.DEDUCIBLE_RESERVA_GASTO_EMPRESARIALES;
+import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_EXPOSICION_LINEA_RESERVA_EMPRESARIALES;
 import static com.sura.reclamaciones.constantes.Constantes.POSICION_COLUMNA_RESERVA;
-import static com.sura.reclamaciones.constantes.Constantes.POSICION_VALOR_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.POSICION_VALOR_RESERVA_EMPRESARIALES;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_CATEGORIA_COSTO_GASTO;
-import static com.sura.reclamaciones.constantes.Constantes.TIPO_COSTO_CAMPO;
-import static com.sura.reclamaciones.constantes.Constantes.VALOR_NUEVA_RESERVA_CAMPO;
+import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_TIPO_COSTO_RESERVA_EMPRESARIALES;
+import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_VALOR_NUEVA_RESERVA_EMPRESARIALES;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 import static com.sura.reclamaciones.constantes.ReservaConstante.NUEVAS_RESERVAS_DISPONIBLES;
 
@@ -40,7 +40,7 @@ public class ReversionConstitucionStep {
     ajusteReservaPage.diligenciarCampoLineaReserva(
         valorAjustar,
         NUEVAS_RESERVAS_DISPONIBLES,
-        Integer.parseInt(POSICION_VALOR_RESERVA.getValor()));
+        Integer.parseInt(POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
   }
 
   public void crearNuevaLineaReserva(
@@ -49,26 +49,26 @@ public class ReversionConstitucionStep {
     generalPage.realizarEsperaCarga();
     ajusteReservaPage.diligenciarCampoLineaReserva(
         lineaReserva,
-        EXPOSICION_LINEA_RESERVA.getValor(),
+        NOMBRE_CAMPO_EXPOSICION_LINEA_RESERVA_EMPRESARIALES.getValor(),
         Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
     ajusteReservaPage.diligenciarCampoLineaReserva(
         categoriaCosto,
-        CATEGORIA_COSTO_CAMPO.getValor(),
+        NOMBRE_CAMPO_CATEGORIA_COSTO_RESERVA_EMPRESARIALES.getValor(),
         Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
     ajusteReservaPage.diligenciarCampoLineaReserva(
         tipoCosto,
-        TIPO_COSTO_CAMPO.getValor(),
+        NOMBRE_CAMPO_TIPO_COSTO_RESERVA_EMPRESARIALES.getValor(),
         Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
     ajusteReservaPage.diligenciarCampoLineaReserva(
         valorNuevaReserva,
-        VALOR_NUEVA_RESERVA_CAMPO.getValor(),
-        Integer.parseInt(POSICION_VALOR_RESERVA.getValor()));
+        NOMBRE_CAMPO_VALOR_NUEVA_RESERVA_EMPRESARIALES.getValor(),
+        Integer.parseInt(POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
   }
 
   public void verificarAjusteReserva(String categoriaCosto, String deducible) {
     String deducibleVisualizado;
     if (categoriaCosto.contains(TIPO_CATEGORIA_COSTO_GASTO.getValor())) {
-      deducibleVisualizado = DEDUCIBLE_GASTO.getValor();
+      deducibleVisualizado = DEDUCIBLE_RESERVA_GASTO_EMPRESARIALES.getValor();
     } else {
       deducibleVisualizado = transaccionDatoFinancieroPage.obtenerDeducibleReversionConstitucion();
     }
