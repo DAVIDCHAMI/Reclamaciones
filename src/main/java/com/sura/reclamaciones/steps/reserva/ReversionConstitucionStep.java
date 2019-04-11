@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.reserva;
 
 import static com.sura.reclamaciones.constantes.Constantes.CC_DEDUCIBLE_RESERVA_GASTO_EMPRESARIALES;
+import static com.sura.reclamaciones.constantes.Constantes.CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.CC_POSICION_VALOR_RESERVA_EMPRESARIALES;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
@@ -61,7 +62,7 @@ public class ReversionConstitucionStep {
         Integer.valueOf(VALOR_CERO.getValor()));
     ajusteReservaPage.diligenciarCampoLineaReserva(
         valorNuevaReserva,
-        CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor(),
+        CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
         Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
   }
 
