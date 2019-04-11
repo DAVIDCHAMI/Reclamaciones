@@ -1,15 +1,9 @@
 package com.sura.reclamaciones.steps.reserva;
 
-import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_CATEGORIA_COSTO_RESERVA_EMPRESARIALES;
-import static com.sura.reclamaciones.constantes.Constantes.DEDUCIBLE_RESERVA_GASTO_EMPRESARIALES;
-import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_EXPOSICION_LINEA_RESERVA_EMPRESARIALES;
-import static com.sura.reclamaciones.constantes.Constantes.POSICION_COLUMNA_RESERVA;
-import static com.sura.reclamaciones.constantes.Constantes.POSICION_VALOR_RESERVA_EMPRESARIALES;
-import static com.sura.reclamaciones.constantes.Constantes.TIPO_CATEGORIA_COSTO_GASTO;
-import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_TIPO_COSTO_RESERVA_EMPRESARIALES;
-import static com.sura.reclamaciones.constantes.Constantes.NOMBRE_CAMPO_VALOR_NUEVA_RESERVA_EMPRESARIALES;
+import static com.sura.reclamaciones.constantes.Constantes.CC_DEDUCIBLE_RESERVA_GASTO_EMPRESARIALES;
+import static com.sura.reclamaciones.constantes.Constantes.CC_POSICION_VALOR_RESERVA_EMPRESARIALES;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
-import static com.sura.reclamaciones.constantes.ReservaConstante.NUEVAS_RESERVAS_DISPONIBLES;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -22,6 +16,12 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
 public class ReversionConstitucionStep {
+
+  private static final String NOMBRE_CAMPO_CATEGORIA_COSTO_RESERVA_EMPRESARIALES =
+      "Categoría de costo";
+  private static final String NOMBRE_CAMPO_EXPOSICION_LINEA_RESERVA_EMPRESARIALES = "Exposición";
+  private static final String NOMBRE_CAMPO_TIPO_COSTO_RESERVA_EMPRESARIALES = "Tipo de costo";
+  private static final String TIPO_CATEGORIA_COSTO_GASTO = "Gasto";
 
   List<WebElement> lstFilaReserva;
 
@@ -39,8 +39,8 @@ public class ReversionConstitucionStep {
     ajusteReservaPage.ajustarReserva();
     ajusteReservaPage.diligenciarCampoLineaReserva(
         valorAjustar,
-        NUEVAS_RESERVAS_DISPONIBLES,
-        Integer.parseInt(POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
+        CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor(),
+        Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
   }
 
   public void crearNuevaLineaReserva(
@@ -49,26 +49,26 @@ public class ReversionConstitucionStep {
     generalPage.realizarEsperaCarga();
     ajusteReservaPage.diligenciarCampoLineaReserva(
         lineaReserva,
-        NOMBRE_CAMPO_EXPOSICION_LINEA_RESERVA_EMPRESARIALES.getValor(),
-        Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
+        NOMBRE_CAMPO_EXPOSICION_LINEA_RESERVA_EMPRESARIALES,
+        Integer.valueOf(VALOR_CERO.getValor()));
     ajusteReservaPage.diligenciarCampoLineaReserva(
         categoriaCosto,
-        NOMBRE_CAMPO_CATEGORIA_COSTO_RESERVA_EMPRESARIALES.getValor(),
-        Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
+        NOMBRE_CAMPO_CATEGORIA_COSTO_RESERVA_EMPRESARIALES,
+        Integer.valueOf(VALOR_CERO.getValor()));
     ajusteReservaPage.diligenciarCampoLineaReserva(
         tipoCosto,
-        NOMBRE_CAMPO_TIPO_COSTO_RESERVA_EMPRESARIALES.getValor(),
-        Integer.valueOf(POSICION_COLUMNA_RESERVA.getValor()));
+        NOMBRE_CAMPO_TIPO_COSTO_RESERVA_EMPRESARIALES,
+        Integer.valueOf(VALOR_CERO.getValor()));
     ajusteReservaPage.diligenciarCampoLineaReserva(
         valorNuevaReserva,
-        NOMBRE_CAMPO_VALOR_NUEVA_RESERVA_EMPRESARIALES.getValor(),
-        Integer.parseInt(POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
+        CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor(),
+        Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
   }
 
   public void verificarAjusteReserva(String categoriaCosto, String deducible) {
     String deducibleVisualizado;
-    if (categoriaCosto.contains(TIPO_CATEGORIA_COSTO_GASTO.getValor())) {
-      deducibleVisualizado = DEDUCIBLE_RESERVA_GASTO_EMPRESARIALES.getValor();
+    if (categoriaCosto.contains(TIPO_CATEGORIA_COSTO_GASTO)) {
+      deducibleVisualizado = CC_DEDUCIBLE_RESERVA_GASTO_EMPRESARIALES.getValor();
     } else {
       deducibleVisualizado = transaccionDatoFinancieroPage.obtenerDeducibleReversionConstitucion();
     }

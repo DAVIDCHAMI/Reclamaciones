@@ -10,7 +10,7 @@ public class ConstitucionNuevaLineaReservaDefinition {
   @Steps ReversionConstitucionStep reversionConstitucionStep;
 
   @Cuando(
-      "^se crea una nueva Línea de reserva por la Exposición de (.*) por (.*) de (.*) por un valor de (.*)$")
+      "^se crea una nueva Línea de reserva por la Exposición de (.*) por (.*) con un tipo de costo (.*) por un valor de (.*)$")
   public void crearNuevaLineaReserva(
       String lineaReserva, String categoriaCosto, String tipoCosto, String valorNuevaReserva) {
     reversionConstitucionStep.crearNuevaLineaReserva(
