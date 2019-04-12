@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
-import static com.sura.reclamaciones.constantes.Constantes.TIPO_CATEGORIA_COSTO_RESERVA;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECLAMACION_EMPRESARIAL;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
