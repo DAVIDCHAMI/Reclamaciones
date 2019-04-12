@@ -16,7 +16,7 @@ import net.thucydides.core.annotations.Steps;
 
 public class ReversionConstitucionDefinition {
 
-  private static final String TIPO_CATEGORIA_COSTO_RESERVA="Costo";
+  private static final String TIPO_CATEGORIA_COSTO_RESERVA = "Costo";
 
   @Steps ReversionConstitucionStep reversionConstitucionStep;
 
@@ -50,7 +50,6 @@ public class ReversionConstitucionDefinition {
   @Entonces(
       "^se obtiene una reversión de constitución y el deducible es generado por un valor (.*)$")
   public void verificarReversionConstitucion(String deducible) {
-    reversionConstitucionStep.verificarAjusteReserva(
-        TIPO_CATEGORIA_COSTO_RESERVA, deducible);
+    reversionConstitucionStep.verificarAjusteReserva(TIPO_CATEGORIA_COSTO_RESERVA, deducible);
   }
 }
