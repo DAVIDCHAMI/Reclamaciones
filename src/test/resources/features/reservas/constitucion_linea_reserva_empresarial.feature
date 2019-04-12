@@ -9,7 +9,7 @@ Característica: Constitución de una línea de reserva de un siniestro
   Esquema del escenario: creación de nueva línea de reserva
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
     Cuando se crea una nueva Línea de reserva por la Exposición de <Exposición> por <Categoría> con un tipo de costo <Tipo costo> por un valor de <Valor de Pretensión>
-    Entonces se genera una nueva Línea de reserva de <Categoría de costo> con un deducible de <Deducible>
+    Entonces se genera una nueva Línea de reserva de <Categoría> con un deducible de <Deducible>
     Ejemplos:
 
       | Tipo y Cobertura                                     | Causa          | Tipo de incidente | Exposición                                           | Categoría           | Tipo costo                   | Valor de Pretensión | Deducible |

@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.steps.reserva;
 
-import static com.sura.reclamaciones.constantes.Constantes.CC_DEDUCIBLE_RESERVA_GASTO_EMPRESARIALES;
 import static com.sura.reclamaciones.constantes.Constantes.CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.CC_POSICION_VALOR_RESERVA_EMPRESARIALES;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
@@ -40,7 +39,7 @@ public class ReversionConstitucionStep {
     ajusteReservaPage.ajustarReserva();
     ajusteReservaPage.diligenciarCampoLineaReserva(
         valorAjustar,
-        CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor(),
+        CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
         Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
   }
 
@@ -69,7 +68,7 @@ public class ReversionConstitucionStep {
   public void verificarAjusteReserva(String categoriaCosto, String deducible) {
     String deducibleVisualizado;
     if (categoriaCosto.contains(TIPO_CATEGORIA_COSTO_GASTO)) {
-      deducibleVisualizado = CC_DEDUCIBLE_RESERVA_GASTO_EMPRESARIALES.getValor();
+      deducibleVisualizado = VALOR_CERO.getValor();
     } else {
       deducibleVisualizado = transaccionDatoFinancieroPage.obtenerDeducibleReversionConstitucion();
     }
