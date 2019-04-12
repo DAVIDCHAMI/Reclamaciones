@@ -5,7 +5,7 @@ import static com.sura.reclamaciones.constantes.Constantes.CERO;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION_REASEGURO;
 import static com.sura.reclamaciones.constantes.Constantes.PORCIENTO;
 import static com.sura.reclamaciones.utils.Variables.FORMATEAR_MONTOS;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
+
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA_CONSTITUCION;
@@ -163,7 +163,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     boolean blnReaseguro = false;
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION_REASEGURO.getValor(), 4);
     for (int posicionElementoFila = 0;
         lstReaseguroDetallado.size() > posicionElementoFila;
         posicionElementoFila++) {
@@ -188,7 +188,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
     boolean blnReaseguro = false;
     List<WebElement> lstReaseguroDetallado =
         obtenerElementoTablaDatoDesconocido(
-            tblReaseguroDetalladoTransaccion, SESION_CC_NUMERO_TRANSACCION.getValor(), 4);
+            tblReaseguroDetalladoTransaccion, NUMERO_TRANSACCION_REASEGURO.getValor(), 4);
     for (int posicionElementoFila = lstReaseguroDetallado.size() - 1;
         lstReaseguroDetallado.size() > posicionElementoFila;
         posicionElementoFila++) {
@@ -253,17 +253,17 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               porcentajeRetenido,
               proporcionCuotaParte,
               porcentajeCoaseguroCedido,
-              posicionElementoFila+1);
+              posicionElementoFila + 1);
     }
-      String strValorTransaccion =
-           lstReaseguroDetallado
-               .get(lstReaseguroDetallado.size()-1)
-               .getText()
-               .replaceAll(FORMATEAR_MONTOS.getValor(), "");
-      blnValorRecupero =
-          strValorTransaccion.equals(
-              Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor()));
-      blnValorRecupero = blnValorRecupero && blnReaseguro;
+    String strValorTransaccion =
+        lstReaseguroDetallado
+            .get(lstReaseguroDetallado.size() - 1)
+            .getText()
+            .replaceAll(FORMATEAR_MONTOS.getValor(), "");
+    blnValorRecupero =
+        strValorTransaccion.equals(
+            Serenity.sessionVariableCalled(SESION_CC_VALOR_RECUPERO.getValor()));
+    blnValorRecupero = blnValorRecupero && blnReaseguro;
     return blnValorRecupero;
   }
 
@@ -281,7 +281,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
               porcentajeRetenido,
               proporcionCuotaParte,
               porcentajeCoaseguroCedido,
-              posicionElementoFila+1);
+              posicionElementoFila + 1);
     }
     return blnReaseguro;
   }
