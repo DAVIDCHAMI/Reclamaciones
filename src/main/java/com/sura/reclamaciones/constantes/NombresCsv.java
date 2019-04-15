@@ -8,7 +8,7 @@ public enum NombresCsv {
   EXPEDICION_AUTOS("expedicion_autos"),
   RECUPERO_SINIESTRO("recupero_siniestro"),
   PARAMETROS_PERSONA("parametros_persona"),
-  PARAMETROS_RECLAMACION_PERSONA("persona_reclamacion_auto"),
+  PARAMETROS_RECLAMACION_PERSONA_AUTO("parametros_persona_reclamacion_auto"),
   PARAMETROS_RECLAMACION("reclamacion_auto"),
   PARAMETROS_VEHICULO("vehiculo"),
   PARAMETRO_PERSONA_LESIONADA("lesionado"),
@@ -19,7 +19,7 @@ public enum NombresCsv {
   PARAMETROS_EXPOSICION_AUTOMATICA("exposicion_automatica"),
   PARAMETRO_LINEA_RESERVA("linea_reserva"),
   PARAMETROS_DIRECCION_SINIESTRO("direccion_reclamacion"),
-  PARAMETRO_CREACION_AVISO_AUTOS_WS("creacionAvisoWS"),
+  PARAMETRO_CREACION_AVISO_AUTOS_WS("Servicio de Maca"),
   RECLAMACION_EMPRESARIAL("reclamacion_empresarial"),
   CREDENCIAL("Credencial");
 

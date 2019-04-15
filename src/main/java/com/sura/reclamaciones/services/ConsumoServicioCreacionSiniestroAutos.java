@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ConsumoServicioCreacionSiniestroAutos {
   int campoDato = 0;
   CreacionSiniestroAutosFactory creacionSiniestroAutosFactory = new CreacionSiniestroAutosFactory();
-  CreacionSiniestroAutoCliente creacionSiniestroAutoCliente = new CreacionSiniestroAutoCliente();
-  ClaimsAutoResponse response;
 
   @RequestMapping
   public void asignarParametrosRequest(
@@ -260,6 +258,8 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void obtenerResponse() {
+    ClaimsAutoResponse response;
+    CreacionSiniestroAutoCliente creacionSiniestroAutoCliente = new CreacionSiniestroAutoCliente();
     response = creacionSiniestroAutoCliente.claimsResponse(crearRequest());
     Utilidades.getLogger()
         .info(

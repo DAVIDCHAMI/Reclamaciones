@@ -14,5 +14,5 @@ Característica: Crear un recupero de un siniestro
 
     Ejemplos:
       |Origen de siniestro       | Línea de reserva                | Tipo de pago| Beneficiario de pago                    | Método de pago  | Código de retención pago | Solo Sura| Tipo de cobertura   | Tipo de recupero | Código de retención recupero |
-      |creacionAvisoWS           | (1) 3ª parteLesiones corporales | Parcial     | JHON FEOR FEOR FEOR                     | Pago por banco  | 0099                     | No       | RC Lesión a Persona |  Ingreso (otro)  |        0099                  |
-      |creacionAvisoWS           | (2) 1ª parteVehículo            | Parcial     | DIOGENES MANUEL BETANCOURT MADERA CQLII | Caja Sura       | 0099                     | No       | Perdida total Daños |  Subrogación     |        0099                  |
+      |Servicio de Maca          | (1) 3ª parteLesiones corporales | Parcial     | JHON FEOR FEOR FEOR                     | Pago por banco  | 0099                     | No       | RC Lesión a Persona |  Ingreso (otro)  |        0099                  |
+      |Servicio de Maca          | (2) 1ª parteVehículo            | Parcial     | DIOGENES MANUEL BETANCOURT MADERA CQLII | Caja Sura       | 0099                     | No       | Perdida total Daños |  Subrogación     |        0099                  |

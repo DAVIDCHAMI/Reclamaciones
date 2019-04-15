@@ -1,11 +1,20 @@
 package com.sura.reclamaciones.definitions.autos;
 
-import static com.sura.reclamaciones.constantes.NombresCsv.*;
+import static com.sura.reclamaciones.constantes.Filtros.PERSONA_CONDUCTOR;
+import static com.sura.reclamaciones.constantes.Filtros.PERSONA_LESIONADA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_CREACION_AVISO_AUTOS_WS;
+import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.models.*;
+import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.models.PersonaReclamacion;
+import com.sura.reclamaciones.models.ReclamacionAuto;
+import com.sura.reclamaciones.models.Recupero;
+import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
@@ -33,18 +42,18 @@ public class RecuperoSiniestroDefinition {
   String cobertura;
 
   @Dado("^que se tiene una reclamación de (.*) con un tipo de cobertura de (.*)$")
-  public void crearSiniestroAutos(String tipoReserva, String tipoCobertura) throws IOException {
+  public void crearSiniestroAutos(String origenSiniestro, String tipoCobertura) throws IOException {
     cobertura = tipoCobertura;
-    PersonaReclamacion parametroPersonaReclamacionAuto =
+    PersonaReclamacion parametroPersonaLesionadaAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_LESIONADA.getValor()));
+                PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(), PERSONA_LESIONADA.getValor()));
     PersonaReclamacion parametroPersonaConductorAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_CONDUCTOR.getValor()));
+                PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(), PERSONA_CONDUCTOR.getValor()));
     Vehiculo reclamacionVehiculo =
-        new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), tipoReserva));
+        new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), origenSiniestro));
     ReclamacionAuto parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
@@ -52,7 +61,7 @@ public class RecuperoSiniestroDefinition {
                 PARAMETRO_CREACION_AVISO_AUTOS_WS.getValor()));
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         parametroAviso.getLstReclamacionAuto(),
-        parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
+        parametroPersonaLesionadaAuto.getLstPersonaReclamacion(),
         parametroPersonaConductorAuto.getLstPersonaReclamacion(),
         reclamacionVehiculo.getLstVehiculos());
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
@@ -70,7 +79,7 @@ public class RecuperoSiniestroDefinition {
       throws IOException {
     nuevoPagoStep.consultarNumeroReclamacionAutos(
         Serenity.sessionVariableCalled(ReclamacionConstante.NUMERO_SINIESTRO));
-    nuevoPagoStep.seleccionarExposicionAutomatica();
+    nuevoPagoStep.seleccionarMenuExposicion();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     nuevoPagoStep.crearNuevoPago();

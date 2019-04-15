@@ -136,7 +136,7 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void seleccionarExposicionAutomatica() {
+  public void seleccionarMenuExposicion() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
     exposicionesAutomaticasPage.seleccionarExposicion();
   }

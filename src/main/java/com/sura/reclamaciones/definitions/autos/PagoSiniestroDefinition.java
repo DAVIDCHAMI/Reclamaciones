@@ -1,6 +1,12 @@
 package com.sura.reclamaciones.definitions.autos;
 
-import static com.sura.reclamaciones.constantes.NombresCsv.*;
+import static com.sura.reclamaciones.constantes.Filtros.PERSONA_CONDUCTOR;
+import static com.sura.reclamaciones.constantes.Filtros.PERSONA_LESIONADA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_CREACION_AVISO_AUTOS_WS;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
@@ -10,7 +16,7 @@ import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
-import com.sura.reclamaciones.steps.poliza.ConsumoServicioExpedicionAutoStep;
+import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
@@ -21,8 +27,6 @@ public class PagoSiniestroDefinition {
 
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
-  @Steps ConsumoServicioExpedicionAutoStep consumoServicioExpedicionAutoStep;
-
   @Steps GenericStep genericStep;
 
   @Steps NuevoPagoStep nuevoPagoStep;
@@ -32,18 +36,18 @@ public class PagoSiniestroDefinition {
   String cobertura;
 
   @Dado("^que se tiene un siniestro de (.*) con un tipo de cobertura de (.*)$")
-  public void crearSiniestroAutos(String tipoReserva, String tipoCobertura) throws IOException {
+  public void crearSiniestroAutos(String origenSiniestro, String tipoCobertura) throws IOException {
     cobertura = tipoCobertura;
     PersonaReclamacion parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_LESIONADA.getValor()));
+                PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(), PERSONA_LESIONADA.getValor()));
     PersonaReclamacion parametroPersonaConductorAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                PARAMETROS_RECLAMACION_PERSONA.getValor(), PARAMETRO_PERSONA_CONDUCTOR.getValor()));
+                PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(), PERSONA_CONDUCTOR.getValor()));
     Vehiculo reclamacionVehiculo =
-        new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), tipoReserva));
+        new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), origenSiniestro));
     ReclamacionAuto parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
@@ -57,7 +61,7 @@ public class PagoSiniestroDefinition {
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
   }
 
-  @Dado(
+  @Cuando(
       "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la linea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
   public void crearPagoAutos(
       String tipoPago,
@@ -69,7 +73,7 @@ public class PagoSiniestroDefinition {
       throws IOException {
     nuevoPagoStep.consultarNumeroReclamacionAutos(
         Serenity.sessionVariableCalled(ReclamacionConstante.NUMERO_SINIESTRO));
-    nuevoPagoStep.seleccionarExposicionAutomatica();
+    nuevoPagoStep.seleccionarMenuExposicion();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     nuevoPagoStep.crearNuevoPago();
