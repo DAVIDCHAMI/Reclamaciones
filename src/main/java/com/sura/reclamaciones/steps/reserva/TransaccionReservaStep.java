@@ -25,8 +25,7 @@ public class TransaccionReservaStep {
 
   List<WebElement> lstFilaReserva;
 
-  @Page
-  EstablecerReservaPage establecerReservaPage;
+  @Page EstablecerReservaPage establecerReservaPage;
 
   @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 

@@ -17,8 +17,7 @@ public class ReversionConstitucionDefinition {
 
   private static final String TIPO_CATEGORIA_COSTO_RESERVA = "Costo";
 
-  @Steps
-  TransaccionReservaStep transaccionReservaStep;
+  @Steps TransaccionReservaStep transaccionReservaStep;
 
   @Steps NuevaReclamacionEmpresarialStep reclamacionEmpresarialStep;
 

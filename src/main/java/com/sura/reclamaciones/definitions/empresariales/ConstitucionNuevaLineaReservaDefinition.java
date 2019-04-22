@@ -7,8 +7,7 @@ import net.thucydides.core.annotations.Steps;
 
 public class ConstitucionNuevaLineaReservaDefinition {
 
-  @Steps
-  TransaccionReservaStep transaccionReservaStep;
+  @Steps TransaccionReservaStep transaccionReservaStep;
 
   @Cuando(
       "^se crea una nueva Línea de reserva por la Exposición de (.*) por (.*) con un tipo de costo (.*) por un valor de (.*)$")
