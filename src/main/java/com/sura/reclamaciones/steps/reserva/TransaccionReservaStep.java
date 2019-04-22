@@ -8,14 +8,14 @@ import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
-import com.sura.reclamaciones.pages.reservas.AjusteReservaPage;
+import com.sura.reclamaciones.pages.reservas.EstablecerReservaPage;
 import com.sura.reclamaciones.pages.reservas.TransaccionDatoFinancieroPage;
 import java.util.List;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
-public class ReversionConstitucionStep {
+public class TransaccionReservaStep {
 
   private static final String NOMBRE_CAMPO_CATEGORIA_COSTO_RESERVA_EMPRESARIALES =
       "Categoría de costo";
@@ -25,7 +25,8 @@ public class ReversionConstitucionStep {
 
   List<WebElement> lstFilaReserva;
 
-  @Page AjusteReservaPage ajusteReservaPage;
+  @Page
+  EstablecerReservaPage establecerReservaPage;
 
   @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
@@ -36,8 +37,8 @@ public class ReversionConstitucionStep {
   @Page TransaccionDatoFinancieroPage transaccionDatoFinancieroPage;
 
   public void ajustarReserva(String valorAjustar) {
-    ajusteReservaPage.ajustarReserva();
-    ajusteReservaPage.diligenciarCampoLineaReserva(
+    establecerReservaPage.ajustarReserva();
+    establecerReservaPage.diligenciarCampoLineaReserva(
         valorAjustar,
         CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
         Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
@@ -47,19 +48,19 @@ public class ReversionConstitucionStep {
       String lineaReserva, String tipoCosto, String categoriaCosto, String valorNuevaReserva) {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
     generalPage.realizarEsperaCarga();
-    ajusteReservaPage.diligenciarCampoLineaReserva(
+    establecerReservaPage.diligenciarCampoLineaReserva(
         lineaReserva,
         NOMBRE_CAMPO_EXPOSICION_LINEA_RESERVA_EMPRESARIALES,
         Integer.valueOf(VALOR_CERO.getValor()));
-    ajusteReservaPage.diligenciarCampoLineaReserva(
+    establecerReservaPage.diligenciarCampoLineaReserva(
         categoriaCosto,
         NOMBRE_CAMPO_CATEGORIA_COSTO_RESERVA_EMPRESARIALES,
         Integer.valueOf(VALOR_CERO.getValor()));
-    ajusteReservaPage.diligenciarCampoLineaReserva(
+    establecerReservaPage.diligenciarCampoLineaReserva(
         tipoCosto,
         NOMBRE_CAMPO_TIPO_COSTO_RESERVA_EMPRESARIALES,
         Integer.valueOf(VALOR_CERO.getValor()));
-    ajusteReservaPage.diligenciarCampoLineaReserva(
+    establecerReservaPage.diligenciarCampoLineaReserva(
         valorNuevaReserva,
         CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
         Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));

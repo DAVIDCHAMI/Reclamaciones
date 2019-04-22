@@ -6,7 +6,7 @@ import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
-import com.sura.reclamaciones.steps.reserva.ReversionConstitucionStep;
+import com.sura.reclamaciones.steps.reserva.TransaccionReservaStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -17,7 +17,8 @@ public class ReversionConstitucionDefinition {
 
   private static final String TIPO_CATEGORIA_COSTO_RESERVA = "Costo";
 
-  @Steps ReversionConstitucionStep reversionConstitucionStep;
+  @Steps
+  TransaccionReservaStep transaccionReservaStep;
 
   @Steps NuevaReclamacionEmpresarialStep reclamacionEmpresarialStep;
 
@@ -43,12 +44,12 @@ public class ReversionConstitucionDefinition {
 
   @Cuando("^se ajuste la reserva con un valor de (.*)$")
   public void ajustarReserva(String ajusteReserva) {
-    reversionConstitucionStep.ajustarReserva(ajusteReserva);
+    transaccionReservaStep.ajustarReserva(ajusteReserva);
   }
 
   @Entonces(
       "^se obtiene una reversión de constitución y el deducible es generado por un valor (.*)$")
   public void verificarReversionConstitucion(String deducible) {
-    reversionConstitucionStep.verificarAjusteReserva(TIPO_CATEGORIA_COSTO_RESERVA, deducible);
+    transaccionReservaStep.verificarAjusteReserva(TIPO_CATEGORIA_COSTO_RESERVA, deducible);
   }
 }

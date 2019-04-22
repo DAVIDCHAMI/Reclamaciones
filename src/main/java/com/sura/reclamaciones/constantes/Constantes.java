@@ -188,7 +188,6 @@ public enum Constantes {
   VALOR_ANTERIOR("."),
   CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA("Nuevas reservas disponibles"),
   CC_POSICION_VALOR_RESERVA_EMPRESARIALES("-1"),
-  CC_TIPO_CATEGORIA_COSTO_RESERVA("Costo"),
   NUEVO_VALOR("-05:00");
 
   private String valor;

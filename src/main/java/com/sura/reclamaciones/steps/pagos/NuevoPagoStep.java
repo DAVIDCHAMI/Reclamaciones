@@ -4,7 +4,6 @@ import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
-import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.LINEA_RESERVA_LESIONES_CORPORALES;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
@@ -30,6 +29,8 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
 public class NuevoPagoStep {
+
+  private static final String ITERACIONES_PAGO = "20";
 
   List<WebElement> lstFilaPago;
 
@@ -98,7 +99,7 @@ public class NuevoPagoStep {
   public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
     lstPago.forEach(
         (PagoSiniestro validador) -> {
-          for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
+          for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO); i++) {
             generalPage.realizarEsperaCarga();
             String strNumeroTransaccion =
                 verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();

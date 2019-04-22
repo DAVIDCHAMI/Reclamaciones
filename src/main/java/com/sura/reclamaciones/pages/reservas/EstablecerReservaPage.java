@@ -13,7 +13,7 @@ import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AjusteReservaPage extends GeneralPage {
+public class EstablecerReservaPage extends GeneralPage {
 
   @FindBy(xpath = "//img[@class='x-grid-checkcolumn']")
   private WebElementFacade chkLineaReserva;
@@ -40,7 +40,7 @@ public class AjusteReservaPage extends GeneralPage {
 
   @Page GeneralPage generalPage;
 
-  public AjusteReservaPage(WebDriver driver) {
+  public EstablecerReservaPage(WebDriver driver) {
     super(driver);
   }
 
