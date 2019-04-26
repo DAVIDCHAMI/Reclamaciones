@@ -2,14 +2,13 @@ package com.sura.reclamaciones.definitions.autos;
 
 import static com.sura.reclamaciones.constantes.Constantes.FECHA_ACTUAL;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_DIAS_VENCIMIENTO;
+import static com.sura.reclamaciones.constantes.Filtros.CREACION_AVISO_AUTOS_WS;
+import static com.sura.reclamaciones.constantes.Filtros.PERSONA_CONDUCTOR;
+import static com.sura.reclamaciones.constantes.Filtros.PERSONA_LESIONADA;
 import static com.sura.reclamaciones.constantes.NombresCsv.EXPEDICION_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_CREACION_AVISO_AUTOS_WS;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_CONDUCTOR;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_PERSONA_LESIONADA;
-
 import com.sura.reclamaciones.models.ExpedicionAuto;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
@@ -40,7 +39,7 @@ public class ConsumoCreacionAvisoAutosDefinition {
   @Steps GenericStep genericsStep;
 
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
-  
+
   @Steps ConsumoServicioExpedicionAutoStep consumoServicioExpedicionAutoStep;
 
   @Dado("^que se tiene una póliza (.*) de autos$")
@@ -48,14 +47,12 @@ public class ConsumoCreacionAvisoAutosDefinition {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(),
-                PARAMETRO_PERSONA_LESIONADA.getValor()));
+                PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(), PERSONA_LESIONADA.getValor()));
     lstPersonaLesionada = parametroPersonaReclamacionAuto.getLstPersonaReclamacion();
     parametroPersonaConductorAuto =
         new PersonaReclamacion(
             genericStep.getFilasModelo(
-                PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(),
-                PARAMETRO_PERSONA_CONDUCTOR.getValor()));
+                PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(), PERSONA_CONDUCTOR.getValor()));
     lstConductor = parametroPersonaConductorAuto.getLstPersonaReclamacion();
     reclamacionVehiculo =
         new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), filtroCsv));
@@ -63,8 +60,7 @@ public class ConsumoCreacionAvisoAutosDefinition {
     parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
-                PARAMETROS_SINIESTRO_AUTOS.getValor(),
-                PARAMETRO_CREACION_AVISO_AUTOS_WS.getValor()));
+                PARAMETROS_SINIESTRO_AUTOS.getValor(), CREACION_AVISO_AUTOS_WS.getValor()));
     lstReclamacionAuto = parametroAviso.getLstReclamacionAuto();
   }
 

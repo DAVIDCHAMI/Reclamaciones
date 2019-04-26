@@ -64,7 +64,6 @@ public class ReaseguroDefinition {
       String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException {
     Recupero recupero =
         new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoContrato));
-    recuperoStep.seleccionarRecupero();
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), strTipoRecupero, strCodigoRetencionRecupero);
   }
