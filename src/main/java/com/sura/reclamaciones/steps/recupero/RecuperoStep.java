@@ -36,6 +36,7 @@ public class RecuperoStep {
     resumenReclamacionPage.obtenerNumeroReclamacion();
   }
 
+  @Step
   public void seleccionarRecupero() {
     menuRecuperoPage.ingresarMenuRecupero();
   }
