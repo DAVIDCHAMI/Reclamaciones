@@ -5,6 +5,7 @@ import static com.sura.reclamaciones.constantes.Constantes.CERO;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION_REASEGURO;
 import static com.sura.reclamaciones.constantes.Constantes.PORCIENTO;
 import static com.sura.reclamaciones.utils.Variables.FORMATEAR_MONTOS;
+
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA_CONSTITUCION;
