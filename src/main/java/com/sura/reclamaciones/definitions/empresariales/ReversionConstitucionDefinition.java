@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.RECLAMACION_EMPRESARIAL;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
@@ -11,6 +12,7 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class ReversionConstitucionDefinition {
@@ -28,6 +30,7 @@ public class ReversionConstitucionDefinition {
   public void consultarReserva(
       String producto, String causaSiniestro, String valorPretension, String tipoIncidente)
       throws IOException {
+    Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(producto);
     ReclamacionEmpresarial reserva =
         new ReclamacionEmpresarial(
             genericStep.getFilasModelo(RECLAMACION_EMPRESARIAL.getValor(), producto));

@@ -3,15 +3,11 @@ package com.sura.reclamaciones.pages.recupero;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import java.util.List;
-import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class VerificacionRecuperoPage extends GeneralPage {
-
-  @Page MenuClaimPage menuClaimPage;
 
   private static String tblRecupero =
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";

@@ -7,41 +7,30 @@ Característica: Anulacion Empresarial
 
   @claimsEmpresarial
   Esquema del escenario: anulación pago
-    Dado que se cree un siniestro de <Tipo Producto>
-    Y que se realice un pago, de un siniestro de una póliza empresarial con producto <Tipo Producto> y código de retención <Código Retención>
+    Dado que se tiene una póliza de <Tipo y Cobertura>
+    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
+    Y un incidente de tipo <Tipo de incidente>
+    Y que se realice un pago, de un siniestro de una póliza empresarial con producto <Tipo y Cobertura> y código de retención <Código Retención Pago>
     Cuando se realice la anulación del pago
     Entonces se debe obtener la anulación del pago, quedando en estado anulado
 
     Ejemplos:
-      | Tipo Producto  | Código Retención |
-      |MRC_01         |0099             |
-      |MRC_02         |0028             |
-      |HOGAR_01       |0023             |
-      |MRC_03         |0028             |
-      |HOGAR_02       |0023             |
-      |MRC_04         |0099             |
-      |CUMPLIMIENTO_01|0028             |
-      |HOGAR_03       |0023             |
-      |HOGAR_04       |0099             |
-
+      | Tipo y Cobertura                                     | Código Retención Pago   | Causa                                 | Valor de Pretensión | Tipo de incidente |
+      | Multiriesgo corporativo con cobertura básica         | 0028                    | Incendio                              |3000000              |Propiedad          |
+      |PES Emergente	Responsabilidad civil                | 0010                    |Responsabilidad civil del asegurado    |5000000              |Propiedad          |
   @claimsEmpresarial
   Esquema del escenario: anulacion  recupero
-    Dado que se cree un siniestro de <Tipo Producto>
-    Y que se realice una transacción de pago y una transacción de recupero, de un siniestro de una póliza empresarial con producto <Tipo Producto> y código de retención <Código Retención>
+    Dado que se tiene una póliza de <Tipo y Cobertura>
+    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
+    Y un incidente de tipo <Tipo de incidente>
+    Y que se realice un pago, de un siniestro de una póliza empresarial con producto <Tipo y Cobertura> y código de retención <Código Retención Pago>
+    Y una transacción de recupero, de un siniestro de una póliza empresarial con producto <Tipo y Cobertura> y código de retención <Código Retención Recupero>
     Cuando se realice la anulación del recupero
     Entonces se debe obtener la anulación del recupero, quedando en estado anulado
 
     Ejemplos:
-      | Tipo Producto   | Código Retención |
-      |MRC_01           |0099             |
-      |MRC_02           |0099             |
-      |HOGAR_01         |0099             |
-      |MRC_03           |0099             |
-      |HOGAR_02         |0099             |
-      |MRC_04           |0099             |
-      |CUMPLIMIENTO_01  |0099             |
-      |HOGAR_03         |0099             |
-      |HOGAR_04         |0099             |
-
+      | Tipo y Cobertura                             | Código Retención Pago            |  Causa               | Valor de Pretensión | Tipo de incidente |Código Retención Recupero|
+      | Incendio con cobertura Daños materiales      |  0028                            | Daños por agua       |3000000              |Contenido          |0099                     |
+      |PES Emergente Daño Interno Maquinaria y equipo|  0099                            | Daños por agua       |4000000              |Contenido          |0099                     |
 
 
