@@ -40,6 +40,7 @@ public class ConsumoCreacionAvisoAutosDefinition {
   @Steps GenericStep genericsStep;
 
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
+  
   @Steps ConsumoServicioExpedicionAutoStep consumoServicioExpedicionAutoStep;
 
   @Dado("^que se tiene una póliza (.*) de autos$")
