@@ -7,15 +7,12 @@ import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.reservas.EstablecerReservaPage;
 import com.sura.reclamaciones.pages.reservas.TransaccionDatoFinancieroPage;
-import java.util.List;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
-import org.openqa.selenium.WebElement;
 
-public class TransaccionReservaStep {
+public class MovimientoLineaReservaStep {
 
   private static final String NOMBRE_CAMPO_CATEGORIA_COSTO_RESERVA_EMPRESARIALES =
       "Categoría de costo";
@@ -23,11 +20,7 @@ public class TransaccionReservaStep {
   private static final String NOMBRE_CAMPO_TIPO_COSTO_RESERVA_EMPRESARIALES = "Tipo de costo";
   private static final String TIPO_CATEGORIA_COSTO_GASTO = "Gasto";
 
-  List<WebElement> lstFilaReserva;
-
   @Page EstablecerReservaPage establecerReservaPage;
-
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
   @Page GeneralPage generalPage;
 
