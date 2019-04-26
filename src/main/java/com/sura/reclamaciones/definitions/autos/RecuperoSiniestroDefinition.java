@@ -1,15 +1,15 @@
 package com.sura.reclamaciones.definitions.autos;
 
+import static com.sura.reclamaciones.constantes.Filtros.CREACION_AVISO_AUTOS_WS;
 import static com.sura.reclamaciones.constantes.Filtros.PERSONA_CONDUCTOR;
 import static com.sura.reclamaciones.constantes.Filtros.PERSONA_LESIONADA;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_CREACION_AVISO_AUTOS_WS;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
-import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
@@ -57,8 +57,7 @@ public class RecuperoSiniestroDefinition {
     ReclamacionAuto parametroAviso =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
-                PARAMETROS_SINIESTRO_AUTOS.getValor(),
-                PARAMETRO_CREACION_AVISO_AUTOS_WS.getValor()));
+                PARAMETROS_SINIESTRO_AUTOS.getValor(), CREACION_AVISO_AUTOS_WS.getValor()));
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         parametroAviso.getLstReclamacionAuto(),
         parametroPersonaLesionadaAuto.getLstPersonaReclamacion(),
@@ -78,14 +77,12 @@ public class RecuperoSiniestroDefinition {
       String codigoRetencion)
       throws IOException {
     nuevoPagoStep.consultarNumeroReclamacionAutos(
-        Serenity.sessionVariableCalled(ReclamacionConstante.NUMERO_SINIESTRO));
-    nuevoPagoStep.seleccionarMenuExposicion();
+        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
-        new PagoSiniestro(
-            (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
+        new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), cobertura)));
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         lineaReserva,
         tipoPago,
@@ -94,17 +91,13 @@ public class RecuperoSiniestroDefinition {
         aplicaSoloSura,
         codigoRetencion,
         pagoSiniestro.getLstPago());
-
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 
   @Cuando("^se cree el recupero por el tipo de (.*) con un código de retención (.*)$")
   public void crearRecuperoReclamacionAutos(String tipoRecupero, String codigoRetencion)
       throws IOException {
-    recupero =
-        new Recupero(
-            (genericStep.getFilasModelo(String.valueOf(RECUPERO_SINIESTRO.getValor()), cobertura)));
-    recuperoStep.seleccionarRecupero();
+    recupero = new Recupero((genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), cobertura)));
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
   }

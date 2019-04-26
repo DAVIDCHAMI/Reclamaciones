@@ -116,7 +116,6 @@ public class AnulacionEmpresarialDefinition {
             genericStep.getFilasModelo(
                 RECUPERO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
-    recuperoStep.seleccionarRecupero();
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
   }
