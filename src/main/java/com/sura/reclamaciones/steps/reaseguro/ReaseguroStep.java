@@ -28,6 +28,7 @@ public class ReaseguroStep {
                     Double.parseDouble(RETENCION_PURA.getValor()),
                     strTransaccion,
                     verificador.getPorcentajeRetenido(),
-                    verificador.getProporcionCuotaParte())));
+                    verificador.getProporcionCuotaParte(),
+                    verificador.getPorcentajeCoaseguroCedido())));
   }
 }

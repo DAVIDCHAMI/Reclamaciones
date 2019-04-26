@@ -109,7 +109,6 @@ public class CreacionRecuperoPage extends GeneralPage {
   }
 
   public void diligenciarCantidadRecupero(String montoRecupero, String encabezadoColumnaDevolver) {
-    Serenity.setSessionVariable(SESION_CC_VALOR_RECUPERO.getValor()).to(montoRecupero);
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver, 1);
     elementoEncontrado.forEach(
@@ -118,6 +117,7 @@ public class CreacionRecuperoPage extends GeneralPage {
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%s')", montoRecupero));
         });
+    Serenity.setSessionVariable(SESION_CC_VALOR_RECUPERO.getValor()).to(montoRecupero);
   }
 
   public void actualizarRecupero() {

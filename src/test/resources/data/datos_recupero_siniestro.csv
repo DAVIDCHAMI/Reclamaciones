@@ -1,6 +1,10 @@
-id;idFiltro;pagador;lineaReserva;pais;departamento;ciudad;valorTransaccion;categoriaRecupero;estadoTransaccion
-1;Incendio con cobertura Daños materiales;MARTHA ENID ROJAS MARIACA CQLII;(1) 1ª parteContenido;Colombia;Antioquia;Medellin;12000000;Salvamento;Solicitado
-2;Multiriesgo corporativo con cobertura basica;ROBIN EDULFO BAUTISTA ALVAREZ CQLII;(1) 1ª partePropiedad;Colombia;Antioquia;Medellin;18500000;Subrogación;Solicitado
-3;Hogar con cobertura básica;AURA JUDITH LOPEZ JULIO CQLII;(1) 1ª partePropiedad;Colombia;Cauca;Popayán;2450000;Ingreso (otro);Solicitado
-4;Cumplimiento con cobertura Cumplimiento del contrato;TODO EN VERDE CQLII;(1) 1ª parteGeneral;Colombia;Antioquia;Medellin;1300000;Salvamento;Solicitado
-5;Responsabilidad civil del asegurado;HERMANOS LTDA. CQLII;(1) 1ª parteGeneral;Colombia;Arauca;Arauca;7500000;Subrogación;Solicitado
+id;idFiltro																																											;pagador																														;lineaReserva												;pais					;departamento		;ciudad				;valorTransaccion			;categoriaRecupero				;estadoTransaccion
+1;Incendio con cobertura Daños materiales													;MARTHA ENID ROJAS MARIACA CQLII						;(1) 1ª parteContenido			;Colombia	;Antioquia					;Medellin		;1200000												;Salvamento											;Solicitado
+2;Multiriesgo corporativo con cobertura básica								;ROBIN EDULFO BAUTISTA ALVAREZ CQLII		;(1) 1ª partePropiedad			;Colombia	;Antioquia					;Medellin		;18500000											;Subrogación										;Solicitado
+3;Hogar con cobertura básica																										;AURA JUDITH LOPEZ JULIO CQLII								;(1) 1ª partePropiedad			;Colombia	;Cauca									;Popayán			;2450000												;Ingreso (otro)							;Solicitado
+4;Cumplimiento con cobertura Cumplimiento del contrato;TODO EN VERDE CQLII																		;(1) 1ª parteGeneral					;Colombia	;Antioquia					;Medellin		;1300000												;Salvamento											;Solicitado
+5;Responsabilidad civil del asegurado																	;HERMANOS LTDA. CQLII																	;(1) 1ª parteGeneral					;Colombia	;Arauca								;Arauca				;7500000												;Subrogación										;Solicitado
+6;PES Emergente Terremoto																												 ;LUZ MARINA DE LA HOZ BEDOYA CQLII				;(1) 1ª partePropiedad			;Colombia	;Cauca									;Popayán			;1000000												;Subrogación										;Solicitado
+7;PES Emergente	Sustraccion																											;ALIS MERYS BELLO RAMIREZ CQLII							;(1) 1ª parteContenido			;Colombia	;Antioquia					;Medellin		;1300000												;Salvamento											;Solicitado
+8;PES Emergente	Responsabilidad civil																	;LIA POLLITO																										;(1) 1ª partePropiedad			;Colombia	;Cauca									;Popayán			;1000000												;Ingreso (otro)							;Solicitado
+9;PES Emergente Daño Interno Maquinaria y equipo						;ANA MARIA MONTOYA PINILLOS CQLII					;(1) 1ª parteContenido			;Colombia	;Antioquia					;Medellin		;1200000												;Salvamento											;Solicitado
