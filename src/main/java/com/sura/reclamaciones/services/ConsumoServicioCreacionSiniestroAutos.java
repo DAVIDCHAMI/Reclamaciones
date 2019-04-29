@@ -1,10 +1,7 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_FECHA_SINIESTRO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_NRO_PLACA;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_SERV_NRO_POLIZA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
-import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -19,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ConsumoServicioCreacionSiniestroAutos {
   int campoDato = 0;
   CreacionSiniestroAutosFactory creacionSiniestroAutosFactory = new CreacionSiniestroAutosFactory();
-  CreacionSiniestroAutoCliente creacionSiniestroAutoCliente = new CreacionSiniestroAutoCliente();
-  ClaimsAutoResponse response;
 
   @RequestMapping
   public void asignarParametrosRequest(
@@ -51,12 +46,10 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosSiniestro(List<ReclamacionAuto> lstSiniestroParam) {
-    creacionSiniestroAutosFactory.setPolicyNumber(
-        Serenity.sessionVariableCalled(SESION_SERV_NRO_POLIZA.getValor()));
-    creacionSiniestroAutosFactory.setLossDate(
-        Serenity.sessionVariableCalled(SESION_FECHA_SINIESTRO.getValor()));
+    creacionSiniestroAutosFactory.setPolicyNumber(lstSiniestroParam.get(campoDato).getNumPoliza());
+    creacionSiniestroAutosFactory.setLossDate(lstSiniestroParam.get(campoDato).getFechaSiniestro());
     creacionSiniestroAutosFactory.setNotificationDate(
-        Serenity.sessionVariableCalled(SESION_FECHA_SINIESTRO.getValor()));
+        lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
     creacionSiniestroAutosFactory.setLossType(lstSiniestroParam.get(campoDato).getTipoPerdida());
     creacionSiniestroAutosFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaPerdida());
     creacionSiniestroAutosFactory.setDescription(
@@ -172,7 +165,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
 
   private void asignarParametrosVehiculo(List<Vehiculo> lstVehiculoParam) {
     creacionSiniestroAutosFactory.setLicensePlateVehicle(
-        Serenity.sessionVariableCalled(SESION_SERV_NRO_PLACA.getValor()));
+        lstVehiculoParam.get(campoDato).getPlaca());
     creacionSiniestroAutosFactory.setMakeVehicle(lstVehiculoParam.get(campoDato).getMarca());
     creacionSiniestroAutosFactory.setModelVehicle(lstVehiculoParam.get(campoDato).getModelo());
     creacionSiniestroAutosFactory.setEngineNumberVehicle(
@@ -266,12 +259,14 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void obtenerResponse() {
+    ClaimsAutoResponse response;
+    CreacionSiniestroAutoCliente creacionSiniestroAutoCliente = new CreacionSiniestroAutoCliente();
     response = creacionSiniestroAutoCliente.claimsResponse(crearRequest());
     Utilidades.getLogger()
         .info(
             String.format(
                 "[contains(.,'Número de siniestro: ')]" + response.getResult().getClaimNumber()));
-    Serenity.setSessionVariable(ReclamacionConstante.NUMERO_SINIESTRO)
+    Serenity.setSessionVariable(SESION_CC_NUMERO_SINIESTRO.getValor())
         .to(response.getResult().getClaimNumber());
   }
 }
