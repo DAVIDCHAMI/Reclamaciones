@@ -36,13 +36,10 @@ public class RecuperoStep {
     resumenReclamacionPage.obtenerNumeroReclamacion();
   }
 
-  public void seleccionarRecupero() {
-    menuRecuperoPage.ingresarMenuRecupero();
-  }
-
   @Step
   public void diligenciarCreacionRecupero(
       List<Recupero> lstRecupero, String tipoRecupero, String codigoRetencion) {
+    menuRecuperoPage.ingresarMenuRecupero();
     lstRecupero.forEach(
         formulario -> {
           creacionRecuperoPage.seleccionarPagador(formulario.getPagador());

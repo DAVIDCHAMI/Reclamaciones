@@ -45,7 +45,8 @@ Característica: Realizar pago de un siniestro
     Entonces se obtiene el pago del beneficiario
 
     Ejemplos:
-      | Origen          | Línea de reserva                | Tipo de pago | Beneficiario de pago             | Método de pago | Código de retención pago | Solo Sura | Tipo de cobertura   |
-      | creacionAvisoWS | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR              | Pago por banco | 0099                     | No        | RC Lesión a Persona |
-      | creacionAvisoWS | (2) 1ª parteVehículo            | Parcial      | LEONARDO JESUS OSPINO DIAZ CQLII | Caja Sura      | 0099                     | No        | Perdida total Daños |
-      | creacionAvisoWS | (2) 1ª parteVehículo            | Final        | LEONARDO JESUS OSPINO DIAZ CQLII | Caja Sura      | 0099                     | No        | Perdida total Daños |
+      |Origen          | Línea de reserva                | Tipo de pago| Beneficiario de pago             | Método de pago  | Código de retención pago | Solo Sura| Tipo de cobertura  |
+      |Servicio de Maca| (1) 3ª parteLesiones corporales | Parcial     | JHON FEOR FEOR FEOR              | Pago por banco  | 0099                     | No       | RC Lesión a Persona|
+      |Servicio de Maca| (2) 1ª parteVehículo            | Parcial     | DIOGENES MANUEL BETANCOURT MADERA CQLII | Caja Sura       | 0099                     | No       | Perdida total Daños|
+      |Servicio de Maca| (2) 1ª parteVehículo            | Final       | LEONARDO JESUS OSPINO DIAZ CQLII | Caja Sura       | 0099                     | No       | Perdida total Daños|
+
