@@ -7,15 +7,13 @@ import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestroAutos;
-import com.sura.reclamaciones.steps.generics.GenericStep;
+
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.hamcrest.MatcherAssert;
 
 public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
-
-  GenericStep genericStep = new GenericStep();
 
   ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos =
       new ConsumoServicioCreacionSiniestroAutos();
