@@ -54,7 +54,6 @@ public class NuevoPagoStep {
   @Step
   public void consultarNumeroReclamacion() {
     resumenReclamacionPage.obtenerNumeroReclamacion();
-    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 
   @Step

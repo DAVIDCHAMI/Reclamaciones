@@ -116,4 +116,17 @@ public class NuevaReclamacionEmpresarialStep {
               reserva.getReservaTransaccion().equals(validar));
         });
   }
+
+  public void crearNuevaReclamacionEmpresarial(
+      List<ReclamacionEmpresarial> reclamacionEmpresarial,
+      String causaSiniestro,
+      String valorPretension,
+      String tipoIncidente) {
+    buscarPolizaEmpresarial(reclamacionEmpresarial);
+    seleccionarPropiedadImplicada();
+    diligenciarInformacionPersonal(reclamacionEmpresarial);
+    seleccionarCausalIncidente(causaSiniestro, valorPretension);
+    diligenciarInformacionIncidente(tipoIncidente);
+    visualizarResumenReclamacion();
+  }
 }
