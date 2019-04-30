@@ -68,5 +68,4 @@ public class EstablecerReservaPage extends GeneralPage {
     }
     realizarEsperaCarga();
   }
-
 }
