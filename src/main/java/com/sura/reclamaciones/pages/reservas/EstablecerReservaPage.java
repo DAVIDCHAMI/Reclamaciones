@@ -27,12 +27,6 @@ public class EstablecerReservaPage extends GeneralPage {
   @FindBy(xpath = "//span[@id='NewReserveSet:NewReserveSetScreen:Update-btnInnerEl']")
   private WebElementFacade btnGuardarAjusteReserva;
 
-  @FindBy(
-    xpath =
-        "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
-  )
-  private WebElementFacade btnCerrarAdvertencia;
-
   @FindBy(xpath = "//ul[@class='x-list-plain']")
   private WebElementFacade listExposicion;
 
@@ -42,10 +36,6 @@ public class EstablecerReservaPage extends GeneralPage {
 
   public EstablecerReservaPage(WebDriver driver) {
     super(driver);
-  }
-
-  public String getTblLineaReserva() {
-    return String.valueOf(tblLineaReserva);
   }
 
   public void ajustarReserva() {
@@ -79,11 +69,4 @@ public class EstablecerReservaPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void cerrarAdvertenciaLimiteAgregado() {
-    if (btnCerrarAdvertencia.isVisible()) {
-      btnCerrarAdvertencia.click();
-      realizarEsperaCarga();
-      btnGuardarAjusteReserva.click();
-    }
-  }
 }
