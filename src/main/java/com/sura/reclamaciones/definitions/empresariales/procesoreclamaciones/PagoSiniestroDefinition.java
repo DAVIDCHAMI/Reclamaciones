@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales;
+package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.Filtros.CREACION_AVISO_AUTOS_WS;
 import static com.sura.reclamaciones.constantes.Filtros.PERSONA_CONDUCTOR;
