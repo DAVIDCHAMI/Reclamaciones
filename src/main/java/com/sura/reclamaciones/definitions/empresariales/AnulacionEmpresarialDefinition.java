@@ -34,7 +34,7 @@ public class AnulacionEmpresarialDefinition {
 
   PagoSiniestro pagoSiniestro;
 
-  @Y(
+ /* @Y(
       "^se efectua un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
   public void crearPago(
       String tipoPago,
@@ -69,10 +69,13 @@ public class AnulacionEmpresarialDefinition {
                   codigoRetencion,
                   pagoSiniestro.getLstPago());
             });
-  }
+  }*/
 
   @Cuando("^se realice la anulación del pago$")
-  public void anularPago() {
+  public void anularPago() throws IOException {
+    pagoSiniestro =
+        new PagoSiniestro(
+            (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()),  Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     anulacionEmpresarialStep.ingresarAnulacionPago(pagoSiniestro.getLstPago());
   }
 
