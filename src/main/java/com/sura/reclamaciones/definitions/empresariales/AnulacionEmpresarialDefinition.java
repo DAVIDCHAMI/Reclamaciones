@@ -35,8 +35,15 @@ public class AnulacionEmpresarialDefinition {
   PagoSiniestro pagoSiniestro;
 
   @Y(
-      "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
-  public void crearPago(String strTipoProducto, String strCodigoRetencion) throws IOException {
+      "^se efectua un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
+  public void crearPago(
+      String tipoPago,
+      String beneficiarioPago,
+      String metodoPago,
+      String lineaReserva,
+      String cobertura,
+      String aplicaSoloSura,
+      String codigoRetencion) throws IOException {
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(
@@ -52,13 +59,14 @@ public class AnulacionEmpresarialDefinition {
         .forEach(
             ajustador -> {
               nuevoPagoStep.consultarNumeroReclamacion();
+              nuevoPagoStep.crearNuevoPago();
               nuevoPagoStep.ingresarInformacionBeneficiarioPago(
                   ajustador.getLineaReserva(),
                   ajustador.getTipoPago(),
                   ajustador.getBeneficiarioPago(),
                   ajustador.getMetodoPago(),
                   ajustador.getSoloSura(),
-                  strCodigoRetencion,
+                  codigoRetencion,
                   pagoSiniestro.getLstPago());
             });
   }
