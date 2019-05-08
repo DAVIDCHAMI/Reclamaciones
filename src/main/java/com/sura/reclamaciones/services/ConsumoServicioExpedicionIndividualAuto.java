@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.constantes.Constantes.NUEVO_VALOR;
+import static com.sura.reclamaciones.constantes.Constantes.RANGO_HORA_CREACION_SINIESTRO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_ANTERIOR;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_FECHA_INICIO_VIGENCIA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_FECHA_SINIESTRO;
@@ -106,7 +106,8 @@ public class ConsumoServicioExpedicionIndividualAuto {
     fechaSiniestro = fechaSiniestro.toDateTime().minusDays(1);
     fechaAvisoSiniestro = fechaSiniestro.toString().substring(0, 20);
     fechaAvisoSiniestro =
-        fechaAvisoSiniestro.replace(VALOR_ANTERIOR.getValor(), NUEVO_VALOR.getValor());
+        fechaAvisoSiniestro.replace(
+            VALOR_ANTERIOR.getValor(), RANGO_HORA_CREACION_SINIESTRO.getValor());
     Serenity.setSessionVariable(SESION_SERV_JOB_NUMBER.getValor()).to(jobNumberJson);
     Serenity.setSessionVariable(SESION_SERV_NRO_POLIZA.getValor()).to(nroPoliza);
     Serenity.setSessionVariable(SESION_SERV_NRO_PLACA.getValor()).to(nroPlaca);

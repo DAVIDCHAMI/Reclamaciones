@@ -8,6 +8,7 @@ public enum VariablesSesion {
   SESION_CC_PRODUCTO_AUTOS("ProductoAutos"),
   SESION_CC_TIPO_RESERVA("tipoReserva"),
   SESION_CC_VALOR_RECUPERO("ValorRecupero"),
+  SESION_CC_TOTAL_PAGO_RESERVAS("0"),
   SESION_CC_VALOR_RESERVA("valorReserva"),
   SESION_CC_VALOR_RESERVA_CONSTITUCION("valorReservaConstitución"),
   SESION_COT_NUMERO_COTIZACION("nro_cotizacion"),
@@ -28,6 +29,7 @@ public enum VariablesSesion {
   SESION_SERV_NRO_PLACA("nro_placa"),
   SESION_SERV_NRO_POLIZA("nro_poliza"),
   SESION_VALOR_IVA("valor_iva"),
+  SESION_CONDUCTOR_AFECTADO_SINIESTRO("conductor_afectado_siniestro"),
   SESION_VALOR_PRIMA("valor_prima");
 
   private String valor;
