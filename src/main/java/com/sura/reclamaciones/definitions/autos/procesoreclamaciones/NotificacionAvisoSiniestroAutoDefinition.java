@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.autos;
+package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_DIRECCION_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_EXPOSICION_AUTOMATICA;

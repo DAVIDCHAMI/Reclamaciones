@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales;
+package com.sura.reclamaciones.definitions.empresariales.reaseguro;
 
 import static com.sura.reclamaciones.constantes.Constantes.RESERVA;
 import static com.sura.reclamaciones.constantes.NombresCsv.CONTRATO;
