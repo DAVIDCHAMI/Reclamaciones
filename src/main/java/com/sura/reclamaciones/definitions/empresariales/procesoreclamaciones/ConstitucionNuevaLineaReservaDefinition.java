@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales;
+package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import com.sura.reclamaciones.steps.reserva.MovimientoLineaReservaStep;
 import cucumber.api.java.es.Cuando;
