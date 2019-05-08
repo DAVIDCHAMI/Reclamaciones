@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales;
+package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.RECLAMACION_EMPRESARIAL;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
