@@ -9,6 +9,7 @@ import static com.sura.reclamaciones.constantes.NombresCsv.EXPEDICION_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.ExpedicionAuto;
 import com.sura.reclamaciones.models.PersonaReclamacion;
@@ -22,6 +23,7 @@ import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class ConsumoCreacionAvisoAutosDefinition {
@@ -67,21 +69,13 @@ public class ConsumoCreacionAvisoAutosDefinition {
 
   @Cuando("^se genera un aviso$")
   public void siniestrarPolizaServicio() throws IOException {
-    String tipoPoliza = "póliza de auto";
-    ExpedicionAuto expedicionAuto =
-        new ExpedicionAuto(genericsStep.getFilasModelo(EXPEDICION_AUTOS.getValor(), tipoPoliza));
-    consumoServicioExpedicionAutoStep.consumirServicioExpedicion(
-        expedicionAuto.getLstExpedicion(),
-        Integer.parseInt(NUMERO_DIAS_VENCIMIENTO.getValor()),
-        FECHA_ACTUAL.getValor());
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
+    creacionAvisoSiniestroAutoStep.consultarNumeroReclamacionAutos(Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
   @Entonces("^se le brindará al reclamante el número de reclamación$")
   public void verificarCreacionAviso() {
-    creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
-        lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
   }
 }
