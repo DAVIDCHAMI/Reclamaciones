@@ -1,17 +1,13 @@
 package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
 
-import static com.sura.reclamaciones.constantes.Constantes.FECHA_ACTUAL;
-import static com.sura.reclamaciones.constantes.Constantes.NUMERO_DIAS_VENCIMIENTO;
 import static com.sura.reclamaciones.constantes.Filtros.CREACION_AVISO_AUTOS_WS;
 import static com.sura.reclamaciones.constantes.Filtros.PERSONA_CONDUCTOR;
 import static com.sura.reclamaciones.constantes.Filtros.PERSONA_LESIONADA;
-import static com.sura.reclamaciones.constantes.NombresCsv.EXPEDICION_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
-import com.sura.reclamaciones.models.ExpedicionAuto;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -68,10 +64,11 @@ public class ConsumoCreacionAvisoAutosDefinition {
   }
 
   @Cuando("^se genera un aviso$")
-  public void siniestrarPolizaServicio() throws IOException {
+  public void siniestrarPolizaServicio() {
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
-    creacionAvisoSiniestroAutoStep.consultarNumeroReclamacionAutos(Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
+    creacionAvisoSiniestroAutoStep.consultarNumeroReclamacionAutos(
+        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
   @Entonces("^se le brindará al reclamante el número de reclamación$")

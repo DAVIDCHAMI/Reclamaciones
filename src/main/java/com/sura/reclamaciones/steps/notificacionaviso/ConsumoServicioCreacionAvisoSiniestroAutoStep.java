@@ -12,7 +12,6 @@ import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestroAutos;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
-import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
 public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
