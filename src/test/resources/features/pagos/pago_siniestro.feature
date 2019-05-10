@@ -40,20 +40,13 @@ Característica: Realizar pago de un siniestro
 
   @pagoMultiplesLineasReservas
   @claimsAuto
-  Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
-    Dado se afecta la cobertura <Cobertura> de una póliza a través de creacionAvisoMACA
+  Escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
+    Dado que se tiene una póliza creacionAvisoMACA de autos
+    Y se genera un aviso
 
-    Ejemplos:
-      |Cobertura          |
-      |Perdida total Daños|
 
   @pagoReservaAutos
   @claimsAuto
-  Esquema del escenario: Crear pago del siniestro autos
-    Dado se afecta la cobertura <Tipo de cobertura> de una póliza a través de creacionAvisoMACA
-
-    Ejemplos:
-      | Tipo de cobertura  |
-      | Perdida total Daños|
-      | RC Lesión a Persona|
-      | Perdida total Daños|
+  Escenario: Crear pago del siniestro autos
+    Dado que se tiene una póliza creacionAvisoMACA de autos
+    Y se genera un aviso

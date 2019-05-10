@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CONDUCTOR_AFECTADO_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -20,7 +20,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
     id =
         "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:Vehicle_LicensePlate-inputEl"
   )
-  private WebElementFacade txtPlacaVehículo;
+  private WebElementFacade txtPlacaVehiculo;
 
   @FindBy(
     id =
@@ -48,23 +48,31 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
 
   private int campoDato = 0;
 
-  public void diligenciarNuevoIncidenteVehicular(
-      List<ExposicionVehiculoTercero> datosVehiculoTercero) {
-    txtPlacaVehículo
+  public void ingresarPlacaVehiculoAfectado(List<ExposicionVehiculoTercero> datosVehiculoTercero) {
+    txtPlacaVehiculo
         .waitUntilClickable()
         .sendKeys(datosVehiculoTercero.get(campoDato).getPlacaTercero());
     realizarEsperaCarga();
+  }
+
+  public void consultarInformacionVehiculoAfectado() {
     btnRecuperarInformacion.waitUntilVisible().waitUntilClickable().click();
-    realizarEsperaCarga();
-    cmbNombreConductor.waitUntilVisible().waitUntilClickable().click();
-    seleccionarOpcionCombobox(
-        Serenity.sessionVariableCalled(SESION_CONDUCTOR_AFECTADO_SINIESTRO.getValor()));
     realizarEsperaCarga();
   }
 
-  public void asignarServicioTaller() {
+  public void seleccionarConductoVehiculoAfectado() {
+    cmbNombreConductor.waitUntilVisible().waitUntilClickable().click();
+    seleccionarOpcionCombobox(
+        Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor()));
+    realizarEsperaCarga();
+  }
+
+  public void seleccionarServiciosTaller() {
     chkServicioTaller.waitUntilClickable().click();
     realizarEsperaCarga();
+  }
+
+  public void seleccionarAgregarTaller() {
     btnAgregarTaller.waitUntilClickable().click();
   }
 }
