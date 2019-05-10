@@ -249,6 +249,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void seleccionarOpcionLista(WebElementFacade lista, String opcionListaSeleccionar) {
+    realizarEsperaCarga ();
     lista.findElement(By.xpath("//li[contains(text(),'" + opcionListaSeleccionar + "')]")).click();
   }
 
