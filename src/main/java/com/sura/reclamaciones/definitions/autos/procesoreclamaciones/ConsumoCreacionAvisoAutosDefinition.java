@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.autos;
+package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.Constantes.FECHA_ACTUAL;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_DIAS_VENCIMIENTO;
