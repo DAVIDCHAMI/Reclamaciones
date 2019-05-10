@@ -13,7 +13,7 @@ Característica: Constitución de una línea de reserva de un siniestro
     Ejemplos:
 
       | Tipo y Cobertura                                     | Causa          | Tipo de incidente | Exposición                                           | Categoría               | Tipo costo                                    | Valor de Pretensión | Deducible |
-      | Sustracción con cobertura Sustracción con violencia  | Causas varias  | Contenido         | (1) 1ª parteContenido - CUATRO TEMPORADAS S.A. CQLII | Gastos de siniestro     | Gasto - A&O (ajuste y otros)                  | 4000000             | 0         |
+      | Sustracción con cobertura Sustracción con violencia  | Causas varias  | Contenido         | (1) 1ª parteContenido -  | Gastos de siniestro     | Gasto - A&O (ajuste y otros)                  | 4000000             | 0         |
       | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII            | Gastos de siniestro     | Gasto - A&O (ajuste y otros)                  | 3000000             | 0         |
       | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII            | Gastos proceso jurídico | Gasto - D&CC (defensa y contención de gastos) | 3000000             | 0         |
 
