@@ -31,6 +31,6 @@ Característica: Anulación de pagos.
     Entonces se debe obtener la anulación del pago, quedando en estado anulado
 
     Ejemplos:
-      | Origen de siniestro | Línea de reserva                | Tipo de pago | Beneficiario de pago                    | Método de pago | Código de retención pago | Solo Sura | Tipo de cobertura   |
-      | Servicio de Maca    | (1) 1ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR                     | Pago por banco | 0099                     | No        | RC Lesión a Persona |
-      | Servicio de Maca    | (1) 1ª parteVehículo            | Parcial      | DIOGENES MANUEL BETANCOURT MADERA CQLII | Caja Sura      | 0099                     | No        | Perdida total Daños |
+      |Origen de siniestro       | Línea de reserva                | Tipo de pago| Beneficiario de pago                    | Método de pago  | Código de retención pago | Solo Sura| Tipo de cobertura   | Tipo de recupero | Código de retención recupero |
+      |Servicio de Maca          | (1) 3ª parteLesiones corporales | Parcial     | JHON FEOR FEOR FEOR                     | Pago por banco  | 0099                     | No       | RC Lesión a Persona |  Ingreso (otro)  |        0099                  |
+      |Servicio de Maca          | (2) 1ª parteVehículo            | Parcial     | DIOGENES MANUEL BETANCOURT MADERA CQLII | Caja Sura       | 0099                     | No       | Perdida total Daños |  Subrogación     |        0099                  |
