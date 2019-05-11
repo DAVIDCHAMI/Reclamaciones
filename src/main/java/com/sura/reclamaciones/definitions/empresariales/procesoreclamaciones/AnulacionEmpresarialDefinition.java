@@ -34,8 +34,8 @@ public class AnulacionEmpresarialDefinition {
 
   PagoSiniestro pagoSiniestro;
 
- /* @Y(
-      "^se efectua un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
+  @Y(
+      "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
   public void crearPago(
       String tipoPago,
       String beneficiarioPago,
@@ -69,7 +69,7 @@ public class AnulacionEmpresarialDefinition {
                   codigoRetencion,
                   pagoSiniestro.getLstPago());
             });
-  }*/
+  }
 
   @Cuando("^se realice la anulación del pago$")
   public void anularPago() throws IOException {
