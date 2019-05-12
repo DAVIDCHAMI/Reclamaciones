@@ -17,7 +17,7 @@ Característica: Anulación de pagos.
 #    Ejemplos:
 #      | Tipo y Cobertura                                     | Código Retención Pago   | Causa                                 | Valor de Pretensión | Tipo de incidente |
 #      | Multiriesgo corporativo con cobertura básica         | 0028                    | Incendio                              |3000000              |Propiedad          |
-#      |PES Emergente	Responsabilidad civil                | 0010                    |Responsabilidad civil del asegurado    |5000000              |Propiedad          |
+#      |PES Emergente	Responsabilidad civil                 | 0099                    |Responsabilidad civil del asegurado    |5000000              |Propiedad          |
   @claimsAuto
   Esquema del escenario: anulación de un pago de autos.
     Dado que se tiene una reclamación de <Origen de siniestro> con un tipo de cobertura de <Tipo de cobertura>
