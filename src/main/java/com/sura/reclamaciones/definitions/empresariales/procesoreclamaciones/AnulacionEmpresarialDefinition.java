@@ -13,6 +13,7 @@ import com.sura.reclamaciones.steps.anulacionempresarial.AnulacionEmpresarialSte
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
+import cucumber.api.PendingException;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
@@ -22,13 +23,17 @@ import net.thucydides.core.annotations.Steps;
 
 public class AnulacionEmpresarialDefinition {
 
-  @Steps GenericStep genericStep;
+  @Steps
+  GenericStep genericStep;
 
-  @Steps AnulacionEmpresarialStep anulacionEmpresarialStep;
+  @Steps
+  AnulacionEmpresarialStep anulacionEmpresarialStep;
 
-  @Steps RecuperoStep recuperoStep;
+  @Steps
+  RecuperoStep recuperoStep;
 
-  @Steps NuevoPagoStep nuevoPagoStep;
+  @Steps
+  NuevoPagoStep nuevoPagoStep;
 
   Recupero recupero;
 
@@ -36,14 +41,7 @@ public class AnulacionEmpresarialDefinition {
 
   @Y(
       "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
-  public void crearPago(
-      String tipoPago,
-      String beneficiarioPago,
-      String metodoPago,
-      String lineaReserva,
-      String cobertura,
-      String aplicaSoloSura,
-      String codigoRetencion) throws IOException {
+  public void crearPago(String strTipoProducto, String strCodigoRetencion) throws IOException {
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(
@@ -59,23 +57,19 @@ public class AnulacionEmpresarialDefinition {
         .forEach(
             ajustador -> {
               nuevoPagoStep.consultarNumeroReclamacion();
-              nuevoPagoStep.crearNuevoPago();
               nuevoPagoStep.ingresarInformacionBeneficiarioPago(
                   ajustador.getLineaReserva(),
                   ajustador.getTipoPago(),
                   ajustador.getBeneficiarioPago(),
                   ajustador.getMetodoPago(),
                   ajustador.getSoloSura(),
-                  codigoRetencion,
+                  strCodigoRetencion,
                   pagoSiniestro.getLstPago());
             });
   }
 
   @Cuando("^se realice la anulación del pago$")
   public void anularPago() throws IOException {
-    pagoSiniestro =
-        new PagoSiniestro(
-            (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()),  Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
     anulacionEmpresarialStep.ingresarAnulacionPago(pagoSiniestro.getLstPago());
   }
 
@@ -105,5 +99,18 @@ public class AnulacionEmpresarialDefinition {
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
+  }
+
+  @Cuando("^se anula dicho pago con cobertura (.*)$")
+  public void anularTransaccionPagoAutos(String cobertura) throws IOException {
+    pagoSiniestro =
+        new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), cobertura)));
+    anulacionEmpresarialStep.ingresarAnulacionPago(pagoSiniestro.getLstPago());
+  }
+
+  @Cuando("^se anula el ingreso con cobertura (.*)$")
+  public void anularTransaccionIngresoAutos(String cobertura) throws Throwable {
+    recupero = new Recupero((genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), cobertura)));
+    anulacionEmpresarialStep.ingresarAnulacionRecupero(recupero.getLstRecupero());
   }
 }
