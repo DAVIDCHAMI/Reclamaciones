@@ -13,7 +13,6 @@ import com.sura.reclamaciones.steps.anulacionempresarial.AnulacionEmpresarialSte
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
-import cucumber.api.PendingException;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
@@ -23,17 +22,13 @@ import net.thucydides.core.annotations.Steps;
 
 public class AnulacionEmpresarialDefinition {
 
-  @Steps
-  GenericStep genericStep;
+  @Steps GenericStep genericStep;
 
-  @Steps
-  AnulacionEmpresarialStep anulacionEmpresarialStep;
+  @Steps AnulacionEmpresarialStep anulacionEmpresarialStep;
 
-  @Steps
-  RecuperoStep recuperoStep;
+  @Steps RecuperoStep recuperoStep;
 
-  @Steps
-  NuevoPagoStep nuevoPagoStep;
+  @Steps NuevoPagoStep nuevoPagoStep;
 
   Recupero recupero;
 
