@@ -13,7 +13,7 @@ Característica: Constitución de una línea de reserva de un siniestro
 
     Ejemplos:
       | Tipo y Cobertura                             | causa             | valor de pretension | Tipo de incidente | Monto del ajuste | Deducible |
-      | Multiriesgo corporativo con cobertura básica | Rotura de vidrios | 2000000             | Propiedad         | 4000000          | -1562484  |
+      | Multiriesgo corporativo con cobertura básica | Rotura de vidrios | 2000000             | Propiedad         | 4000000          | -855000   |
       | Multiriesgo corporativo con cobertura básica | Rotura de vidrios | 2000000             | Propiedad         | 3800000          | -1562484  |
 
 
@@ -25,11 +25,12 @@ Característica: Constitución de una línea de reserva de un siniestro
     Ejemplos:
 
       | Tipo y Cobertura                                     | Causa          | Tipo de incidente | Exposición                                           | Categoría               | Tipo costo                                    | Valor de Pretensión | Deducible |
-      | Sustracción con cobertura Sustracción con violencia  | Causas varias  | Contenido         | (1) 1ª parteContenido -  | Gastos de siniestro     | Gasto - A&O (ajuste y otros)                  | 4000000             | 0         |
+      | Sustracción con cobertura Sustracción con violencia  | Causas varias  | Contenido         | (1) 1ª parteContenido -                              | Gastos de siniestro     | Gasto - A&O (ajuste y otros)                  | 4000000             | 0         |
       | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII            | Gastos de siniestro     | Gasto - A&O (ajuste y otros)                  | 3000000             | 0         |
       | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII            | Gastos proceso jurídico | Gasto - D&CC (defensa y contención de gastos) | 3000000             | 0         |
 
 
+  @reversionConstitucion
   @claimsAuto
   Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamaciòn de autos
     Dado que se tiene una póliza Servicio de Maca de autos
@@ -42,7 +43,7 @@ Característica: Constitución de una línea de reserva de un siniestro
       |Monto del ajuste| Deducible |
       | 750000         |         0 |
 
-
+  @creacionLineaReserva
   @claimsAuto
     Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamaciòn de autos
       Dado que se tiene una póliza Servicio de Maca de autos
