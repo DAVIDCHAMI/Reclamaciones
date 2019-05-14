@@ -14,6 +14,7 @@ import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
@@ -32,6 +33,8 @@ public class PagoSiniestroDefinition {
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps PagoSiniestro pagoSiniestro;
+
+  @Steps MenuClaimsStep menuClaimsStep;
 
   String cobertura;
 
@@ -70,7 +73,7 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
-    nuevoPagoStep.consultarNumeroReclamacionAutos(
+    menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();

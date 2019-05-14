@@ -2,12 +2,10 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestroAutos;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
@@ -19,8 +17,6 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
   ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos =
       new ConsumoServicioCreacionSiniestroAutos();
 
-  MenuClaimPage menuClaimPage;
-
   @Step
   public void siniestrarPolizaAutos(
       List<ReclamacionAuto> lstReclamacionAuto,
@@ -29,11 +25,6 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
       List<Vehiculo> lstVehiculoParam) {
     consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
-  }
-
-  @Step
-  public void consultarNumeroReclamacionAutos(String numReclamacion) {
-    menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
   }
 
   @Step
