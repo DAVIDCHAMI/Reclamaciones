@@ -95,13 +95,13 @@ public class DetalleTransaccionPage extends GeneralPage {
             lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
         estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
         if (estadoTransaccionPantalla) {
-          String strMontoRecupero=lstTransaccion.get(2).getText();
+          String strMontoRecupero = lstTransaccion.get(2).getText();
           lstTransaccion
               .get(2)
               .findElement(
                   By.xpath(
                       String.format(
-                          "//a[@class='g-actionable'][contains(text(),'"+strMontoRecupero+"')]",
+                          "//a[@class='g-actionable'][contains(text(),'" + strMontoRecupero + "')]",
                           strNumeroTransaccion)))
               .click();
           break;

@@ -19,8 +19,7 @@ public class AnulacionRecuperoDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps
-  AnulacionTransaccionStep anulacionTransaccionStep;
+  @Steps AnulacionTransaccionStep anulacionTransaccionStep;
 
   @Steps RecuperoStep recuperoStep;
 
@@ -37,7 +36,7 @@ public class AnulacionRecuperoDefinition {
   }
 
   @Cuando("^se anula el ingreso con cobertura (.*)$")
-  public void anularTransaccionRecuperoAutos(String cobertura) throws Throwable {
+  public void anularTransaccionRecuperoAutos(String cobertura) throws IOException {
     recupero = new Recupero((genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), cobertura)));
     anulacionTransaccionStep.ingresarAnulacionRecupero(recupero.getLstRecupero());
   }
