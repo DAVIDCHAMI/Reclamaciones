@@ -2,7 +2,6 @@ package com.sura.reclamaciones.steps.generics;
 
 import static com.sura.reclamaciones.constantes.Constantes.RUTA_LOG_EMPRESARIAL;
 
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.io.File;
@@ -17,11 +16,8 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import net.thucydides.core.steps.stepdata.CSVTestDataSource;
 import net.thucydides.core.steps.stepdata.TestDataSource;
-import org.fluentlenium.core.annotation.Page;
 
 public class GenericStep {
-
-  @Page MenuClaimPage menuClaimPage;
 
   public List<Map<String, String>> getFilasModelo(String nombreCSV, String filtro)
       throws IOException {

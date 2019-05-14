@@ -33,7 +33,7 @@ Característica: Constitución de una línea de reserva de un siniestro
   @reversionConstitucion
   @claimsAuto
   Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamaciòn de autos
-    Dado que se tiene una póliza Servicio de Maca de autos
+    Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de Servicio de Maca de autos
     Y se genera un aviso
     Cuando se ajuste la reserva con un valor de <Monto del ajuste>
     Entonces se obtiene una reversión de constitución y el deducible es generado por un valor <Deducible>
@@ -46,7 +46,7 @@ Característica: Constitución de una línea de reserva de un siniestro
   @creacionLineaReserva
   @claimsAuto
     Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamaciòn de autos
-      Dado que se tiene una póliza Servicio de Maca de autos
+      Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de Servicio de Maca de autos
       Y se genera un aviso
       Cuando se crea una nueva línea de reserva por la Exposición de <Exposición> por <Categoría> con un tipo de costo <Tipo costo> por un valor de <Valor de Pretensión>
       Entonces se genera una nueva línea de reserva de <Categoría> con un deducible de <Deducible>

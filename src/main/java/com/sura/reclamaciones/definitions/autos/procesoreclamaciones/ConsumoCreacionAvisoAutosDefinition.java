@@ -39,7 +39,8 @@ public class ConsumoCreacionAvisoAutosDefinition {
 
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
-  @Dado("^que se tiene una póliza (.*) de autos$")
+  @Dado(
+      "^que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de (.*) de autos$")
   public void parametrizarValoresSiniestro(String filtroCsv) throws IOException {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
