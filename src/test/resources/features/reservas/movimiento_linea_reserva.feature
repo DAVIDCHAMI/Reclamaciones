@@ -32,7 +32,7 @@ Característica: Constitución de una línea de reserva de un siniestro
 
   @reversionConstitucion
   @claimsAuto
-  Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamaciòn de autos
+  Esquema del escenario: reversión de constitución
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de Servicio de Maca de autos
     Y se genera un aviso
     Cuando se ajuste la reserva con un valor de <Monto del ajuste>
