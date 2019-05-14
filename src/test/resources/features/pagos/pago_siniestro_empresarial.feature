@@ -49,3 +49,20 @@ Característica: Realizar pago de un siniestro
       |Servicio de Maca| (2) 1ª parteVehículo            | Parcial     | DIOGENES MANUEL BETANCOURT MADERA CQLII | Caja Sura       | 0099                     | No       | Perdida total Daños|
       |Servicio de Maca| (2) 1ª parteVehículo            | Final       | LEONARDO JESUS OSPINO DIAZ CQLII | Caja Sura       | 0099                     | No       | Perdida total Daños|
 
+  @PruebaAuditoria
+    @claimsEmpresarial
+    Esquema del escenario: Editar opcion de Requiere Auditoria
+      Dado que se tiene una póliza de <Tipo y Cobertura>
+      Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
+      Y un incidente de tipo <Tipo de incidente>
+      Cuando <¿Requiere auditoria?> se notifique el proceso de auditoria al area de auditoria
+      Y se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de Retención>
+      Entonces <¿genera factura?> se debe generar factura de pago al asegurado
+
+
+      Ejemplos:
+        | Línea de Reserva      | Tipo de pago | Beneficiario del pago               | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                             | Causa             | Valor de Pretensión | Tipo de incidente | ¿Requiere auditoria? | ¿genera factura? |
+        | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII         | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | No                   | Si               |
+        | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII         | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | Si                   | No               |
+        | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII     | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales      | Daños por agua    | 5000000             | Propiedad         | No                   | Si               |
+        | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII     | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales      | Daños por agua    | 5000000             | Propiedad         | Si                   | No               |

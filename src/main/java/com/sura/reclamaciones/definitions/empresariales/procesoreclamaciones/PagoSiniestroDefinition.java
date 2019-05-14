@@ -39,12 +39,12 @@ public class PagoSiniestroDefinition {
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
-        lineaReserva,
-        tipoPago,
+    nuevoPagoStep.ingresarInformacionPago(
         beneficiarioPago,
         metodoPago,
         aplicaSoloSura,
+        lineaReserva,
+        tipoPago,
         codigoRetencion,
         pagoSiniestro.getLstPago());
   }
