@@ -13,8 +13,8 @@ Característica: Constitución de una línea de reserva de un siniestro
 
     Ejemplos:
       | Tipo y Cobertura                             | causa             | valor de pretension | Tipo de incidente | Monto del ajuste | Deducible |
-      | Multiriesgo corporativo con cobertura básica | Rotura de vidrios | 2000000             | Propiedad         | 4000000          | -855000   |
-      | Multiriesgo corporativo con cobertura básica | Rotura de vidrios | 2000000             | Propiedad         | 3800000          | -825000   |
+      | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | 4000000          | 0         |
+      | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | 3800000          | 0         |
 
 
   @claimsEmpresarial
