@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.anulacionempresarial;
+package com.sura.reclamaciones.pages.anulacionetransaccion;
 
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_ANULACION;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
@@ -95,11 +95,20 @@ public class DetalleTransaccionPage extends GeneralPage {
             lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
         estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
         if (estadoTransaccionPantalla) {
-          lstTransaccion.get(2).click();
+          String strMontoRecupero=lstTransaccion.get(2).getText();
+          lstTransaccion
+              .get(2)
+              .findElement(
+                  By.xpath(
+                      String.format(
+                          "//a[@class='g-actionable'][contains(text(),'"+strMontoRecupero+"')]",
+                          strNumeroTransaccion)))
+              .click();
           break;
         }
       }
     }
+    realizarEsperaCarga();
     return estadoTransaccionPantalla;
   }
 }

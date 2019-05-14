@@ -5,7 +5,7 @@ import static com.sura.reclamaciones.constantes.Constantes.NUMERO_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.USD;
 
-import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
+import com.sura.reclamaciones.pages.anulacionetransaccion.DetalleTransaccionPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import org.fluentlenium.core.annotation.Page;

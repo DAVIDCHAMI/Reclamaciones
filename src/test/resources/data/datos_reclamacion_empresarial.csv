@@ -1,25 +1,25 @@
 id;idFiltro                                            ;detalleHechos                                 ;pais    		;departamento     ;ciudad          				;fechaSiniestro	;numPoliza   		;validadorNumReclamacion   	;reservaTransaccion;ramoPolizaAtr
-1 ;Multiriesgo corporativo con cobertura básica        ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;     	;12/11/2018    	;030000126013		;Nueva reclamación guardada	;3562484
-2 ;Cumplimiento con cobertura Cumplimiento del contrato;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;     	;16/11/2018    	;012001334052		;Nueva reclamación guardada	;3000000
-3 ;Hogar con cobertura básica                          ;Esta es una regresión de pruebas automatizada ;Colombia		;Cauca            ;     	;15/11/2018    	;028008127418		;Nueva reclamación guardada	;200000
-4 ;Responsabilidad Civil Predios y operaciones         ;Esta es una regresión de pruebas automatizada ;Colombia		;Bolivar          ;         ;07/03/2011 				;013000133470		;Nueva reclamación guardada	;200000
-5 ;Transportes automáticos de mercancía                ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;     	;25/11/2018    	;020000012668		;Nueva reclamación guardada	;300000
-6 ;Sustracción con cobertura Sustracción con violencia ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;     	;16/11/2018    	;015000029463		;Nueva reclamación guardada	;300000
-7 ;Plan Empresario Sura con Amit                       ;Esta es una regresión de pruebas automatizada ;Colombia		;Valle del Cauca  ;	        ;10/05/2018    	;030001129624		;Nueva reclamación guardada	;4000000
-8 ;Incendio con cobertura Daños materiales             ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;     	;28/09/2018    	;030000118188		;Nueva reclamación guardada	;3000000
-9 ;AvisoEmpresariales                                  ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;     	;10/05/2018    	;030001014345		;Nueva reclamación guardada	;2000000
-10 ;ATR                                                ;Regresión de pruebas en ATR                     ;Colombia		;Antioquia    ;     	;2018/Nov/10   	;159356      		;Nueva reclamación guardada	;2000000;030
-11;Amit												   ;Prueba Dolares					   		   	;Colombia		;Antioquia        ;	        ;21/01/2019		;030001132742		;Nueva reclamación guardada	;2000
-12;Hogar terremoto				    				   ;Prueba contrato RE						   	;Colombia		;Bogota D.C.	  ;  	    ;21/01/2019		;028000259164		;Nueva reclamación guardada ;3000000
-13;Hogar Sustracción							       ;Prueba hogar 							   	;Colombia		;Bolivar          ;         ;24/12/2018		;028005890709		;Nueva reclamación guardada ;5000000
-14;Transporte de mercancias							   ;Prueba Transporte de mercancias dolares      	;Colombia		;Bolivar      ;         ;30/01/2019		;030000663883       ;Nueva reclamación guardada	;2000
-15;Responsabilidad civil extracontractual			   ;Prueba	RC dolares						   	;Colombia		;Bogotá D.C.	  ;			;27/03/2018		;030000604785		;Nueva reclamación guardada	;1500
-16;Multiriesgo corporativo AMIT						   ;Buena para reversion de constitucion	   	;Colombia		;Antioquia	      ;	    	;01/03/2018		;030000128277		;Nueva reclamación guardada	;80000000
-17;Cumplimiento contrato							   ;Prueba de cumplimiento					   	;Colombia		;Antioquia		  ;	        ;10/10/2018		;012001546889		;Nueva reclamación guardada	;1600000
-18;Responsabilidad civil gastos medicos				   ;Prueba gastos medicos					   	;Colombia		;Antioquia		  ;			;16/01/2019		;013000347178		;Nueva reclamación guardada	;2000000
-19;PES Emergente Incendio							   ;Prueba PES								   	;Colombia		;Antioquia		  ;			;12/02/2019		;028082182509		;Nueva reclamación guardada	;2000000
-20;PES Emergente Amit 								   ;Prueba PES								   	;Colombia		;Antioquia		  ;			;12/02/2019		;028082182510		;Nueva reclamación guardada	;3000000
-21;PES Emergente Terremoto							   ;Prueba PES								   	;Colombia		;Antioquia		  ;			;11/02/2019		;028082182511		;Nueva reclamación guardada ;2500000
-22;PES Emergente	Sustraccion						   ;Prueba PES								   	;Colombia		;Antioquia		  ;			;10/02/2019		;028082182512		;Nueva reclamación guardada ;2800000
-23;PES Emergente	Responsabilidad civil			   ;Prueba PES								   	;Colombia		;Antioquia		  ;			;10/01/2019		;028082182513		;Nueva reclamación guardada ;3800000
-24;PES Emergente Daño Interno Maquinaria y equipo	   ;Prueba PES								   	;Colombia		;Antioquia		  ;			;03/01/2019		;028082182514		;Nueva reclamación guardada ;1800000
+1 ;Multiriesgo corporativo con cobertura básica        ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;Itagüí          				;12/11/2018    	;030000126013		;Nueva reclamación guardada	;3562484
+2 ;Cumplimiento con cobertura Cumplimiento del contrato;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;Medellin        				;16/11/2018    	;012001334052		;Nueva reclamación guardada	;3000000
+3 ;Hogar con cobertura básica                          ;Esta es una regresión de pruebas automatizada ;Colombia		;Cauca            ;Popayán         				;15/11/2018    	;028008127418		;Nueva reclamación guardada	;200000
+4 ;Responsabilidad Civil Predios y operaciones         ;Esta es una regresión de pruebas automatizada ;Colombia		;Bolivar          ;Cartagena De Indias	;07/03/2011 				;013000133470		;Nueva reclamación guardada	;200000
+5 ;Transportes automáticos de mercancía                ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;Medellin        				;25/11/2018    	;020000012668		;Nueva reclamación guardada	;300000
+6 ;Sustracción con cobertura Sustracción con violencia ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;Envigado        				;16/11/2018    	;015000029463		;Nueva reclamación guardada	;300000
+7 ;Plan Empresario Sura con Amit                       ;Esta es una regresión de pruebas automatizada ;Colombia		;Valle del Cauca  ;Santiago De Cali				;10/05/2018    	;030001129624		;Nueva reclamación guardada	;4000000
+8 ;Incendio con cobertura Daños materiales             ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;Itagüí          				;28/09/2018    	;030000118188		;Nueva reclamación guardada	;3000000
+9 ;AvisoEmpresariales                                  ;Esta es una regresión de pruebas automatizada ;Colombia		;Antioquia        ;Medellin        				;10/05/2018    	;030001014345		;Nueva reclamación guardada	;2000000
+10 ;ATR                                                ;Regresión de pruebas en ATR                   ;colombia		;Antioquia        ;Medellin        				;2018/Nov/10   	;159356      		;Nueva reclamación guardada	;2000000;030
+11;Amit																																																;Prueba Dolares																																;Colombia		;Antioquia        ;Medellin 											;21/01/2019					;030001132742		;Nueva reclamación guardada	;2000
+12;Hogar terremoto																																					;Prueba contrato RE																												;Colombia		;Bogota D.C.						;Bogotá D.C.									;21/01/2019					;028000259164		;Nueva reclamación guardada ;3000000
+13;Hogar Sustracción																																			;Prueba hogar 																																	;Colombia		;Bolivar          ;Cartagena De Indias ;24/12/2018					;028005890709		;Nueva reclamación guardada ;5000000
+14;Transporte de mercancias																												;Prueba Transporte de mercancias	dolares							;Colombia		;Bolivar          ;Cartagena De Indias ;30/01/2019					;030000663883  ;Nueva reclamación guardada	;2000
+15;Responsabilidad civil extracontractual													 ;Prueba	RC dolares																													;Colombia		;Bogotá D.C.						;Bogota D.C.									;27/03/2018					;030000604785		;Nueva reclamación guardada	;1500
+16;Multiriesgo corporativo AMIT																								;Buena para reversion de constitucion										;Colombia		;Antioquia								;Medellin												;01/03/2018					;030000128277		;Nueva reclamación guardada	;80000000
+17;Cumplimiento contrato																															;Prueba de cumplimiento																								;Colombia		;Antioquia								;Medellin												;10/10/2018					;012001546889		;Nueva reclamación guardada	;1600000
+18;Responsabilidad civil gastos medicos																;Prueba gastos medicos																									;Colombia		;Antioquia								;Medellin												;16/01/2019					;013000347178		;Nueva reclamación guardada	;2000000
+19;PES Emergente Incendio																														;Prueba PES																																				;Colombia		;Antioquia								;Medellin												;12/02/2019					;028082182509		;Nueva reclamación guardada	;2000000
+20;PES Emergente Amit 																																	;Prueba PES																																				;Colombia		;Antioquia								;Medellin									 		;12/02/2019					;028082182510		;Nueva reclamación guardada	;3000000
+21;PES Emergente Terremoto																													;Prueba PES																																				;Colombia		;Antioquia								;Medellin												;11/02/2019					;028082182511		;Nueva reclamación guardada ;2500000
+22;PES Emergente	Sustraccion																											;Prueba PES																																				;Colombia		;Antioquia								;Medellin												;10/02/2019					;028082182512		;Nueva reclamación guardada ;2800000
+23;PES Emergente	Responsabilidad civil																	;Prueba PES																																				;Colombia		;Antioquia								;Medellin												;10/01/2019					;028082182513		;Nueva reclamación guardada ;3800000
+24;PES Emergente Daño Interno Maquinaria y equipo						;Prueba PES																																				;Colombia		;Antioquia								;Medellin												;03/01/2019					;028082182514		;Nueva reclamación guardada ;1800000
