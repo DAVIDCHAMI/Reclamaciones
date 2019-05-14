@@ -72,7 +72,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void seleccionarAgregarTaller() {
+  public void seleccionarTaller() {
     btnAgregarTaller.waitUntilClickable().click();
   }
 }
