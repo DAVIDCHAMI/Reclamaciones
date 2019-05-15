@@ -12,41 +12,41 @@ import org.openqa.selenium.WebDriver;
 
 public class NuevoIncidenteVehicularPage extends GeneralPage {
 
-  public NuevoIncidenteVehicularPage(WebDriver wdriver) {
-    super(wdriver);
-  }
+  private int campoDato = 0;
 
   @FindBy(
-    id =
-        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:Vehicle_LicensePlate-inputEl"
+      id =
+          "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:Vehicle_LicensePlate-inputEl"
   )
   private WebElementFacade txtPlacaVehiculo;
 
   @FindBy(
-    id =
-        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:fasecolda-btnInnerEl"
+      id =
+          "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:fasecolda-btnInnerEl"
   )
   private WebElementFacade btnRecuperarInformacion;
 
   @FindBy(
-    xpath =
-        "//input[@id='NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:Driver_Picker-inputEl'][contains(@class,'x-form-field x-form-text')]"
+      xpath =
+          "//input[@id='NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:Driver_Picker-inputEl'][contains(@class,'x-form-field x-form-text')]"
   )
   private WebElementFacade cmbNombreConductor;
 
   @FindBy(
-    id =
-        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:OtherServicesLVInputGroupInputSet:OtherServicesInputGroup:_checkbox"
+      id =
+          "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:OtherServicesLVInputGroupInputSet:OtherServicesInputGroup:_checkbox"
   )
   private WebElementFacade chkServicioTaller;
 
   @FindBy(
-    id =
-        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:OtherServicesLVInputGroupInputSet:OtherServicesInputGroup:OtherServicesLVInputSet:OtherServicesLV_tb:AddAutoRepairShopServiceRequest-btnInnerEl"
+      id =
+          "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:OtherServicesLVInputGroupInputSet:OtherServicesInputGroup:OtherServicesLVInputSet:OtherServicesLV_tb:AddAutoRepairShopServiceRequest-btnInnerEl"
   )
   private WebElementFacade btnAgregarTaller;
 
-  private int campoDato = 0;
+  public NuevoIncidenteVehicularPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
   public void ingresarPlacaVehiculoAfectado(List<ExposicionVehiculoTercero> datosVehiculoTercero) {
     txtPlacaVehiculo
