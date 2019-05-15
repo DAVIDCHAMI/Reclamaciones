@@ -4,6 +4,7 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -12,6 +13,8 @@ import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
+
+  @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
   @Steps NuevoPagoStep nuevoPagoStep;
 

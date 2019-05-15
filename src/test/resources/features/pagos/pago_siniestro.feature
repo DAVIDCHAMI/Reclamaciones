@@ -37,15 +37,16 @@ Característica: Realizar pago de un siniestro
       | (1) 1ª parteGeneral - TODO EN VERDE CQLII; Gasto - A&O (ajuste y otros)/Gastos de siniestro; COP   | Parcial      | TODO EN VERDE CQLII               | Pago por banco | No                 | 0023                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento             | 3000000             | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII                 | Gastos de siniestro | Gasto - A&O (ajuste y otros) | Si                     |
       | (1) 1ª parteContenido - JUAN CARLOS PALACIO RAMIREZ CQLII; Costo de reclamación/Avería gruesa; COP | Parcial      | JUAN CARLOS PALACIO RAMIREZ CQLII | Pago por banco | No                 | 0023                | Transportes automáticos de mercancía Incendio        | Acc vehiculo transportador | 4000000             | Contenido         | (1) 1ª parteContenido - JUAN CARLOS PALACIO RAMIREZ CQLII | Avería gruesa       | Costo de reclamación         | Si                     |
 
+
+  @pagoMultiplesLineasReservas
   @claimsAuto
-  Esquema del escenario: Crear pago del siniestro autos
-    Dado que se tiene un siniestro de <Origen> con un tipo de cobertura de <Tipo de cobertura>
-    Cuando se genere un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la linea de reserva <Línea de reserva> donde el responsable <Solo Sura> es Sura con una retención de <Código de retención pago>
-    Entonces se obtiene el pago del beneficiario
+  Escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
+    Dado que se tiene una póliza creacionAvisoMACA de autos
+    Y se genera un aviso
 
-    Ejemplos:
-      |Origen          | Línea de reserva                | Tipo de pago| Beneficiario de pago                    | Método de pago  | Código de retención pago | Solo Sura| Tipo de cobertura  |
-      |Servicio de Maca| (1) 3ª parteLesiones corporales | Parcial     | JHON FEOR FEOR FEOR                     | Pago por banco  | 0099                     | No       | RC Lesión a Persona|
-      |Servicio de Maca| (2) 1ª parteVehículo            | Parcial     | DIOGENES MANUEL BETANCOURT MADERA CQLII | Caja Sura       | 0099                     | No       | Perdida total Daños|
-      |Servicio de Maca| (2) 1ª parteVehículo            | Final       | LEONARDO JESUS OSPINO DIAZ CQLII        | Caja Sura       | 0099                     | No       | Perdida total Daños|
 
+  @pagoReservaAutos
+  @claimsAuto
+  Escenario: Crear pago del siniestro autos
+    Dado que se tiene una póliza creacionAvisoMACA de autos
+    Y se genera un aviso

@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.services;
 
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.PersonaReclamacion;
@@ -145,6 +146,17 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setDocumentTypeDriver(
         lstConductor.get(campoDato).getTipoDocumento());
     creacionSiniestroAutosFactory.setTaxIDDriver(lstConductor.get(campoDato).getNumDocumento());
+    String conductorTerceroAfectado;
+    conductorTerceroAfectado =
+        lstConductor.get(campoDato).getPrimerNombre()
+            + " "
+            + lstConductor.get(campoDato).getSegundoNombre()
+            + " "
+            + lstConductor.get(campoDato).getPrimerApellido()
+            + " "
+            + lstConductor.get(campoDato).getSegundoApellido();
+    Serenity.setSessionVariable(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
+        .to(conductorTerceroAfectado);
   }
 
   private void asignarParametrosDireccionConductor(List<PersonaReclamacion> lstConductor) {
