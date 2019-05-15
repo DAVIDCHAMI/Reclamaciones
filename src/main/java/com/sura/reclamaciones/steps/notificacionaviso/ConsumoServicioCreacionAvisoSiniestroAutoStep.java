@@ -38,9 +38,4 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
         "No se obtuvo el número del siniestro, verificar el consumo",
         numReclamacion.contains(ReclamacionConstante.VERIFICADOR_NUMERO_SINIESTRO));
   }
-
-  @Step
-  public void consultarNumeroReclamacionAutos(String numReclamacion) {
-    menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
-  }
 }

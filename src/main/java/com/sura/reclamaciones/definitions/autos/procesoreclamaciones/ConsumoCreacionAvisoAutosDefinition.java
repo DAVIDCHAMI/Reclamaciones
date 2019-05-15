@@ -12,6 +12,7 @@ import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -28,9 +29,11 @@ public class ConsumoCreacionAvisoAutosDefinition {
   Vehiculo reclamacionVehiculo = new Vehiculo();
   GenericStep genericStep = new GenericStep();
 
+  @Steps MenuClaimsStep menuClaimsStep;
+
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
-  @Dado("^que se tiene una póliza (.*) de autos$")
+  @Dado("^que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de (.*) de autos$")
   public void parametrizarValoresSiniestro(String origenSinestro) throws IOException {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
@@ -55,7 +58,7 @@ public class ConsumoCreacionAvisoAutosDefinition {
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
         parametroPersonaConductorAuto.getLstPersonaReclamacion(),
         reclamacionVehiculo.getLstVehiculos());
-    creacionAvisoSiniestroAutoStep.consultarNumeroReclamacionAutos(
+    menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
