@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
   features = "src/test/resources/features/reservas/movimiento_linea_reserva.feature",
   glue = {"com.sura.reclamaciones.definitions"},
-  tags = {"~@claimsAuto"}
+  tags = {"@claimsEmpresarial"}
 )
 public class MovimientoLineaReservaEmpresarialRunner {}
