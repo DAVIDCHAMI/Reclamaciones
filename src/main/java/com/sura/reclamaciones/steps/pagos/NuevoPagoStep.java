@@ -67,6 +67,7 @@ public class NuevoPagoStep {
       List<PagoSiniestro> lstPago) {
     for (PagoSiniestro diligenciador : lstPago) {
       introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
+      generalPage.realizarEsperaCarga();
       introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
           diligenciador.getTipoBeneficiario());
       introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
@@ -136,6 +137,7 @@ public class NuevoPagoStep {
 
   @Step
   public void declararReclamacionPerdidaTotal() {
+    generalPage.realizarEsperaCarga();
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
     exposicionesAutomaticasPage.seleccionarExposicion();
     detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
