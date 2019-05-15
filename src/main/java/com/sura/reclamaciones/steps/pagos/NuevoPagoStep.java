@@ -184,7 +184,7 @@ public class NuevoPagoStep {
       introducirInformacionPagoPage.irSiguientePantalla();
       if (auditoriaPage.verificarMensajeRechazo()) {
         MatcherAssert.assertThat(
-            "No generó la validación de NO pago a asegurado" + "por proceso de auditoría",
+            "No generó la validación de NO pago a asegurado por proceso de auditoría",
             auditoriaPage
                 .capturarMensajeRechazo()
                 .equalsIgnoreCase(Constantes.MENSAJE_RECHAZO_PAGO.getValor()));

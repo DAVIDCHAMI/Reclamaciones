@@ -48,24 +48,37 @@ public class AuditoriaPage extends GeneralPage {
         MenuConstante.DETALLES_SINIESTRO, DETALLES_INVESTIGACION_AUDITORIA.getValor());
   }
 
-  public void editarOpcionRequiereAuditoria(String strAuditoria) {
+  public void editarMarcacionAuditoria() {
     btnEditar.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
-    cmbRequiereAuditoria.waitUntilClickable().click();
+  }
+
+  public void seleccionarMarcacionAuditoria(String strAuditoria) {
+    cmbRequiereAuditoria.waitUntilClickable().waitUntilPresent().waitUntilVisible().click();
     seleccionarOpcionCombobox(strAuditoria);
     realizarEsperaCarga();
     if (strAuditoria.equalsIgnoreCase(Constantes.SI.getValor())) {
-      txtAreaComentario.type(Constantes.COMENTARIO_AUDITORIA.getValor());
+      agregarComentarioAuditoria();
     }
+  }
+
+  public void agregarComentarioAuditoria() {
+    txtAreaComentario.type(Constantes.COMENTARIO_AUDITORIA.getValor());
+  }
+
+  public void actualizarMarcacionAuditoria() {
     btnActualizar.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
   }
 
   public void verificarMarcacion(String strAuditoria) {
-    boolean marcacion = verificarImagenAuditoria();
-    if (strAuditoria.equalsIgnoreCase(Constantes.NO.getValor()) && marcacion) {
-      editarOpcionRequiereAuditoria(strAuditoria);
+    if (strAuditoria.equalsIgnoreCase(Constantes.NO.getValor()) && verificarImagenAuditoria()) {
+      editarMarcacionAuditoria();
+      seleccionarMarcacionAuditoria(strAuditoria);
+      actualizarMarcacionAuditoria();
     } else {
-      if (strAuditoria.equalsIgnoreCase(Constantes.SI.getValor()) && !marcacion) {
-        editarOpcionRequiereAuditoria(strAuditoria);
+      if (strAuditoria.equalsIgnoreCase(Constantes.SI.getValor()) && !verificarImagenAuditoria()) {
+        editarMarcacionAuditoria();
+        seleccionarMarcacionAuditoria(strAuditoria);
+        actualizarMarcacionAuditoria();
       }
     }
   }

@@ -5,6 +5,7 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
+
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -52,5 +53,15 @@ public class PagoSiniestroDefinition {
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
   public void verificarPago() {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
+  }
+
+  @Cuando("^(.*)se notifique el proceso de auditoria al area de auditoria$")
+  public void notificarProcesoAuditoria() throws IOException {
+    //ToDo
+  }
+
+  @Entonces("^(.*) se debe generar factura de pago al asegurado$")
+  public void verificarFacturaAsegurado() throws IOException {
+    //ToDO
   }
 }
