@@ -21,7 +21,6 @@ public class PagoSiniestroDefinition {
   @Steps GenericStep genericStep;
 
   PagoSiniestro pagoSiniestro;
-  String cobertura;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
