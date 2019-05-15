@@ -23,8 +23,8 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
   }
 
   public void seleccionarExposicion() {
-    exposicionAutomatica.click();
     realizarEsperaCarga();
+    exposicionAutomatica.click();
   }
 
   public boolean validarExposiciones(
