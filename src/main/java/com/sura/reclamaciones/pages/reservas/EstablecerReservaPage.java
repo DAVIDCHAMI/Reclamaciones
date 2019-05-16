@@ -39,7 +39,7 @@ public class EstablecerReservaPage extends GeneralPage {
   }
 
   public void ajustarReserva() {
-    menuClaimPage.seleccionarBotonAcciones ();
+    menuClaimPage.seleccionarBotonAcciones();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
     if (chkLineaReserva.isVisible()) {
       chkLineaReserva.click();
