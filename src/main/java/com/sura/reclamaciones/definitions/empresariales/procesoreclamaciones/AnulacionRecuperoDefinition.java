@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
+package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.Constantes.ESTADO_ANULACION;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
