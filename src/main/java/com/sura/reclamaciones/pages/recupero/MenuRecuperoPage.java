@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class MenuRecuperoPage extends GeneralPage {
 
   @FindBy(xpath = "//span[@id ='Claim:ClaimMenuActions-btnInnerEl']")
-   private WebElementFacade btnAcciones;
+  private WebElementFacade btnAcciones;
 
   @FindBy(
     xpath =

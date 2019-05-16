@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.anulacionetransaccion;
+package com.sura.reclamaciones.pages.anulaciontransaccion;
 
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_ANULACION;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;

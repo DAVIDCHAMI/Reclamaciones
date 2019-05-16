@@ -9,7 +9,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRAN
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.pages.anulacionetransaccion.DetalleTransaccionPage;
+import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import java.util.List;

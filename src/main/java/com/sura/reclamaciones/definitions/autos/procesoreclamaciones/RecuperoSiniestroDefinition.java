@@ -23,14 +23,11 @@ import net.thucydides.core.annotations.Steps;
 
 public class RecuperoSiniestroDefinition {
 
-  @Steps
-  ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
+  @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
-  @Steps
-  RecuperoStep recuperoStep;
+  @Steps RecuperoStep recuperoStep;
 
-  @Steps
-  GenericStep genericStep;
+  @Steps GenericStep genericStep;
 
   Recupero recupero;
 
@@ -61,10 +58,10 @@ public class RecuperoSiniestroDefinition {
     creacionAvisoSiniestroAutoStep.verificarSiniestro();
   }
 
-  @Cuando("^se cree el recupero por el tipo de (.*) con un código de retención (.*) a una cobertura (.*)$")
-  public void crearRecuperoReclamacionAutos(String tipoRecupero, String codigoRetencion,
-      String cobertura)
-      throws IOException {
+  @Cuando(
+      "^se cree el recupero por el tipo de (.*) con un código de retención (.*) a una cobertura (.*)$")
+  public void crearRecuperoReclamacionAutos(
+      String tipoRecupero, String codigoRetencion, String cobertura) throws IOException {
     recupero = new Recupero((genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), cobertura)));
     recuperoStep.diligenciarCreacionRecupero(
         recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
