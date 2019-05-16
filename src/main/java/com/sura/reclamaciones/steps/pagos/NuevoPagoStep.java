@@ -66,8 +66,8 @@ public class NuevoPagoStep {
       String strCodigoRetencion,
       List<PagoSiniestro> lstPago) {
     for (PagoSiniestro diligenciador : lstPago) {
-      introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
       generalPage.realizarEsperaCarga();
+      introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
       introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
           diligenciador.getTipoBeneficiario());
       introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
@@ -132,6 +132,7 @@ public class NuevoPagoStep {
 
   @Step
   public void crearNuevoPago() {
+    menuClaimPage.seleccionarBotonAcciones();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 

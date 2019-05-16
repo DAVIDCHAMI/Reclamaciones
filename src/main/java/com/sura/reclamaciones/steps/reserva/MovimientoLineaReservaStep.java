@@ -38,6 +38,7 @@ public class MovimientoLineaReservaStep {
 
   public void crearNuevaLineaReserva(
       String lineaReserva, String tipoCosto, String categoriaCosto, String valorNuevaReserva) {
+    menuClaimPage.seleccionarBotonAcciones();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
     generalPage.realizarEsperaCarga();
     establecerReservaPage.diligenciarCampoLineaReserva(
