@@ -114,7 +114,6 @@ public enum Constantes {
   NRO_INTENTOS_ESPERA_CARGA("7"),
   NRO_INTENTOS_VISUALIZACION_REGISTRO_DB("5"),
   NRO_POLIZA("#PÓLIZA"),
-  NUEVO_VALOR("-05:00"),
   NUMERO("Número"),
   NUMERO_DIAS_VENCIMIENTO("3"),
   NUMERO_INTENTOS_ESPERA_ELEMENTO("180"),
@@ -174,7 +173,6 @@ public enum Constantes {
   TASA_COMISION("Tasa de comisión"),
   TIPO("Tipo"),
   TIPO_PAGO("Parcial"),
-  TIPO_POLIZA("póliza de auto"),
   TIPO_TRANSACCION("Recuperaciones"),
   TOMADOR_PRINCIPAL("Tomador Principal"),
   TOMADOR_SECUNDARIO("Tomador Secundario"),
@@ -184,6 +182,8 @@ public enum Constantes {
   TRUE("true"),
   UBICACION_ESTADO_PAGO("5"),
   UBICACION_ESTADO_RECUPERO("9"),
+  EXPOSICION_DANOS_ASEGURADO("Daños"),
+  COLUMNA_TIPO_TABLA_EXPOSICIONES("Tipo"),
   URL("jdbc:oracle:thin:@clustercsl01:1537/labgwcc"),
   USD("USD"),
   USUARIO("GW_CONF"),
@@ -196,7 +196,10 @@ public enum Constantes {
   VEHICULOS("Vehículos"),
   VER_POLIZA("Ver póliza"),
   VOLVER_BILLINGCENTER("Volver a BillingCenter"),
-  VOLVER_POLICYCENTER("Volver a PolicyCenter");
+  VOLVER_POLICYCENTER("Volver a PolicyCenter"),
+  RECLAMANTE_CONDUCTOR_AFECTADO("Conductor de otro vehículo"),
+  OPCION_MENU("opcionMenu"),
+  RANGO_HORA_CREACION_SINIESTRO("-05:00");
 
   private String valor;
 

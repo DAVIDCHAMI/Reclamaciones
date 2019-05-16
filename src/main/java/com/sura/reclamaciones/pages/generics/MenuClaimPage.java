@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.generics;
 
+import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -29,14 +30,37 @@ public class MenuClaimPage extends GeneralPage {
   @FindBy(xpath = "//span[@id='Claim:ClaimMenuActions-btnIconEl']")
   private WebElementFacade btnAcciones;
 
-  @FindBy(xpath = "//div[@class='x-css-shadow'][1]")
-  private WebElementFacade mnuPanelOpciones;
+  @FindBy(
+    xpath = "//table[@class='x-columnmenu-table']//td//a[contains(@id, 'Claim:ClaimMenuActions')]"
+  )
+  private List<WebElementFacade> mnuPanelOpcionesPrimerNivel;
+
+  @FindBy(xpath = "//span[contains(@class,'x-menu-item-text')][contains(text(),'")
+  private WebElementFacade opcionMenuAcciones;
+
+  @FindBy(
+    id =
+        "Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:NewExposureMenuItemSet_ByCoverage:0:item-textEl"
+  )
+  private WebElementFacade mnuNuevaExposicion;
+
+  @FindBy(
+    id =
+        "Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:NewExposureMenuItemSet_ByCoverage"
+  )
+  private WebElementFacade mnuExposicion;
 
   @FindBy(
     xpath =
         ".//div[@class='x-panel x-layer x-panel-default x-menu x-border-box x-vertical-scroller x-panel-vertical-scroller x-panel-default-vertical-scroller']"
   )
   WebElementFacade mnuReclamacion;
+
+  @FindBy(
+    id =
+        "Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewTransaction_CheckSet-textEl"
+  )
+  WebElementFacade lblPagos;
 
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);
@@ -83,14 +107,19 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuAccionesPrimerNivel(String nombreOpcion) {
-    btnAcciones.waitUntilVisible().click();
-    mnuPanelOpciones
-        .findElement(
+    mnuPanelOpcionesPrimerNivel
+        .iterator()
+        .next()
+        .findBy(
             By.xpath(
                 "//span[contains(@class,'x-menu-item-text')][contains(text(),'"
                     + nombreOpcion
                     + "')]"))
         .click();
     realizarEsperaCarga();
+  }
+
+  public void seleccionarBotonAcciones() {
+    btnAcciones.waitUntilVisible().waitUntilClickable().click();
   }
 }
