@@ -35,4 +35,3 @@ Característica: Anulacion de recuperos
     Ejemplos:
       | Línea de reserva                | Tipo de pago | Beneficiario de pago                    | Método de pago | Código de Retención | ¿Es pago soloSura? | Tipo de cobertura   | Tipo de recupero | Código de retención recupero |
       | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR                     | Pago por banco | 0099                | No                 | RC Lesión a Persona | Ingreso (otro)   | 0099                         |
-      | (2) 1ª parteVehículo            | Parcial      | DIOGENES MANUEL BETANCOURT MADERA CQLII | Caja Sura      | 0099                | No                 | Perdida total Daños | Subrogación      | 0099                         |
