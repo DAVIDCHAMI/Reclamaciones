@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
+package com.sura.reclamaciones.definitions;
 
 import static com.sura.reclamaciones.constantes.Constantes.ESTADO_ANULACION;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
@@ -26,7 +26,7 @@ public class AnulacionRecuperoDefinition {
   Recupero recupero;
 
   @Cuando("^se realice la anulación del recupero$")
-  public void realizarAnulacionTransaccionRecupero() throws IOException {
+  public void realizarAnulacionTransaccionRecuperoEmpresariales() throws IOException {
     recupero =
         new Recupero(
             genericStep.getFilasModelo(

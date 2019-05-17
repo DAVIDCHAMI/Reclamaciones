@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
+package com.sura.reclamaciones.definitions;
 
 import static com.sura.reclamaciones.constantes.Constantes.ESTADO_ANULACION;
 import static com.sura.reclamaciones.constantes.NombresCsv.ANULACION_EMPRESARIAL;
@@ -57,7 +57,7 @@ public class AnulacionPagoDefinition {
   }
 
   @Cuando("^se realice la anulación del pago$")
-  public void anularPago() throws IOException {
+  public void anularTransaccionPagoEmpresariales() throws IOException {
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(
