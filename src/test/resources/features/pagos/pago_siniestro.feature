@@ -62,5 +62,4 @@ Característica: Realizar pago de un siniestro
     Ejemplos:
       | Línea de reserva                | Tipo de pago  | Beneficiario de pago             |Método de pago  | Código de retención pago | Solo Sura| Cobertura  |
       |  1ª parteVehículo               | Parcial       | SOFIA JARAMILLO                  |Caja Sura       | 0099                     | No       | Perdida total Daños|
-      | (1) 3ª parteLesiones corporales | Parcial       | JHON FEOR FEOR FEOR              |Pago por banco  | 0099                     | No       | RC Lesión a Persona|
-      |  1ª parteVehículo               | Final         | SOFIA JARAMILLO                  |Caja Sura       | 0099                     | No       | Perdida total Daños|
+
