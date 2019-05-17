@@ -3,12 +3,10 @@ package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
 import static com.sura.reclamaciones.constantes.Filtros.CREACION_AVISO_AUTOS_WS;
 import static com.sura.reclamaciones.constantes.Filtros.PERSONA_CONDUCTOR;
 import static com.sura.reclamaciones.constantes.Filtros.PERSONA_LESIONADA;
-import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.PersonaReclamacion;
@@ -23,22 +21,17 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class RecuperoSiniestroDefinition {
 
-  @Steps
-  ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
+  @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
-  @Steps
-  RecuperoStep recuperoStep;
+  @Steps RecuperoStep recuperoStep;
 
-  @Steps
-  GenericStep genericStep;
+  @Steps GenericStep genericStep;
 
-  @Steps
-  NuevoPagoStep nuevoPagoStep;
+  @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps PagoSiniestro pagoSiniestro;
 

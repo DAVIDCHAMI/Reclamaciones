@@ -59,7 +59,7 @@ public class PagoSiniestroDefinition {
   }
 
   @Y("^se declara la reclamación como perdida total$")
-  public void declararReclamacionPerdidaTotal(){
+  public void declararReclamacionPerdidaTotal() {
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
   }

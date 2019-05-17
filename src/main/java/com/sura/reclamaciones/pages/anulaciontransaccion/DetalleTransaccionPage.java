@@ -66,7 +66,7 @@ public class DetalleTransaccionPage extends GeneralPage {
 
   public boolean ingresarAnulacionEmpresarial(
       String strNumeroTransaccion, String strEstadoPrevio, String strTipoAnulacion) {
-    final int POSICION_VALOR_MONTO_RECUPERO=2;
+    final int POSICION_VALOR_MONTO_RECUPERO = 2;
     List<WebElement> lstTransaccion;
     boolean estadoTransaccionPantalla = false;
     if (strTipoAnulacion.equals(PAGO.getValor())) {
