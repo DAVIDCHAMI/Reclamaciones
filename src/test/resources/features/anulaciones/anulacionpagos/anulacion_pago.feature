@@ -15,8 +15,8 @@ Característica: Anulación de pagos
 
     Ejemplos:
       | Línea de Reserva      | Tipo de pago | Beneficiario del pago         | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                                     | Causa          | Valor de Pretensión | Tipo de incidente |
-      | (1) 1ª partePropiedad | Parcial      | AURA JUDITH LOPEZ JULIO CQLII | Caja Sura       | No                 | 0099                | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         |
-      | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII           | Caja Sura       | No                 | 0099                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
+   #   | (1) 1ª partePropiedad | Parcial      | AURA JUDITH LOPEZ JULIO CQLII | Caja Sura       | No                 | 0099                | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         |
+   #   | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII           | Caja Sura       | No                 | 0099                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
 
   @claimsAuto
   Esquema del escenario: anulación de un pago de autos.
