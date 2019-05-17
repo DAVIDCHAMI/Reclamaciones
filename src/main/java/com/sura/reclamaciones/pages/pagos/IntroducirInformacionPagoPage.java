@@ -17,26 +17,26 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   private Integer intCalculoVrReserva;
 
   @FindBy(
-      xpath =
-          "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:ReserveLineInputSet:ReserveLine-inputEl']"
+    xpath =
+        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:ReserveLineInputSet:ReserveLine-inputEl']"
   )
   private WebElementFacade cmbLineaReserva;
 
   @FindBy(
-      xpath =
-          "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_PaymentType-inputEl']"
+    xpath =
+        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_PaymentType-inputEl']"
   )
   private WebElementFacade cmbTipoPago;
 
   @FindBy(
-      xpath =
-          "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Transaction_AvailableReserves-inputEl']"
+    xpath =
+        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Transaction_AvailableReserves-inputEl']"
   )
   private WebElementFacade txtValorReserva;
 
   @FindBy(
-      xpath =
-          "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV']"
+    xpath =
+        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV']"
   )
   private WebElementFacade tblElementoLinea;
 
@@ -44,14 +44,14 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   private WebElementFacade txtComentarioPago;
 
   @FindBy(
-      xpath =
-          "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
+    xpath =
+        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
   )
   private WebElementFacade lstCodigoRetencion;
 
   @FindBy(
-      xpath =
-          "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
+    xpath =
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
   )
   private WebElementFacade btnSiguiente;
 
@@ -59,8 +59,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   private WebElementFacade btnAgregarPago;
 
   @FindBy(
-      xpath =
-          "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewCheckPaymentsLV'][contains(@class,'x-panel x-panel-default x-grid')]"
+    xpath =
+        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewCheckPaymentsLV'][contains(@class,'x-panel x-panel-default x-grid')]"
   )
   private WebElementFacade tblPagoMultiplesReservas;
 

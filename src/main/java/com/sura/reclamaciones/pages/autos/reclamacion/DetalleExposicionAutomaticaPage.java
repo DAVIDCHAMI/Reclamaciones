@@ -11,8 +11,8 @@ import org.openqa.selenium.WebDriver;
 public class DetalleExposicionAutomaticaPage extends GeneralPage {
 
   @FindBy(
-      id =
-          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:SubView_AutoTotalLossCalculatorCardTab-btnInnerEl"
+    id =
+        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:SubView_AutoTotalLossCalculatorCardTab-btnInnerEl"
   )
   WebElementFacade lblCalculadoraPerdidaTotal;
 
@@ -20,20 +20,20 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   WebElementFacade btnEditar;
 
   @FindBy(
-      id =
-          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnDash_true-inputEl"
+    id =
+        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnDash_true-inputEl"
   )
   WebElementFacade rbtIncineracionTotalVehiculo;
 
   @FindBy(
-      id =
-          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnEngine_true-inputEl"
+    id =
+        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnEngine_true-inputEl"
   )
   WebElementFacade rbtMotorDestruidoFuego;
 
   @FindBy(
-      id =
-          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnWindshield_true-inputEl"
+    id =
+        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnWindshield_true-inputEl"
   )
   WebElementFacade rbtHabitaculoPasajerosIncineradoTotalmente;
 
@@ -41,14 +41,14 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   WebElementFacade btnActualizar;
 
   @FindBy(
-      xpath =
-          "//span[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamage_DetailsCardTab-btnInnerEl'][contains(@class,'x-tab-inner x-tab-inner-center')]"
+    xpath =
+        "//span[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamage_DetailsCardTab-btnInnerEl'][contains(@class,'x-tab-inner x-tab-inner-center')]"
   )
   WebElementFacade lblDetallesExposicion;
 
   @FindBy(
-      xpath =
-          "//input[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl']"
+    xpath =
+        "//input[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl']"
   )
   WebElementFacade cmbEstadoLegal;
 

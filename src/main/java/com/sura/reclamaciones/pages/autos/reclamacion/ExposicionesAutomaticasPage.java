@@ -29,11 +29,11 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
     obtenerCabecerasDeUnaTabla(
         $("//div[@id='ClaimExposures:ClaimExposuresScreen:ExposuresLV']"), Tablas.CABECERAS_CC);
     obtenerTextoElementoLista(
-        tblExposicionesAutomaticas,
-        Tablas.CABECERAS_CC,
-        Tablas.REGISTROS_CC,
-        EXPOSICION_DANOS_ASEGURADO.getValor(),
-        COLUMNA_TIPO_TABLA_EXPOSICIONES.getValor())
+            tblExposicionesAutomaticas,
+            Tablas.CABECERAS_CC,
+            Tablas.REGISTROS_CC,
+            EXPOSICION_DANOS_ASEGURADO.getValor(),
+            COLUMNA_TIPO_TABLA_EXPOSICIONES.getValor())
         .click();
     realizarEsperaCarga();
   }
@@ -45,19 +45,19 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
     for (int i = 0; i < datosExposicionesAutomaticas.size(); i++) {
       String lineaReservaTbl =
           obtenerElementoLista(
-              tblExposicionesAutomaticas,
-              Tablas.CABECERAS_CC,
-              Tablas.REGISTROS_CC,
-              datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
-              datosExposicionesAutomaticas.get(i).getDatoDevolverTablaExposiciones())
+                  tblExposicionesAutomaticas,
+                  Tablas.CABECERAS_CC,
+                  Tablas.REGISTROS_CC,
+                  datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
+                  datosExposicionesAutomaticas.get(i).getDatoDevolverTablaExposiciones())
               .getText();
       if (lineaReservaTbl.equals(datosExposicionesAutomaticas.get(i).getExposicionAutomatica())) {
         obtenerElementoLista(
-            tblExposicionesAutomaticas,
-            Tablas.CABECERAS_CC,
-            Tablas.REGISTROS_CC,
-            datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
-            datosExposicionesAutomaticas.get(0).getDatoDevolverTablaExposiciones())
+                tblExposicionesAutomaticas,
+                Tablas.CABECERAS_CC,
+                Tablas.REGISTROS_CC,
+                datosExposicionesAutomaticas.get(i).getExposicionAutomatica(),
+                datosExposicionesAutomaticas.get(0).getDatoDevolverTablaExposiciones())
             .getText();
       } else {
         valorLineaReserva = false;

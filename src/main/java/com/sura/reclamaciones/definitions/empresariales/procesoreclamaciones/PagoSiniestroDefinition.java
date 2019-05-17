@@ -32,6 +32,7 @@ public class PagoSiniestroDefinition {
   public void identificarRiesgoConsultable() {
     //TODO: Falta adaptar con la automatización de marcación de audotoría
   }
+
   @Cuando(
       "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
   public void generarPagoReclamacion(
@@ -70,7 +71,10 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
-        new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), Serenity.sessionVariableCalled (SESION_CC_TIPO_COBERTURA_AFECTADA.getValor ()))));
+        new PagoSiniestro(
+            (genericStep.getFilasModelo(
+                PAGO_SINIESTRO.getValor(),
+                Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.iniciarNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
@@ -106,7 +110,10 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
-        new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), Serenity.sessionVariableCalled (SESION_CC_TIPO_COBERTURA_AFECTADA.getValor ()))));
+        new PagoSiniestro(
+            (genericStep.getFilasModelo(
+                PAGO_SINIESTRO.getValor(),
+                Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.iniciarNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());

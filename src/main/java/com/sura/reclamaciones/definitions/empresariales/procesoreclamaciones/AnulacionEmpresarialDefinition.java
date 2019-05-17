@@ -100,4 +100,3 @@ public class AnulacionEmpresarialDefinition {
         recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
   }
 }
-
