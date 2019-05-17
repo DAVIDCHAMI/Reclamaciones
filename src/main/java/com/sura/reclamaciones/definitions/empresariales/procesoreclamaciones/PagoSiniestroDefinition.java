@@ -6,6 +6,7 @@ import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
+import com.sura.reclamaciones.steps.procesoauditoria.ProcesoAuditoriaStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -19,6 +20,8 @@ public class PagoSiniestroDefinition {
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps GenericStep genericStep;
+
+  @Steps ProcesoAuditoriaStep procesoAuditoriaStep;
 
   PagoSiniestro pagoSiniestro;
 
@@ -58,12 +61,13 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando("^(.*)se notifique el proceso de auditoria al area de auditoria$")
-  public void notificarProcesoAuditoria() throws IOException {
-    //ToDo
+  public void notificarProcesoAuditoria(String requiereAuditoria) throws IOException {
+    nuevoPagoStep.consultarNumeroReclamacion();
+    procesoAuditoriaStep.verificarMarcadoAuditoria(requiereAuditoria);
   }
 
   @Entonces("^(.*) se debe generar factura de pago al asegurado$")
-  public void verificarFacturaAsegurado() throws IOException {
-    //ToDO
+  public void verificarFacturaAsegurado(String generaPago) throws IOException {
+    nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 }
