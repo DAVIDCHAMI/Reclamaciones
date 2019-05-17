@@ -1,15 +1,19 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
+import cucumber.api.PendingException;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import cucumber.api.java.es.Y;
 import java.io.IOException;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
@@ -55,5 +59,11 @@ public class PagoSiniestroDefinition {
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
   public void verificarPago() {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
+  }
+
+  @Y("^se declara la reclamación como perdida total$")
+  public void declararReclamacionPerdidaTotal(){
+    nuevoPagoStep.declararReclamacionPerdidaTotal();
+    nuevoPagoStep.ingresarEstadoLegalReclamacion();
   }
 }
