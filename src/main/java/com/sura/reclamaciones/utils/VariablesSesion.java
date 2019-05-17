@@ -30,6 +30,7 @@ public enum VariablesSesion {
   SESION_CC_SERV_NRO_POLIZA("nro_poliza"),
   SESION_VALOR_IVA("valor_iva"),
   SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO("conductor_afectado_siniestro"),
+  SESION_CC_TIPO_COBERTURA_AFECTADA("tipoCoberturaAfectada"),
   SESION_VALOR_PRIMA("valor_prima");
 
   private String valor;

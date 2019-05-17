@@ -7,6 +7,7 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACIO
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
@@ -48,9 +49,10 @@ public class ConsumoCreacionAvisoAutosDefinition {
                 PARAMETROS_SINIESTRO_AUTOS.getValor(), CREACION_AVISO_AUTOS_WS.getValor()));
   }
 
-  @Cuando("^se genera un aviso$")
-  public void siniestrarPolizaServicio() {
-    creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
+  @Cuando("^se genera un aviso que afecta la cobertura de (.*)$")
+ public void siniestrarPolizaServicio(String tipoCobertura) {
+      Serenity.setSessionVariable(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()).to(tipoCobertura);
+       creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         parametroAviso.getLstReclamacionAuto(),
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
         parametroPersonaConductorAuto.getLstPersonaReclamacion(),

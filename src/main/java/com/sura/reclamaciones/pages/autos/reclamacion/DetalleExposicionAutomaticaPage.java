@@ -11,8 +11,8 @@ import org.openqa.selenium.WebDriver;
 public class DetalleExposicionAutomaticaPage extends GeneralPage {
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:SubView_AutoTotalLossCalculatorCardTab-btnInnerEl"
+      id =
+          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:SubView_AutoTotalLossCalculatorCardTab-btnInnerEl"
   )
   WebElementFacade lblCalculadoraPerdidaTotal;
 
@@ -20,34 +20,35 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   WebElementFacade btnEditar;
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnDash_true-inputEl"
+      id =
+          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnDash_true-inputEl"
   )
   WebElementFacade rbtIncineracionTotalVehiculo;
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnEngine_true-inputEl"
+      id =
+          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnEngine_true-inputEl"
   )
   WebElementFacade rbtMotorDestruidoFuego;
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnWindshield_true-inputEl"
+      id =
+          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnWindshield_true-inputEl"
   )
   WebElementFacade rbtHabitaculoPasajerosIncineradoTotalmente;
 
-  @FindBy(id = "ExposureDetail:ExposureDetailScreen:Update-btnInnerEl")
+  @FindBy(xpath = "//span[@id='ExposureDetail:ExposureDetailScreen:Update-btnInnerEl']")
   WebElementFacade btnActualizar;
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamage_DetailsCardTab-btnInnerEl"
+      xpath =
+          "//span[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamage_DetailsCardTab-btnInnerEl'][contains(@class,'x-tab-inner x-tab-inner-center')]"
   )
   WebElementFacade lblDetallesExposicion;
 
   @FindBy(
-    id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl"
+      xpath =
+          "//input[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl']"
   )
   WebElementFacade cmbEstadoLegal;
 
@@ -56,7 +57,7 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   }
 
   public void seleccionarCalculadoraPerdidaTotal() {
-    lblCalculadoraPerdidaTotal.waitUntilClickable().click();
+    lblCalculadoraPerdidaTotal.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
   }
 
@@ -80,10 +81,13 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   public void actualizarCalculadoraPerdidaTotal() {
     btnActualizar.click();
     realizarEsperaCarga();
+    realizarEsperaCarga();
+    realizarEsperaCarga();
   }
 
   public void seleccionarDetalleExposicion() {
-    lblDetallesExposicion.waitUntilClickable().click();
+    realizarEsperaCarga();
+    lblDetallesExposicion.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
   }
 
@@ -93,7 +97,7 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   }
 
   public void ingresarEstadoLegalReclamacion() {
-    cmbEstadoLegal.waitUntilClickable().click();
+    cmbEstadoLegal.waitUntilVisible().waitUntilClickable().click();
     cmbEstadoLegal
         .findElement(By.xpath("//li[contains(.,'" + ESTADO_LEGAL.getValor() + "')]"))
         .click();
@@ -101,7 +105,8 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   }
 
   public void actualizarDetalleExposicion() {
-    btnActualizar.waitUntilClickable().click();
+    btnActualizar.waitUntilVisible().waitUntilClickable().click();
+    realizarEsperaCarga();
     realizarEsperaCarga();
   }
 }

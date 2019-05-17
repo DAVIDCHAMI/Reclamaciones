@@ -53,13 +53,17 @@ public class AnulacionEmpresarialDefinition {
             ajustador -> {
               nuevoPagoStep.consultarNumeroReclamacion();
               nuevoPagoStep.ingresarInformacionBeneficiarioPago(
-                  ajustador.getLineaReserva(),
-                  ajustador.getTipoPago(),
                   ajustador.getBeneficiarioPago(),
                   ajustador.getMetodoPago(),
                   ajustador.getSoloSura(),
+                  pagoSiniestro.getLstPago());
+              nuevoPagoStep.ingresarInformacionPago(
+                  ajustador.getLineaReserva(),
+                  ajustador.getTipoPago(),
                   strCodigoRetencion,
                   pagoSiniestro.getLstPago());
+              nuevoPagoStep.ingresarInstruccionesPago(
+                  ajustador.getLineaReserva(), pagoSiniestro.getLstPago());
             });
   }
 
@@ -96,3 +100,4 @@ public class AnulacionEmpresarialDefinition {
         recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
   }
 }
+

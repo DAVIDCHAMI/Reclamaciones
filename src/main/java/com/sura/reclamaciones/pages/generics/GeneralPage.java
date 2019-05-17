@@ -13,15 +13,20 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GeneralPage extends PageObject {
 
   @FindBy(
-    xpath =
-        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul"
+      xpath =
+          "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul"
   )
   public WebElementFacade lstOpcionesCombobox;
 
@@ -29,8 +34,8 @@ public class GeneralPage extends PageObject {
   public WebElementFacade pgrBarCarga;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']"
+      xpath =
+          "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']"
   )
   private WebElementFacade btnSiguiente;
 
@@ -44,8 +49,8 @@ public class GeneralPage extends PageObject {
   private WebElementFacade btnFinalizar;
 
   @FindBy(
-    xpath =
-        "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
+      xpath =
+          "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
   )
   private WebElementFacade txtTransacciones;
 
@@ -71,7 +76,11 @@ public class GeneralPage extends PageObject {
 
   private String auxiliarReemplazo = "";
 
+  private static int encontrarPosicionElementoTabla = 2;
+
   protected WebDriver driver;
+
+  public static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
@@ -120,6 +129,27 @@ public class GeneralPage extends PageObject {
         .get();
   }
 
+  public WebElement obtenerTextoColumnaTabla(
+      WebElementFacade elementoTabla,
+      Tablas enumRegistroTabla,
+      String datoEnFilaABuscar,
+      int posicionDatoADevolver) {
+    return elementoTabla
+        .findElements(By.xpath(enumRegistroTabla.getXpath()))
+        .stream()
+        .filter(fila -> fila.getText().contains(datoEnFilaABuscar))
+        .map(
+            columnas ->
+                columnas.findElement(
+                    By.id(
+                        "ClaimExposures:ClaimExposuresScreen:ExposuresLV:"
+                            + (posicionDatoADevolver - encontrarPosicionElementoTabla)
+                            + ":Type")))
+        .distinct()
+        .findFirst()
+        .get();
+  }
+
   public List<WebElement> obtenerFilasTabla(
       WebElementFacade elementoTabla, Tablas enumRegistroTabla) {
     return elementoTabla
@@ -138,6 +168,17 @@ public class GeneralPage extends PageObject {
     int posicionDatoADevolver = cabeceraFacturarCargos.indexOf(columnaADevolver) + 1;
     return obtenerElementoColumnaTabla(
         elemento, registros, datoEnFilaABuscar, posicionDatoADevolver);
+  }
+
+  public WebElement obtenerTextoElementoLista(
+      WebElementFacade elemento,
+      Tablas cabeceras,
+      Tablas registros,
+      String datoEnFilaABuscar,
+      String columnaADevolver) {
+    List<String> cabeceraFacturarCargos = obtenerCabecerasDeUnaTabla(elemento, cabeceras);
+    int posicionDatoADevolver = cabeceraFacturarCargos.indexOf(columnaADevolver) + 1;
+    return obtenerTextoColumnaTabla(elemento, registros, datoEnFilaABuscar, posicionDatoADevolver);
   }
 
   public void realizarEsperaCarga() {
@@ -263,6 +304,26 @@ public class GeneralPage extends PageObject {
     }
   }
 
+  public void cerrarAlerta() {
+    try {
+      if (verificarPresenciaAlerta()) {
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+      }
+    } catch (NoAlertPresentException e) {
+      LOGGER.info("No se encontró alerta", e);
+    }
+  }
+
+  private boolean verificarPresenciaAlerta() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException Ex) {
+      return false;
+    }
+  }
+
   public void cerrarNavegador() {
     Set<String> ventana;
     do {
@@ -282,6 +343,7 @@ public class GeneralPage extends PageObject {
     String strDatoPantalla = valorElementoPantalla.getText();
     if (!strDatoPantalla.equals(datoValidar)) {
       driver.navigate().refresh();
+      cerrarAlerta();
       return false;
     }
     return true;

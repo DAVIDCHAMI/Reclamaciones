@@ -40,13 +40,27 @@ Característica: Realizar pago de un siniestro
 
   @pagoMultiplesLineasReservas
   @claimsAuto
-  Escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
+  Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
     Dado que se tiene una póliza creacionAvisoMACA de autos
-    Y se genera un aviso
+    Y se genera un aviso que afecta la cobertura de <Cobertura>
+    Cuando se genere un pago por siniestro de auto <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las lineas de reserva <Línea de reserva 1> y <Línea de Reserva 2> afectando la cobertura de <Pago Solo Sura> es Sura con una retención de <Código de retención pago>
+    Entonces se genera una orden de pago para que le sea entregado al usuario
+
+    Ejemplos:
+      | Línea de reserva 1                        |Línea de Reserva 2                    | Tipo de pago  | Beneficiario del pago            | Método de Pago | Código de retención pago |Cobertura          |Pago Solo Sura|
+      | Perdida total Daños pago por en EFECTIVO  |Gastos de Transporte                  | Final         |SOFIA JARAMILLO                   |Pago por banco  | 0099                     |Perdida total Daños|No            |
 
 
   @pagoReservaAutos
   @claimsAuto
-  Escenario: Crear pago del siniestro autos
+  Esquema del escenario: Crear pago del siniestro autos
     Dado que se tiene una póliza creacionAvisoMACA de autos
-    Y se genera un aviso
+    Y se genera un aviso que afecta la cobertura de <Cobertura>
+    Cuando se genere un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la linea de reserva <Línea de reserva> donde el responsable <Solo Sura> es Sura con una retención de <Código de retención pago>
+    Entonces se genera una orden de pago para que le sea entregado al usuario
+
+    Ejemplos:
+      | Línea de reserva                | Tipo de pago  | Beneficiario de pago             |Método de pago  | Código de retención pago | Solo Sura| Cobertura  |
+      |  1ª parteVehículo               | Parcial       | SOFIA JARAMILLO                  |Caja Sura       | 0099                     | No       | Perdida total Daños|
+      | (1) 3ª parteLesiones corporales | Parcial       | JHON FEOR FEOR FEOR              |Pago por banco  | 0099                     | No       | RC Lesión a Persona|
+      |  1ª parteVehículo               | Final         | SOFIA JARAMILLO                  |Caja Sura       | 0099                     | No       | Perdida total Daños|
