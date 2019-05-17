@@ -8,24 +8,20 @@ import org.openqa.selenium.WebDriver;
 
 public class NuevaExposicionPage extends GeneralPage {
 
-  public NuevaExposicionPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   @FindBy(
-    id =
-        "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Picker-inputEl"
+      id =
+          "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Picker-inputEl"
   )
   private WebElementFacade txtReclamanteExposicionVehicular;
 
   @FindBy(
-    id = "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Type-inputEl"
+      id = "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Type-inputEl"
   )
   private WebElementFacade txtTipoReclamanteExposicion;
 
   @FindBy(
-    id =
-        "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Vehicle_Incident:Vehicle_IncidentMenuIcon"
+      id =
+          "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Vehicle_Incident:Vehicle_IncidentMenuIcon"
   )
   private WebElementFacade btnNuevoIncidenteVehicular;
 
@@ -33,15 +29,13 @@ public class NuevaExposicionPage extends GeneralPage {
   private WebElementFacade lblNuevoIncidente;
 
   @FindBy(
-    xpath = "//span[contains(@class,'x-btn-inner x-btn-inner-center')][contains(text(),'Act')]"
+      xpath = "//span[contains(@class,'x-btn-inner x-btn-inner-center')][contains(text(),'Act')]"
   )
   private WebElementFacade btnActualizar;
 
-  @FindBy(
-    id =
-        "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:PrimaryCoverage-labelEl"
-  )
-  private WebElementFacade lblTipoCobertura;
+  public NuevaExposicionPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
   public void crearNuevoIncidenteVehicular() {
     btnNuevoIncidenteVehicular.waitUntilClickable().click();

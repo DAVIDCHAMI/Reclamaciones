@@ -80,7 +80,7 @@ public class GeneralPage extends PageObject {
 
   protected WebDriver driver;
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
@@ -319,7 +319,8 @@ public class GeneralPage extends PageObject {
     try {
       driver.switchTo().alert();
       return true;
-    } catch (NoAlertPresentException Ex) {
+    } catch (Exception e) {
+      LOGGER.info(String.valueOf(e));
       return false;
     }
   }
