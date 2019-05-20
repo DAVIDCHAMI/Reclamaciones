@@ -10,6 +10,10 @@ import org.slf4j.LoggerFactory;
 
 public class Utilidades {
 
+  private Utilidades() {
+    super();
+  }
+
   public static boolean filtrarArreglo(String[] arr, String item) {
     if (arr.length > 0) {
       for (String n : arr) {
@@ -66,36 +70,5 @@ public class Utilidades {
 
   public static int conversorCadenaEntero(String cadena) {
     return Integer.parseInt(cadena);
-  }
-
-  public String generarAleatoriosNumeros(int longitudSerie) {
-    String serie = "";
-    for (int i = 1; i <= longitudSerie; i++) {
-      serie += (int) (Math.random() * 10);
-    }
-    return serie;
-  }
-
-  public String generarAleatoriosLetras(int longitudSerie) {
-    String serie = "";
-    String[] abecedario = {
-      "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
-      "T", "U", "V", "W", "X", "Y", "Z"
-    };
-    for (int i = 1; i <= longitudSerie; i++) {
-      serie += abecedario[(int) (Math.random() * 26)];
-    }
-    return serie;
-  }
-
-  public static String generarPlaca(int cantidadLetras, int cantidadNumeros) {
-    String letrasPlaca;
-    String numerosPlaca;
-    String placa;
-    Utilidades utilidades = new Utilidades();
-    letrasPlaca = utilidades.generarAleatoriosLetras(cantidadLetras);
-    numerosPlaca = utilidades.generarAleatoriosNumeros(cantidadNumeros);
-    placa = letrasPlaca + numerosPlaca;
-    return placa;
   }
 }
