@@ -2,10 +2,8 @@ package com.sura.reclamaciones.pages.reservas;
 
 import static com.sura.reclamaciones.constantes.Constantes.CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA;
 import static com.sura.reclamaciones.constantes.Constantes.CC_POSICION_VALOR_RESERVA_EMPRESARIALES;
-import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -30,17 +28,13 @@ public class EstablecerReservaPage extends GeneralPage {
   @FindBy(xpath = "//ul[@class='x-list-plain']")
   private WebElementFacade listExposicion;
 
-  @Page MenuClaimPage menuClaimPage;
-
   @Page GeneralPage generalPage;
 
   public EstablecerReservaPage(WebDriver driver) {
     super(driver);
   }
 
-  public void ajustarReserva() {
-    menuClaimPage.seleccionarBotonAcciones();
-    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
+  public void eliminarReservaVacia() {
     if (chkLineaReserva.isVisible()) {
       chkLineaReserva.click();
       btnQuitarLineaReserva.waitUntilClickable().click();

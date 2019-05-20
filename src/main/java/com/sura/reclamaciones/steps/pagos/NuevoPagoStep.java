@@ -11,7 +11,6 @@ import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
@@ -122,11 +121,6 @@ public class NuevoPagoStep {
               verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
                   validador.getEstadoTransaccion(), lstFilaPago));
         });
-  }
-
-  @Step
-  public void consultarNumeroReclamacionAutos(String numReclamacion) {
-    menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
   }
 
   @Step
