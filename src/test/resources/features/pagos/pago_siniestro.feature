@@ -37,6 +37,19 @@ Característica: Realizar pago de un siniestro
       | (1) 1ª parteGeneral - TODO EN VERDE CQLII; Gasto - A&O (ajuste y otros)/Gastos de siniestro; COP   | Parcial      | TODO EN VERDE CQLII               | Pago por banco | No                 | 0023                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento             | 3000000             | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII                 | Gastos de siniestro | Gasto - A&O (ajuste y otros) | Si                     |
       | (1) 1ª parteContenido - JUAN CARLOS PALACIO RAMIREZ CQLII; Costo de reclamación/Avería gruesa; COP | Parcial      | JUAN CARLOS PALACIO RAMIREZ CQLII | Pago por banco | No                 | 0023                | Transportes automáticos de mercancía Incendio        | Acc vehiculo transportador | 4000000             | Contenido         | (1) 1ª parteContenido - JUAN CARLOS PALACIO RAMIREZ CQLII | Avería gruesa       | Costo de reclamación         | Si                     |
 
+
+  @pagoMultiplesLineasReservas
+  @claimsAuto
+  Escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
+    Dado que se tiene una póliza creacionAvisoMACA de autos
+    Y se genera un aviso
+
+  @pagoReservaAutos
+  @claimsAuto
+  Escenario: Crear pago del siniestro autos
+    Dado que se tiene una póliza creacionAvisoMACA de autos
+    Y se genera un aviso
+    
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
