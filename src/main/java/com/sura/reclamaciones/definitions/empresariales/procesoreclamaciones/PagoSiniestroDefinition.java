@@ -10,6 +10,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERT
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.java.es.Cuando;
@@ -27,6 +28,8 @@ public class PagoSiniestroDefinition {
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps GenericStep genericStep;
+
+  @Steps MenuClaimsStep menuClaimsStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -65,7 +68,7 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
-    nuevoPagoStep.consultarNumeroReclamacionAutos(
+    menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
@@ -94,7 +97,7 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
-    nuevoPagoStep.consultarNumeroReclamacionAutos(
+    menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =

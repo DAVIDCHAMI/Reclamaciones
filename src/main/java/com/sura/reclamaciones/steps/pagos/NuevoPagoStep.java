@@ -15,7 +15,6 @@ import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_RESERVAS;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.autos.reclamacion.CrearServicioPage;
