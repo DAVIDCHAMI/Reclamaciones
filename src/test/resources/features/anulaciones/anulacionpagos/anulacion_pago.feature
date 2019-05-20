@@ -2,7 +2,7 @@
 Característica: Anulación de pagos
 
   Como analista de reclamaciones
-  Quiero generar una anulación de pago y de recupero
+  Quiero generar una anulación de un pago
   Para verificar que cambie su estado a anulado
 
   @claimsEmpresarial
