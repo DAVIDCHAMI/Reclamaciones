@@ -20,6 +20,7 @@ import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevaReclamacionGuardadaPage;
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import java.util.List;
@@ -48,6 +49,8 @@ public class NuevoAvisoSiniestroAutoStep {
   @Page MenuClaimPage menuClaimPage;
 
   @Page CrearServicioPage crearServicioPage;
+
+  @Page GeneralPage generalPage;
 
   @Step
   public void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
@@ -110,6 +113,7 @@ public class NuevoAvisoSiniestroAutoStep {
       detalleVehiculoPage.seleccionarCiudad(direccionConductor.getCiudad());
       detalleVehiculoPage.ingresarDireccion(direccionConductor.getDireccion());
       detalleVehiculoPage.seleccionarTipoDireccion(direccionConductor.getTipoDireccion());
+      menuClaimPage.aceptarOpcion();
     }
   }
 

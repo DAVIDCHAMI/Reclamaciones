@@ -56,6 +56,10 @@ public class Vehiculo {
     return marca;
   }
 
+  public void setMarca(String marca) {
+    this.marca = marca;
+  }
+
   public String getLineaVehiculo() {
     return lineaVehiculo;
   }
