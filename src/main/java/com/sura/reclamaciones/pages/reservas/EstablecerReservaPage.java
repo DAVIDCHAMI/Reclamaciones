@@ -38,9 +38,12 @@ public class EstablecerReservaPage extends GeneralPage {
     super(driver);
   }
 
-  public void ajustarReserva() {
+  public void ingresarReservasReclamacion(){
     menuClaimPage.seleccionarBotonAcciones();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
+  }
+
+  public void eliminarReservaVacia() {
     if (chkLineaReserva.isVisible()) {
       chkLineaReserva.click();
       btnQuitarLineaReserva.waitUntilClickable().click();

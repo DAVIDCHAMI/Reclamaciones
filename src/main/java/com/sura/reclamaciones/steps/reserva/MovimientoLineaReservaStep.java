@@ -29,7 +29,8 @@ public class MovimientoLineaReservaStep {
   @Page TransaccionDatoFinancieroPage transaccionDatoFinancieroPage;
 
   public void ajustarReserva(String valorAjustar) {
-    establecerReservaPage.ajustarReserva();
+    establecerReservaPage.ingresarReservasReclamacion();
+    establecerReservaPage.eliminarReservaVacia();
     establecerReservaPage.diligenciarCampoLineaReserva(
         valorAjustar,
         CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),

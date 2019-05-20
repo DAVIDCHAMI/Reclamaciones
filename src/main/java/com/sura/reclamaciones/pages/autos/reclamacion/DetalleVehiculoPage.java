@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 
 public class DetalleVehiculoPage extends GeneralPage {
 
-  CrearServicioPage crearServicioPage;
-
   @FindBy(
     xpath =
         "//span[@class='x-btn-button']/span[@class='x-btn-inner x-btn-inner-center' and contains(.,'conductor')]"
