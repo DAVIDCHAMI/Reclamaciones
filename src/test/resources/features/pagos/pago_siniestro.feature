@@ -50,3 +50,4 @@ Característica: Realizar pago de un siniestro
   Escenario: Crear pago del siniestro autos
     Dado que se tiene una póliza creacionAvisoMACA de autos
     Y se genera un aviso
+    
