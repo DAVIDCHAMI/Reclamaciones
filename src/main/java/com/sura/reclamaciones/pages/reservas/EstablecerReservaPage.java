@@ -38,7 +38,7 @@ public class EstablecerReservaPage extends GeneralPage {
     super(driver);
   }
 
-  public void ingresarReservasReclamacion(){
+  public void ingresarReservasReclamacion() {
     menuClaimPage.seleccionarBotonAcciones();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
   }

@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 
 public class Utilidades {
 
-  private Utilidades(){
+  private Utilidades() {
     super();
-    }
+  }
 
   public static boolean filtrarArreglo(String[] arr, String item) {
     if (arr.length > 0) {

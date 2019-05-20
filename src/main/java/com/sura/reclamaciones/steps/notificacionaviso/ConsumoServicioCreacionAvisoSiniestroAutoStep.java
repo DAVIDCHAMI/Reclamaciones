@@ -17,7 +17,6 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
   ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos =
       new ConsumoServicioCreacionSiniestroAutos();
 
-
   @Step
   public void siniestrarPolizaAutos(
       List<ReclamacionAuto> lstReclamacionAuto,
