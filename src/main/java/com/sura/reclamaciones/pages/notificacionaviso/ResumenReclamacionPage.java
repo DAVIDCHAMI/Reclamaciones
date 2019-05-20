@@ -39,7 +39,7 @@ public class ResumenReclamacionPage extends GeneralPage {
 
   public String obtenerNumeroReclamacion() {
     String numeroReclamacion;
-    divNumeroReclamacion.waitUntilVisible();
+    divNumeroReclamacion.waitUntilVisible().waitUntilClickable();
     numeroReclamacion = divNumeroReclamacion.getText();
     numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     Utilidades.getLogger()
