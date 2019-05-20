@@ -20,7 +20,7 @@ public class AjusteReservaPage extends GeneralPage {
   private WebElementFacade btnQuitarLineaReserva;
 
   @FindBy(
-      xpath = "//div[@id='NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV']"
+    xpath = "//div[@id='NewReserveSet:NewReserveSetScreen:ReservesSummaryDV:EditableReservesLV']"
   )
   private WebElementFacade tblLineaReserva;
 
@@ -28,8 +28,8 @@ public class AjusteReservaPage extends GeneralPage {
   private WebElementFacade btnGuardarAjusteReserva;
 
   @FindBy(
-      xpath =
-          "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
+    xpath =
+        "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']"
   )
   private WebElementFacade btnCerrarAdvertencia;
 
