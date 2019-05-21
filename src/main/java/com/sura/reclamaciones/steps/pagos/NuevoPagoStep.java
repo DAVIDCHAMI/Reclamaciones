@@ -111,11 +111,6 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void consultarNumeroReclamacionAutos(String numReclamacion) {
-    menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
-  }
-
-  @Step
   public void crearNuevoPago() {
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
