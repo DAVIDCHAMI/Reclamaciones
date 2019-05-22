@@ -131,6 +131,7 @@ public class NuevoPagoStep {
 
   @Step
   public void declararReclamacionPerdidaTotal() {
+    generalPage.realizarEsperaCarga();
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
     exposicionesAutomaticasPage.seleccionarExposicion();
     detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
