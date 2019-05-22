@@ -17,8 +17,8 @@ Característica: Anulacion de recuperos
 
     Ejemplos:
       | Tipo y Cobertura                                     | Causa          | Valor de Pretensión | Tipo de incidente | Tipo de recupero | Código de retención recupero |
-      | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         | Ingreso (otro)   | 0099                         |
-      | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           | Subrogación      | 0099                         |
+    #  | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         | Ingreso (otro)   | 0099                         |
+    #  | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           | Subrogación      | 0099                         |
 
 
   @claimsAuto
@@ -35,5 +35,5 @@ Característica: Anulacion de recuperos
 
     Ejemplos:
       | Línea de reserva                | Tipo de pago | Beneficiario de pago | Método de pago | Código de Retención | ¿Es pago soloSura? | Tipo de cobertura   | Tipo de recupero | Código de retención recupero |
-      | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR  | Pago por banco | 0099                | No                 | RC Lesión a Persona | Ingreso (otro)   | 0099                         |
+     # | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR  | Pago por banco | 0099                | No                 | RC Lesión a Persona | Ingreso (otro)   | 0099                         |
       | (3) 1ª parteVehículo            | Parcial      | SOFIA JARAMILLO      | Caja Sura      | 0099                | No                 | Perdida total Daños | Subrogación      | 0099                         |

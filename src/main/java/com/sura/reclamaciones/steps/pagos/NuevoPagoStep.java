@@ -85,6 +85,7 @@ public class NuevoPagoStep {
           strCodigoRetencion, CODIGO_RETENCION.getValor());
       introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
       introducirInformacionPagoPage.irSiguientePantalla();
+      generalPage.realizarEsperaCarga();
       if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
         establecerInstruccionPagoPage.ingresarFechaFactura();
         establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
