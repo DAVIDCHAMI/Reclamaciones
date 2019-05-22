@@ -11,8 +11,6 @@ import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 
-import com.sura.reclamaciones.constantes.Constantes;
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
@@ -55,6 +53,10 @@ public class NuevoPagoStep {
   @Page ResumenReclamacionPage resumenReclamacionPage;
 
   @Page AuditoriaPage auditoriaPage;
+
+  private static final String MENSAJE_PAGO_NO_REALIZADO = "No se generó orden de pago al asegurado";
+  private static final String MENSAJE_RECHAZO_PAGO =
+      "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
 
   @Step
   public void consultarNumeroReclamacion() {
@@ -106,7 +108,7 @@ public class NuevoPagoStep {
                     validador.getEstadoTransaccion(), lstFilaPago));
           });
     } else {
-      Utilidades.getLogger().info(Constantes.MENSAJE_PAGO_NO_REALIZADO.getValor());
+      Utilidades.getLogger().info(MENSAJE_PAGO_NO_REALIZADO);
     }
   }
 
@@ -137,9 +139,7 @@ public class NuevoPagoStep {
   public void compararMensajesRechazoPago() {
     MatcherAssert.assertThat(
         "No generó la validación de NO pago a asegurado" + "por proceso de auditoría",
-        auditoriaPage
-            .capturarMensajeRechazo()
-            .equalsIgnoreCase(Constantes.MENSAJE_RECHAZO_PAGO.getValor()));
+        auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
   }
 
   public void ingresarInformacionBeneficiarioPago(
@@ -180,9 +180,7 @@ public class NuevoPagoStep {
       if (auditoriaPage.verificarMensajeRechazo()) {
         MatcherAssert.assertThat(
             "No generó la validación de NO pago a asegurado por proceso de auditoría",
-            auditoriaPage
-                .capturarMensajeRechazo()
-                .equalsIgnoreCase(Constantes.MENSAJE_RECHAZO_PAGO.getValor()));
+            auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
       } else if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
         establecerInstruccionPagoPage.ingresarFechaFactura();
         establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());

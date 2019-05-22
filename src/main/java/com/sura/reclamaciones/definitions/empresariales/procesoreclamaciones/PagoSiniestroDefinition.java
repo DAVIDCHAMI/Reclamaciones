@@ -4,7 +4,6 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -13,8 +12,6 @@ import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
-
-  @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
@@ -57,7 +54,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 
-  @Cuando("^(.*)se notifique el proceso de auditoria al area de auditoria$")
+  @Cuando("^(.*)se notifique el proceso al área de auditoría$")
   public void notificarProcesoAuditoria() throws IOException {
     //ToDo
   }

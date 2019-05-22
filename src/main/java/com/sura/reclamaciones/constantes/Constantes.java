@@ -25,7 +25,6 @@ public enum Constantes {
   CANCELACION("Cancelación"),
   CANCELAR_AHORA("Cancelar ahora"),
   CANCELAR_CONTROL_POLICY("Cancelar"),
-  COMENTARIO_AUDITORIA("Requiere marcacion de auditoria"),
   CANTIDAD("Cantidad"),
   CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA("Nuevas reservas disponibles"),
   CC_POSICION_VALOR_RESERVA_EMPRESARIALES("-1"),
@@ -51,7 +50,6 @@ public enum Constantes {
   DESCRIPCION_OPERACION("Descripción de la operación"),
   DETALLES("Detalles"),
   DETALLE_COMISIONES_ASESOR("Detalle de comisiones del asesor"),
-  DETALLES_INVESTIGACION_AUDITORIA("Detalles de investigación de auditoría"),
   DEVOLUCIONES("Devoluciones"),
   DISPONIBLE("Disponible"),
   DRIVER("oracle.jdbc.driver.OracleDriver"),
@@ -96,9 +94,6 @@ public enum Constantes {
   MENSAJE_DUPLICIDAD(
       "El tomador principal y el tomador secundario no pueden tener el mismo número de identificación."),
   MENSAJE_TRABAJO_SIN_GUARDAR("Tiene trabajo sin guardar que se perderá si navega a otro sitio"),
-  MENSAJE_PAGO_NO_REALIZADO("No se generó orden de pago al asegurado"),
-  MENSAJE_RECHAZO_PAGO(
-      "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría"),
   MENU_PRIMER_NIVEL_ADMINISTRACION("Ad"),
   MENU_SCRIPTER("Scripter"),
   MENU_UTILIDADES("Utilidades"),
