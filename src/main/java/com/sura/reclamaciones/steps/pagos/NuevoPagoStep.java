@@ -144,6 +144,7 @@ public class NuevoPagoStep {
   }
 
   public void ingresarEstadoLegalReclamacion() {
+    generalPage.realizarEsperaCarga();
     detalleExposicionAutomaticaPage.seleccionarDetalleExposicion();
     detalleExposicionAutomaticaPage.editarDetalleExposicion();
     detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
