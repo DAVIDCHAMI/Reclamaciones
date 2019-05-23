@@ -114,6 +114,7 @@ public class NuevoPagoStep {
 
   @Step
   public void crearNuevoPago() {
+    menuClaimPage.seleccionarBotonAcciones();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 
