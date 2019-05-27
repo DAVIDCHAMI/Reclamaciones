@@ -58,7 +58,9 @@ public class NuevaExposicionPage extends GeneralPage {
   }
 
   public void actualizarNuevaExposicion() {
-    btnActualizar.waitUntilVisible ().waitUntilClickable().click();
-    waitFor(ExpectedConditions.presenceOfElementLocated(By.id("ClaimExposures:ClaimExposuresScreen:ClaimExposures_CloseExposure-btnInnerEl")));
+    btnActualizar.waitUntilVisible().waitUntilClickable().click();
+    waitFor(
+        ExpectedConditions.presenceOfElementLocated(
+            By.id("ClaimExposures:ClaimExposuresScreen:ClaimExposures_CloseExposure-btnInnerEl")));
   }
 }

@@ -77,7 +77,7 @@ public class RecuperoSiniestroDefinition {
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
-    nuevoPagoStep.crearNuevoPago ();
+    nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
         new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), cobertura)));
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(

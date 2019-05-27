@@ -80,14 +80,19 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   }
 
   public void actualizarCalculadoraPerdidaTotal() {
-    btnActualizar.waitUntilVisible ().waitUntilClickable ().click();
-    waitFor(ExpectedConditions.presenceOfElementLocated(By.id("ExposureDetail:ExposureDetailScreen:Edit-btnInnerEl")));
+    btnActualizar.waitUntilVisible().waitUntilClickable().click();
+    waitFor(
+        ExpectedConditions.presenceOfElementLocated(
+            By.id("ExposureDetail:ExposureDetailScreen:Edit-btnInnerEl")));
   }
 
   public void seleccionarDetalleExposicion() {
     realizarEsperaCarga();
     lblDetallesExposicion.waitUntilVisible().waitUntilClickable().click();
-    waitFor(ExpectedConditions.presenceOfElementLocated(By.id("ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl")));
+    waitFor(
+        ExpectedConditions.presenceOfElementLocated(
+            By.id(
+                "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl")));
   }
 
   public void editarDetalleExposicion() {

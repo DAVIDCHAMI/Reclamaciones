@@ -50,7 +50,7 @@ public class PagoSiniestroDefinition {
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
-    nuevoPagoStep.crearNuevoPago ();
+    nuevoPagoStep.crearNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     nuevoPagoStep.ingresarInformacionPago(
@@ -78,7 +78,7 @@ public class PagoSiniestroDefinition {
             (genericStep.getFilasModelo(
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
-    nuevoPagoStep.crearNuevoPago ();
+    nuevoPagoStep.crearNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     nuevoPagoStep.ingresarInformacionPago(
@@ -117,7 +117,7 @@ public class PagoSiniestroDefinition {
             (genericStep.getFilasModelo(
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
-    nuevoPagoStep.crearNuevoPago ();
+    nuevoPagoStep.crearNuevoPago();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     nuevoPagoStep.ingresarInformacionPago(
