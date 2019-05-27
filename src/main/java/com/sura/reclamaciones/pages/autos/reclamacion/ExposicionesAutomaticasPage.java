@@ -1,8 +1,5 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
-import static com.sura.reclamaciones.constantes.Constantes.COLUMNA_TIPO_TABLA_EXPOSICIONES;
-import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_DANOS_ASEGURADO;
-
 import com.sura.reclamaciones.constantes.Tablas;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -12,6 +9,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class ExposicionesAutomaticasPage extends GeneralPage {
+
+  private static String COLUMNA_TIPO_TABLA_EXPOSICIONES = "Tipo";
+  private static String EXPOSICION_DANOS_ASEGURADO = "Daños";
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
   private WebElementFacade tblExposicionesAutomaticas;
@@ -32,8 +32,8 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
             tblExposicionesAutomaticas,
             Tablas.CABECERAS_CC,
             Tablas.REGISTROS_CC,
-            EXPOSICION_DANOS_ASEGURADO.getValor(),
-            COLUMNA_TIPO_TABLA_EXPOSICIONES.getValor())
+            EXPOSICION_DANOS_ASEGURADO,
+            COLUMNA_TIPO_TABLA_EXPOSICIONES)
         .click();
     realizarEsperaCarga();
   }

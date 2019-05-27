@@ -76,8 +76,6 @@ public class GeneralPage extends PageObject {
 
   private String auxiliarReemplazo = "";
 
-  private static int encontrarPosicionElementoTabla = 2;
-
   protected WebDriver driver;
 
   private static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
@@ -134,6 +132,7 @@ public class GeneralPage extends PageObject {
       Tablas enumRegistroTabla,
       String datoEnFilaABuscar,
       int posicionDatoADevolver) {
+    int ENCONTRAR_POSICION_ELEMENTO_TABLA = 2;
     return elementoTabla
         .findElements(By.xpath(enumRegistroTabla.getXpath()))
         .stream()
@@ -143,7 +142,7 @@ public class GeneralPage extends PageObject {
                 columnas.findElement(
                     By.id(
                         "ClaimExposures:ClaimExposuresScreen:ExposuresLV:"
-                            + (posicionDatoADevolver - encontrarPosicionElementoTabla)
+                            + (posicionDatoADevolver - ENCONTRAR_POSICION_ELEMENTO_TABLA)
                             + ":Type")))
         .distinct()
         .findFirst()

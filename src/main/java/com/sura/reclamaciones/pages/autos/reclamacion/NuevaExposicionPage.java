@@ -5,6 +5,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class NuevaExposicionPage extends GeneralPage {
 
@@ -57,10 +58,7 @@ public class NuevaExposicionPage extends GeneralPage {
   }
 
   public void actualizarNuevaExposicion() {
-    btnActualizar.waitUntilClickable().click();
-    realizarEsperaCarga();
-    realizarEsperaCarga();
-    realizarEsperaCarga();
-    realizarEsperaCarga();
+    btnActualizar.waitUntilVisible ().waitUntilClickable().click();
+    waitFor(ExpectedConditions.presenceOfElementLocated(By.id("ClaimExposures:ClaimExposuresScreen:ClaimExposures_CloseExposure-btnInnerEl")));
   }
 }

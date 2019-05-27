@@ -7,6 +7,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DetalleExposicionAutomaticaPage extends GeneralPage {
 
@@ -37,12 +38,12 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   )
   WebElementFacade rbtHabitaculoPasajerosIncineradoTotalmente;
 
-  @FindBy(xpath = "//span[@id='ExposureDetail:ExposureDetailScreen:Update-btnInnerEl']")
+  @FindBy(id = "ExposureDetail:ExposureDetailScreen:Update-btnInnerEl")
   WebElementFacade btnActualizar;
 
   @FindBy(
-    xpath =
-        "//span[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamage_DetailsCardTab-btnInnerEl'][contains(@class,'x-tab-inner x-tab-inner-center')]"
+    id =
+        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamage_DetailsCardTab-btnInnerEl"
   )
   WebElementFacade lblDetallesExposicion;
 
@@ -79,16 +80,14 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   }
 
   public void actualizarCalculadoraPerdidaTotal() {
-    btnActualizar.click();
-    realizarEsperaCarga();
-    realizarEsperaCarga();
-    realizarEsperaCarga();
+    btnActualizar.waitUntilVisible ().waitUntilClickable ().click();
+    waitFor(ExpectedConditions.presenceOfElementLocated(By.id("ExposureDetail:ExposureDetailScreen:Edit-btnInnerEl")));
   }
 
   public void seleccionarDetalleExposicion() {
     realizarEsperaCarga();
     lblDetallesExposicion.waitUntilVisible().waitUntilClickable().click();
-    realizarEsperaCarga();
+    waitFor(ExpectedConditions.presenceOfElementLocated(By.id("ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl")));
   }
 
   public void editarDetalleExposicion() {
