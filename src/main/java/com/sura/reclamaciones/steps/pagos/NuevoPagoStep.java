@@ -21,6 +21,8 @@ import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
+import com.sura.reclamaciones.pages.procesoauditoria.AuditoriaPage;
+import com.sura.reclamaciones.utils.Utilidades;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -50,81 +52,69 @@ public class NuevoPagoStep {
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
 
+  @Page AuditoriaPage auditoriaPage;
+
+  private static final String MENSAJE_PAGO_NO_REALIZADO = "No se generó orden de pago al asegurado";
+  private static final String MENSAJE_RECHAZO_PAGO =
+      "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
+
   @Step
   public void consultarNumeroReclamacion() {
     resumenReclamacionPage.obtenerNumeroReclamacion();
   }
 
   @Step
-  public void ingresarInformacionBeneficiarioPago(
-      String strLineaReserva,
-      String strTipoPago,
-      String strBeneficiarioPago,
-      String strMetodoPago,
-      String strPagoSoloSura,
-      String strCodigoRetencion,
+  public void ingresarInformacionPago(
+      String beneficiarioPago,
+      String metodoPago,
+      String pagoSoloSura,
+      String lineaReserva,
+      String tipoPago,
+      String codigoRetencion,
       List<PagoSiniestro> lstPago) {
-    for (PagoSiniestro diligenciador : lstPago) {
-      introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
-      introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
-          diligenciador.getTipoBeneficiario());
-      introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
-          strMetodoPago, CUENTA.getValor(), SELECCIONAR.getValor());
-      introducirInformacionBeneficiarioPage.seleccionarPagoSura(strPagoSoloSura);
-      introducirInformacionBeneficiarioPage.seleccionarPais(diligenciador.getPais());
-      introducirInformacionBeneficiarioPage.seleccionarDepartamento(
-          diligenciador.getDepartamento());
-      introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
-      introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
-          diligenciador.getTipoDireccion());
-      introducirInformacionPagoPage.irSiguientePantalla();
-      introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
-      introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
-      introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
-      introducirInformacionPagoPage.ingresarCodigoRetencion(
-          strCodigoRetencion, CODIGO_RETENCION.getValor());
-      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
-      introducirInformacionPagoPage.irSiguientePantalla();
-      if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
-        establecerInstruccionPagoPage.ingresarFechaFactura();
-        establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
-      }
-      establecerInstruccionPagoPage.finalizarProceso();
-    }
+    ingresarInformacionBeneficiarioPago(beneficiarioPago, metodoPago, pagoSoloSura, lstPago);
+    ingresarInformacionDetallePago(lineaReserva, tipoPago, codigoRetencion, lstPago);
   }
 
   @Step
   public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
-    lstPago.forEach(
-        (PagoSiniestro validador) -> {
-          for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
-            generalPage.realizarEsperaCarga();
-            String strNumeroTransaccion =
-                verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
-            lstFilaPago =
-                verificacionDatosFinancierosPage.obtenerFilaTabla(
-                    strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
-            WebElement elementoXpath =
-                lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
-            boolean estadoTransaccionPantalla =
-                generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
-            if (estadoTransaccionPantalla) break;
-          }
-          String strValorReserva =
-              (Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
-          MatcherAssert.assertThat(
-              "El valor reservado no es igual al enviado",
-              verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
-                  strValorReserva, lstFilaPago));
-          MatcherAssert.assertThat(
-              "No llego a SAP el pago",
-              verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
-                  validador.getEstadoTransaccion(), lstFilaPago));
-        });
+    if (verificacionDatosFinancierosPage.verificarNumeroPago()) {
+      lstPago.forEach(
+          (PagoSiniestro validador) -> {
+            for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
+              generalPage.realizarEsperaCarga();
+              String strNumeroTransaccion =
+                  verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
+              lstFilaPago =
+                  verificacionDatosFinancierosPage.obtenerFilaTabla(
+                      strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
+              WebElement elementoXpath =
+                  lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
+              boolean estadoTransaccionPantalla =
+                  generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
+              if (estadoTransaccionPantalla) {
+                break;
+              }
+            }
+            String strValorReserva =
+                (Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
+            MatcherAssert.assertThat(
+                "El valor reservado no es igual al enviado",
+                verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
+                    strValorReserva, lstFilaPago));
+            MatcherAssert.assertThat(
+                "No llego a SAP el pago",
+                verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
+                    validador.getEstadoTransaccion(), lstFilaPago));
+          });
+    } else {
+      Utilidades.getLogger().info(MENSAJE_PAGO_NO_REALIZADO);
+    }
   }
 
   @Step
   public void crearNuevoPago() {
+    menuClaimPage.seleccionarBotonAcciones();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 
@@ -145,5 +135,58 @@ public class NuevoPagoStep {
     detalleExposicionAutomaticaPage.editarDetalleExposicion();
     detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
+  }
+
+  public void compararMensajesRechazoPago() {
+    MatcherAssert.assertThat(
+        "No generó la validación de NO pago a asegurado" + "por proceso de auditoría",
+        auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
+  }
+
+  public void ingresarInformacionBeneficiarioPago(
+      String strBeneficiarioPago,
+      String strMetodoPago,
+      String strPagoSoloSura,
+      List<PagoSiniestro> lstPago) {
+    for (PagoSiniestro diligenciador : lstPago) {
+      introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
+      introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
+          diligenciador.getTipoBeneficiario());
+      introducirInformacionBeneficiarioPage.seleccionarMetodoPago(
+          strMetodoPago, CUENTA.getValor(), SELECCIONAR.getValor());
+      introducirInformacionBeneficiarioPage.seleccionarPagoSura(strPagoSoloSura);
+      introducirInformacionBeneficiarioPage.seleccionarPais(diligenciador.getPais());
+      introducirInformacionBeneficiarioPage.seleccionarDepartamento(
+          diligenciador.getDepartamento());
+      introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
+      introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
+          diligenciador.getTipoDireccion());
+      introducirInformacionPagoPage.irSiguientePantalla();
+    }
+  }
+
+  public void ingresarInformacionDetallePago(
+      String strLineaReserva,
+      String strTipoPago,
+      String strCodigoRetencion,
+      List<PagoSiniestro> lstPago) {
+    for (PagoSiniestro diligenciador : lstPago) {
+      introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
+      introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
+      introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
+      introducirInformacionPagoPage.ingresarCodigoRetencion(
+          strCodigoRetencion, CODIGO_RETENCION.getValor());
+      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
+      introducirInformacionPagoPage.irSiguientePantalla();
+      if (auditoriaPage.verificarMensajeRechazo()) {
+        MatcherAssert.assertThat(
+            "No generó la validación de NO pago a asegurado por proceso de auditoría",
+            auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
+      } else if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
+        establecerInstruccionPagoPage.ingresarFechaFactura();
+        establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
+        establecerInstruccionPagoPage.finalizarProceso();
+      }
+    }
   }
 }

@@ -52,12 +52,12 @@ public class AnulacionEmpresarialDefinition {
         .forEach(
             ajustador -> {
               nuevoPagoStep.consultarNumeroReclamacion();
-              nuevoPagoStep.ingresarInformacionBeneficiarioPago(
-                  ajustador.getLineaReserva(),
-                  ajustador.getTipoPago(),
+              nuevoPagoStep.ingresarInformacionPago(
                   ajustador.getBeneficiarioPago(),
                   ajustador.getMetodoPago(),
                   ajustador.getSoloSura(),
+                  ajustador.getLineaReserva(),
+                  ajustador.getTipoPago(),
                   strCodigoRetencion,
                   pagoSiniestro.getLstPago());
             });
