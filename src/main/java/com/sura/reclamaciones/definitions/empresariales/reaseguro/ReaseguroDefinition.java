@@ -49,12 +49,12 @@ public class ReaseguroDefinition {
     PagoSiniestro pagoSiniestro =
         new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), strTipoContrato)));
     nuevoPagoStep.consultarNumeroReclamacion();
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
-        lineaReserva,
-        tipoPago,
+    nuevoPagoStep.ingresarInformacionPago(
         beneficiarioPago,
         metodoPago,
         aplicaSoloSura,
+        lineaReserva,
+        tipoPago,
         codigoRetencion,
         pagoSiniestro.getLstPago());
   }

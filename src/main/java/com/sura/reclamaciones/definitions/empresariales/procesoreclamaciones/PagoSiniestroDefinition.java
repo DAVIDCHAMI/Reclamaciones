@@ -40,12 +40,12 @@ public class PagoSiniestroDefinition {
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
-        lineaReserva,
-        tipoPago,
+    nuevoPagoStep.ingresarInformacionPago(
         beneficiarioPago,
         metodoPago,
         aplicaSoloSura,
+        lineaReserva,
+        tipoPago,
         codigoRetencion,
         pagoSiniestro.getLstPago());
   }
@@ -53,6 +53,16 @@ public class PagoSiniestroDefinition {
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
   public void verificarPago() {
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
+  }
+
+  @Cuando("^(.*)se notifique el proceso al área de auditoría$")
+  public void notificarProcesoAuditoria() throws IOException {
+    //ToDo
+  }
+
+  @Entonces("^(.*) se debe generar factura de pago al asegurado$")
+  public void verificarFacturaAsegurado() throws IOException {
+    //ToDO
   }
 
   @Y("^se declara la reclamación como perdida total$")
