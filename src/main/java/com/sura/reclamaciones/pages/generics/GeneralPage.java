@@ -63,14 +63,14 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
   private WebElementFacade btnUltimaPagina;
 
+  @FindBy(xpath = "//div[@class='x-panel x-layer x-panel-default x-menu x-border-box']")
+  public WebElementFacade lstOpcionesGenerales;
+
   private String tblPago =
       "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
 
   private String tblTransaccion =
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
-
-  @FindBy(xpath = "//div[@class='x-panel x-layer x-panel-default x-menu x-border-box']")
-  public WebElementFacade lstOpcionesGenerales;
 
   private String lstDinamico = "//li[.='COMODIN']";
 
@@ -104,7 +104,7 @@ public class GeneralPage extends PageObject {
     elemento.click();
   }
 
-  public List<String> obtenerCabecerasDeUnaTabla(
+  public List<String> obtenerCabecerasTabla(
       WebElementFacade elementoTabla, Tablas enumCabecerasTabla) {
     return elementoTabla
         .findElements(By.xpath(enumCabecerasTabla.getXpath()))
@@ -130,19 +130,19 @@ public class GeneralPage extends PageObject {
   public WebElement obtenerTextoColumnaTabla(
       WebElementFacade elementoTabla,
       Tablas enumRegistroTabla,
-      String datoEnFilaABuscar,
-      int posicionDatoADevolver) {
+      String datoFilaBuscar,
+      int posicionDatoDevolver) {
     int ENCONTRAR_POSICION_ELEMENTO_TABLA = 2;
     return elementoTabla
         .findElements(By.xpath(enumRegistroTabla.getXpath()))
         .stream()
-        .filter(fila -> fila.getText().contains(datoEnFilaABuscar))
+        .filter(fila -> fila.getText().contains(datoFilaBuscar))
         .map(
             columnas ->
                 columnas.findElement(
                     By.id(
                         "ClaimExposures:ClaimExposuresScreen:ExposuresLV:"
-                            + (posicionDatoADevolver - ENCONTRAR_POSICION_ELEMENTO_TABLA)
+                            + (posicionDatoDevolver - ENCONTRAR_POSICION_ELEMENTO_TABLA)
                             + ":Type")))
         .distinct()
         .findFirst()
@@ -163,7 +163,7 @@ public class GeneralPage extends PageObject {
       Tablas registros,
       String datoEnFilaABuscar,
       String columnaADevolver) {
-    List<String> cabeceraFacturarCargos = obtenerCabecerasDeUnaTabla(elemento, cabeceras);
+    List<String> cabeceraFacturarCargos = obtenerCabecerasTabla (elemento, cabeceras);
     int posicionDatoADevolver = cabeceraFacturarCargos.indexOf(columnaADevolver) + 1;
     return obtenerElementoColumnaTabla(
         elemento, registros, datoEnFilaABuscar, posicionDatoADevolver);
@@ -173,11 +173,11 @@ public class GeneralPage extends PageObject {
       WebElementFacade elemento,
       Tablas cabeceras,
       Tablas registros,
-      String datoEnFilaABuscar,
-      String columnaADevolver) {
-    List<String> cabeceraFacturarCargos = obtenerCabecerasDeUnaTabla(elemento, cabeceras);
-    int posicionDatoADevolver = cabeceraFacturarCargos.indexOf(columnaADevolver) + 1;
-    return obtenerTextoColumnaTabla(elemento, registros, datoEnFilaABuscar, posicionDatoADevolver);
+      String datoFilaBuscar,
+      String columnaDevolver) {
+    List<String> datosCabeceraTabla = obtenerCabecerasTabla (elemento, cabeceras);
+    int posicionDatoADevolver = datosCabeceraTabla.indexOf(columnaDevolver) + 1;
+    return obtenerTextoColumnaTabla(elemento, registros, datoFilaBuscar, posicionDatoADevolver);
   }
 
   public void realizarEsperaCarga() {
@@ -216,7 +216,7 @@ public class GeneralPage extends PageObject {
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
       WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
-    List<String> cabeceraTabla = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
+    List<String> cabeceraTabla = obtenerCabecerasTabla (elemento, CABECERAS_CC);
     int posicionDatoDevolver = cabeceraTabla.indexOf(encabezadoColumnaDevolver) + posicionFila;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
     return elementoEncontrado
@@ -249,8 +249,8 @@ public class GeneralPage extends PageObject {
   }
 
   public void irSiguientePagina() {
-    if (btnCambioPagina.isVisible()) {
-      btnCambioPagina.waitUntilClickable().click();
+    btnSiguiente.waitUntilVisible().waitUntilClickable().click();
+    if (pgrBarCarga.isVisible()) {
       realizarEsperaCarga();
     }
   }
@@ -332,12 +332,6 @@ public class GeneralPage extends PageObject {
       ventana = driver.getWindowHandles();
       driver.close();
     } while (ventana.size() != 1);
-  }
-
-  public void seleccionarOpcionMenuGeneral(String opcion) {
-    WebElement elemento =
-        lstOpcionesGenerales.findElement(By.xpath(".//span[contains(text(), '" + opcion + "')]"));
-    waitFor(elemento).waitUntilClickable().click();
   }
 
   public boolean actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {

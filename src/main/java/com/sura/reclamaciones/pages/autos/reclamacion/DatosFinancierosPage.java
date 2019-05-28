@@ -16,7 +16,7 @@ public class DatosFinancierosPage extends GeneralPage {
   }
 
   public boolean obtenerDatosFinancieros(List<Reserva> datosLineaReserva) {
-    obtenerCabecerasDeUnaTabla(
+    obtenerCabecerasTabla (
         $(
             "//div[@id='ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryPanelSet:FinancialsSummaryLV']"),
         Tablas.CABECERAS_CC);

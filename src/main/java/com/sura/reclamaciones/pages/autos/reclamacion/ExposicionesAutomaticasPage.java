@@ -26,7 +26,7 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
   }
 
   public void seleccionarExposicion() {
-    obtenerCabecerasDeUnaTabla(
+    obtenerCabecerasTabla (
         $("//div[@id='ClaimExposures:ClaimExposuresScreen:ExposuresLV']"), Tablas.CABECERAS_CC);
     obtenerTextoElementoLista(
             tblExposicionesAutomaticas,
@@ -40,7 +40,7 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
 
   public boolean validarExposiciones(
       List<ExposicionesAutomaticasAutos> datosExposicionesAutomaticas) {
-    obtenerCabecerasDeUnaTabla(
+    obtenerCabecerasTabla (
         $("//div[@id='ClaimExposures:ClaimExposuresScreen:ExposuresLV']"), Tablas.CABECERAS_CC);
     for (int i = 0; i < datosExposicionesAutomaticas.size(); i++) {
       String lineaReservaTbl =

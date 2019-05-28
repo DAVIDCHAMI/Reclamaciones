@@ -93,7 +93,7 @@ public class NuevoPagoStep {
       introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
       introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
           diligenciador.getTipoDireccion());
-      introducirInformacionPagoPage.irSiguientePantalla();
+      generalPage.irSiguientePagina ();
     }
   }
 
