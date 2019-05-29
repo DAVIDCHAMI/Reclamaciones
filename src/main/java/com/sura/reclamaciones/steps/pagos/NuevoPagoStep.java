@@ -186,7 +186,7 @@ public class NuevoPagoStep {
         establecerInstruccionPagoPage.ingresarFechaFactura();
         establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
       }
-        establecerInstruccionPagoPage.finalizarProceso();
+      establecerInstruccionPagoPage.finalizarProceso();
     }
   }
 }
