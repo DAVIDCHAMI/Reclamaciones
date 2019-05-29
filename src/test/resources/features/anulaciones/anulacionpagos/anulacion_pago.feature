@@ -30,4 +30,4 @@ Característica: Anulación de pagos
 
     Ejemplos:
       | Línea de Reserva                | Tipo de pago | Beneficiario de pago | Método de pago | Código de Retención | ¿Es pago soloSura? | Tipo de cobertura   |
-      | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR  | Pago por banco | 0099                | No                 | RC Lesión a Persona |
+      | (3) 1ª parteVehículo            | Parcial      | SOFIA JARAMILLO      | Caja Sura      | 0099                | No                 | Perdida total Daños |
