@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.LINEA_RESERVA_LESIONES_CORPORALES;
 import static com.sura.reclamaciones.constantes.Constantes.OPCION_MENU;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 import static com.sura.reclamaciones.constantes.Constantes.PLACA;
@@ -30,6 +31,8 @@ import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
+import com.sura.reclamaciones.pages.procesoauditoria.AuditoriaPage;
+import com.sura.reclamaciones.utils.Utilidades;
 import java.util.List;
 import java.util.Map;
 import net.serenitybdd.core.Serenity;
@@ -60,6 +63,12 @@ public class NuevoPagoStep {
   @Page GeneralPage generalPage;
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
+
+  @Page AuditoriaPage auditoriaPage;
+
+  private static final String MENSAJE_PAGO_NO_REALIZADO = "No se generó orden de pago al asegurado";
+  private static final String MENSAJE_RECHAZO_PAGO =
+      "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
 
   @Page NuevaExposicionPage nuevaExposicionManualPage;
 
@@ -154,6 +163,12 @@ public class NuevoPagoStep {
   }
 
   @Step
+  public void crearNuevoPago() {
+    menuClaimPage.seleccionarBotonAcciones();
+    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
+  }
+
+  @Step
   public void seleccionarExposicionVehicularAsegurado() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
     exposicionesAutomaticasPage.seleccionarExposicion();
@@ -177,10 +192,10 @@ public class NuevoPagoStep {
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
   }
 
-  @Step
-  public void crearNuevoPago() {
-    menuClaimPage.seleccionarBotonAcciones();
-    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
+  public void compararMensajesRechazoPago() {
+    MatcherAssert.assertThat(
+        "No generó la validación de NO pago a asegurado" + "por proceso de auditoría",
+        auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
   }
 
   @Step
@@ -229,4 +244,30 @@ public class NuevoPagoStep {
     nuevoIncidenteVehicularPage.aceptarOpcion();
     nuevaExposicionManualPage.actualizarNuevaExposicion();
   }
+
+  public void ingresarInformacionDetallePago(
+      String strLineaReserva,
+      String strTipoPago,
+      String strCodigoRetencion,
+      List<PagoSiniestro> lstPago) {
+    for (PagoSiniestro diligenciador : lstPago) {
+      introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
+      introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
+      introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
+      introducirInformacionPagoPage.ingresarCodigoRetencion(
+          strCodigoRetencion, CODIGO_RETENCION.getValor());
+      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
+      introducirInformacionPagoPage.irSiguientePantalla();
+      if (auditoriaPage.verificarMensajeRechazo()) {
+        MatcherAssert.assertThat(
+            "No generó la validación de NO pago a asegurado por proceso de auditoría",
+            auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
+      } else if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
+        establecerInstruccionPagoPage.ingresarFechaFactura();
+        establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
+        establecerInstruccionPagoPage.finalizarProceso();
+      }
+    }
+  }
+
 }
