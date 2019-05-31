@@ -60,7 +60,7 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la linea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
+      "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
   public void crearPago(
       String tipoPago,
       String beneficiarioPago,
@@ -88,7 +88,7 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las lineas de reserva (.*) y (.*) afectando la cobertura de (.*) es Sura con una retención de (.*)$")
+      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) y (.*) afectando la cobertura de (.*) es Sura con una retención de (.*)$")
   public void crearMultiPago(
       String tipoPago,
       String beneficiarioPago,

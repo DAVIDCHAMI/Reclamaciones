@@ -13,12 +13,13 @@ import static com.sura.reclamaciones.constantes.Constantes.PLACA;
 import static com.sura.reclamaciones.constantes.Constantes.RECLAMANTE_CONDUCTOR_AFECTADO;
 import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_RESERVAS;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.pages.autos.reclamacion.CrearServicioPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
@@ -32,7 +33,6 @@ import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import com.sura.reclamaciones.pages.procesoauditoria.AuditoriaPage;
-import com.sura.reclamaciones.utils.Utilidades;
 import java.util.List;
 import java.util.Map;
 import net.serenitybdd.core.Serenity;
@@ -44,7 +44,6 @@ import org.openqa.selenium.WebElement;
 public class NuevoPagoStep {
 
   List<WebElement> lstFilaPago;
-  private int campoDato = 0;
 
   @Page MenuClaimPage menuClaimPage;
 
@@ -76,7 +75,7 @@ public class NuevoPagoStep {
 
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
-  @Page CrearServicioPage crearServicioPage;
+  @Page CreacionServicioPage crearServicioPage;
 
   @Step
   public void consultarNumeroReclamacion() {
@@ -102,7 +101,7 @@ public class NuevoPagoStep {
       introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
       introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
           diligenciador.getTipoDireccion());
-      generalPage.irSiguientePagina ();
+      generalPage.irSiguientePagina();
     }
   }
 
@@ -119,7 +118,7 @@ public class NuevoPagoStep {
 
   @Step
   public void ingresarInstruccionesPago(String lineaReserva, List<PagoSiniestro> lstPago) {
-    introducirInformacionPagoPage.irSiguientePantalla();
+    generalPage.irSiguientePagina();
     establecerInstruccionPagoPage.obtenerPagoReservas();
     establecerInstruccionPagoPage.ingresarFechaFactura();
     establecerInstruccionPagoPage.ingresarNumeroFactura(
@@ -239,7 +238,9 @@ public class NuevoPagoStep {
     detalleVehiculoPage.buscarProveedor();
     detalleVehiculoPage.realizarEsperaCarga();
     crearServicioPage.seleccionarProveedor(
-        datosVehiculoTercero.get(campoDato).getTallerReparacionAsignado());
+        datosVehiculoTercero
+            .get(Integer.parseInt(VALOR_CERO.getValor()))
+            .getTallerReparacionAsignado());
     detalleVehiculoPage.aceptarOpcion();
     nuevoIncidenteVehicularPage.aceptarOpcion();
     nuevaExposicionManualPage.actualizarNuevaExposicion();
@@ -257,7 +258,7 @@ public class NuevoPagoStep {
       introducirInformacionPagoPage.ingresarCodigoRetencion(
           strCodigoRetencion, CODIGO_RETENCION.getValor());
       introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
-      introducirInformacionPagoPage.irSiguientePantalla();
+      generalPage.irSiguientePagina();
       if (auditoriaPage.verificarMensajeRechazo()) {
         MatcherAssert.assertThat(
             "No generó la validación de NO pago a asegurado por proceso de auditoría",
@@ -269,5 +270,4 @@ public class NuevoPagoStep {
       }
     }
   }
-
 }

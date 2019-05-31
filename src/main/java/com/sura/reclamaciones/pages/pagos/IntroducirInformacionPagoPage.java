@@ -132,13 +132,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
         });
   }
 
-  public void irSiguientePantalla() {
-    btnSiguiente.waitUntilVisible().waitUntilClickable().click();
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
-  }
-
   public void agregarNuevoPago() {
     btnAgregarPago.waitUntilClickable().click();
     realizarEsperaCarga();

@@ -14,7 +14,7 @@ import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarExposicionLesionesPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.CrearServicioPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DatosFinancierosPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
@@ -47,7 +47,7 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Page MenuClaimPage menuClaimPage;
 
-  @Page CrearServicioPage crearServicioPage;
+  @Page CreacionServicioPage crearServicioPage;
 
   @Step
   public void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {

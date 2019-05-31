@@ -163,7 +163,7 @@ public class GeneralPage extends PageObject {
       Tablas registros,
       String datoEnFilaABuscar,
       String columnaADevolver) {
-    List<String> cabeceraFacturarCargos = obtenerCabecerasTabla (elemento, cabeceras);
+    List<String> cabeceraFacturarCargos = obtenerCabecerasTabla(elemento, cabeceras);
     int posicionDatoADevolver = cabeceraFacturarCargos.indexOf(columnaADevolver) + 1;
     return obtenerElementoColumnaTabla(
         elemento, registros, datoEnFilaABuscar, posicionDatoADevolver);
@@ -175,7 +175,7 @@ public class GeneralPage extends PageObject {
       Tablas registros,
       String datoFilaBuscar,
       String columnaDevolver) {
-    List<String> datosCabeceraTabla = obtenerCabecerasTabla (elemento, cabeceras);
+    List<String> datosCabeceraTabla = obtenerCabecerasTabla(elemento, cabeceras);
     int posicionDatoADevolver = datosCabeceraTabla.indexOf(columnaDevolver) + 1;
     return obtenerTextoColumnaTabla(elemento, registros, datoFilaBuscar, posicionDatoADevolver);
   }
@@ -216,7 +216,7 @@ public class GeneralPage extends PageObject {
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
       WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
-    List<String> cabeceraTabla = obtenerCabecerasTabla (elemento, CABECERAS_CC);
+    List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
     int posicionDatoDevolver = cabeceraTabla.indexOf(encabezadoColumnaDevolver) + posicionFila;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
     return elementoEncontrado
