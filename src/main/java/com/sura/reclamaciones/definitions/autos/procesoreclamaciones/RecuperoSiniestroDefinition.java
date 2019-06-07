@@ -16,6 +16,7 @@ import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
@@ -27,7 +28,6 @@ import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class RecuperoSiniestroDefinition {
-  @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
   @Steps RecuperoStep recuperoStep;
 
@@ -36,6 +36,8 @@ public class RecuperoSiniestroDefinition {
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps PagoSiniestro pagoSiniestro;
+
+  @Steps MenuClaimsStep menuClaimsStep;
 
   Recupero recupero;
 
@@ -58,6 +60,8 @@ public class RecuperoSiniestroDefinition {
         new ReclamacionAuto(
             genericStep.getFilasModelo(
                 PARAMETROS_SINIESTRO_AUTOS.getValor(), CREACION_AVISO_AUTOS_WS.getValor()));
+    ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep =
+        new ConsumoServicioCreacionAvisoSiniestroAutoStep();
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         parametroAviso.getLstReclamacionAuto(),
         parametroPersonaLesionadaAuto.getLstPersonaReclamacion(),
@@ -76,7 +80,7 @@ public class RecuperoSiniestroDefinition {
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
-    nuevoPagoStep.consultarNumeroReclamacionAutos(
+    menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();

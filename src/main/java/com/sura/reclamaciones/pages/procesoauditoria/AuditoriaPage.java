@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.pages.procesoauditoria;
 
-import static com.sura.reclamaciones.constantes.Constantes.DETALLES_INVESTIGACION_AUDITORIA;
-
 import com.sura.reclamaciones.constantes.Constantes;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -16,7 +14,7 @@ public class AuditoriaPage extends GeneralPage {
   @Page MenuClaimPage menuClaimPage;
 
   @FindBy(xpath = "//span[@id='SIDetails:SIDetailsScreen:Edit-btnInnerEl']")
-  private WebElementFacade btnEditar;
+  private WebElementFacade btnEditarProcesoAuditoria;
 
   @FindBy(
     id =
@@ -39,17 +37,21 @@ public class AuditoriaPage extends GeneralPage {
   )
   private WebElementFacade txtAreaComentario;
 
+  private static final String COMENTARIO_AUDITORIA = "Requiere marcacion de auditoria";
+  private static final String DETALLES_INVESTIGACION_AUDITORIA =
+      "Detalles de investigación de auditoría";
+
   public AuditoriaPage(WebDriver driver) {
     super(driver);
   }
 
   public void seleccionarDetalleInvestigacionAuditoria() {
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-        MenuConstante.DETALLES_SINIESTRO, DETALLES_INVESTIGACION_AUDITORIA.getValor());
+        MenuConstante.DETALLES_SINIESTRO, DETALLES_INVESTIGACION_AUDITORIA);
   }
 
   public void editarMarcacionAuditoria() {
-    btnEditar.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
+    btnEditarProcesoAuditoria.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
   }
 
   public void seleccionarMarcacionAuditoria(String strAuditoria) {
@@ -62,7 +64,7 @@ public class AuditoriaPage extends GeneralPage {
   }
 
   public void agregarComentarioAuditoria() {
-    txtAreaComentario.type(Constantes.COMENTARIO_AUDITORIA.getValor());
+    txtAreaComentario.type(COMENTARIO_AUDITORIA);
   }
 
   public void actualizarMarcacionAuditoria() {
