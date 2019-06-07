@@ -9,7 +9,7 @@ public class ProcesoAuditoriaStep {
   @Page AuditoriaPage editarAuditoriaPage;
 
   @Step
-  public void verificarMarcadoAuditoria(String auditoria) {
+  public void marcarAuditoria(String auditoria) {
     editarAuditoriaPage.seleccionarDetalleInvestigacionAuditoria();
     editarAuditoriaPage.verificarMarcacion(auditoria);
   }

@@ -4,7 +4,6 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.procesoauditoria.ProcesoAuditoriaStep;
 import cucumber.api.java.es.Cuando;
@@ -61,6 +60,6 @@ public class PagoSiniestroDefinition {
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
   public void notificarProcesoAuditoria(String requiereAuditoria) throws IOException {
     nuevoPagoStep.consultarNumeroReclamacion();
-    procesoAuditoriaStep.verificarMarcadoAuditoria(requiereAuditoria);
+    procesoAuditoriaStep.marcarAuditoria(requiereAuditoria);
   }
 }
