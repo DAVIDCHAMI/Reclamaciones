@@ -59,7 +59,7 @@ Característica: Realizar pago de un siniestro
       Y un incidente de tipo <Tipo de incidente>
       Cuando <¿Requiere auditoría?> se notifique el proceso al área de auditoría
       Y se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de Retención>
-      Entonces <¿genera factura?> se debe generar factura de pago al asegurado
+    Entonces se genera una orden de pago para que le sea entregado al usuario
 
 
       Ejemplos:
