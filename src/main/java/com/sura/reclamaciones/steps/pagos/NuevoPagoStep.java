@@ -119,11 +119,17 @@ public class NuevoPagoStep {
   @Step
   public void ingresarInstruccionesPago(String lineaReserva, List<PagoSiniestro> lstPago) {
     generalPage.irSiguientePagina();
-    establecerInstruccionPagoPage.obtenerPagoReservas();
-    establecerInstruccionPagoPage.ingresarFechaFactura();
-    establecerInstruccionPagoPage.ingresarNumeroFactura(
-        lstPago.listIterator().next().getNumeroFactura());
-    establecerInstruccionPagoPage.finalizarProceso();
+    if (auditoriaPage.verificarMensajeRechazo()) {
+      MatcherAssert.assertThat(
+          "No generó la validación de NO pago a asegurado por proceso de auditoría",
+          auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
+    } else if (!lineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
+      establecerInstruccionPagoPage.obtenerPagoReservas ();
+      establecerInstruccionPagoPage.ingresarFechaFactura ();
+      establecerInstruccionPagoPage.ingresarNumeroFactura (
+          lstPago.listIterator ().next ().getNumeroFactura ());
+      establecerInstruccionPagoPage.finalizarProceso ();
+    }
   }
 
   @Step
