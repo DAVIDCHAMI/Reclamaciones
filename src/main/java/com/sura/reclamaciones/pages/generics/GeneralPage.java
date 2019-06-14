@@ -249,9 +249,8 @@ public class GeneralPage extends PageObject {
   }
 
   public void irSiguientePagina() {
-    btnSiguiente.waitUntilVisible().waitUntilClickable().click();
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
+    if (btnCambioPagina.isVisible()) {
+      btnCambioPagina.waitUntilClickable().click();
     }
   }
 
