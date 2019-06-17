@@ -11,4 +11,9 @@ public class MenuClaimsStep {
   public void consultarNumeroReclamacion(String numReclamacion) {
     menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
   }
+
+  public void ingresarOpcionMenuPagoMasivo()
+  {
+    menuClaimPage.seleccionarOpcionMenuPrimerNivel(MenuConstante.ESCRITORIO_MENU);
+  }
 }
