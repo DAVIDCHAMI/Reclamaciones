@@ -39,7 +39,10 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade btnSiguiente;
 
-  @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-next ']//parent::span")
+  @FindBy(
+    xpath =
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
+  )
   private WebElementFacade btnCambioPagina;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
