@@ -8,7 +8,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
-public class ExposicionesAutomaticasPage extends GeneralPage {
+public class ExposicionAutomaticaPage extends GeneralPage {
 
   private static String COLUMNA_TIPO_TABLA_EXPOSICIONES = "Tipo";
   private static String EXPOSICION_DANOS_ASEGURADO = "Daños";
@@ -21,7 +21,7 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
 
   private boolean valorLineaReserva = true;
 
-  public ExposicionesAutomaticasPage(WebDriver wdriver) {
+  public ExposicionAutomaticaPage(WebDriver wdriver) {
     super(wdriver);
   }
 

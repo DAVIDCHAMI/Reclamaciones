@@ -22,7 +22,7 @@ import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevaExposicionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -55,7 +55,7 @@ public class NuevoPagoStep {
 
   @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-  @Page ExposicionesAutomaticasPage exposicionesAutomaticasPage;
+  @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
 
   @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
 
@@ -176,7 +176,7 @@ public class NuevoPagoStep {
   @Step
   public void seleccionarExposicionVehicularAsegurado() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
-    exposicionesAutomaticasPage.seleccionarExposicion();
+    exposicionAutomaticaPage.seleccionarExposicion();
   }
 
   @Step
