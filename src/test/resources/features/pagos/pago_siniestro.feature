@@ -61,7 +61,7 @@ Característica: Realizar pago de un siniestro
 
   @Ignore
   @PruebaAuditoria
-    @claimsEmpresarial
+
     Esquema del escenario: Crear Pago a con proceso de auditoría
       Dado que se tiene una póliza de <Tipo y Cobertura>
       Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
