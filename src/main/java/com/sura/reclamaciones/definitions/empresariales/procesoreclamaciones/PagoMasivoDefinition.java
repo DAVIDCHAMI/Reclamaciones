@@ -16,7 +16,7 @@ public class PagoMasivoDefinition
 
     @Steps CargaArchivoXlsStep cargarArchivoXlsStep;
 
-    @Cuando("^se efectue uno o varios pagos a un mismo proveedor")
+    @Cuando("^se crea uno o varios pagos a un mismo proveedor")
     public void crearPagoMasivo()
     {
         menuClaimsStep.ingresarOpcionMenuPagoMasivo(MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);

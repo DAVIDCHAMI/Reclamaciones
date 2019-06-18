@@ -4,7 +4,6 @@ import com.sura.reclamaciones.pages.pagomasivo.CargaArchivoXlsPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
-
 public class CargaArchivoXlsStep
 {
     @Page CargaArchivoXlsPage cargaArchivoXlsStep;
@@ -14,7 +13,4 @@ public class CargaArchivoXlsStep
     {
         cargaArchivoXlsStep.seleccionarArchivoXls();
     }
-
-
-
 }
