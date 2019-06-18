@@ -12,8 +12,8 @@ public class MenuClaimsStep {
     menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
   }
 
-  public void ingresarOpcionMenuPagoMasivo()
+  public void ingresarOpcionMenuPagoMasivo(String nombreOpcion, String subItem)
   {
-    menuClaimPage.seleccionarOpcionMenuPrimerNivel(MenuConstante.ESCRITORIO_MENU);
+    menuClaimPage.seleccionarOpcionMenuSegundoNivelEscritorio(nombreOpcion, subItem);
   }
 }
