@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
   features = "src/test/resources/features/limiteaprobacion/aprobar_limite_autoridad.feature",
   glue = {"com.sura.reclamaciones.definitions"},
-  tags = {"@claimsEmpresarialSuperUsuario"}
+  tags = {"@aprobarReserva"}
 )
 public class AprobacionLimiteAutoridadRunner {}
