@@ -24,8 +24,7 @@ Característica: Anulacion de recuperos
   @claimsAuto
   Esquema del escenario: anulación de un recupero de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
-    Y se genera un aviso
-    Y se declara la reclamación como perdida total
+    Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
     Y se realiza un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de Retención>
     Y se genera una orden de pago para que le sea entregado al usuario
     Y se cree el recupero por el tipo de <Tipo de recupero> con un código de retención <Código de retención recupero> a una cobertura <Tipo de cobertura>
@@ -35,4 +34,4 @@ Característica: Anulacion de recuperos
 
     Ejemplos:
       | Línea de reserva                | Tipo de pago | Beneficiario de pago | Método de pago | Código de Retención | ¿Es pago soloSura? | Tipo de cobertura   | Tipo de recupero | Código de retención recupero |
-      | (2) 1ª parteVehículo            | Parcial      | SOFIA JARAMILLO      | Caja Sura      | 0099                | No                 | Perdida total Daños | Subrogación      | 0099                         |
+      | (3) 1ª parteVehículo            | Parcial      | SOFIA JARAMILLO      | Caja Sura      | 0099                | No                 | Perdida total Daños | Subrogación      | 0099                         |

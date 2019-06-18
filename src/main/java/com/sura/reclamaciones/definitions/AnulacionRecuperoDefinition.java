@@ -26,7 +26,7 @@ public class AnulacionRecuperoDefinition {
   Recupero recupero;
 
   @Cuando("^se realice la anulación del recupero$")
-  public void realizarAnulacionTransaccionRecuperoEmpresariales() throws IOException {
+  public void anularTransaccionRecuperoEmpresariales() throws IOException {
     recupero =
         new Recupero(
             genericStep.getFilasModelo(

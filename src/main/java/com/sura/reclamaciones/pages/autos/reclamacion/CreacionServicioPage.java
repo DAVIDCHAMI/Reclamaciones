@@ -8,12 +8,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CrearServicioPage extends GeneralPage {
+public class CreacionServicioPage extends GeneralPage {
 
   @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:concesionarios")
   private WebElementFacade tblProveedores;
 
-  public CrearServicioPage(WebDriver wdriver) {
+  public CreacionServicioPage(WebDriver wdriver) {
     super(wdriver);
   }
 
