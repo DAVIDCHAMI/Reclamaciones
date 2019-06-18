@@ -71,13 +71,7 @@ public class RecuperoSiniestroDefinition {
 
   @Dado(
       "^se cree un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la linea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
-  public void crearPagoAutos(
-      String tipoPago,
-      String beneficiarioPago,
-      String metodoPago,
-      String lineaReserva,
-      String aplicaSoloSura,
-      String codigoRetencion)
+  public void crearPagoAutos(String beneficiarioPago, String metodoPago, String aplicaSoloSura)
       throws IOException {
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
@@ -86,14 +80,8 @@ public class RecuperoSiniestroDefinition {
     nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
         new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), cobertura)));
-    nuevoPagoStep.ingresarInformacionPago(
-        beneficiarioPago,
-        metodoPago,
-        aplicaSoloSura,
-        lineaReserva,
-        tipoPago,
-        codigoRetencion,
-        pagoSiniestro.getLstPago());
+    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+        beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 

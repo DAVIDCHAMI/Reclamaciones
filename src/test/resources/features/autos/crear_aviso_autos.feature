@@ -59,7 +59,7 @@ Característica: Generación avisos de siniestros autos
   @claimsAuto
   Escenario: Consumo servicio maca, para la creación de Siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
-    Cuando se genera un aviso
+    Cuando se genera un aviso que afecta la cobertura de Responsabilidad civil
     Entonces se le brindará al reclamante el número de reclamación
 
 

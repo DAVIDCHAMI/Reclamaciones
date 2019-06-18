@@ -7,6 +7,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DetalleExposicionAutomaticaPage extends GeneralPage {
 
@@ -47,7 +48,8 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   WebElementFacade lblDetallesExposicion;
 
   @FindBy(
-    id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl"
+    xpath =
+        "//input[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl']"
   )
   WebElementFacade cmbEstadoLegal;
 
@@ -56,7 +58,7 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   }
 
   public void seleccionarCalculadoraPerdidaTotal() {
-    lblCalculadoraPerdidaTotal.waitUntilClickable().click();
+    lblCalculadoraPerdidaTotal.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
   }
 
@@ -78,13 +80,19 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   }
 
   public void actualizarCalculadoraPerdidaTotal() {
-    btnActualizar.click();
-    realizarEsperaCarga();
+    btnActualizar.waitUntilVisible().waitUntilClickable().click();
+    waitFor(
+        ExpectedConditions.presenceOfElementLocated(
+            By.id("ExposureDetail:ExposureDetailScreen:Edit-btnInnerEl")));
   }
 
   public void seleccionarDetalleExposicion() {
-    lblDetallesExposicion.waitUntilClickable().click();
     realizarEsperaCarga();
+    lblDetallesExposicion.waitUntilVisible().waitUntilClickable().click();
+    waitFor(
+        ExpectedConditions.presenceOfElementLocated(
+            By.id(
+                "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl")));
   }
 
   public void editarDetalleExposicion() {
@@ -93,7 +101,7 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   }
 
   public void ingresarEstadoLegalReclamacion() {
-    cmbEstadoLegal.waitUntilClickable().click();
+    cmbEstadoLegal.waitUntilVisible().waitUntilClickable().click();
     cmbEstadoLegal
         .findElement(By.xpath("//li[contains(.,'" + ESTADO_LEGAL.getValor() + "')]"))
         .click();
@@ -101,7 +109,8 @@ public class DetalleExposicionAutomaticaPage extends GeneralPage {
   }
 
   public void actualizarDetalleExposicion() {
-    btnActualizar.waitUntilClickable().click();
+    btnActualizar.waitUntilVisible().waitUntilClickable().click();
+    realizarEsperaCarga();
     realizarEsperaCarga();
   }
 }

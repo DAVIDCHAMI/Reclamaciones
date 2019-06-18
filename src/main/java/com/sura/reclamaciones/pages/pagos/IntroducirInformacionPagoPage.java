@@ -2,13 +2,11 @@ package com.sura.reclamaciones.pages.pagos;
 
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -56,6 +54,15 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
         "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
   )
   private WebElementFacade btnSiguiente;
+
+  @FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:Add-btnInnerEl")
+  private WebElementFacade btnAgregarPago;
+
+  @FindBy(
+    xpath =
+        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewCheckPaymentsLV'][contains(@class,'x-panel x-panel-default x-grid')]"
+  )
+  private WebElementFacade tblPagoMultiplesReservas;
 
   public IntroducirInformacionPagoPage(WebDriver driver) {
     super(driver);
@@ -122,16 +129,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%d')", intCalculoVrReserva));
           txtComentarioPago.click();
-          Serenity.setSessionVariable(SESION_CC_VALOR_RESERVA.getValor())
-              .to(intCalculoVrReserva.toString());
         });
   }
 
-  public void irSiguientePantalla() {
-    btnSiguiente.waitUntilClickable();
-    btnSiguiente.click();
-    if (pgrBarCarga.isVisible()) {
-      realizarEsperaCarga();
-    }
+  public void agregarNuevoPago() {
+    btnAgregarPago.waitUntilClickable().click();
+    realizarEsperaCarga();
   }
 }
