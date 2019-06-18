@@ -9,7 +9,7 @@ Característica: Realizar un pago masivo a un proveedor
   @claimsEmpresarialSuperUsuario
   Esquema del escenario: Crear pago masivo a un mismo proveedor.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
-    Y se genera un aviso
+    Y se genera un aviso que afecta la cobertura de <Cobertura>
     Cuando se efectue uno o varios pagos a un mismo proveedor
     #Y se declara la reclamación como perdida total
    # Cuando

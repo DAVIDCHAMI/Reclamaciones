@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 
 public class CargaArchivoXlsPage extends GeneralPage
 {
-    @FindBy(xpath =  ".//input[contains(@id,'textfield-')]")
-    private WebElementFacade txtRutaArchivo;
+    @FindBy(xpath =  ".//a[contains(@class,'x-btn x-form-file-btn x-unselectable x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon')]")
+    private WebElementFacade btnExaminar;
 
     public CargaArchivoXlsPage (WebDriver wdriver)
     {
@@ -17,12 +17,9 @@ public class CargaArchivoXlsPage extends GeneralPage
 
     public void seleccionarArchivoXls()
     {
-        txtRutaArchivo.sendKeys("C:/Users/anammoar/Documents/PlantillaPagosMasivos.xlsx");
+        btnExaminar.waitUntilClickable();
+        btnExaminar.click();
     }
-
-
-
-
 }
 
 
