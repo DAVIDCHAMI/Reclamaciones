@@ -59,7 +59,7 @@ Característica: Realizar pago de un siniestro
       | 1ª parteVehículo                | Parcial       | SOFIA JARAMILLO                  |Caja Sura       | 0099                     | No       | Perdida total Daños|
 
 
-
+  @Ignore
   @PruebaAuditoria
     @claimsEmpresarial
     Esquema del escenario: Crear Pago a con proceso de auditoría
