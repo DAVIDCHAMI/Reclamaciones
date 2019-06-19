@@ -16,6 +16,7 @@ import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import cucumber.api.java.es.Y;
 import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
@@ -142,5 +143,11 @@ public class PagoSiniestroDefinition {
   @Entonces("^(.*) se debe generar factura de pago al asegurado$")
   public void verificarFacturaAsegurado() throws IOException {
     //ToDO
+  }
+
+  @Y("^se declara la reclamación como perdida total$")
+  public void declararReclamacionPerdidaTotal() {
+    nuevoPagoStep.declararReclamacionPerdidaTotal();
+    nuevoPagoStep.ingresarEstadoLegalReclamacion();
   }
 }

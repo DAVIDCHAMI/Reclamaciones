@@ -272,8 +272,8 @@ public class NuevoPagoStep {
       } else if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
         establecerInstruccionPagoPage.ingresarFechaFactura();
         establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
-        establecerInstruccionPagoPage.finalizarProceso();
       }
+      establecerInstruccionPagoPage.finalizarProceso();
     }
   }
 }
