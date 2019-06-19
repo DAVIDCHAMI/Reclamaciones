@@ -6,7 +6,7 @@ import static com.sura.reclamaciones.constantes.Constantes.PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.USD;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
-import com.sura.reclamaciones.pages.anulacionempresarial.DetalleTransaccionPage;
+import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -18,7 +18,8 @@ import org.openqa.selenium.WebElement;
 
 public class VerificacionDatosFinancierosPage extends GeneralPage {
 
-  @Page DetalleTransaccionPage detalleTransaccionPage;
+  @Page
+  DetalleTransaccionPage detalleTransaccionPage;
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV:0:CheckNumber")
   private WebElementFacade lblNumeroPago;

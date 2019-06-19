@@ -2,6 +2,7 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO;
 
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.steps.limiteaprobacion.AprobacionLimiteAutoridadStep;
 import com.sura.reclamaciones.steps.login.LoginClaimStep;
 import cucumber.api.java.es.Entonces;
@@ -23,7 +24,7 @@ public class AprobacionLimiteAutoridadDefinition {
 
   @Y("^se genera la actividad, (.*) al Director o Gerente de atención de reclamaciones Empresariales$")
   public void  verificarGeneracionActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) throws IOException {
-
+    aprobacionLimiteAutoridadStep.cerrarNavegador();
     loginClaimStep.iniciarSesionLab(ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO.getValor());
   }
 }

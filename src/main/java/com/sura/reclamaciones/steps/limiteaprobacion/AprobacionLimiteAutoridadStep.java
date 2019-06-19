@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.limiteaprobacion;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import org.fluentlenium.core.annotation.Page;
@@ -14,6 +15,9 @@ public class AprobacionLimiteAutoridadStep {
   @Page
   VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
+  @Page
+  GeneralPage generalPage;
+
   public void verificarEstadoTransaccionReserva(String strEstadoTransaccionReserva) {
     final String TRANSACCION_RESERVA = "Reservas";
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
@@ -22,5 +26,9 @@ public class AprobacionLimiteAutoridadStep {
     String strEstadoTransaccion = verificacionDatosFinancierosPage.obtenerEstadoReservaRealizada();
     MatcherAssert.assertThat("El estado de la reserva es diferente al de Aprobación pendiente ",
         strEstadoTransaccionReserva.equals(strEstadoTransaccion));
+  }
+
+  public void cerrarNavegador(){
+    generalPage.cerrarNavegador();
   }
 }

@@ -8,7 +8,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
-public class ExposicionesAutomaticasPage extends GeneralPage {
+public class ExposicionAutomaticaPage extends GeneralPage {
+
+  private static String COLUMNA_TIPO_TABLA_EXPOSICIONES = "Tipo";
+  private static String EXPOSICION_DANOS_ASEGURADO = "Daños";
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
   private WebElementFacade tblExposicionesAutomaticas;
@@ -18,18 +21,26 @@ public class ExposicionesAutomaticasPage extends GeneralPage {
 
   private boolean valorLineaReserva = true;
 
-  public ExposicionesAutomaticasPage(WebDriver wdriver) {
+  public ExposicionAutomaticaPage(WebDriver wdriver) {
     super(wdriver);
   }
 
   public void seleccionarExposicion() {
-    exposicionAutomatica.click();
+    obtenerCabecerasTabla(
+        $("//div[@id='ClaimExposures:ClaimExposuresScreen:ExposuresLV']"), Tablas.CABECERAS_CC);
+    obtenerTextoElementoLista(
+            tblExposicionesAutomaticas,
+            Tablas.CABECERAS_CC,
+            Tablas.REGISTROS_CC,
+            EXPOSICION_DANOS_ASEGURADO,
+            COLUMNA_TIPO_TABLA_EXPOSICIONES)
+        .click();
     realizarEsperaCarga();
   }
 
   public boolean validarExposiciones(
       List<ExposicionesAutomaticasAutos> datosExposicionesAutomaticas) {
-    obtenerCabecerasDeUnaTabla(
+    obtenerCabecerasTabla(
         $("//div[@id='ClaimExposures:ClaimExposuresScreen:ExposuresLV']"), Tablas.CABECERAS_CC);
     for (int i = 0; i < datosExposicionesAutomaticas.size(); i++) {
       String lineaReservaTbl =
