@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.steps.limiteaprobacion;
 
+import static com.sura.reclamaciones.constantes.MenuConstante.PLAN_TRABAJO;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -39,7 +41,8 @@ public class AprobacionLimiteAutoridadStep {
     generalPage.cerrarNavegador();
   }
 
-  public void consultarReclamacion() {
+  public void verificarGeneracionActividadRevisarAprobarCambioReserva() {
     consultaReclamacionPage.buscarReclamacion(numeroReclamacion);
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(PLAN_TRABAJO);
   }
 }
