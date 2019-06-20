@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 
 public class CargaArchivoXlsPage extends GeneralPage
 {
+    @FindBy( id = "BulkPay:BulkPayScreen:CreateNewWizardButton")
+    private WebElementFacade btnFacturacionMasiva;
+
     @FindBy(xpath =  ".//a[contains(@class,'x-btn x-form-file-btn x-unselectable x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon')]")
     private WebElementFacade btnExaminar;
 
@@ -15,11 +18,18 @@ public class CargaArchivoXlsPage extends GeneralPage
         super(wdriver);
     }
 
+    public void generarFacturacionMasiva()
+    {
+        btnFacturacionMasiva.waitUntilClickable();
+        btnFacturacionMasiva.click();
+    }
+
     public void seleccionarArchivoXls()
     {
         btnExaminar.waitUntilClickable();
         btnExaminar.click();
     }
 }
+
 
 
