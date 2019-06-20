@@ -152,8 +152,6 @@ public class DetalleVehiculoPage extends GeneralPage {
     cmbTipoDireccion.sendKeys(tipoDireccion);
     cmbTipoDireccion.sendKeys(Keys.ENTER);
     realizarEsperaCarga();
-    aceptarOpcion();
-    realizarEsperaCarga();
   }
 
   private void seleccionarConductor() {
