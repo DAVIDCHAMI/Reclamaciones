@@ -13,8 +13,8 @@ Característica: Limite de aprobación
     Y se ajuste la reserva con un valor de <Monto del ajuste>
     Y el estado de la transacción de reserva queda en Aprobación pendiente
     Y se genera la actividad, Revisar y aprobar cambio de reserva al Director o Gerente de atención de reclamaciones Empresariales
-    Cuando es aprobada la actividad, Revisar y aprobar cambio de reserva
-    Entonces el estado de la transacción de reserva que estaba en aprobación pendiente, debe pasar a estado solicitado
+   # Cuando es aprobada la actividad, Revisar y aprobar cambio de reserva
+  #  Entonces el estado de la transacción de reserva que estaba en aprobación pendiente, debe pasar a estado solicitado
 
     Ejemplos:
       | Tipo y Cobertura                             | Causa    | Valor de Pretensión | Tipo de incidente | Monto del ajuste | Deducible  |
