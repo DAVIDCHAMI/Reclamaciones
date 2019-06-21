@@ -3,9 +3,9 @@ package com.sura.reclamaciones.steps.limiteaprobacion;
 import static com.sura.reclamaciones.constantes.MenuConstante.PLAN_TRABAJO;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
+import com.sura.reclamaciones.pages.limiteaprobacion.PlanTrabajoActividadesPage;
 import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
@@ -19,10 +19,10 @@ public class AprobacionLimiteAutoridadStep {
   VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
   @Page
-  GeneralPage generalPage;
+  ConsultaReclamacionPage consultaReclamacionPage;
 
   @Page
-  ConsultaReclamacionPage consultaReclamacionPage;
+  PlanTrabajoActividadesPage planTrabajoActividadesPage;
 
   String numeroReclamacion;
 
@@ -34,15 +34,21 @@ public class AprobacionLimiteAutoridadStep {
     String strEstadoTransaccion = verificacionDatosFinancierosPage.obtenerEstadoReservaRealizada();
     MatcherAssert.assertThat("El estado de la reserva es diferente al de Aprobación pendiente ",
         strEstadoTransaccionReserva.equals(strEstadoTransaccion));
-    numeroReclamacion= generalPage.obtenerNumeroSiniestro();
+    numeroReclamacion= planTrabajoActividadesPage.obtenerNumeroSiniestro();
   }
 
   public void cerrarNavegador(){
-    generalPage.cerrarNavegador();
+    planTrabajoActividadesPage.cerrarNavegador();
   }
 
-  public void verificarGeneracionActividadRevisarAprobarCambioReserva() {
+  public void verificarGeneracionActividadRevisarAprobarCambioReserva(
+      String actividadAprobarReserva) {
     consultaReclamacionPage.buscarReclamacion(numeroReclamacion);
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(PLAN_TRABAJO);
+    planTrabajoActividadesPage.verificarActividadesPlanTrabajo(actividadAprobarReserva);
+  }
+
+  public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
+    planTrabajoActividadesPage.aprobarActividadRevisarAprobarCambioReserva(actividadAprobarReserva);
   }
 }
