@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.constantes;
 
-public class ReclamacionConstante {
+public final class ReclamacionConstante {
   public static final String EXPOSICION_CONTENIDO = "Contenido";
   public static final String EXPOSICION_PROPIEDAD = "Propiedad";
   public static final String EXPOSICION_GENERAL = "General";
