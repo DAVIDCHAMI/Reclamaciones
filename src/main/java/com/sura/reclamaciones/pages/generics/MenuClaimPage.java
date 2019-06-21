@@ -19,8 +19,8 @@ public class MenuClaimPage extends GeneralPage {
   private WebElementFacade mnuSegundoNivel;
 
   @FindBy(
-          xpath =
-                  ".//div[contains(@id,'ext-gen') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
+    xpath =
+        ".//div[contains(@id,'ext-gen') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
   )
   private WebElementFacade mnuSegundoNivelEscritorio;
 
@@ -87,8 +87,8 @@ public class MenuClaimPage extends GeneralPage {
 
   public void seleccionarOpcionMenuSegundoNivelEscritorio(String nombreOpcion, String subItem) {
     mnuPrimerNivel
-            .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
-            .sendKeys(Keys.ARROW_DOWN);
+        .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
+        .sendKeys(Keys.ARROW_DOWN);
     mnuSegundoNivelEscritorio.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
   }
 

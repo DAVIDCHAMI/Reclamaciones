@@ -5,31 +5,27 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
-public class CargaArchivoXlsPage extends GeneralPage
-{
-    @FindBy( id = "BulkPay:BulkPayScreen:CreateNewWizardButton")
-    private WebElementFacade btnFacturacionMasiva;
+public class CargaArchivoXlsPage extends GeneralPage {
+  @FindBy(id = "BulkPay:BulkPayScreen:CreateNewWizardButton")
+  private WebElementFacade btnFacturacionMasiva;
 
-    @FindBy(xpath =  ".//a[contains(@class,'x-btn x-form-file-btn x-unselectable x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon')]")
-    private WebElementFacade btnExaminar;
+  @FindBy(
+    xpath =
+        ".//a[contains(@class,'x-btn x-form-file-btn x-unselectable x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon')]"
+  )
+  private WebElementFacade btnExaminar;
 
-    public CargaArchivoXlsPage (WebDriver wdriver)
-    {
-        super(wdriver);
-    }
+  public CargaArchivoXlsPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
-    public void generarFacturacionMasiva()
-    {
-        btnFacturacionMasiva.waitUntilClickable();
-        btnFacturacionMasiva.click();
-    }
+  public void generarFacturacionMasiva() {
+    btnFacturacionMasiva.waitUntilClickable();
+    btnFacturacionMasiva.click();
+  }
 
-    public void seleccionarArchivoXls()
-    {
-        btnExaminar.waitUntilClickable();
-        btnExaminar.click();
-    }
+  public void seleccionarArchivoXls() {
+    btnExaminar.waitUntilClickable();
+    btnExaminar.click();
+  }
 }
-
-
-
