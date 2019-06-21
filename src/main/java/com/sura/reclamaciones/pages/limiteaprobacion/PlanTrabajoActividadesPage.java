@@ -29,21 +29,19 @@ public class PlanTrabajoActividadesPage extends GeneralPage {
     List<WebElement> elementoEncontrado = obtenerElementoTablaDatoDesconocido(tblPlanTrabajo,
         NOMBRE_ACTIVIDAD, 1);
     MatcherAssert.assertThat("No se genero la actividad de Revisar y aprobar cambio de reserva",
-        elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).getText().equals(actividadAprobarReserva));
+        elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).getText()
+            .equals(actividadAprobarReserva));
   }
 
   public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
     final String NOMBRE_ACTIVIDAD = "Asunto";
     List<WebElement> elementoEncontrado = obtenerElementoTablaDatoDesconocido(tblPlanTrabajo,
         NOMBRE_ACTIVIDAD, 1);
-    elementoEncontrado.forEach(
-        elemento -> {
-          if (elemento.getText().equals(actividadAprobarReserva)) {
-            elemento.click();
-            realizarEsperaCarga();
-            btnAprobarActividad.click();
-          }
-        }
-    );
+    if (elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).getText()
+        .equals(actividadAprobarReserva)) {
+      elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
+      realizarEsperaCarga();
+      btnAprobarActividad.click();
+    }
   }
 }
