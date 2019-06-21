@@ -8,7 +8,7 @@ import net.thucydides.core.steps.StepInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Utilidades {
+final public class Utilidades {
 
   private Utilidades() {
     super();

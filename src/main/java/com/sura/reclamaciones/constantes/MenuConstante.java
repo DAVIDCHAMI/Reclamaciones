@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.constantes;
 
-public class MenuConstante {
+final public class MenuConstante {
 
   public static final String RECLAMACION_MENU = "Re";
   public static final String ESCRITORIO_MENU ="Escritorio";
