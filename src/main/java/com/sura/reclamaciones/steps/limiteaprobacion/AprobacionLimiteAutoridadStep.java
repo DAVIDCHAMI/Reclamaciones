@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.limiteaprobacion;
 
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
 import static com.sura.reclamaciones.constantes.MenuConstante.PLAN_TRABAJO;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
@@ -28,16 +29,27 @@ public class AprobacionLimiteAutoridadStep {
 
   public void verificarEstadoTransaccionReserva(String strEstadoTransaccionReserva) {
     final String TRANSACCION_RESERVA = "Reservas";
-    menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
-        MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
-    verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TRANSACCION_RESERVA);
-    String strEstadoTransaccion = verificacionDatosFinancierosPage.obtenerEstadoReservaRealizada();
-    MatcherAssert.assertThat("El estado de la reserva es diferente al de Aprobación pendiente ",
-        strEstadoTransaccionReserva.equals(strEstadoTransaccion));
-    numeroReclamacion= planTrabajoActividadesPage.obtenerNumeroSiniestro();
+    String strEstadoTransaccion = new String();
+    for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
+      planTrabajoActividadesPage.realizarEsperaCarga();
+      menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
+          MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
+      verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TRANSACCION_RESERVA);
+      strEstadoTransaccion = verificacionDatosFinancierosPage
+          .obtenerEstadoReservaRealizada();
+      boolean estadoTransaccionPantalla =
+          strEstadoTransaccionReserva.equals(strEstadoTransaccion);
+      if (estadoTransaccionPantalla) {
+        break;
+      }
+    }
+    MatcherAssert
+        .assertThat("El estado de la reserva es diferente al de " + strEstadoTransaccionReserva,
+            strEstadoTransaccionReserva.equals(strEstadoTransaccion));
+    numeroReclamacion = planTrabajoActividadesPage.obtenerNumeroSiniestro();
   }
 
-  public void cerrarNavegador(){
+  public void cerrarNavegador() {
     planTrabajoActividadesPage.cerrarNavegador();
   }
 

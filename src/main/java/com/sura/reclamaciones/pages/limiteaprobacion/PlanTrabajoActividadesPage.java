@@ -31,6 +31,7 @@ public class PlanTrabajoActividadesPage extends GeneralPage {
     MatcherAssert.assertThat("No se genero la actividad de Revisar y aprobar cambio de reserva",
         elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).getText()
             .equals(actividadAprobarReserva));
+    realizarEsperaCarga();
   }
 
   public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
