@@ -13,9 +13,14 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GeneralPage extends PageObject {
 
@@ -34,7 +39,10 @@ public class GeneralPage extends PageObject {
   )
   private WebElementFacade btnSiguiente;
 
-  @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-next ']//parent::span")
+  @FindBy(
+    xpath =
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
+  )
   private WebElementFacade btnCambioPagina;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
@@ -58,20 +66,22 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//span[@class='x-btn-icon-el x-tbar-page-last ']")
   private WebElementFacade btnUltimaPagina;
 
+  @FindBy(xpath = "//div[@class='x-panel x-layer x-panel-default x-menu x-border-box']")
+  public WebElementFacade lstOpcionesGenerales;
+
   private String tblPago =
       "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
 
   private String tblTransaccion =
       "//tr//td//div[contains(text(),'%s')]//parent::td//parent::tr//td";
 
-  @FindBy(xpath = "//div[@class='x-panel x-layer x-panel-default x-menu x-border-box']")
-  public WebElementFacade lstOpcionesGenerales;
-
   private String lstDinamico = "//li[.='COMODIN']";
 
   private String auxiliarReemplazo = "";
 
   protected WebDriver driver;
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
   public GeneralPage(WebDriver wdriver) {
     super(wdriver);
@@ -97,7 +107,7 @@ public class GeneralPage extends PageObject {
     elemento.click();
   }
 
-  public List<String> obtenerCabecerasDeUnaTabla(
+  public List<String> obtenerCabecerasTabla(
       WebElementFacade elementoTabla, Tablas enumCabecerasTabla) {
     return elementoTabla
         .findElements(By.xpath(enumCabecerasTabla.getXpath()))
@@ -120,6 +130,28 @@ public class GeneralPage extends PageObject {
         .get();
   }
 
+  public WebElement obtenerTextoColumnaTabla(
+      WebElementFacade elementoTabla,
+      Tablas enumRegistroTabla,
+      String datoFilaBuscar,
+      int posicionDatoDevolver) {
+    int ENCONTRAR_POSICION_ELEMENTO_TABLA = 2;
+    return elementoTabla
+        .findElements(By.xpath(enumRegistroTabla.getXpath()))
+        .stream()
+        .filter(fila -> fila.getText().contains(datoFilaBuscar))
+        .map(
+            columnas ->
+                columnas.findElement(
+                    By.id(
+                        "ClaimExposures:ClaimExposuresScreen:ExposuresLV:"
+                            + (posicionDatoDevolver - ENCONTRAR_POSICION_ELEMENTO_TABLA)
+                            + ":Type")))
+        .distinct()
+        .findFirst()
+        .get();
+  }
+
   public List<WebElement> obtenerFilasTabla(
       WebElementFacade elementoTabla, Tablas enumRegistroTabla) {
     return elementoTabla
@@ -134,10 +166,21 @@ public class GeneralPage extends PageObject {
       Tablas registros,
       String datoEnFilaABuscar,
       String columnaADevolver) {
-    List<String> cabeceraFacturarCargos = obtenerCabecerasDeUnaTabla(elemento, cabeceras);
+    List<String> cabeceraFacturarCargos = obtenerCabecerasTabla(elemento, cabeceras);
     int posicionDatoADevolver = cabeceraFacturarCargos.indexOf(columnaADevolver) + 1;
     return obtenerElementoColumnaTabla(
         elemento, registros, datoEnFilaABuscar, posicionDatoADevolver);
+  }
+
+  public WebElement obtenerTextoElementoLista(
+      WebElementFacade elemento,
+      Tablas cabeceras,
+      Tablas registros,
+      String datoFilaBuscar,
+      String columnaDevolver) {
+    List<String> datosCabeceraTabla = obtenerCabecerasTabla(elemento, cabeceras);
+    int posicionDatoADevolver = datosCabeceraTabla.indexOf(columnaDevolver) + 1;
+    return obtenerTextoColumnaTabla(elemento, registros, datoFilaBuscar, posicionDatoADevolver);
   }
 
   public void realizarEsperaCarga() {
@@ -176,7 +219,7 @@ public class GeneralPage extends PageObject {
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
       WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
-    List<String> cabeceraTabla = obtenerCabecerasDeUnaTabla(elemento, CABECERAS_CC);
+    List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
     int posicionDatoDevolver = cabeceraTabla.indexOf(encabezadoColumnaDevolver) + posicionFila;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
     return elementoEncontrado
@@ -211,7 +254,6 @@ public class GeneralPage extends PageObject {
   public void irSiguientePagina() {
     if (btnCambioPagina.isVisible()) {
       btnCambioPagina.waitUntilClickable().click();
-      realizarEsperaCarga();
     }
   }
 
@@ -264,6 +306,27 @@ public class GeneralPage extends PageObject {
     }
   }
 
+  public void cerrarAlerta() {
+    try {
+      if (verificarPresenciaAlerta()) {
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+      }
+    } catch (NoAlertPresentException e) {
+      LOGGER.info("No se encontró alerta", e);
+    }
+  }
+
+  private boolean verificarPresenciaAlerta() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (Exception e) {
+      LOGGER.info(String.valueOf(e));
+      return false;
+    }
+  }
+
   public void cerrarNavegador() {
     Set<String> ventana;
     do {
@@ -273,16 +336,11 @@ public class GeneralPage extends PageObject {
     } while (ventana.size() != 1);
   }
 
-  public void seleccionarOpcionMenuGeneral(String opcion) {
-    WebElement elemento =
-        lstOpcionesGenerales.findElement(By.xpath(".//span[contains(text(), '" + opcion + "')]"));
-    waitFor(elemento).waitUntilClickable().click();
-  }
-
   public boolean actualizarPantalla(String datoValidar, WebElement valorElementoPantalla) {
     String strDatoPantalla = valorElementoPantalla.getText();
     if (!strDatoPantalla.equals(datoValidar)) {
       driver.navigate().refresh();
+      cerrarAlerta();
       return false;
     }
     return true;

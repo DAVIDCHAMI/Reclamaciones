@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.anulacionempresarial;
+package com.sura.reclamaciones.pages.anulaciontransaccion;
 
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_ANULACION;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECUPERO;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
@@ -65,6 +66,7 @@ public class DetalleTransaccionPage extends GeneralPage {
 
   public boolean ingresarAnulacionEmpresarial(
       String strNumeroTransaccion, String strEstadoPrevio, String strTipoAnulacion) {
+    final int POSICION_VALOR_MONTO_RECUPERO = 2;
     List<WebElement> lstTransaccion;
     boolean estadoTransaccionPantalla = false;
     if (strTipoAnulacion.equals(PAGO.getValor())) {
@@ -75,9 +77,9 @@ public class DetalleTransaccionPage extends GeneralPage {
             lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
         estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
         if (estadoTransaccionPantalla) {
-          lstTransaccion.get(0).click();
+          lstTransaccion.get(Integer.parseInt(VALOR_CERO.getValor())).click();
           lstTransaccion
-              .get(0)
+              .get(Integer.parseInt(VALOR_CERO.getValor()))
               .findElement(
                   By.xpath(
                       String.format(
@@ -95,11 +97,20 @@ public class DetalleTransaccionPage extends GeneralPage {
             lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
         estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
         if (estadoTransaccionPantalla) {
-          lstTransaccion.get(2).click();
+          String strMontoRecupero = lstTransaccion.get(POSICION_VALOR_MONTO_RECUPERO).getText();
+          lstTransaccion
+              .get(POSICION_VALOR_MONTO_RECUPERO)
+              .findElement(
+                  By.xpath(
+                      String.format(
+                          "//a[@class='g-actionable'][contains(text(),'" + strMontoRecupero + "')]",
+                          strNumeroTransaccion)))
+              .click();
           break;
         }
       }
     }
+    realizarEsperaCarga();
     return estadoTransaccionPantalla;
   }
 }
