@@ -27,13 +27,19 @@ public class ResumenReclamacionPage extends GeneralPage {
   )
   private WebElementFacade lnkReservaTransaccion;
 
+  @FindBy(
+    xpath =
+        "//span[@id='Claim:ClaimInfoBar:LicensePlate-btnInnerEl']//child::span[@class='infobar_elem_val']"
+  )
+  private WebElementFacade lblNumeroPlaca;
+
   public ResumenReclamacionPage(WebDriver driver) {
     super(driver);
   }
 
   public String obtenerNumeroReclamacion() {
     String numeroReclamacion;
-    divNumeroReclamacion.waitUntilVisible();
+    divNumeroReclamacion.waitUntilVisible().waitUntilClickable();
     numeroReclamacion = divNumeroReclamacion.getText();
     numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     Utilidades.getLogger()
@@ -74,5 +80,11 @@ public class ResumenReclamacionPage extends GeneralPage {
       Utilidades.getLogger().info("No se ha generado reserva en la sección de transacciones");
     }
     return validarReservaTransaccion;
+  }
+
+  public String consultarNumeroPlaca() {
+    String numeroPlaca;
+    numeroPlaca = lblNumeroPlaca.waitUntilVisible().getText();
+    return numeroPlaca;
   }
 }

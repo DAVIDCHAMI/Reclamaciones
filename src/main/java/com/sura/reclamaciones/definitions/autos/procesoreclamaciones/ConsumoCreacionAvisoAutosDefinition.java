@@ -7,11 +7,13 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACIO
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -28,9 +30,12 @@ public class ConsumoCreacionAvisoAutosDefinition {
   Vehiculo reclamacionVehiculo = new Vehiculo();
   GenericStep genericStep = new GenericStep();
 
+  @Steps MenuClaimsStep menuClaimsStep;
+
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
-  @Dado("^que se tiene una póliza (.*) de autos$")
+  @Dado(
+      "^que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de (.*) de autos$")
   public void parametrizarValoresSiniestro(String origenSinestro) throws IOException {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
@@ -48,14 +53,15 @@ public class ConsumoCreacionAvisoAutosDefinition {
                 PARAMETROS_SINIESTRO_AUTOS.getValor(), CREACION_AVISO_AUTOS_WS.getValor()));
   }
 
-  @Cuando("^se genera un aviso$")
-  public void siniestrarPolizaServicio() {
+  @Cuando("^se genera un aviso que afecta la cobertura de (.*)$")
+  public void siniestrarPolizaServicio(String tipoCobertura) {
+    Serenity.setSessionVariable(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()).to(tipoCobertura);
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         parametroAviso.getLstReclamacionAuto(),
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
         parametroPersonaConductorAuto.getLstPersonaReclamacion(),
         reclamacionVehiculo.getLstVehiculos());
-    creacionAvisoSiniestroAutoStep.consultarNumeroReclamacionAutos(
+    menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 

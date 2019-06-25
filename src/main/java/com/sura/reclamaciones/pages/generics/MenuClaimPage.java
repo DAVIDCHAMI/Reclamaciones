@@ -90,12 +90,9 @@ public class MenuClaimPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void ingresarComandoClaim(String comando) {
-    txtComandoPolicy.type(comando).sendKeys(Keys.ENTER);
-  }
-
   public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
     seleccionarOpcionMenuLateralPrimerNivel(nombreOpcion);
+    realizarEsperaCarga();
     seleccionarOpcionMenuLateralPrimerNivel(subItem);
   }
 

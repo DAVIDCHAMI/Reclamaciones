@@ -50,13 +50,10 @@ public class ReaseguroDefinition {
         new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), strTipoContrato)));
     nuevoPagoStep.consultarNumeroReclamacion();
     nuevoPagoStep.ingresarInformacionBeneficiarioPago(
-        lineaReserva,
-        tipoPago,
-        beneficiarioPago,
-        metodoPago,
-        aplicaSoloSura,
-        codigoRetencion,
-        pagoSiniestro.getLstPago());
+        beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
+    nuevoPagoStep.ingresarInformacionPago(
+        lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
+    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
   }
 
   @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")

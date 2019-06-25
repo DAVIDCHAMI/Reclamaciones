@@ -2,19 +2,29 @@ package com.sura.reclamaciones.steps.pagos;
 
 import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
+import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.LINEA_RESERVA_LESIONES_CORPORALES;
+import static com.sura.reclamaciones.constantes.Constantes.OPCION_MENU;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
+import static com.sura.reclamaciones.constantes.Constantes.PLACA;
+import static com.sura.reclamaciones.constantes.Constantes.RECLAMANTE_CONDUCTOR_AFECTADO;
 import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_RESERVAS;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.NuevaExposicionPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
@@ -22,7 +32,9 @@ import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
+import com.sura.reclamaciones.pages.procesoauditoria.AuditoriaPage;
 import java.util.List;
+import java.util.Map;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
@@ -43,13 +55,27 @@ public class NuevoPagoStep {
 
   @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-  @Page ExposicionesAutomaticasPage exposicionesAutomaticasPage;
+  @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
 
   @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
 
   @Page GeneralPage generalPage;
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
+
+  @Page AuditoriaPage auditoriaPage;
+
+  private static final String MENSAJE_PAGO_NO_REALIZADO = "No se generó orden de pago al asegurado";
+  private static final String MENSAJE_RECHAZO_PAGO =
+      "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
+
+  @Page NuevaExposicionPage nuevaExposicionManualPage;
+
+  @Page NuevoIncidenteVehicularPage nuevoIncidenteVehicularPage;
+
+  @Page DetalleVehiculoPage detalleVehiculoPage;
+
+  @Page CreacionServicioPage crearServicioPage;
 
   @Step
   public void consultarNumeroReclamacion() {
@@ -58,12 +84,9 @@ public class NuevoPagoStep {
 
   @Step
   public void ingresarInformacionBeneficiarioPago(
-      String strLineaReserva,
-      String strTipoPago,
       String strBeneficiarioPago,
       String strMetodoPago,
       String strPagoSoloSura,
-      String strCodigoRetencion,
       List<PagoSiniestro> lstPago) {
     for (PagoSiniestro diligenciador : lstPago) {
       introducirInformacionBeneficiarioPage.seleccionarNombreBeneficiario(strBeneficiarioPago);
@@ -78,20 +101,40 @@ public class NuevoPagoStep {
       introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
       introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
           diligenciador.getTipoDireccion());
-      introducirInformacionPagoPage.irSiguientePantalla();
-      introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
-      introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
-      introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
-      introducirInformacionPagoPage.ingresarCodigoRetencion(
-          strCodigoRetencion, CODIGO_RETENCION.getValor());
-      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
-      introducirInformacionPagoPage.irSiguientePantalla();
-      if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
-        establecerInstruccionPagoPage.ingresarFechaFactura();
-        establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
-      }
+      generalPage.irSiguientePagina();
+    }
+  }
+
+  @Step
+  public void ingresarInformacionPago(
+      String lineaReserva, String tipoPago, String codigoRetencion, List<PagoSiniestro> lstPago) {
+    introducirInformacionPagoPage.seleccionarLineaReserva(lineaReserva);
+    introducirInformacionPagoPage.seleccionarTipoPago(tipoPago);
+    introducirInformacionPagoPage.ingresarComentario(lstPago.listIterator().next().getComentario());
+    introducirInformacionPagoPage.ingresarCodigoRetencion(
+        codigoRetencion, CODIGO_RETENCION.getValor());
+    introducirInformacionPagoPage.ingresarCantidadPago(tipoPago, CANTIDAD.getValor());
+  }
+
+  @Step
+  public void ingresarInstruccionesPago(String lineaReserva, List<PagoSiniestro> lstPago) {
+    generalPage.irSiguientePagina();
+    if (auditoriaPage.verificarMensajeRechazo()) {
+      MatcherAssert.assertThat(
+          "No generó la validación de NO pago a asegurado por proceso de auditoría",
+          auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
+    } else if (!lineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
+      establecerInstruccionPagoPage.obtenerPagoReservas();
+      establecerInstruccionPagoPage.ingresarFechaFactura();
+      establecerInstruccionPagoPage.ingresarNumeroFactura(
+          lstPago.listIterator().next().getNumeroFactura());
       establecerInstruccionPagoPage.finalizarProceso();
     }
+  }
+
+  @Step
+  public void agregarPagoNuevaLineaReserva() {
+    introducirInformacionPagoPage.agregarNuevoPago();
   }
 
   @Step
@@ -112,7 +155,7 @@ public class NuevoPagoStep {
             if (estadoTransaccionPantalla) break;
           }
           String strValorReserva =
-              (Serenity.sessionVariableCalled(SESION_CC_VALOR_RESERVA.getValor()));
+              (Serenity.sessionVariableCalled(SESION_CC_TOTAL_PAGO_RESERVAS.getValor()).toString());
           MatcherAssert.assertThat(
               "El valor reservado no es igual al enviado",
               verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
@@ -125,19 +168,19 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void consultarNumeroReclamacionAutos(String numReclamacion) {
-    menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
-  }
-
-  @Step
   public void crearNuevoPago() {
+    menuClaimPage.seleccionarBotonAcciones();
     menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
   }
 
   @Step
-  public void declararReclamacionPerdidaTotal() {
+  public void seleccionarExposicionVehicularAsegurado() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
-    exposicionesAutomaticasPage.seleccionarExposicion();
+    exposicionAutomaticaPage.seleccionarExposicion();
+  }
+
+  @Step
+  public void declararReclamacionPerdidaTotal() {
     detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.editarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.seleccionarIncineracionTotalVehiculo();
@@ -146,10 +189,91 @@ public class NuevoPagoStep {
     detalleExposicionAutomaticaPage.actualizarCalculadoraPerdidaTotal();
   }
 
+  @Step
   public void ingresarEstadoLegalReclamacion() {
     detalleExposicionAutomaticaPage.seleccionarDetalleExposicion();
     detalleExposicionAutomaticaPage.editarDetalleExposicion();
     detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
+  }
+
+  public void compararMensajesRechazoPago() {
+    MatcherAssert.assertThat(
+        "No generó la validación de NO pago a asegurado" + "por proceso de auditoría",
+        auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
+  }
+
+  @Step
+  public void consultarPlacaAsegurado() {
+    Serenity.setSessionVariable(PLACA.getValor()).to(resumenReclamacionPage.consultarNumeroPlaca());
+  }
+
+  @Step
+  public void crearExposicionVehicularManual(
+      List<Map<String, String>> opcionesCrearExposicion,
+      List<ExposicionVehiculoTercero> datosVehiculoTercero) {
+    menuClaimPage.seleccionarBotonAcciones();
+    for (int i = 0; i < opcionesCrearExposicion.size(); i++) {
+      if (opcionesCrearExposicion
+          .listIterator(i)
+          .next()
+          .get(OPCION_MENU.getValor())
+          .equals(COMODIN.getValor())) {
+        opcionesCrearExposicion
+            .listIterator(i)
+            .next()
+            .replace(
+                OPCION_MENU.getValor(),
+                COMODIN.getValor(),
+                Serenity.sessionVariableCalled(PLACA.getValor()));
+      }
+      String opcionMenu =
+          opcionesCrearExposicion.listIterator(i).next().get(OPCION_MENU.getValor());
+      menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(opcionMenu);
+    }
+    nuevaExposicionManualPage.seleccionarReclamanteExposicion(
+        Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor()));
+    nuevaExposicionManualPage.seleccionarTipoReclamanteExposicion(
+        RECLAMANTE_CONDUCTOR_AFECTADO.getValor());
+    nuevaExposicionManualPage.crearNuevoIncidenteVehicular();
+    nuevoIncidenteVehicularPage.ingresarPlacaVehiculoAfectado(datosVehiculoTercero);
+    nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
+    nuevoIncidenteVehicularPage.seleccionarConductoVehiculoAfectado();
+    nuevoIncidenteVehicularPage.seleccionarServiciosTaller();
+    nuevoIncidenteVehicularPage.seleccionarTaller();
+    detalleVehiculoPage.buscarProveedor();
+    detalleVehiculoPage.realizarEsperaCarga();
+    crearServicioPage.seleccionarProveedor(
+        datosVehiculoTercero
+            .get(Integer.parseInt(VALOR_CERO.getValor()))
+            .getTallerReparacionAsignado());
+    detalleVehiculoPage.aceptarOpcion();
+    nuevoIncidenteVehicularPage.aceptarOpcion();
+    nuevaExposicionManualPage.actualizarNuevaExposicion();
+  }
+
+  public void ingresarInformacionDetallePago(
+      String strLineaReserva,
+      String strTipoPago,
+      String strCodigoRetencion,
+      List<PagoSiniestro> lstPago) {
+    for (PagoSiniestro diligenciador : lstPago) {
+      introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
+      introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
+      introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
+      introducirInformacionPagoPage.ingresarCodigoRetencion(
+          strCodigoRetencion, CODIGO_RETENCION.getValor());
+      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
+      generalPage.irSiguientePagina();
+      if (auditoriaPage.verificarMensajeRechazo()) {
+        MatcherAssert.assertThat(
+            "No generó la validación de NO pago a asegurado por proceso de auditoría",
+            auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
+      } else if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
+        establecerInstruccionPagoPage.ingresarFechaFactura();
+        establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
+      }
+      establecerInstruccionPagoPage.finalizarProceso();
+    }
   }
 }
