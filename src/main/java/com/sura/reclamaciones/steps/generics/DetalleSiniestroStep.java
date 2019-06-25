@@ -5,16 +5,14 @@ import com.sura.reclamaciones.pages.generics.DetalleSiniestroPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import org.fluentlenium.core.annotation.Page;
 
-public class DetalleSiniestroStep
-{
-    @Page MenuClaimPage menuClaimPage;
+public class DetalleSiniestroStep {
+  @Page MenuClaimPage menuClaimPage;
 
-    @Page DetalleSiniestroPage detalleSiniestroPage;
+  @Page DetalleSiniestroPage detalleSiniestroPage;
 
-    public void consultarInformacionSiniestro()
-    {
-        menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(MenuConstante.DETALLES_SINIESTRO);
-        detalleSiniestroPage.consultarNumneroPlacaPartesImplicadas();
-        detalleSiniestroPage.consultarNumeroSiniestro();
-    }
+  public void consultarInformacionSiniestro() {
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(MenuConstante.DETALLES_SINIESTRO);
+    detalleSiniestroPage.consultarNumneroPlacaPartesImplicadas();
+    detalleSiniestroPage.consultarNumeroSiniestro();
+  }
 }

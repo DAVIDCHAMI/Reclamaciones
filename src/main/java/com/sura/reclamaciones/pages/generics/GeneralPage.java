@@ -4,6 +4,7 @@ import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_INTENTOS_ESPERA_ELEMENTO;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
+
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
 import java.util.Set;
