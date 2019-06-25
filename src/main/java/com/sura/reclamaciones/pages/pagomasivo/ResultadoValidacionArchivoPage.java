@@ -1,13 +1,17 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
 
 public class ResultadoValidacionArchivoPage extends GeneralPage
 {
+    int numeroRegistrosPantalla;
+
     @FindBy(
             xpath =
                     ".//label[contains(@class,'x-component x-component-default')]"
@@ -18,13 +22,15 @@ public class ResultadoValidacionArchivoPage extends GeneralPage
         super(wdriver);
     }
 
-    public void validarNumeroRegistrosArchivo()
+    public void capturarNumeroRegistrosPantalla ()
     {
-        int numeroRegistrosArchivo = Integer.parseInt(lblNroRegistrosFactura.getText().replaceAll("\\D+",""));
+        numeroRegistrosPantalla = Integer.parseInt(lblNroRegistrosFactura.getText().replaceAll("\\D+",""));
+    }
 
-       /* MatcherAssert.assertThat(
-                "No llego a SAP el recupero",
-                verificacionRecuperoPage.verificarRecupero(
-                        validador.getEstadoTransaccion(), lstFilaRecupero));*/
+    public void validarNumeroRegistrosArchivoXls ()
+    {
+        String numeroRegistrosArchivo = (Serenity.sessionVariableCalled(SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS.getValor()).toString());
+        int numeroRegistrosArchivoXls = Integer.parseInt(numeroRegistrosArchivo);
+        MatcherAssert.assertThat ("El número de registros de la pantalla no es igual al número de registros del archivo XLS",(numeroRegistrosArchivoXls==numeroRegistrosPantalla));
     }
 }
