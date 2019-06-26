@@ -18,8 +18,7 @@ import org.openqa.selenium.WebElement;
 
 public class VerificacionDatosFinancierosPage extends GeneralPage {
 
-  @Page
-  DetalleTransaccionPage detalleTransaccionPage;
+  @Page DetalleTransaccionPage detalleTransaccionPage;
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV:0:CheckNumber")
   private WebElementFacade lblNumeroPago;
@@ -52,7 +51,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     return obtenerDatoTablaCabecera(NUMERO_PAGO.getValor(), 1);
   }
 
-  public String obtenerEstadoReservaRealizada( int posicionEstadoVerificar) {
+  public String obtenerEstadoReservaRealizada(int posicionEstadoVerificar) {
     final String ESTADO = "Estado";
     return obtenerDatoTablaCabecera(ESTADO, posicionEstadoVerificar);
   }

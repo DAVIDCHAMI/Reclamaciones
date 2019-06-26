@@ -12,13 +12,14 @@ import org.openqa.selenium.WebElement;
 
 public class PlanTrabajoActividadesPage extends GeneralPage {
 
-
   @FindBy(id = "ClaimWorkplan:ClaimWorkplanScreen:WorkplanLV")
   public WebElementFacade tblPlanTrabajo;
 
-  @FindBy(id = "ApprovalDetailWorksheet:ApprovalDetailScreen:ApprovalDetailWorksheet_ApproveButton-btnInnerEl")
+  @FindBy(
+    id =
+        "ApprovalDetailWorksheet:ApprovalDetailScreen:ApprovalDetailWorksheet_ApproveButton-btnInnerEl"
+  )
   public WebElementFacade btnAprobarActividad;
-
 
   public PlanTrabajoActividadesPage(WebDriver wdriver) {
     super(wdriver);
@@ -26,19 +27,24 @@ public class PlanTrabajoActividadesPage extends GeneralPage {
 
   public void verificarActividadesPlanTrabajo(String actividadAprobarReserva) {
     final String NOMBRE_ACTIVIDAD = "Asunto";
-    List<WebElement> elementoEncontrado = obtenerElementoTablaDatoDesconocido(tblPlanTrabajo,
-        NOMBRE_ACTIVIDAD, 1);
-    MatcherAssert.assertThat("No se genero la actividad de Revisar y aprobar cambio de reserva",
-        elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).getText()
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, NOMBRE_ACTIVIDAD, 1);
+    MatcherAssert.assertThat(
+        "No se genero la actividad de Revisar y aprobar cambio de reserva",
+        elementoEncontrado
+            .get(Integer.parseInt(VALOR_CERO.getValor()))
+            .getText()
             .equals(actividadAprobarReserva));
     realizarEsperaCarga();
   }
 
   public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
     final String NOMBRE_ACTIVIDAD = "Asunto";
-    List<WebElement> elementoEncontrado = obtenerElementoTablaDatoDesconocido(tblPlanTrabajo,
-        NOMBRE_ACTIVIDAD, 1);
-    if (elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).getText()
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, NOMBRE_ACTIVIDAD, 1);
+    if (elementoEncontrado
+        .get(Integer.parseInt(VALOR_CERO.getValor()))
+        .getText()
         .equals(actividadAprobarReserva)) {
       elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
       realizarEsperaCarga();

@@ -13,42 +13,43 @@ import org.hamcrest.MatcherAssert;
 
 public class AprobacionLimiteAutoridadStep {
 
-  @Page
-  MenuClaimPage menuClaimPage;
+  @Page MenuClaimPage menuClaimPage;
 
-  @Page
-  VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-  @Page
-  ConsultaReclamacionPage consultaReclamacionPage;
+  @Page ConsultaReclamacionPage consultaReclamacionPage;
 
-  @Page
-  PlanTrabajoActividadesPage planTrabajoActividadesPage;
+  @Page PlanTrabajoActividadesPage planTrabajoActividadesPage;
 
   String numeroReclamacion;
 
   public void verificarEstadoTransaccionReserva(String strEstadoTransaccionReserva) {
     final String TRANSACCION_RESERVA = "Reservas";
-    final String ESTADO_SOLICITADO="Solicitado";
-    String strEstadoTransaccion = new String();
+    final String ESTADO_SOLICITADO = "Solicitado";
+    final int POSICION_ESTADO_SOLICITADO=2;
+    final int POSICION_ESTADO_PENDIENTE_APROBACION=1;
+    String strEstadoTransaccion = "";
     int posicionEstadoVerificar;
     if (strEstadoTransaccionReserva.equals(ESTADO_SOLICITADO)) {
-      posicionEstadoVerificar = 2;
-    } else { posicionEstadoVerificar = 1; }
+      posicionEstadoVerificar = POSICION_ESTADO_SOLICITADO;
+    } else {
+      posicionEstadoVerificar = POSICION_ESTADO_PENDIENTE_APROBACION;
+    }
     for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
       planTrabajoActividadesPage.realizarEsperaCarga();
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
       verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TRANSACCION_RESERVA);
-      strEstadoTransaccion = verificacionDatosFinancierosPage
-          .obtenerEstadoReservaRealizada(posicionEstadoVerificar);
-      boolean estadoTransaccionPantalla =
-          strEstadoTransaccionReserva.equals(strEstadoTransaccion);
-      if (estadoTransaccionPantalla) { break; }
+      strEstadoTransaccion =
+          verificacionDatosFinancierosPage.obtenerEstadoReservaRealizada(posicionEstadoVerificar);
+      boolean estadoTransaccionPantalla = strEstadoTransaccionReserva.equals(strEstadoTransaccion);
+      if (estadoTransaccionPantalla) {
+        break;
+      }
     }
-    MatcherAssert
-        .assertThat("El estado de la reserva es diferente al de " + strEstadoTransaccionReserva,
-            strEstadoTransaccionReserva.equals(strEstadoTransaccion));
+    MatcherAssert.assertThat(
+        "El estado de la reserva es diferente al de " + strEstadoTransaccionReserva,
+        strEstadoTransaccionReserva.equals(strEstadoTransaccion));
     numeroReclamacion = planTrabajoActividadesPage.obtenerNumeroSiniestro();
   }
 
