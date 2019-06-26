@@ -350,7 +350,7 @@ public class GeneralPage extends PageObject {
   }
 
   public String obtenerNumeroSiniestro() {
-    String numeroReclamacion = lblNumeroReclamacion.getText().substring(13, 26);
+    String numeroReclamacion = lblNumeroReclamacion.getText().replaceAll("\\D+","");
     realizarEsperaCarga();
     return numeroReclamacion;
   }

@@ -21,14 +21,16 @@ public class PlanTrabajoActividadesPage extends GeneralPage {
   )
   public WebElementFacade btnAprobarActividad;
 
+  final String CAMPO_NOMBRE_ACTIVIDAD = "Asunto";
+
+
   public PlanTrabajoActividadesPage(WebDriver wdriver) {
     super(wdriver);
   }
 
-  public void verificarActividadesPlanTrabajo(String actividadAprobarReserva) {
-    final String NOMBRE_ACTIVIDAD = "Asunto";
+  public void verificarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, NOMBRE_ACTIVIDAD, 1);
+        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, 1);
     MatcherAssert.assertThat(
         "No se genero la actividad de Revisar y aprobar cambio de reserva",
         elementoEncontrado
@@ -39,9 +41,8 @@ public class PlanTrabajoActividadesPage extends GeneralPage {
   }
 
   public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
-    final String NOMBRE_ACTIVIDAD = "Asunto";
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, NOMBRE_ACTIVIDAD, 1);
+        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, 1);
     if (elementoEncontrado
         .get(Integer.parseInt(VALOR_CERO.getValor()))
         .getText()

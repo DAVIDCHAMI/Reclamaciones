@@ -61,7 +61,7 @@ public class AprobacionLimiteAutoridadStep {
       String actividadAprobarReserva) {
     consultaReclamacionPage.buscarReclamacion(numeroReclamacion);
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(PLAN_TRABAJO);
-    planTrabajoActividadesPage.verificarActividadesPlanTrabajo(actividadAprobarReserva);
+    planTrabajoActividadesPage.verificarActividadRevisarAprobarCambioReserva(actividadAprobarReserva);
   }
 
   public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
