@@ -52,9 +52,9 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     return obtenerDatoTablaCabecera(NUMERO_PAGO.getValor(), 1);
   }
 
-  public String obtenerEstadoReservaRealizada() {
+  public String obtenerEstadoReservaRealizada( int posicionEstadoVerificar) {
     final String ESTADO = "Estado";
-    return obtenerDatoTablaCabecera(ESTADO, 1);
+    return obtenerDatoTablaCabecera(ESTADO, posicionEstadoVerificar);
   }
 
   public boolean verificarPagoMenuTransaccion(String datoValidar, List<WebElement> lstFilaPago) {

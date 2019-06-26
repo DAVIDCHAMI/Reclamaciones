@@ -17,6 +17,6 @@ Característica: Limite de aprobación
     Entonces el estado de la transacción de reserva queda en Solicitado
 
     Ejemplos:
-      | Tipo y Cobertura                             | Causa    | Valor de Pretensión | Tipo de incidente | Monto del ajuste |
-      | Multiriesgo corporativo con cobertura básica | Incendio | 5000000             | Propiedad         | 800000000        |
-    
+      | Tipo y Cobertura                                    | Causa         | Valor de Pretensión | Tipo de incidente | Monto del ajuste |
+      | Multiriesgo corporativo con cobertura básica        | Incendio      | 5000000             | Propiedad         | 800000000        |
+      | Sustracción con cobertura Sustracción con violencia | Causas varias | 3000000             | Propiedad         | 800000000        |

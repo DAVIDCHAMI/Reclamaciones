@@ -29,19 +29,22 @@ public class AprobacionLimiteAutoridadStep {
 
   public void verificarEstadoTransaccionReserva(String strEstadoTransaccionReserva) {
     final String TRANSACCION_RESERVA = "Reservas";
+    final String ESTADO_SOLICITADO="Solicitado";
     String strEstadoTransaccion = new String();
+    int posicionEstadoVerificar;
+    if (strEstadoTransaccionReserva.equals(ESTADO_SOLICITADO)) {
+      posicionEstadoVerificar = 2;
+    } else { posicionEstadoVerificar = 1; }
     for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
       planTrabajoActividadesPage.realizarEsperaCarga();
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
       verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TRANSACCION_RESERVA);
       strEstadoTransaccion = verificacionDatosFinancierosPage
-          .obtenerEstadoReservaRealizada();
+          .obtenerEstadoReservaRealizada(posicionEstadoVerificar);
       boolean estadoTransaccionPantalla =
           strEstadoTransaccionReserva.equals(strEstadoTransaccion);
-      if (estadoTransaccionPantalla) {
-        break;
-      }
+      if (estadoTransaccionPantalla) { break; }
     }
     MatcherAssert
         .assertThat("El estado de la reserva es diferente al de " + strEstadoTransaccionReserva,
