@@ -2,7 +2,7 @@ package com.sura.reclamaciones.steps.pagos;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
+//import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionesAutomaticasPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
@@ -32,16 +32,13 @@ public class InformacionBeneficiarioPagoStep {
     DetalleExposicionAutomaticaPage detalleExposicionAutomaticaPage;
 
     @Page
-    IntroducirInformacionPagoPage introducirInformacionPagoPage;
-
-    @Page
     IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
 
     @Page
     VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
-    @Page
-    ExposicionesAutomaticasPage exposicionesAutomaticasPage;
+ //   @Page
+ //   ExposicionesAutomaticasPage exposicionesAutomaticasPage;
 
     @Page
     EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
@@ -62,22 +59,6 @@ public class InformacionBeneficiarioPagoStep {
         resumenReclamacionPage.obtenerNumeroReclamacion();
     }
 
-    @Step
-    public void ingresarInformacionInicialPago(
-            String beneficiarioPago,
-            String metodoPago,
-            String pagoSoloSura,
-            List<PagoSiniestro> lstPago) {
-        ingresarInformacionBeneficiarioPago(beneficiarioPago, metodoPago, pagoSoloSura, lstPago);
-        //ingresarInformacionDetallePago(lineaReserva, tipoPago, codigoRetencion, lstPago);
-    }
-
-    @Step
-    public void crearNuevoPago() {
-        menuClaimPage.seleccionarBotonAcciones();
-        menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(PAGOS.getValor());
-    }
-
     public void ingresarInformacionBeneficiarioPago(
             String strBeneficiarioPago,
             String strMetodoPago,
@@ -96,10 +77,8 @@ public class InformacionBeneficiarioPagoStep {
             introducirInformacionBeneficiarioPage.seleccionarCiudad(diligenciador.getCiudad());
             introducirInformacionBeneficiarioPage.seleccionarTipoDireccion(
                     diligenciador.getTipoDireccion());
-            introducirInformacionPagoPage.irSiguientePantalla();
+            generalPage.continuarSiguientePantalla();
         }
     }
-
-
 
 }

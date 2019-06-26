@@ -11,6 +11,8 @@ import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
+import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
+import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.java.es.Cuando;
@@ -24,9 +26,14 @@ import net.thucydides.core.annotations.Steps;
 public class PagoSiniestroDefinition {
 
   PagoSiniestro pagoSiniestro;
+
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
 
   @Steps NuevoPagoStep nuevoPagoStep;
+
+  @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
+
+  @Steps InformacionPagoStep informacionPagoStep;
 
   @Steps GenericStep genericStep;
 
@@ -38,7 +45,7 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
+          "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
   public void generarPagoReclamacion(
       String tipoPago,
       String beneficiarioPago,
@@ -150,4 +157,22 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
   }
+
+
+  @Cuando("^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura$")
+  public void ingresarPagoReclamacion(String tipoPago, String beneficiarioPago, String metodoPago, String lineaReserva, String cobertura, String aplicaSoloSura) throws IOException{
+    pagoSiniestro =
+            new PagoSiniestro(
+                    (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
+    nuevoPagoStep.crearNuevoPago();
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
+            beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
+  }
+
+  @Cuando("^apliquen las retenciones de (.*) a un pago (.*)$")
+  public void aplicarRetencion(String codigoRetencion, String tipoPago) {
+      informacionPagoStep.ingresarInformacionDetallePago(codigoRetencion, tipoPago);
+
+    }
 }
