@@ -3,6 +3,7 @@ package com.sura.reclamaciones.pages.generics;
 import static com.sura.reclamaciones.constantes.Constantes.COP;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.POSICION_FILA;
 import static com.sura.reclamaciones.constantes.Constantes.USD;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
@@ -96,9 +97,9 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     irUltimaPagina();
     tblTransaccion.waitUntilPresent();
     List<WebElement> elementroEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblTransaccion, ReservaConstante.CANTIDAD, 1);
+        obtenerElementoTablaDatoDesconocido(tblTransaccion, ReservaConstante.CANTIDAD, Integer.parseInt(POSICION_FILA.getValor()));
     int longitudTabla = elementroEncontrado.size();
-    int datoPosicionReserva = longitudTabla - 1;
+    int datoPosicionReserva = longitudTabla - Integer.parseInt(POSICION_FILA.getValor());
     elementroEncontrado
         .listIterator()
         .next()

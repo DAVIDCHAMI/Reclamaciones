@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.limiteaprobacion;
 
+import static com.sura.reclamaciones.constantes.Constantes.POSICION_FILA;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -10,7 +11,8 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class PlanTrabajoActividadesPage extends GeneralPage {
+
+public class PlanTrabajoActividadPage extends GeneralPage {
 
   @FindBy(id = "ClaimWorkplan:ClaimWorkplanScreen:WorkplanLV")
   public WebElementFacade tblPlanTrabajo;
@@ -23,14 +25,13 @@ public class PlanTrabajoActividadesPage extends GeneralPage {
 
   final String CAMPO_NOMBRE_ACTIVIDAD = "Asunto";
 
-
-  public PlanTrabajoActividadesPage(WebDriver wdriver) {
+  public PlanTrabajoActividadPage(WebDriver wdriver) {
     super(wdriver);
   }
 
   public void verificarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, 1);
+        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, Integer.parseInt(POSICION_FILA.getValor()));
     MatcherAssert.assertThat(
         "No se genero la actividad de Revisar y aprobar cambio de reserva",
         elementoEncontrado
@@ -42,7 +43,7 @@ public class PlanTrabajoActividadesPage extends GeneralPage {
 
   public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, 1);
+        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, Integer.parseInt(POSICION_FILA.getValor()));
     if (elementoEncontrado
         .get(Integer.parseInt(VALOR_CERO.getValor()))
         .getText()
