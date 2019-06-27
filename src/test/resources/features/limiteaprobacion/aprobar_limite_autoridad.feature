@@ -1,5 +1,5 @@
 # language: es
-Característica: Aprobar limite de autoridad
+Característica: Aprobar límite de autoridad
 
   Como analista de reclamaciones
   Quiero que al crear o modificar una reserva por un valor mayor o
@@ -8,7 +8,7 @@ Característica: Aprobar limite de autoridad
 
   @aprobarReserva
   @claimsEmpresarial
-  Esquema del escenario: Crear una reserva con un valor que supera el limite de autoridad
+  Esquema del escenario: Crear una reserva con un valor que supera el límite de autoridad
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
     Y se ajuste la reserva con un valor de <Monto del ajuste>
     Y el estado de la transacción de reserva queda en Aprobación pendiente

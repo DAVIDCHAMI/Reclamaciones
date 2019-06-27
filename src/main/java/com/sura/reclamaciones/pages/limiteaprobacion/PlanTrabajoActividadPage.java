@@ -23,7 +23,7 @@ public class PlanTrabajoActividadPage extends GeneralPage {
   )
   public WebElementFacade btnAprobarActividad;
 
-  final String CAMPO_NOMBRE_ACTIVIDAD = "Asunto";
+  private static final String CAMPO_NOMBRE_ACTIVIDAD = "Asunto";
 
   public PlanTrabajoActividadPage(WebDriver wdriver) {
     super(wdriver);
