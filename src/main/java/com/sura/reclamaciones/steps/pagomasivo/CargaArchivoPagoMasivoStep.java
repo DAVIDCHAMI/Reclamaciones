@@ -8,8 +8,7 @@ import org.fluentlenium.core.annotation.Page;
 public class CargaArchivoPagoMasivoStep {
   @Page MenuClaimPage menuClaimPage;
 
-  @Page
-  CargaArchivoPagoMasivoPage cargaArchivoPagoMasivoStep;
+  @Page CargaArchivoPagoMasivoPage cargaArchivoPagoMasivoStep;
 
   @Step
   public void cargarArchivoXls(String nombreOpcion, String subItem) {
