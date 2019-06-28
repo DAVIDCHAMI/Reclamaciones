@@ -4,7 +4,6 @@ import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_INTENTOS_ESPERA_ELEMENTO;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
-
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +21,13 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GeneralPage extends PageObject {
+public class GeneralPage extends PageObject
+{
+    @FindBy(id =  "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Currency-inputEl" )
+    private WebElementFacade cmbLista;
+
+    @FindBy(xpath=  "//ul[@class='x-list-plain']")
+    private WebElementFacade lstOpcionLista;
 
   @FindBy(
     xpath =
@@ -35,7 +40,7 @@ public class GeneralPage extends PageObject {
 
   @FindBy(
     xpath =
-        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap' or @id='BulkPayWizard:Next-btnWrap']"
+        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap' or @id='BulkPayWizard:Next-btnWrap' or @id='BulkPayWizard:Next']"
   )
   private WebElementFacade btnSiguiente;
 
@@ -102,6 +107,14 @@ public class GeneralPage extends PageObject {
         .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + opcion + "')]"))
         .click();
   }
+
+    public  void seleccionarOpcionLista (String opcionLista)
+    {
+        cmbLista.click();
+        lstOpcionLista
+                .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + opcionLista + "')]"))
+                .click();
+    }
 
   public void clickElemento(WebElementFacade elemento) {
     elemento.click();

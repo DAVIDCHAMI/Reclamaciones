@@ -3,6 +3,7 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.steps.ResultadoArchivoProcesadoStep;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
+import com.sura.reclamaciones.steps.pagomasivo.BusquedaLibretaContactoStep;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
 import com.sura.reclamaciones.steps.pagomasivo.DetalleFacturaVolumenStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
@@ -20,13 +21,34 @@ public class PagoMasivoDefinition {
 
   @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
 
-  @Cuando("^se crea uno o varios pagos a un mismo proveedor")
-  public void crearPagoMasivo() {
+  @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
+
+  @Cuando("^se ingresa la información en el archivo de Excel para realizar pagos masivos a un mismo proveedor")
+  public void crearPagoMasivo()
+  {
     detalleSiniestroStep.consultarInformacionSiniestro();
-    cargaArchivoPagoMasivoStep.cargarArchivoXls(
-        MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
+  }
+
+  @Cuando("^se carga el archivo de Excel para realizar el pago masivo a el proveedor")
+  public void cargarArchivoExcelPagoMasivo()
+  {
+    cargaArchivoPagoMasivoStep.cargarArchivoXls(MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
     resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
-    detalleFacturaVolumenStep.consultarBeneficiarioPago();
   }
+
+  @Cuando("^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
+  public void ingresarInformacionFactura(String tipoProveedor, String proveedor, String tipoMoneda, String metodoPago)
+  {
+    detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
+    detalleFacturaVolumenStep.buscarBeneficiarioPago();
+
+
+  }
+
+
+
+
+
+
 }
