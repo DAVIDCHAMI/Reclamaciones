@@ -48,7 +48,6 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
-    nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
