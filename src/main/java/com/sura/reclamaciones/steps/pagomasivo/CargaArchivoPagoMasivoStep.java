@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
 public class CargaArchivoPagoMasivoStep {
+
   @Page MenuClaimPage menuClaimPage;
 
   @Page CargaArchivoPagoMasivoPage cargaArchivoPagoMasivoStep;
