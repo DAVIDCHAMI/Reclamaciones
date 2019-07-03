@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.steps;
+package com.sura.reclamaciones.steps.pagomasivo;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.pagomasivo.ResultadoArchivoProcesadoPage;

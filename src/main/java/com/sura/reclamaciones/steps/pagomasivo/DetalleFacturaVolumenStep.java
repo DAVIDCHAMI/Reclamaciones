@@ -7,8 +7,6 @@ import org.fluentlenium.core.annotation.Page;
 public class DetalleFacturaVolumenStep {
   @Page DetalleFacturaVolumenPage detalleFacturaVolumenPage;
 
-  @Page GeneralPage generalPage;
-
   public void buscarBeneficiarioPago ()
   {
     detalleFacturaVolumenPage.buscarBeneficiario();
@@ -17,8 +15,7 @@ public class DetalleFacturaVolumenStep {
 
   public void ingresarInformacionFactura(String tipoMoneda, String metodoPago)
   {
-
-    generalPage.seleccionarOpcionLista(tipoMoneda);
+    detalleFacturaVolumenPage.seleccionarTipoMoneda(tipoMoneda);
     detalleFacturaVolumenPage.seleccionarMetodoPago(metodoPago);
   }
 }

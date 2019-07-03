@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.steps.ResultadoArchivoProcesadoStep;
+import com.sura.reclamaciones.steps.pagomasivo.ResultadoArchivoProcesadoStep;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.pagomasivo.BusquedaLibretaContactoStep;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
@@ -38,12 +38,11 @@ public class PagoMasivoDefinition {
   }
 
   @Cuando("^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
-  public void ingresarInformacionFactura(String tipoProveedor, String proveedor, String tipoMoneda, String metodoPago)
+  public void ingresarInformacionFactura(String tipoContacto, String contacto, String tipoMoneda, String metodoPago)
   {
     detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     detalleFacturaVolumenStep.buscarBeneficiarioPago();
-
-
+    busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
   }
 
 

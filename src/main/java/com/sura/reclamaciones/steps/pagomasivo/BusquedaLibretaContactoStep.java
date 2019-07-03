@@ -7,11 +7,14 @@ public class BusquedaLibretaContactoStep
 {
     @Page BusquedaLibretaContactoPage busquedaLibretaContactoPage;
 
-    public void buscarContactoPagoMasivo (String tipoContacto, String contacto)
+    public void buscarContactoPagoMasivo (String tipoContacto, String nombreContacto)
     {
         busquedaLibretaContactoPage.seleccionarTipoContacto(tipoContacto);
-        busquedaLibretaContactoPage.ingresarContacto(contacto);
+        busquedaLibretaContactoPage.ingresarNombreContacto(nombreContacto);
         busquedaLibretaContactoPage.buscarContacto();
+        busquedaLibretaContactoPage.buscarContactoPagoMasivo(nombreContacto);
     }
+
+
 }
 

@@ -23,12 +23,6 @@ import org.slf4j.LoggerFactory;
 
 public class GeneralPage extends PageObject
 {
-    @FindBy(id =  "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Currency-inputEl" )
-    private WebElementFacade cmbLista;
-
-    @FindBy(xpath=  "//ul[@class='x-list-plain']")
-    private WebElementFacade lstOpcionLista;
-
   @FindBy(
     xpath =
         "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul"
@@ -107,14 +101,6 @@ public class GeneralPage extends PageObject
         .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + opcion + "')]"))
         .click();
   }
-
-    public  void seleccionarOpcionLista (String opcionLista)
-    {
-        cmbLista.click();
-        lstOpcionLista
-                .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + opcionLista + "')]"))
-                .click();
-    }
 
   public void clickElemento(WebElementFacade elemento) {
     elemento.click();
