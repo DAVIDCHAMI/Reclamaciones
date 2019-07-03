@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.pages.generics;
 
 import java.util.List;
+
+import com.sura.reclamaciones.constantes.MenuConstante;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -89,7 +91,11 @@ public class MenuClaimPage extends GeneralPage {
     mnuPrimerNivel
         .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
         .sendKeys(Keys.ARROW_DOWN);
-    mnuSegundoNivelEscritorio.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
+
+    if(nombreOpcion.equals(MenuConstante.ESCRITORIO_MENU))
+    {
+      mnuSegundoNivelEscritorio.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
+    }
   }
 
   public void seleccionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
