@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class CargaArchivoPagoMasivoPage extends GeneralPage {
+
   @FindBy(id = "BulkPay:BulkPayScreen:CreateNewWizardButton")
   private WebElementFacade btnFacturacionMasiva;
 

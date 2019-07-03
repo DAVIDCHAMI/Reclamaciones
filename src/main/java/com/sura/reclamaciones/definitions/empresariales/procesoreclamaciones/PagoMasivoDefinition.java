@@ -6,6 +6,7 @@ import cucumber.api.java.es.Cuando;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoMasivoDefinition {
+
   @Steps CargaArchivoPagoMasivoStep cargaArchivoPagoMasivoStep;
 
   @Cuando("^se crea uno o varios pagos a un mismo proveedor")
