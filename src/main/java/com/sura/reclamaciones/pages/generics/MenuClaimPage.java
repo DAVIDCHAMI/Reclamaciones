@@ -84,18 +84,16 @@ public class MenuClaimPage extends GeneralPage {
     mnuPrimerNivel
         .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
         .sendKeys(Keys.ARROW_DOWN);
-    mnuSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
-  }
-
-  public void seleccionarOpcionMenuSegundoNivelEscritorio(String nombreOpcion, String subItem) {
-    mnuPrimerNivel
-        .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
-        .sendKeys(Keys.ARROW_DOWN);
 
     if(nombreOpcion.equals(MenuConstante.ESCRITORIO_MENU))
     {
       mnuSegundoNivelEscritorio.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
     }
+    else
+      if (nombreOpcion.equals(MenuConstante.RECLAMACION_MENU))
+      {
+        mnuSegundoNivel.findElement(By.xpath(".//a[contains(.,'" + subItem + "')]")).click();
+      }
   }
 
   public void seleccionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
