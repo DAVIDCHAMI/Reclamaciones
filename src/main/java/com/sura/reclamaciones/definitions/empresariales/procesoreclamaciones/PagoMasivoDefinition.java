@@ -8,30 +8,29 @@ import net.thucydides.core.annotations.Steps;
 
 public class PagoMasivoDefinition {
 
-  @Steps
-  CargaArchivoPagoMasivoStep cargaArchivoPagoMasivoStep;
+  @Steps CargaArchivoPagoMasivoStep cargaArchivoPagoMasivoStep;
 
-  @Cuando("^se ingresa la información en el archivo de Excel para realizar pagos masivos a un mismo proveedor")
-  public void crearPagoMasivo()
-  {
+  @Cuando(
+      "^se ingresa la información en el archivo de Excel para realizar pagos masivos a un mismo proveedor")
+  public void crearPagoMasivo() {
     //ToDo
   }
 
   @Cuando("^se carga el archivo de Excel para realizar el pago masivo a el proveedor")
-  public void cargarArchivoExcelPagoMasivo()
-  {
-    cargaArchivoPagoMasivoStep.cargarArchivoXls(MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
+  public void cargarArchivoExcelPagoMasivo() {
+    cargaArchivoPagoMasivoStep.cargarArchivoXls(
+        MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
   }
 
-  @Cuando("^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
-  public void ingresarInformacionFactura()
-  {
+  @Cuando(
+      "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
+  public void ingresarInformacionFactura() {
     //ToDo
   }
 
-  @Entonces("^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado")
-  public void validarCreacionPagoMasivo ()
-  {
+  @Entonces(
+      "^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado")
+  public void validarCreacionPagoMasivo() {
     //ToDo
   }
 }
