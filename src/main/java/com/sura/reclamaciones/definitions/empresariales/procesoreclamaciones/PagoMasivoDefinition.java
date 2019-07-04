@@ -8,9 +8,11 @@ import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
 import com.sura.reclamaciones.steps.pagomasivo.DetalleFacturaVolumenStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import cucumber.api.java.es.Cuando;
+import cucumber.api.java.es.Entonces;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoMasivoDefinition {
+
   @Steps CargaArchivoPagoMasivoStep cargaArchivoPagoMasivoStep;
 
   @Steps ResultadoValidacionArchivoStep resultadoValidacionArchivoStep;
@@ -41,8 +43,14 @@ public class PagoMasivoDefinition {
   public void ingresarInformacionFactura(String tipoContacto, String contacto, String tipoMoneda, String metodoPago)
   {
     detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
-    detalleFacturaVolumenStep.buscarBeneficiarioPago();
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
+    detalleFacturaVolumenStep.crearPagoMasivo();
+  }
+
+  @Entonces("^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
+  public void validar()
+  {
+
   }
 
 

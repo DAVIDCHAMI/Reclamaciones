@@ -23,6 +23,12 @@ public class DetalleFacturaVolumenPage extends GeneralPage
   @FindBy(id = "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Payee:MenuItem_Search-textEl")
   private WebElementFacade btnBuscarBeneficiarioPago;
 
+  @FindBy(id = "BulkPayWizard:Finish-btnInnerEl")
+  private WebElementFacade btnFinalizarPagoMasivo;
+
+  @FindBy(id = "EditBulkInvoiceDetail:BulkInvoiceDetailScreen:SubmitButton-btnInnerEl")
+  private WebElementFacade btnEnviarPagoMasivo;
+
   public DetalleFacturaVolumenPage(WebDriver wdriver) {
     super(wdriver);
   }
@@ -56,6 +62,18 @@ public class DetalleFacturaVolumenPage extends GeneralPage
                                     + metodoPago
                                     + "')]//preceding-sibling::input"))
             .click();
+  }
+
+  public void finalizarPagoMasivo ()
+  {
+    btnFinalizarPagoMasivo.waitUntilClickable();
+    btnFinalizarPagoMasivo.click();
+  }
+
+  public void enviarPagoMasivo ()
+  {
+    btnEnviarPagoMasivo.waitUntilClickable();
+    btnEnviarPagoMasivo.click();
   }
 }
 

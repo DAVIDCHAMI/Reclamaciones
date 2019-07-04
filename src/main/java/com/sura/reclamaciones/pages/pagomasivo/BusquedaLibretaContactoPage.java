@@ -68,7 +68,7 @@ public class BusquedaLibretaContactoPage extends GeneralPage
                         Integer.parseInt(VALOR_CERO.getValor()));
          tamanoLista = elementoEncontrado.size();
 
-        for (int i = 0; i <= tamanoLista - 1; i++)
+        /*for (int i = 0; i <= tamanoLista - 1; i++)
         {
             if (elementoEncontrado.get(i).getText().equals(nombreContacto))
             {
@@ -78,7 +78,7 @@ public class BusquedaLibretaContactoPage extends GeneralPage
                 btnSeleccionarContacto= (WebElement) By.id("AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV:" + j + ":_Select");
                 btnSeleccionarContacto.click();
             }
-        }
+        }*/
     }
 
 
