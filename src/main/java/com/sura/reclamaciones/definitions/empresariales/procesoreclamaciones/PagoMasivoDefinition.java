@@ -25,22 +25,17 @@ public class PagoMasivoDefinition {
 
   @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
 
-  @Cuando("^se ingresa la información en el archivo de Excel para realizar pagos masivos a un mismo proveedor")
-  public void crearPagoMasivo()
+  @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
+  public void ingresarInformacionFactura()
   {
     detalleSiniestroStep.consultarInformacionSiniestro();
-  }
-
-  @Cuando("^se carga el archivo de Excel para realizar el pago masivo a el proveedor")
-  public void cargarArchivoExcelPagoMasivo()
-  {
     cargaArchivoPagoMasivoStep.cargarArchivoXls(MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
     resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }
 
   @Cuando("^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
-  public void ingresarInformacionFactura(String tipoContacto, String contacto, String tipoMoneda, String metodoPago)
+  public void crearPagoMasivo(String tipoContacto, String contacto, String tipoMoneda, String metodoPago)
   {
     detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
@@ -48,14 +43,8 @@ public class PagoMasivoDefinition {
   }
 
   @Entonces("^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
-  public void validar()
+  public void validarPagoMasivo()
   {
 
   }
-
-
-
-
-
-
 }
