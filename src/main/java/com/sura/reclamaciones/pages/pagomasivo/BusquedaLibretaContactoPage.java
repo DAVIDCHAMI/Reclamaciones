@@ -1,87 +1,85 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
-import java.util.List;
 
-public class BusquedaLibretaContactoPage extends GeneralPage
-{
-    @FindBy(id =  "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:ContactSubtype-inputEl" )
-    private WebElementFacade cmbTipoContacto;
+public class BusquedaLibretaContactoPage extends GeneralPage {
+  @FindBy(
+    id = "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:ContactSubtype-inputEl"
+  )
+  private WebElementFacade cmbTipoContacto;
 
-    @FindBy(xpath=  "//ul[@class='x-list-plain']")
-    private WebElementFacade lstTipoContacto;
+  @FindBy(xpath = "//ul[@class='x-list-plain']")
+  private WebElementFacade lstTipoContacto;
 
-    @FindBy(id =  "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:NameInputSet:GlobalContactNameInputSet:Name-inputEl")
-    private WebElementFacade txtNombreContacto;
+  @FindBy(
+    id =
+        "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:NameInputSet:GlobalContactNameInputSet:Name-inputEl"
+  )
+  private WebElementFacade txtNombreContacto;
 
-    @FindBy(id =  "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search")
-    private WebElementFacade btnBuscarContacto;
+  @FindBy(
+    id =
+        "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search"
+  )
+  private WebElementFacade btnBuscarContacto;
 
-    @FindBy(id =  "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV")
-    private WebElementFacade tblResultadoBusquedaContacto;
+  @FindBy(id = "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV")
+  private WebElementFacade tblResultadoBusquedaContacto;
 
-    @FindBy(id =  "ext-gen")
-    private WebElementFacade btnSeleccionarContactoPagoMasivo;
+  @FindBy(id = "ext-gen")
+  private WebElementFacade btnSeleccionarContactoPagoMasivo;
 
-    int  posicionNombreContactoEncontrado, tamanoLista;
+  int posicionNombreContactoEncontrado, tamanoLista;
 
-    public BusquedaLibretaContactoPage(WebDriver wdriver)
+  public BusquedaLibretaContactoPage(WebDriver wdriver) {
+    super(wdriver);
+  }
+
+  public void seleccionarTipoContacto(String tipoContacto) {
+    cmbTipoContacto.click();
+    lstTipoContacto
+        .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + tipoContacto + "')]"))
+        .click();
+  }
+
+  public void ingresarNombreContacto(String nombreContacto) {
+    txtNombreContacto.waitUntilPresent();
+    txtNombreContacto.sendKeys(nombreContacto);
+  }
+
+  public void buscarContacto() {
+    btnBuscarContacto.waitUntilPresent();
+    btnBuscarContacto.waitUntilClickable();
+    btnBuscarContacto.click();
+  }
+
+  public void buscarContactoPagoMasivo(String nombreContacto) {
+    final String RESULTADO_BUSQUEDA_CONTACTO = "Nombre";
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaDatoDesconocido(
+            tblResultadoBusquedaContacto,
+            RESULTADO_BUSQUEDA_CONTACTO,
+            Integer.parseInt(VALOR_CERO.getValor()));
+    tamanoLista = elementoEncontrado.size();
+
+    /*for (int i = 0; i <= tamanoLista - 1; i++)
     {
-        super(wdriver);
-    }
-
-    public  void seleccionarTipoContacto (String tipoContacto)
-    {
-        cmbTipoContacto.click();
-        lstTipoContacto
-                .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + tipoContacto + "')]"))
-                .click();
-    }
-
-    public void ingresarNombreContacto (String nombreContacto)
-    {
-        txtNombreContacto.waitUntilPresent();
-        txtNombreContacto.sendKeys(nombreContacto);
-    }
-
-    public void buscarContacto ()
-    {
-        btnBuscarContacto.waitUntilPresent();
-        btnBuscarContacto.waitUntilClickable();
-        btnBuscarContacto.click();
-    }
-
-    public void buscarContactoPagoMasivo (String nombreContacto)
-    {
-        final String RESULTADO_BUSQUEDA_CONTACTO = "Nombre";
-        List<WebElement> elementoEncontrado =
-                obtenerElementoTablaDatoDesconocido(
-                        tblResultadoBusquedaContacto,
-                        RESULTADO_BUSQUEDA_CONTACTO,
-                        Integer.parseInt(VALOR_CERO.getValor()));
-         tamanoLista = elementoEncontrado.size();
-
-        /*for (int i = 0; i <= tamanoLista - 1; i++)
+        if (elementoEncontrado.get(i).getText().equals(nombreContacto))
         {
-            if (elementoEncontrado.get(i).getText().equals(nombreContacto))
-            {
-                WebElement btnSeleccionarContacto;
-                String j = String.valueOf(i);
+            WebElement btnSeleccionarContacto;
+            String j = String.valueOf(i);
 
-                btnSeleccionarContacto= (WebElement) By.id("AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV:" + j + ":_Select");
-                btnSeleccionarContacto.click();
-            }
-        }*/
-    }
-
-
+            btnSeleccionarContacto= (WebElement) By.id("AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV:" + j + ":_Select");
+            btnSeleccionarContacto.click();
+        }
+    }*/
+  }
 }
-
-
