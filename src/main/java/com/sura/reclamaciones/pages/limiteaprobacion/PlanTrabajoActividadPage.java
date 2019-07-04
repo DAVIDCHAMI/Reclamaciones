@@ -11,7 +11,6 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
 public class PlanTrabajoActividadPage extends GeneralPage {
 
   @FindBy(id = "ClaimWorkplan:ClaimWorkplanScreen:WorkplanLV")
@@ -31,7 +30,8 @@ public class PlanTrabajoActividadPage extends GeneralPage {
 
   public void verificarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, Integer.parseInt(POSICION_FILA.getValor()));
+        obtenerElementoTablaDatoDesconocido(
+            tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, Integer.parseInt(POSICION_FILA.getValor()));
     MatcherAssert.assertThat(
         "No se genero la actividad de Revisar y aprobar cambio de reserva",
         elementoEncontrado
@@ -43,7 +43,8 @@ public class PlanTrabajoActividadPage extends GeneralPage {
 
   public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, Integer.parseInt(POSICION_FILA.getValor()));
+        obtenerElementoTablaDatoDesconocido(
+            tblPlanTrabajo, CAMPO_NOMBRE_ACTIVIDAD, Integer.parseInt(POSICION_FILA.getValor()));
     if (elementoEncontrado
         .get(Integer.parseInt(VALOR_CERO.getValor()))
         .getText()

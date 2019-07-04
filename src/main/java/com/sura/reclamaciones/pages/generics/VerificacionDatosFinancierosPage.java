@@ -97,7 +97,8 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     irUltimaPagina();
     tblTransaccion.waitUntilPresent();
     List<WebElement> elementroEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblTransaccion, ReservaConstante.CANTIDAD, Integer.parseInt(POSICION_FILA.getValor()));
+        obtenerElementoTablaDatoDesconocido(
+            tblTransaccion, ReservaConstante.CANTIDAD, Integer.parseInt(POSICION_FILA.getValor()));
     int longitudTabla = elementroEncontrado.size();
     int datoPosicionReserva = longitudTabla - Integer.parseInt(POSICION_FILA.getValor());
     elementroEncontrado

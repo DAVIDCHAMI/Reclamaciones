@@ -12,7 +12,6 @@ import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
-
 public class AprobacionLimiteAutoridadStep {
 
   @Page MenuClaimPage menuClaimPage;
@@ -21,15 +20,14 @@ public class AprobacionLimiteAutoridadStep {
 
   @Page ConsultaReclamacionPage consultaReclamacionPage;
 
-  @Page
-  PlanTrabajoActividadPage planTrabajoActividadPage;
+  @Page PlanTrabajoActividadPage planTrabajoActividadPage;
 
   String numeroReclamacion;
 
   public void verificarEstadoTransaccionReserva(String strEstadoTransaccionReserva) {
     final String TRANSACCION_RESERVA = "Reservas";
     final String ESTADO_SOLICITADO = "Solicitado";
-    final int POSICION_ESTADO_SOLICITADO=2;
+    final int POSICION_ESTADO_SOLICITADO = 2;
     String strEstadoTransaccion = "";
     int posicionEstadoVerificar;
     if (strEstadoTransaccionReserva.equals(ESTADO_SOLICITADO)) {
