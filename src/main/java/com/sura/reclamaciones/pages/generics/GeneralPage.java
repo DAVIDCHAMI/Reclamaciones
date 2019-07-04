@@ -135,7 +135,7 @@ public class GeneralPage extends PageObject {
       Tablas enumRegistroTabla,
       String datoFilaBuscar,
       int posicionDatoDevolver) {
-    int ENCONTRAR_POSICION_ELEMENTO_TABLA = 2;
+    final int ENCONTRAR_POSICION_ELEMENTO_TABLA = 2;
     return elementoTabla
         .findElements(By.xpath(enumRegistroTabla.getXpath()))
         .stream()

@@ -33,7 +33,7 @@ public class SeleccionAmbiente {
 
   @Before("@claimsEmpresarialSuperUsuario")
   public void seleccionarAmbienteEmpresarialSuperUsuario() throws IOException {
-    if (LABORATORIO.equals(ambientesUtil.getAmbiente())) {
+    if (LABORATORIO.getValor().equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionLab(ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO.getValor());
     } else if (DESARROLLO.equals(ambientesUtil.getAmbiente())) {
       loginClaimStep.iniciarSesionAmbienteDllo();
