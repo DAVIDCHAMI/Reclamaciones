@@ -28,8 +28,7 @@ public class DetalleSiniestroPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroSiniestro;
 
-  public List<String> consultarNumneroPlacaPartesImplicadas()
-  {
+  public List<String> consultarNumneroPlacaPartesImplicadas() {
     List<String> placaVehiculosInvolucrados = new ArrayList<String>();
     final String PLACA = "Placa";
     List<WebElement> elementoEncontrado =
@@ -40,9 +39,8 @@ public class DetalleSiniestroPage extends GeneralPage {
     Serenity.setSessionVariable(SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS.getValor())
         .to(tamanoLista);
 
-    for (int i = 0; i <= tamanoLista - 1; i++)
-    {
-      placaVehiculosInvolucrados.add(i,elementoEncontrado.get(i).getText());
+    for (int i = 0; i <= tamanoLista - 1; i++) {
+      placaVehiculosInvolucrados.add(i, elementoEncontrado.get(i).getText());
     }
     return placaVehiculosInvolucrados;
   }

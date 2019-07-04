@@ -9,6 +9,12 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
   @FindBy(id = "BulkPay:BulkPayScreen:CreateNewWizardButton")
   private WebElementFacade btnFacturacionMasiva;
 
+  @FindBy(
+    xpath =
+        ".//a[contains(@class,'x-btn x-form-file-btn x-unselectable x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon')]"
+  )
+  private WebElementFacade btnExaminar;
+
   public CargaArchivoPagoMasivoPage(WebDriver wdriver) {
     super(wdriver);
   }

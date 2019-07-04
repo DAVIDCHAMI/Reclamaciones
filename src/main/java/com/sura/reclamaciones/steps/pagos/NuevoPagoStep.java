@@ -65,6 +65,7 @@ public class NuevoPagoStep {
 
   @Page AuditoriaPage auditoriaPage;
 
+  private static final String MENSAJE_PAGO_NO_REALIZADO = "No se generó orden de pago al asegurado";
   private static final String MENSAJE_RECHAZO_PAGO =
       "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
 
@@ -196,12 +197,6 @@ public class NuevoPagoStep {
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
   }
 
-  public void compararMensajesRechazoPago() {
-    MatcherAssert.assertThat(
-        "No generó la validación de NO pago a asegurado" + "por proceso de auditoría",
-        auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
-  }
-
   @Step
   public void consultarPlacaAsegurado() {
     Serenity.setSessionVariable(PLACA.getValor()).to(resumenReclamacionPage.consultarNumeroPlaca());
@@ -249,30 +244,5 @@ public class NuevoPagoStep {
     detalleVehiculoPage.aceptarOpcion();
     nuevoIncidenteVehicularPage.aceptarOpcion();
     nuevaExposicionManualPage.actualizarNuevaExposicion();
-  }
-
-  public void ingresarInformacionDetallePago(
-      String strLineaReserva,
-      String strTipoPago,
-      String strCodigoRetencion,
-      List<PagoSiniestro> lstPago) {
-    for (PagoSiniestro diligenciador : lstPago) {
-      introducirInformacionPagoPage.seleccionarLineaReserva(strLineaReserva);
-      introducirInformacionPagoPage.seleccionarTipoPago(strTipoPago);
-      introducirInformacionPagoPage.ingresarComentario(diligenciador.getComentario());
-      introducirInformacionPagoPage.ingresarCodigoRetencion(
-          strCodigoRetencion, CODIGO_RETENCION.getValor());
-      introducirInformacionPagoPage.ingresarCantidadPago(strTipoPago, CANTIDAD.getValor());
-      generalPage.irSiguientePagina();
-      if (auditoriaPage.verificarMensajeRechazo()) {
-        MatcherAssert.assertThat(
-            "No generó la validación de NO pago a asegurado por proceso de auditoría",
-            auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
-      } else if (!strLineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
-        establecerInstruccionPagoPage.ingresarFechaFactura();
-        establecerInstruccionPagoPage.ingresarNumeroFactura(diligenciador.getNumeroFactura());
-      }
-      establecerInstruccionPagoPage.finalizarProceso();
-    }
   }
 }
