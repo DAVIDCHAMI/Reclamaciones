@@ -1,7 +1,9 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
+import com.sura.reclamaciones.steps.generics.ProcesoBatchStep;
 import com.sura.reclamaciones.steps.pagomasivo.BusquedaLibretaContactoStep;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
 import com.sura.reclamaciones.steps.pagomasivo.DetalleFacturaVolumenStep;
@@ -10,6 +12,8 @@ import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import net.thucydides.core.annotations.Steps;
+
+import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 
 public class PagoMasivoDefinition {
 
@@ -24,6 +28,8 @@ public class PagoMasivoDefinition {
   @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
 
   @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
+
+  @Steps ProcesoBatchStep procesoBatchStep;
 
   @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
   public void ingresarInformacionFactura() {
@@ -41,6 +47,8 @@ public class PagoMasivoDefinition {
     detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
     detalleFacturaVolumenStep.crearPagoMasivo();
+    procesoBatchStep.ejecutarProcesoBatch();
+
   }
 
   @Entonces(
