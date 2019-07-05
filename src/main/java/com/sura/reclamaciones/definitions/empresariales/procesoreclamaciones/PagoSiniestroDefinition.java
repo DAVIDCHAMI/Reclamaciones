@@ -12,7 +12,7 @@ import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
-import com.sura.reclamaciones.steps.procesoauditoria.ProcesoAuditoriaStep;
+import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
 import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -33,7 +33,7 @@ public class PagoSiniestroDefinition {
 
   @Steps MenuClaimsStep menuClaimsStep;
 
-  @Steps ProcesoAuditoriaStep procesoAuditoriaStep;
+  @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -139,9 +139,9 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
-  public void notificarProcesoAuditoria(String requiereAuditoria) throws IOException {
+  public void notificarProcesoAuditoria(String requiereAuditoria) {
     nuevoPagoStep.consultarNumeroReclamacion();
-    procesoAuditoriaStep.marcarAuditoria(requiereAuditoria);
+    inclusionProcesoAuditoriaStep.marcarAuditoria(requiereAuditoria);
   }
 
   @Y("^se declara la reclamación como perdida total$")

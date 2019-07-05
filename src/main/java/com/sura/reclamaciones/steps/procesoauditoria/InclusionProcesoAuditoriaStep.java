@@ -4,9 +4,9 @@ import com.sura.reclamaciones.pages.procesoauditoria.AuditoriaPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
-public class ProcesoAuditoriaStep {
+public class InclusionProcesoAuditoriaStep {
 
-  @Page AuditoriaPage editarAuditoriaPage;
+  private @Page AuditoriaPage editarAuditoriaPage;
 
   @Step
   public void marcarAuditoria(String auditoria) {
