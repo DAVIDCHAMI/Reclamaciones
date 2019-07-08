@@ -31,7 +31,7 @@ public class AprobacionLimiteAutoridadDefinition {
         actividadAprobarReserva);
   }
 
-  @Cuando("^es aprobada la actividad, (.*)$")
+  @Cuando("^es aprobada la actividad$")
   public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
     aprobacionLimiteAutoridadStep.aprobarActividadRevisarAprobarCambioReserva(
         actividadAprobarReserva);

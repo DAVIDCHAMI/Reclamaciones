@@ -50,7 +50,7 @@ public class AprobacionLimiteAutoridadStep {
     MatcherAssert.assertThat(
         "El estado de la reserva es diferente al de " + strEstadoTransaccionReserva,
         strEstadoTransaccionReserva.equals(strEstadoTransaccion));
-    numeroReclamacion = planTrabajoActividadPage.obtenerNumeroSiniestro();
+    numeroReclamacion = consultaReclamacionPage.obtenerNumeroSiniestro();
   }
 
   public void cerrarNavegador() {

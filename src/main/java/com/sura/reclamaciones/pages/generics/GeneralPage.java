@@ -69,9 +69,6 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[@class='x-panel x-layer x-panel-default x-menu x-border-box']")
   public WebElementFacade lstOpcionesGenerales;
 
-  @FindBy(id = "TabBar:ClaimTab-btnInnerEl")
-  public WebElementFacade lblNumeroReclamacion;
-
   private String tblPago =
       "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
 
@@ -347,11 +344,5 @@ public class GeneralPage extends PageObject {
       return false;
     }
     return true;
-  }
-
-  public String obtenerNumeroSiniestro() {
-    String numeroReclamacion = lblNumeroReclamacion.getText().replaceAll("\\D+", "");
-    realizarEsperaCarga();
-    return numeroReclamacion;
   }
 }
