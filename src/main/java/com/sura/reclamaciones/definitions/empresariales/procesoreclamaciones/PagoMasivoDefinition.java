@@ -17,9 +17,9 @@ public class PagoMasivoDefinition {
   @Steps DetalleSiniestroStep detalleSiniestroStep;
 
   @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
-  public void ingresarInformacionFactura() {
+  public void validarFacturaProcesoPagoMasivo() {
     detalleSiniestroStep.consultarInformacionSiniestro();
-    cargaArchivoPagoMasivoStep.cargarArchivoXls(
+    cargaArchivoPagoMasivoStep.ingresarOpcionPagoMasivo(
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
   }

@@ -7,6 +7,7 @@ import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
 public class CargaArchivoPagoMasivoStep {
+
   @Page MenuClaimPage menuClaimPage;
 
   @Page CargaArchivoPagoMasivoPage cargaArchivoPagoMasivoStep;
@@ -14,7 +15,7 @@ public class CargaArchivoPagoMasivoStep {
   @Page GeneralPage generalPage;
 
   @Step
-  public void cargarArchivoXls(String nombreOpcion, String subItem) {
+  public void ingresarOpcionPagoMasivo(String nombreOpcion, String subItem) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     cargaArchivoPagoMasivoStep.generarFacturacionMasiva();
     generalPage.continuarSiguientePantalla();
