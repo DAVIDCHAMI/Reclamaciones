@@ -33,20 +33,20 @@ public class PagoMasivoDefinition {
 
   @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
   public void ingresarInformacionFactura() {
-    detalleSiniestroStep.consultarInformacionSiniestro();
+    /*detalleSiniestroStep.consultarInformacionSiniestro();
     cargaArchivoPagoMasivoStep.cargarArchivoXls(
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
-    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
+    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();*/
   }
 
   @Cuando(
       "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
   public void crearPagoMasivo(
       String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
-    detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
-    busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
-    detalleFacturaVolumenStep.crearPagoMasivo();
+    //detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
+    //busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
+    //detalleFacturaVolumenStep.crearPagoMasivo();
     procesoBatchStep.ejecutarProcesoBatch();
 
   }
