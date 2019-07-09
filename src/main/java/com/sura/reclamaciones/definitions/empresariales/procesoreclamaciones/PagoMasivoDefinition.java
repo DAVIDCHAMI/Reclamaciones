@@ -44,7 +44,7 @@ public class PagoMasivoDefinition {
     //detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     //busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
     //detalleFacturaVolumenStep.crearPagoMasivo();
-    procesoBatchStep.ejecutarProcesoBatch(MenuConstante.ACCIONES_MENU, MenuConstante.VOLVER_CLAIMCENTER_MENU);
+    procesoBatchStep.ejecutarProcesoBatch();
   }
 
   @Entonces(

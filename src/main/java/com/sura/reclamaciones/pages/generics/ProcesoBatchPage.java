@@ -26,13 +26,7 @@ public class ProcesoBatchPage extends GeneralPage
     private WebElementFacade tblNombreProcesoBatch;
 
     @FindBy(id = "ServerTools:InternalToolsMenuActions")
-    public WebElementFacade mnuPrimerNivelAcciones;
-
-    @FindBy(
-            xpath =
-                    ".//div[contains(@class='x-box-inner x-vertical-box-overflow-body')]"
-    )
-    private WebElementFacade mnuSegundoNivelAcciones;
+    public WebElementFacade mnuAcciones;
 
     public void ejecutarBatch() {
         String LETRA_T = "T";
@@ -61,14 +55,12 @@ public class ProcesoBatchPage extends GeneralPage
         }
     }
 
-    public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
-        mnuPrimerNivelAcciones
-                .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
-                .sendKeys(Keys.ARROW_DOWN);
-        if (nombreOpcion.equals(MenuConstante.VOLVER_CLAIMCENTER_MENU)) {
-            mnuSegundoNivelAcciones
-                    .findElement(By.xpath(".//a[contains(.,'" + subItem + "')]"))
-                    .click();
-        }
+    public void seleccionarOpcionMenuAccion()
+    {
+        mnuAcciones.waitUntilPresent();
+        mnuAcciones.click();
     }
+
+
+
 }
