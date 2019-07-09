@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.pages.generics;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
@@ -9,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import static com.sura.reclamaciones.constantes.Constantes.POSICION_FILA;
 
-public class ProcesoBatchPage extends GeneralPage {
+public class ProcesoBatchPage extends GeneralPage
+{
+
     public ProcesoBatchPage(WebDriver wdriver) {
         super(wdriver);
     }
@@ -20,6 +24,15 @@ public class ProcesoBatchPage extends GeneralPage {
     @FindBy(id = "BatchProcessInfo:BatchProcessScreen:BatchProcessesLV"
     )
     private WebElementFacade tblNombreProcesoBatch;
+
+    @FindBy(id = "ServerTools:InternalToolsMenuActions")
+    public WebElementFacade mnuPrimerNivelAcciones;
+
+    @FindBy(
+            xpath =
+                    ".//div[contains(@class='x-box-inner x-vertical-box-overflow-body')]"
+    )
+    private WebElementFacade mnuSegundoNivelAcciones;
 
     public void ejecutarBatch() {
         String LETRA_T = "T";
@@ -45,6 +58,17 @@ public class ProcesoBatchPage extends GeneralPage {
                 realizarEsperaCarga();
                 break;
             }
+        }
+    }
+
+    public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
+        mnuPrimerNivelAcciones
+                .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
+                .sendKeys(Keys.ARROW_DOWN);
+        if (nombreOpcion.equals(MenuConstante.VOLVER_CLAIMCENTER_MENU)) {
+            mnuSegundoNivelAcciones
+                    .findElement(By.xpath(".//a[contains(.,'" + subItem + "')]"))
+                    .click();
         }
     }
 }

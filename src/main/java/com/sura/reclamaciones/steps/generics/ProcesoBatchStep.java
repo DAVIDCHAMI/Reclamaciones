@@ -11,11 +11,12 @@ public class ProcesoBatchStep
 
     @Page ProcesoBatchPage procesoBatchPage;
 
-    public void ejecutarProcesoBatch ()
+    public void ejecutarProcesoBatch (String nombreOpcion, String subItem)
     {
         procesoBatchPage.ejecutarBatch();
-        procesoBatchPage.ejecutarProcesoBatch(ENVIO_FACTURA_VOLUMEN.getValor());
+        /*procesoBatchPage.ejecutarProcesoBatch(ENVIO_FACTURA_VOLUMEN.getValor());
         procesoBatchPage.ejecutarProcesoBatch(MONITOR_FLUJO_TRABAJO_FACTURA_VOLUMEN.getValor());
-        procesoBatchPage.ejecutarProcesoBatch(TRANSFERENCIA_FACTURA_VOLUMEN.getValor());
+        procesoBatchPage.ejecutarProcesoBatch(TRANSFERENCIA_FACTURA_VOLUMEN.getValor());*/
+        procesoBatchPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     }
 }
