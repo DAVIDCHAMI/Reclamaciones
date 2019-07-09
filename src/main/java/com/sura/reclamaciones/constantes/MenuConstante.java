@@ -10,6 +10,7 @@ public final class MenuConstante {
   public static final String DATOS_FINANCIEROS = "Datos financieros";
   public static final String TRANSACCIONES = "Transacciones";
   public static final String DETALLES_SINIESTRO = "Detalles del siniestro";
+  public static final String POLIZA = "Póliza";
 
   private MenuConstante() {}
 }

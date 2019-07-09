@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
     glue = {"com.sura.reclamaciones.definitions"},
     tags = {"@pagoPrimaPendiente"}
 )
-public class PagoPrimaPendienteRunner {
+public class PagoPrimaPendienteStepRunner {
 
 }

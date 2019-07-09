@@ -247,7 +247,4 @@ public class NuevoPagoStep {
     nuevaExposicionManualPage.actualizarNuevaExposicion();
   }
 
-  public void verificarEstadoPrimaPendiente() {
-
-  }
 }
