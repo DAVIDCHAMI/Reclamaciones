@@ -149,4 +149,20 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
   }
+
+  @Y("^la póliza esta marcada como financiada, con prima pendiente por pagar$")
+  public void verificarExistenciaPrimaPendiente() {
+    nuevoPagoStep.verificarEstadoPrimaPendiente();
+  }
+
+  @Entonces(
+      "^en la transacción del pago deben generarse dos registros, uno con el valor de la prima pendiente$")
+  public void verificarValorPrimaPendiente() {
+    //ToDo
+  }
+
+  @Y("^otro con el valor del pago menos la prima pendiente$")
+  public void verificarValorPago() {
+    //ToDo
+  }
 }
