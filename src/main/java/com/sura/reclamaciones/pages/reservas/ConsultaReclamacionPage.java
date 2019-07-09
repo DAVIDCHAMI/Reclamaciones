@@ -17,6 +17,9 @@ public class ConsultaReclamacionPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroSiniestro;
 
+  @FindBy(id = "TabBar:ClaimTab-btnInnerEl")
+  public WebElementFacade lblNumeroReclamacion;
+
   @Page MenuClaimPage menuClaimPage;
 
   public ConsultaReclamacionPage(WebDriver driver) {
@@ -29,5 +32,11 @@ public class ConsultaReclamacionPage extends GeneralPage {
 
   public String getLblNumeroSiniestro() {
     return lblNumeroSiniestro.waitUntilPresent().waitUntilVisible().getText();
+  }
+
+  public String obtenerNumeroSiniestro() {
+    String numeroReclamacion = lblNumeroReclamacion.getText().replaceAll("\\D+", "");
+    realizarEsperaCarga();
+    return numeroReclamacion;
   }
 }
