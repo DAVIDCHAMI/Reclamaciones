@@ -24,6 +24,7 @@ public class ProcesoBatchStep
         procesoBatchPage.ejecutarProcesoBatch(MONITOR_FLUJO_TRABAJO_FACTURA_VOLUMEN.getValor());
         procesoBatchPage.ejecutarProcesoBatch(TRANSFERENCIA_FACTURA_VOLUMEN.getValor());*/
         procesoBatchPage.seleccionarOpcionMenuAccion();
+        procesoBatchPage.seleccionarOpcionMenuAccionesPrimerNivel();
 
     }
 

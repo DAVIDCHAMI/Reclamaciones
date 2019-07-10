@@ -28,6 +28,10 @@ public class ProcesoBatchPage extends GeneralPage
     @FindBy(id = "ServerTools:InternalToolsMenuActions")
     public WebElementFacade mnuAcciones;
 
+    @FindBy(
+            xpath = "//div[contains(@id, 'menu-innerCt') and @class='x-box-inner x-vertical-box-overflow-body']")
+    private List<WebElementFacade> mnuPanelOpcionesPrimerNivel;
+
     public void ejecutarBatch() {
         String LETRA_T = "T";
         String comando = Keys.chord(Keys.ALT, Keys.SHIFT, LETRA_T);
@@ -61,6 +65,16 @@ public class ProcesoBatchPage extends GeneralPage
         mnuAcciones.click();
     }
 
-
-
+    public void seleccionarOpcionMenuAccionesPrimerNivel(String nombreOpcion) {
+        mnuPanelOpcionesPrimerNivel
+                .iterator()
+                .next()
+                .findBy(
+                        By.xpath(
+                                "//span[contains(@class,'x-menu-item-text')][contains(text(),'"
+                                        + nombreOpcion
+                                        + "')]"))
+                .click();
+        realizarEsperaCarga();
+    }
 }
