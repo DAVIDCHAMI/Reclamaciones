@@ -83,11 +83,16 @@ Característica: Realizar pago de un siniestro
   Esquema del escenario: Pago siniestro empresarial
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
-    Y apliquen las retenciones de <Código de Retención> a un pago <Tipo de pago>
+    Y apliquen las siguientes retenciones
+    |dddd|
+    |099   |
+    |028   |
+    |010   |
+    Y se genere un pago <Tipo de pago>
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de Reserva      | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                                     | Causa                               | Valor de Pretensión | Tipo de incidente |
-      | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
-      | (1) 1ª partePropiedad | Final        | AURA JUDITH LOPEZ JULIO CQLII     | Caja Sura       | No                 | 0099                | Hogar con cobertura básica                           | Incendio                            | 2000000             | Propiedad         |
-   #   | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII               | Caja Sura       | No                 | 0099                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                      | 3000000             | General           |
+      | Línea de Reserva      | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                                     | Causa                               | Valor de Pretensión | Tipo de incidente |
+      | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | No                 | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
+      | (1) 1ª partePropiedad | Final        | AURA JUDITH LOPEZ JULIO CQLII     | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio                            | 2000000             | Propiedad         |
+   #   | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII               | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                      | 3000000             | General           |

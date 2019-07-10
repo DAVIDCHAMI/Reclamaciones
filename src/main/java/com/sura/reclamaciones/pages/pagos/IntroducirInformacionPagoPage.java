@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.pagos;
 
+import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
 import static org.openqa.selenium.By.xpath;
@@ -9,6 +10,7 @@ import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -48,6 +50,12 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
         "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
   )
   private WebElementFacade lstCodigoRetencion;
+
+  @FindBy(
+    id =
+        "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV_tb:Add-btnInnerEl"
+  )
+  private WebElementFacade btnAgregarRetencion;
 
   @FindBy(
     xpath =
@@ -119,8 +127,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     return intCalculoVrReserva;
   }
 
-  public void ingresarCantidadPago(String strTipoPago, String strCantidadPago) {
-    calcularCantidadPago(strTipoPago);
+  public void ingresarCantidadPago(String strCantidadPago) {
+  //  calcularCantidadPago(strTipoPago);   String strTipoPago,
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, 1);
     elementoEncontrado.forEach(
@@ -136,4 +144,26 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     btnAgregarPago.waitUntilClickable().click();
     realizarEsperaCarga();
   }
+
+  public void agregarNuevaRetencion() {
+    btnAgregarRetencion.waitUntilClickable().click();
+    realizarEsperaCarga();
+  }
+
+  public void agregarCodigoRetencion(String strCodigoRetencion) {
+    List<WebElement> elementoEncontrado =
+            obtenerElementoTablaDatoDesconocido(tblElementoLinea, CODIGO_RETENCION.getValor(), 1);
+    elementoEncontrado.forEach(
+            elemento -> {
+              int i=elementoEncontrado.size();
+              elementoEncontrado.get(i-1).click();
+              lstCodigoRetencion.waitUntilVisible();
+              lstCodigoRetencion
+                      .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
+                      .click();
+            });
+    realizarEsperaCarga();
+  }
+
+
 }
