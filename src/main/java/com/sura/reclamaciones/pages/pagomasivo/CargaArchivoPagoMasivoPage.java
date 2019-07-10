@@ -6,7 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class CargaArchivoPagoMasivoPage extends GeneralPage {
-
   @FindBy(id = "BulkPay:BulkPayScreen:CreateNewWizardButton")
   private WebElementFacade btnFacturacionMasiva;
 
@@ -23,10 +22,5 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
   public void generarFacturacionMasiva() {
     btnFacturacionMasiva.waitUntilClickable();
     btnFacturacionMasiva.click();
-  }
-
-  public void seleccionarArchivoXls() {
-    btnExaminar.waitUntilClickable();
-    btnExaminar.click();
   }
 }
