@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.pages.limiteaprobacion;
 
-import static com.sura.reclamaciones.constantes.Constantes.POSICION_FILA;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
