@@ -2,7 +2,6 @@ package com.sura.reclamaciones.constantes;
 
 public enum Constantes {
   ACCIONES("ACCIONES"),
-  POSICION_FILA("1"),
   ACCION_ASIGNAR_COBERTURAS("view-cover"),
   ACCION_DATOS_ADICIONALES("view-edit"),
   ACCION_VER_RESULTADO_COTIZACION("view-quotation"),
@@ -36,6 +35,7 @@ public enum Constantes {
   COLA_TRABAJO_BIILING_COLLECTIVE_POLICY_INVOICE_PROCESS("BillingCollectivePolicyInvoiceProcess"),
   COLA_TRABAJO_BILLING_COLLECTIVE_POLICY_INVOICE_PROCESS("BillingCollectivePolicyInvoiceProcess"),
   COLUMNA_FILTRO_CSV("idFiltro"),
+  COLUMNA_TIPO_TABLA_EXPOSICIONES("Tipo"),
   COMISION("Comisión"),
   COMODIN("COMODIN"),
   CONSULTA_POLIZA_MASIVA_NO("No"),
@@ -69,6 +69,7 @@ public enum Constantes {
   EXPEDIENTE_CREADO_EXITOSAMENTE("Expediente creado con éxito"),
   EXPEDIR("Expedir"),
   EXPOSICIONES("Exposiciones"),
+  EXPOSICION_DANOS_ASEGURADO("Daños"),
   FACTURACION_GRUPO("Facturación por grupo"),
   FECHA_ACTUAL("fechaActual"),
   FECHA_HOY("Hoy"),
@@ -118,6 +119,7 @@ public enum Constantes {
   NUMERO_TRANSACCION_POLICY("Número transacción"),
   NUMERO_TRANSACCION_REASEGURO("Número transacción"),
   OPCIONES_COMPROMISO("Opciones de compromiso"),
+  OPCION_MENU("opcionMenu"),
   OPERACION("OPERACIÓN"),
   OPERACION_CAMBIO_POLIZA("Cambio de póliza"),
   OPERACION_EMISION_POLIZA("Emisión de póliza"),
@@ -145,8 +147,10 @@ public enum Constantes {
   PRODUCTO_AUTOS_MODIFICACION("Producto->Autos->Modificación"),
   PROGRAMADO("Programado"),
   PROPORCION("Proporción (%)"),
+  RANGO_HORA_CREACION_SINIESTRO("-05:00"),
   REASEGURO("Reaseguro"),
   REASEGURO_DETALLADO("Reaseguro detallado"),
+  RECLAMANTE_CONDUCTOR_AFECTADO("Conductor de otro vehículo"),
   RECUPERO("Recupero"),
   RENOVACION("Renovación"),
   RENOVAR("Renovar"),
@@ -178,8 +182,6 @@ public enum Constantes {
   TRUE("true"),
   UBICACION_ESTADO_PAGO("5"),
   UBICACION_ESTADO_RECUPERO("9"),
-  EXPOSICION_DANOS_ASEGURADO("Daños"),
-  COLUMNA_TIPO_TABLA_EXPOSICIONES("Tipo"),
   URL("jdbc:oracle:thin:@clustercsl01:1537/labgwcc"),
   USD("USD"),
   USUARIO("GW_CONF"),
@@ -192,10 +194,7 @@ public enum Constantes {
   VEHICULOS("Vehículos"),
   VER_POLIZA("Ver póliza"),
   VOLVER_BILLINGCENTER("Volver a BillingCenter"),
-  VOLVER_POLICYCENTER("Volver a PolicyCenter"),
-  RECLAMANTE_CONDUCTOR_AFECTADO("Conductor de otro vehículo"),
-  OPCION_MENU("opcionMenu"),
-  RANGO_HORA_CREACION_SINIESTRO("-05:00");
+  VOLVER_POLICYCENTER("Volver a PolicyCenter");
 
   private String valor;
 

@@ -3,8 +3,8 @@ package com.sura.reclamaciones.pages.generics;
 import static com.sura.reclamaciones.constantes.Constantes.COP;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.POSICION_FILA;
 import static com.sura.reclamaciones.constantes.Constantes.USD;
+import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
 import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;

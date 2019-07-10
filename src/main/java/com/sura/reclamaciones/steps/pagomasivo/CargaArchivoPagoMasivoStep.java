@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.steps.pagomasivo;
 
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagomasivo.CargaArchivoPagoMasivoPage;
 import net.thucydides.core.annotations.Step;
@@ -11,10 +12,12 @@ public class CargaArchivoPagoMasivoStep {
 
   @Page CargaArchivoPagoMasivoPage cargaArchivoPagoMasivoStep;
 
+  @Page GeneralPage generalPage;
+
   @Step
-  public void cargarArchivoXls(String nombreOpcion, String subItem) {
+  public void ingresarOpcionPagoMasivo(String nombreOpcion, String subItem) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     cargaArchivoPagoMasivoStep.generarFacturacionMasiva();
-    cargaArchivoPagoMasivoStep.seleccionarArchivoXls();
+    generalPage.continuarSiguientePantalla();
   }
 }

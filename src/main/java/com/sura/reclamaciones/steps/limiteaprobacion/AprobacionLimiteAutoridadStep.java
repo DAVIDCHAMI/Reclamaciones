@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.steps.limiteaprobacion;
 
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.POSICION_FILA;
 import static com.sura.reclamaciones.constantes.MenuConstante.PLAN_TRABAJO;
+import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
