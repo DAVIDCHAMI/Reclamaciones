@@ -10,7 +10,6 @@ import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -128,7 +127,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   }
 
   public void ingresarCantidadPago(String strCantidadPago) {
-  //  calcularCantidadPago(strTipoPago);   String strTipoPago,
+    //  calcularCantidadPago(strTipoPago);   String strTipoPago,
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, 1);
     elementoEncontrado.forEach(
@@ -152,18 +151,16 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
 
   public void agregarCodigoRetencion(String strCodigoRetencion) {
     List<WebElement> elementoEncontrado =
-            obtenerElementoTablaDatoDesconocido(tblElementoLinea, CODIGO_RETENCION.getValor(), 1);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, CODIGO_RETENCION.getValor(), 1);
     elementoEncontrado.forEach(
-            elemento -> {
-              int i=elementoEncontrado.size();
-              elementoEncontrado.get(i-1).click();
-              lstCodigoRetencion.waitUntilVisible();
-              lstCodigoRetencion
-                      .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
-                      .click();
-            });
+        elemento -> {
+          int i = elementoEncontrado.size();
+          elementoEncontrado.get(i - 1).click();
+          lstCodigoRetencion.waitUntilVisible();
+          lstCodigoRetencion
+              .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
+              .click();
+        });
     realizarEsperaCarga();
   }
-
-
 }

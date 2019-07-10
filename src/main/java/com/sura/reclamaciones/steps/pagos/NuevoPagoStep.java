@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.steps.pagos;
 
-import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
@@ -113,7 +112,7 @@ public class NuevoPagoStep {
     introducirInformacionPagoPage.ingresarComentario(lstPago.listIterator().next().getComentario());
     introducirInformacionPagoPage.ingresarCodigoRetencion(
         codigoRetencion, CODIGO_RETENCION.getValor());
- //   introducirInformacionPagoPage.ingresarCantidadPago(tipoPago, CANTIDAD.getValor());
+    //   introducirInformacionPagoPage.ingresarCantidadPago(tipoPago, CANTIDAD.getValor());
   }
 
   @Step

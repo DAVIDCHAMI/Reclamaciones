@@ -1,14 +1,11 @@
 package com.sura.reclamaciones.steps.pagos;
 
 import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
-import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import java.util.List;
-
-import cucumber.api.DataTable;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
@@ -27,15 +24,15 @@ public class InformacionPagoStep {
   }
 
   @Step
- // public void ingresarInformacionDetallePago(List<List<String>> codigoRetencion, int i, String tipoPago) {
-    public void ingresarInformacionRetencion(List<List<String>> codigoRetencion, int i) {
+  // public void ingresarInformacionDetallePago(List<List<String>> codigoRetencion, int i, String tipoPago) {
+  public void ingresarInformacionRetencion(List<List<String>> codigoRetencion, int i) {
     // for (PagoSiniestro retencion : lstPago) {
-     //    introducirInformacionPagoPage.ingresarCodigoRetencion(
+    //    introducirInformacionPagoPage.ingresarCodigoRetencion(
     //   codigoRetencion, CODIGO_RETENCION.getValor());
 
     introducirInformacionPagoPage.agregarCodigoRetencion(codigoRetencion.get(i).get(0).trim());
     introducirInformacionPagoPage.ingresarCantidadPago(CANTIDAD.getValor());
-    }
+  }
 
   @Step
   public void ingresarInformacionCantidadPago(String tipoPago) {
