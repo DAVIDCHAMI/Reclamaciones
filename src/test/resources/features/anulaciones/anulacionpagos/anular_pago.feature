@@ -18,7 +18,7 @@ Característica: Anulación de pagos
       | (1) 1ª partePropiedad | Parcial      | AURA JUDITH LOPEZ JULIO CQLII | Caja Sura       | No                 | 0099                | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         |
       | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII           | Caja Sura       | No                 | 0099                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
 
-  @claimsAuto
+  @claimsEmpresarialSuperUsuario
   Esquema del escenario: anulación de un pago de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
@@ -29,4 +29,4 @@ Característica: Anulación de pagos
 
     Ejemplos:
       | Línea de Reserva     | Tipo de pago | Beneficiario de pago | Método de pago | Código de Retención | ¿Es pago soloSura? | Tipo de cobertura   |
-      | (3) 1ª parteVehículo | Parcial      | SOFIA JARAMILLO      | Caja Sura      | 0099                | No                 | Perdida total Daños |
+      | (2) 1ª parteVehículo | Parcial      | SOFIA JARAMILLO      | Caja Sura      | 0099                | No                 | Perdida total Daños |

@@ -28,15 +28,20 @@ public class PagoSiniestroDefinition {
   PagoSiniestro pagoSiniestro;
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
 
-  @Steps NuevoPagoStep nuevoPagoStep;
+  @Steps
+  NuevoPagoStep nuevoPagoStep;
 
-  @Steps GenericStep genericStep;
+  @Steps
+  GenericStep genericStep;
 
-  @Steps MenuClaimsStep menuClaimsStep;
+  @Steps
+  MenuClaimsStep menuClaimsStep;
 
-  @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
+  @Steps
+  InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
-  @Steps PrimaPendienteStep primaPendienteStep;
+  @Steps
+  PrimaPendienteStep primaPendienteStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -161,11 +166,11 @@ public class PagoSiniestroDefinition {
   @Entonces(
       "^en la transacción del pago deben generarse dos registros, uno con el valor de la prima pendiente$")
   public void verificarValorPrimaPendiente() {
-    //ToDo
+    primaPendienteStep.verificarValorPagoPrimaPendiente();
   }
 
   @Y("^otro con el valor del pago menos la prima pendiente$")
   public void verificarValorPago() {
-    //ToDo
+    primaPendienteStep.verificarValorPagoMenosPrimaPendiente();
   }
 }

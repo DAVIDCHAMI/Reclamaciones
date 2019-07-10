@@ -87,10 +87,9 @@ Característica: Realizar pago de un siniestro
     Y se declara la reclamación como perdida total
     Y la póliza esta marcada como financiada, con prima pendiente por pagar
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de Retención>
-    Y se genera una orden de pago para que le sea entregado al usuario
     Entonces en la transacción del pago deben generarse dos registros, uno con el valor de la prima pendiente
     Y otro con el valor del pago menos la prima pendiente
 
     Ejemplos:
       | Origen de siniestro | Línea de Reserva                                                                                                         | Tipo de pago | Beneficiario de pago | Método de pago | Código de Retención | ¿Es pago soloSura? | Tipo de cobertura   |
-      | Servicio de Maca    | (2) 1ª parteVehículo - OSO222  - MARIA JOSE MORALES; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | MARIA JOSE MORALES   | Caja Sura      | 0099                | No                 | Perdida total Daños |
+      | Servicio de Maca    | (2) 1ª parteVehículo - OSO222  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | MARIA JOSE MORALES   | Caja Sura      | 0099                | No                 | Perdida total Daños |

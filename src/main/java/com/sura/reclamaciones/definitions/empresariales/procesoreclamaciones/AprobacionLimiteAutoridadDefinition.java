@@ -22,7 +22,7 @@ public class AprobacionLimiteAutoridadDefinition {
   }
 
   @Y(
-      "^se genera la actividad, (.*) al Director o Gerente de atención de reclamaciones Empresariales$")
+      "^se genera la (.*),  al Director o Gerente de atención de reclamaciones Empresariales$")
   public void verificarGeneracionActividadRevisarAprobarCambioReserva(
       String actividadAprobarReserva) throws IOException {
     aprobacionLimiteAutoridadStep.cerrarNavegador();
@@ -31,7 +31,7 @@ public class AprobacionLimiteAutoridadDefinition {
         actividadAprobarReserva);
   }
 
-  @Cuando("^es aprobada la actividad$")
+  @Cuando("^es aprobada la (.*)$")
   public void aprobarActividadRevisarAprobarCambioReserva(String actividadAprobarReserva) {
     aprobacionLimiteAutoridadStep.aprobarActividadRevisarAprobarCambioReserva(
         actividadAprobarReserva);

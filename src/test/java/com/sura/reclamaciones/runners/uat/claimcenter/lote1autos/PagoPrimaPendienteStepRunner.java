@@ -6,10 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-    features = "src/test/resources/features/pagos/pagar_siniestro.feature",
-    glue = {"com.sura.reclamaciones.definitions"},
-    tags = {"@pagoPrimaPendiente"}
+  features = "src/test/resources/features/pagos/pagar_siniestro.feature",
+  glue = {"com.sura.reclamaciones.definitions"},
+  tags = {"@pagoPrimaPendiente"}
 )
-public class PagoPrimaPendienteStepRunner {
-
-}
+public class PagoPrimaPendienteStepRunner {}

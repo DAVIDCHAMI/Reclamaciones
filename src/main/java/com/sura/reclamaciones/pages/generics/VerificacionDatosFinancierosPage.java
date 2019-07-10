@@ -19,22 +19,26 @@ import org.openqa.selenium.WebElement;
 
 public class VerificacionDatosFinancierosPage extends GeneralPage {
 
-  @Page DetalleTransaccionPage detalleTransaccionPage;
+  @Page
+  DetalleTransaccionPage detalleTransaccionPage;
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV:0:CheckNumber")
   private WebElementFacade lblNumeroPago;
 
   @FindBy(
-    xpath =
-        "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
+      xpath =
+          "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
   )
   private WebElementFacade lblCantidadDeducible;
 
   @FindBy(
-    xpath =
-        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
+      xpath =
+          "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
   )
   private WebElementFacade tblTransaccion;
+
+  @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
+  private WebElementFacade tblDatosFinancierosPagos;
 
   public VerificacionDatosFinancierosPage(WebDriver wdriver) {
     super(wdriver);
@@ -113,5 +117,18 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     String cantidadDeducible = lblCantidadDeducible.getText();
     cantidadDeducible = cantidadDeducible.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
     return cantidadDeducible;
+  }
+
+  public boolean verificarValorPagoPrimaPendiente(String valorPrimaPendiente) {
+    final String VALOR_TOTAL = "Valor total";
+    List<WebElement> lstValorTotal = obtenerElementoTablaDatoDesconocido(
+        tblDatosFinancierosPagos, VALOR_TOTAL,
+        Integer.parseInt(POSICION_FILA.getValor()));
+    for (int i = 0; i < lstValorTotal.size(); i++) {
+      if (valorPrimaPendiente.equals(lstValorTotal.get(i).getText())) {
+        return true;
+      }
+    }
+    return false;
   }
 }

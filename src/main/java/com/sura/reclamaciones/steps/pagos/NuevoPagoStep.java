@@ -65,7 +65,6 @@ public class NuevoPagoStep {
 
   @Page AuditoriaPage auditoriaPage;
 
-  private static final String MENSAJE_PAGO_NO_REALIZADO = "No se generó orden de pago al asegurado";
   private static final String MENSAJE_RECHAZO_PAGO =
       "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
 
@@ -246,5 +245,4 @@ public class NuevoPagoStep {
     nuevoIncidenteVehicularPage.aceptarOpcion();
     nuevaExposicionManualPage.actualizarNuevaExposicion();
   }
-
 }
