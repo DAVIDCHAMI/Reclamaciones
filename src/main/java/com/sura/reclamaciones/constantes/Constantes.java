@@ -1,6 +1,13 @@
 package com.sura.reclamaciones.constantes;
 
 public enum Constantes {
+  ACCIONES("ACCIONES"),
+  POSICION_FILA("1"),
+  ACCION_ASIGNAR_COBERTURAS("view-cover"),
+  ACCION_DATOS_ADICIONALES("view-edit"),
+  ACCION_VER_RESULTADO_COTIZACION("view-quotation"),
+  ACCION_VER_RESULTADO_EXPEDICION("view-expedition"),
+  ACEPTAR("Aceptar"),
   ACTIVIDADES("Actividades"),
   ACTIVITIES("Activities"),
   ANALISTA_RECLAMACION_ATR("analistaReclamacionEmpAtr"),
