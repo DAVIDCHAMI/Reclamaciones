@@ -4,6 +4,7 @@ import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_INTENTOS_ESPERA_ELEMENTO;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
+
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
 import java.util.Set;
@@ -32,8 +33,7 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
   public WebElementFacade pgrBarCarga;
 
-  @FindBy(
-   xpath = "//span[contains(@id, 'Next-btn') and @class='x-btn-wrap']")
+  @FindBy(xpath = "//span[contains(@id, 'Next-btn') and @class='x-btn-wrap']")
   private WebElementFacade btnSiguiente;
 
   @FindBy(
