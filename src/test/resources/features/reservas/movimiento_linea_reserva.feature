@@ -13,8 +13,8 @@ Característica: Constitución de una línea de reserva de un siniestro
 
     Ejemplos:
       | Tipo y Cobertura                             | causa             | valor de pretension | Tipo de incidente | Monto del ajuste | Deducible |
-      | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | 4000000          | -855000    |
-      | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | 3800000          | -825000    |
+      | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | 4000000          | -600000    |
+      | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | 3800000          | -570000    |
 
 
   @claimsEmpresarial
@@ -25,7 +25,6 @@ Característica: Constitución de una línea de reserva de un siniestro
     Ejemplos:
 
       | Tipo y Cobertura                                     | Causa          | Tipo de incidente | Exposición                                           | Categoría               | Tipo costo                                    | Valor de Pretensión | Deducible |
-      | Sustracción con cobertura Sustracción con violencia  | Causas varias  | Contenido         | (1) 1ª parteContenido -                              | Gastos de siniestro     | Gasto - A&O (ajuste y otros)                  | 4000000             | 0         |
       | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII            | Gastos de siniestro     | Gasto - A&O (ajuste y otros)                  | 3000000             | 0         |
       | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | General           | (1) 1ª parteGeneral - TODO EN VERDE CQLII            | Gastos proceso jurídico | Gasto - D&CC (defensa y contención de gastos) | 3000000             | 0         |
 
