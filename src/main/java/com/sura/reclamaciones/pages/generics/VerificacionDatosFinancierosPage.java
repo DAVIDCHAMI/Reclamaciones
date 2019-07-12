@@ -27,8 +27,8 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
   private WebElementFacade lblNumeroPago;
 
   @FindBy(
-      xpath =
-          "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
+    xpath =
+        "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
   )
   private WebElementFacade lblCantidadDeducible;
 
@@ -41,7 +41,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
   private WebElementFacade tblDatosFinancierosPagos;
 
-  final String VALOR_TOTAL = "Valor total";
+  public static final String VALOR_TOTAL = "Valor total";
 
   public VerificacionDatosFinancierosPage(WebDriver wdriver) {
     super(wdriver);
@@ -123,9 +123,9 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
   }
 
   public boolean verificarValorPagoPrimaPendiente(String valorPrimaPendiente) {
-    List<WebElement> lstValorTotal = obtenerElementoTablaDatoDesconocido(
-        tblDatosFinancierosPagos, VALOR_TOTAL,
-        Integer.parseInt(POSICION_FILA.getValor()));
+    List<WebElement> lstValorTotal =
+        obtenerElementoTablaDatoDesconocido(
+            tblDatosFinancierosPagos, VALOR_TOTAL, Integer.parseInt(POSICION_FILA.getValor()));
     for (int i = 0; i < lstValorTotal.size(); i++) {
       if (valorPrimaPendiente.equals(lstValorTotal.get(i).getText())) {
         return true;
@@ -138,11 +138,11 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     int valorPago = (Serenity.sessionVariableCalled(SESION_CC_VALOR_PAGO.getValor()));
     int valorPagoMenosPrimaPendiente =
         valorPago - Integer.parseInt(valorPrimaPendiente.replaceAll("\\D+", ""));
-    List<WebElement> lstValorTotal = obtenerElementoTablaDatoDesconocido(
-        tblDatosFinancierosPagos, VALOR_TOTAL,
-        Integer.parseInt(POSICION_FILA.getValor()));
+    List<WebElement> lstValorTotal =
+        obtenerElementoTablaDatoDesconocido(
+            tblDatosFinancierosPagos, VALOR_TOTAL, Integer.parseInt(POSICION_FILA.getValor()));
     for (int i = 0; i < lstValorTotal.size(); i++) {
-      String valorTransaccionPago=lstValorTotal.get(i).getText().replaceAll("\\D+", "");
+      String valorTransaccionPago = lstValorTotal.get(i).getText().replaceAll("\\D+", "");
       if (Integer.parseInt(valorTransaccionPago) == valorPagoMenosPrimaPendiente) {
         return true;
       }

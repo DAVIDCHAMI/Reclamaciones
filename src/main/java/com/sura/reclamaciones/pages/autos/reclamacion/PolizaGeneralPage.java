@@ -11,8 +11,8 @@ import org.openqa.selenium.WebDriver;
 public class PolizaGeneralPage extends GeneralPage {
 
   @FindBy(
-      id =
-          "ClaimPolicyGeneral:ClaimPolicyGeneralScreen:PolicyGeneralPanelSet:PolicyGeneralDV:FinancedPolicyBalanceSAP-inputEl"
+    id =
+        "ClaimPolicyGeneral:ClaimPolicyGeneralScreen:PolicyGeneralPanelSet:PolicyGeneralDV:FinancedPolicyBalanceSAP-inputEl"
   )
   private WebElementFacade lblValorPrimaPendiente;
 
@@ -21,7 +21,7 @@ public class PolizaGeneralPage extends GeneralPage {
   }
 
   public String verificarEstadoPrimaPendiente() {
-    String valorPrimaPendiente= lblValorPrimaPendiente.getText();
+    String valorPrimaPendiente = lblValorPrimaPendiente.getText();
     MatcherAssert.assertThat(
         "No tiene prima pendiente",
         !(valorPrimaPendiente.replaceAll("\\D+", "").equals(VALOR_CERO.getValor())));

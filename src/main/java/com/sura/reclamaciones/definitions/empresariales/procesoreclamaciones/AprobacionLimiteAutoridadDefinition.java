@@ -21,8 +21,7 @@ public class AprobacionLimiteAutoridadDefinition {
     aprobacionLimiteAutoridadStep.verificarEstadoTransaccionReserva(strEstadoTransaccionReserva);
   }
 
-  @Y(
-      "^se genera la (.*),  al Director o Gerente de atención de reclamaciones Empresariales$")
+  @Y("^se genera la (.*),  al Director o Gerente de atención de reclamaciones Empresariales$")
   public void verificarGeneracionActividadRevisarAprobarCambioReserva(
       String actividadAprobarReserva) throws IOException {
     aprobacionLimiteAutoridadStep.cerrarNavegador();

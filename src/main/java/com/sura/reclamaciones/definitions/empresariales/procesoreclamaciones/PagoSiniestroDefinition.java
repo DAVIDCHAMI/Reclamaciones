@@ -28,20 +28,15 @@ public class PagoSiniestroDefinition {
   PagoSiniestro pagoSiniestro;
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
 
-  @Steps
-  NuevoPagoStep nuevoPagoStep;
+  @Steps NuevoPagoStep nuevoPagoStep;
 
-  @Steps
-  GenericStep genericStep;
+  @Steps GenericStep genericStep;
 
-  @Steps
-  MenuClaimsStep menuClaimsStep;
+  @Steps MenuClaimsStep menuClaimsStep;
 
-  @Steps
-  InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
+  @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
-  @Steps
-  PrimaPendienteStep primaPendienteStep;
+  @Steps PrimaPendienteStep primaPendienteStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
