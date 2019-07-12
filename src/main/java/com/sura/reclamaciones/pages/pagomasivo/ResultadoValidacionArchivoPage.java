@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -8,8 +9,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
-public class ResultadoValidacionArchivoPage extends GeneralPage
-{
+public class ResultadoValidacionArchivoPage extends GeneralPage {
 
   int numeroRegistrosPantalla;
 

@@ -20,8 +20,7 @@ public class DetalleFacturaVolumenStep {
   }
 
   @Step
-  public void crearPagoMasivo()
-  {
+  public void crearPagoMasivo() {
     detalleFacturaVolumenPage.obtenerNumeroFacturaPagoMasivo();
     detalleFacturaVolumenPage.finalizarPagoMasivo();
     detalleFacturaVolumenPage.enviarPagoMasivo();

@@ -24,9 +24,4 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
     btnFacturacionMasiva.waitUntilClickable();
     btnFacturacionMasiva.click();
   }
-
-  public void seleccionarArchivoXls() {
-    btnExaminar.waitUntilClickable();
-    btnExaminar.click();
-  }
 }

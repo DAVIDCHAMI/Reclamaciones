@@ -5,8 +5,7 @@ import com.sura.reclamaciones.pages.generics.DetalleSiniestroPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import org.fluentlenium.core.annotation.Page;
 
-public class DetalleSiniestroStep
-{
+public class DetalleSiniestroStep {
 
   @Page MenuClaimPage menuClaimPage;
 
@@ -14,7 +13,7 @@ public class DetalleSiniestroStep
 
   public void consultarInformacionSiniestro() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(MenuConstante.DETALLES_SINIESTRO);
-    detalleSiniestroPage.consultarNumneroPlacaPartesImplicadas();
-    detalleSiniestroPage.consultarNumeroSiniestro();
+    detalleSiniestroPage.obtenerNumneroPlacaPartesImplicadas();
+    detalleSiniestroPage.obtenerNumeroSiniestro();
   }
 }
