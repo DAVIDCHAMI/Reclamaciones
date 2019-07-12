@@ -3,8 +3,8 @@ package com.sura.reclamaciones.pages.generics;
 import static com.sura.reclamaciones.constantes.Constantes.COP;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.POSICION_FILA;
 import static com.sura.reclamaciones.constantes.Constantes.USD;
+import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
@@ -21,8 +21,7 @@ import org.openqa.selenium.WebElement;
 
 public class VerificacionDatosFinancierosPage extends GeneralPage {
 
-  @Page
-  DetalleTransaccionPage detalleTransaccionPage;
+  @Page DetalleTransaccionPage detalleTransaccionPage;
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV:0:CheckNumber")
   private WebElementFacade lblNumeroPago;
@@ -34,8 +33,8 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
   private WebElementFacade lblCantidadDeducible;
 
   @FindBy(
-      xpath =
-          "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
+    xpath =
+        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
   )
   private WebElementFacade tblTransaccion;
 

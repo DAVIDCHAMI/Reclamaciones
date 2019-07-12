@@ -2,6 +2,7 @@ package com.sura.reclamaciones.utils;
 
 public enum VariablesSesion {
   SESION_CC_NRO_RECLAMACION("nro_reclamacion"),
+  SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS("NumeroPlacaPartesInvolucradas"),
   SESION_CC_NUMERO_SINIESTRO("NumeroSiniestro"),
   SESION_CC_NUMERO_TRANSACCION("Número de transacción"),
   SESION_CC_TIPO_PRODUCTO_EMPRESARIAL("tipoProductoEmpresarial"),
