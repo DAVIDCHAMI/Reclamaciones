@@ -169,7 +169,7 @@ public class PagoSiniestroDefinition {
     primaPendienteStep.verificarValorPagoPrimaPendiente();
   }
 
-  @Y("^otro con el valor del pago menos la prima pendiente$")
+  @Y("^otro con el valor del pago menos la prima pendiente")
   public void verificarValorPago() {
     primaPendienteStep.verificarValorPagoMenosPrimaPendiente();
   }

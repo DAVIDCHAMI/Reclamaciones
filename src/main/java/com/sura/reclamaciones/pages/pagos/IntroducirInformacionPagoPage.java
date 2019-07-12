@@ -2,11 +2,13 @@ package com.sura.reclamaciones.pages.pagos;
 
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -128,6 +130,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
           elemento.click();
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%d')", intCalculoVrReserva));
+          Serenity.setSessionVariable(SESION_CC_VALOR_PAGO.getValor()).to(intCalculoVrReserva);
           txtComentarioPago.click();
         });
   }

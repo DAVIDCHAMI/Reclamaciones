@@ -5,11 +5,13 @@ import static com.sura.reclamaciones.constantes.Constantes.NUMERO_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.POSICION_FILA;
 import static com.sura.reclamaciones.constantes.Constantes.USD;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
 import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.annotation.Page;
@@ -39,6 +41,8 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
   private WebElementFacade tblDatosFinancierosPagos;
+
+  final String VALOR_TOTAL = "Valor total";
 
   public VerificacionDatosFinancierosPage(WebDriver wdriver) {
     super(wdriver);
@@ -120,12 +124,27 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
   }
 
   public boolean verificarValorPagoPrimaPendiente(String valorPrimaPendiente) {
-    final String VALOR_TOTAL = "Valor total";
     List<WebElement> lstValorTotal = obtenerElementoTablaDatoDesconocido(
         tblDatosFinancierosPagos, VALOR_TOTAL,
         Integer.parseInt(POSICION_FILA.getValor()));
     for (int i = 0; i < lstValorTotal.size(); i++) {
       if (valorPrimaPendiente.equals(lstValorTotal.get(i).getText())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public boolean verificarValorPagoMenosPrimaPendiente(String valorPrimaPendiente) {
+    int valorPago = (Serenity.sessionVariableCalled(SESION_CC_VALOR_PAGO.getValor()));
+    int valorPagoMenosPrimaPendiente =
+        valorPago - Integer.parseInt(valorPrimaPendiente.replaceAll("\\D+", ""));
+    List<WebElement> lstValorTotal = obtenerElementoTablaDatoDesconocido(
+        tblDatosFinancierosPagos, VALOR_TOTAL,
+        Integer.parseInt(POSICION_FILA.getValor()));
+    for (int i = 0; i < lstValorTotal.size(); i++) {
+      String valorTransaccionPago=lstValorTotal.get(i).getText().replaceAll("\\D+", "");
+      if (Integer.parseInt(valorTransaccionPago) == valorPagoMenosPrimaPendiente) {
         return true;
       }
     }
