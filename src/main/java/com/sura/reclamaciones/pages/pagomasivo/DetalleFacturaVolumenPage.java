@@ -1,12 +1,18 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
-public class DetalleFacturaVolumenPage extends GeneralPage {
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_FACTURA_PAGO_MASIVO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
+
+public class DetalleFacturaVolumenPage extends GeneralPage
+{
+
   @FindBy(
     id = "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Currency-inputEl"
   )
@@ -35,6 +41,9 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
 
   @FindBy(id = "EditBulkInvoiceDetail:BulkInvoiceDetailScreen:SubmitButton-btnInnerEl")
   private WebElementFacade btnEnviarPagoMasivo;
+
+  @FindBy(id = "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:InvoiceNumber-bodyEl")
+  private WebElementFacade lblNumeroFacturaPagoMasivo;
 
   public DetalleFacturaVolumenPage(WebDriver wdriver) {
     super(wdriver);
@@ -76,5 +85,11 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
   public void enviarPagoMasivo() {
     btnEnviarPagoMasivo.waitUntilClickable();
     btnEnviarPagoMasivo.click();
+  }
+
+  public void obtenerNumeroFacturaPagoMasivo ()
+  {
+    lblNumeroFacturaPagoMasivo.getText();
+    Serenity.setSessionVariable(SESION_CC_NUMERO_FACTURA_PAGO_MASIVO.getValor()).to(lblNumeroFacturaPagoMasivo);
   }
 }

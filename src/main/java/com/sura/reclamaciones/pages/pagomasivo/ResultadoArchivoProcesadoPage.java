@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
-import static com.sura.reclamaciones.constantes.Constantes.POSICION_FILA;
-
+import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -10,7 +9,9 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ResultadoArchivoProcesadoPage extends GeneralPage {
+public class ResultadoArchivoProcesadoPage extends GeneralPage
+{
+
   public ResultadoArchivoProcesadoPage(WebDriver wdriver) {
     super(wdriver);
   }

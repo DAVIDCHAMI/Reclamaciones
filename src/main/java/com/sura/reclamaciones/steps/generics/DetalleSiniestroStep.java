@@ -5,7 +5,9 @@ import com.sura.reclamaciones.pages.generics.DetalleSiniestroPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import org.fluentlenium.core.annotation.Page;
 
-public class DetalleSiniestroStep {
+public class DetalleSiniestroStep
+{
+
   @Page MenuClaimPage menuClaimPage;
 
   @Page DetalleSiniestroPage detalleSiniestroPage;

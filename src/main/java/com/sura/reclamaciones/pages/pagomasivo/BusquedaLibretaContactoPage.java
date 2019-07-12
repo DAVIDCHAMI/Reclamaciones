@@ -1,16 +1,16 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
-
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class BusquedaLibretaContactoPage extends GeneralPage {
+public class BusquedaLibretaContactoPage extends GeneralPage
+{
+
   @FindBy(
     id = "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:ContactSubtype-inputEl"
   )
@@ -69,17 +69,5 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
             RESULTADO_BUSQUEDA_CONTACTO,
             Integer.parseInt(VALOR_CERO.getValor()));
     tamanoLista = elementoEncontrado.size();
-
-    /*for (int i = 0; i <= tamanoLista - 1; i++)
-    {
-        if (elementoEncontrado.get(i).getText().equals(nombreContacto))
-        {
-            WebElement btnSeleccionarContacto;
-            String j = String.valueOf(i);
-
-            btnSeleccionarContacto= (WebElement) By.id("AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV:" + j + ":_Select");
-            btnSeleccionarContacto.click();
-        }
-    }*/
   }
 }

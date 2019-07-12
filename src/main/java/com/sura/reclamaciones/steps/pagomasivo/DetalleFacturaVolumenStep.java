@@ -5,8 +5,7 @@ import com.sura.reclamaciones.pages.pagomasivo.DetalleFacturaVolumenPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
-public class DetalleFacturaVolumenStep
-{
+public class DetalleFacturaVolumenStep {
 
   @Page DetalleFacturaVolumenPage detalleFacturaVolumenPage;
 
@@ -21,7 +20,9 @@ public class DetalleFacturaVolumenStep
   }
 
   @Step
-  public void crearPagoMasivo() {
+  public void crearPagoMasivo()
+  {
+    detalleFacturaVolumenPage.obtenerNumeroFacturaPagoMasivo();
     detalleFacturaVolumenPage.finalizarPagoMasivo();
     detalleFacturaVolumenPage.enviarPagoMasivo();
   }
