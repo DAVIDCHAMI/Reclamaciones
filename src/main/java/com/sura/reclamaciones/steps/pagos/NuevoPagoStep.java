@@ -180,7 +180,6 @@ public class NuevoPagoStep {
 
   @Step
   public void declararReclamacionPerdidaTotal() {
-    seleccionarExposicionVehicularAsegurado();
     detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.editarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.seleccionarIncineracionTotalVehiculo();
