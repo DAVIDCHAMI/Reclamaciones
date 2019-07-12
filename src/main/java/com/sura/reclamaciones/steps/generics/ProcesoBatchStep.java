@@ -14,9 +14,9 @@ public class ProcesoBatchStep
 
   public void ejecutarProcesoBatch() {
     procesoBatchPage.ejecutarBatch();
-    procesoBatchPage.ejecutarProcesoBatch(ENVIO_FACTURA_VOLUMEN.getValor());
+    /*procesoBatchPage.ejecutarProcesoBatch(ENVIO_FACTURA_VOLUMEN.getValor());
     procesoBatchPage.ejecutarProcesoBatch(MONITOR_FLUJO_TRABAJO_FACTURA_VOLUMEN.getValor());
-    procesoBatchPage.ejecutarProcesoBatch(TRANSFERENCIA_FACTURA_VOLUMEN.getValor());
+    procesoBatchPage.ejecutarProcesoBatch(TRANSFERENCIA_FACTURA_VOLUMEN.getValor());*/
     procesoBatchPage.seleccionarOpcionMenuAccion();
     procesoBatchPage.seleccionarOpcionMenuAccionesPrimerNivel(VOLVER_CLAIMCENTER_MENU);
   }

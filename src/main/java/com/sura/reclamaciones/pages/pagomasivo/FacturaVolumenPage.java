@@ -9,14 +9,11 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_FACTURA_PAGO_MASIVO;
-
 public class FacturaVolumenPage extends GeneralPage
 {
 
     @FindBy(xpath = ".//a[@data-qtip='Última página']")
-    private WebElementFacade lblFechaRecepcionFactura;
+    private WebElementFacade lblObtenerFechaRecepcionFactura;
 
     @FindBy(id = "BulkPay:BulkPayScreen:BulkInvoicesLV-body")
     private WebElementFacade tblNumeroFacturaPagoMasivo;
@@ -27,16 +24,23 @@ public class FacturaVolumenPage extends GeneralPage
 
     public void obtenerUltimaPagina()
     {
-        lblFechaRecepcionFactura.waitUntilPresent();
-        lblFechaRecepcionFactura.click();
+        lblObtenerFechaRecepcionFactura.waitUntilPresent();
+        lblObtenerFechaRecepcionFactura.click();
     }
 
     public void buscarNumeroFacturaPagoMasivo() {
+        String factura =  "0000001353";
         List<String> numerosFacturaPagoMasivo = new ArrayList<String>();
         final String NUMERO_FACTURA = "N.° de factura";
+
+        /*List<WebElement> elementoEncontrado =
+                obtenerElementoTablaDatoDesconocido(
+                        tblNumeroFacturaPagoMasivo, SESION_CC_NUMERO_FACTURA_PAGO_MASIVO.getValor(), Integer.parseInt(POSICION_FILA.getValor()));*/
+
+
         List<WebElement> elementoEncontrado =
                 obtenerElementoTablaDatoDesconocido(
-                        tblNumeroFacturaPagoMasivo, SESION_CC_NUMERO_FACTURA_PAGO_MASIVO.getValor(), Integer.parseInt(POSICION_FILA.getValor()));
+                        tblNumeroFacturaPagoMasivo, factura, 1);
 
 
         int tamanoLista = elementoEncontrado.size();
