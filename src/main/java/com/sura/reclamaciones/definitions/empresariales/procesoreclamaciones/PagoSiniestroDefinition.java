@@ -165,7 +165,7 @@ public class PagoSiniestroDefinition {
 
   @Entonces(
       "^en la transacción del pago deben generarse dos registros, uno con el valor de la prima pendiente$")
-  public void verificarValorPrimaPendiente() {
+  public void verificarPagoPrimaPendiente() {
     primaPendienteStep.verificarValorPagoPrimaPendiente();
   }
 
