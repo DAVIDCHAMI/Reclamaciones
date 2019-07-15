@@ -1,7 +1,8 @@
 package com.sura.reclamaciones.constantes;
 
 public enum Posiciones {
-  POSICION_FILA("1");
+  POSICION_FILA("1"),
+  POSICION_COLUMNA_DOS("2");
 
   private String valor;
 

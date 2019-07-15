@@ -8,6 +8,7 @@ public enum VariablesSesion {
   SESION_CC_FECHA_SINIESTRO("fecha_siniestro"),
   SESION_CC_NRO_RECLAMACION("nro_reclamacion"),
   SESION_CC_NUMERO_FACTURA_PAGO_MASIVO("NumeroFacturaPagoMasivo"),
+  SESION_CC_NUMERO_PAGO_INDIVIDUAL("NumeroPagoIndividual"),
   SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS("NumeroPlacaPartesInvolucradas"),
   SESION_CC_NUMERO_SINIESTRO("NumeroSiniestro"),
   SESION_CC_NUMERO_TRANSACCION("Número de transacción"),

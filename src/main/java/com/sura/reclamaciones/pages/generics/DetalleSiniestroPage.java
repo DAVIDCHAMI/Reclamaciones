@@ -2,7 +2,6 @@ package com.sura.reclamaciones.pages.generics;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
-
 import java.util.ArrayList;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
@@ -12,10 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class DetalleSiniestroPage extends GeneralPage {
-
-  public DetalleSiniestroPage(WebDriver wdriver) {
-    super(wdriver);
-  }
 
   @FindBy(
     id =
@@ -28,6 +23,10 @@ public class DetalleSiniestroPage extends GeneralPage {
         "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl"
   )
   private WebElementFacade lblNumeroSiniestro;
+
+  public DetalleSiniestroPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
   public List<String> obtenerNumneroPlacaPartesImplicadas() {
     List<String> placaVehiculosInvolucrados = new ArrayList<String>();
@@ -45,8 +44,6 @@ public class DetalleSiniestroPage extends GeneralPage {
   }
 
   public String obtenerNumeroSiniestro() {
-    lblNumeroSiniestro.waitUntilClickable();
-    String numeroSiniestro = lblNumeroSiniestro.getText();
-    return numeroSiniestro;
+    return lblNumeroSiniestro.waitUntilClickable().getText();
   }
 }

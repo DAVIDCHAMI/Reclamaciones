@@ -1,14 +1,19 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.pages.pagomasivo.DetalleFacturaVolumenPage;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
+import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.generics.ProcesoBatchStep;
 import com.sura.reclamaciones.steps.pagomasivo.*;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
+
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 public class PagoMasivoDefinition {
 
@@ -28,10 +33,12 @@ public class PagoMasivoDefinition {
 
   @Steps FacturaVolumenStep facturaVolumenStep;
 
+  @Steps MenuClaimsStep menuClaimsStep;
+
   @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
   public void ingresarInformacionFactura() {
-    /*detalleSiniestroStep.consultarInformacionSiniestro();
-    cargaArchivoPagoMasivoStep.cargarArchivoXls(
+    //detalleSiniestroStep.consultarInformacionSiniestro();
+    /*cargaArchivoPagoMasivoStep.cargarArchivoXls(
             MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
     resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();*/
@@ -52,5 +59,8 @@ public class PagoMasivoDefinition {
   public void validarPagoMasivo() {
     facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
+    detalleFacturaVolumenStep.obtenerNumeroPagoIndividual();
+    menuClaimsStep.consultarNumeroReclamacion(Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
+    
   }
 }
