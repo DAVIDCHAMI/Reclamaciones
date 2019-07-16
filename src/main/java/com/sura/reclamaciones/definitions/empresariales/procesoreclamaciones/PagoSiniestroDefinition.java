@@ -12,7 +12,7 @@ import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
-import com.sura.reclamaciones.steps.primapendiente.PrimaPendienteStep;
+import com.sura.reclamaciones.steps.primapendiente.PagoPrimaPendienteStep;
 import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
 import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.java.es.Cuando;
@@ -36,7 +36,8 @@ public class PagoSiniestroDefinition {
 
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
-  @Steps PrimaPendienteStep primaPendienteStep;
+  @Steps
+  PagoPrimaPendienteStep pagoPrimaPendienteStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -156,17 +157,17 @@ public class PagoSiniestroDefinition {
 
   @Y("^la póliza esta marcada como financiada, con prima pendiente por pagar$")
   public void verificarExistenciaPrimaPendiente() {
-    primaPendienteStep.verificarEstadoPrimaPendiente();
+    pagoPrimaPendienteStep.verificarEstadoPrimaPendiente();
   }
 
   @Entonces(
       "^en la transacción del pago deben generarse dos registros, uno con el valor de la prima pendiente$")
   public void verificarPagoPrimaPendiente() {
-    primaPendienteStep.verificarValorPagoPrimaPendiente();
+    pagoPrimaPendienteStep.verificarValorPagoPrimaPendiente();
   }
 
   @Y("^otro con el valor del pago menos la prima pendiente")
   public void verificarValorPago() {
-    primaPendienteStep.verificarValorPagoMenosPrimaPendiente();
+    pagoPrimaPendienteStep.verificarValorPagoMenosPrimaPendiente();
   }
 }

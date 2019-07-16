@@ -2,16 +2,17 @@ package com.sura.reclamaciones.steps.primapendiente;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.POLIZA;
 
-import com.sura.reclamaciones.pages.autos.reclamacion.PolizaGeneralPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.InformacionPolizaGeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
-public class PrimaPendienteStep {
+public class PagoPrimaPendienteStep {
 
-  @Page PolizaGeneralPage polizaGeneralPage;
+  @Page
+  InformacionPolizaGeneralPage informacionPolizaGeneralPage;
 
   @Page MenuClaimPage menuClaimPage;
 
@@ -23,7 +24,7 @@ public class PrimaPendienteStep {
 
   public void verificarEstadoPrimaPendiente() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(POLIZA);
-    valorPrimaPendiente = polizaGeneralPage.verificarEstadoPrimaPendiente();
+    valorPrimaPendiente = informacionPolizaGeneralPage.verificarEstadoPrimaPendiente();
   }
 
   public void verificarValorPagoPrimaPendiente() {

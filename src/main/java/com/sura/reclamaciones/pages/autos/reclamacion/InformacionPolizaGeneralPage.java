@@ -8,7 +8,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
-public class PolizaGeneralPage extends GeneralPage {
+public class InformacionPolizaGeneralPage extends GeneralPage {
 
   @FindBy(
     id =
@@ -16,7 +16,7 @@ public class PolizaGeneralPage extends GeneralPage {
   )
   private WebElementFacade lblValorPrimaPendiente;
 
-  public PolizaGeneralPage(WebDriver wdriver) {
+  public InformacionPolizaGeneralPage(WebDriver wdriver) {
     super(wdriver);
   }
 
