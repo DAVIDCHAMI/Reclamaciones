@@ -26,12 +26,19 @@ public class InformacionPagoStep {
   @Step
   // public void ingresarInformacionDetallePago(List<List<String>> codigoRetencion, int i, String tipoPago) {
   public void ingresarInformacionRetencion(List<List<String>> codigoRetencion, int i) {
+ //  int j=0;
     // for (PagoSiniestro retencion : lstPago) {
     //    introducirInformacionPagoPage.ingresarCodigoRetencion(
     //   codigoRetencion, CODIGO_RETENCION.getValor());
+    for (int j = 1; j < codigoRetencion.size(); j++) {
+      introducirInformacionPagoPage.agregarCodigoRetencion(codigoRetencion.get(i).get(j-1).trim());
+      introducirInformacionPagoPage.ingresarCantidadPago(CANTIDAD.getValor());
+      if (i < codigoRetencion.size()){
+        introducirInformacionPagoPage.agregarNuevaRetencion();
+        i++;
+      }
+    }
 
-    introducirInformacionPagoPage.agregarCodigoRetencion(codigoRetencion.get(i).get(0).trim());
-    introducirInformacionPagoPage.ingresarCantidadPago(CANTIDAD.getValor());
   }
 
   @Step

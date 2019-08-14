@@ -15,6 +15,7 @@ import org.openqa.selenium.WebElement;
 
 public class IntroducirInformacionPagoPage extends GeneralPage {
 
+  private static String strTipoPago;
   private Integer intCalculoVrReserva;
 
   @FindBy(
@@ -44,6 +45,10 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   @FindBy(xpath = "//textarea")
   private WebElementFacade txtComentarioPago;
 
+  @FindBy(id = "ext-gen3084")
+  private WebElementFacade txtPago;
+
+
   @FindBy(
     xpath =
         "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
@@ -53,6 +58,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   @FindBy(
     id =
         "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV_tb:Add-btnInnerEl"
+        //"NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV_tb:Add-btnEl"
   )
   private WebElementFacade btnAgregarRetencion;
 
@@ -127,15 +133,19 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   }
 
   public void ingresarCantidadPago(String strCantidadPago) {
-    //  calcularCantidadPago(strTipoPago);   String strTipoPago,
+      strTipoPago = "Parcial";
+    calcularCantidadPago(strTipoPago);
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, 1);
     elementoEncontrado.forEach(
         elemento -> {
           elemento.click();
+          //acá se revienta, que hace??
           evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%d')", intCalculoVrReserva));
-          txtComentarioPago.click();
+         // txtComentarioPago.click();
+         // txtPago.click();
+         // String valor = txtPago.getValue(intCalculoVrReserva);
         });
   }
 
@@ -145,8 +155,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   }
 
   public void agregarNuevaRetencion() {
-    btnAgregarRetencion.waitUntilClickable().click();
     realizarEsperaCarga();
+    btnAgregarRetencion.waitUntilClickable().click();
   }
 
   public void agregarCodigoRetencion(String strCodigoRetencion) {
@@ -159,6 +169,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
           lstCodigoRetencion.waitUntilVisible();
           lstCodigoRetencion
               .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
+            //  .findElement(xpath("//li[contains(text(),'" + strCodigoRetencion + "')]"))
               .click();
         });
     realizarEsperaCarga();

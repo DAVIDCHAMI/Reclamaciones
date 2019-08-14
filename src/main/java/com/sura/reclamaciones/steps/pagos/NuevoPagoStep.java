@@ -112,7 +112,7 @@ public class NuevoPagoStep {
     introducirInformacionPagoPage.ingresarComentario(lstPago.listIterator().next().getComentario());
     introducirInformacionPagoPage.ingresarCodigoRetencion(
         codigoRetencion, CODIGO_RETENCION.getValor());
-    //   introducirInformacionPagoPage.ingresarCantidadPago(tipoPago, CANTIDAD.getValor());
+     //   introducirInformacionPagoPage.ingresarCantidadPago(tipoPago, CANTIDAD.getValor());
   }
 
   @Step

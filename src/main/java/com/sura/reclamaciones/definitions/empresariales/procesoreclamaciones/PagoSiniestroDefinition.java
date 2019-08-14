@@ -182,11 +182,11 @@ public class PagoSiniestroDefinition {
   public void aplicarRetencion(DataTable codigoRetencion) {
     List<List<String>> retencion = codigoRetencion.raw();
     for (int i = 1; i < retencion.size(); i++) {
-      // informacionPagoStep.ingresarInformacionDetallePago(retencion, i);
-      informacionPagoStep.ingresarInformacionRetencion(retencion, i);
-      if (i <= retencion.size()) {
-        informacionPagoStep.agregarNuevoCodigoRetencion();
-      }
+       //informacionPagoStep.ingresarInformacionDetallePago(retencion, i);
+         informacionPagoStep.ingresarInformacionRetencion(retencion, i);
+ //     if (i <= retencion.size()) {
+  //      informacionPagoStep.agregarNuevoCodigoRetencion();
+   //  }
     }
   }
 
