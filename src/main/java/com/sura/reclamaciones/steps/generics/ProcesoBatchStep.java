@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.steps.generics;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.VOLVER_CLAIMCENTER_MENU;
+
 import com.sura.reclamaciones.pages.generics.ProcesoBatchPage;
 import org.fluentlenium.core.annotation.Page;
 
