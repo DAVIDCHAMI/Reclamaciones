@@ -11,7 +11,5 @@ public class BusquedaLibretaContactoStep {
   public void buscarContactoPagoMasivo(String tipoContacto, String nombreContacto) {
     busquedaLibretaContactoPage.seleccionarTipoContacto(tipoContacto);
     busquedaLibretaContactoPage.ingresarNombreContacto(nombreContacto);
-    busquedaLibretaContactoPage.buscarContacto();
-    busquedaLibretaContactoPage.buscarContactoPagoMasivo(nombreContacto);
   }
 }

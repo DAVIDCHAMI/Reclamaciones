@@ -31,13 +31,8 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
   )
   private WebElementFacade btnBuscarContacto;
 
-  @FindBy(id = "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV")
-  private WebElementFacade tblResultadoBusquedaContacto;
-
   @FindBy(id = "ext-gen")
   private WebElementFacade btnSeleccionarContactoPagoMasivo;
-
-  int posicionNombreContactoEncontrado, tamanoLista;
 
   public BusquedaLibretaContactoPage(WebDriver wdriver) {
     super(wdriver);
@@ -59,15 +54,5 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
     btnBuscarContacto.waitUntilPresent();
     btnBuscarContacto.waitUntilClickable();
     btnBuscarContacto.click();
-  }
-
-  public void buscarContactoPagoMasivo(String nombreContacto) {
-    final String RESULTADO_BUSQUEDA_CONTACTO = "Nombre";
-    List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(
-            tblResultadoBusquedaContacto,
-            RESULTADO_BUSQUEDA_CONTACTO,
-            Integer.parseInt(VALOR_CERO.getValor()));
-    tamanoLista = elementoEncontrado.size();
   }
 }
