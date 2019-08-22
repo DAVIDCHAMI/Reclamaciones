@@ -1,17 +1,13 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
-import static com.sura.reclamaciones.constantes.Posiciones.POSICION_COLUMNA_DOS;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_FACTURA_PAGO_MASIVO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PAGO_INDIVIDUAL;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class DetalleFacturaVolumenPage extends GeneralPage {
 
@@ -49,9 +45,6 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
         "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:InvoiceNumber-bodyEl"
   )
   private WebElementFacade lblNumeroFacturaPagoMasivo;
-
-  @FindBy(id = "EditBulkInvoiceDetail:BulkInvoiceDetailScreen:BulkInvoiceItemsLV")
-  private WebElementFacade tblNumeroPagoIndividual;
 
   @FindBy(
     id = "EditBulkInvoiceDetail:BulkInvoiceDetailScreen:BulkInvoiceDetailDV:InvoiceNumber-inputEl"
@@ -104,20 +97,5 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
     lblNumeroFacturaPagoMasivo.getText();
     Serenity.setSessionVariable(SESION_CC_NUMERO_FACTURA_PAGO_MASIVO.getValor())
         .to(lblNumeroFacturaPagoMasivo);
-  }
-
-  public void obtenerNumeroPagoIndividual() {
-    final String NUMERO_PAGO_INDIVIDUAL = "N.º de reclamación";
-    List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(
-            tblNumeroPagoIndividual,
-            NUMERO_PAGO_INDIVIDUAL,
-            Integer.parseInt(POSICION_COLUMNA_DOS.getValor()));
-    int tamanoLista = elementoEncontrado.size();
-    for (int i = 0; i <= tamanoLista - 1; i++) {
-      Serenity.setSessionVariable(SESION_CC_NUMERO_PAGO_INDIVIDUAL.getValor())
-          .to(elementoEncontrado.get(i).getText());
-      break;
-    }
   }
 }

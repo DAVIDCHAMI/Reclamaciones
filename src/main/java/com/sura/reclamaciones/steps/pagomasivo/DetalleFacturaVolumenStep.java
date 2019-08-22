@@ -25,9 +25,4 @@ public class DetalleFacturaVolumenStep {
     detalleFacturaVolumenPage.finalizarPagoMasivo();
     detalleFacturaVolumenPage.enviarPagoMasivo();
   }
-
-  @Step
-  public void obtenerNumeroPagoIndividual() {
-    detalleFacturaVolumenPage.obtenerNumeroPagoIndividual();
-  }
 }

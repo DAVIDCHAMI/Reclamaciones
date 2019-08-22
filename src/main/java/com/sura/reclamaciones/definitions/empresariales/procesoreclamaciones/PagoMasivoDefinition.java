@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
-
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
@@ -11,7 +9,6 @@ import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoMasivoDefinition {
@@ -38,7 +35,7 @@ public class PagoMasivoDefinition {
   public void ingresarInformacionFactura() {
     detalleSiniestroStep.consultarInformacionSiniestro();
     cargaArchivoPagoMasivoStep.cargarArchivoXls(
-            MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
+        MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
     resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }
@@ -56,10 +53,6 @@ public class PagoMasivoDefinition {
   @Entonces(
       "^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
   public void validarPagoMasivo() {
-    /*facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
-        MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
-    detalleFacturaVolumenStep.obtenerNumeroPagoIndividual();
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));*/
+    //ToDo
   }
 }
