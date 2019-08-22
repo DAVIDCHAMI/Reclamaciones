@@ -12,6 +12,6 @@ public class BusquedaLibretaContactoStep {
     busquedaLibretaContactoPage.seleccionarTipoContacto(tipoContacto);
     busquedaLibretaContactoPage.ingresarNombreContacto(nombreContacto);
     busquedaLibretaContactoPage.buscarContacto();
-    busquedaLibretaContactoPage.buscarContactoPagoMasivo(nombreContacto);
+    busquedaLibretaContactoPage.seleccionarContactoPagoMasivo(nombreContacto);
   }
 }

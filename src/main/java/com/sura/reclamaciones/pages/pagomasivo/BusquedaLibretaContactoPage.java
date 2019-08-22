@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+import static com.sura.reclamaciones.constantes.Posiciones.POSICION_COLUMNA_MENOS_DOS;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
@@ -61,13 +62,9 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
     btnBuscarContacto.click();
   }
 
-  public void buscarContactoPagoMasivo(String nombreContacto) {
+  public void seleccionarContactoPagoMasivo(String nombreContacto) {
     final String RESULTADO_BUSQUEDA_CONTACTO = "Nombre";
-    List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(
-            tblResultadoBusquedaContacto,
-            RESULTADO_BUSQUEDA_CONTACTO,
-            Integer.parseInt(VALOR_CERO.getValor()));
-    tamanoLista = elementoEncontrado.size();
+    List<WebElement> elementoEncontrado = obtenerElementoTablaDatoDesconocido(tblResultadoBusquedaContacto, RESULTADO_BUSQUEDA_CONTACTO, Integer.parseInt(POSICION_COLUMNA_MENOS_DOS.getValor()));
+    elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
   }
 }
