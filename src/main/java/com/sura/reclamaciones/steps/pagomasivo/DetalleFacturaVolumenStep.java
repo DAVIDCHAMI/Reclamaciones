@@ -8,20 +8,11 @@ public class DetalleFacturaVolumenStep {
 
   @Page DetalleFacturaVolumenPage detalleFacturaVolumenPage;
 
-  @Page ProcesoBatchPage procesoBatchPage;
-
   @Step
   public void ingresarInformacionFactura(String tipoMoneda, String metodoPago) {
     detalleFacturaVolumenPage.seleccionarTipoMoneda(tipoMoneda);
     detalleFacturaVolumenPage.seleccionarMetodoPago(metodoPago);
     detalleFacturaVolumenPage.buscarBeneficiario();
     detalleFacturaVolumenPage.buscarBeneficiarioPago();
-  }
-
-  @Step
-  public void crearPagoMasivo() {
-    detalleFacturaVolumenPage.obtenerNumeroFacturaPagoMasivo();
-    detalleFacturaVolumenPage.finalizarPagoMasivo();
-    detalleFacturaVolumenPage.enviarPagoMasivo();
   }
 }
