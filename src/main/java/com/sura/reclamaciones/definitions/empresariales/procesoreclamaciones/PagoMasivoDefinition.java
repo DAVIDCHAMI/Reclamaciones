@@ -21,9 +21,7 @@ public class PagoMasivoDefinition {
   @Steps ResultadoArchivoProcesadoStep resultadoArchivoProcesadoStep;
 
   @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
-
-  @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
-
+  
   @Steps FacturaVolumenStep facturaVolumenStep;
 
   @Steps MenuClaimsStep menuClaimsStep;
@@ -42,7 +40,6 @@ public class PagoMasivoDefinition {
   public void crearPagoMasivo(
       String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
     detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
-    busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
   }
 
   @Entonces(
