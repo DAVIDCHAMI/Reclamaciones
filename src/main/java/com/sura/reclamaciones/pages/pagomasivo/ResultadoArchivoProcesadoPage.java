@@ -28,7 +28,6 @@ public class ResultadoArchivoProcesadoPage extends GeneralPage {
             Integer.parseInt(POSICION_FILA.getValor()));
     int tamanoLista = elementoEncontrado.size();
     String resultadoValidacionArchivoXls = "Sí";
-
     for (int i = 0; i <= tamanoLista - 1; i++) {
       MatcherAssert.assertThat(
           "El archivo Xls no cumple con las validaciones del sistema",
