@@ -21,7 +21,7 @@ public class PagoMasivoDefinition {
   @Steps ResultadoArchivoProcesadoStep resultadoArchivoProcesadoStep;
 
   @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
-  
+
   @Steps FacturaVolumenStep facturaVolumenStep;
 
   @Steps MenuClaimsStep menuClaimsStep;
