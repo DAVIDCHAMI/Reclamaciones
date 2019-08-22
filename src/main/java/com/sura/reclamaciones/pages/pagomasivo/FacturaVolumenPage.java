@@ -28,7 +28,7 @@ public class FacturaVolumenPage extends GeneralPage {
   }
 
   public void buscarNumeroFacturaPagoMasivo() {
-    String SESION_CC_NUMERO_FACTURA_PAGO_MASIVO = "0000001336";
+    String SESION_CC_NUMERO_FACTURA_PAGO_MASIVO = "0000001400";
     final String NUMERO_FACTURA = "N.º de factura";
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(

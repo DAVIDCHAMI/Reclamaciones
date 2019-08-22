@@ -1,7 +1,9 @@
 package com.sura.reclamaciones.steps.generics;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.VOLVER_CLAIMCENTER_MENU;
-
+import static com.sura.reclamaciones.constantes.NombreProcesoBatch.ENVIO_FACTURA_VOLUMEN;
+import static com.sura.reclamaciones.constantes.NombreProcesoBatch.MONITOR_FLUJO_TRABAJO_FACTURA_VOLUMEN;
+import static com.sura.reclamaciones.constantes.NombreProcesoBatch.TRANSFERENCIA_FACTURA_VOLUMEN;
 import com.sura.reclamaciones.pages.generics.ProcesoBatchPage;
 import org.fluentlenium.core.annotation.Page;
 

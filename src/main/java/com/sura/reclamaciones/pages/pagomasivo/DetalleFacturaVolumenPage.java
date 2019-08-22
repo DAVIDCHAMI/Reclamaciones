@@ -107,7 +107,7 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
   }
 
   public void obtenerNumeroPagoIndividual() {
-    final String NUMERO_PAGO_INDIVIDUAL = "N.º de reclamación";
+    final String NUMERO_PAGO_INDIVIDUAL = "N.º de pago";
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
             tblNumeroPagoIndividual,
