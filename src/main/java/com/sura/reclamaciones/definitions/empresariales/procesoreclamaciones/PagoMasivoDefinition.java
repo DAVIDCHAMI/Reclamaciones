@@ -3,7 +3,6 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
-import com.sura.reclamaciones.steps.generics.ProcesoBatchStep;
 import com.sura.reclamaciones.steps.pagomasivo.*;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
@@ -24,9 +23,7 @@ public class PagoMasivoDefinition {
   @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
 
   @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
-
-  @Steps ProcesoBatchStep procesoBatchStep;
-
+  
   @Steps FacturaVolumenStep facturaVolumenStep;
 
   @Steps MenuClaimsStep menuClaimsStep;
@@ -47,7 +44,6 @@ public class PagoMasivoDefinition {
     /*detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
     detalleFacturaVolumenStep.crearPagoMasivo();*/
-    //procesoBatchStep.ejecutarProcesoBatch();
   }
 
   @Entonces(
