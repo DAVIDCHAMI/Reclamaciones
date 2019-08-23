@@ -11,6 +11,8 @@ public class PagoSiniestro extends Transacciones {
   private String comentario;
   private String numeroFactura;
   private String tipoDireccion;
+  private String limiteInferiorPagoAutomatico;
+  private String limiteSuperiorPagoAutomatico;
 
   public PagoSiniestro() {
     super();
@@ -22,6 +24,8 @@ public class PagoSiniestro extends Transacciones {
     this.comentario = datosPagosEmpresariales.get("comentario");
     this.numeroFactura = datosPagosEmpresariales.get("numeroFactura");
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
+    this.limiteInferiorPagoAutomatico = datosPagosEmpresariales.get("limiteInferiorPagoAutomatico");
+    this.limiteSuperiorPagoAutomatico = datosPagosEmpresariales.get("limiteSuperiorPagoAutomatico");
   }
 
   public PagoSiniestro(List<Map<String, String>> datosPagosEmpresariales) {
@@ -42,6 +46,14 @@ public class PagoSiniestro extends Transacciones {
 
   public String getTipoDireccion() {
     return tipoDireccion;
+  }
+
+  public String getLimiteInferiorPagoAutomatico() {
+    return limiteInferiorPagoAutomatico;
+  }
+
+  public String getLimiteSuperiorPagoAutomatico() {
+    return limiteSuperiorPagoAutomatico;
   }
 
   public List<PagoSiniestro> getLstPago() {

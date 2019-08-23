@@ -45,7 +45,6 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva 1                        |Línea de Reserva 2                    | Tipo de pago  | Beneficiario del pago            | Método de Pago | Código de retención pago |Cobertura          |Pago Solo Sura|
       | Perdida total Daños pago por en EFECTIVO  |Gastos de Transporte                  | Final         |SOFIA JARAMILLO                   |Pago por banco  | 0099                     |Perdida total Daños|No            |
 
-
   @pagoReservaAutos
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos
