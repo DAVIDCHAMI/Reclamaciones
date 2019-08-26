@@ -64,7 +64,11 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
 
   public void seleccionarContactoPagoMasivo(String nombreContacto) {
     final String RESULTADO_BUSQUEDA_CONTACTO = "Nombre";
-    List<WebElement> elementoEncontrado = obtenerElementoTablaDatoDesconocido(tblResultadoBusquedaContacto, RESULTADO_BUSQUEDA_CONTACTO, Integer.parseInt(POSICION_COLUMNA_MENOS_DOS.getValor()));
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaDatoDesconocido(
+            tblResultadoBusquedaContacto,
+            RESULTADO_BUSQUEDA_CONTACTO,
+            Integer.parseInt(POSICION_COLUMNA_MENOS_DOS.getValor()));
     elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
   }
 }

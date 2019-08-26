@@ -34,6 +34,8 @@ public class PagoMasivoDefinition {
 
   @Steps MenuClaimsStep menuClaimsStep;
 
+  @Steps DatoFinancieroPagoStep datoFinancieroPagoStep;
+
   @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
   public void ingresarInformacionFactura() {
     /*detalleSiniestroStep.consultarInformacionSiniestro();
@@ -58,8 +60,11 @@ public class PagoMasivoDefinition {
   public void validarPagoMasivo() {
     facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
-    detalleFacturaVolumenStep.obtenerNumeroPagoIndividual();
+    detalleFacturaVolumenStep.validarPagoMasivo();
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
+    datoFinancieroPagoStep.validarPagosIndividuales(
+        MenuConstante.DATOS_FINANCIEROS, MenuConstante.PAGOS);
+    detalleFacturaVolumenStep.validarPagosIndividualesSiniestro();
   }
 }

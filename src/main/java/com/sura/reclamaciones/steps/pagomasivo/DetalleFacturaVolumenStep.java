@@ -27,7 +27,15 @@ public class DetalleFacturaVolumenStep {
   }
 
   @Step
-  public void obtenerNumeroPagoIndividual() {
+  public void validarPagoMasivo() {
+    detalleFacturaVolumenPage.validarEstadoPagoMasivo();
     detalleFacturaVolumenPage.obtenerNumeroPagoIndividual();
   }
+
+  public void validarPagosIndividualesSiniestro()
+  {
+    detalleFacturaVolumenPage.validarPagosIndividualesSiniestro();
+  }
+
+
 }

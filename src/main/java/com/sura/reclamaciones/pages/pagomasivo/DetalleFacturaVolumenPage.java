@@ -1,22 +1,17 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
-import static com.sura.reclamaciones.constantes.Posiciones.POSICION_COLUMNA_DOS;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_FACTURA_PAGO_MASIVO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PAGO_INDIVIDUAL;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
-
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.hamcrest.MatcherAssert;
-import org.jruby.RubyProcess;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -64,6 +59,12 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
     id = "EditBulkInvoiceDetail:BulkInvoiceDetailScreen:BulkInvoiceDetailDV:InvoiceNumber-inputEl"
   )
   private WebElementFacade lblNumeroFactura;
+
+  @FindBy(id = "EditBulkInvoiceDetail:BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Status-bodyEl")
+  private WebElementFacade lblEstadoPagoMasivo;
+
+  @FindBy(xpath= ".//div[@class='x-panel x-panel-default x-grid']")
+  private WebElementFacade tblPagoIndividual;
 
   public DetalleFacturaVolumenPage(WebDriver wdriver) {
     super(wdriver);
@@ -113,17 +114,52 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
         .to(lblNumeroFacturaPagoMasivo);
   }
 
-  public List<String>  obtenerNumeroPagoIndividual() {
+  public void validarEstadoPagoMasivo() {
+    String estadoPagoMasivo = "Solicitando";
+    MatcherAssert.assertThat(
+        "El número de registros de la pantalla no es igual al número de registros del archivo XLS",
+        (estadoPagoMasivo.equals(lblEstadoPagoMasivo.getText())));
+  }
+
+  public List<String> obtenerNumeroPagoIndividual() {
     List<String> numeroPagosIndividuales = new ArrayList<String>();
     final String NUMERO_PAGO_INDIVIDUAL = "N.° de pago";
-    List<WebElement> elementoEncontrado = obtenerElementoTablaDatoDesconocido(tblNumeroPagoIndividual, NUMERO_PAGO_INDIVIDUAL, Integer.parseInt(POSICION_FILA.getValor()));
+    List<WebElement> elementoEncontrado =
+        obtenerElementoTablaDatoDesconocido(
+            tblNumeroPagoIndividual,
+            NUMERO_PAGO_INDIVIDUAL,
+            Integer.parseInt(POSICION_FILA.getValor()));
     int tamanoLista = elementoEncontrado.size();
     for (int i = 0; i <= tamanoLista - 1; i++) {
       numeroPagosIndividuales.add(i, elementoEncontrado.get(i).getText());
-      System.out.println(elementoEncontrado.get(i).getText());
     }
+
+    Collections.sort(numeroPagosIndividuales);
+
     return numeroPagosIndividuales;
   }
+
+  public void validarPagosIndividualesSiniestro()
+  {
+    final String RESULTADO_PAGO_INDIVIDUAL = "Número de pago";
+    List<WebElement> elementoEncontrado = obtenerElementoTablaDatoDesconocido(tblPagoIndividual, RESULTADO_PAGO_INDIVIDUAL, Integer.parseInt(POSICION_FILA.getValor()));
+
+    for (int i = 0; i <= elementoEncontrado.size() - 1; i++)
+    {
+      for(int j=0; j<=1;j ++)
+      {
+        if (elementoEncontrado.get(i).getText().equals(obtenerNumeroPagoIndividual().get(j)))
+        {
+          System.out.println(elementoEncontrado.get(i).getText());
+          System.out.println(obtenerNumeroPagoIndividual().get(j));
+
+        }
+
+
+      }
+
+
+
+    }
+  }
 }
-
-
