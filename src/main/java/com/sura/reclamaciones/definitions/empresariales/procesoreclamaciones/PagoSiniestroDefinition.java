@@ -180,14 +180,15 @@ public class PagoSiniestroDefinition {
 
   @Cuando("^apliquen las siguientes retenciones$")
   public void aplicarRetencion(DataTable codigoRetencion) {
-    List<List<String>> retencion = codigoRetencion.raw();
-    for (int i = 1; i < retencion.size(); i++) {
+    //List<List<String>> retencion = codigoRetencion.raw();
+    List<String> retencion = codigoRetencion.asList(String.class);
+   // for (int i = 1; i < retencion.size(); i++) {
        //informacionPagoStep.ingresarInformacionDetallePago(retencion, i);
-         informacionPagoStep.ingresarInformacionRetencion(retencion, i);
+         informacionPagoStep.ingresarInformacionRetencion(retencion);
  //     if (i <= retencion.size()) {
   //      informacionPagoStep.agregarNuevoCodigoRetencion();
    //  }
-    }
+
   }
 
   @Cuando("^se genere un pago(.*)$")

@@ -25,26 +25,31 @@ public class InformacionPagoStep {
 
   @Step
   // public void ingresarInformacionDetallePago(List<List<String>> codigoRetencion, int i, String tipoPago) {
-  public void ingresarInformacionRetencion(List<List<String>> codigoRetencion, int i) {
+  //public void ingresarInformacionRetencion(List<List<String>> codigoRetencion) {
+    public void ingresarInformacionRetencion(List<String> codigoRetencion) {
+    for (int i = 1; i < codigoRetencion.size(); i++) {
  //  int j=0;
     // for (PagoSiniestro retencion : lstPago) {
     //    introducirInformacionPagoPage.ingresarCodigoRetencion(
     //   codigoRetencion, CODIGO_RETENCION.getValor());
-    for (int j = 1; j < codigoRetencion.size(); j++) {
-      introducirInformacionPagoPage.agregarCodigoRetencion(codigoRetencion.get(i).get(j-1).trim());
-      introducirInformacionPagoPage.ingresarCantidadPago(CANTIDAD.getValor());
+   //7 for (int j = 1; j < codigoRetencion.size(); j++) {
+    //  introducirInformacionPagoPage.agregarCodigoRetencion(codigoRetencion.get(i).get(i-1).trim(), i);
+      introducirInformacionPagoPage.agregarCodigoRetencion(codigoRetencion.get(i), i);
+      //introducirInformacionPagoPage.agregarCodigoRetencion(codigoRetencion.get(i).get(0).trim(), i);
+      introducirInformacionPagoPage.ingresarCantidadPago(CANTIDAD.getValor(), i);
       if (i < codigoRetencion.size()){
         introducirInformacionPagoPage.agregarNuevaRetencion();
-        i++;
+        //i++;
       }
-    }
+//    }
 
+  }
   }
 
   @Step
   public void ingresarInformacionCantidadPago(String tipoPago) {
 
-    introducirInformacionPagoPage.ingresarCantidadPago(CANTIDAD.getValor());
+ //   introducirInformacionPagoPage.ingresarCantidadPago(CANTIDAD.getValor());
   }
 
   @Step

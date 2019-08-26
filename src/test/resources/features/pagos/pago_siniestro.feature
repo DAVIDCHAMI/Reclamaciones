@@ -86,7 +86,7 @@ Característica: Realizar pago de un siniestro
     Y apliquen las siguientes retenciones
     |dddd|
     |028   |
-    |099   |
+    |023   |
     |010   |
     Y se genere un pago <Tipo de pago>
     Entonces se genera una orden de pago para que le sea entregado al usuario
