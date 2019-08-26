@@ -49,8 +49,8 @@ public class PagoMasivoDefinition {
       String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
     /*detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
-    detalleFacturaVolumenStep.crearPagoMasivo();*/
-    procesoBatchStep.ejecutarProcesoBatch();
+    detalleFacturaVolumenStep.crearPagoMasivo();
+    procesoBatchStep.ejecutarProcesoBatch();*/
   }
 
   @Entonces(
