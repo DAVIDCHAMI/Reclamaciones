@@ -49,18 +49,18 @@ public class PagoAutomaticoSiniestroDefinition {
         informacionReclamacionStep.diligenciarInformacionReclamacion(causa, valorPretension, tipoIncidente);
     }
 
-    @Entonces("^se genera una reclamación con exposición automática <Tipo de Exposición>$")
-    public void verificarGeneracionExposicionAutomatica() throws Throwable {
+    @Entonces("^se genera una reclamación con exposición automática (.*)$")
+    public void verificarGeneracionExposicionAutomatica(String tipoExposicion) throws Throwable {
         //TO DO
     }
 
-    @Y("^una reserva automática con un monto de <Valor Reserva>$")
-    public void verificarGeneracionReservaAutomatica() throws Throwable {
+    @Y("^una reserva automática con un monto de (.*)$")
+    public void verificarGeneracionReservaAutomatica(String montoReserva) throws Throwable {
         //TO DO
     }
 
-    @Y("^un pago automático con un monto de <Valor Pago>$")
-    public void verificarGeneracionPagoAutomatico() throws Throwable {
+    @Y("^un pago automático con un monto de (.*)$")
+    public void verificarGeneracionPagoAutomatico(String montoPago) throws Throwable {
         //TO DO
     }
 }
