@@ -6,9 +6,11 @@ import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
+import cucumber.api.java.es.Y;
 import net.thucydides.core.annotations.Steps;
 
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
@@ -27,6 +29,9 @@ public class PagoAutomaticoSiniestroDefinition {
     @Steps
     InformacionBasicaStep informacionBasicaStep;
 
+    @Steps
+    InformacionReclamacionStep informacionReclamacionStep;
+
     @Dado("^que se tiene una póliza del producto (.*)$")
     public void obtenerPoliza(String producto) throws Exception {
         reclamacionEmpresarial =
@@ -39,14 +44,23 @@ public class PagoAutomaticoSiniestroDefinition {
 
     @Cuando("^se realiza un siniestro por causa (.*) con valor de pretensión (.*) e incidente (.*)$")
     public void realizarSiniestro(String causa, String valorPretension, String tipoIncidente) throws Exception {
-        informacionBasicaStep.diligenciarInformacionPersonal(
+        informacionBasicaStep.diligenciarInformacionBasica(
                 reclamacionEmpresarial.getLstReclamo());
+        informacionReclamacionStep.diligenciarInformacionReclamacion(causa, valorPretension, tipoIncidente);
+    }
+
+    @Entonces("^se genera una reclamación con exposición automática <Tipo de Exposición>$")
+    public void verificarGeneracionExposicionAutomatica() throws Throwable {
         //TO DO
     }
 
-    @Entonces("^se genera una exposición automática, una reserva automática y un pago automático$")
-    public void verificarGeneracionPagoAutomatico() throws Exception {
+    @Y("^una reserva automática con un monto de <Valor Reserva>$")
+    public void verificarGeneracionReservaAutomatica() throws Throwable {
         //TO DO
     }
 
+    @Y("^un pago automático con un monto de <Valor Pago>$")
+    public void verificarGeneracionPagoAutomatico() throws Throwable {
+        //TO DO
+    }
 }

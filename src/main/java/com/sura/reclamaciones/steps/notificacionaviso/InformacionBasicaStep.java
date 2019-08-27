@@ -11,7 +11,7 @@ public class InformacionBasicaStep {
     @Page
     InformacionBasicaPage informacionBasicaPage;
 
-    public void diligenciarInformacionPersonal(List<ReclamacionEmpresarial> datosAutor) {
+    public void diligenciarInformacionBasica(List<ReclamacionEmpresarial> datosAutor) {
         datosAutor.forEach(
                 autor -> {
                     informacionBasicaPage.seleccionarAutorReporte();

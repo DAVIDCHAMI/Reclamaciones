@@ -10,8 +10,10 @@ Característica: Generación de pago automático en un siniestro
   Esquema del escenario: Crear Pago automático
     Dado que se tiene una póliza del producto <producto>
     Cuando se realiza un siniestro por causa <Causa> con valor de pretensión <Valor de Pretensión> e incidente <Tipo de incidente>
-    Entonces se genera una exposición automática, una reserva automática y un pago automático
+    Entonces se genera una reclamación con exposición automática <Tipo de Exposición>
+    Y una reserva automática con un monto de <Valor Reserva>
+    Y un pago automático con un monto de <Valor Pago>
 
     Ejemplos:
-      | producto                                  | Causa    | Valor de Pretensión | Tipo de incidente |
-      | Multiriesgo Corporativo pago automático 1 | Incendio | 4000000             | Propiedad         |
+      | producto                                  | Causa    | Valor de Pretensión | Tipo de incidente | Tipo de Exposición | Valor Reserva | Valor Pago |
+      | Multiriesgo Corporativo pago automático 1 | Incendio | 4000000             | Propiedad         | Propiedad          | $4.000.000    | $2.343.768 |
