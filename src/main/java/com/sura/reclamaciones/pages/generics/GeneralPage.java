@@ -227,7 +227,6 @@ public class GeneralPage extends PageObject {
         .collect(Collectors.toList());
   }
 
-
   public List<WebElement> obtenerElementoTablaDatoDesconocidoMultiple(
       WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
     List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
@@ -236,11 +235,9 @@ public class GeneralPage extends PageObject {
     return elementoEncontrado
         .stream()
         .map(
-            fila -> fila.findElement(By.xpath(String.format("./td[%d]/div", posicionColumna))))
+            fila -> fila.findElement(By.xpath(String.format("./tr["+posicionFila+"]/td["+posicionColumna+"]/div"))))
         .collect(Collectors.toList());
   }
-
-
 
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();

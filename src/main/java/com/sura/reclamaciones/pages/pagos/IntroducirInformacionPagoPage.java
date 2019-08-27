@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.pagos;
 
+import static com.sura.reclamaciones.constantes.Constantes.CERO;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
@@ -59,15 +60,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
 
   @FindBy(
     xpath =
-      //  ".//span[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV_tb:Add-btnEl']"
       "//div[@id='centerPanel']//div[@id='NormalCreateCheckWizard/NewCheckPayments']//*[contains(text(),'Agregar')]"
-     // "//div[@id='gpaging-1459-targetEl']//span[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV_tb:Add-btnInnerEl']"
-
-      //"//span[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV_tb:Add-btnWrap']//parent::a"
-      //  id =
-        //"NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV_tb:Add"
-        //"NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV_tb:Add-btnInnerEl"
-       // "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV_tb:Add-btnEl"
   )
   private WebElementFacade btnAgregarRetencion;
 
@@ -146,22 +139,9 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     calcularCantidadPago(strTipoPago);
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocidoMultiple(tblElementoLinea, strCantidadPago, posicionCalculo);
-    int ubicaFilaCodigo = elementoEncontrado.size();
-    elementoEncontrado.get(posicionCalculo-1).click();
-   // elementoEncontrado.forEach(
-     //   elemento -> {
-        //  WebElement calculoReserva = elementoEncontrado.get(ubicaFilaCodigo);
-        // calculoReserva.click();
-        // calculoReserva.sendKeys("600000");
-    // elemento.click();
-          //acá se revienta, que hace??
+    elementoEncontrado.get(Integer.parseInt(CERO.getValor())).click();
          evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
-        //  elemento.click();
-         // txtComentarioPago.click();
-         // txtPago.click();
-         // String valor = txtPago.getValue(intCalculoVrReserva);
-
   }
 
   public void agregarNuevoPago() {
@@ -171,18 +151,9 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
 
   public void agregarNuevaRetencion() {
     realizarEsperaCarga();
-
- //   if (btnAgregarRetencion.isPresent()) {
-  //    realizarEsperaCarga();
-   //   btnAgregarRetencion.waitUntilClickable().click();
-
-      Actions actions = new Actions(driver);
-      actions.moveToElement(btnAgregarRetencion).click().build().perform();
-      btnAgregarRetencion.click();
-
-  //  btnAgregarRetencion.waitUntilClickable().click();
-   // realizarEsperaCarga();
-   // btnAgregarRetencion.click();
+    Actions actions = new Actions(driver);
+    actions.moveToElement(btnAgregarRetencion).click().build().perform();
+    btnAgregarRetencion.click();
   }
 
   public void agregarCodigoRetencion(String strCodigoRetencion, int posicion) {
@@ -190,12 +161,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
         obtenerElementoTablaDatoDesconocidoMultiple(tblElementoLinea, CODIGO_RETENCION.getValor(), posicion);
     elementoEncontrado.forEach(
         elemento -> {
-          elementoEncontrado.get(posicion-1).click();
+          elementoEncontrado.get(Integer.parseInt(CERO.getValor())).click();
           lstCodigoRetencion.waitUntilVisible();
           lstCodigoRetencion
               .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
               .click();
         });
-  //  realizarEsperaCarga();
   }
 }
