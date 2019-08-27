@@ -5,14 +5,14 @@ import org.fluentlenium.core.annotation.Page;
 
 public class InformacionReclamacionStep {
 
-    @Page
-    InformacionReclamacionPage informacionReclamacionPage;
+  @Page InformacionReclamacionPage informacionReclamacionPage;
 
-    public void diligenciarInformacionReclamacion(String causa, String valorPretension, String tipoIncidente) {
-        informacionReclamacionPage.cerrarReclamosDuplicados();
-        informacionReclamacionPage.seleccionarCausaSiniestro(causa);
-        informacionReclamacionPage.escribirValorPretension(valorPretension);
-        informacionReclamacionPage.seleccionarTipoIncidente(tipoIncidente);
-        informacionReclamacionPage.finalizarSiniestro();
-    }
+  public void diligenciarInformacionReclamacion(
+      String causa, String valorPretension, String tipoIncidente) {
+    informacionReclamacionPage.cerrarReclamosDuplicados();
+    informacionReclamacionPage.seleccionarCausaSiniestro(causa);
+    informacionReclamacionPage.escribirValorPretension(valorPretension);
+    informacionReclamacionPage.seleccionarTipoIncidente(tipoIncidente);
+    informacionReclamacionPage.finalizarSiniestro();
+  }
 }
