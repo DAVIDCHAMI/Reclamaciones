@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.utils;
 
 public enum VariablesSesion {
+  SESION_CC_CANTIDAD_PAGO_INDIVIDUAL("CantidadPagoIndividual"),
   SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO("conductor_afectado_siniestro"),
   SESION_CC_FECHA_FIN_VIGENCIA("fecha_fin_vigencia"),
   SESION_CC_FECHA_INICIO_VIGENCIA("fecha_inicio_vigencia"),

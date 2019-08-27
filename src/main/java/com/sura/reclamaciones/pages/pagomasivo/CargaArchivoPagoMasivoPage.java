@@ -16,6 +16,9 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
   )
   private WebElementFacade btnExaminar;
 
+  @FindBy(xpath = "//*[contains(@ClassName,msctls_progress32') and contains(@LocalizedControlType,'barra indicadora de progreso')]")
+  private WebElementFacade txtDireccionDocumento;
+
   public CargaArchivoPagoMasivoPage(WebDriver wdriver) {
     super(wdriver);
   }
@@ -24,4 +27,21 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
     btnFacturacionMasiva.waitUntilClickable();
     btnFacturacionMasiva.click();
   }
+
+  public void buscarArchivoPagoMasivo() {
+    btnExaminar.waitUntilPresent();
+    btnExaminar.waitUntilClickable();
+    btnExaminar.click();
+  }
+
+  public void ingresarDireccionArchivo()
+  {
+    //txtDireccionDocumento.waitUntilPresent();
+    txtDireccionDocumento.click();
+    txtDireccionDocumento.sendKeys("hola");
+  }
+
+
+
+
 }

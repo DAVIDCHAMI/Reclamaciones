@@ -18,6 +18,8 @@ public class CargaArchivoPagoMasivoStep {
   public void cargarArchivoXls(String nombreOpcion, String subItem) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     cargaArchivoPagoMasivoPage.generarFacturacionMasiva();
-    generalPage.continuarSiguientePantalla();
+    cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo();
+    cargaArchivoPagoMasivoPage.ingresarDireccionArchivo();
+    //generalPage.continuarSiguientePantalla();
   }
 }

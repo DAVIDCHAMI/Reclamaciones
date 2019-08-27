@@ -31,11 +31,4 @@ public class DetalleFacturaVolumenStep {
     detalleFacturaVolumenPage.validarEstadoPagoMasivo();
     detalleFacturaVolumenPage.obtenerNumeroPagoIndividual();
   }
-
-  public void validarPagosIndividualesSiniestro()
-  {
-    detalleFacturaVolumenPage.validarPagosIndividualesSiniestro();
-  }
-
-
 }

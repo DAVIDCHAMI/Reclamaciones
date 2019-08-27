@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
-
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
@@ -38,11 +37,11 @@ public class PagoMasivoDefinition {
 
   @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
   public void ingresarInformacionFactura() {
-    /*detalleSiniestroStep.consultarInformacionSiniestro();
+    detalleSiniestroStep.consultarInformacionSiniestro();
     cargaArchivoPagoMasivoStep.cargarArchivoXls(
             MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
-    resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
-    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();*/
+    //resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
+    //resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }
 
   @Cuando(
@@ -58,13 +57,12 @@ public class PagoMasivoDefinition {
   @Entonces(
       "^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
   public void validarPagoMasivo() {
-    facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
+    /*facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     detalleFacturaVolumenStep.validarPagoMasivo();
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
     datoFinancieroPagoStep.validarPagosIndividuales(
-        MenuConstante.DATOS_FINANCIEROS, MenuConstante.PAGOS);
-    detalleFacturaVolumenStep.validarPagosIndividualesSiniestro();
+        MenuConstante.DATOS_FINANCIEROS, MenuConstante.PAGOS);*/
   }
 }
