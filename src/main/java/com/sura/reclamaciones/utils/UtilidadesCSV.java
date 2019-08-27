@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.utils;
 
-import com.sura.reclamaciones.constantes.Constantes;
+import com.sura.reclamaciones.constantes.NombresCsv;
 import net.thucydides.core.steps.stepdata.CSVTestDataSource;
 import net.thucydides.core.steps.stepdata.TestDataSource;
 
@@ -53,7 +53,7 @@ public final class UtilidadesCSV {
     }
 
     public static String obtenerDatoContenidoCSV(
-            Constantes nomDiccionarioCSV,
+            NombresCsv nomDiccionarioCSV,
             String nomColumnaPivote,
             String valorColumnaPivote,
             String nomColumnaRetornar)

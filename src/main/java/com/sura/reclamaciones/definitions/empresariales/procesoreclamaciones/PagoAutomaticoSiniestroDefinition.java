@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.constantes.NombresCsv;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
@@ -27,7 +28,7 @@ public class PagoAutomaticoSiniestroDefinition {
     public void obtenerPoliza(String producto) throws Exception {
         reclamacionEmpresarial =
                 new ReclamacionEmpresarial(
-                        obtenerDatosPrueba(ReclamacionConstante.RECLAMACION_EMPRESARIAL, producto));
+                        obtenerDatosPrueba(NombresCsv.RECLAMACION_EMPRESARIAL.getValor(), producto));
         menuClaimsStep.seleccionarOpcionMenuSegundoNivel(
                 MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
         buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
