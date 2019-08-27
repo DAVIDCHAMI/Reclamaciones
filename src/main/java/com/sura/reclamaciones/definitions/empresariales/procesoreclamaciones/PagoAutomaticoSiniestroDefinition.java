@@ -2,10 +2,10 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.NombresCsv;
-import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -24,6 +24,9 @@ public class PagoAutomaticoSiniestroDefinition {
     @Steps
     BuscarPolizaStep buscarPolizaStep;
 
+    @Steps
+    InformacionBasicaStep informacionBasicaStep;
+
     @Dado("^que se tiene una póliza del producto (.*)$")
     public void obtenerPoliza(String producto) throws Exception {
         reclamacionEmpresarial =
@@ -35,7 +38,9 @@ public class PagoAutomaticoSiniestroDefinition {
     }
 
     @Cuando("^se realiza un siniestro por causa (.*) con valor de pretensión (.*) e incidente (.*)$")
-    public void realizarSiniestro(String causa, String valorPretension) throws Exception {
+    public void realizarSiniestro(String causa, String valorPretension, String tipoIncidente) throws Exception {
+        informacionBasicaStep.diligenciarInformacionPersonal(
+                reclamacionEmpresarial.getLstReclamo());
         //TO DO
     }
 
