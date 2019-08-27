@@ -16,8 +16,10 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
   )
   private WebElementFacade btnExaminar;
 
-  @FindBy(xpath = "//*[contains(@ClassName,msctls_progress32') and contains(@LocalizedControlType,'barra indicadora de progreso')]")
-  private WebElementFacade txtDireccionDocumento;
+  @FindBy(xpath = "//*[contains(@ClassName,'Breadcrumb Parent')]")
+  WebElementFacade txtDireccionDocumento;
+
+  //@FindBy(xpath = "//*[contains(@ClassName,'Breadcrumb Parent') and contains(@ClassName,'JWBMPBUT')]")
 
   public CargaArchivoPagoMasivoPage(WebDriver wdriver) {
     super(wdriver);
@@ -34,12 +36,7 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
     btnExaminar.click();
   }
 
-  public void ingresarDireccionArchivo()
-  {
-    //txtDireccionDocumento.waitUntilPresent();
-    txtDireccionDocumento.click();
-    txtDireccionDocumento.sendKeys("hola");
-  }
+
 
 
 

@@ -19,7 +19,7 @@ public class CargaArchivoPagoMasivoStep {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     cargaArchivoPagoMasivoPage.generarFacturacionMasiva();
     cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo();
-    cargaArchivoPagoMasivoPage.ingresarDireccionArchivo();
+    //cargaArchivoPagoMasivoPage.ingresarDireccionArchivo();
     //generalPage.continuarSiguientePantalla();
   }
 }

@@ -1,19 +1,35 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
+import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.generics.ProcesoBatchStep;
 import com.sura.reclamaciones.steps.pagomasivo.*;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
+import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
+import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
+import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+
+import java.io.IOException;
 
 public class PagoMasivoDefinition {
+
+  ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
 
   @Steps CargaArchivoPagoMasivoStep cargaArchivoPagoMasivoStep;
 
@@ -35,13 +51,26 @@ public class PagoMasivoDefinition {
 
   @Steps DatoFinancieroPagoStep datoFinancieroPagoStep;
 
+  @Steps NuevoPagoStep nuevoPagoStep;
+
+  @Steps GenericStep genericStep;
+
   @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
-  public void ingresarInformacionFactura() {
-    detalleSiniestroStep.consultarInformacionSiniestro();
+  public void ingresarInformacionFactura() throws IOException {
+    /*nuevoPagoStep.consultarPlacaAsegurado();
+    exposicionVehiculoTercero =
+            new ExposicionVehiculoTercero(
+                    genericStep.getFilasModelo(
+                            PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
+                            EXPOSICION_VEHICULAR_TERCERO.getValor()));
+    nuevoPagoStep.crearExposicionVehicularManual(
+            genericStep.getFilasModelo(
+                    PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
+            exposicionVehiculoTercero.getLstExposicionTerceros());
     cargaArchivoPagoMasivoStep.cargarArchivoXls(
             MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     //resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
-    //resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
+    //resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();*/
   }
 
   @Cuando(

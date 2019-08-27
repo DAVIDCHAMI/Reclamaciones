@@ -11,11 +11,8 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static com.sura.reclamaciones.constantes.Posiciones.POSICION_COLUMNA_OCHO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CANTIDAD_PAGO_INDIVIDUAL;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_FACTURA_PAGO_MASIVO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PAGO_INDIVIDUAL;
 
 public class DatoFinancieroPagoPage extends GeneralPage
