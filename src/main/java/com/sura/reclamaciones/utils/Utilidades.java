@@ -17,7 +17,7 @@ public final class Utilidades {
   public static boolean filtrarArreglo(String[] arr, String item) {
     if (arr.length > 0) {
       for (String n : arr) {
-        if (item.equals(n)) {
+        if (item.trim().equals(n)) {
           return true;
         }
       }
