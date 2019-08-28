@@ -34,15 +34,7 @@ public class InformacionBeneficiarioPagoStep {
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
 
-  private static final String MENSAJE_PAGO_NO_REALIZADO = "No se generó orden de pago al asegurado";
-  private static final String MENSAJE_RECHAZO_PAGO =
-      "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
-
   @Step
-  public void consultarNumeroReclamacion() {
-    resumenReclamacionPage.obtenerNumeroReclamacion();
-  }
-
   public void ingresarInformacionBeneficiarioPago(
       String strBeneficiarioPago,
       String strMetodoPago,

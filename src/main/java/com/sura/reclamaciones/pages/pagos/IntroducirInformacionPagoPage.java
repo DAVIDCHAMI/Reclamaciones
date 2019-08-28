@@ -148,7 +148,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     elementoEncontrado.get(Integer.parseInt(CERO.getValor())).click();
          evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
-        // txtComentarioPago.click();
   }
 
   public void agregarNuevoPago() {
