@@ -69,6 +69,12 @@ public class MenuClaimPage extends GeneralPage {
   )
   WebElementFacade lblPagos;
 
+    @FindBy(
+          xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
+  )
+  private WebElementFacade lblNumeroReclamacion;
+
+
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);
   }
@@ -105,6 +111,7 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
+    lblNumeroReclamacion.waitUntilVisible().click();
     seleccionarOpcionMenuLateralPrimerNivel(nombreOpcion);
     realizarEsperaCarga();
     seleccionarOpcionMenuLateralPrimerNivel(subItem);
