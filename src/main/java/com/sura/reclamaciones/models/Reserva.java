@@ -12,7 +12,6 @@ public class Reserva {
   private String categoriaCosto;
   private String lineaReserva;
   private String valorReserva;
-  private String datoDevolverTablaDatosFinancieros;
   private String valorDeducible;
 
 
@@ -22,7 +21,6 @@ public class Reserva {
     this.categoriaCosto = datosReserva.get("categoriaCosto");
     this.lineaReserva = datosReserva.get("lineaReserva");
     this.valorReserva = datosReserva.get("valorReserva");
-    this.datoDevolverTablaDatosFinancieros = datosReserva.get("datoDevolver");
     this.valorDeducible = datosReserva.get("valorDeducible");
   }
 
@@ -56,10 +54,6 @@ public class Reserva {
 
   public String getValorReserva() {
     return valorReserva;
-  }
-
-  public String getDatoDevolverTablaDatosFinancieros() {
-    return datoDevolverTablaDatosFinancieros;
   }
 
   private void asignarDatos(List<Map<String, String>> datosReserva) {
