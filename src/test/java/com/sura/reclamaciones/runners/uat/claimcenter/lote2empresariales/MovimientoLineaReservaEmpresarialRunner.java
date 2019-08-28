@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-    features = "src/test/resources/features/reservas/movimiento_linea_reserva.feature",
-    glue = {"com.sura.reclamaciones.definitions"},
-    tags = {"@claimsEmpresarial"}
+  features = "src/test/resources/features/reservas/movimiento_linea_reserva.feature",
+  glue = {"com.sura.reclamaciones.definitions"},
+  tags = {"@claimsEmpresarial"}
 )
 public class MovimientoLineaReservaEmpresarialRunner {}
