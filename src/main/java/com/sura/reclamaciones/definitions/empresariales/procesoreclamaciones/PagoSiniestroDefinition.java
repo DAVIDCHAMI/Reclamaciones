@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
@@ -27,6 +28,8 @@ import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
+
+  String tipoPago;
 
   PagoSiniestro pagoSiniestro;
 
@@ -179,16 +182,10 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando("^apliquen las siguientes retenciones$")
-  public void aplicarRetencion(DataTable codigoRetencion) {
-    //List<List<String>> retencion = codigoRetencion.raw();
-    List<String> retencion = codigoRetencion.asList(String.class);
-   // for (int i = 1; i < retencion.size(); i++) {
-       //informacionPagoStep.ingresarInformacionDetallePago(retencion, i);
-         informacionPagoStep.ingresarInformacionRetencion(retencion);
- //     if (i <= retencion.size()) {
-  //      informacionPagoStep.agregarNuevoCodigoRetencion();
-   //  }
-
+  public void aplicarRetencion(DataTable codigoRetencion){
+   List<String> retencion = codigoRetencion.asList(String.class);
+        informacionPagoStep.ingresarInformacionRetencion(retencion, Serenity.sessionVariableCalled(SESION_CC_TIPO_PAGO.getValor())
+            .toString());
   }
 
   @Cuando("^se genere un pago(.*)$")

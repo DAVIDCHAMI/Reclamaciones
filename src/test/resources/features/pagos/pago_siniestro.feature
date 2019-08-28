@@ -88,11 +88,11 @@ Característica: Realizar pago de un siniestro
     |028   |
     |023   |
     |010   |
-    Y se genere un pago <Tipo de pago>
-    Entonces se genera una orden de pago para que le sea entregado al usuario
+  #  Y se genere un pago <Tipo de pago>
+  #  Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
       | Línea de Reserva      | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                                     | Causa                               | Valor de Pretensión | Tipo de incidente |
-      | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | No                 | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
-   #   | (1) 1ª partePropiedad | Final        | AURA JUDITH LOPEZ JULIO CQLII     | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio                            | 2000000             | Propiedad         |
+   #   | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | No                 | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
+      | (1) 1ª partePropiedad | Parcial       | AURA JUDITH LOPEZ JULIO CQLII     | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio                            | 5000000             | Propiedad         |
    #   | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII               | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                      | 3000000             | General           |

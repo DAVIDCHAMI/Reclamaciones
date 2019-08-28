@@ -24,10 +24,10 @@ public class InformacionPagoStep {
   }
 
   @Step
-    public void ingresarInformacionRetencion(List<String> codigoRetencion) {
+    public void ingresarInformacionRetencion(List<String> codigoRetencion, String tipoPago) {
     for (int i = 1; i < codigoRetencion.size(); i++) {
       introducirInformacionPagoPage.agregarCodigoRetencion(codigoRetencion.get(i), i);
-      introducirInformacionPagoPage.ingresarCantidadPago(CANTIDAD.getValor(), i);
+      introducirInformacionPagoPage.ingresarCantidadPago(tipoPago, CANTIDAD.getValor(), i);
          if (i < (codigoRetencion.size()-1)) {
         introducirInformacionPagoPage.agregarNuevaRetencion();
       }

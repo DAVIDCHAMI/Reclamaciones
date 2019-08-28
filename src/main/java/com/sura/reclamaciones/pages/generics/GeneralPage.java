@@ -223,14 +223,15 @@ public class GeneralPage extends PageObject {
     return elementoEncontrado
         .stream()
         .map(
-           fila -> fila.findElement(By.xpath(String.format("./td[%d]/div", posicionDatoDevolver))))
+            fila -> fila.findElement(By.xpath(String.format("./td[%d]/div", posicionDatoDevolver))))
         .collect(Collectors.toList());
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocidoMultiple(
       WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
+    final int POSICION_COLUMNA_TABLA = 1;
     List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
-    int posicionColumna = cabeceraTabla.indexOf(encabezadoColumnaDevolver)+1;
+    int posicionColumna = cabeceraTabla.indexOf(encabezadoColumnaDevolver)+POSICION_COLUMNA_TABLA;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_PAGOS_CC);
     return elementoEncontrado
         .stream()

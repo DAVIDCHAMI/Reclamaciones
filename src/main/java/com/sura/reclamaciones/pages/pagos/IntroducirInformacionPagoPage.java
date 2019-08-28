@@ -4,12 +4,14 @@ import static com.sura.reclamaciones.constantes.Constantes.CERO;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -92,6 +94,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   public void seleccionarTipoPago(String strTipoPago) {
     cmbTipoPago.waitUntilClickable().click();
     seleccionarOpcionCombobox(strTipoPago);
+    Serenity.setSessionVariable(SESION_CC_TIPO_PAGO.getValor())
+        .to(strTipoPago);
     realizarEsperaCarga();
   }
 
@@ -134,14 +138,14 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     return intCalculoVrReserva;
   }
 
-  public void ingresarCantidadPago(String strCantidadPago, int posicionCalculo) {
-      strTipoPago = "Parcial";
+  public void ingresarCantidadPago(String strTipoPago, String strCantidadPago, int posicionCalculo) {
     calcularCantidadPago(strTipoPago);
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocidoMultiple(tblElementoLinea, strCantidadPago, posicionCalculo);
     elementoEncontrado.get(Integer.parseInt(CERO.getValor())).click();
          evaluateJavascript(
               String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
+         txtComentarioPago.click();
   }
 
   public void agregarNuevoPago() {
@@ -157,6 +161,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   }
 
   public void agregarCodigoRetencion(String strCodigoRetencion, int posicion) {
+    realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocidoMultiple(tblElementoLinea, CODIGO_RETENCION.getValor(), posicion);
     elementoEncontrado.forEach(
@@ -167,5 +172,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
               .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
               .click();
         });
+    realizarEsperaCarga();
   }
 }
