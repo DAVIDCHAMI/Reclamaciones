@@ -14,11 +14,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -75,6 +71,10 @@ public class GeneralPage extends PageObject {
   private String lstDinamico = "//li[.='COMODIN']";
 
   private String auxiliarReemplazo = "";
+
+  private String pais = "Country-inputEl";
+  private String departamento = "State-inputEl";
+  private String ciudad = "City-inputEl";
 
   protected WebDriver driver;
 
@@ -341,5 +341,13 @@ public class GeneralPage extends PageObject {
       return false;
     }
     return true;
+  }
+
+  public void seleccionarPais(String pais) {
+    seleccionarElementoListado(this.pais, pais);
+  }
+
+  public void seleccionarDepartamento(String departamento) {
+    seleccionarElementoListado(this.departamento, departamento);
   }
 }
