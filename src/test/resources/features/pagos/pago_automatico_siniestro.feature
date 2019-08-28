@@ -16,4 +16,4 @@ Característica: Generación de pago automático en un siniestro
 
     Ejemplos:
       | producto                                  | Causa    | Valor de Pretensión | Tipo de incidente | Tipo de Exposición | Valor Reserva | Valor Pago |
-      | Multiriesgo Corporativo pago automático 1 | Incendio | 4000000             | Propiedad         | Propiedad          | $4.000.000    | $2.343.768 |
+      | Multiriesgo Corporativo pago automático 1 | Incendio | 4000000             | Propiedad         | Contenido          | $4.000.000    | $2.343.768 |

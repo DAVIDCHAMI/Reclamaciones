@@ -8,10 +8,13 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
-public class ExposicionAutomaticaPage extends GeneralPage {
+public class ExposicionPage extends GeneralPage {
 
   private static String COLUMNA_TIPO_TABLA_EXPOSICIONES = "Tipo";
   private static String EXPOSICION_DANOS_ASEGURADO = "Daños";
+  private boolean valorLineaReserva = true;
+  private String columnaTipoExposicion;
+  private boolean tipoExposicionEmpresarial;
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
   private WebElementFacade tblExposicionesAutomaticas;
@@ -19,9 +22,7 @@ public class ExposicionAutomaticaPage extends GeneralPage {
   @FindBy(xpath = "//a[contains(text(),'Vehículo')]")
   private WebElementFacade exposicionAutomatica;
 
-  private boolean valorLineaReserva = true;
-
-  public ExposicionAutomaticaPage(WebDriver wdriver) {
+  public ExposicionPage(WebDriver wdriver) {
     super(wdriver);
   }
 
@@ -63,6 +64,23 @@ public class ExposicionAutomaticaPage extends GeneralPage {
         valorLineaReserva = false;
         break;
       }
+    }
+    return valorLineaReserva;
+  }
+
+  public boolean validarExposicionEmpresariales(String tipoExposicion) {
+    columnaTipoExposicion =
+        obtenerElementoLista(
+                tblExposicionesAutomaticas,
+                Tablas.CABECERAS_CC,
+                Tablas.REGISTROS_CC,
+                tipoExposicion,
+                COLUMNA_TIPO_TABLA_EXPOSICIONES)
+            .getText();
+    if (columnaTipoExposicion.equals(tipoExposicion)) {
+      tipoExposicionEmpresarial = true;
+    } else {
+      tipoExposicionEmpresarial = false;
     }
     return valorLineaReserva;
   }

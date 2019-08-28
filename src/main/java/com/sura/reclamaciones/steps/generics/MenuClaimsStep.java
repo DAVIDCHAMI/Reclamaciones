@@ -15,4 +15,8 @@ public class MenuClaimsStep {
   public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
   }
+
+  public void seleccionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
+    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(nombreOpcion);
+  }
 }

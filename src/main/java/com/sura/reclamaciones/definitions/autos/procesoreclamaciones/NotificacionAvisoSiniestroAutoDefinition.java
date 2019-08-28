@@ -57,11 +57,11 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     reclamacionAuto =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
-                PARAMETROS_RECLAMACION.getValor(),RECLAMACION_RESPONSABILIDAD_CIVIL.getValor ()));
+                PARAMETROS_RECLAMACION.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL.getValor()));
     vehiculo =
         new Vehiculo(
             genericStep.getFilasModelo(
-                PARAMETROS_VEHICULO.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL.getValor ()));
+                PARAMETROS_VEHICULO.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL.getValor()));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
@@ -88,7 +88,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
-                PARAMETROS_DIRECCION_SINIESTRO.getValor(), DIRECCION_EXPOSICION_VEHICULAR.getValor ()));
+                PARAMETROS_DIRECCION_SINIESTRO.getValor(),
+                DIRECCION_EXPOSICION_VEHICULAR.getValor()));
     crearNuevaExposicionVehicular();
     personaReclamacion =
         new PersonaReclamacion(
@@ -97,7 +98,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     direccionReclamacion =
         new ReclamacionAuto(
             genericStep.getFilasModelo(
-                PARAMETROS_DIRECCION_SINIESTRO.getValor(), DIRECCION_EXPOSICION_LESIONES.getValor ()));
+                PARAMETROS_DIRECCION_SINIESTRO.getValor(),
+                DIRECCION_EXPOSICION_LESIONES.getValor()));
     exposicionLesiones =
         new ExposicionLesiones(
             genericStep.getFilasModelo(
@@ -116,12 +118,12 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new ExposicionesAutomaticasAutos(
             genericStep.getFilasModelo(
                 PARAMETROS_EXPOSICION_AUTOMATICA.getValor(),
-                EXPOSICIONES_RESPONSABILIDAD_CIVIL.getValor ()));
+                EXPOSICIONES_RESPONSABILIDAD_CIVIL.getValor()));
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
             genericStep.getFilasModelo(
-                PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL.getValor ()));
+                PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL.getValor()));
     reclamacionStep.validarValorReservas(reserva.getLstReserva());
   }
 
@@ -129,11 +131,12 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   public void recibirReclamoArchivo(DataTable cobertura) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(
-            genericStep.getFilasModelo(PARAMETROS_RECLAMACION.getValor(),
-                RECLAMACION_ARCHIVO.getValor ()));
+            genericStep.getFilasModelo(
+                PARAMETROS_RECLAMACION.getValor(), RECLAMACION_ARCHIVO.getValor()));
     vehiculo =
         new Vehiculo(
-            genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), RECLAMACION_ARCHIVO.getValor ()));
+            genericStep.getFilasModelo(
+                PARAMETROS_VEHICULO.getValor(), RECLAMACION_ARCHIVO.getValor()));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
@@ -154,12 +157,12 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     exposicionesAutomaticasAutos =
         new ExposicionesAutomaticasAutos(
             genericStep.getFilasModelo(
-                PARAMETROS_EXPOSICION_AUTOMATICA.getValor(), EXPOSICIONES_ARCHIVO.getValor ()));
+                PARAMETROS_EXPOSICION_AUTOMATICA.getValor(), EXPOSICIONES_ARCHIVO.getValor()));
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
-            genericStep.getFilasModelo(PARAMETRO_LINEA_RESERVA.getValor(),
-                LINEA_RESERVA_ARCHIVO.getValor ()));
+            genericStep.getFilasModelo(
+                PARAMETRO_LINEA_RESERVA.getValor(), LINEA_RESERVA_ARCHIVO.getValor()));
     reclamacionStep.validarValorReservas(reserva.getLstReserva());
   }
 
@@ -167,11 +170,12 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   public void recibirReclamoSubrogacion(DataTable cobertura) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(
-            genericStep.getFilasModelo(PARAMETROS_RECLAMACION.getValor(),
-                RECLAMACION_SUBROGACION.getValor ()));
+            genericStep.getFilasModelo(
+                PARAMETROS_RECLAMACION.getValor(), RECLAMACION_SUBROGACION.getValor()));
     vehiculo =
         new Vehiculo(
-            genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), RECLAMACION_SUBROGACION.getValor ()));
+            genericStep.getFilasModelo(
+                PARAMETROS_VEHICULO.getValor(), RECLAMACION_SUBROGACION.getValor()));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
@@ -182,11 +186,11 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new ReclamacionAuto(
             genericStep.getFilasModelo(
                 PARAMETROS_RECLAMACION.getValor(),
-                RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL.getValor ()));
+                RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL.getValor()));
     vehiculo =
         new Vehiculo(
             genericStep.getFilasModelo(
-                PARAMETROS_VEHICULO.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL.getValor ()));
+                PARAMETROS_VEHICULO.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL.getValor()));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
@@ -198,12 +202,13 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new ExposicionesAutomaticasAutos(
             genericStep.getFilasModelo(
                 PARAMETROS_EXPOSICION_AUTOMATICA.getValor(),
-                EXPOSICIONES_SOLO_RESPONSABILIDAD_CIVIL.getValor ()));
+                EXPOSICIONES_SOLO_RESPONSABILIDAD_CIVIL.getValor()));
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
             genericStep.getFilasModelo(
-                PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL.getValor ()));
+                PARAMETRO_LINEA_RESERVA.getValor(),
+                RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL.getValor()));
     reclamacionStep.validarValorReservas(reserva.getLstReserva());
   }
 

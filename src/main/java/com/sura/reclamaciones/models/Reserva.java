@@ -14,7 +14,6 @@ public class Reserva {
   private String valorReserva;
   private String valorDeducible;
 
-
   public Reserva(Map<String, String> datosReserva) {
     this.monedaReserva = datosReserva.get("monedaReserva");
     this.tipoCosto = datosReserva.get("tipoCosto");

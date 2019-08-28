@@ -194,6 +194,7 @@ public enum Constantes {
   VEHICULOS("Vehículos"),
   VER_POLIZA("Ver póliza"),
   VOLVER_BILLINGCENTER("Volver a BillingCenter"),
+  TIEMPO_ESPERA_ELEMENTO_VISIBLE("180"),
   VOLVER_POLICYCENTER("Volver a PolicyCenter");
 
   private String valor;
