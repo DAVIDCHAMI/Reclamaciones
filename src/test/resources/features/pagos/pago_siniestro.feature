@@ -83,13 +83,12 @@ Característica: Realizar pago de un siniestro
   Esquema del escenario: Pago siniestro empresarial
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
-    Y apliquen las siguientes retenciones
+    Y se apliquen las siguientes retenciones
     |dddd|
     |028   |
     |023   |
     |010   |
-  #  Y se genere un pago <Tipo de pago>
-  #  Entonces se genera una orden de pago para que le sea entregado al usuario
+    Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
       | Línea de Reserva      | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                                     | Causa                               | Valor de Pretensión | Tipo de incidente |

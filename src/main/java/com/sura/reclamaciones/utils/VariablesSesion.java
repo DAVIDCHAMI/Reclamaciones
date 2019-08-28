@@ -29,7 +29,8 @@ public enum VariablesSesion {
   SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO("conductor_afectado_siniestro"),
   SESION_CC_TIPO_COBERTURA_AFECTADA("tipoCoberturaAfectada"),
   SESION_VALOR_PRIMA("valor_prima"),
-  SESION_CC_TIPO_PAGO("tipoPago");
+  SESION_CC_TIPO_PAGO("tipoPago"),
+  SESION_CC_LINEA_RESERVA("lineaReserva");
 
   private String valor;
 

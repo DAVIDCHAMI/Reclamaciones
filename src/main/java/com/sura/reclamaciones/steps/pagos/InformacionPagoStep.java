@@ -33,13 +33,4 @@ public class InformacionPagoStep {
       }
   }
   }
-
-  @Step
-  public void ingresarInformacionCantidadPago(String tipoPago) {
-  }
-
-  @Step
-  public void agregarNuevoCodigoRetencion() {
-    introducirInformacionPagoPage.agregarNuevaRetencion();
-  }
 }

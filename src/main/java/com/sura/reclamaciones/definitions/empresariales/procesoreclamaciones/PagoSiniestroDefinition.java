@@ -5,6 +5,7 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TER
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 
@@ -14,6 +15,7 @@ import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
+import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
 import com.sura.reclamaciones.utils.VariablesSesion;
@@ -40,6 +42,8 @@ public class PagoSiniestroDefinition {
   @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
 
   @Steps InformacionPagoStep informacionPagoStep;
+
+  @Steps InstruccionPagoStep instruccionPagoStep;
 
   @Steps GenericStep genericStep;
 
@@ -181,15 +185,11 @@ public class PagoSiniestroDefinition {
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
   }
 
-  @Cuando("^apliquen las siguientes retenciones$")
+  @Cuando("^se apliquen las siguientes retenciones$")
   public void aplicarRetencion(DataTable codigoRetencion){
    List<String> retencion = codigoRetencion.asList(String.class);
         informacionPagoStep.ingresarInformacionRetencion(retencion, Serenity.sessionVariableCalled(SESION_CC_TIPO_PAGO.getValor())
             .toString());
-  }
-
-  @Cuando("^se genere un pago(.*)$")
-  public void aplicarCantidad(String tipoPago) {
-    informacionPagoStep.ingresarInformacionCantidadPago(tipoPago);
+    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), Serenity.sessionVariableCalled(SESION_CC_LINEA_RESERVA.getValor()));
   }
 }
