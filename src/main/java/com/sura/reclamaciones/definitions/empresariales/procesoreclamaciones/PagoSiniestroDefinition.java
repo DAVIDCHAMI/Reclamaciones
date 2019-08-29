@@ -62,8 +62,7 @@ public class PagoSiniestroDefinition {
       String metodoPago,
       String lineaReserva,
       String cobertura,
-      String aplicaSoloSura,
-      String codigoRetencion)
+      String aplicaSoloSura)
       throws IOException {
     nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
@@ -72,10 +71,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.crearNuevoPago();
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    // nuevoPagoStep.ingresarInformacionPago(
-    //   lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    // nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
     instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
@@ -86,8 +82,7 @@ public class PagoSiniestroDefinition {
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
-      String aplicaSoloSura,
-      String codigoRetencion)
+      String aplicaSoloSura)
       throws IOException {
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
@@ -102,10 +97,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.crearNuevoPago();
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    //nuevoPagoStep.ingresarInformacionPago(
-    //    lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    // nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
     instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
@@ -117,8 +109,7 @@ public class PagoSiniestroDefinition {
       String metodoPago,
       String lineaReserva,
       String lineaReserva2,
-      String aplicaSoloSura,
-      String codigoRetencion)
+      String aplicaSoloSura)
       throws IOException {
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
@@ -143,15 +134,10 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.crearNuevoPago();
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    //  nuevoPagoStep.ingresarInformacionPago(
-    //      lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
     nuevoPagoStep.agregarPagoNuevaLineaReserva();
-    //  nuevoPagoStep.ingresarInformacionPago(
-    //      lineaReserva2, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(
         lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
-    //nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
     instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 

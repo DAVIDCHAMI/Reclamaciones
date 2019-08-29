@@ -6,7 +6,6 @@ import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
-import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -21,7 +20,6 @@ import org.openqa.selenium.interactions.Actions;
 
 public class IntroducirInformacionPagoPage extends GeneralPage {
 
-  private static String strTipoPago;
   private Integer intCalculoVrReserva;
 
   @FindBy(
@@ -110,20 +108,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     Double dblValorReserva;
     dblValorReserva = Double.parseDouble(strValorReserva);
     return dblValorReserva;
-  }
-
-  public void ingresarCodigoRetencion(String strCodigoRetencion, String encabezadoColumnaDevolver) {
-    List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblElementoLinea, encabezadoColumnaDevolver, 1);
-    elementoEncontrado.forEach(
-        elemento -> {
-          elemento.click();
-          lstCodigoRetencion.waitUntilVisible();
-          lstCodigoRetencion
-              .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
-              .click();
-        });
-    realizarEsperaCarga();
   }
 
   private Integer calcularCantidadPago(String strTipoPago) {

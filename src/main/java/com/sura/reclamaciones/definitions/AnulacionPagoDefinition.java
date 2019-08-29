@@ -35,7 +35,7 @@ public class AnulacionPagoDefinition {
 
   @Y(
       "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
-  public void crearPago(String strTipoProducto, String strCodigoRetencion) throws IOException {
+  public void crearPago() throws IOException {
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(
