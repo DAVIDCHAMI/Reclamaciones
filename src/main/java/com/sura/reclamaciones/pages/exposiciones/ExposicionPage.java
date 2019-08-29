@@ -33,8 +33,8 @@ public class ExposicionPage extends GeneralPage {
             tblExposicionesAutomaticas,
             Tablas.CABECERAS_CC,
             Tablas.REGISTROS_CC,
-            EXPOSICION_DANOS_ASEGURADO.getValor (),
-            TIPO.getValor ())
+            EXPOSICION_DANOS_ASEGURADO.getValor(),
+            TIPO.getValor())
         .click();
     realizarEsperaCarga();
   }

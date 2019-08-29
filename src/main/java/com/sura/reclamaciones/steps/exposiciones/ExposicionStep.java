@@ -19,9 +19,10 @@ public class ExposicionStep {
 
   @Step
   public void validarExposicionEmpresariales(String tipoExposicion) {
-    String valorTipoExposicion = generalPage.obtenerDatoTablaCabecera(TIPO.getValor (),
-        Integer.parseInt (POSICION_FILA.getValor ()));
-    if(!valorTipoExposicion.equals(tipoExposicion))  {
+    String valorTipoExposicion =
+        generalPage.obtenerDatoTablaCabecera(
+            TIPO.getValor(), Integer.parseInt(POSICION_FILA.getValor()));
+    if (!valorTipoExposicion.equals(tipoExposicion)) {
       tipoExposicionEmpresarial = false;
     } else {
       tipoExposicionEmpresarial = true;
