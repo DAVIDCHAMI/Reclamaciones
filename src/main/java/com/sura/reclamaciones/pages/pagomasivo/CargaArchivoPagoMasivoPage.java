@@ -1,9 +1,16 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import javax.swing.*;
+import java.io.File;
 
 public class CargaArchivoPagoMasivoPage extends GeneralPage {
 
@@ -12,14 +19,9 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
 
   @FindBy(
     xpath =
-        ".//a[contains(@class,'x-btn x-form-file-btn x-unselectable x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon')]"
+        ".//input[contains(@class,'x-form-file-input')]"
   )
   private WebElementFacade btnExaminar;
-
-  @FindBy(xpath = "//*[contains(@ClassName,'Breadcrumb Parent')]")
-  WebElementFacade txtDireccionDocumento;
-
-  //@FindBy(xpath = "//*[contains(@ClassName,'Breadcrumb Parent') and contains(@ClassName,'JWBMPBUT')]")
 
   public CargaArchivoPagoMasivoPage(WebDriver wdriver) {
     super(wdriver);
@@ -30,15 +32,19 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
     btnFacturacionMasiva.click();
   }
 
-  public void buscarArchivoPagoMasivo() {
-    btnExaminar.waitUntilPresent();
-    btnExaminar.waitUntilClickable();
-    btnExaminar.click();
+  public void buscarArchivoPagoMasivo(String rutaCompleta)
+  {
+//    String nombreArchivoPagoMasivo= "PlantillaPagosMasivos.xlsx";
+//  File resourcesDirectory = new File("src/test/resources/files");
+    WebDriverWait wait = new WebDriverWait(getDriver(),0);
+    WebElement btnExaminar1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//input[@name='fileContent']")));
+    btnExaminar1.sendKeys(rutaCompleta);
   }
-
-
-
-
-
-
 }
+
+
+
+
+
+
+

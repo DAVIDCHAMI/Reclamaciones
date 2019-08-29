@@ -9,7 +9,6 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINI
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
@@ -55,8 +54,8 @@ public class PagoMasivoDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
-  public void ingresarInformacionFactura() throws IOException {
+  @Cuando("^se registra la información de las facturas del pago masivo de los siniestros con cobertura (.*) a un proveedor")
+  public void ingresarInformacionFactura(String tipoCobertura) throws IOException {
     /*nuevoPagoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
             new ExposicionVehiculoTercero(
@@ -66,21 +65,21 @@ public class PagoMasivoDefinition {
     nuevoPagoStep.crearExposicionVehicularManual(
             genericStep.getFilasModelo(
                     PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
-            exposicionVehiculoTercero.getLstExposicionTerceros());
+            exposicionVehiculoTercero.getLstExposicionTerceros());*/
     cargaArchivoPagoMasivoStep.cargarArchivoXls(
             MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     //resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
-    //resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();*/
+    //resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }
 
   @Cuando(
       "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
   public void crearPagoMasivo(
       String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
-    /*detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
+    detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
     detalleFacturaVolumenStep.crearPagoMasivo();
-    procesoBatchStep.ejecutarProcesoBatch();*/
+    procesoBatchStep.ejecutarProcesoBatch();
   }
 
   @Entonces(
