@@ -19,7 +19,6 @@ import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPag
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
-
 import java.util.List;
 import java.util.Map;
 import net.serenitybdd.core.Serenity;
