@@ -56,15 +56,8 @@ public class AnulacionPagoDefinition {
                   ajustador.getMetodoPago(),
                   ajustador.getSoloSura(),
                   pagoSiniestro.getLstPago());
-              /* nuevoPagoStep.ingresarInformacionPago(
-              ajustador.getLineaReserva(),
-              ajustador.getTipoPago(),
-              strCodigoRetencion,
-              pagoSiniestro.getLstPago());*/
               informacionPagoStep.ingresarInformacionPago(
                   ajustador.getLineaReserva(), ajustador.getTipoPago(), pagoSiniestro.getLstPago());
-              //nuevoPagoStep.ingresarInstruccionesPago(
-              //    ajustador.getLineaReserva(), pagoSiniestro.getLstPago());
               informacionPagoStep.ingresarInformacionPago(
                   ajustador.getLineaReserva(), ajustador.getTipoPago(), pagoSiniestro.getLstPago());
             });
