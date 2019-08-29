@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.exposiciones;
 
-import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionPage;
+import com.sura.reclamaciones.pages.exposiciones.ExposicionPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;

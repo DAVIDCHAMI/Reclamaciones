@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.autos.reclamacion;
+package com.sura.reclamaciones.pages.exposiciones;
 
 import com.sura.reclamaciones.constantes.Tablas;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
@@ -13,7 +13,6 @@ public class ExposicionPage extends GeneralPage {
   private static String COLUMNA_TIPO_TABLA_EXPOSICIONES = "Tipo";
   private static String EXPOSICION_DANOS_ASEGURADO = "Daños";
   private boolean valorLineaReserva = true;
-  private String columnaTipoExposicion;
   private boolean tipoExposicionEmpresarial;
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
@@ -82,7 +81,7 @@ public class ExposicionPage extends GeneralPage {
         tipoExposicionEmpresarial = false;
       }
     } catch (Exception e) {
-      System.err.println("Valor no esperado");
+      System.err.println("Valor tipo de exposición no esperado");
     }
     return tipoExposicionEmpresarial;
   }
