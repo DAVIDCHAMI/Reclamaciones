@@ -12,7 +12,6 @@ public class ExposicionStep {
   @Step
   public void validarExposicionEmpresariales(String tipoExposicion) {
     boolean exposicionAutomatica = exposicionPage.validarExposicionEmpresariales(tipoExposicion);
-    MatcherAssert.assertThat(
-        "El tipo de exposición no es el esperado", exposicionAutomatica);
+    MatcherAssert.assertThat("El tipo de exposición no es el esperado", exposicionAutomatica);
   }
 }

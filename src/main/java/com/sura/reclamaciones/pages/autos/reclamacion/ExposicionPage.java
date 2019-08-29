@@ -69,19 +69,21 @@ public class ExposicionPage extends GeneralPage {
   }
 
   public boolean validarExposicionEmpresariales(String tipoExposicion) {
-    columnaTipoExposicion =
-        obtenerElementoLista(
-                tblExposicionesAutomaticas,
-                Tablas.CABECERAS_CC,
-                Tablas.REGISTROS_CC,
-                tipoExposicion,
-                COLUMNA_TIPO_TABLA_EXPOSICIONES)
-            .getText();
-    if (columnaTipoExposicion.equals(tipoExposicion)) {
-      tipoExposicionEmpresarial = true;
-    } else {
-      tipoExposicionEmpresarial = false;
+    try {
+      if (!obtenerElementoLista(
+              tblExposicionesAutomaticas,
+              Tablas.CABECERAS_CC,
+              Tablas.REGISTROS_CC,
+              tipoExposicion,
+              COLUMNA_TIPO_TABLA_EXPOSICIONES)
+          .equals(null)) {
+        tipoExposicionEmpresarial = true;
+      } else {
+        tipoExposicionEmpresarial = false;
+      }
+    } catch (Exception e) {
+      System.err.println("Valor no esperado");
     }
-    return valorLineaReserva;
+    return tipoExposicionEmpresarial;
   }
 }
