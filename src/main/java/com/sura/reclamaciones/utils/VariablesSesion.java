@@ -11,6 +11,7 @@ public enum VariablesSesion {
   SESION_CC_NUMERO_FACTURA_PAGO_MASIVO("NumeroFacturaPagoMasivo"),
   SESION_CC_NUMERO_PAGO_INDIVIDUAL("NumeroPagoIndividual"),
   SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS("NumeroPlacaPartesInvolucradas"),
+  SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS("PlacaVehiculoInvolucrado"),
   SESION_CC_NUMERO_SINIESTRO("NumeroSiniestro"),
   SESION_CC_NUMERO_TRANSACCION("Número de transacción"),
   SESION_CC_PRODUCTO_AUTOS("ProductoAutos"),

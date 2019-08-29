@@ -2,6 +2,8 @@ package com.sura.reclamaciones.pages.generics;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS;
+
 import java.util.ArrayList;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
@@ -28,7 +30,13 @@ public class DetalleSiniestroPage extends GeneralPage {
     super(wdriver);
   }
 
-  public List<String> obtenerNumneroPlacaPartesImplicadas() {
+  public DetalleSiniestroPage() {
+    this.tblPlacasVehiculosInvolucrados = tblPlacasVehiculosInvolucrados;
+    this.lblNumeroSiniestro = lblNumeroSiniestro;
+  }
+
+  public void obtenerNumeroPlacaPartesImplicadas()
+  {
     List<String> placaVehiculosInvolucrados = new ArrayList<String>();
     final String PLACA = "Placa";
     List<WebElement> elementoEncontrado =
@@ -37,10 +45,12 @@ public class DetalleSiniestroPage extends GeneralPage {
     int tamanoLista = elementoEncontrado.size();
     Serenity.setSessionVariable(SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS.getValor())
         .to(tamanoLista);
-    for (int i = 0; i <= tamanoLista - 1; i++) {
+    for (int i = 0; i <= tamanoLista - 1; i++)
+    {
       placaVehiculosInvolucrados.add(i, elementoEncontrado.get(i).getText());
     }
-    return placaVehiculosInvolucrados;
+      Serenity.setSessionVariable(SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS.getValor()).to(placaVehiculosInvolucrados);
+      List<String> vehiculosInvolucrados = Serenity.sessionVariableCalled(SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS.getValor());
   }
 
   public String obtenerNumeroSiniestro() {
