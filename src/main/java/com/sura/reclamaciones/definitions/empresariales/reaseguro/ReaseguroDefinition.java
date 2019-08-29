@@ -11,6 +11,9 @@ import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
+import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
+import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
+import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.reaseguro.ReaseguroStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
@@ -32,6 +35,12 @@ public class ReaseguroDefinition {
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
+  @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
+
+  @Steps InformacionPagoStep informacionPagoStep;
+
+  @Steps InstruccionPagoStep instruccionPagoStep;
+
   @Steps RecuperoStep recuperoStep;
 
   @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
@@ -49,11 +58,13 @@ public class ReaseguroDefinition {
     PagoSiniestro pagoSiniestro =
         new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), strTipoContrato)));
     nuevoPagoStep.consultarNumeroReclamacion();
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    //  nuevoPagoStep.ingresarInformacionPago(
+    //      lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
+    //  nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")

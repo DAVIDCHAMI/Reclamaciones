@@ -4,35 +4,17 @@ import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
 import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
-import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
-import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
-import org.openqa.selenium.WebElement;
 
 public class InformacionBeneficiarioPagoStep {
 
-  List<WebElement> lstFilaPago;
-
-  @Page MenuClaimPage menuClaimPage;
-
-  @Page DetalleExposicionAutomaticaPage detalleExposicionAutomaticaPage;
-
   @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
-
-  @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
-
   @Page GeneralPage generalPage;
-
-  @Page ResumenReclamacionPage resumenReclamacionPage;
 
   @Step
   public void ingresarInformacionBeneficiarioPago(

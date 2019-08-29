@@ -54,7 +54,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   @FindBy(id = "ext-gen3084")
   private WebElementFacade txtPago;
 
-
   @FindBy(
     xpath =
         "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
@@ -63,7 +62,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
 
   @FindBy(
     xpath =
-      "//div[@id='centerPanel']//div[@id='NormalCreateCheckWizard/NewCheckPayments']//*[contains(text(),'Agregar')]"
+        "//div[@id='centerPanel']//div[@id='NormalCreateCheckWizard/NewCheckPayments']//*[contains(text(),'Agregar')]"
   )
   private WebElementFacade btnAgregarRetencion;
 
@@ -89,16 +88,14 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   public void seleccionarLineaReserva(String strLineaReserva) {
     cmbLineaReserva.waitUntilClickable().click();
     seleccionarOpcionCombobox(strLineaReserva);
-    Serenity.setSessionVariable(SESION_CC_LINEA_RESERVA.getValor())
-        .to(strLineaReserva);
+    Serenity.setSessionVariable(SESION_CC_LINEA_RESERVA.getValor()).to(strLineaReserva);
     realizarEsperaCarga();
   }
 
   public void seleccionarTipoPago(String strTipoPago) {
     cmbTipoPago.waitUntilClickable().click();
     seleccionarOpcionCombobox(strTipoPago);
-    Serenity.setSessionVariable(SESION_CC_TIPO_PAGO.getValor())
-        .to(strTipoPago);
+    Serenity.setSessionVariable(SESION_CC_TIPO_PAGO.getValor()).to(strTipoPago);
     realizarEsperaCarga();
   }
 
@@ -141,13 +138,15 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     return intCalculoVrReserva;
   }
 
-  public void ingresarCantidadPago(String strTipoPago, String strCantidadPago, int posicionCalculo) {
+  public void ingresarCantidadPago(
+      String strTipoPago, String strCantidadPago, int posicionCalculo) {
     calcularCantidadPago(strTipoPago);
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocidoMultiple(tblElementoLinea, strCantidadPago, posicionCalculo);
+        obtenerElementoTablaDatoDesconocidoMultiple(
+            tblElementoLinea, strCantidadPago, posicionCalculo);
     elementoEncontrado.get(Integer.parseInt(CERO.getValor())).click();
-         evaluateJavascript(
-              String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
+    evaluateJavascript(
+        String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
   }
 
   public void agregarNuevoPago() {
@@ -165,7 +164,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   public void agregarCodigoRetencion(String strCodigoRetencion, int posicion) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocidoMultiple(tblElementoLinea, CODIGO_RETENCION.getValor(), posicion);
+        obtenerElementoTablaDatoDesconocidoMultiple(
+            tblElementoLinea, CODIGO_RETENCION.getValor(), posicion);
     elementoEncontrado.forEach(
         elemento -> {
           elementoEncontrado.get(Integer.parseInt(CERO.getValor())).click();

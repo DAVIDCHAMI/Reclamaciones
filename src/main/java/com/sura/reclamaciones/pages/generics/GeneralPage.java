@@ -231,12 +231,16 @@ public class GeneralPage extends PageObject {
       WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
     final int POSICION_COLUMNA_TABLA = 1;
     List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
-    int posicionColumna = cabeceraTabla.indexOf(encabezadoColumnaDevolver)+POSICION_COLUMNA_TABLA;
+    int posicionColumna = cabeceraTabla.indexOf(encabezadoColumnaDevolver) + POSICION_COLUMNA_TABLA;
     List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_PAGOS_CC);
     return elementoEncontrado
         .stream()
         .map(
-            fila -> fila.findElement(By.xpath(String.format("./tr["+posicionFila+"]/td["+posicionColumna+"]/div"))))
+            fila ->
+                fila.findElement(
+                    By.xpath(
+                        String.format(
+                            "./tr[" + posicionFila + "]/td[" + posicionColumna + "]/div"))))
         .collect(Collectors.toList());
   }
 

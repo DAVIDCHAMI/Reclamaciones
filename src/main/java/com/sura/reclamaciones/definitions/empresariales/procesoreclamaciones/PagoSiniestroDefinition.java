@@ -31,8 +31,6 @@ import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
 
-  String tipoPago;
-
   PagoSiniestro pagoSiniestro;
 
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
@@ -72,11 +70,13 @@ public class PagoSiniestroDefinition {
         new PagoSiniestro(
             (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
     nuevoPagoStep.crearNuevoPago();
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    // nuevoPagoStep.ingresarInformacionPago(
+    //   lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
+    // nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Cuando(
@@ -100,11 +100,13 @@ public class PagoSiniestroDefinition {
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.crearNuevoPago();
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    //nuevoPagoStep.ingresarInformacionPago(
+    //    lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
+    // nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Cuando(
@@ -139,19 +141,23 @@ public class PagoSiniestroDefinition {
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.crearNuevoPago();
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
+    //  nuevoPagoStep.ingresarInformacionPago(
+    //      lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
     nuevoPagoStep.agregarPagoNuevaLineaReserva();
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva2, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    //  nuevoPagoStep.ingresarInformacionPago(
+    //      lineaReserva2, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(
+        lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
+    //nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
   public void verificarPago() {
-    nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
+    instruccionPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
@@ -186,10 +192,12 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando("^se apliquen las siguientes retenciones$")
-  public void aplicarRetencion(DataTable codigoRetencion){
-   List<String> retencion = codigoRetencion.asList(String.class);
-        informacionPagoStep.ingresarInformacionRetencion(retencion, Serenity.sessionVariableCalled(SESION_CC_TIPO_PAGO.getValor())
-            .toString());
-    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), Serenity.sessionVariableCalled(SESION_CC_LINEA_RESERVA.getValor()));
+  public void aplicarRetencion(DataTable codigoRetencion) {
+    List<String> retencion = codigoRetencion.asList(String.class);
+    informacionPagoStep.ingresarInformacionRetencion(
+        retencion, Serenity.sessionVariableCalled(SESION_CC_TIPO_PAGO.getValor()).toString());
+    instruccionPagoStep.establecerInstruccionPago(
+        pagoSiniestro.getLstPago(),
+        Serenity.sessionVariableCalled(SESION_CC_LINEA_RESERVA.getValor()));
   }
 }
