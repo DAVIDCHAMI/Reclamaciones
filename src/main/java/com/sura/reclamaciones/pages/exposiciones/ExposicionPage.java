@@ -1,5 +1,8 @@
 package com.sura.reclamaciones.pages.exposiciones;
 
+import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_DANOS_ASEGURADO;
+import static com.sura.reclamaciones.constantes.Constantes.TIPO;
+
 import com.sura.reclamaciones.constantes.Tablas;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -10,10 +13,8 @@ import org.openqa.selenium.WebDriver;
 
 public class ExposicionPage extends GeneralPage {
 
-  private static String COLUMNA_TIPO_TABLA_EXPOSICIONES = "Tipo";
-  private static String EXPOSICION_DANOS_ASEGURADO = "Daños";
+  private String columnaTipoExposicion;
   private boolean valorLineaReserva = true;
-  private boolean tipoExposicionEmpresarial;
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
   private WebElementFacade tblExposicionesAutomaticas;
@@ -32,8 +33,8 @@ public class ExposicionPage extends GeneralPage {
             tblExposicionesAutomaticas,
             Tablas.CABECERAS_CC,
             Tablas.REGISTROS_CC,
-            EXPOSICION_DANOS_ASEGURADO,
-            COLUMNA_TIPO_TABLA_EXPOSICIONES)
+            EXPOSICION_DANOS_ASEGURADO.getValor (),
+            TIPO.getValor ())
         .click();
     realizarEsperaCarga();
   }
@@ -65,24 +66,5 @@ public class ExposicionPage extends GeneralPage {
       }
     }
     return valorLineaReserva;
-  }
-
-  public boolean validarExposicionEmpresariales(String tipoExposicion) {
-    try {
-      if (!obtenerElementoLista(
-              tblExposicionesAutomaticas,
-              Tablas.CABECERAS_CC,
-              Tablas.REGISTROS_CC,
-              tipoExposicion,
-              COLUMNA_TIPO_TABLA_EXPOSICIONES)
-          .equals(null)) {
-        tipoExposicionEmpresarial = true;
-      } else {
-        tipoExposicionEmpresarial = false;
-      }
-    } catch (Exception e) {
-      System.err.println("Valor tipo de exposición no esperado");
-    }
-    return tipoExposicionEmpresarial;
   }
 }
