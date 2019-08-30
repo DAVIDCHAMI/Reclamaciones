@@ -16,6 +16,7 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
+import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoAutomaticoSiniestroDefinition {
@@ -35,7 +36,7 @@ public class PagoAutomaticoSiniestroDefinition {
   @Steps ExposicionStep exposicionStep;
 
   @Dado("^que se tiene una póliza del producto (.*)$")
-  public void obtenerPoliza(String producto) throws Exception {
+  public void obtenerPoliza(String producto) throws IOException {
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
             obtenerDatosPrueba(NombresCsv.RECLAMACION_EMPRESARIAL.getValor(), producto));
@@ -45,27 +46,26 @@ public class PagoAutomaticoSiniestroDefinition {
   }
 
   @Cuando("^se realiza un siniestro por causa (.*) con valor de pretensión (.*) e incidente (.*)$")
-  public void realizarSiniestro(String causa, String valorPretension, String tipoIncidente)
-      throws Exception {
+  public void realizarSiniestro(String causa, String valorPretension, String tipoIncidente) {
     informacionBasicaStep.diligenciarInformacionBasica(reclamacionEmpresarial.getLstReclamo());
     informacionReclamacionStep.diligenciarInformacionReclamacion(
         causa, valorPretension, tipoIncidente);
   }
 
   @Entonces("^se genera una reclamación con exposición automática (.*)$")
-  public void verificarGeneracionExposicionAutomatica(String tipoExposicion) throws Throwable {
+  public void verificarGeneracionExposicionAutomatica(String tipoExposicion){
     nuevaReclamacionGuardadaStep.abrirReclamacionGuardada();
     menuClaimsStep.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES);
     exposicionStep.validarExposicionEmpresariales(tipoExposicion);
   }
 
   @Y("^una reserva automática con un monto de (.*)$")
-  public void verificarGeneracionReservaAutomatica(String montoReserva) throws Throwable {
+  public void verificarGeneracionReservaAutomatica(String montoReserva) throws IOException {
     //TO DO
   }
 
   @Y("^un pago automático con un monto de (.*)$")
-  public void verificarGeneracionPagoAutomatico(String montoPago) throws Throwable {
+  public void verificarGeneracionPagoAutomatico(String montoPago) throws IOException {
     //TO DO
   }
 }
