@@ -42,10 +42,6 @@ public class PagoMasivoDefinition {
 
   @Steps FacturaVolumenStep facturaVolumenStep;
 
-  @Steps MenuClaimsStep menuClaimsStep;
-
-  @Steps DatoFinancieroPagoStep datoFinancieroPagoStep;
-
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps GenericStep genericStep;
@@ -84,10 +80,5 @@ public class PagoMasivoDefinition {
   public void validarPagoMasivo() {
     facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
-    detalleFacturaVolumenStep.validarPagoMasivo();
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
-    datoFinancieroPagoStep.validarPagosIndividuales(
-        MenuConstante.DATOS_FINANCIEROS, MenuConstante.PAGOS);
   }
 }

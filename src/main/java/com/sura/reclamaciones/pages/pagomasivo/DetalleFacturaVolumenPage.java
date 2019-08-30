@@ -112,13 +112,6 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
             .to(lblNumeroFacturaPagoMasivo);
   }
 
-  public void validarEstadoPagoMasivo() {
-    String estadoPagoMasivo = "Solicitando";
-    MatcherAssert.assertThat(
-            "El número de registros de la pantalla no es igual al número de registros del archivo XLS",
-            (estadoPagoMasivo.equals(lblEstadoPagoMasivo.getText())));
-  }
-
   public void obtenerNumeroPagoIndividual() {
     List<String> numeroPagosIndividuales = new ArrayList<String>();
     final String NUMERO_PAGO_INDIVIDUAL = "N.° de pago";
