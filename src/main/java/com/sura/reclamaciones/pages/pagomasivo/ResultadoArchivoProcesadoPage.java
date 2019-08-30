@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;

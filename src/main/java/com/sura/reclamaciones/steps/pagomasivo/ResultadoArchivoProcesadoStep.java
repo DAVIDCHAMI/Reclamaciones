@@ -4,8 +4,7 @@ import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.pagomasivo.ResultadoArchivoProcesadoPage;
 import org.fluentlenium.core.annotation.Page;
 
-public class ResultadoArchivoProcesadoStep
-{
+public class ResultadoArchivoProcesadoStep {
 
   @Page ResultadoArchivoProcesadoPage resultadoArchivoProcesadoPage;
 
