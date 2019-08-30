@@ -30,7 +30,8 @@ public class ConsumoCreacionAvisoAutosDefinition {
   Vehiculo reclamacionVehiculo = new Vehiculo();
   GenericStep genericStep = new GenericStep();
 
-  @Steps MenuClaimsStep menuClaimsStep;
+  @Steps
+  MenuClaimsStep menuClaimsStep;
 
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 

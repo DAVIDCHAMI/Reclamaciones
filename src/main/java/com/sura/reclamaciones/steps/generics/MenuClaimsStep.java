@@ -13,20 +13,7 @@ public class MenuClaimsStep {
     @Page
     MenuClaimPage menuClaimPage;
 
-    public void consultarNumeroReclamacion(String numReclamacion) {
+        public void consultarNumeroReclamacion(String numReclamacion) {
         menuClaimPage.buscarReclamacion(MenuConstante.RECLAMACION_MENU, numReclamacion);
-    }
-
-    public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
-        menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
-    }
-
-    public void clicTemporal() {
-        menuClaimPage.clicTemporal();
-        generalPage.realizarEsperaCarga();
-    }
-
-    public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
-        menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(nombreOpcion, subItem);
     }
 }

@@ -4,7 +4,6 @@ import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.NombresCsv;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.DatosFinancierosStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
@@ -27,12 +26,6 @@ public class PagoAutomaticoSiniestroDefinition {
     ReclamacionEmpresarial reclamacionEmpresarial;
 
     @Steps
-    MenuClaimsStep menuClaimsStep;
-
-    @Steps
-    NuevoPagoStep nuevoPagoStep;
-
-    @Steps
     BuscarPolizaStep buscarPolizaStep;
 
     @Steps
@@ -52,8 +45,6 @@ public class PagoAutomaticoSiniestroDefinition {
         reclamacionEmpresarial =
                 new ReclamacionEmpresarial(
                         obtenerDatosPrueba(NombresCsv.RECLAMACION_EMPRESARIAL.getValor(), productoPoliza));
-        menuClaimsStep.seleccionarOpcionMenuSegundoNivel(
-                MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
         buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
     }
 
@@ -84,8 +75,6 @@ public class PagoAutomaticoSiniestroDefinition {
         PagoSiniestro pago =
                 new PagoSiniestro(
                         obtenerDatosPrueba(NombresCsv.PAGO_SINIESTRO.getValor(), productoPoliza));
-        menuClaimsStep.clicTemporal();
-        menuClaimsStep.seleccionarOpcionMenuLateralSegundoNivel(DATOS_FINANCIEROS.getValor(), PAGOS);
         datosFinancierosStep.verificarPagoAutomatico(pago.getLstPago());
     }
 }

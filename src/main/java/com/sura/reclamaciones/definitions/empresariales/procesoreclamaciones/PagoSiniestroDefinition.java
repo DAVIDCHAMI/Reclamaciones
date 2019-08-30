@@ -31,7 +31,8 @@ public class PagoSiniestroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps MenuClaimsStep menuClaimsStep;
+  @Steps
+  MenuClaimsStep menuClaimsStep;
 
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
