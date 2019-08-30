@@ -9,19 +9,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.swing.*;
-import java.io.File;
-
 public class CargaArchivoPagoMasivoPage extends GeneralPage {
 
   @FindBy(id = "BulkPay:BulkPayScreen:CreateNewWizardButton")
   private WebElementFacade btnFacturacionMasiva;
-
-  @FindBy(
-    xpath =
-        ".//input[contains(@class,'x-form-file-input')]"
-  )
-  private WebElementFacade btnExaminar;
 
   public CargaArchivoPagoMasivoPage(WebDriver wdriver) {
     super(wdriver);
@@ -34,11 +25,9 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
 
   public void buscarArchivoPagoMasivo(String rutaCompleta)
   {
-//    String nombreArchivoPagoMasivo= "PlantillaPagosMasivos.xlsx";
-//  File resourcesDirectory = new File("src/test/resources/files");
     WebDriverWait wait = new WebDriverWait(getDriver(),0);
-    WebElement btnExaminar1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//input[@name='fileContent']")));
-    btnExaminar1.sendKeys(rutaCompleta);
+    WebElement btnExaminar = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//input[@name='fileContent']")));
+    btnExaminar.sendKeys(rutaCompleta);
   }
 }
 

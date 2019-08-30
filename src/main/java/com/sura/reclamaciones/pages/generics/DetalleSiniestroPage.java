@@ -30,11 +30,6 @@ public class DetalleSiniestroPage extends GeneralPage {
     super(wdriver);
   }
 
-  public DetalleSiniestroPage() {
-    this.tblPlacasVehiculosInvolucrados = tblPlacasVehiculosInvolucrados;
-    this.lblNumeroSiniestro = lblNumeroSiniestro;
-  }
-
   public void obtenerNumeroPlacaPartesImplicadas()
   {
     List<String> placaVehiculosInvolucrados = new ArrayList<String>();

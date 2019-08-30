@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
-
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
