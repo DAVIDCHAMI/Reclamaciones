@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
-
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -12,12 +11,12 @@ import org.openqa.selenium.WebElement;
 
 public class ResultadoArchivoProcesadoPage extends GeneralPage {
 
+  @FindBy(id = "BulkPayWizard:BulkPayWizard_BulkItemsLoadScreen:BulkPayWizard_InvoiceItemsLV")
+  private WebElementFacade tblResultadoArchivoProcesado;
+
   public ResultadoArchivoProcesadoPage(WebDriver wdriver) {
     super(wdriver);
   }
-
-  @FindBy(id = "BulkPayWizard:BulkPayWizard_BulkItemsLoadScreen:BulkPayWizard_InvoiceItemsLV")
-  private WebElementFacade tblResultadoArchivoProcesado;
 
   public void consultarResultadoArchivoProcesado() {
     final String RESULTADO_ARCHIVO_PROCESADO = "Valido";
