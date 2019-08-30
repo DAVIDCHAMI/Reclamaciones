@@ -40,8 +40,6 @@ public class PagoMasivoDefinition {
 
   @Steps ProcesoBatchStep procesoBatchStep;
 
-  @Steps FacturaVolumenStep facturaVolumenStep;
-
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps GenericStep genericStep;
@@ -78,7 +76,6 @@ public class PagoMasivoDefinition {
   @Entonces(
       "^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
   public void validarPagoMasivo() {
-    facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
-        MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
+    //ToDo
   }
 }

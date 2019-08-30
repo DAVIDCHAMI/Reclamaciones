@@ -53,22 +53,4 @@ public class ProcesoBatchPage extends GeneralPage {
       }
     }
   }
-
-  public void seleccionarOpcionMenuAccion() {
-    mnuAcciones.waitUntilPresent();
-    mnuAcciones.click();
-  }
-
-  public void seleccionarOpcionMenuAccionesPrimerNivel(String nombreOpcion) {
-    mnuPanelOpcionesPrimerNivel
-        .iterator()
-        .next()
-        .findBy(
-            By.xpath(
-                "//span[contains(@class,'x-menu-item-text')][contains(text(),'"
-                    + nombreOpcion
-                    + "')]"))
-        .click();
-    realizarEsperaCarga();
-  }
 }

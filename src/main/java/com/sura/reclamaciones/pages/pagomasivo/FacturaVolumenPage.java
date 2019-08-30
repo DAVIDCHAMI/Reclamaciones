@@ -22,27 +22,4 @@ public class FacturaVolumenPage extends GeneralPage {
   public FacturaVolumenPage(WebDriver wdriver) {
     super(wdriver);
   }
-
-  public void obtenerUltimaPagina() {
-    lblObtenerUltimaPagina.waitUntilPresent();
-    lblObtenerUltimaPagina.click();
-  }
-
-  public void buscarNumeroFacturaPagoMasivo() {
-    final String NUMERO_FACTURA = "N.º de factura";
-    List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(
-            tblNumeroFacturaPagoMasivo, NUMERO_FACTURA, Integer.parseInt(POSICION_FILA.getValor()));
-    String numeroFacturaPagoMasivo = (Serenity.sessionVariableCalled(SESION_CC_NUMERO_FACTURA_PAGO_MASIVO.getValor()).toString());
-    int tamanoLista = elementoEncontrado.size();
-    for (int i = 0; i <= tamanoLista - 1; i++) {
-      if (numeroFacturaPagoMasivo.equals(elementoEncontrado.get(i).getText())) {
-        elementoEncontrado
-            .get(i)
-            .findElement(By.id("BulkPay:BulkPayScreen:BulkInvoicesLV:" + i + ":InvoiceNumber"))
-            .click();
-        break;
-      }
-    }
-  }
 }
