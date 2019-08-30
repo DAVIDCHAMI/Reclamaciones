@@ -4,7 +4,6 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICU
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
-
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
@@ -16,7 +15,6 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import net.thucydides.core.annotations.Steps;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
-
 import java.io.IOException;
 
 public class PagoMasivoDefinition {
@@ -34,7 +32,6 @@ public class PagoMasivoDefinition {
   @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
 
   @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
-
 
   @Steps NuevoPagoStep nuevoPagoStep;
 

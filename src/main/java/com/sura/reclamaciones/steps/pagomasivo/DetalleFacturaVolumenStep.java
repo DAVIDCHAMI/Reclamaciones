@@ -8,8 +8,6 @@ public class DetalleFacturaVolumenStep {
 
   @Page DetalleFacturaVolumenPage detalleFacturaVolumenPage;
 
-  @Page ProcesoBatchPage procesoBatchPage;
-
   @Step
   public void ingresarInformacionFactura(String tipoMoneda, String metodoPago) {
     detalleFacturaVolumenPage.seleccionarTipoMoneda(tipoMoneda);

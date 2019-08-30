@@ -34,11 +34,6 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
   @FindBy(id = "AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV")
   private WebElementFacade tblResultadoBusquedaContacto;
 
-  @FindBy(id = "ext-gen")
-  private WebElementFacade btnSeleccionarContactoPagoMasivo;
-
-  int posicionNombreContactoEncontrado, tamanoLista;
-
   public BusquedaLibretaContactoPage(WebDriver wdriver) {
     super(wdriver);
   }
