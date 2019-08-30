@@ -13,23 +13,23 @@ import org.openqa.selenium.WebElement;
 
 public class DetalleSiniestroPage extends GeneralPage {
 
-  public DetalleSiniestroPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   @FindBy(
-    xpath =
-        ".//div[contains(@id,'ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:EditableVehicleIncidentsLV') and @class='x-panel x-panel-default x-grid']"
+    id =
+        "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:EditableVehicleIncidentsLV"
   )
   private WebElementFacade tblPlacasVehiculosInvolucrados;
 
   @FindBy(
-    xpath =
-        ".//div[contains(@id,'ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl') and @class='x-form-display-field']"
+    id =
+        "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl"
   )
   private WebElementFacade lblNumeroSiniestro;
 
-  public List<String> obtenerNumneroPlacaPartesImplicadas() {
+  public DetalleSiniestroPage(WebDriver wdriver) {
+    super(wdriver);
+  }
+
+  public List<String> obtenerNumeroPlacaPartesImplicadas() {
     List<String> placaVehiculosInvolucrados = new ArrayList<String>();
     final String PLACA = "Placa";
     List<WebElement> elementoEncontrado =
@@ -45,8 +45,6 @@ public class DetalleSiniestroPage extends GeneralPage {
   }
 
   public String obtenerNumeroSiniestro() {
-    lblNumeroSiniestro.waitUntilClickable();
-    String numeroSiniestro = lblNumeroSiniestro.getText();
-    return numeroSiniestro;
+    return lblNumeroSiniestro.waitUntilClickable().getText();
   }
 }
