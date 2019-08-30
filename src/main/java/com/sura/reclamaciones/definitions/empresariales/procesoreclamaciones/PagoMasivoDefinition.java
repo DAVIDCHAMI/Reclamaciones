@@ -4,19 +4,16 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICU
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
-import com.sura.reclamaciones.steps.generics.ProcesoBatchStep;
 import com.sura.reclamaciones.steps.pagomasivo.*;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 
@@ -70,7 +67,6 @@ public class PagoMasivoDefinition {
     detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
     detalleFacturaVolumenStep.crearPagoMasivo();
-    procesoBatchStep.ejecutarProcesoBatch();
   }
 
   @Entonces(
