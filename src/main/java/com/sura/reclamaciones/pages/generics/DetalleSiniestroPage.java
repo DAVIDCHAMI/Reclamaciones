@@ -29,7 +29,7 @@ public class DetalleSiniestroPage extends GeneralPage {
     super(wdriver);
   }
 
-  public List<String> obtenerNumneroPlacaPartesImplicadas() {
+  public List<String> obtenerNumeroPlacaPartesImplicadas() {
     List<String> placaVehiculosInvolucrados = new ArrayList<String>();
     final String PLACA = "Placa";
     List<WebElement> elementoEncontrado =
