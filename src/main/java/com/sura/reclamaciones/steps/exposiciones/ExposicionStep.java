@@ -3,15 +3,12 @@ package com.sura.reclamaciones.steps.exposiciones;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
-import com.sura.reclamaciones.pages.exposiciones.ExposicionPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
 public class ExposicionStep {
-
-  @Page ExposicionPage exposicionPage;
 
   @Page GeneralPage generalPage;
 
