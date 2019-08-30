@@ -35,7 +35,6 @@ public class PagoMasivoDefinition {
 
   @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
 
-  @Steps ProcesoBatchStep procesoBatchStep;
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
