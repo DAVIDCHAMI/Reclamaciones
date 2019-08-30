@@ -11,6 +11,7 @@ public final class MenuConstante {
   public static final String TRANSACCIONES = "Transacciones";
   public static final String DETALLES_SINIESTRO = "Detalles del siniestro";
   public static final String PLAN_TRABAJO = "Plan de trabajo";
+  public static final String PAGOS = "Pagos";
 
   private MenuConstante() {}
 }

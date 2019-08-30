@@ -110,8 +110,11 @@ public class MenuClaimPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
+    public void clicTemporal() {
+        lblNumeroReclamacion.waitUntilVisible().click();
+    }
+
   public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
-    lblNumeroReclamacion.waitUntilVisible().click();
     seleccionarOpcionMenuLateralPrimerNivel(nombreOpcion);
     realizarEsperaCarga();
     seleccionarOpcionMenuLateralPrimerNivel(subItem);

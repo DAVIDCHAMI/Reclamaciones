@@ -2,13 +2,14 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.NombresCsv;
+import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.DatosFinancierosStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
+import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -18,17 +19,18 @@ import net.thucydides.core.annotations.Steps;
 import java.io.IOException;
 
 import static com.sura.reclamaciones.constantes.Constantes.DATOS_FINANCIEROS;
-import static com.sura.reclamaciones.constantes.MenuConstante.TRANSACCIONES;
+import static com.sura.reclamaciones.constantes.MenuConstante.PAGOS;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
 public class PagoAutomaticoSiniestroDefinition {
 
     ReclamacionEmpresarial reclamacionEmpresarial;
 
-    Reserva reserva;
-
     @Steps
     MenuClaimsStep menuClaimsStep;
+
+    @Steps
+    NuevoPagoStep nuevoPagoStep;
 
     @Steps
     BuscarPolizaStep buscarPolizaStep;
@@ -69,15 +71,21 @@ public class PagoAutomaticoSiniestroDefinition {
 
     @Y("^una reserva automática$")
     public void verificarGeneracionReservaAutomatica() throws IOException {
-        reserva =
+        /*Reserva reserva =
                 new Reserva(
                         obtenerDatosPrueba(NombresCsv.PARAMETRO_LINEA_RESERVA.getValor(), productoPoliza));
+
         menuClaimsStep.seleccionarOpcionMenuLateralSegundoNivel(DATOS_FINANCIEROS.getValor(), TRANSACCIONES);
-        datosFinancierosStep.verificarMontoReservaAutomatica(reserva.getLstReserva());
+        datosFinancierosStep.verificarMontoReservaAutomatica(reserva.getLstReserva());*/
     }
 
-    @Y("^un pago automático con un monto de (.*)$")
-    public void verificarGeneracionPagoAutomatico(String montoPago) throws Throwable {
-        //TO DO
+    @Y("^un pago automático$")
+    public void verificarGeneracionPagoAutomatico() throws IOException {
+        PagoSiniestro pago =
+                new PagoSiniestro(
+                        obtenerDatosPrueba(NombresCsv.PAGO_SINIESTRO.getValor(), productoPoliza));
+        menuClaimsStep.clicTemporal();
+        menuClaimsStep.seleccionarOpcionMenuLateralSegundoNivel(DATOS_FINANCIEROS.getValor(), PAGOS);
+        datosFinancierosStep.verificarPagoAutomatico(pago.getLstPago());
     }
 }

@@ -124,7 +124,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
         cantidadDeducible = cantidadDeducible.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
         return cantidadDeducible;
     }
-
+    //span[contains(@class
     public String obtenerMontoReservaAutomatica(String montoReserva) {
         String validarReservaTransaccion ="";
         if (lnkReservaTransaccion.isVisible()) {
