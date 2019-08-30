@@ -3,7 +3,6 @@ package com.sura.reclamaciones.steps.pagomasivo;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagomasivo.CargaArchivoPagoMasivoPage;
-import com.sura.reclamaciones.utils.LlenadoArchivoXLS;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
