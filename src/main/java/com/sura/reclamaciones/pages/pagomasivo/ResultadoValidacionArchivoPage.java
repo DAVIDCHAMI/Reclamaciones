@@ -10,6 +10,7 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 public class ResultadoValidacionArchivoPage extends GeneralPage {
+
   int numeroRegistrosPantalla;
 
   @FindBy(xpath = ".//label[contains(@class,'x-component x-component-default')]")
