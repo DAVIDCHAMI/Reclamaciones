@@ -15,11 +15,4 @@ public class DetalleFacturaVolumenStep {
     detalleFacturaVolumenPage.buscarBeneficiario();
     detalleFacturaVolumenPage.buscarBeneficiarioPago();
   }
-
-  @Step
-  public void crearPagoMasivo() {
-    detalleFacturaVolumenPage.obtenerNumeroFacturaPagoMasivo();
-    detalleFacturaVolumenPage.finalizarPagoMasivo();
-    detalleFacturaVolumenPage.enviarPagoMasivo();
-  }
 }
