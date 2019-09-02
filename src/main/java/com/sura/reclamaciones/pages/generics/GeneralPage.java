@@ -238,9 +238,7 @@ public class GeneralPage extends PageObject {
         .map(
             fila ->
                 fila.findElement(
-                    By.xpath(
-                        String.format(
-                            "./tr[" + posicionFila + "]/td[" + posicionColumna + "]/div"))))
+                    By.xpath(String.format("./tr[%d]/td[%d]/div", posicionFila, posicionColumna))))
         .collect(Collectors.toList());
   }
 
