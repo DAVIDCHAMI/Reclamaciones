@@ -52,18 +52,14 @@ public class ReaseguroDefinition {
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
-      String aplicaSoloSura,
-      String codigoRetencion)
+      String aplicaSoloSura)
       throws IOException {
     PagoSiniestro pagoSiniestro =
         new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), strTipoContrato)));
     nuevoPagoStep.consultarNumeroReclamacion();
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    //  nuevoPagoStep.ingresarInformacionPago(
-    //      lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    //  nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
     instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
