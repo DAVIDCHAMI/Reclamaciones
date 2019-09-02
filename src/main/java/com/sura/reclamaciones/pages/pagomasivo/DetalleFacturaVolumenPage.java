@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_FACTURA_PAGO_MASIVO;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
@@ -11,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 public class DetalleFacturaVolumenPage extends GeneralPage {
 
   @FindBy(
-          id = "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Currency-inputEl"
+    id = "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Currency-inputEl"
   )
   private WebElementFacade cmbTipoMoneda;
 
@@ -22,14 +23,14 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
   private WebElementFacade rbtMetodoPago;
 
   @FindBy(
-          id =
-                  "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Payee:PayeeMenuIcon"
+    id =
+        "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Payee:PayeeMenuIcon"
   )
   private WebElementFacade btnBuscarBeneficiario;
 
   @FindBy(
-          id =
-                  "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Payee:MenuItem_Search-textEl"
+    id =
+        "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:Payee:MenuItem_Search-textEl"
   )
   private WebElementFacade btnBuscarBeneficiarioPago;
 
@@ -40,8 +41,8 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
   private WebElementFacade btnEnviarPagoMasivo;
 
   @FindBy(
-          id =
-                  "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:InvoiceNumber-bodyEl"
+    id =
+        "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:InvoiceNumber-bodyEl"
   )
   private WebElementFacade lblNumeroFacturaPagoMasivo;
 
@@ -52,8 +53,8 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
   public void seleccionarTipoMoneda(String tipoMoneda) {
     cmbTipoMoneda.click();
     lstTipoMoneda
-            .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + tipoMoneda + "')]"))
-            .click();
+        .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + tipoMoneda + "')]"))
+        .click();
   }
 
   public void buscarBeneficiario() {
@@ -69,12 +70,12 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
   public void seleccionarMetodoPago(String metodoPago) {
     rbtMetodoPago.waitUntilClickable();
     rbtMetodoPago
-            .findElement(
-                    By.xpath(
-                            "//following-sibling::label[contains( .,'"
-                                    + metodoPago
-                                    + "')]//preceding-sibling::input"))
-            .click();
+        .findElement(
+            By.xpath(
+                "//following-sibling::label[contains( .,'"
+                    + metodoPago
+                    + "')]//preceding-sibling::input"))
+        .click();
   }
 
   public void finalizarPagoMasivo() {
@@ -90,11 +91,6 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
   public void obtenerNumeroFacturaPagoMasivo() {
     lblNumeroFacturaPagoMasivo.getText();
     Serenity.setSessionVariable(SESION_CC_NUMERO_FACTURA_PAGO_MASIVO.getValor())
-            .to(lblNumeroFacturaPagoMasivo);
+        .to(lblNumeroFacturaPagoMasivo);
   }
 }
-
-
-
-
-

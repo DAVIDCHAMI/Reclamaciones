@@ -4,7 +4,9 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICU
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
+import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagomasivo.*;
@@ -13,9 +15,8 @@ import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
-import net.thucydides.core.annotations.Steps;
-import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import java.io.IOException;
+import net.thucydides.core.annotations.Steps;
 
 public class PagoMasivoDefinition {
 
@@ -31,27 +32,26 @@ public class PagoMasivoDefinition {
 
   @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
 
-  @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
-
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps GenericStep genericStep;
 
-  @Cuando("^se registra la información de las facturas del pago masivo de los siniestros con cobertura (.*) a un proveedor")
+  @Cuando(
+      "^se registra la información de las facturas del pago masivo de los siniestros con cobertura (.*) a un proveedor")
   public void ingresarInformacionFactura(String tipoCobertura) throws IOException {
     nuevoPagoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
-            new ExposicionVehiculoTercero(
-                    genericStep.getFilasModelo(
-                            PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
-                            EXPOSICION_VEHICULAR_TERCERO.getValor()));
-    nuevoPagoStep.crearExposicionVehicularManual(
+        new ExposicionVehiculoTercero(
             genericStep.getFilasModelo(
-                    PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
-            exposicionVehiculoTercero.getLstExposicionTerceros());
+                PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
+                EXPOSICION_VEHICULAR_TERCERO.getValor()));
+    nuevoPagoStep.crearExposicionVehicularManual(
+        genericStep.getFilasModelo(
+            PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
+        exposicionVehiculoTercero.getLstExposicionTerceros());
     detalleSiniestroStep.consultarInformacionSiniestro();
     cargaArchivoPagoMasivoStep.cargarArchivoXls(
-            MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
+        MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
     resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }
@@ -61,8 +61,6 @@ public class PagoMasivoDefinition {
   public void crearPagoMasivo(
       String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
     detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
-    busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
-    detalleFacturaVolumenStep.crearPagoMasivo();
   }
 
   @Entonces(

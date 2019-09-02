@@ -2,6 +2,7 @@ package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_COLUMNA_MENOS_DOS;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
