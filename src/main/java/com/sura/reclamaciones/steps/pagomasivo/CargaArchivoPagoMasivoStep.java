@@ -10,14 +10,14 @@ public class CargaArchivoPagoMasivoStep {
 
   @Page MenuClaimPage menuClaimPage;
 
-  @Page CargaArchivoPagoMasivoPage cargaArchivoPagoMasivoStep;
+  @Page CargaArchivoPagoMasivoPage cargaArchivoPagoMasivoPage;
 
   @Page GeneralPage generalPage;
 
   @Step
-  public void ingresarOpcionPagoMasivo(String nombreOpcion, String subItem) {
+  public void cargarArchivoXls(String nombreOpcion, String subItem) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
-    cargaArchivoPagoMasivoStep.generarFacturacionMasiva();
+    cargaArchivoPagoMasivoPage.generarFacturacionMasiva();
     generalPage.continuarSiguientePantalla();
   }
 }
