@@ -12,12 +12,12 @@ import org.openqa.selenium.WebElement;
 
 public class ResultadoArchivoProcesadoPage extends GeneralPage {
 
+  @FindBy(id = "BulkPayWizard:BulkPayWizard_BulkItemsLoadScreen:BulkPayWizard_InvoiceItemsLV")
+  private WebElementFacade tblResultadoArchivoProcesado;
+
   public ResultadoArchivoProcesadoPage(WebDriver wdriver) {
     super(wdriver);
   }
-
-  @FindBy(id = "BulkPayWizard:BulkPayWizard_BulkItemsLoadScreen:BulkPayWizard_InvoiceItemsLV")
-  private WebElementFacade tblResultadoArchivoProcesado;
 
   public void consultarResultadoArchivoProcesado() {
     final String RESULTADO_ARCHIVO_PROCESADO = "Valido";
