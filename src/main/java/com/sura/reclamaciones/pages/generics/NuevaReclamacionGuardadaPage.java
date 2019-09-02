@@ -1,6 +1,6 @@
-package com.sura.reclamaciones.pages.autos.reclamacion;
+package com.sura.reclamaciones.pages.generics;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -19,6 +19,11 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
 
   @FindBy(xpath = "//span[@id='TabBar:ClaimTab-btnInnerEl']")
   private WebElementFacade txtNumeroReclamacion;
+
+  @FindBy(
+    xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
+  )
+  private WebElementFacade divNumeroReclamacion;
 
   public NuevaReclamacionGuardadaPage(WebDriver wdriver) {
     super(wdriver);
@@ -44,6 +49,17 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
     txtNumeroReclamacion.waitUntilVisible();
     numeroReclamacion = txtNumeroReclamacion.getText();
     numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    return numeroReclamacion;
+  }
+
+  public String obtenerNumeroReclamacion() {
+    String numeroReclamacion;
+    divNumeroReclamacion.waitUntilVisible().waitUntilClickable();
+    numeroReclamacion = divNumeroReclamacion.getText();
+    numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    Utilidades.getLogger()
+        .info(String.format("el número de reclamación generado es: %s%n", numeroReclamacion));
+    divNumeroReclamacion.click();
     return numeroReclamacion;
   }
 }

@@ -6,7 +6,12 @@ import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
+import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
+import com.sura.reclamaciones.steps.notificacionaviso.PropiedadesImplicadasStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -22,6 +27,16 @@ public class NotificacionAvisoSiniestroDefinition {
 
   @Steps GenericStep genericStep;
 
+  @Steps MenuClaimsStep menuClaimsStep;
+
+  @Steps BuscarPolizaStep buscarPolizaStep;
+
+  @Steps InformacionReclamacionStep informacionReclamacionStep;
+
+  @Steps InformacionBasicaStep informacionBasicaStep;
+
+  @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
+
   @Dado("^que se tiene una póliza de (.*)$")
   public void buscarPoliza(String tipoCobertura) throws IOException {
     Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(tipoCobertura);
@@ -29,22 +44,21 @@ public class NotificacionAvisoSiniestroDefinition {
         new ReclamacionEmpresarial(
             genericStep.getFilasModelo(
                 ReclamacionConstante.RECLAMACION_EMPRESARIAL, tipoCobertura));
-    nuevaReclamacionEmpresarialStep.seleccionarNuevaReclamacion(
+    menuClaimsStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
-    nuevaReclamacionEmpresarialStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
+    buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
   }
 
   @Cuando("^se genere un siniestro por causal (.*) con un valor de pretensión de (.*)$")
   public void tomarDatosSiniestro(String causaSiniestro, String valorPretension) {
-    nuevaReclamacionEmpresarialStep.seleccionarPropiedadImplicada();
-    nuevaReclamacionEmpresarialStep.diligenciarInformacionPersonal(
-        reclamacionEmpresarial.getLstReclamo());
-    nuevaReclamacionEmpresarialStep.seleccionarCausalIncidente(causaSiniestro, valorPretension);
+    propiedadesImplicadasStep.seleccionarPropiedadImplicada();
+    informacionBasicaStep.diligenciarInformacionBasica(reclamacionEmpresarial.getLstReclamo());
+    informacionReclamacionStep.seleccionarCausalIncidente(causaSiniestro, valorPretension);
   }
 
   @Cuando("^un incidente de tipo (.*)$")
   public void tomarTipoIncidente(String tipoIncidente) {
-    nuevaReclamacionEmpresarialStep.diligenciarInformacionIncidente(tipoIncidente);
+    informacionReclamacionStep.diligenciarInformacionIncidente(tipoIncidente);
   }
 
   @Entonces("^se obtiene una reclamación que (.*) genera exposición$")

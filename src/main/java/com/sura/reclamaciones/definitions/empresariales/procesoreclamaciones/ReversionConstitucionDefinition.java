@@ -5,8 +5,14 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
+import com.sura.reclamaciones.steps.notificacionaviso.PropiedadesImplicadasStep;
 import com.sura.reclamaciones.steps.reserva.MovimientoLineaReservaStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -23,7 +29,19 @@ public class ReversionConstitucionDefinition {
 
   @Steps NuevaReclamacionEmpresarialStep reclamacionEmpresarialStep;
 
+  @Steps InformacionReclamacionStep informacionReclamacionStep;
+
+  @Steps BuscarPolizaStep buscarPolizaStep;
+
+  @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
+
   @Steps GenericStep genericStep;
+
+  @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
+
+  @Steps InformacionBasicaStep informacionBasicaStep;
+
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Dado(
       "^que se genera un siniestro del producto (.*) con causa (.*), valor de pretensión (.*) y tipo incidente de (.*)$")
@@ -36,8 +54,12 @@ public class ReversionConstitucionDefinition {
             genericStep.getFilasModelo(RECLAMACION_EMPRESARIAL.getValor(), producto));
     reclamacionEmpresarialStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
-    reclamacionEmpresarialStep.crearNuevaReclamacionEmpresarial(
-        reserva.getLstReclamo(), causaSiniestro, valorPretension, tipoIncidente);
+    buscarPolizaStep.buscarPolizaEmpresarial(reserva.getLstReclamo());
+    propiedadesImplicadasStep.seleccionarPropiedadImplicada();
+    informacionBasicaStep.diligenciarInformacionBasica(reserva.getLstReclamo());
+    informacionReclamacionStep.seleccionarCausalIncidente(causaSiniestro, valorPretension);
+    informacionReclamacionStep.diligenciarInformacionIncidente(tipoIncidente);
+    nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
   }
 
   @Cuando("^se ajuste la reserva con un valor de (.*)$")

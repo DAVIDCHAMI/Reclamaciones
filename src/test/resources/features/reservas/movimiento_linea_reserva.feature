@@ -5,6 +5,7 @@ Característica: Constitución de una línea de reserva de un siniestro
   Quiero que sea posible realizar ajustes en las reservas
   Para que se pueda cubrir el monto del valor del siniestro
 
+  @reversionConstitucion
   @claimsEmpresarial
   Esquema del escenario: reversión de constitución
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <causa>, valor de pretensión <valor de pretension> y tipo incidente de <Tipo de incidente>
