@@ -3,6 +3,8 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
+import com.sura.reclamaciones.steps.pagomasivo.DetalleFacturaVolumenStep;
+import com.sura.reclamaciones.steps.pagomasivo.ResultadoArchivoProcesadoStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -16,19 +18,24 @@ public class PagoMasivoDefinition {
 
   @Steps DetalleSiniestroStep detalleSiniestroStep;
 
+  @Steps ResultadoArchivoProcesadoStep resultadoArchivoProcesadoStep;
+
+  @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
+
   @Cuando("^se registra la información de las facturas del pago masivo a un mismo proveedor")
-  public void validarFacturaProcesoPagoMasivo() {
+  public void ingresarInformacionFactura() {
     detalleSiniestroStep.consultarInformacionSiniestro();
-    cargaArchivoPagoMasivoStep.ingresarOpcionPagoMasivo(
+    cargaArchivoPagoMasivoStep.cargarArchivoXls(
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
+    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }
 
   @Cuando(
       "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
   public void crearPagoMasivo(
       String tipoContacto, String nombreProveedor, String tipoMoneda, String metodoPago) {
-    //ToDo
+    detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
   }
 
   @Entonces(

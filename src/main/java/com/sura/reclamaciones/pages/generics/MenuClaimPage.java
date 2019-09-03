@@ -83,7 +83,6 @@ public class MenuClaimPage extends GeneralPage {
     mnuPrimerNivel
         .findElement(By.xpath(".//a[contains(.,'" + nombreOpcion + "')]"))
         .sendKeys(Keys.ARROW_DOWN);
-
     if (nombreOpcion.equals(MenuConstante.ESCRITORIO_MENU)) {
       mnuSegundoNivelEscritorio
           .findElement(By.xpath(".//a[contains(.,'" + subItem + "')]"))
