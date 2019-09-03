@@ -127,7 +127,7 @@ public class NuevoPagoStep {
       establecerInstruccionPagoPage.ingresarFechaFactura();
       establecerInstruccionPagoPage.ingresarNumeroFactura(
           lstPago.listIterator().next().getNumeroFactura());
-          }
+    }
     establecerInstruccionPagoPage.obtenerPagoReservas();
     establecerInstruccionPagoPage.finalizarProceso();
   }

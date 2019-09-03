@@ -209,7 +209,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void finalizarProceso() {
-    btnFinalizar.waitUntilVisible ().waitUntilClickable().click ();
+    btnFinalizar.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
   }
 

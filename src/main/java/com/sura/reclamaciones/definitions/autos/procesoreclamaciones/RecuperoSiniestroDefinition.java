@@ -21,7 +21,6 @@ public class RecuperoSiniestroDefinition {
 
   Recupero recupero;
 
-
   @Cuando(
       "^se cree el recupero por el tipo de (.*) con un código de retención (.*) a una cobertura (.*)$")
   public void crearRecuperoReclamacionAutos(
