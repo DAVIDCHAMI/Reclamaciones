@@ -29,7 +29,7 @@ public class CargaArchivoPagoMasivoStep {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     cargaArchivoPagoMasivoPage.generarFacturacionMasiva();
     //llenadoArchivoXLS.LlenarArchivoXls(rutaCompleta);
-    cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo(rutaCompleta);
+    //cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo(rutaCompleta);
     generalPage.continuarSiguientePantalla();
   }
 }

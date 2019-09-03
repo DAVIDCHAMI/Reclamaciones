@@ -20,14 +20,11 @@ public class ResultadoValidacionArchivoPage extends GeneralPage {
   }
 
   public void capturarNumeroRegistrosPantalla() {
-    numeroRegistrosPantalla =
-        Integer.parseInt(lblNroRegistrosFactura.getText().replaceAll("\\D+", ""));
+    numeroRegistrosPantalla = Integer.parseInt(lblNroRegistrosFactura.getText().replaceAll("\\D+", ""));
   }
 
   public void validarNumeroRegistrosArchivoXls() {
-    String numeroRegistrosArchivo =
-        (Serenity.sessionVariableCalled(SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS.getValor())
-            .toString());
+    String numeroRegistrosArchivo = (Serenity.sessionVariableCalled(SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS.getValor()).toString());
     int numeroRegistrosArchivoXls = Integer.parseInt(numeroRegistrosArchivo);
     MatcherAssert.assertThat(
         "El número de registros de la pantalla no es igual al número de registros del archivo XLS",
