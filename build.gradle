@@ -67,10 +67,16 @@ repositories {
     }
 }
 
+ext{
+    serenityVersion = '1.9.6'
+    servicesConectorVersion = '9.7.0'
+    serenityCucumberVersion = '1.9.8'
+}
+
 dependencies {
-    compile group: 'com.sura.bdd', name: 'services-conector', version: '8.1.3'
-    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.9.6'
-    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.9.4'
+    compile         "com.sura.bdd:services-conector:$rootProject.ext.servicesConectorVersion"
+    compile         "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion"
+    compile         "net.serenity-bdd:serenity-cucumber:$rootProject.ext.serenityCucumberVersion"
     compile group: 'org.assertj', name: 'assertj-core', version: '1.7.0'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.2'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.2'
