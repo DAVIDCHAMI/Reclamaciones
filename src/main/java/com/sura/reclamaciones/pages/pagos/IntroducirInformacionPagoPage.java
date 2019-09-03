@@ -1,9 +1,9 @@
 package com.sura.reclamaciones.pages.pagos;
 
-import static com.sura.reclamaciones.constantes.Constantes.CERO;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 import static org.openqa.selenium.By.xpath;
@@ -128,7 +128,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocidoMultiple(
             tblElementoLinea, strCantidadPago, posicionCalculo);
-    elementoEncontrado.get(Integer.parseInt(CERO.getValor())).click();
+    elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
     evaluateJavascript(
         String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
   }
@@ -152,7 +152,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
             tblElementoLinea, CODIGO_RETENCION.getValor(), posicion);
     elementoEncontrado.forEach(
         elemento -> {
-          elementoEncontrado.get(Integer.parseInt(CERO.getValor())).click();
+          elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
           lstCodigoRetencion.waitUntilVisible();
           lstCodigoRetencion
               .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
