@@ -63,13 +63,21 @@ public class Reserva {
     return datoDevolverTablaDatosFinancieros;
   }
 
-  public String getTipoCosto(){return tipoCosto;}
+  public String getTipoCosto() {
+    return tipoCosto;
+  }
 
-  public String getCostType(){return costType;}
+  public String getCostType() {
+    return costType;
+  }
 
-  public String getCategoriaCosto(){return categoriaCosto;}
+  public String getCategoriaCosto() {
+    return categoriaCosto;
+  }
 
-  public String getCostCategory(){return costCategory;}
+  public String getCostCategory() {
+    return costCategory;
+  }
 
   private void asignarDatos(List<Map<String, String>> datosReserva) {
     for (Map<String, String> dato : datosReserva) {

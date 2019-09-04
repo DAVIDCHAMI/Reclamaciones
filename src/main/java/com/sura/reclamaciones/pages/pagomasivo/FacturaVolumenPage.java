@@ -2,6 +2,7 @@ package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_FACTURA_PAGO_MASIVO;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
@@ -26,6 +27,7 @@ public class FacturaVolumenPage extends GeneralPage {
   public void obtenerUltimaPagina() {
     lblObtenerUltimaPagina.waitUntilPresent();
     lblObtenerUltimaPagina.click();
+    realizarEsperaCarga();
   }
 
   public void buscarNumeroFacturaPagoMasivo() {
@@ -33,7 +35,9 @@ public class FacturaVolumenPage extends GeneralPage {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
             tblNumeroFacturaPagoMasivo, NUMERO_FACTURA, Integer.parseInt(POSICION_FILA.getValor()));
-    String numeroFacturaPagoMasivo = (Serenity.sessionVariableCalled(SESION_CC_NUMERO_FACTURA_PAGO_MASIVO.getValor()).toString());
+    String numeroFacturaPagoMasivo =
+        (Serenity.sessionVariableCalled(SESION_CC_NUMERO_FACTURA_PAGO_MASIVO.getValor())
+            .toString());
     int tamanoLista = elementoEncontrado.size();
     for (int i = 0; i <= tamanoLista - 1; i++) {
       if (numeroFacturaPagoMasivo.equals(elementoEncontrado.get(i).getText())) {

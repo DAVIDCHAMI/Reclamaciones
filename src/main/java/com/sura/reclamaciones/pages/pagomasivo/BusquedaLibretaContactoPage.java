@@ -2,6 +2,7 @@ package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_COLUMNA_MENOS_DOS;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -54,12 +55,14 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
   public void ingresarNombreContacto(String nombreContacto) {
     txtNombreContacto.waitUntilPresent();
     txtNombreContacto.sendKeys(nombreContacto);
+    realizarEsperaCarga();
   }
 
   public void buscarContacto() {
     btnBuscarContacto.waitUntilPresent();
     btnBuscarContacto.waitUntilClickable();
     btnBuscarContacto.click();
+    realizarEsperaCarga();
   }
 
   public void seleccionarContactoPagoMasivo(String nombreContacto) {
@@ -70,5 +73,6 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
             RESULTADO_BUSQUEDA_CONTACTO,
             Integer.parseInt(POSICION_COLUMNA_MENOS_DOS.getValor()));
     elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
+    realizarEsperaCarga();
   }
 }

@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -8,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 
 public class CargaArchivoPagoMasivoPage extends GeneralPage {
 
@@ -25,17 +25,11 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
     btnFacturacionMasiva.click();
   }
 
-  public void buscarArchivoPagoMasivo(String rutaCompleta)
-  {
-    WebDriverWait wait = new WebDriverWait(getDriver(),Integer.parseInt(VALOR_CERO.getValor()));
-    WebElement btnExaminar = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//input[@name='fileContent']")));
-    btnExaminar.sendKeys(rutaCompleta);
+  public void buscarArchivoPagoMasivo(String rutaArchivoPagoMasivo) {
+    WebDriverWait wait = new WebDriverWait(getDriver(), Integer.parseInt(VALOR_CERO.getValor()));
+    WebElement btnExaminar =
+        wait.until(
+            ExpectedConditions.presenceOfElementLocated(By.xpath(".//input[@name='fileContent']")));
+    btnExaminar.sendKeys(rutaArchivoPagoMasivo);
   }
 }
-
-
-
-
-
-
-

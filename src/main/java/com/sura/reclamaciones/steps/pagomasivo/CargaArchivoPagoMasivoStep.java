@@ -7,20 +7,17 @@ import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagomasivo.CargaArchivoPagoMasivoPage;
 import com.sura.reclamaciones.utils.LlenadoArchivoXLS;
+import java.io.File;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
-import java.io.File;
-import java.util.List;
-
 public class CargaArchivoPagoMasivoStep {
 
-
   LlenadoArchivoXLS llenadoArchivoXLS = new LlenadoArchivoXLS();
-  String nombreArchivoPagoMasivo= "PlantillaPagosMasivos.xlsx";
+  String nombreArchivoPagoMasivo = "PlantillaPagosMasivos.xlsx";
   File resourcesDirectory = new File("src/test/resources/files");
 
-  String rutaCompleta = resourcesDirectory.getAbsolutePath()+"\\"+nombreArchivoPagoMasivo;
+  String rutaCompleta = resourcesDirectory.getAbsolutePath() + "\\" + nombreArchivoPagoMasivo;
 
   @Page MenuClaimPage menuClaimPage;
 
@@ -28,12 +25,20 @@ public class CargaArchivoPagoMasivoStep {
 
   @Page GeneralPage generalPage;
 
-
   @Step
-  public void cargarArchivoXls(String nombreOpcion, String subItem, Exposicion datosExposicionPagoMasivo, Reserva datosReservaPagoMasivo, PagoSiniestro datosPagoSiniestroPagoMasivo) {
+  public void cargarArchivoXls(
+      String nombreOpcion,
+      String subItem,
+      Exposicion datosExposicionPagoMasivo,
+      Reserva datosReservaPagoMasivo,
+      PagoSiniestro datosPagoSiniestroPagoMasivo) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     cargaArchivoPagoMasivoPage.generarFacturacionMasiva();
-    llenadoArchivoXLS.LlenarArchivoXls(rutaCompleta, datosExposicionPagoMasivo,datosReservaPagoMasivo,datosPagoSiniestroPagoMasivo);
+    llenadoArchivoXLS.LlenarArchivoXls(
+        rutaCompleta,
+        datosExposicionPagoMasivo,
+        datosReservaPagoMasivo,
+        datosPagoSiniestroPagoMasivo);
     cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo(rutaCompleta);
     generalPage.continuarSiguientePantalla();
   }

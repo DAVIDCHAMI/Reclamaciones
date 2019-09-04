@@ -70,29 +70,49 @@ public class PagoSiniestro extends Transacciones {
     return lstPagoSiniestro;
   }
 
-  public String getTipoPago () {
+  public String getTipoPago() {
     return tipoPago;
   }
 
-  public String getPaymentType() { return paymentType; }
+  public String getPaymentType() {
+    return paymentType;
+  }
 
-  public String getDescuento() { return descuento; }
+  public String getDescuento() {
+    return descuento;
+  }
 
-  public String getCodigoRetencion() { return codigoRetencion; }
+  public String getCodigoRetencion() {
+    return codigoRetencion;
+  }
 
-  public String getLineCategory() { return lineCategory; }
+  public String getLineCategory() {
+    return lineCategory;
+  }
 
-  public String getImpuesto() { return impuesto; }
+  public String getImpuesto() {
+    return impuesto;
+  }
 
-  public String getTaxesTypeExt() { return taxesTypeExt; }
+  public String getTaxesTypeExt() {
+    return taxesTypeExt;
+  }
 
-  public String getCodigoProducto() { return codigoProducto; }
+  public String getCodigoProducto() {
+    return codigoProducto;
+  }
 
-  public String getDescription() { return description; }
+  public String getDescription() {
+    return description;
+  }
 
-  public String getCondicionPago() { return condicionPago; }
+  public String getCondicionPago() {
+    return condicionPago;
+  }
 
-  public String getPaymentConditionTypeExt() { return paymentConditionTypeExt; }
+  public String getPaymentConditionTypeExt() {
+    return paymentConditionTypeExt;
+  }
 
   private void asignarDatos(List<Map<String, String>> datosPagosEmpresarial) {
     for (Map<String, String> dato : datosPagosEmpresarial) {
