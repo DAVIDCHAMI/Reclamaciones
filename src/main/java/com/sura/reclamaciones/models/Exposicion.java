@@ -10,7 +10,7 @@ public class Exposicion {
     private String exposureType;
     private String cobertura;
     private String coverageType;
-    private String subtipoCobertura;
+    private String subTipoCobertura;
     private String coverageSubtype;
 
     private List<Exposicion> lstExposicion = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Exposicion {
         this.exposureType = datosExposicion.get("exposureType");
         this.cobertura = datosExposicion.get("cobertura");
         this.coverageType = datosExposicion.get("coverageType");
-        this.subtipoCobertura = datosExposicion.get("subtipoCobertura");
+        this.subTipoCobertura = datosExposicion.get("subtipoCobertura");
         this.coverageSubtype = datosExposicion.get("coverageSubtype");
     }
     public List<Exposicion> getLstExposicion() {
@@ -34,11 +34,11 @@ public class Exposicion {
     }
 
     public String getTipoExposicion(){return tipoExposicion;}
-    public String getexposureType () {return exposureType;}
-    public String getcobertura () {return cobertura;}
-    public String getcoverageType () {return coverageType;}
-    public String getsubtipoCobertura () {return subtipoCobertura;}
-    public String getcoverageSubtype () {return coverageSubtype;}
+    public String getExposureType () {return exposureType;}
+    public String getCobertura () {return cobertura;}
+    public String getCoverageType () {return coverageType;}
+    public String getSubtipoCobertura () {return subTipoCobertura;}
+    public String getCoverageSubtype () {return coverageSubtype;}
 
     public void asignarDatos(List<Map<String, String>> datosExposicion) {
         for (Map<String, String> dato : datosExposicion) {

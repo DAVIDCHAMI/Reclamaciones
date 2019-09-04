@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+
 public class CargaArchivoPagoMasivoPage extends GeneralPage {
 
   @FindBy(id = "BulkPay:BulkPayScreen:CreateNewWizardButton")
@@ -25,7 +27,7 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
 
   public void buscarArchivoPagoMasivo(String rutaCompleta)
   {
-    WebDriverWait wait = new WebDriverWait(getDriver(),0);
+    WebDriverWait wait = new WebDriverWait(getDriver(),Integer.parseInt(VALOR_CERO.getValor()));
     WebElement btnExaminar = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//input[@name='fileContent']")));
     btnExaminar.sendKeys(rutaCompleta);
   }

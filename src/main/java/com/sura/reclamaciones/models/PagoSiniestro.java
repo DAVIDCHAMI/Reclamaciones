@@ -70,13 +70,13 @@ public class PagoSiniestro extends Transacciones {
     return lstPagoSiniestro;
   }
 
-  public String getTipoPagoipoPago() {
+  public String getTipoPago () {
     return tipoPago;
   }
 
   public String getPaymentType() { return paymentType; }
 
-  public String getDescuentoescuento() { return descuento; }
+  public String getDescuento() { return descuento; }
 
   public String getCodigoRetencion() { return codigoRetencion; }
 
@@ -88,7 +88,7 @@ public class PagoSiniestro extends Transacciones {
 
   public String getCodigoProducto() { return codigoProducto; }
 
-  public String getDescriptionescription() { return description; }
+  public String getDescription() { return description; }
 
   public String getCondicionPago() { return condicionPago; }
 

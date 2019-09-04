@@ -1,5 +1,8 @@
 package com.sura.reclamaciones.utils;
 
+import com.sura.reclamaciones.models.Exposicion;
+import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.pages.generics.DetalleSiniestroPage;
 import net.serenitybdd.core.Serenity;
 
@@ -14,7 +17,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_PLACAS_VEHI
 
 public class LlenadoArchivoXLS {
 
-    public void LlenarArchivoXls(String rutaCompleta) {
+    public void LlenarArchivoXls(String rutaCompleta, Exposicion datosExposicionPagoMasivo, Reserva datosReservaPagoMasivo, PagoSiniestro datosPagoSiniestroPagoMasivo) {
         try {
             ArchivoXLS.abrirArchivoXls(rutaCompleta, "ITEMS");
             ArchivoXLS.removerFilaSinEncabezado();
@@ -40,7 +43,7 @@ public class LlenadoArchivoXLS {
             LocalDateTime fecha = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             String fechaFormateada = formatter.format(fecha);
-            List<String> listaInformacion = new ArrayList();
+            List<String> listaInformacion = new ArrayList(27);
 
             for (int i = 0; i < placasVehiculosInvolucradosSiniestro.size(); i++) {
                 LocalDateTime numeroFactura = LocalDateTime.now();
@@ -53,9 +56,33 @@ public class LlenadoArchivoXLS {
                 for (String datoCsv : partsCsv) {
                     listaInformacion.add(datoCsv);
                 }
+
+
+                listaInformacion.add(2,datosExposicionPagoMasivo.getTipoExposicion());
+                listaInformacion.add(3,datosExposicionPagoMasivo.getExposureType());
+                listaInformacion.add(4,datosExposicionPagoMasivo.getCobertura());
+                listaInformacion.add(5,datosExposicionPagoMasivo.getCoverageType());
+                listaInformacion.add(6,datosExposicionPagoMasivo.getSubtipoCobertura());
+                listaInformacion.add(7,datosReservaPagoMasivo.getTipoCosto());
+                listaInformacion.add(8,datosReservaPagoMasivo.getCostType());
+                listaInformacion.add(9,datosReservaPagoMasivo.getCategoriaCosto());
+                listaInformacion.add(10,datosReservaPagoMasivo.getCostCategory());
+                listaInformacion.add(11,datosPagoSiniestroPagoMasivo.getTipoPago());
+                listaInformacion.add(12,datosPagoSiniestroPagoMasivo.getPaymentType());
+                listaInformacion.add(13,datosPagoSiniestroPagoMasivo.getPaymentType());
                 listaInformacion.add(14, Integer.toString(numeroMonto));
+                listaInformacion.add(15,datosPagoSiniestroPagoMasivo.getDescuento());
+                listaInformacion.add(16,datosPagoSiniestroPagoMasivo.getCodigoRetencion());
+                listaInformacion.add(17,datosPagoSiniestroPagoMasivo.getLineCategory());
+                listaInformacion.add(18,datosPagoSiniestroPagoMasivo.getImpuesto());
+                listaInformacion.add(19,datosPagoSiniestroPagoMasivo.getTaxesTypeExt());
+                listaInformacion.add(20,datosPagoSiniestroPagoMasivo.getCodigoProducto());
                 listaInformacion.add(21, numerofacturagenerado);
                 listaInformacion.add(22, fechaFormateada);
+                listaInformacion.add(23,datosPagoSiniestroPagoMasivo.getDescription());
+                listaInformacion.add(24,datosPagoSiniestroPagoMasivo.getCondicionPago());
+                listaInformacion.add(25,datosPagoSiniestroPagoMasivo.getPaymentConditionTypeExt());
+
                 ArchivoXLS.escribirExcelXfila(listaInformacion, rutaCompleta);
                 for (int k = listaInformacion.size() - 1; k >= 0; k--) {
 
