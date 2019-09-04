@@ -10,7 +10,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERT
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
+import com.sura.reclamaciones.steps.generics.MenuClaimStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
 import com.sura.reclamaciones.utils.VariablesSesion;
@@ -31,7 +31,7 @@ public class PagoSiniestroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps MenuClaimsStep menuClaimsStep;
+  @Steps MenuClaimStep menuClaimStep;
 
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
@@ -73,7 +73,7 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
-    menuClaimsStep.consultarNumeroReclamacion(
+    menuClaimStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
@@ -102,7 +102,7 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura,
       String codigoRetencion)
       throws IOException {
-    menuClaimsStep.consultarNumeroReclamacion(
+    menuClaimStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =

@@ -4,36 +4,23 @@ import static com.sura.reclamaciones.constantes.Constantes.VALIDADOR_NUEVA_RECLA
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
-import com.sura.reclamaciones.pages.notificacionaviso.InformacionBasicaPage;
+import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionReclamacionPage;
-import com.sura.reclamaciones.pages.notificacionaviso.PropiedadesImplicadasPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
-import com.sura.reclamaciones.steps.generics.UbicacionStep;
 import java.util.List;
-import net.thucydides.core.annotations.Steps;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
 public class NuevaReclamacionEmpresarialStep {
 
-  @Page BuscarPolizaPage buscarPolizaPage;
-
   @Page MenuClaimPage menuClaimPage;
 
   @Page InformacionReclamacionPage informacionReclamacionPage;
 
-  @Page InformacionBasicaPage informacionBasicaPage;
-
-  @Page PropiedadesImplicadasPage seleccionarPropiedadesImplicadasPage;
-
   @Page ResumenReclamacionPage resumenReclamacionPage;
 
-  @Page GeneralPage generalPage;
-
-  @Steps UbicacionStep ubicacionStep;
+  @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
 
   public void validarReclamacion() {
     String verificar;
@@ -47,16 +34,8 @@ public class NuevaReclamacionEmpresarialStep {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
   }
 
-  public void diligenciarInformacionPersonal(List<ReclamacionEmpresarial> datosAutor) {
-    datosAutor.forEach(
-        autor -> {
-          informacionBasicaPage.seleccionarAutorReporte();
-          informacionBasicaPage.escribirDetalleHechos(autor.getDetalleHechos());
-        });
-  }
-
   public void visualizarResumenReclamacion() {
-    resumenReclamacionPage.obtenerNumeroReclamacion();
+    nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
   }
 
   public void validarExposicionVisualizada(String exposicion) {

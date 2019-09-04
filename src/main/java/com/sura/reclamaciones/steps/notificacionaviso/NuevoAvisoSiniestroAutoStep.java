@@ -110,6 +110,7 @@ public class NuevoAvisoSiniestroAutoStep {
       detalleVehiculoPage.seleccionarCiudad(direccionConductor.getCiudad());
       detalleVehiculoPage.ingresarDireccion(direccionConductor.getDireccion());
       detalleVehiculoPage.seleccionarTipoDireccion(direccionConductor.getTipoDireccion());
+      menuClaimPage.aceptarOpcion();
     }
   }
 
@@ -249,11 +250,6 @@ public class NuevoAvisoSiniestroAutoStep {
   }
 
   @Step
-  public void consultarReclamacionAutos() {
-    nuevaReclamacionGuardadaPage.abrirReclamacion();
-  }
-
-  @Step
   public void validarValorReservas(List<Reserva> lineaReserva) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS.getValor());
     boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
@@ -282,6 +278,5 @@ public class NuevoAvisoSiniestroAutoStep {
     crearExposicionLesiones(personaReclamacionAuto, reclamacionAuto, exposicionLesiones);
     finalizarReclamacionAutos();
     validarReclamacionAutos();
-    consultarReclamacionAutos();
   }
 }
