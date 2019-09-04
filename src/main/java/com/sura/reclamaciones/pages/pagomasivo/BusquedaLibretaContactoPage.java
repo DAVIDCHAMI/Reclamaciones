@@ -48,6 +48,7 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
     lstTipoContacto
         .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + tipoContacto + "')]"))
         .click();
+    realizarEsperaCarga();
   }
 
   public void ingresarNombreContacto(String nombreContacto) {
