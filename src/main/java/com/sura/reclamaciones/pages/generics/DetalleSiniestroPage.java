@@ -2,6 +2,7 @@ package com.sura.reclamaciones.pages.generics;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,8 @@ public class DetalleSiniestroPage extends GeneralPage {
     super(wdriver);
   }
 
-  public List<String> obtenerNumeroPlacaPartesImplicadas() {
-    List<String> placaVehiculosInvolucrados = new ArrayList<String>();
+  public void obtenerNumeroPlacaPartesImplicadas() {
+    List<String> placaVehiculosInvolucrados = new ArrayList<>();
     final String PLACA = "Placa";
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
@@ -41,7 +42,8 @@ public class DetalleSiniestroPage extends GeneralPage {
     for (int i = 0; i <= tamanoLista - 1; i++) {
       placaVehiculosInvolucrados.add(i, elementoEncontrado.get(i).getText());
     }
-    return placaVehiculosInvolucrados;
+    Serenity.setSessionVariable(SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS.getValor())
+        .to(placaVehiculosInvolucrados);
   }
 
   public String obtenerNumeroSiniestro() {
