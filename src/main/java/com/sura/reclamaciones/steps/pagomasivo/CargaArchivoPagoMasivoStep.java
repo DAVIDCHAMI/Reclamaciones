@@ -13,7 +13,7 @@ public class CargaArchivoPagoMasivoStep {
 
   File resourcesDirectory = new File("src/test/resources/files");
 
-  String rutaCompleta = resourcesDirectory.getAbsolutePath() + "\\" + nombreArchivoPagoMasivo;
+  String rutaArchivoPagoMasivo = resourcesDirectory.getAbsolutePath() + "\\" + nombreArchivoPagoMasivo;
 
   @Page MenuClaimPage menuClaimPage;
 
@@ -25,7 +25,7 @@ public class CargaArchivoPagoMasivoStep {
   public void cargarArchivoXls(String nombreOpcion, String subItem) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     cargaArchivoPagoMasivoPage.generarFacturacionMasiva();
-    cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo(rutaCompleta);
+    cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo(rutaArchivoPagoMasivo);
     generalPage.continuarSiguientePantalla();
   }
 }
