@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.autos.reclamacion;
+package com.sura.reclamaciones.pages.datosfinancieros;
 
 import com.sura.reclamaciones.constantes.Tablas;
 import com.sura.reclamaciones.models.Reserva;
@@ -7,11 +7,11 @@ import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 
-public class DatosFinancierosPage extends GeneralPage {
+public class DatoFinancieroResumenPage extends GeneralPage {
 
   private boolean valorLineaReserva = true;
 
-  public DatosFinancierosPage(WebDriver wdriver) {
+  public DatoFinancieroResumenPage(WebDriver wdriver) {
     super(wdriver);
   }
 

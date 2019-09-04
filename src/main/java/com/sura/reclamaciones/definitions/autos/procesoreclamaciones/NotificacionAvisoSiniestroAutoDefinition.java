@@ -16,6 +16,8 @@ import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.pages.datosfinancieros.DatoFinancieroResumenPage;
+import com.sura.reclamaciones.steps.datosFinancieros.DatoFinancieroResumenStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevoAvisoSiniestroAutoStep;
 import cucumber.api.DataTable;
@@ -24,12 +26,16 @@ import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
+import org.fluentlenium.core.annotation.Page;
 
 public class NotificacionAvisoSiniestroAutoDefinition {
 
   @Steps private GenericStep genericStep;
 
   @Steps private NuevoAvisoSiniestroAutoStep reclamacionStep;
+
+  @Steps
+  DatoFinancieroResumenStep datoFinancieroResumenStep;
 
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
@@ -121,7 +127,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Reserva(
             genericStep.getFilasModelo(
                 PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL));
-    reclamacionStep.validarValorReservas(reserva.getLstReserva());
+    datoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Daños$")
@@ -157,7 +163,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     reserva =
         new Reserva(
             genericStep.getFilasModelo(PARAMETRO_LINEA_RESERVA.getValor(), LINEA_RESERVA_ARCHIVO));
-    reclamacionStep.validarValorReservas(reserva.getLstReserva());
+    datoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Subrogación$")
@@ -199,7 +205,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Reserva(
             genericStep.getFilasModelo(
                 PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL));
-    reclamacionStep.validarValorReservas(reserva.getLstReserva());
+    datoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   private void crearNuevaExposicionVehicular() {
