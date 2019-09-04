@@ -23,9 +23,9 @@ public class LlenadoArchivoXLS {
             ArchivoXLS.removerFilaSinEncabezado();
             ArchivoXLS.Guardar(rutaCompleta);
 
-            String csv = "Daño general;GeneralDamage;Auto-Daños;PADanosCov;Auto-Daños;PADanosCov;Al costo;claimcost;Auto-Perdida Parcial Daños  autorizado TALLER;PAPerParcDanAutoTaller_Ext;Parcial;Partial;0%;0070;0070;IVA 0% e ICM 0%;0000;47,00;Pago parcial;Immediate;0001";
+            //String csv = "Daño general;GeneralDamage;Auto-Daños;PADanosCov;Auto-Daños;PADanosCov;Al costo;claimcost;Auto-Perdida Parcial Daños  autorizado TALLER;PAPerParcDanAutoTaller_Ext;Parcial;Partial;0%;0070;0070;IVA 0% e ICM 0%;0000;47,00;Pago parcial;Immediate;0001";
 
-            String[] partsCsv = csv.split(";");
+            //String[] partsCsv = csv.split(";");
 
             String numeroSiniestro =
                     (Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor())
@@ -43,7 +43,7 @@ public class LlenadoArchivoXLS {
             LocalDateTime fecha = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             String fechaFormateada = formatter.format(fecha);
-            List<String> listaInformacion = new ArrayList(27);
+            List<String> listaInformacion = new ArrayList(26);
 
             for (int i = 0; i < placasVehiculosInvolucradosSiniestro.size(); i++) {
                 LocalDateTime numeroFactura = LocalDateTime.now();
@@ -53,9 +53,9 @@ public class LlenadoArchivoXLS {
                 listaInformacion.add(placasVehiculosInvolucradosSiniestro.get(i).toString());
                 int numeroMonto = (int) (Math.random() * 9999999 + 100);
 
-                for (String datoCsv : partsCsv) {
+                /*for (String datoCsv : partsCsv) {
                     listaInformacion.add(datoCsv);
-                }
+                }*/
 
 
                 listaInformacion.add(2,datosExposicionPagoMasivo.getTipoExposicion());
