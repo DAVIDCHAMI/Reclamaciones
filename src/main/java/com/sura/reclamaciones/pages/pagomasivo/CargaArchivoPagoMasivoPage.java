@@ -1,5 +1,7 @@
 package com.sura.reclamaciones.pages.pagomasivo;
 
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -24,7 +26,7 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
   }
 
   public void buscarArchivoPagoMasivo(String rutaCompleta) {
-    WebDriverWait wait = new WebDriverWait(getDriver(), 0);
+    WebDriverWait wait = new WebDriverWait(getDriver(), Integer.parseInt(VALOR_CERO.getValor()));
     WebElement btnExaminar =
         wait.until(
             ExpectedConditions.presenceOfElementLocated(By.xpath(".//input[@name='fileContent']")));
