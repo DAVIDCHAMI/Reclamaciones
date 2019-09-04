@@ -3,6 +3,7 @@ package com.sura.reclamaciones.utils;
 public enum VariablesSesion {
   SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO("conductor_afectado_siniestro"),
   SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS("NumeroPlacaPartesInvolucradas"),
+  SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS("PlacaVehiculoInvolucrado"),
   SESION_CC_NUMERO_SINIESTRO("NumeroSiniestro"),
   SESION_CC_NUMERO_TRANSACCION("Número de transacción"),
   SESION_CC_TIPO_COBERTURA_AFECTADA("tipoCoberturaAfectada"),
