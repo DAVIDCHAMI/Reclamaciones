@@ -13,7 +13,8 @@ public class CargaArchivoPagoMasivoStep {
 
   File resourcesDirectory = new File("src/test/resources/files");
 
-  String rutaArchivoPagoMasivo = resourcesDirectory.getAbsolutePath() + "\\" + nombreArchivoPagoMasivo;
+  String rutaArchivoPagoMasivo =
+      resourcesDirectory.getAbsolutePath() + "\\" + nombreArchivoPagoMasivo;
 
   @Page MenuClaimPage menuClaimPage;
 
