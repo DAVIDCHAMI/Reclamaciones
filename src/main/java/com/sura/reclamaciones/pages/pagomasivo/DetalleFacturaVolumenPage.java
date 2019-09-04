@@ -31,10 +31,17 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
   )
   private WebElementFacade btnBuscarBeneficiarioPago;
 
+  @FindBy(id = "BulkPayWizard:Finish-btnInnerEl")
+  private WebElementFacade btnFinalizarPagoMasivo;
+
+  @FindBy(id = "EditBulkInvoiceDetail:BulkInvoiceDetailScreen:SubmitButton-btnInnerEl")
+  private WebElementFacade btnEnviarPagoMasivo;
+
   @FindBy(
-    id = "EditBulkInvoiceDetail:BulkInvoiceDetailScreen:BulkInvoiceDetailDV:InvoiceNumber-inputEl"
+    id =
+        "BulkPayWizard:BulkPayWizard_BulkInvoiceDetailScreen:BulkInvoiceDetailDV:InvoiceNumber-bodyEl"
   )
-  private WebElementFacade lblNumeroFactura;
+  private WebElementFacade lblNumeroFacturaPagoMasivo;
 
   public DetalleFacturaVolumenPage(WebDriver wdriver) {
     super(wdriver);
