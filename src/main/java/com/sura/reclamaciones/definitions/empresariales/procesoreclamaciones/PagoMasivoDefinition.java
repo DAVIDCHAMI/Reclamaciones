@@ -58,6 +58,12 @@ public class PagoMasivoDefinition {
 
   @Steps GenericStep genericStep;
 
+   Exposicion datosExposicionPagoMasivo;
+
+   Reserva datosReservaPagoMasivo;
+
+  PagoSiniestro datosPagoSiniestroPagoMasivo;
+
   @Cuando(
       "^se registra la información de las facturas del pago masivo de los siniestros con cobertura (.*) a un proveedor")
   public void ingresarInformacionFactura(String tipoCobertura) throws IOException {
@@ -72,21 +78,21 @@ public class PagoMasivoDefinition {
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros());
     detalleSiniestroStep.consultarInformacionSiniestro();
-    Exposicion datosExposicionPagoMasivo =
+     datosExposicionPagoMasivo =
         new Exposicion(
             genericStep.getFilasModelo(String.valueOf(PAGO_MASIVO.getValor()), tipoCobertura));
-    Reserva datosReservaPagoMasivo =
+    datosReservaPagoMasivo =
         new Reserva(
             genericStep.getFilasModelo(String.valueOf(PAGO_MASIVO.getValor()), tipoCobertura));
-    PagoSiniestro datosPagoSiniestroPagoMasivo =
+    datosPagoSiniestroPagoMasivo =
         new PagoSiniestro(
             genericStep.getFilasModelo(String.valueOf(PAGO_MASIVO.getValor()), tipoCobertura));
     cargaArchivoPagoMasivoStep.cargarArchivoXls(
         MenuConstante.ESCRITORIO_MENU,
         MenuConstante.FACTURAS_VOLUMEN_MENU,
-        datosExposicionPagoMasivo,
-        datosReservaPagoMasivo,
-        datosPagoSiniestroPagoMasivo);
+        datosExposicionPagoMasivo.getLstExposicion(),
+        datosReservaPagoMasivo.getLstReserva(),
+        datosPagoSiniestroPagoMasivo.getLstPago());
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
     resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }

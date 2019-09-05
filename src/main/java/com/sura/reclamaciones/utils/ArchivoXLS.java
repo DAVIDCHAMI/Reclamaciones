@@ -3,7 +3,11 @@ package com.sura.reclamaciones.utils;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -39,11 +43,20 @@ public class ArchivoXLS {
     }
   }
 
-  public static void setCellData(int RowNum, int ColNum, String valorObtenido) throws Exception {
-    try {
-      hojaXls.getRow(RowNum).createCell(ColNum).setCellValue(valorObtenido);
-      hojaXls.getRow(RowNum).getCell(ColNum).setCellValue(valorObtenido);
-    } catch (Exception e) {
+  public static void setCellData(int RowNum, int ColNum, String valorObtenido) throws Exception{
+    try{
+      boolean valorCorrecto = valorObtenido.matches("^(?:3[01]|[12][0-9]|0?[1-9])([\\-/.])(0?[1-9]|1[1-2])\\1\\d{4}$");
+      if(valorCorrecto){
+        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(valorObtenido);
+        CellStyle cellStyle = libroXls.createCellStyle();
+        cellStyle.setDataFormat(libroXls.createDataFormat().getFormat("dd/mm/yyyy"));
+        hojaXls.getRow(RowNum).createCell(ColNum).setCellValue(date1);
+        hojaXls.getRow(RowNum).getCell(ColNum).setCellStyle(cellStyle);
+      }else {
+        hojaXls.getRow(RowNum).createCell(ColNum).setCellValue(valorObtenido);
+        hojaXls.getRow(RowNum).getCell(ColNum).setCellStyle(hojaXls.getColumnStyle(ColNum));
+      }
+    }catch (Exception e){
       e.printStackTrace();
     }
   }

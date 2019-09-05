@@ -8,6 +8,8 @@ import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagomasivo.CargaArchivoPagoMasivoPage;
 import com.sura.reclamaciones.utils.LlenadoArchivoXLS;
 import java.io.File;
+import java.util.List;
+
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
@@ -17,7 +19,7 @@ public class CargaArchivoPagoMasivoStep {
   String nombreArchivoPagoMasivo = "PlantillaPagosMasivos.xlsx";
   File resourcesDirectory = new File("src/test/resources/files");
 
-  String rutaCompleta = resourcesDirectory.getAbsolutePath() + "\\" + nombreArchivoPagoMasivo;
+  String rutaArchivoPagoMasivo = resourcesDirectory.getAbsolutePath() + "\\" + nombreArchivoPagoMasivo;
 
   @Page MenuClaimPage menuClaimPage;
 
@@ -29,17 +31,17 @@ public class CargaArchivoPagoMasivoStep {
   public void cargarArchivoXls(
       String nombreOpcion,
       String subItem,
-      Exposicion datosExposicionPagoMasivo,
-      Reserva datosReservaPagoMasivo,
-      PagoSiniestro datosPagoSiniestroPagoMasivo) {
+      List<Exposicion> datosExposicionPagoMasivo,
+      List<Reserva> datosReservaPagoMasivo,
+      List<PagoSiniestro> datosPagoSiniestroPagoMasivo) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     cargaArchivoPagoMasivoPage.generarFacturacionMasiva();
     llenadoArchivoXLS.LlenarArchivoXls(
-        rutaCompleta,
+        rutaArchivoPagoMasivo,
         datosExposicionPagoMasivo,
         datosReservaPagoMasivo,
         datosPagoSiniestroPagoMasivo);
-    cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo(rutaCompleta);
+    cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo(rutaArchivoPagoMasivo);
     generalPage.continuarSiguientePantalla();
   }
 }
