@@ -61,20 +61,4 @@ public class MovimientoLineaReservaStep {
         CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
         Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
   }
-
-  public void verificarAjusteReserva(String categoriaCosto, String deducible) {
-    String deducibleVisualizado;
-    if (categoriaCosto.contains(TIPO_CATEGORIA_COSTO_GASTO)) {
-      deducibleVisualizado = VALOR_CERO.getValor();
-    } else {
-      deducibleVisualizado =
-          datoFinancieroTransaccionPage.obtenerDeducibleReversionConstitucion();
-    }
-    MatcherAssert.assertThat(
-        "Se esperaba un deducible de: "
-            + deducible
-            + " Pero se obtuvo un deducible de: "
-            + deducibleVisualizado,
-        deducibleVisualizado.equals(deducible));
-  }
 }
