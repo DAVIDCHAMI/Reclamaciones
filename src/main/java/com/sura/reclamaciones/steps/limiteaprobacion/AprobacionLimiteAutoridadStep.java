@@ -6,7 +6,7 @@ import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
+import com.sura.reclamaciones.pages.datosfinancieros.DatoFinancieroTransaccionPage;
 import com.sura.reclamaciones.pages.limiteaprobacion.PlanTrabajoActividadPage;
 import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import org.fluentlenium.core.annotation.Page;
@@ -16,7 +16,8 @@ public class AprobacionLimiteAutoridadStep {
 
   @Page MenuClaimPage menuClaimPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page
+  DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
 
   @Page ConsultaReclamacionPage consultaReclamacionPage;
 
@@ -39,9 +40,9 @@ public class AprobacionLimiteAutoridadStep {
       planTrabajoActividadPage.realizarEsperaCarga();
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
-      verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TRANSACCION_RESERVA);
+      datoFinancieroTransaccionPage.seleccionarTipoTransaccion(TRANSACCION_RESERVA);
       strEstadoTransaccion =
-          verificacionDatosFinancierosPage.obtenerEstadoReservaRealizada(posicionEstadoVerificar);
+          datoFinancieroTransaccionPage.obtenerEstadoReservaRealizada(posicionEstadoVerificar);
       boolean estadoTransaccionPantalla = strEstadoTransaccionReserva.equals(strEstadoTransaccion);
       if (estadoTransaccionPantalla) {
         break;

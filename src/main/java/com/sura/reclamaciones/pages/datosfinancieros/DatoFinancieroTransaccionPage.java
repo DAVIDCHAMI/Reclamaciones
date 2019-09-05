@@ -1,9 +1,10 @@
-package com.sura.reclamaciones.pages.generics;
+package com.sura.reclamaciones.pages.datosfinancieros;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
 import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
+import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -13,7 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class VerificacionDatosFinancierosPage extends GeneralPage {
+public class DatoFinancieroTransaccionPage extends GeneralPage {
 
   @Page DetalleTransaccionPage detalleTransaccionPage;
 
@@ -32,7 +33,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
   )
   private WebElementFacade tblTransaccion;
 
-  public VerificacionDatosFinancierosPage(WebDriver wdriver) {
+  public DatoFinancieroTransaccionPage(WebDriver wdriver) {
     super(wdriver);
   }
 

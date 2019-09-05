@@ -7,7 +7,7 @@ import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
+import com.sura.reclamaciones.pages.datosfinancieros.DatoFinancieroTransaccionPage;
 import com.sura.reclamaciones.pages.reservas.EstablecerReservaPage;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
@@ -26,7 +26,8 @@ public class MovimientoLineaReservaStep {
 
   @Page MenuClaimPage menuClaimPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page
+  DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
 
   public void ajustarReserva(String valorAjustar) {
     menuClaimPage.seleccionarBotonAcciones();
@@ -67,7 +68,7 @@ public class MovimientoLineaReservaStep {
       deducibleVisualizado = VALOR_CERO.getValor();
     } else {
       deducibleVisualizado =
-          verificacionDatosFinancierosPage.obtenerDeducibleReversionConstitucion();
+          datoFinancieroTransaccionPage.obtenerDeducibleReversionConstitucion();
     }
     MatcherAssert.assertThat(
         "Se esperaba un deducible de: "

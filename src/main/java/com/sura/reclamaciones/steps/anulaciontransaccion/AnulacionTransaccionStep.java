@@ -8,7 +8,7 @@ import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
+import com.sura.reclamaciones.pages.datosfinancieros.DatoFinancieroTransaccionPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -23,7 +23,8 @@ public class AnulacionTransaccionStep {
 
   @Page DetalleTransaccionPage detalleTransaccionPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page
+  DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
 
   @Step
   public void ingresarAnulacionRecupero(List<Recupero> lstRecupero) {
@@ -54,10 +55,10 @@ public class AnulacionTransaccionStep {
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_TRANSACCION.getValor());
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
-    verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
+    datoFinancieroTransaccionPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
     MatcherAssert.assertThat(
         "El recupero no quedo en estado anulado",
-        verificacionDatosFinancierosPage.verificarEstadoAnulado(
+        datoFinancieroTransaccionPage.verificarEstadoAnulado(
             strAnulacionPago, strNumeroTransaccion, strTipoAnulacion));
   }
 }
