@@ -1,15 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
-import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
-import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
-import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
-
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.steps.generics.AnulacionPagoStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
@@ -19,11 +11,15 @@ import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
+import net.serenitybdd.core.Serenity;
+import net.thucydides.core.annotations.Steps;
 
 import java.io.IOException;
 
-import net.serenitybdd.core.Serenity;
-import net.thucydides.core.annotations.Steps;
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
+import static com.sura.reclamaciones.constantes.NombresCsv.*;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 
 public class PagoSiniestroDefinition {
 
