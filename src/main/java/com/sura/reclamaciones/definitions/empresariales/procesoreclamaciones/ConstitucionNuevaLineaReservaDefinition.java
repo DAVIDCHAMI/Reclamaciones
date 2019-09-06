@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
-import com.sura.reclamaciones.steps.generics.DatoFinancieroTransaccionStep;
+import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.reserva.MovimientoLineaReservaStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -12,7 +12,7 @@ public class ConstitucionNuevaLineaReservaDefinition {
     MovimientoLineaReservaStep movimientoLineaReservaStep;
 
     @Steps
-    DatoFinancieroTransaccionStep datoFinancieroTransaccionStep;
+    ConsultaDatoFinancieroTransaccionStep consultaDatoFinancieroTransaccionStep;
 
     @Cuando(
             "^se crea una nueva línea de reserva por la Exposición de (.*) por (.*) con un tipo de costo (.*) por un valor de (.*)$")
@@ -24,6 +24,6 @@ public class ConstitucionNuevaLineaReservaDefinition {
 
     @Entonces("^se genera una nueva línea de reserva de (.*) con un deducible de (.*)$")
     public void verificarConstitucionNuevaLineaReserva(String categoriaCosto, String deducible) {
-        datoFinancieroTransaccionStep.verificarAjusteReserva(categoriaCosto, deducible);
+        consultaDatoFinancieroTransaccionStep.verificarDeducibleReserva(categoriaCosto, deducible);
     }
 }

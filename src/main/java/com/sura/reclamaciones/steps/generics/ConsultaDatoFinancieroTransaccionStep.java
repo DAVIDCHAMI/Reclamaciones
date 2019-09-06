@@ -2,6 +2,7 @@ package com.sura.reclamaciones.steps.generics;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
+import com.sura.reclamaciones.pages.generics.DatoReservaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.limiteaprobacion.PlanTrabajoActividadPage;
 import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
@@ -14,12 +15,15 @@ import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
-public class DatoFinancieroTransaccionStep {
+public class ConsultaDatoFinancieroTransaccionStep {
 
     private static final String TIPO_CATEGORIA_COSTO_GASTO = "Gasto";
 
     @Page
     DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
+
+    @Page
+    DatoReservaPage datoReservaPage;
 
     @Page
     MenuClaimPage menuClaimPage;
@@ -61,13 +65,14 @@ public class DatoFinancieroTransaccionStep {
         Serenity.setSessionVariable(SESION_CC_NUMERO_SINIESTRO.getValor()).to(numeroReclamacion);
     }
 
-    public void verificarAjusteReserva(String categoriaCosto, String deducible) {
+    public void verificarDeducibleReserva(String categoriaCosto, String deducible) {
         String deducibleVisualizado;
         if (categoriaCosto.contains(TIPO_CATEGORIA_COSTO_GASTO)) {
             deducibleVisualizado = VALOR_CERO.getValor();
         } else {
+            datoFinancieroTransaccionPage.ingresarDatoReserva();
             deducibleVisualizado =
-                    datoFinancieroTransaccionPage.obtenerDeducibleReversionConstitucion();
+                    datoReservaPage.obtenerCantidadReserva();
         }
         MatcherAssert.assertThat(
                 "Se esperaba un deducible de: "

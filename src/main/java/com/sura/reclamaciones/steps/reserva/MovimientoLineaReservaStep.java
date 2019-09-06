@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.steps.reserva;
 
-import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.reservas.EstablecerReservaPage;
@@ -25,19 +24,6 @@ public class MovimientoLineaReservaStep {
     @Page
     MenuClaimPage menuClaimPage;
 
-    @Page
-    DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
-
-    public void ajustarReserva(String valorAjustar) {
-        menuClaimPage.seleccionarBotonAcciones();
-        menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
-        establecerReservaPage.eliminarReservaVacia();
-        establecerReservaPage.diligenciarCampoLineaReserva(
-                valorAjustar,
-                CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
-                Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
-    }
-
     public void crearNuevaLineaReserva(
             String lineaReserva, String tipoCosto, String categoriaCosto, String valorNuevaReserva) {
         menuClaimPage.seleccionarBotonAcciones();
@@ -57,6 +43,16 @@ public class MovimientoLineaReservaStep {
                 Integer.valueOf(VALOR_CERO.getValor()));
         establecerReservaPage.diligenciarCampoLineaReserva(
                 valorNuevaReserva,
+                CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
+                Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
+    }
+
+    public void ajustarReserva(String valorAjustar) {
+        menuClaimPage.seleccionarBotonAcciones();
+        menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
+        establecerReservaPage.eliminarReservaVacia();
+        establecerReservaPage.diligenciarCampoLineaReserva(
+                valorAjustar,
                 CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
                 Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
     }

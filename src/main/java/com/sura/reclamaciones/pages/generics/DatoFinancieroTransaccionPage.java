@@ -2,7 +2,6 @@ package com.sura.reclamaciones.pages.generics;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
 import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
-import com.sura.reclamaciones.utils.Variables;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.annotation.Page;
@@ -19,15 +18,6 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
     @Page
     DetalleTransaccionPage detalleTransaccionPage;
 
-    @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV:0:CheckNumber")
-    private WebElementFacade lblNumeroPago;
-
-    @FindBy(
-            xpath =
-                    "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
-    )
-    private WebElementFacade lblCantidadDeducible;
-
     @FindBy(
             xpath =
                     "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
@@ -36,14 +26,6 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
 
     public DatoFinancieroTransaccionPage(WebDriver wdriver) {
         super(wdriver);
-    }
-
-    public boolean verificarNumeroPago() {
-        boolean estado = false;
-        if (lblNumeroPago.isVisible()) {
-            estado = true;
-        }
-        return estado;
     }
 
     public String obtenerEstadoReservaRealizada(int posicionEstadoVerificar) {
@@ -70,7 +52,7 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
         return false;
     }
 
-    public String obtenerDeducibleReversionConstitucion() {
+    public void ingresarDatoReserva() {
         irUltimaPagina();
         tblTransaccion.waitUntilPresent();
         List<WebElement> elementroEncontrado =
@@ -87,8 +69,5 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
                                         + datoPosicionReserva
                                         + ":Amount']"))
                 .click();
-        String cantidadDeducible = lblCantidadDeducible.getText();
-        cantidadDeducible = cantidadDeducible.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-        return cantidadDeducible;
     }
 }
