@@ -9,7 +9,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERT
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.steps.generics.DatoFinancieroPagoStep;
+import com.sura.reclamaciones.steps.generics.AnulacionPagoStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
@@ -30,7 +30,8 @@ public class PagoSiniestroDefinition {
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
-  @Steps DatoFinancieroPagoStep datoFinancieroPagoStep;
+  @Steps
+  AnulacionPagoStep datoFinancieroPagoStep;
 
   @Steps GenericStep genericStep;
 
@@ -138,7 +139,7 @@ public class PagoSiniestroDefinition {
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
   public void verificarPago() {
-    datoFinancieroPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
+    nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")

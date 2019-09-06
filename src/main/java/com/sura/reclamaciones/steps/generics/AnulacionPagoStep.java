@@ -17,7 +17,7 @@ import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
-public class DatoFinancieroPagoStep {
+public class AnulacionPagoStep {
 
   private String strTipoAnulacion;
   List<WebElement> lstFilaPago;
@@ -29,34 +29,6 @@ public class DatoFinancieroPagoStep {
   @Page MenuClaimPage menuClaimPage;
 
   @Page DetalleTransaccionPage detalleTransaccionPage;
-
-  @Step
-  public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
-    lstPago.forEach(
-        (PagoSiniestro validador) -> {
-          for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
-            generalPage.realizarEsperaCarga();
-            String strNumeroTransaccion = datoFinancieroPagoPage.obtenerNumeroPagoRealizado();
-            lstFilaPago =
-                datoFinancieroPagoPage.obtenerFilaTabla(
-                    strNumeroTransaccion, datoFinancieroPagoPage.getTblPago());
-            WebElement elementoXpath =
-                lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
-            boolean estadoTransaccionPantalla =
-                generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
-            if (estadoTransaccionPantalla) break;
-          }
-          String strValorReserva =
-              (Serenity.sessionVariableCalled(SESION_CC_TOTAL_PAGO_RESERVAS.getValor()).toString());
-          MatcherAssert.assertThat(
-              "El valor pagado no es igual al enviado",
-              datoFinancieroPagoPage.verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
-          MatcherAssert.assertThat(
-              "No llego a SAP el pago",
-              datoFinancieroPagoPage.verificarPagoMenuTransaccion(
-                  validador.getEstadoTransaccion(), lstFilaPago));
-        });
-  }
 
   @Step
   public void ingresarAnulacionPago(List<PagoSiniestro> lstPago) {
