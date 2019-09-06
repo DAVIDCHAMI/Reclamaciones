@@ -2,6 +2,7 @@ package com.sura.reclamaciones.steps.pagos;
 
 import static com.sura.reclamaciones.constantes.Constantes.*;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_RESERVAS;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
@@ -194,5 +195,33 @@ public class NuevoPagoStep {
     detalleVehiculoPage.aceptarOpcion();
     nuevoIncidenteVehicularPage.aceptarOpcion();
     nuevaExposicionManualPage.actualizarNuevaExposicion();
+  }
+
+  @Step
+  public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
+    lstPago.forEach(
+            (PagoSiniestro validador) -> {
+              for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
+                generalPage.realizarEsperaCarga();
+                String strNumeroTransaccion = datoFinancieroPagoPage.obtenerNumeroPagoRealizado();
+                lstFilaPago =
+                        datoFinancieroPagoPage.obtenerFilaTabla(
+                                strNumeroTransaccion, datoFinancieroPagoPage.getTblPago());
+                WebElement elementoXpath =
+                        lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
+                boolean estadoTransaccionPantalla =
+                        generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
+                if (estadoTransaccionPantalla) break;
+              }
+              String strValorReserva =
+                      (Serenity.sessionVariableCalled(SESION_CC_TOTAL_PAGO_RESERVAS.getValor()).toString());
+              MatcherAssert.assertThat(
+                      "El valor pagado no es igual al enviado",
+                      datoFinancieroPagoPage.verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
+              MatcherAssert.assertThat(
+                      "No llego a SAP el pago",
+                      datoFinancieroPagoPage.verificarPagoMenuTransaccion(
+                              validador.getEstadoTransaccion(), lstFilaPago));
+            });
   }
 }
