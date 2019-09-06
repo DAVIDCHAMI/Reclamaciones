@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.steps.datosFinancieros;
+package com.sura.reclamaciones.steps.generics;
 
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.pages.generics.DatoFinancieroResumenPage;

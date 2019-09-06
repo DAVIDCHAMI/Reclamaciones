@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.steps.datosfinancieros;
+package com.sura.reclamaciones.steps.generics;
 
 import static com.sura.reclamaciones.constantes.Constantes.*;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
