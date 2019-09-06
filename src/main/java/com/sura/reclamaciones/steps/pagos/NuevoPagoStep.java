@@ -27,7 +27,6 @@ import com.sura.reclamaciones.pages.autos.reclamacion.NuevaExposicionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
@@ -78,13 +77,6 @@ public class NuevoPagoStep {
 
   @Page CreacionServicioPage crearServicioPage;
 
-  @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
-
-  @Step
-  public void consultarNumeroReclamacion() {
-    nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
-  }
-
   @Step
   public void ingresarInformacionBeneficiarioPago(
       String strBeneficiarioPago,
@@ -127,12 +119,12 @@ public class NuevoPagoStep {
           "No generó la validación de NO pago a asegurado por proceso de auditoría",
           auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
     } else if (!lineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
-      establecerInstruccionPagoPage.obtenerPagoReservas();
       establecerInstruccionPagoPage.ingresarFechaFactura();
       establecerInstruccionPagoPage.ingresarNumeroFactura(
           lstPago.listIterator().next().getNumeroFactura());
-      establecerInstruccionPagoPage.finalizarProceso();
     }
+    establecerInstruccionPagoPage.obtenerPagoReservas();
+    establecerInstruccionPagoPage.finalizarProceso();
   }
 
   @Step

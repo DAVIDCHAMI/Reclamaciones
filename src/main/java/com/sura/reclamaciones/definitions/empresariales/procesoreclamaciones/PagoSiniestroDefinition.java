@@ -11,6 +11,7 @@ import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
 import com.sura.reclamaciones.utils.VariablesSesion;
@@ -34,6 +35,8 @@ public class PagoSiniestroDefinition {
   @Steps MenuClaimStep menuClaimStep;
 
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
+
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -140,12 +143,13 @@ public class PagoSiniestroDefinition {
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
   public void notificarProcesoAuditoria(String requiereAuditoria) {
-    nuevoPagoStep.consultarNumeroReclamacion();
+    nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
     inclusionProcesoAuditoriaStep.marcarAuditoria(requiereAuditoria);
   }
 
   @Y("^se declara la reclamación como perdida total$")
   public void declararReclamacionPerdidaTotal() {
+    nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
   }

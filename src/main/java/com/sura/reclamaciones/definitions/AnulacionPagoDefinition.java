@@ -9,6 +9,7 @@ import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.anulaciontransaccion.AnulacionTransaccionStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -24,6 +25,8 @@ public class AnulacionPagoDefinition {
   @Steps AnulacionTransaccionStep anulacionTransaccionStep;
 
   @Steps NuevoPagoStep nuevoPagoStep;
+
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   PagoSiniestro pagoSiniestro;
 
@@ -44,7 +47,7 @@ public class AnulacionPagoDefinition {
         .getLstAnulacionEmpresarial()
         .forEach(
             ajustador -> {
-              nuevoPagoStep.consultarNumeroReclamacion();
+              nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
               nuevoPagoStep.ingresarInformacionBeneficiarioPago(
                   ajustador.getBeneficiarioPago(),
                   ajustador.getMetodoPago(),
