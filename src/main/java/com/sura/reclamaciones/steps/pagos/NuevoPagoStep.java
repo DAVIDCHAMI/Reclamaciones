@@ -6,7 +6,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_A
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.autos.reclamacion.*;
-import com.sura.reclamaciones.pages.datosfinancieros.DatoFinancieroPagoPage;
+import com.sura.reclamaciones.pages.generics.DatoFinancieroPagoPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;

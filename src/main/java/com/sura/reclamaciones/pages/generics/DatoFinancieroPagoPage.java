@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.datosfinancieros;
+package com.sura.reclamaciones.pages.generics;
 
 import static com.sura.reclamaciones.constantes.Constantes.*;
 
