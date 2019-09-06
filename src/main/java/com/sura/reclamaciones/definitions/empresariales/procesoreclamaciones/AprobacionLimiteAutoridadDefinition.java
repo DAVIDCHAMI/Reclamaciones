@@ -1,15 +1,16 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
-import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO;
-
-import com.sura.reclamaciones.steps.datosFinancieros.DatoFinancieroTransaccionStep;
+import com.sura.reclamaciones.steps.generics.DatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.limiteaprobacion.AprobacionLimiteAutoridadStep;
 import com.sura.reclamaciones.steps.login.LoginClaimStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
-import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
+
+import java.io.IOException;
+
+import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO;
 
 public class AprobacionLimiteAutoridadDefinition {
 

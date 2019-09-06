@@ -5,7 +5,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.steps.datosFinancieros.DatoFinancieroTransaccionStep;
+import com.sura.reclamaciones.steps.generics.DatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
 import com.sura.reclamaciones.steps.reserva.MovimientoLineaReservaStep;

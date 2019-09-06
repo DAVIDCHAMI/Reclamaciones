@@ -1,28 +1,22 @@
-package com.sura.reclamaciones.steps.datosFinancieros;
+package com.sura.reclamaciones.steps.generics;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
-import com.sura.reclamaciones.pages.datosfinancieros.DatoFinancieroTransaccionPage;
+import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.limiteaprobacion.PlanTrabajoActividadPage;
 import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import net.serenitybdd.core.Serenity;
-import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
-import java.util.List;
-
-import static com.sura.reclamaciones.constantes.Constantes.*;
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
 
 public class DatoFinancieroTransaccionStep {
 
     private static final String TIPO_CATEGORIA_COSTO_GASTO = "Gasto";
-    private String strTipoAnulacion;
 
     @Page
     DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
@@ -35,9 +29,6 @@ public class DatoFinancieroTransaccionStep {
 
     @Page
     ConsultaReclamacionPage consultaReclamacionPage;
-
-    @Page
-    DetalleTransaccionPage detalleTransaccionPage;
 
     public void verificarEstadoTransaccionReserva(String strEstadoTransaccionReserva) {
         final String TRANSACCION_RESERVA = "Reservas";
