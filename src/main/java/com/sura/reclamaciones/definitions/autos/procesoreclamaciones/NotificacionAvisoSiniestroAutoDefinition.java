@@ -16,8 +16,7 @@ import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
-import com.sura.reclamaciones.pages.datosfinancieros.DatoFinancieroResumenPage;
-import com.sura.reclamaciones.steps.datosFinancieros.DatoFinancieroResumenStep;
+import com.sura.reclamaciones.steps.generics.DatoFinancieroResumenStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevoAvisoSiniestroAutoStep;
 import cucumber.api.DataTable;
@@ -26,7 +25,6 @@ import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
-import org.fluentlenium.core.annotation.Page;
 
 public class NotificacionAvisoSiniestroAutoDefinition {
 

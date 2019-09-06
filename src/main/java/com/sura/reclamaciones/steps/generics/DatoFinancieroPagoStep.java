@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.steps.datosfinancieros;
+package com.sura.reclamaciones.steps.generics;
 
 import static com.sura.reclamaciones.constantes.Constantes.*;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
@@ -7,7 +7,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
-import com.sura.reclamaciones.pages.datosfinancieros.DatoFinancieroPagoPage;
+import com.sura.reclamaciones.pages.generics.DatoFinancieroPagoPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import java.util.List;

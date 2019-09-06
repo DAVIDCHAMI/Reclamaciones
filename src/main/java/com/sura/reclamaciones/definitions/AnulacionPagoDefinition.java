@@ -8,7 +8,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.anulaciontransaccion.AnulacionTransaccionStep;
-import com.sura.reclamaciones.steps.datosfinancieros.DatoFinancieroPagoStep;
+import com.sura.reclamaciones.steps.generics.DatoFinancieroPagoStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
