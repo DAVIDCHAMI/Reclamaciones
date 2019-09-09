@@ -18,6 +18,8 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRAN
 
 public class AnulacionPagoStep {
 
+    private String strTipoAnulacion;
+
     @Page
     DatoFinancieroPagoPage datoFinancieroPagoPage;
 
@@ -29,6 +31,7 @@ public class AnulacionPagoStep {
 
     @Step
     public void ingresarAnulacionPago(List<PagoSiniestro> lstPago) {
+        strTipoAnulacion = PAGO.getValor();
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
                 MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
         for (PagoSiniestro diligenciador : lstPago) {
@@ -36,10 +39,10 @@ public class AnulacionPagoStep {
             MatcherAssert.assertThat(
                     "El estado de la transaccion no permite que sea anulada",
                     detalleTransaccionPage.ingresarAnulacionEmpresarial(
-                            strNumeroTransaccion, diligenciador.getEstadoTransaccion(), PAGO.getValor()));
+                            strNumeroTransaccion, diligenciador.getEstadoTransaccion(), strTipoAnulacion));
             MatcherAssert.assertThat(
                     "El número de transaccion, no tiene habilitado el boton de anular",
-                    detalleTransaccionPage.realizarAnulacion(PAGO.getValor()));
+                    detalleTransaccionPage.realizarAnulacion(strTipoAnulacion));
             Serenity.setSessionVariable(SESION_CC_NUMERO_TRANSACCION.getValor()).to(strNumeroTransaccion);
         }
     }
