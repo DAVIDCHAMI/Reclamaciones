@@ -7,21 +7,19 @@ import org.openqa.selenium.WebDriver;
 
 public class DatoReservaPage extends GeneralPage {
 
-    @FindBy(
-            xpath =
-                    "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
-    )
-    private WebElementFacade lblCantidad;
+  @FindBy(
+    xpath =
+        "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
+  )
+  private WebElementFacade lblCantidad;
 
+  public DatoReservaPage(WebDriver wdriver) {
+    super(wdriver);
+  }
 
-    public DatoReservaPage(WebDriver wdriver) {
-        super(wdriver);
-    }
-
-    public String obtenerCantidadReserva() {
-        String cantidadReserva = lblCantidad.getText();
-        cantidadReserva = cantidadReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-        return cantidadReserva;
-    }
+  public String obtenerCantidadReserva() {
+    String cantidadReserva = lblCantidad.getText();
+    cantidadReserva = cantidadReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    return cantidadReserva;
+  }
 }
-

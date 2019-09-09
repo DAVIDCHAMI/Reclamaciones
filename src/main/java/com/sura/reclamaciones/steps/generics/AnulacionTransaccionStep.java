@@ -21,8 +21,7 @@ public class AnulacionTransaccionStep {
 
   @Page DetalleTransaccionPage detalleTransaccionPage;
 
-  @Page
-  DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
+  @Page DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
 
   @Step
   public void ingresarAnulacionRecupero(List<Recupero> lstRecupero) {
