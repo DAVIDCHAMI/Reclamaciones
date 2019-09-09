@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.steps.anulaciontransaccion;
+package com.sura.reclamaciones.steps.generics;
 
 import static com.sura.reclamaciones.constantes.Constantes.RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_TRANSACCION;
