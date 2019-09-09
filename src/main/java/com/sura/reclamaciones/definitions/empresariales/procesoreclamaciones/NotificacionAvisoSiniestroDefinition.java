@@ -43,16 +43,14 @@ public class NotificacionAvisoSiniestroDefinition {
     buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
   }
 
-  @Cuando("^se genere un siniestro por causal (.*) con un valor de pretensión de (.*)$")
-  public void tomarDatosSiniestro(String causaSiniestro, String valorPretension) {
+  @Cuando(
+      "^se genere un siniestro por causal (.*) con un valor de pretensión de (.*) y un incidente de tipo (.*)$")
+  public void tomarDatosSiniestro(
+      String causaSiniestro, String valorPretension, String tipoIncidente) {
     propiedadesImplicadasStep.seleccionarPropiedadImplicada();
     informacionBasicaStep.diligenciarInformacionBasica(reclamacionEmpresarial.getLstReclamo());
-    informacionReclamacionStep.seleccionarCausalIncidente(causaSiniestro, valorPretension);
-  }
-
-  @Cuando("^un incidente de tipo (.*)$")
-  public void tomarTipoIncidente(String tipoIncidente) {
-    informacionReclamacionStep.diligenciarInformacionIncidente(tipoIncidente);
+    informacionReclamacionStep.diligenciarInformacionIncidente(
+        causaSiniestro, valorPretension, tipoIncidente);
   }
 
   @Entonces("^se obtiene una reclamación que (.*) genera exposición$")
