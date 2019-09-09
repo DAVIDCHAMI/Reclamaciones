@@ -4,7 +4,6 @@ import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_INTENTOS_ESPERA_ELEMENTO;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
-import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_PAGOS_CC;
 
 import com.sura.reclamaciones.constantes.Tablas;
 import java.util.List;
@@ -224,21 +223,6 @@ public class GeneralPage extends PageObject {
         .stream()
         .map(
             fila -> fila.findElement(By.xpath(String.format("./td[%d]/div", posicionDatoDevolver))))
-        .collect(Collectors.toList());
-  }
-
-  public List<WebElement> obtenerElementoTablaDatoDesconocidoMultiple(
-      WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
-    final int POSICION_COLUMNA_TABLA = 1;
-    List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
-    int posicionColumna = cabeceraTabla.indexOf(encabezadoColumnaDevolver) + POSICION_COLUMNA_TABLA;
-    List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_PAGOS_CC);
-    return elementoEncontrado
-        .stream()
-        .map(
-            fila ->
-                fila.findElement(
-                    By.xpath(String.format("./tr[%d]/td[%d]/div", posicionFila, posicionColumna))))
         .collect(Collectors.toList());
   }
 

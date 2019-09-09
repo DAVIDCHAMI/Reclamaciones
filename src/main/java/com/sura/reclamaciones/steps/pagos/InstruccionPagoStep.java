@@ -33,7 +33,7 @@ public class InstruccionPagoStep {
       "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
 
   @Step
-  public void establecerInstruccionPago(List<PagoSiniestro> lstPago, String lineaReserva) {
+  public void finalizarCreacionPago(List<PagoSiniestro> lstPago, String lineaReserva) {
     generalPage.irSiguientePagina();
     if (auditoriaPage.verificarMensajeRechazo()) {
       MatcherAssert.assertThat(

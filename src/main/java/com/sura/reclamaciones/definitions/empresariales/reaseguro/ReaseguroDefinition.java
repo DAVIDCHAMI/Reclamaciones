@@ -60,7 +60,7 @@ public class ReaseguroDefinition {
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
+    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")

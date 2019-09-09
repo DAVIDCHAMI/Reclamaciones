@@ -72,7 +72,7 @@ public class PagoSiniestroDefinition {
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
+    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Cuando(
@@ -98,7 +98,7 @@ public class PagoSiniestroDefinition {
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
+    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Cuando(
@@ -138,7 +138,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.agregarPagoNuevaLineaReserva();
     informacionPagoStep.ingresarInformacionPago(
         lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.establecerInstruccionPago(pagoSiniestro.getLstPago(), lineaReserva);
+    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
@@ -181,8 +181,8 @@ public class PagoSiniestroDefinition {
   public void aplicarRetencion(DataTable codigoRetencion) {
     List<String> retencion = codigoRetencion.asList(String.class);
     informacionPagoStep.ingresarInformacionRetencion(
-        retencion, Serenity.sessionVariableCalled(SESION_CC_TIPO_PAGO.getValor()).toString());
-    instruccionPagoStep.establecerInstruccionPago(
+        retencion, Serenity.sessionVariableCalled(SESION_CC_TIPO_PAGO.getValor()));
+    instruccionPagoStep.finalizarCreacionPago(
         pagoSiniestro.getLstPago(),
         Serenity.sessionVariableCalled(SESION_CC_LINEA_RESERVA.getValor()));
   }

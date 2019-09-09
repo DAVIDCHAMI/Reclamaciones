@@ -4,6 +4,8 @@ import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
+import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_PAGOS_CC;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 import static org.openqa.selenium.By.xpath;
@@ -11,7 +13,9 @@ import static org.openqa.selenium.By.xpath;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
+import java.util.stream.Collectors;
 import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -49,9 +53,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   @FindBy(xpath = "//textarea")
   private WebElementFacade txtComentarioPago;
 
-  @FindBy(id = "ext-gen3084")
-  private WebElementFacade txtPago;
-
   @FindBy(
     xpath =
         "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
@@ -63,12 +64,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
         "//div[@id='centerPanel']//div[@id='NormalCreateCheckWizard/NewCheckPayments']//*[contains(text(),'Agregar')]"
   )
   private WebElementFacade btnAgregarRetencion;
-
-  @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
-  )
-  private WebElementFacade btnSiguiente;
 
   @FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:Add-btnInnerEl")
   private WebElementFacade btnAgregarPago;
@@ -123,11 +118,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   }
 
   public void ingresarCantidadPago(
-      String strTipoPago, String strCantidadPago, int posicionCalculo) {
+      String strTipoPago, String strCantidadPago, int posicionIngresoDato) {
     calcularCantidadPago(strTipoPago);
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocidoMultiple(
-            tblElementoLinea, strCantidadPago, posicionCalculo);
+        obtenerElementoTablaDatoDesconocidoPago(
+            tblElementoLinea, strCantidadPago, posicionIngresoDato);
     elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
     evaluateJavascript(
         String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
@@ -148,16 +143,31 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   public void agregarCodigoRetencion(String strCodigoRetencion, int posicion) {
     realizarEsperaCarga();
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocidoMultiple(
+        obtenerElementoTablaDatoDesconocidoPago(
             tblElementoLinea, CODIGO_RETENCION.getValor(), posicion);
     elementoEncontrado.forEach(
         elemento -> {
           elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
           lstCodigoRetencion.waitUntilVisible();
           lstCodigoRetencion
-              .findElement(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
+              .findBy(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
               .click();
         });
     realizarEsperaCarga();
+  }
+
+  public List<WebElement> obtenerElementoTablaDatoDesconocidoPago(
+      WebElementFacade elemento, String encabezadoColumnaDevolver, int posicionFila) {
+    final int POSICION_COLUMNA_TABLA = 1;
+    List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
+    int posicionColumna = cabeceraTabla.indexOf(encabezadoColumnaDevolver) + POSICION_COLUMNA_TABLA;
+    List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_PAGOS_CC);
+    return elementoEncontrado
+        .stream()
+        .map(
+            fila ->
+                fila.findElement(
+                    By.xpath(String.format("./tr[%d]/td[%d]/div", posicionFila, posicionColumna))))
+        .collect(Collectors.toList());
   }
 }
