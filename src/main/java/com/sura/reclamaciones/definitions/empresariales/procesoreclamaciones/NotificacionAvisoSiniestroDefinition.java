@@ -6,7 +6,6 @@ import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
