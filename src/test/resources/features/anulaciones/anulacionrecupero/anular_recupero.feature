@@ -25,7 +25,10 @@ Característica: Anulacion de recuperos
   Esquema del escenario: anulación de un recupero de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
-    Y se realiza un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de Retención>
+    Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
+    Y se apliquen las siguientes retenciones
+      |Codigos_Retenciones|
+      |0099   |
     Y se genera una orden de pago para que le sea entregado al usuario
     Y se cree el recupero por el tipo de <Tipo de recupero> con un código de retención <Código de retención recupero> a una cobertura <Tipo de cobertura>
     Y se obtiene un ingreso de dinero sobre el siniestro
@@ -33,5 +36,5 @@ Característica: Anulacion de recuperos
     Entonces se debe obtener la anulación del recupero, quedando en estado anulado
 
     Ejemplos:
-      | Línea de reserva                | Tipo de pago | Beneficiario de pago | Método de pago | Código de Retención | ¿Es pago soloSura? | Tipo de cobertura   | Tipo de recupero | Código de retención recupero |
-      | (3) 1ª parteVehículo            | Parcial      | SOFIA JARAMILLO      | Caja Sura      | 0099                | No                 | Perdida total Daños | Subrogación      | 0099                         |
+      | Línea de Reserva                | Tipo de pago | Beneficiario del pago | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   | Tipo de recupero | Código de retención recupero |
+      | (3) 1ª parteVehículo            | Parcial      | SOFIA JARAMILLO       | Caja Sura       | No                 | Perdida total Daños | Subrogación      | 0099                         |

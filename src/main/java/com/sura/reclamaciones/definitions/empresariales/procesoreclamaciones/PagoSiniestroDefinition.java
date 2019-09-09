@@ -55,27 +55,6 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
-  public void generarPagoReclamacion(
-      String tipoPago,
-      String beneficiarioPago,
-      String metodoPago,
-      String lineaReserva,
-      String cobertura,
-      String aplicaSoloSura)
-      throws IOException {
-    nuevoPagoStep.crearNuevoPago();
-    pagoSiniestro =
-        new PagoSiniestro(
-            (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
-    nuevoPagoStep.crearNuevoPago();
-    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
-        beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
-  }
-
-  @Cuando(
       "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
   public void crearPago(
       String tipoPago,

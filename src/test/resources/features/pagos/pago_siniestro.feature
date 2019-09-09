@@ -13,7 +13,7 @@ Característica: Realizar pago de un siniestro
     Cuando se crea una nueva línea de reserva por la Exposición de <Exposición> por <Categoría> con un tipo de costo <Tipo costo> por un valor de <Valor de Pretensión>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
-      |codigos|
+      |Codigos_Retenciones|
       |028   |
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
@@ -29,7 +29,7 @@ Característica: Realizar pago de un siniestro
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
-      |codigos|
+      |Codigos_Retenciones|
       |099   |
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
@@ -73,15 +73,18 @@ Característica: Realizar pago de un siniestro
       Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
       Y un incidente de tipo <Tipo de incidente>
       Cuando <¿Requiere auditoría?> se notifique el proceso al área de auditoría
-      Y se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de Retención>
-    Entonces se genera una orden de pago para que le sea entregado al usuario
+      Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
+      Y se apliquen las siguientes retenciones
+       |Codigos_Retenciones|
+       |0099   |
+     Entonces se genera una orden de pago para que le sea entregado al usuario
 
       Ejemplos:
-        | Línea de Reserva      | Tipo de pago | Beneficiario del pago               | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                             | Causa             | Valor de Pretensión | Tipo de incidente | ¿Requiere auditoría? | ¿genera factura? |
-        | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII         | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | No                   | Si               |
-        | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII         | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | Si                   | No               |
-        | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII     | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales      | Daños por agua    | 5000000             | Propiedad         | No                   | Si               |
-        | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII     | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales      | Daños por agua    | 5000000             | Propiedad         | Si                   | No               |
+        | Línea de Reserva      | Tipo de pago | Beneficiario del pago               | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                             | Causa             | Valor de Pretensión | Tipo de incidente | ¿Requiere auditoría? |
+        | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII         | Pago por banco  | No                 | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | No                   |
+        | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII         | Pago por banco  | No                 | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | Si                   |
+        | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII     | Pago por banco  | No                 | Incendio con cobertura Daños materiales      | Daños por agua    | 5000000             | Propiedad         | No                   |
+        | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII     | Pago por banco  | No                 | Incendio con cobertura Daños materiales      | Daños por agua    | 5000000             | Propiedad         | Si                   |
 
   @pagoMultipleRetencion
   @claimsEmpresarial
@@ -89,7 +92,7 @@ Característica: Realizar pago de un siniestro
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
-    |codigos|
+    |Codigos_Retenciones|
     |028   |
     |023   |
     |010   |
