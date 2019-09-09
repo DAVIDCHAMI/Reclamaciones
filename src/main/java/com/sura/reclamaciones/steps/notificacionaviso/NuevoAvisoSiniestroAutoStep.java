@@ -6,6 +6,7 @@ import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.*;
 import com.sura.reclamaciones.pages.autos.reclamacion.*;
+import com.sura.reclamaciones.pages.generics.DatoFinancieroResumenPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import java.util.List;
@@ -24,6 +25,8 @@ public class NuevoAvisoSiniestroAutoStep {
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
   @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
+
+  @Page DatoFinancieroResumenPage datoFinancieroResumenPage;
 
   @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
 
