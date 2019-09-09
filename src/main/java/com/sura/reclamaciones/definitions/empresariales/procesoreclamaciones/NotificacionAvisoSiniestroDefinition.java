@@ -2,11 +2,9 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.generics.MenuClaimStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
@@ -27,8 +25,6 @@ public class NotificacionAvisoSiniestroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps MenuClaimStep menuClaimStep;
-
   @Steps BuscarPolizaStep buscarPolizaStep;
 
   @Steps InformacionReclamacionStep informacionReclamacionStep;
@@ -44,8 +40,6 @@ public class NotificacionAvisoSiniestroDefinition {
         new ReclamacionEmpresarial(
             genericStep.getFilasModelo(
                 ReclamacionConstante.RECLAMACION_EMPRESARIAL, tipoCobertura));
-    menuClaimStep.seleccionarNuevaReclamacion(
-        MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
   }
 

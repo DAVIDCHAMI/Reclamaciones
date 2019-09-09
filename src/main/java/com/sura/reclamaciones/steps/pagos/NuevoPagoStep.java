@@ -169,13 +169,9 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void seleccionarExposicionVehicularAsegurado() {
+  public void declararReclamacionPerdidaTotal() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
     exposicionAutomaticaPage.seleccionarExposicion();
-  }
-
-  @Step
-  public void declararReclamacionPerdidaTotal() {
     detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.editarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.seleccionarIncineracionTotalVehiculo();

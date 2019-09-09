@@ -27,10 +27,10 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de Reserva      | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                                     | Causa                               | Valor de Pretensión | Tipo de incidente |
-      | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII   | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales              | Daños por agua                      | 5000000             | Propiedad         |
-      | (1) 1ª partePropiedad | Final        | AURA JUDITH LOPEZ JULIO CQLII     | Caja Sura       | No                 | 0099                | Hogar con cobertura básica                           | Incendio                            | 2000000             | Propiedad         |
-      | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII               | Caja Sura       | No                 | 0099                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                      | 3000000             | General           |
+      | Línea de Reserva      | Tipo de pago | Beneficiario del pago           | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                                     | Causa          | Valor de Pretensión | Tipo de incidente |
+      | (1) 1ª partePropiedad | Parcial      | MARTHA ENID ROJAS MARIACA CQLII | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales              | Daños por agua | 5000000             | Propiedad         |
+      | (1) 1ª partePropiedad | Final        | AURA JUDITH LOPEZ JULIO CQLII   | Caja Sura       | No                 | 0099                | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         |
+      | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII             | Caja Sura       | No                 | 0099                | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
 
 
   @pagoMultiplesLineasReservas
@@ -42,8 +42,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva 1                        |Línea de Reserva 2                    | Tipo de pago  | Beneficiario del pago            | Método de Pago | Código de retención pago |Cobertura          |Pago Solo Sura|
-      | Perdida total Daños pago por en EFECTIVO  |Gastos de Transporte                  | Final         |SOFIA JARAMILLO                   |Pago por banco  | 0099                     |Perdida total Daños|No            |
+      | Línea de reserva 1                       | Línea de Reserva 2   | Tipo de pago | Beneficiario del pago | Método de Pago | Código de retención pago | Cobertura           | Pago Solo Sura |
+      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | SOFIA JARAMILLO       | Pago por banco | 0099                     | Perdida total Daños | No             |
 
 
   @pagoReservaAutos
@@ -55,26 +55,26 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva                | Tipo de pago  | Beneficiario de pago             |Método de pago  | Código de retención pago | Solo Sura| Cobertura          |
-      | 1ª parteVehículo                | Parcial       | SOFIA JARAMILLO                  |Caja Sura       | 0099                     | No       | Perdida total Daños|
+      | Línea de reserva | Tipo de pago | Beneficiario de pago                       | Método de pago | Código de retención pago | Solo Sura | Cobertura           |
+      | 1ª parteVehículo | Parcial      | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Caja Sura      | 0099                     | No        | Perdida total Daños |
 
 
   @Ignore
   @PruebaAuditoria
 
-    Esquema del escenario: Crear Pago a con proceso de auditoría
-      Dado que se tiene una póliza de <Tipo y Cobertura>
-      Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
-      Y un incidente de tipo <Tipo de incidente>
-      Cuando <¿Requiere auditoría?> se notifique el proceso al área de auditoría
-      Y se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de Retención>
+  Esquema del escenario: Crear Pago a con proceso de auditoría
+    Dado que se tiene una póliza de <Tipo y Cobertura>
+    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
+    Y un incidente de tipo <Tipo de incidente>
+    Cuando <¿Requiere auditoría?> se notifique el proceso al área de auditoría
+    Y se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de Retención>
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
 
-      Ejemplos:
-        | Línea de Reserva      | Tipo de pago | Beneficiario del pago               | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                             | Causa             | Valor de Pretensión | Tipo de incidente | ¿Requiere auditoría? | ¿genera factura? |
-        | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII         | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | No                   | Si               |
-        | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII         | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica | Incendio          | 2000000             | Propiedad         | Si                   | No               |
-        | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII     | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales      | Daños por agua    | 5000000             | Propiedad         | No                   | Si               |
-        | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII     | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales      | Daños por agua    | 5000000             | Propiedad         | Si                   | No               |
+    Ejemplos:
+      | Línea de Reserva      | Tipo de pago | Beneficiario del pago           | Método del pago | ¿Es pago soloSura? | Código de Retención | Tipo y Cobertura                             | Causa          | Valor de Pretensión | Tipo de incidente | ¿Requiere auditoría? | ¿genera factura? |
+      | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII     | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica | Incendio       | 2000000             | Propiedad         | No                   | Si               |
+      | (1) 1ª partePropiedad | Final        | CLUB LOS TRIUNFADORES CQLII     | Pago por banco  | No                 | 0099                | Multiriesgo corporativo con cobertura básica | Incendio       | 2000000             | Propiedad         | Si                   | No               |
+      | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales      | Daños por agua | 5000000             | Propiedad         | No                   | Si               |
+      | (1) 1ª partePropiedad | Final        | MARTHA ENID ROJAS MARIACA CQLII | Pago por banco  | No                 | 0099                | Incendio con cobertura Daños materiales      | Daños por agua | 5000000             | Propiedad         | Si                   | No               |
 
