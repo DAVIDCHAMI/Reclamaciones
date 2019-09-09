@@ -78,11 +78,6 @@ public class NuevoPagoStep {
   @Page CreacionServicioPage crearServicioPage;
 
   @Step
-  public void consultarNumeroReclamacion() {
-    resumenReclamacionPage.obtenerNumeroReclamacion();
-  }
-
-  @Step
   public void ingresarInformacionBeneficiarioPago(
       String strBeneficiarioPago,
       String strMetodoPago,
@@ -124,12 +119,12 @@ public class NuevoPagoStep {
           "No generó la validación de NO pago a asegurado por proceso de auditoría",
           auditoriaPage.capturarMensajeRechazo().equalsIgnoreCase(MENSAJE_RECHAZO_PAGO));
     } else if (!lineaReserva.equals(LINEA_RESERVA_LESIONES_CORPORALES.getValor())) {
-      establecerInstruccionPagoPage.obtenerPagoReservas();
       establecerInstruccionPagoPage.ingresarFechaFactura();
       establecerInstruccionPagoPage.ingresarNumeroFactura(
           lstPago.listIterator().next().getNumeroFactura());
-      establecerInstruccionPagoPage.finalizarProceso();
     }
+    establecerInstruccionPagoPage.obtenerPagoReservas();
+    establecerInstruccionPagoPage.finalizarProceso();
   }
 
   @Step

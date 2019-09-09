@@ -19,8 +19,8 @@ import com.sura.reclamaciones.pages.autos.reclamacion.DatosFinancierosPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
@@ -110,6 +110,7 @@ public class NuevoAvisoSiniestroAutoStep {
       detalleVehiculoPage.seleccionarCiudad(direccionConductor.getCiudad());
       detalleVehiculoPage.ingresarDireccion(direccionConductor.getDireccion());
       detalleVehiculoPage.seleccionarTipoDireccion(direccionConductor.getTipoDireccion());
+      menuClaimPage.aceptarOpcion();
     }
   }
 
@@ -249,11 +250,6 @@ public class NuevoAvisoSiniestroAutoStep {
   }
 
   @Step
-  public void consultarReclamacionAutos() {
-    nuevaReclamacionGuardadaPage.abrirReclamacion();
-  }
-
-  @Step
   public void validarValorReservas(List<Reserva> lineaReserva) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS.getValor());
     boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
@@ -282,6 +278,5 @@ public class NuevoAvisoSiniestroAutoStep {
     crearExposicionLesiones(personaReclamacionAuto, reclamacionAuto, exposicionLesiones);
     finalizarReclamacionAutos();
     validarReclamacionAutos();
-    consultarReclamacionAutos();
   }
 }
