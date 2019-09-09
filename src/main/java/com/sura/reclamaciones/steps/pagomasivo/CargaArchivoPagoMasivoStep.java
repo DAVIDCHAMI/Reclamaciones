@@ -9,7 +9,6 @@ import com.sura.reclamaciones.pages.pagomasivo.CargaArchivoPagoMasivoPage;
 import com.sura.reclamaciones.utils.LlenadoArchivoXLS;
 import java.io.File;
 import java.util.List;
-
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 
@@ -19,7 +18,8 @@ public class CargaArchivoPagoMasivoStep {
   String nombreArchivoPagoMasivo = "PlantillaPagosMasivos.xlsx";
   File resourcesDirectory = new File("src/test/resources/files");
 
-  String rutaArchivoPagoMasivo = resourcesDirectory.getAbsolutePath() + "\\" + nombreArchivoPagoMasivo;
+  String rutaArchivoPagoMasivo =
+      resourcesDirectory.getAbsolutePath() + "\\" + nombreArchivoPagoMasivo;
 
   @Page MenuClaimPage menuClaimPage;
 

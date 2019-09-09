@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -27,7 +26,7 @@ public class ArchivoXLS {
     hojaXls = libroXls.getSheet(nombreHojaArchivoXls);
   }
 
-  public static String getCellData(int RowNum, int ColNum) throws Exception {
+  /*public static String getCellData(int RowNum, int ColNum) throws Exception {
     String CellData = "";
     try {
       celda = hojaXls.getRow(RowNum).getCell(ColNum);
@@ -41,22 +40,23 @@ public class ArchivoXLS {
     } catch (Exception e) {
       return "";
     }
-  }
+  }*/
 
-  public static void setCellData(int RowNum, int ColNum, String valorObtenido) throws Exception{
-    try{
-      boolean valorCorrecto = valorObtenido.matches("^(?:3[01]|[12][0-9]|0?[1-9])([\\-/.])(0?[1-9]|1[1-2])\\1\\d{4}$");
-      if(valorCorrecto){
-        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(valorObtenido);
+  public static void setCellData(int RowNum, int ColNum, String valorObtenido) throws Exception {
+    try {
+      boolean valorCorrecto =
+          valorObtenido.matches("^(?:3[01]|[12][0-9]|0?[1-9])([\\-/.])(0?[1-9]|1[1-2])\\1\\d{4}$");
+      if (valorCorrecto) {
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(valorObtenido);
         CellStyle cellStyle = libroXls.createCellStyle();
         cellStyle.setDataFormat(libroXls.createDataFormat().getFormat("dd/mm/yyyy"));
         hojaXls.getRow(RowNum).createCell(ColNum).setCellValue(date1);
         hojaXls.getRow(RowNum).getCell(ColNum).setCellStyle(cellStyle);
-      }else {
+      } else {
         hojaXls.getRow(RowNum).createCell(ColNum).setCellValue(valorObtenido);
         hojaXls.getRow(RowNum).getCell(ColNum).setCellStyle(hojaXls.getColumnStyle(ColNum));
       }
-    }catch (Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
@@ -66,11 +66,11 @@ public class ArchivoXLS {
     return NumFilas;
   }
 
-  public static int contarColumnasEncabezado() throws Exception {
+ /* public static int contarColumnasEncabezado() throws Exception {
     fila = hojaXls.getRow(0);
     int NumColum = fila.getLastCellNum();
     return NumColum;
-  }
+  }*/
 
   public static void removerFilaSinEncabezado() throws Exception {
     int numeroFilasLLenas = contarFilas();

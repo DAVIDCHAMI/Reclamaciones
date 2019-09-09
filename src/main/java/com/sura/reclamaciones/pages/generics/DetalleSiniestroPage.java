@@ -9,6 +9,7 @@ import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.sourceforge.htmlunit.corejs.javascript.regexp.SubString;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -26,12 +27,16 @@ public class DetalleSiniestroPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroSiniestro;
 
+  @FindBy(id = "Claim:ClaimInfoBar:LicensePlate-btnInnerEl"
+  )
+  private WebElementFacade lblPlacaAsegurado;
+
   public DetalleSiniestroPage(WebDriver wdriver) {
     super(wdriver);
   }
 
   public void obtenerNumeroPlacaPartesImplicadas() {
-    List<String> placaVehiculosInvolucrados = new ArrayList<String>();
+    List<String> placaVehiculosInvolucrados = new ArrayList();
     final String PLACA = "Placa";
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
@@ -40,7 +45,13 @@ public class DetalleSiniestroPage extends GeneralPage {
     Serenity.setSessionVariable(SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS.getValor())
         .to(tamanoLista);
     for (int i = 0; i <= tamanoLista - 1; i++) {
-      placaVehiculosInvolucrados.add(i, elementoEncontrado.get(i).getText());
+      if (elementoEncontrado.get(i).getText().equals(obtenerPlacaAsegurado()))
+      {
+        placaVehiculosInvolucrados.add(0, elementoEncontrado.get(i).getText());
+      }
+      else {
+        placaVehiculosInvolucrados.add(i, elementoEncontrado.get(i).getText());
+      }
     }
     Serenity.setSessionVariable(SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS.getValor())
         .to(placaVehiculosInvolucrados);
@@ -50,5 +61,12 @@ public class DetalleSiniestroPage extends GeneralPage {
 
   public String obtenerNumeroSiniestro() {
     return lblNumeroSiniestro.waitUntilClickable().getText();
+  }
+
+  public String obtenerPlacaAsegurado()
+  {
+    String placaAsegurado=lblPlacaAsegurado.getText();
+    String placaAseguradoSiniestro= placaAsegurado.substring(7,13);
+    return placaAseguradoSiniestro;
   }
 }
