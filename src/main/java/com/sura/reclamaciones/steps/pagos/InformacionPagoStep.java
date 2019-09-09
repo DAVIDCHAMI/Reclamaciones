@@ -3,7 +3,6 @@ package com.sura.reclamaciones.steps.pagos;
 import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
-
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
