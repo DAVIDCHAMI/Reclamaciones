@@ -10,6 +10,7 @@ import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.procesoauditoria.AuditoriaPage;
+import java.util.ArrayList;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -18,8 +19,6 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
 public class InstruccionPagoStep {
-
-  List<WebElement> lstFilaPago;
 
   @Page GeneralPage generalPage;
 
@@ -52,6 +51,7 @@ public class InstruccionPagoStep {
   public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
     lstPago.forEach(
         (PagoSiniestro validador) -> {
+          List<WebElement> lstFilaPago = new ArrayList<>();
           for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
             generalPage.realizarEsperaCarga();
             String strNumeroTransaccion =
