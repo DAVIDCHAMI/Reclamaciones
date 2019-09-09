@@ -17,8 +17,6 @@ import org.hamcrest.MatcherAssert;
 
 public class AnulacionTransaccionStep {
 
-  private String strTipoAnulacion;
-
   @Page MenuClaimPage menuClaimPage;
 
   @Page DetalleTransaccionPage detalleTransaccionPage;
@@ -28,7 +26,6 @@ public class AnulacionTransaccionStep {
 
   @Step
   public void ingresarAnulacionRecupero(List<Recupero> lstRecupero) {
-    strTipoAnulacion = RECUPERO.getValor();
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     for (Recupero diligenciador : lstRecupero) {
@@ -41,10 +38,10 @@ public class AnulacionTransaccionStep {
       MatcherAssert.assertThat(
           "El estado de la transaccion no permite que sea anulada",
           detalleTransaccionPage.ingresarAnulacionEmpresarial(
-              strNumeroTransaccion, diligenciador.getEstadoTransaccion(), strTipoAnulacion));
+              strNumeroTransaccion, diligenciador.getEstadoTransaccion(), RECUPERO.getValor()));
       MatcherAssert.assertThat(
           "El número de transaccion, no tiene habilitado el boton de anular",
-          detalleTransaccionPage.realizarAnulacion(strTipoAnulacion));
+          detalleTransaccionPage.realizarAnulacion(RECUPERO.getValor()));
       Serenity.setSessionVariable(SESION_CC_NUMERO_TRANSACCION.getValor()).to(strNumeroTransaccion);
     }
   }
@@ -59,6 +56,6 @@ public class AnulacionTransaccionStep {
     MatcherAssert.assertThat(
         "El recupero no quedo en estado anulado",
         datoFinancieroTransaccionPage.verificarEstadoAnulado(
-            strAnulacionPago, strNumeroTransaccion, strTipoAnulacion));
+            strAnulacionPago, strNumeroTransaccion));
   }
 }

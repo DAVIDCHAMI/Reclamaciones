@@ -34,7 +34,7 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
     }
 
     private List<WebElement> obtenerFilaAnulada(
-            String strNumeroTransaccion, String strTipoAnulacion) {
+            String strNumeroTransaccion) {
         List<WebElement> lstTransaccion;
         lstTransaccion =
                 obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
@@ -42,8 +42,8 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
     }
 
     public boolean verificarEstadoAnulado(
-            String strAnulacion, String strNumeroTransaccion, String strTipoAnulacion) {
-        List<WebElement> lstTransaccion = obtenerFilaAnulada(strNumeroTransaccion, strTipoAnulacion);
+            String strAnulacion, String strNumeroTransaccion) {
+        List<WebElement> lstTransaccion = obtenerFilaAnulada(strNumeroTransaccion);
         for (int i = 0; i < lstTransaccion.size(); i++) {
             if (lstTransaccion.get(i).getText().equals(strAnulacion)) {
                 return true;
