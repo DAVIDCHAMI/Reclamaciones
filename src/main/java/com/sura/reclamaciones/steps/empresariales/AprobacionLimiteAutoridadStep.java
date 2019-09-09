@@ -1,6 +1,5 @@
-package com.sura.reclamaciones.steps.limiteaprobacion;
+package com.sura.reclamaciones.steps.empresariales;
 
-import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.limiteaprobacion.PlanTrabajoActividadPage;
 import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
@@ -14,9 +13,6 @@ public class AprobacionLimiteAutoridadStep {
 
     @Page
     MenuClaimPage menuClaimPage;
-
-    @Page
-    DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
 
     @Page
     ConsultaReclamacionPage consultaReclamacionPage;

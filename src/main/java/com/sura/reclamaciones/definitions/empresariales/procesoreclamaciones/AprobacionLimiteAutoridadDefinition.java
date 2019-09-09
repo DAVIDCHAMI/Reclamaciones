@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroTransaccionStep;
-import com.sura.reclamaciones.steps.limiteaprobacion.AprobacionLimiteAutoridadStep;
+import com.sura.reclamaciones.steps.empresariales.AprobacionLimiteAutoridadStep;
 import com.sura.reclamaciones.steps.login.LoginClaimStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
