@@ -1,33 +1,15 @@
 package com.sura.reclamaciones.steps.pagos;
 
-import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
-import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
-import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
-import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
-import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
-import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.LINEA_RESERVA_LESIONES_CORPORALES;
-import static com.sura.reclamaciones.constantes.Constantes.OPCION_MENU;
-import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
-import static com.sura.reclamaciones.constantes.Constantes.PLACA;
-import static com.sura.reclamaciones.constantes.Constantes.RECLAMANTE_CONDUCTOR_AFECTADO;
-import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
-import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+import static com.sura.reclamaciones.constantes.Constantes.*;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_RESERVAS;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.NuevaExposicionPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.*;
+import com.sura.reclamaciones.pages.generics.DatoFinancieroPagoPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
@@ -53,8 +35,6 @@ public class NuevoPagoStep {
 
   @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
-
   @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
 
   @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
@@ -65,13 +45,14 @@ public class NuevoPagoStep {
 
   @Page AuditoriaPage auditoriaPage;
 
-  private static final String MENSAJE_PAGO_NO_REALIZADO = "No se generó orden de pago al asegurado";
   private static final String MENSAJE_RECHAZO_PAGO =
       "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
 
   @Page NuevaExposicionPage nuevaExposicionManualPage;
 
   @Page NuevoIncidenteVehicularPage nuevoIncidenteVehicularPage;
+
+  @Page DatoFinancieroPagoPage datoFinancieroPagoPage;
 
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
@@ -135,36 +116,6 @@ public class NuevoPagoStep {
   @Step
   public void agregarPagoNuevaLineaReserva() {
     introducirInformacionPagoPage.agregarNuevoPago();
-  }
-
-  @Step
-  public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
-    lstPago.forEach(
-        (PagoSiniestro validador) -> {
-          for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
-            generalPage.realizarEsperaCarga();
-            String strNumeroTransaccion =
-                verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
-            lstFilaPago =
-                verificacionDatosFinancierosPage.obtenerFilaTabla(
-                    strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
-            WebElement elementoXpath =
-                lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
-            boolean estadoTransaccionPantalla =
-                generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
-            if (estadoTransaccionPantalla) break;
-          }
-          String strValorReserva =
-              (Serenity.sessionVariableCalled(SESION_CC_TOTAL_PAGO_RESERVAS.getValor()).toString());
-          MatcherAssert.assertThat(
-              "El valor reservado no es igual al enviado",
-              verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
-                  strValorReserva, lstFilaPago));
-          MatcherAssert.assertThat(
-              "No llego a SAP el pago",
-              verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
-                  validador.getEstadoTransaccion(), lstFilaPago));
-        });
   }
 
   @Step
@@ -244,5 +195,33 @@ public class NuevoPagoStep {
     detalleVehiculoPage.aceptarOpcion();
     nuevoIncidenteVehicularPage.aceptarOpcion();
     nuevaExposicionManualPage.actualizarNuevaExposicion();
+  }
+
+  @Step
+  public void verificarPagoRealizado(List<PagoSiniestro> lstPago) {
+    lstPago.forEach(
+        (PagoSiniestro validador) -> {
+          for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
+            generalPage.realizarEsperaCarga();
+            String strNumeroTransaccion = datoFinancieroPagoPage.obtenerNumeroPagoRealizado();
+            lstFilaPago =
+                datoFinancieroPagoPage.obtenerFilaTabla(
+                    strNumeroTransaccion, datoFinancieroPagoPage.getTblPago());
+            WebElement elementoXpath =
+                lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
+            boolean estadoTransaccionPantalla =
+                generalPage.actualizarPantalla(validador.getEstadoTransaccion(), elementoXpath);
+            if (estadoTransaccionPantalla) break;
+          }
+          String strValorReserva =
+              (Serenity.sessionVariableCalled(SESION_CC_TOTAL_PAGO_RESERVAS.getValor()).toString());
+          MatcherAssert.assertThat(
+              "El valor pagado no es igual al enviado",
+              datoFinancieroPagoPage.verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
+          MatcherAssert.assertThat(
+              "No llego a SAP el pago",
+              datoFinancieroPagoPage.verificarPagoMenuTransaccion(
+                  validador.getEstadoTransaccion(), lstFilaPago));
+        });
   }
 }
