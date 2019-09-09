@@ -11,7 +11,7 @@ import java.util.List;
 
 import static com.sura.reclamaciones.constantes.Constantes.DATOS_FINANCIEROS;
 
-public class DatoFinancieroResumenStep {
+public class ConsultaDatoFinancieroResumenStep {
 
     @Page
     MenuClaimPage menuClaimPage;

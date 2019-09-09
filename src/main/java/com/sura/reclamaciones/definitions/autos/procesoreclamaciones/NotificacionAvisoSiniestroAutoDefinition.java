@@ -16,7 +16,7 @@ import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
-import com.sura.reclamaciones.steps.generics.DatoFinancieroResumenStep;
+import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroResumenStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevoAvisoSiniestroAutoStep;
 import cucumber.api.DataTable;
@@ -33,7 +33,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   @Steps private NuevoAvisoSiniestroAutoStep reclamacionStep;
 
   @Steps
-  DatoFinancieroResumenStep datoFinancieroResumenStep;
+  ConsultaDatoFinancieroResumenStep consultaDatoFinancieroResumenStep;
 
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
@@ -125,7 +125,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Reserva(
             genericStep.getFilasModelo(
                 PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL));
-    datoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
+    consultaDatoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Daños$")
@@ -161,7 +161,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     reserva =
         new Reserva(
             genericStep.getFilasModelo(PARAMETRO_LINEA_RESERVA.getValor(), LINEA_RESERVA_ARCHIVO));
-    datoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
+    consultaDatoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Subrogación$")
@@ -203,7 +203,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Reserva(
             genericStep.getFilasModelo(
                 PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL));
-    datoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
+    consultaDatoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   private void crearNuevaExposicionVehicular() {
