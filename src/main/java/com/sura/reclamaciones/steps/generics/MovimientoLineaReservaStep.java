@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.steps.reserva;
+package com.sura.reclamaciones.steps.generics;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
