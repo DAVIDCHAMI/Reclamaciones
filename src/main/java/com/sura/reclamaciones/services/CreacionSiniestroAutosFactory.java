@@ -1,22 +1,22 @@
 package com.sura.reclamaciones.services;
 
-import com.sura.service.creacionSiniestroAuto.gen.Author;
-import com.sura.service.creacionSiniestroAuto.gen.BodyPartDetail;
-import com.sura.service.creacionSiniestroAuto.gen.ClaimsAutoRequest;
-import com.sura.service.creacionSiniestroAuto.gen.Driver;
-import com.sura.service.creacionSiniestroAuto.gen.Injured;
-import com.sura.service.creacionSiniestroAuto.gen.InjuryIncident;
-import com.sura.service.creacionSiniestroAuto.gen.Lobs;
-import com.sura.service.creacionSiniestroAuto.gen.LossEstimate;
-import com.sura.service.creacionSiniestroAuto.gen.LossLocation;
-import com.sura.service.creacionSiniestroAuto.gen.MainContact;
-import com.sura.service.creacionSiniestroAuto.gen.Parametros;
-import com.sura.service.creacionSiniestroAuto.gen.PersonalAuto;
-import com.sura.service.creacionSiniestroAuto.gen.PrimaryAddress;
-import com.sura.service.creacionSiniestroAuto.gen.PrimaryAddress_;
-import com.sura.service.creacionSiniestroAuto.gen.PrimaryAddress__;
-import com.sura.service.creacionSiniestroAuto.gen.Vehicle;
-import com.sura.service.creacionSiniestroAuto.gen.VehicleIncident;
+import com.sura.service.creacionSiniestro.gen.Author;
+import com.sura.service.creacionSiniestro.gen.BodyPartDetail;
+import com.sura.service.creacionSiniestro.gen.ClaimsRequest;
+import com.sura.service.creacionSiniestro.gen.Driver;
+import com.sura.service.creacionSiniestro.gen.Injured;
+import com.sura.service.creacionSiniestro.gen.InjuryIncident;
+import com.sura.service.creacionSiniestro.gen.Lobs;
+import com.sura.service.creacionSiniestro.gen.LossEstimate;
+import com.sura.service.creacionSiniestro.gen.LossLocation;
+import com.sura.service.creacionSiniestro.gen.MainContact;
+import com.sura.service.creacionSiniestro.gen.Params;
+import com.sura.service.creacionSiniestro.gen.PersonalAuto;
+import com.sura.service.creacionSiniestro.gen.PrimaryAddress;
+import com.sura.service.creacionSiniestro.gen.PrimaryAddress_;
+import com.sura.service.creacionSiniestro.gen.PrimaryAddress__;
+import com.sura.service.creacionSiniestro.gen.Vehicle;
+import com.sura.service.creacionSiniestro.gen.VehicleIncident;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -802,8 +802,8 @@ public class CreacionSiniestroAutosFactory {
     this.suspectDesc = suspectDesc;
   }
 
-  ClaimsAutoRequest creacionSiniestroAutoRequestFactory() {
-    ClaimsAutoRequest crearSiniestroAutoRequest = new ClaimsAutoRequest();
+  ClaimsRequest creacionSiniestroAutoRequestFactory() {
+    ClaimsRequest crearSiniestroAutoRequest = new ClaimsRequest();
     crearSiniestroAutoRequest.setId(ID_SERVICIO_CLAIM);
     crearSiniestroAutoRequest.setMethod(METHOD_CREATE_CLAIM);
     crearSiniestroAutoRequest.setParams(listParamFactory());
@@ -813,14 +813,14 @@ public class CreacionSiniestroAutosFactory {
 
   public List<Object> listParamFactory() {
     List<Object> listParams = new ArrayList<Object>();
-    Parametros parametro = paramAutoFactory();
+    Params parametro = paramAutoFactory();
     listParams.add(getPolicyNumber());
     listParams.add(parametro);
     return listParams;
   }
 
-  Parametros paramAutoFactory() {
-    Parametros parametro = new Parametros();
+  Params paramAutoFactory() {
+    Params parametro = new Params();
     parametro.setLossDate(getLossDate());
     parametro.setNotificationDate(getNotificationDate());
     parametro.setLossType(getLossType());
@@ -862,7 +862,7 @@ public class CreacionSiniestroAutosFactory {
     mainContact.setTaxID(getTaxIDMainContact());
     mainContact.setEmailAddress1(getEmailAddress1MainContact());
     mainContact.setCellNumber(getCellNumberMainContact());
-    mainContact.setPrimaryAddress(primaryAddress__Factory());
+    mainContact.setPrimaryAddress(primaryAddressFactory());
     mainContact.setFirstName(getFirstNameMainContact());
     mainContact.setMiddleName(getMiddleNameMainContact());
     mainContact.setLastName(getLastNameMainContact());
@@ -928,7 +928,7 @@ public class CreacionSiniestroAutosFactory {
     driver.setPolicyRole(getPolicyRoleDriver());
     driver.setDocumentType(getDocumentTypeDriver());
     driver.setTaxID(getTaxIDDriver());
-    driver.setPrimaryAddress(primaryAddressFactory());
+    driver.setPrimaryAddress(primaryAddress__Factory());
     return driver;
   }
 
