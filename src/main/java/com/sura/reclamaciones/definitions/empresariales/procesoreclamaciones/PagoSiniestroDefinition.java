@@ -100,7 +100,8 @@ public class PagoSiniestroDefinition {
       String lineaReserva,
       String lineaReserva2,
       String aplicaSoloSura,
-      String codigoRetencion)
+      String codigoRetencion,
+      int numeroVehiculosInvolucradosTercero)
       throws IOException {
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
@@ -113,7 +114,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.crearExposicionVehicularManual(
         genericStep.getFilasModelo(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
-        exposicionVehiculoTercero.getLstExposicionTerceros());
+        exposicionVehiculoTercero.getLstExposicionTerceros(),numeroVehiculosInvolucradosTercero);
     nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();

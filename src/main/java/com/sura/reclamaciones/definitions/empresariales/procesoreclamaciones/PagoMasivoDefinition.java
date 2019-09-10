@@ -65,18 +65,15 @@ public class PagoMasivoDefinition {
   PagoSiniestro datosPagoSiniestroPagoMasivo;
 
   @Cuando("^se registra la información de las facturas del pago masivo a un proveedor de (.*) vehículos involucrados en el siniestro con coberturas (.*)")
-  public void ingresarInformacionFactura(String numeroVehiculosInvolucradosSiniestro, String coberturasPoliza) throws IOException {
-    /*nuevoPagoStep.consultarPlacaAsegurado();
+  public void ingresarInformacionFactura(int numeroVehiculosInvolucradosTercero, String coberturasPoliza) throws IOException {
+    nuevoPagoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
             genericStep.getFilasModelo(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
                 EXPOSICION_VEHICULAR_TERCERO.getValor()));
-    nuevoPagoStep.crearExposicionVehicularManual(
-        genericStep.getFilasModelo(
-            PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
-        exposicionVehiculoTercero.getLstExposicionTerceros());*/
-    detalleSiniestroStep.consultarInformacionSiniestro();
+    nuevoPagoStep.crearExposicionVehicularManual(genericStep.getFilasModelo(PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()), exposicionVehiculoTercero.getLstExposicionTerceros(), numeroVehiculosInvolucradosTercero);
+    /*detalleSiniestroStep.consultarInformacionSiniestro();
     datosExposicionPagoMasivo =
         new Exposicion(
             genericStep.getFilasModelo(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
@@ -92,15 +89,15 @@ public class PagoMasivoDefinition {
         datosExposicionPagoMasivo.getLstExposicion(),
         datosReservaPagoMasivo.getLstReserva(),
         datosPagoSiniestroPagoMasivo.getLstPago());
-    //resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
-    //resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
+    resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
+    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();*/
   }
 
   @Cuando(
       "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
   public void crearPagoMasivo(
       String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
-    /*detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
+    detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
     detalleFacturaVolumenStep.crearPagoMasivo();
     procesoBatchStep.ejecutarProcesoBatch();*/

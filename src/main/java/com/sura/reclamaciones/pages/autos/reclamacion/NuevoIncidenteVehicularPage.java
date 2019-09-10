@@ -44,20 +44,48 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   )
   private WebElementFacade btnAgregarTaller;
 
+  @FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:fasecoldaPopup-btnInnerEl"
+  )
+  private WebElementFacade btnGenerarCodigoFasecolda;
+
   public NuevoIncidenteVehicularPage(WebDriver wdriver) {
     super(wdriver);
   }
 
-  public void ingresarPlacaVehiculoAfectado(List<ExposicionVehiculoTercero> datosVehiculoTercero) {
-    txtPlacaVehiculo
+  public void ingresarPlacaVehiculoAfectado(List<ExposicionVehiculoTercero> datosVehiculoTercero, int j)
+  {
+    int consecutivoPlacaTercero = Integer.parseInt(datosVehiculoTercero.get(campoDato).getPlacaTercero().substring(3,6));
+    consecutivoPlacaTercero = consecutivoPlacaTercero + j;
+    String placaVehiculoTercero = datosVehiculoTercero.get(campoDato).getPlacaTercero().substring(0,5)+Integer.toString(consecutivoPlacaTercero);
+    txtPlacaVehiculo.waitUntilClickable().sendKeys(placaVehiculoTercero);
+    realizarEsperaCarga();
+
+
+
+
+    //String placaAsegurado=lblPlacaAsegurado.getText();
+    //String placaAseguradoSiniestro= placaAsegurado.substring(7,13);
+    /*txtPlacaVehiculo
         .waitUntilClickable()
         .sendKeys(datosVehiculoTercero.get(campoDato).getPlacaTercero());
-    realizarEsperaCarga();
+    realizarEsperaCarga();*/
   }
 
   public void consultarInformacionVehiculoAfectado() {
     btnRecuperarInformacion.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
+  }
+
+  public void validarPlacaExisteFasecolda()
+  {
+    if(btnGenerarCodigoFasecolda.isVisible())
+    {
+      btnGenerarCodigoFasecolda.click();
+    }
+    else
+    {
+      seleccionarConductoVehiculoAfectado();
+    }
   }
 
   public void seleccionarConductoVehiculoAfectado() {
