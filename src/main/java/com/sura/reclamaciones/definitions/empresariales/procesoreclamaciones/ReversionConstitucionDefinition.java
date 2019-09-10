@@ -46,7 +46,7 @@ public class ReversionConstitucionDefinition {
     Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(producto);
     ReclamacionEmpresarial reserva =
         new ReclamacionEmpresarial(
-            obtenerDatosPrueba (RECLAMACION_EMPRESARIAL.getValor(), producto));
+            obtenerDatosPrueba(RECLAMACION_EMPRESARIAL.getValor(), producto));
     reclamacionEmpresarialStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     buscarPolizaStep.buscarPolizaEmpresarial(reserva.getLstReclamo());

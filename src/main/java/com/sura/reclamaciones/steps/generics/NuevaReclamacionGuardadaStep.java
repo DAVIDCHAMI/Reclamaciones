@@ -11,7 +11,7 @@ public class NuevaReclamacionGuardadaStep {
     nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
   }
 
-  public void abrirNuevaReclamacionGuardada(){
-    nuevaReclamacionGuardadaPage.abrirReclamacion ();
+  public void abrirNuevaReclamacionGuardada() {
+    nuevaReclamacionGuardadaPage.abrirReclamacion();
   }
 }
