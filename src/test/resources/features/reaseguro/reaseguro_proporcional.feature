@@ -18,17 +18,32 @@ Característica: Distribución del reaseguro de un siniestro
       | Incendio con cobertura Daños materiales | Reserva          | Daños por agua               | 2000000             | Propiedad         |
       | Hogar terremoto                         | Reserva          | Terremoto,temblor o erupción | 3000000             | Propiedad         |
 
+ #  @claimsEmpresarial
+ # Esquema del escenario: Reaseguro Reserva de liberación - Pago y liberación de reserva
+  #  Dado que se tiene una póliza de <Tipo y Cobertura>
+  #  Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
+  #  Y un incidente de tipo <Tipo de incidente>
+  #  Cuando  se realice al siniestro un pago <Tipo Pago> a un <Beneficiario Pago> por medio de <Método Pago> el cual cuenta con una línea de reserva <Línea Reserva> donde el responsable <¿Solo Sura?> es Sura por una retención de <Código Retención>
+  #  Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
+
+    #   Ejemplos:
+#      | Tipo y Cobertura                            | Línea Reserva       | Tipo Pago | Beneficiario Pago    | Método Pago    | ¿Solo Sura? | Código Retención | Tipo Transacción | Causa                               | Valor de Pretensión | Tipo de incidente |
+#      | Responsabilidad Civil Predios y operaciones | (1) 1ª parteGeneral | Final     | HERMANOS LTDA. CQLII | Pago por banco | No          | 0099             | Pago             | Responsabilidad civil del asegurado | 3000000             | General           |
+
+
+  @refactorPagosV2
   @claimsEmpresarial
   Esquema del escenario: Reaseguro Reserva de liberación - Pago y liberación de reserva
-    Dado que se tiene una póliza de <Tipo y Cobertura>
-    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
-    Y un incidente de tipo <Tipo de incidente>
-    Cuando  se realice al siniestro un pago <Tipo Pago> a un <Beneficiario Pago> por medio de <Método Pago> el cual cuenta con una línea de reserva <Línea Reserva> donde el responsable <¿Solo Sura?> es Sura por una retención de <Código Retención>
+    Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
+    Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
+    Y se apliquen las siguientes retenciones
+      |Codigos_Retenciones|
+      |099   |
     Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
 
-    Ejemplos:
-      | Tipo y Cobertura                            | Línea Reserva       | Tipo Pago | Beneficiario Pago    | Método Pago    | ¿Solo Sura? | Código Retención | Tipo Transacción | Causa                               | Valor de Pretensión | Tipo de incidente |
-      | Responsabilidad Civil Predios y operaciones | (1) 1ª parteGeneral | Final     | HERMANOS LTDA. CQLII | Pago por banco | No          | 0099             | Pago             | Responsabilidad civil del asegurado | 3000000             | General           |
+       Ejemplos:
+      | Tipo y Cobertura                            | Línea de Reserva       | Tipo de pago | Beneficiario del pago    | Método del pago    | ¿Es pago soloSura?| Tipo Transacción | Causa                               | Valor de Pretensión | Tipo de incidente |
+      | Responsabilidad Civil Predios y operaciones | (1) 1ª parteGeneral | Final     | HERMANOS LTDA. CQLII | Pago por banco | No          |  Pago             | Responsabilidad civil del asegurado | 3000000             | General           |
 
   @claimsEmpresarial
   Esquema del escenario: Reaseguro  del Recupero después del pago

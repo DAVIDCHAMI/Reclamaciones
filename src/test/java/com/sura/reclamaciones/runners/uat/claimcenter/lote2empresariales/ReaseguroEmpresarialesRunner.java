@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
   features = "src/test/resources/features/reaseguro/reaseguro_proporcional.feature",
-  glue = {"com.sura.reclamaciones.definitions"}
+  glue = {"com.sura.reclamaciones.definitions"},
+    tags = {"@refactorPagosV2"}
 )
 public class ReaseguroEmpresarialesRunner {}
