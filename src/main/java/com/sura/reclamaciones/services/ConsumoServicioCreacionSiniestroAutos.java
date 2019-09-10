@@ -8,8 +8,8 @@ import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.cliente.siniestro.CreacionSiniestroAutoCliente;
-import com.sura.service.creacionSiniestroAuto.gen.ClaimsAutoRequest;
-import com.sura.service.creacionSiniestroAuto.gen.ClaimsAutoResponse;
+import com.sura.service.creacionSiniestro.gen.ClaimsRequest;
+import com.sura.service.creacionSiniestro.gen.ClaimsResponse;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -266,12 +266,12 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setCityLossLocation(lstSiniestroParam.get(campoDato).getCiudad());
   }
 
-  private ClaimsAutoRequest crearRequest() {
+  private ClaimsRequest crearRequest() {
     return creacionSiniestroAutosFactory.creacionSiniestroAutoRequestFactory();
   }
 
   private void obtenerResponse() {
-    ClaimsAutoResponse response;
+    ClaimsResponse response;
     CreacionSiniestroAutoCliente creacionSiniestroAutoCliente = new CreacionSiniestroAutoCliente();
     response = creacionSiniestroAutoCliente.claimsResponse(crearRequest());
     Utilidades.getLogger()
