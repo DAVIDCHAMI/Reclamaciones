@@ -25,43 +25,7 @@ public class AnulacionPagoDefinition {
 
   @Steps AnulacionTransaccionStep anulacionTransaccionStep;
 
-  @Steps NuevoPagoStep nuevoPagoStep;
-
-  @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
-
-  @Steps InformacionPagoStep informacionPagoStep;
-
   PagoSiniestro pagoSiniestro;
-
-  @Y(
-      "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
-  public void crearPago() throws IOException {
-    pagoSiniestro =
-        new PagoSiniestro(
-            (genericStep.getFilasModelo(
-                PAGO_SINIESTRO.getValor(),
-                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
-    AnulacionEmpresarial anulacionEmpresarial =
-        new AnulacionEmpresarial(
-            (genericStep.getFilasModelo(
-                ANULACION_EMPRESARIAL.getValor(),
-                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
-    anulacionEmpresarial
-        .getLstAnulacionEmpresarial()
-        .forEach(
-            ajustador -> {
-              nuevoPagoStep.consultarNumeroReclamacion();
-              informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
-                  ajustador.getBeneficiarioPago(),
-                  ajustador.getMetodoPago(),
-                  ajustador.getSoloSura(),
-                  pagoSiniestro.getLstPago());
-              informacionPagoStep.ingresarInformacionPago(
-                  ajustador.getLineaReserva(), ajustador.getTipoPago(), pagoSiniestro.getLstPago());
-              informacionPagoStep.ingresarInformacionPago(
-                  ajustador.getLineaReserva(), ajustador.getTipoPago(), pagoSiniestro.getLstPago());
-            });
-  }
 
   @Cuando("^se realice la anulación del pago$")
   public void anularTransaccionPagoEmpresariales() throws IOException {

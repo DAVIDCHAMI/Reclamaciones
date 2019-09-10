@@ -26,15 +26,15 @@ Característica: Anulación de pagos
   @claimsAuto
   Esquema del escenario: anulación de un pago de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
-    Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
-    Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
+    Y se genera un aviso que afecta la cobertura de <Tipo de Cobertura>
+    Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo de Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
       |Codigos_Retenciones|
       |0099   |
     Y se genera una orden de pago para que le sea entregado al usuario
-    Cuando se anula dicho pago con cobertura <Tipo de cobertura>
+    Cuando se anula dicho pago con cobertura <Tipo de Cobertura>
     Entonces se debe obtener la anulación del pago, quedando en estado anulado
 
     Ejemplos:
-      | Línea de Reserva     | Tipo de pago | Beneficiario del pago | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   |
+      | Línea de Reserva     | Tipo de pago | Beneficiario del pago | Método del pago | ¿Es pago soloSura? | Tipo de Cobertura   |
       | (3) 1ª parteVehículo | Parcial      | SOFIA JARAMILLO       | Caja Sura       | No                 | Perdida total Daños |

@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
   features = "src/test/resources/features/pagos/pago_siniestro.feature",
   glue = {"com.sura.reclamaciones.definitions"},
-  tags = {"@claimsEmpresarial"}
+  tags = {"@pagoPerdidaTotalAutos"}
 )
-public class PagoSiniestroEmpresarialRunner {}
+public class PagoPerdidaTotalAutosRunner {}
