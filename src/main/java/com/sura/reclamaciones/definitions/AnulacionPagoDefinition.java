@@ -79,6 +79,6 @@ public class AnulacionPagoDefinition {
 
   @Entonces("^se debe obtener la anulación del pago, quedando en estado anulado$")
   public void verificarAnulacionPago() {
-    anulacionPagoStep.verificarAnulacionPagoRealizada(ESTADO_ANULACION.getValor());
+    anulacionPagoStep.verificarAnulacionPago(ESTADO_ANULACION.getValor());
   }
 }
