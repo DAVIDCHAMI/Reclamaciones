@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
+import static com.sura.reclamaciones.utils.UtilidadesCSV.*;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
@@ -27,8 +28,7 @@ public class NotificacionAvisoSiniestroDefinition {
     Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(tipoCobertura);
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
-            genericStep.getFilasModelo(
-                ReclamacionConstante.RECLAMACION_EMPRESARIAL, tipoCobertura));
+            obtenerDatosPrueba(ReclamacionConstante.RECLAMACION_EMPRESARIAL, tipoCobertura));
     nuevaReclamacionEmpresarialStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     nuevaReclamacionEmpresarialStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());

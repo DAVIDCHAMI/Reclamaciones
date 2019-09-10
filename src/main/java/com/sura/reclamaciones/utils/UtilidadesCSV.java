@@ -1,5 +1,8 @@
 package com.sura.reclamaciones.utils;
 
+import static com.sura.reclamaciones.utils.EnumSeparadores.SEPARADOR_COMA;
+import static com.sura.reclamaciones.utils.EnumSeparadores.SEPARADOR_VALORES_CSV;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +16,6 @@ public final class UtilidadesCSV {
   private static final String PREFIJO_NOMBRE_DATOS_CSV = "datos_";
   private static final String EXTENSION_NOMBRE_DATOS_CSV = ".csv";
   private static final String NOMBRE_COLUMNA_FILTRO = "idFiltro";
-  private static final char SEPARADOR_VALORES_CSV = ';';
-  private static final String SEPARADOR_COMA = ",";
 
   private UtilidadesCSV() {}
 
@@ -26,7 +27,7 @@ public final class UtilidadesCSV {
                 + PREFIJO_NOMBRE_DATOS_CSV
                 + nombreCSV
                 + EXTENSION_NOMBRE_DATOS_CSV,
-            SEPARADOR_VALORES_CSV);
+            SEPARADOR_VALORES_CSV.getValor().charAt(0));
     return obtenerDatosFiltrados(datosOrigenCSV, filtro);
   }
 
@@ -36,7 +37,7 @@ public final class UtilidadesCSV {
     if ("".equals(cadenaListadoFiltros)) {
       return lstTotalDatosCSV;
     }
-    String[] arrListadoFiltros = cadenaListadoFiltros.split(SEPARADOR_COMA);
+    String[] arrListadoFiltros = cadenaListadoFiltros.split(SEPARADOR_COMA.getValor());
     return filtrarDatos(arrListadoFiltros, lstTotalDatosCSV);
   }
 
