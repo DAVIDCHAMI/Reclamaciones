@@ -282,6 +282,5 @@ public class NuevoAvisoSiniestroAutoStep {
     crearExposicionLesiones(personaReclamacionAuto, reclamacionAuto, exposicionLesiones);
     finalizarReclamacionAutos();
     validarReclamacionAutos();
-    consultarReclamacionAutos();
   }
 }
