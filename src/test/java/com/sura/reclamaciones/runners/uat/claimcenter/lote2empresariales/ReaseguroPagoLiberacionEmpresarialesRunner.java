@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-  features = "src/test/resources/features/anulaciones/anulacionpagos/anular_pago.feature",
+  features = "src/test/resources/features/reaseguro/reaseguro_proporcional.feature",
   glue = {"com.sura.reclamaciones.definitions"},
-    tags = {"@anulacionPagoEmpresarial"}
+    tags = {"@reaseguroPagoYLiberacion"}
 )
-public class AnulacionPagoRunner {}
+public class ReaseguroPagoLiberacionEmpresarialesRunner {}
