@@ -1,10 +1,8 @@
 package com.sura.reclamaciones.utils;
 
-import com.sura.reclamaciones.constantes.NombresCsv;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import net.thucydides.core.steps.stepdata.CSVTestDataSource;
 import net.thucydides.core.steps.stepdata.TestDataSource;
@@ -38,8 +36,7 @@ public final class UtilidadesCSV {
     if ("".equals(cadenaListadoFiltros)) {
       return lstTotalDatosCSV;
     }
-    String[] arrListadoFiltros =
-        cadenaListadoFiltros.split(SEPARADOR_COMA);
+    String[] arrListadoFiltros = cadenaListadoFiltros.split(SEPARADOR_COMA);
     return filtrarDatos(arrListadoFiltros, lstTotalDatosCSV);
   }
 
@@ -49,26 +46,5 @@ public final class UtilidadesCSV {
         .stream()
         .filter(fila -> Utilidades.filtrarArreglo(arrListaFiltros, fila.get(NOMBRE_COLUMNA_FILTRO)))
         .collect(Collectors.toList());
-  }
-
-  public static String obtenerDatoContenidoCSV(
-      NombresCsv nomDiccionarioCSV,
-      String nomColumnaPivote,
-      String valorColumnaPivote,
-      String nomColumnaRetornar)
-      throws IOException {
-    List<Map<String, String>> lstDiccionario =
-        obtenerDatosPrueba(nomDiccionarioCSV.getValor(), valorColumnaPivote);
-    Optional<String> valorObtenido =
-        lstDiccionario
-            .stream()
-            .filter(registro -> valorColumnaPivote.equals(registro.get(nomColumnaPivote)))
-            .map(registro -> registro.get(nomColumnaRetornar))
-            .findFirst();
-    if (valorObtenido.isPresent()) {
-      return valorObtenido.get();
-    }
-    throw new IllegalArgumentException(
-        String.format("Columna %s NO encontrada", nomColumnaRetornar));
   }
 }
