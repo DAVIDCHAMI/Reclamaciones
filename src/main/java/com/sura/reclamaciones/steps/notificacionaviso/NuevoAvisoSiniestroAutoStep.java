@@ -201,14 +201,6 @@ public class NuevoAvisoSiniestroAutoStep {
   }
 
   @Step
-  public void validarReclamacionAutos() {
-    String mensajeValidado = nuevaReclamacionGuardadaPage.obtenerMensajeValidador();
-    MatcherAssert.assertThat(
-        "No se encontro el mensaje a validar",
-        mensajeValidado.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
-  }
-
-  @Step
   public void validarExposicion(List<ExposicionesAutomaticasAutos> datosExposicionAutomatica) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
     boolean exposicionAutomatica =
