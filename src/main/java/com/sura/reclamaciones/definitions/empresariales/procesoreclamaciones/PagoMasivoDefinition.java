@@ -1,17 +1,13 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
+import static com.sura.reclamaciones.constantes.Filtros.CLASE_VEHICULO;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
-import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_MASIVO;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
-import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
+import static com.sura.reclamaciones.constantes.NombresCsv.*;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
-import com.sura.reclamaciones.models.Exposicion;
-import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
-import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.models.Reserva;
+import com.sura.reclamaciones.models.*;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
@@ -64,6 +60,8 @@ public class PagoMasivoDefinition {
 
   PagoSiniestro datosPagoSiniestroPagoMasivo;
 
+  CodigoFasecolda datosCodigoFasecolda;
+
   @Cuando("^se registra la información de las facturas del pago masivo a un proveedor de (.*) vehículos involucrados en el siniestro con coberturas (.*)")
   public void ingresarInformacionFactura(int numeroVehiculosInvolucradosTercero, String coberturasPoliza) throws IOException {
     nuevoPagoStep.consultarPlacaAsegurado();
@@ -72,8 +70,9 @@ public class PagoMasivoDefinition {
             genericStep.getFilasModelo(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
                 EXPOSICION_VEHICULAR_TERCERO.getValor()));
-    nuevoPagoStep.crearExposicionVehicularManual(genericStep.getFilasModelo(PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()), exposicionVehiculoTercero.getLstExposicionTerceros(), numeroVehiculosInvolucradosTercero);
-    /*detalleSiniestroStep.consultarInformacionSiniestro();
+    datosCodigoFasecolda = new ExposicionVehiculoTercero(genericStep.getFilasModelo(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
+    nuevoPagoStep.crearExposicionVehicularManual(genericStep.getFilasModelo(PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()), exposicionVehiculoTercero.getLstExposicionTerceros(), numeroVehiculosInvolucradosTercero,  datosCodigoFasecolda.getLstCodigoFasecolda());
+    detalleSiniestroStep.consultarInformacionSiniestro();
     datosExposicionPagoMasivo =
         new Exposicion(
             genericStep.getFilasModelo(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
@@ -90,7 +89,7 @@ public class PagoMasivoDefinition {
         datosReservaPagoMasivo.getLstReserva(),
         datosPagoSiniestroPagoMasivo.getLstPago());
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
-    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();*/
+    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }
 
   @Cuando(

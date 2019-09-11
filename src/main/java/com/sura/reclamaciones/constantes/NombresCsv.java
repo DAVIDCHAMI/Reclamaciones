@@ -18,6 +18,7 @@ public enum NombresCsv {
   PARAMETRO_LINEA_RESERVA("linea_reserva"),
   PARAMETROS_DIRECCION_SINIESTRO("direccion_reclamacion"),
   PAGO_MASIVO("pago_masivo"),
+  CODIGO_FASECOLDA("codigo_fasecolda"),
   RECLAMACION_EMPRESARIAL("reclamacion_empresarial"),
   PARAMETROS_NAVEGACION_MENU_ACCIONES("navegacion_menu_acciones"),
   CREDENCIAL("Credencial");

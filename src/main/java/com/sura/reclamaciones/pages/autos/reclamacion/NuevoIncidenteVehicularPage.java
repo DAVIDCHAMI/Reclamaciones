@@ -63,8 +63,6 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
 
 
 
-    //String placaAsegurado=lblPlacaAsegurado.getText();
-    //String placaAseguradoSiniestro= placaAsegurado.substring(7,13);
     /*txtPlacaVehiculo
         .waitUntilClickable()
         .sendKeys(datosVehiculoTercero.get(campoDato).getPlacaTercero());
