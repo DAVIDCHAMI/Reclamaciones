@@ -77,7 +77,6 @@ public class GeneralPage extends PageObject {
   private String auxiliarReemplazo = "";
   private String pais = "Country-inputEl";
   private String departamento = "State-inputEl";
-  private String ciudad = "City-inputEl";
 
   protected WebDriver driver;
 
