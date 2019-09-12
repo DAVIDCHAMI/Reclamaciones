@@ -31,7 +31,8 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
       List<Vehiculo> lstVehiculoParam) {
     consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
-    menuClaimPage.buscarReclamacion (MenuConstante.RECLAMACION_MENU,
+    menuClaimPage.buscarReclamacion(
+        MenuConstante.RECLAMACION_MENU,
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
