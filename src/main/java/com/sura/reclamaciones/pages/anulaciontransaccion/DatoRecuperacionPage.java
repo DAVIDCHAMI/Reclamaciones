@@ -20,6 +20,7 @@ public class DatoRecuperacionPage extends GeneralPage {
     }
 
     private void anularRecupero() {
+        realizarEsperaCarga();
         btnAnular.waitUntilClickable();
         btnAnular.click();
         realizarEsperaCarga();

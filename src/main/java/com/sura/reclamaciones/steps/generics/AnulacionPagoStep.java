@@ -26,31 +26,32 @@ public class AnulacionPagoStep {
     @Page
     DetalleChequePage detalleChequePage;
 
+    String strNumeroCheque;
+
     @Step
     public void ingresarAnulacionPago(List<PagoSiniestro> lstPago) {
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
                 MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
+        strNumeroCheque = datoFinancieroPagoPage.obtenerNumeroPagoRealizado();
         for (PagoSiniestro diligenciador : lstPago) {
-            String strNumeroTransaccion = datoFinancieroPagoPage.obtenerNumeroPagoRealizado();
             MatcherAssert.assertThat(
                     "El estado de la transaccion no permite que sea anulada",
                     datoFinancieroPagoPage.ingresarDetalleCheque(
-                            strNumeroTransaccion, diligenciador.getEstadoTransaccion()));
+                            strNumeroCheque, diligenciador.getEstadoTransaccion()));
             MatcherAssert.assertThat(
                     "El número de transaccion, no tiene habilitado el boton de anular",
                     detalleChequePage.realizarAnulacionCheque());
-            Serenity.setSessionVariable(SESION_CC_NUMERO_TRANSACCION.getValor()).to(strNumeroTransaccion);
+           // Serenity.setSessionVariable(SESION_CC_NUMERO_TRANSACCION.getValor()).to(strNumeroCheque);
         }
     }
 
     @Step
     public void verificarAnulacionPago(String strAnulacionPago) {
-        String strNumeroTransaccion =
-                Serenity.sessionVariableCalled(SESION_CC_NUMERO_TRANSACCION.getValor());
+        //Serenity.sessionVariableCalled(SESION_CC_NUMERO_TRANSACCION.getValor());
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
                 MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
         MatcherAssert.assertThat(
                 "El pago no quedo en estado anulado",
-                datoFinancieroPagoPage.verificarEstadoAnuladoPago(strAnulacionPago, strNumeroTransaccion,detalleChequePage.getTblPago()));
+                datoFinancieroPagoPage.verificarEstadoAnuladoPago(strAnulacionPago, strNumeroCheque, detalleChequePage.getTblPago()));
     }
 }

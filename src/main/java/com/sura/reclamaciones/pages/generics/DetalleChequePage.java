@@ -20,6 +20,7 @@ public class DetalleChequePage extends GeneralPage {
     }
 
     private void anularCheque() {
+        realizarEsperaCarga();
         btnAnular.waitUntilClickable();
         btnAnular.click();
         realizarEsperaCarga();
