@@ -79,8 +79,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva 1                       | Línea de Reserva 2   | Tipo de pago | Beneficiario del pago | Método de Pago | Código de retención pago | Cobertura           | Pago Solo Sura |
-      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | SOFIA JARAMILLO       | Pago por banco | 0099                     | Perdida total Daños | No             |
+      | Línea de reserva 1                       | Línea de Reserva 2   | Tipo de pago | Beneficiario del pago | Método de Pago | Cobertura           | Pago Solo Sura |
+      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | SOFIA JARAMILLO       | Pago por banco | Perdida total Daños | No             |
 
   @riesgoConsultableEmpresarial
   @claimsEmpresarial

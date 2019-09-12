@@ -117,7 +117,6 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.agregarPagoNuevaLineaReserva();
     informacionPagoStep.ingresarInformacionPago(
         lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
