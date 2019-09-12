@@ -2,17 +2,23 @@ package com.sura.reclamaciones.steps.notificacionaviso;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestroAutos;
+import com.sura.reclamaciones.utils.VariablesSesion;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
 public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
+
+  @Page MenuClaimPage menuClaimPage;
 
   ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos =
       new ConsumoServicioCreacionSiniestroAutos();
@@ -25,6 +31,8 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
       List<Vehiculo> lstVehiculoParam) {
     consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
+    menuClaimPage.buscarReclamacion (MenuConstante.RECLAMACION_MENU,
+        Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
   @Step

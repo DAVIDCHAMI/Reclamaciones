@@ -30,8 +30,6 @@ public class ConsumoCreacionAvisoAutosDefinition {
   Vehiculo reclamacionVehiculo = new Vehiculo();
   GenericStep genericStep = new GenericStep();
 
-  @Steps MenuClaimStep menuClaimStep;
-
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
   @Dado(
@@ -61,8 +59,6 @@ public class ConsumoCreacionAvisoAutosDefinition {
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
         parametroPersonaConductorAuto.getLstPersonaReclamacion(),
         reclamacionVehiculo.getLstVehiculos());
-    menuClaimStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
   @Entonces("^se le brindará al reclamante el número de reclamación$")
