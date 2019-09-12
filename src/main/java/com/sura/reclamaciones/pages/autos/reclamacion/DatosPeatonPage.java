@@ -6,7 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class AgregarExposicionLesionesPage extends GeneralPage {
+public class DatosPeatonPage extends GeneralPage {
 
   @FindBy(
     xpath =
@@ -44,7 +44,7 @@ public class AgregarExposicionLesionesPage extends GeneralPage {
   )
   WebElementFacade cmbDetalleLesion;
 
-  public AgregarExposicionLesionesPage(WebDriver wdriver) {
+  public DatosPeatonPage(WebDriver wdriver) {
     super(wdriver);
   }
 
