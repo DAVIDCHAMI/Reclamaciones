@@ -1,7 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
-
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;

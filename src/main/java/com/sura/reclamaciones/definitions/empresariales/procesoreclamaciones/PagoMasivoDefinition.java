@@ -43,8 +43,7 @@ public class PagoMasivoDefinition {
 
   @Steps DatoFinancieroPagoStep datoFinancieroPagoStep;
 
-  @Steps
-  ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
+  @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
   @Steps GenericStep genericStep;
 
