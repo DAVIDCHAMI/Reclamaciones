@@ -44,7 +44,9 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   )
   private WebElementFacade btnAgregarTaller;
 
-  @FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:fasecoldaPopup-btnInnerEl"
+  @FindBy(
+    id =
+        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:fasecoldaPopup-btnInnerEl"
   )
   private WebElementFacade btnGenerarCodigoFasecolda;
 
@@ -52,16 +54,16 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
     super(wdriver);
   }
 
-  public void ingresarPlacaVehiculoAfectado(List<ExposicionVehiculoTercero> datosVehiculoTercero, int j)
-  {
-    int consecutivoPlacaTercero = Integer.parseInt(datosVehiculoTercero.get(campoDato).getPlacaTercero().substring(3,6));
+  public void ingresarPlacaVehiculoAfectado(
+      List<ExposicionVehiculoTercero> datosVehiculoTercero, int j) {
+    int consecutivoPlacaTercero =
+        Integer.parseInt(datosVehiculoTercero.get(campoDato).getPlacaTercero().substring(3, 6));
     consecutivoPlacaTercero = consecutivoPlacaTercero + j;
-    String placaVehiculoTercero = datosVehiculoTercero.get(campoDato).getPlacaTercero().substring(0,5)+Integer.toString(consecutivoPlacaTercero);
+    String placaVehiculoTercero =
+        datosVehiculoTercero.get(campoDato).getPlacaTercero().substring(0, 5)
+            + Integer.toString(consecutivoPlacaTercero);
     txtPlacaVehiculo.waitUntilClickable().sendKeys(placaVehiculoTercero);
     realizarEsperaCarga();
-
-
-
 
     /*txtPlacaVehiculo
         .waitUntilClickable()
@@ -74,14 +76,11 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void validarPlacaExisteFasecolda()
-  {
-    if(btnGenerarCodigoFasecolda.isVisible())
-    {
+  public void validarPlacaExisteFasecolda() {
+    if (btnGenerarCodigoFasecolda.isVisible()) {
       btnGenerarCodigoFasecolda.click();
-    }
-    else
-    {
+      realizarEsperaCarga();
+    } else {
       seleccionarConductoVehiculoAfectado();
     }
   }

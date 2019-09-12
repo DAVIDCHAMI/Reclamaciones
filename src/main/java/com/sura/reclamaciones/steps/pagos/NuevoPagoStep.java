@@ -17,16 +17,17 @@ import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_RESERVAS;
 
+import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.NuevaExposicionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.generics.NuevaExposicionVehiculoPage;
 import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
@@ -69,7 +70,7 @@ public class NuevoPagoStep {
   private static final String MENSAJE_RECHAZO_PAGO =
       "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
 
-  @Page NuevaExposicionPage nuevaExposicionManualPage;
+  @Page NuevaExposicionVehiculoPage nuevaExposicionManualPage;
 
   @Page NuevoIncidenteVehicularPage nuevoIncidenteVehicularPage;
 
@@ -198,51 +199,48 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void consultarPlacaAsegurado() {
-    Serenity.setSessionVariable(PLACA.getValor()).to(resumenReclamacionPage.consultarNumeroPlaca());
-  }
-
-  @Step
-  public void crearExposicionVehicularManual(List<Map<String, String>> opcionesCrearExposicion, List<ExposicionVehiculoTercero> datosVehiculoTercero, int numeroVehiculosInvolucradosTercero)
-  {
-    for (int j=0; j<=numeroVehiculosInvolucradosTercero-1;j++)
-    {
+  public void crearExposicionVehicularManual(
+      List<Map<String, String>> opcionesCrearExposicion,
+      List<ExposicionVehiculoTercero> datosVehiculoTercero,
+      int numeroVehiculosInvolucradosTercero,
+      List<CodigoFasecolda> datosCodigoFasecolda) {
+    for (int j = 0; j <= numeroVehiculosInvolucradosTercero - 1; j++) {
       menuClaimPage.seleccionarBotonAcciones();
       for (int i = 0; i < opcionesCrearExposicion.size(); i++) {
         if (opcionesCrearExposicion
-                .listIterator(i)
-                .next()
-                .get(OPCION_MENU.getValor())
-                .equals(COMODIN.getValor())) {
+            .listIterator(i)
+            .next()
+            .get(OPCION_MENU.getValor())
+            .equals(COMODIN.getValor())) {
           opcionesCrearExposicion
-                  .listIterator(i)
-                  .next()
-                  .replace(
-                          OPCION_MENU.getValor(),
-                          COMODIN.getValor(),
-                          Serenity.sessionVariableCalled(PLACA.getValor()));
+              .listIterator(i)
+              .next()
+              .replace(
+                  OPCION_MENU.getValor(),
+                  COMODIN.getValor(),
+                  Serenity.sessionVariableCalled(PLACA.getValor()));
         }
         String opcionMenu =
-                opcionesCrearExposicion.listIterator(i).next().get(OPCION_MENU.getValor());
+            opcionesCrearExposicion.listIterator(i).next().get(OPCION_MENU.getValor());
         menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(opcionMenu);
       }
       nuevaExposicionManualPage.seleccionarReclamanteExposicion(
-              Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor()));
+          Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor()));
       nuevaExposicionManualPage.seleccionarTipoReclamanteExposicion(
-              RECLAMANTE_CONDUCTOR_AFECTADO.getValor());
+          RECLAMANTE_CONDUCTOR_AFECTADO.getValor());
       nuevaExposicionManualPage.crearNuevoIncidenteVehicular();
       nuevoIncidenteVehicularPage.ingresarPlacaVehiculoAfectado(datosVehiculoTercero, j);
       nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
       nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda();
-      //nuevoIncidenteVehicularPage.seleccionarConductoVehiculoAfectado();
+      nuevoIncidenteVehicularPage.seleccionarConductoVehiculoAfectado();
       nuevoIncidenteVehicularPage.seleccionarServiciosTaller();
       nuevoIncidenteVehicularPage.seleccionarTaller();
       detalleVehiculoPage.buscarProveedor();
       detalleVehiculoPage.realizarEsperaCarga();
       crearServicioPage.seleccionarProveedor(
-              datosVehiculoTercero
-                      .get(Integer.parseInt(VALOR_CERO.getValor()))
-                      .getTallerReparacionAsignado());
+          datosVehiculoTercero
+              .get(Integer.parseInt(VALOR_CERO.getValor()))
+              .getTallerReparacionAsignado());
       detalleVehiculoPage.aceptarOpcion();
       nuevoIncidenteVehicularPage.aceptarOpcion();
       nuevaExposicionManualPage.actualizarNuevaExposicion();

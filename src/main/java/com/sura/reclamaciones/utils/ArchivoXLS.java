@@ -66,7 +66,7 @@ public class ArchivoXLS {
     return NumFilas;
   }
 
- /* public static int contarColumnasEncabezado() throws Exception {
+  /* public static int contarColumnasEncabezado() throws Exception {
     fila = hojaXls.getRow(0);
     int NumColum = fila.getLastCellNum();
     return NumColum;
