@@ -8,7 +8,6 @@ import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECU
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
-
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
