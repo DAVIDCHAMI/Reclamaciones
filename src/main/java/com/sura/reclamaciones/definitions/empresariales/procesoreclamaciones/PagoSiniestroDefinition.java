@@ -5,29 +5,43 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TER
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
+import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
+import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
+import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
 import com.sura.reclamaciones.utils.VariablesSesion;
+import cucumber.api.DataTable;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
 import java.io.IOException;
+import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
 
   PagoSiniestro pagoSiniestro;
+
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
 
   @Steps NuevoPagoStep nuevoPagoStep;
+
+  @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
+
+  @Steps InformacionPagoStep informacionPagoStep;
+
+  @Steps InstruccionPagoStep instruccionPagoStep;
 
   @Steps GenericStep genericStep;
 
@@ -48,18 +62,16 @@ public class PagoSiniestroDefinition {
       String metodoPago,
       String lineaReserva,
       String cobertura,
-      String aplicaSoloSura,
-      String codigoRetencion)
+      String aplicaSoloSura)
       throws IOException {
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
     nuevoPagoStep.crearNuevoPago();
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
+    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Cuando(
@@ -69,8 +81,7 @@ public class PagoSiniestroDefinition {
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
-      String aplicaSoloSura,
-      String codigoRetencion)
+      String aplicaSoloSura)
       throws IOException {
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
@@ -83,11 +94,10 @@ public class PagoSiniestroDefinition {
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.crearNuevoPago();
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
+    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Cuando(
@@ -98,8 +108,7 @@ public class PagoSiniestroDefinition {
       String metodoPago,
       String lineaReserva,
       String lineaReserva2,
-      String aplicaSoloSura,
-      String codigoRetencion)
+      String aplicaSoloSura)
       throws IOException {
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
@@ -122,19 +131,18 @@ public class PagoSiniestroDefinition {
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.crearNuevoPago();
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
     nuevoPagoStep.agregarPagoNuevaLineaReserva();
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva2, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(
+        lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
+    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
   public void verificarPago() {
-    nuevoPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
+    instruccionPagoStep.verificarPagoRealizado(pagoSiniestro.getLstPago());
   }
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
@@ -148,5 +156,34 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
+  }
+
+  @Cuando(
+      "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura$")
+  public void ingresarPagoReclamacion(
+      String tipoPago,
+      String beneficiarioPago,
+      String metodoPago,
+      String lineaReserva,
+      String cobertura,
+      String aplicaSoloSura)
+      throws IOException {
+    pagoSiniestro =
+        new PagoSiniestro(
+            (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
+    nuevoPagoStep.crearNuevoPago();
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
+        beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
+  }
+
+  @Cuando("^se apliquen las siguientes retenciones$")
+  public void aplicarRetencion(DataTable codigoRetencion) {
+    List<String> retencion = codigoRetencion.asList(String.class);
+    informacionPagoStep.ingresarInformacionRetencion(
+        retencion, Serenity.sessionVariableCalled(SESION_CC_TIPO_PAGO.getValor()));
+    instruccionPagoStep.finalizarCreacionPago(
+        pagoSiniestro.getLstPago(),
+        Serenity.sessionVariableCalled(SESION_CC_LINEA_RESERVA.getValor()));
   }
 }

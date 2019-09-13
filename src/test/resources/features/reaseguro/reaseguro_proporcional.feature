@@ -65,8 +65,8 @@ Característica: Distribución del reaseguro de un siniestro
     Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
 
     Ejemplos:
-      | Tipo y Cobertura                             | Código Retención Pago | Tipo Transacción | Causa    | Valor de Pretensión | Tipo de incidente |
-      | Multiriesgo corporativo con cobertura básica | 0099                  | Anulación Pago   | Incendio | 3000000             | Propiedad         |
+      | Tipo y Cobertura | Código Retención Pago | Tipo Transacción | Causa    | Valor de Pretensión | Tipo de incidente |
+      | 5555555          | jhujyfyfty                  | Anulación Pago   | Incendio | 3000000             | Propiedad         |
 
   @claimsEmpresarial
   Esquema del escenario: Reaseguro Anulación de recupero
