@@ -44,14 +44,6 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
     lblNumeroReclamacion.click();
   }
 
-  public String obtenerNumeroReclamacionConsultaPoliza() {
-    String numeroReclamacion;
-    txtNumeroReclamacion.waitUntilVisible();
-    numeroReclamacion = txtNumeroReclamacion.getText();
-    numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    return numeroReclamacion;
-  }
-
   public String obtenerNumeroReclamacion() {
     String numeroReclamacion;
     divNumeroReclamacion.waitUntilVisible().waitUntilClickable();

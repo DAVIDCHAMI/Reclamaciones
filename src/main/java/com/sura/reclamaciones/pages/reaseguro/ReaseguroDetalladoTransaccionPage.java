@@ -1,9 +1,9 @@
 package com.sura.reclamaciones.pages.reaseguro;
 
 import static com.sura.reclamaciones.constantes.Constantes.ANULACION_PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.CERO;
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION_REASEGURO;
 import static com.sura.reclamaciones.constantes.Constantes.PORCIENTO;
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.utils.Variables.FORMATEAR_MONTOS;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RESERVA;
@@ -124,7 +124,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         abs(
             Double.parseDouble(
                 lstFilaTransaccion.get(4).getText().replaceAll(FORMATEAR_MONTOS.getValor(), "")));
-    if (porcentajeCoaseguroCedido.equals(CERO.getValor())) {
+    if (porcentajeCoaseguroCedido.equals(VALOR_CERO.getValor())) {
       dblValorCedido = abs(Double.parseDouble(strValorTransaccion)) - dblValorRetenido;
     } else {
       dblValorCedido =
@@ -149,7 +149,7 @@ public class ReaseguroDetalladoTransaccionPage extends GeneralPage {
         Double.parseDouble(strPorcentajeCedido) / Double.parseDouble(PORCIENTO.getValor());
     double dblPorcentaCuotaParte =
         Double.parseDouble(strProporcionCuotaParte) / Double.parseDouble(PORCIENTO.getValor());
-    if (strPorcentajeCoaseguroCedido.equals(CERO.getValor())) {
+    if (strPorcentajeCoaseguroCedido.equals(VALOR_CERO.getValor())) {
       return (dblPorcentajeCedido * dblValorReasegurado * dblPorcentaCuotaParte);
     } else {
       return (dblPorcentajeCedido * dblValorReasegurado * dblPorcentaCuotaParte)

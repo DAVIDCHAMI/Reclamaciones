@@ -1,11 +1,11 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.RECLAMACION_EMPRESARIAL;
+import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
@@ -32,10 +32,6 @@ public class ReversionConstitucionDefinition {
 
   @Steps BuscarPolizaStep buscarPolizaStep;
 
-  @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
-
-  @Steps GenericStep genericStep;
-
   @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
 
   @Steps InformacionBasicaStep informacionBasicaStep;
@@ -50,7 +46,7 @@ public class ReversionConstitucionDefinition {
     Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(producto);
     ReclamacionEmpresarial reserva =
         new ReclamacionEmpresarial(
-            genericStep.getFilasModelo(RECLAMACION_EMPRESARIAL.getValor(), producto));
+            obtenerDatosPrueba(RECLAMACION_EMPRESARIAL.getValor(), producto));
     reclamacionEmpresarialStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     buscarPolizaStep.buscarPolizaEmpresarial(reserva.getLstReclamo());
