@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
   features = "src/test/resources/features/anulaciones/anulacionpagos/anular_pago.feature",
-  glue = {"com.sura.reclamaciones.definitions"}
+  glue = {"com.sura.reclamaciones.definitions"},
+  tags = { "@Empresarial"}
 )
-public class AnulacionPagoRunner {}
+public class AnulacionPagoEmpresarialRunner {}
