@@ -7,7 +7,7 @@ import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECU
 
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
+import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
@@ -27,18 +27,17 @@ public class RecuperoStep {
 
   @Page MenuRecuperoPage menuRecuperoPage;
 
-  @Page ResumenReclamacionPage resumenReclamacionPage;
-
   @Page VerificacionRecuperoPage verificacionRecuperoPage;
+
+  @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
 
   @Step
   public void seleccionarNumeroReclamacion() {
-    resumenReclamacionPage.obtenerNumeroReclamacion();
+    nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
   }
 
   @Step
-  public void diligenciarCreacionRecupero(
-      List<Recupero> lstRecupero, String tipoRecupero, String codigoRetencion) {
+  public void diligenciarCreacionRecupero(List<Recupero> lstRecupero, String codigoRetencion) {
     menuRecuperoPage.ingresarMenuRecupero();
     lstRecupero.forEach(
         formulario -> {

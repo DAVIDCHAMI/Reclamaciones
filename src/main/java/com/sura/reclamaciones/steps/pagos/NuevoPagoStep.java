@@ -16,9 +16,10 @@ import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevaExposicionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.exposiciones.ExposicionPage;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
+import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import java.util.List;
 import java.util.Map;
@@ -34,9 +35,11 @@ public class NuevoPagoStep {
 
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
 
-  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
+  @Page
+  IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page
+  VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
   @Page ExposicionPage exposicionPage;
 
@@ -51,11 +54,6 @@ public class NuevoPagoStep {
   @Page CreacionServicioPage crearServicioPage;
 
   @Step
-  public void consultarNumeroReclamacion() {
-    resumenReclamacionPage.obtenerNumeroReclamacion();
-  }
-
-  @Step
   public void agregarPagoNuevaLineaReserva() {
     introducirInformacionPagoPage.agregarNuevoPago();
   }
@@ -67,13 +65,9 @@ public class NuevoPagoStep {
   }
 
   @Step
-  public void seleccionarExposicionVehicularAsegurado() {
+  public void declararReclamacionPerdidaTotal() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
     exposicionPage.seleccionarExposicion();
-  }
-
-  @Step
-  public void declararReclamacionPerdidaTotal() {
     detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.editarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.seleccionarIncineracionTotalVehiculo();

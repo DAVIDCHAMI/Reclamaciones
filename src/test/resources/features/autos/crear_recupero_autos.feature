@@ -8,7 +8,7 @@ Característica: Crear un recupero de un siniestro
   @claimsAuto
   Esquema del escenario: crear recupero de subrogación o ingreso (otro)
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
-    Y se genera un aviso
+    Y se genera un aviso que afecta la cobertura de Responsabilidad civil
     Y se declara la reclamación como perdida total
     Y se realiza un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de retención pago>
     Y se genera una orden de pago para que le sea entregado al usuario

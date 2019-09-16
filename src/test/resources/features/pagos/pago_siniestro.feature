@@ -49,8 +49,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva 1                        |Línea de Reserva 2                    | Tipo de pago  | Beneficiario del pago            | Método de Pago | Código de retención pago |Cobertura          |Pago Solo Sura|
-      | Perdida total Daños pago por en EFECTIVO  |Gastos de Transporte                  | Final         |SOFIA JARAMILLO                   |Pago por banco  | 0099                     |Perdida total Daños|No            |
+      | Línea de reserva 1                       | Línea de Reserva 2   | Tipo de pago | Beneficiario del pago | Método de Pago | Código de retención pago | Cobertura           | Pago Solo Sura |
+      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | SOFIA JARAMILLO       | Pago por banco | 0099                     | Perdida total Daños | No             |
 
   @pagoReservaAutos
   @claimsAuto
@@ -61,8 +61,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva                | Tipo de pago  | Beneficiario de pago             |Método de pago  | Código de retención pago | Solo Sura| Cobertura          |
-      | 1ª parteVehículo                | Parcial       | SOFIA JARAMILLO                  |Caja Sura       | 0099                     | No       | Perdida total Daños|
+      | Línea de reserva | Tipo de pago | Beneficiario de pago                       | Método de pago | Código de retención pago | Solo Sura | Cobertura           |
+      | 1ª parteVehículo | Parcial      | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Caja Sura      | 0099                     | No        | Perdida total Daños |
 
 
   @Ignore

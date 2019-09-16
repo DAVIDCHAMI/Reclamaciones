@@ -10,11 +10,10 @@ import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
-import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.reaseguro.ReaseguroStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
@@ -33,8 +32,6 @@ public class ReaseguroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps NuevoPagoStep nuevoPagoStep;
-
   @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
 
   @Steps InformacionPagoStep informacionPagoStep;
@@ -43,7 +40,7 @@ public class ReaseguroDefinition {
 
   @Steps RecuperoStep recuperoStep;
 
-  @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Cuando(
       "^se realice al siniestro un pago (.*) a un (.*) por medio de (.*) el cual cuenta con una línea de reserva (.*) donde el responsable (.*) es Sura por una retención de (.*)$")
@@ -56,7 +53,7 @@ public class ReaseguroDefinition {
       throws IOException {
     PagoSiniestro pagoSiniestro =
         new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), strTipoContrato)));
-    nuevoPagoStep.consultarNumeroReclamacion();
+    nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
@@ -68,15 +65,14 @@ public class ReaseguroDefinition {
       String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException {
     Recupero recupero =
         new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoContrato));
-    recuperoStep.diligenciarCreacionRecupero(
-        recupero.getLstRecupero(), strTipoRecupero, strCodigoRetencionRecupero);
+    recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), strCodigoRetencionRecupero);
   }
 
   @Entonces(
       "^para la transacción (.*) se distribuye el reaseguro según el retenido y el cedido de manera adecuada$")
   public void verificarReaseguro(String strTransaccion) throws IOException {
     if (strTransaccion.equals(RESERVA.getValor())) {
-      nuevaReclamacionEmpresarialStep.visualizarResumenReclamacion();
+      nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
     }
     Contrato contrato =
         new Contrato(genericStep.getFilasModelo(CONTRATO.getValor(), strTipoContrato));

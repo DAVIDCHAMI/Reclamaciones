@@ -69,8 +69,7 @@ public class RecuperoSiniestroDefinition {
   public void crearRecuperoReclamacionAutos(
       String tipoRecupero, String codigoRetencion, String cobertura) throws IOException {
     recupero = new Recupero((genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), cobertura)));
-    recuperoStep.diligenciarCreacionRecupero(
-        recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
+    recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), codigoRetencion);
   }
 
   @Entonces("^se obtiene un ingreso de dinero sobre el siniestro$")

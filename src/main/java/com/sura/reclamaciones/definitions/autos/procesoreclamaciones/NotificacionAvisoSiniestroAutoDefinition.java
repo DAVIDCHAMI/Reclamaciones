@@ -27,6 +27,7 @@ import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevoAvisoSiniestroAutoStep;
 import cucumber.api.DataTable;
 import cucumber.api.java.es.Cuando;
@@ -40,6 +41,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   @Steps private GenericStep genericStep;
 
   @Steps private NuevoAvisoSiniestroAutoStep reclamacionStep;
+
+  @Steps private NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
@@ -109,6 +112,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         personaReclamacion.getLstPersonaReclamacion(),
         reclamacionAuto.getLstReclamacionAuto(),
         exposicionLesiones.getLstExposicionLesiones());
+    nuevaReclamacionGuardadaStep.abrirReclamacionGuardada();
   }
 
   @Entonces(
@@ -148,7 +152,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     reclamacionStep.editarInformacionVehiculo(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.completarDatosReclamacionAutos(reclamacionAuto.getLstReclamacionAuto());
     reclamacionStep.finalizarReclamacionAutos();
-    reclamacionStep.consultarReclamacionAutos();
+    nuevaReclamacionGuardadaStep.abrirReclamacionGuardada();
   }
 
   @Entonces(

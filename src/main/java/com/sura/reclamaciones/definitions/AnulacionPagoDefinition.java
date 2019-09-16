@@ -9,6 +9,7 @@ import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.anulaciontransaccion.AnulacionTransaccionStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
@@ -31,6 +32,8 @@ public class AnulacionPagoDefinition {
 
   @Steps InformacionPagoStep informacionPagoStep;
 
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
+
   PagoSiniestro pagoSiniestro;
 
   @Y(
@@ -50,7 +53,7 @@ public class AnulacionPagoDefinition {
         .getLstAnulacionEmpresarial()
         .forEach(
             ajustador -> {
-              nuevoPagoStep.consultarNumeroReclamacion();
+              nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
               informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
                   ajustador.getBeneficiarioPago(),
                   ajustador.getMetodoPago(),

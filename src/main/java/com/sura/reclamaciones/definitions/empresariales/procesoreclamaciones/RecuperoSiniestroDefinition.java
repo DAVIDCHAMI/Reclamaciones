@@ -28,8 +28,7 @@ public class RecuperoSiniestroDefinition {
                 RECUPERO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
     recuperoStep.seleccionarNumeroReclamacion();
-    recuperoStep.diligenciarCreacionRecupero(
-        recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
+    recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), codigoRetencion);
   }
 
   @Entonces("^se obtiene un reintegro de dinero al siniestro$")

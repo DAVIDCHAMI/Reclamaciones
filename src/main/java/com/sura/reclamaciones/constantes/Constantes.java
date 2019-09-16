@@ -68,7 +68,7 @@ public enum Constantes {
   VER_POLIZA("Ver póliza"),
   VOLVER_BILLINGCENTER("Volver a BillingCenter"),
   TIEMPO_ESPERA_ELEMENTO_VISIBLE("180"),
-  VOLVER_POLICYCENTER("Volver a PolicyCenter");
+  VOLVER_POLICYCENTER("Volver a PolicyCenter"),
   VALOR_CERO("0");
 
   private String valor;

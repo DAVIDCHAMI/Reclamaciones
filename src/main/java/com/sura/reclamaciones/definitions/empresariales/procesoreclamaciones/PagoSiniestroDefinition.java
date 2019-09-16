@@ -12,13 +12,12 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
-import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.DataTable;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -45,9 +44,9 @@ public class PagoSiniestroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps MenuClaimsStep menuClaimsStep;
-
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
+
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -84,9 +83,6 @@ public class PagoSiniestroDefinition {
       String lineaReserva,
       String aplicaSoloSura)
       throws IOException {
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
-    nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
@@ -111,8 +107,6 @@ public class PagoSiniestroDefinition {
       String lineaReserva2,
       String aplicaSoloSura)
       throws IOException {
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
@@ -123,7 +117,6 @@ public class PagoSiniestroDefinition {
         genericStep.getFilasModelo(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros());
-    nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
@@ -148,7 +141,7 @@ public class PagoSiniestroDefinition {
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
   public void notificarProcesoAuditoria(String requiereAuditoria) {
-    nuevoPagoStep.consultarNumeroReclamacion();
+    nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
     inclusionProcesoAuditoriaStep.marcarAuditoria(requiereAuditoria);
   }
 
