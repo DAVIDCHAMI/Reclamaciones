@@ -1,11 +1,11 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
+import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -20,15 +20,12 @@ public class NotificacionAvisoSiniestroDefinition {
 
   @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
 
-  @Steps GenericStep genericStep;
-
   @Dado("^que se tiene una póliza de (.*)$")
   public void buscarPoliza(String tipoCobertura) throws IOException {
     Serenity.setSessionVariable(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()).to(tipoCobertura);
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
-            genericStep.getFilasModelo(
-                ReclamacionConstante.RECLAMACION_EMPRESARIAL, tipoCobertura));
+            obtenerDatosPrueba(ReclamacionConstante.RECLAMACION_EMPRESARIAL, tipoCobertura));
     nuevaReclamacionEmpresarialStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     nuevaReclamacionEmpresarialStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());

@@ -15,6 +15,7 @@ public final class UtilidadesCSV {
   private static final String PREFIJO_NOMBRE_DATOS_CSV = "datos_";
   private static final String EXTENSION_NOMBRE_DATOS_CSV = ".csv";
   private static final String NOMBRE_COLUMNA_FILTRO = "idFiltro";
+  private static final String SEPARADOR_COMA = ",";
   private static final char SEPARADOR_VALORES_CSV = ';';
 
   private UtilidadesCSV() {}
@@ -38,7 +39,7 @@ public final class UtilidadesCSV {
       return lstTotalDatosCSV;
     }
     String[] arrListadoFiltros =
-        cadenaListadoFiltros.split(EnumSeparadores.SEPARADOR_COMA.getValor());
+        cadenaListadoFiltros.split(EnumSeparadores.SEPARADOR_COMA);
     return filtrarDatos(arrListadoFiltros, lstTotalDatosCSV);
   }
 

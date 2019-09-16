@@ -2,6 +2,7 @@ package com.sura.reclamaciones.pages.generics;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,24 +14,24 @@ import org.openqa.selenium.WebElement;
 
 public class DetalleSiniestroPage extends GeneralPage {
 
-  public DetalleSiniestroPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   @FindBy(
-    xpath =
-        ".//div[contains(@id,'ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:EditableVehicleIncidentsLV') and @class='x-panel x-panel-default x-grid']"
+    id =
+        "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:EditableVehicleIncidentsLV"
   )
   private WebElementFacade tblPlacasVehiculosInvolucrados;
 
   @FindBy(
-    xpath =
-        ".//div[contains(@id,'ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl') and @class='x-form-display-field']"
+    id =
+        "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl"
   )
   private WebElementFacade lblNumeroSiniestro;
 
-  public List<String> obtenerNumneroPlacaPartesImplicadas() {
-    List<String> placaVehiculosInvolucrados = new ArrayList<String>();
+  public DetalleSiniestroPage(WebDriver wdriver) {
+    super(wdriver);
+  }
+
+  public void obtenerNumeroPlacaPartesImplicadas() {
+    List<String> placaVehiculosInvolucrados = new ArrayList<>();
     final String PLACA = "Placa";
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
@@ -41,12 +42,11 @@ public class DetalleSiniestroPage extends GeneralPage {
     for (int i = 0; i <= tamanoLista - 1; i++) {
       placaVehiculosInvolucrados.add(i, elementoEncontrado.get(i).getText());
     }
-    return placaVehiculosInvolucrados;
+    Serenity.setSessionVariable(SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS.getValor())
+        .to(placaVehiculosInvolucrados);
   }
 
   public String obtenerNumeroSiniestro() {
-    lblNumeroSiniestro.waitUntilClickable();
-    String numeroSiniestro = lblNumeroSiniestro.getText();
-    return numeroSiniestro;
+    return lblNumeroSiniestro.waitUntilClickable().getText();
   }
 }
