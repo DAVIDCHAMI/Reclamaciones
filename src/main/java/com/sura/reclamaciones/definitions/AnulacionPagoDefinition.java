@@ -25,11 +25,9 @@ public class AnulacionPagoDefinition {
 
   @Steps AnulacionPagoStep anulacionPagoStep;
 
-  @Steps
-  InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
+  @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
 
-  @Steps
-  InformacionPagoStep informacionPagoStep;
+  @Steps InformacionPagoStep informacionPagoStep;
 
   PagoSiniestro pagoSiniestro;
 
