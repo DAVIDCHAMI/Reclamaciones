@@ -11,7 +11,9 @@ import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
-import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
+import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
+import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
+import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
 import com.sura.reclamaciones.steps.reaseguro.ReaseguroStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
@@ -30,7 +32,11 @@ public class ReaseguroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps NuevoPagoStep nuevoPagoStep;
+  @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
+
+  @Steps InformacionPagoStep informacionPagoStep;
+
+  @Steps InstruccionPagoStep instruccionPagoStep;
 
   @Steps RecuperoStep recuperoStep;
 
@@ -43,17 +49,15 @@ public class ReaseguroDefinition {
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
-      String aplicaSoloSura,
-      String codigoRetencion)
+      String aplicaSoloSura)
       throws IOException {
     PagoSiniestro pagoSiniestro =
         new PagoSiniestro((genericStep.getFilasModelo(PAGO_SINIESTRO.getValor(), strTipoContrato)));
     nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
-    nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInformacionPago(
-        lineaReserva, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
+    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")

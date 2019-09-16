@@ -10,6 +10,8 @@ import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.anulaciontransaccion.AnulacionTransaccionStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
+import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
+import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -26,13 +28,17 @@ public class AnulacionPagoDefinition {
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
+  @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
+
+  @Steps InformacionPagoStep informacionPagoStep;
+
   @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   PagoSiniestro pagoSiniestro;
 
   @Y(
       "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
-  public void crearPago(String strTipoProducto, String strCodigoRetencion) throws IOException {
+  public void crearPago() throws IOException {
     pagoSiniestro =
         new PagoSiniestro(
             (genericStep.getFilasModelo(
@@ -48,18 +54,15 @@ public class AnulacionPagoDefinition {
         .forEach(
             ajustador -> {
               nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
-              nuevoPagoStep.ingresarInformacionBeneficiarioPago(
+              informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
                   ajustador.getBeneficiarioPago(),
                   ajustador.getMetodoPago(),
                   ajustador.getSoloSura(),
                   pagoSiniestro.getLstPago());
-              nuevoPagoStep.ingresarInformacionPago(
-                  ajustador.getLineaReserva(),
-                  ajustador.getTipoPago(),
-                  strCodigoRetencion,
-                  pagoSiniestro.getLstPago());
-              nuevoPagoStep.ingresarInstruccionesPago(
-                  ajustador.getLineaReserva(), pagoSiniestro.getLstPago());
+              informacionPagoStep.ingresarInformacionPago(
+                  ajustador.getLineaReserva(), ajustador.getTipoPago(), pagoSiniestro.getLstPago());
+              informacionPagoStep.ingresarInformacionPago(
+                  ajustador.getLineaReserva(), ajustador.getTipoPago(), pagoSiniestro.getLstPago());
             });
   }
 
