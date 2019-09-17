@@ -5,6 +5,7 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICU
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
 import static com.sura.reclamaciones.constantes.NombresCsv.*;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.*;
 import com.sura.reclamaciones.steps.generics.*;
 import com.sura.reclamaciones.steps.pagomasivo.BusquedaLibretaContactoStep;
@@ -61,10 +62,10 @@ public class PagoMasivoDefinition {
       int numeroVehiculosInvolucradosTercero, String coberturasPoliza) throws IOException {
     nuevaExposicionVehiculoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
-        new ExposicionVehiculoTercero(
-            genericStep.getFilasModelo(
-                PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
-                EXPOSICION_VEHICULAR_TERCERO.getValor()));
+            new ExposicionVehiculoTercero(
+                    genericStep.getFilasModelo(
+                            PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
+                            EXPOSICION_VEHICULAR_TERCERO.getValor()));
     datosCodigoFasecolda =
         new CodigoFasecolda(
             genericStep.getFilasModelo(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));

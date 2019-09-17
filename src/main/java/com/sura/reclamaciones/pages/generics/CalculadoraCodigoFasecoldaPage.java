@@ -9,29 +9,14 @@ public class CalculadoraCodigoFasecoldaPage extends GeneralPage {
   @FindBy(id = "FNOLSuraFasecoldaCalculatorPopup:Vehicle_VehicleType-inputEl")
   private WebElementFacade cmbClaseVehiculo;
 
-  @FindBy(xpath = "//ul[@class='x-list-plain']")
-  private WebElementFacade lstClaseVehiculo;
-
   @FindBy(id = "FNOLSuraFasecoldaCalculatorPopup:Vehicle_Year-inputEl")
   private WebElementFacade cmbModelo;
-
-  @FindBy(
-    xpath =
-        "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above']//ul"
-  )
-  private WebElementFacade lstModelo;
 
   @FindBy(id = "FNOLSuraFasecoldaCalculatorPopup:Vehicle_Make-inputEl")
   private WebElementFacade cmbMarca;
 
-  @FindBy(xpath = "//ul[@class='x-list-plain']")
-  private WebElementFacade lstMarca;
-
   @FindBy(id = "FNOLSuraFasecoldaCalculatorPopup:Vehicle_Model-inputEl")
   private WebElementFacade cmbLinea;
-
-  @FindBy(xpath = "//ul[@class='x-list-plain']")
-  private WebElementFacade lstLinea;
 
   @FindBy(id = "FNOLSuraFasecoldaCalculatorPopup:ClaimPolicyGeneral_CancelPolicy")
   private WebElementFacade btnValidarCodigoFasecolda;
@@ -66,6 +51,13 @@ public class CalculadoraCodigoFasecoldaPage extends GeneralPage {
   public void generarCodigoFasecolda() {
     btnValidarCodigoFasecolda.waitUntilClickable();
     btnValidarCodigoFasecolda.click();
+    realizarEsperaCarga();
+  }
+
+  public void crearCodigoFasecoldaVehiculo()
+  {
+    btnAceptar.waitUntilClickable();
+    btnAceptar.click();
     realizarEsperaCarga();
   }
 }

@@ -1,13 +1,11 @@
 package com.sura.reclamaciones.steps.generics;
 
-import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
-import static com.sura.reclamaciones.constantes.Constantes.OPCION_MENU;
-import static com.sura.reclamaciones.constantes.Constantes.PLACA;
-import static com.sura.reclamaciones.constantes.Constantes.RECLAMANTE_CONDUCTOR_AFECTADO;
+import static com.sura.reclamaciones.constantes.Constantes.*;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 
 import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.generics.CalculadoraCodigoFasecoldaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -30,6 +28,8 @@ public class ExposicionVehicularManualStep {
   @Page NuevoIncidenteVehicularPage nuevoIncidenteVehicularPage;
 
   @Page CalculadoraCodigoFasecoldaPage calculadoraCodigoFasecoldaPage;
+
+  @Page DetalleVehiculoPage detalleVehiculoPage;
 
   @Step
   public void consultarPlacaAsegurado() {
@@ -71,17 +71,37 @@ public class ExposicionVehicularManualStep {
       nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
       nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda();
       datosCodigoFasecolda.forEach(
-          formulario -> {
-            calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(formulario.getClaseVehiculo());
-            calculadoraCodigoFasecoldaPage.seleccionarModeloVehiculo(formulario.getModelo());
-            calculadoraCodigoFasecoldaPage.seleccionarMarcaVehiculo(formulario.getMarca());
-            calculadoraCodigoFasecoldaPage.seleccionarLineaVehiculo(formulario.getLinea());
+          formularioCodigoFasecolda -> {
+            calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(formularioCodigoFasecolda.getClaseVehiculo());
+            calculadoraCodigoFasecoldaPage.seleccionarModeloVehiculo(formularioCodigoFasecolda.getModelo());
+            calculadoraCodigoFasecoldaPage.seleccionarMarcaVehiculo(formularioCodigoFasecolda.getMarca());
+            calculadoraCodigoFasecoldaPage.seleccionarLineaVehiculo(formularioCodigoFasecolda.getLinea());
+            calculadoraCodigoFasecoldaPage.generarCodigoFasecolda();
+            calculadoraCodigoFasecoldaPage.crearCodigoFasecoldaVehiculo();
           });
-      /*introducirInformacionBeneficiarioPage.seleccionarTipoBeneficiario(
-      diligenciador.getTipoBeneficiario());*/
-      /*calculadoraCodigoFasecoldaPage.seleccionarModelo(datosCodigoFasecolda);
-      calculadoraCodigoFasecoldaPage.seleccionarMarca(datosCodigoFasecolda);
-      calculadoraCodigoFasecoldaPage.seleccionarLinea(datosCodigoFasecolda);*/
+       datosVehiculoTercero.forEach(
+               formularioLugarAtencion -> {
+                 nuevoIncidenteVehicularPage.seleccionarLugarAtencion(formularioLugarAtencion.getLugarAtencion());
+                 nuevoIncidenteVehicularPage.seleccionarPaisAtencion(formularioLugarAtencion.getPaisAtencion());
+                 nuevoIncidenteVehicularPage.seleccionarDepartamentoAtencion(formularioLugarAtencion.getDepartamentoAtencion());
+                 nuevoIncidenteVehicularPage.seleccionarCiudadAtencion(formularioLugarAtencion.getCiudadAtencion());
+                 nuevoIncidenteVehicularPage.seleccionarDireccionAtencion(formularioLugarAtencion.getDireccionAtencion());
+               });
+
+
+      nuevoIncidenteVehicularPage.seleccionarConductoVehiculoAfectado();
+      nuevoIncidenteVehicularPage.seleccionarServiciosTaller();
+      nuevoIncidenteVehicularPage.seleccionarTaller();
+      detalleVehiculoPage.buscarProveedor();
+      detalleVehiculoPage.realizarEsperaCarga();
+      /*crearServicioPage.seleccionarProveedor(
+              datosVehiculoTercero
+                      .get(Integer.parseInt(VALOR_CERO.getValor()))
+                      .getTallerReparacionAsignado());
+      detalleVehiculoPage.aceptarOpcion();
+      nuevoIncidenteVehicularPage.aceptarOpcion();
+      nuevaExposicionManualPage.actualizarNuevaExposicion();*/
+
     }
   }
 }

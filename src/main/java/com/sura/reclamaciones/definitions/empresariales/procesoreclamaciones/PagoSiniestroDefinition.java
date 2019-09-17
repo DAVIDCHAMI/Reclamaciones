@@ -1,10 +1,16 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 
+import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
@@ -16,20 +22,31 @@ import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
 import java.io.IOException;
 import net.serenitybdd.core.Serenity;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
 
-  PagoSiniestro pagoSiniestro;
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
 
-  @Steps NuevoPagoStep nuevoPagoStep;
+  @Steps
+  NuevoPagoStep nuevoPagoStep;
 
-  @Steps GenericStep genericStep;
+  @Steps
+  ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
-  @Steps MenuClaimsStep menuClaimsStep;
+  @Steps
+  GenericStep genericStep;
 
-  @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
+  @Steps
+  MenuClaimsStep menuClaimsStep;
+
+  @Steps
+  InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
+
+  PagoSiniestro pagoSiniestro;
+
+  CodigoFasecolda datosCodigoFasecolda;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -88,7 +105,7 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) y (.*) afectando la cobertura de (.*) es Sura con una retención de (.*)$")
+      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) y (.*) afectando la cobertura de (.*) es Sura con una retención de (.*) (.*)$")
   public void crearMultiPago(
       String tipoPago,
       String beneficiarioPago,
@@ -99,9 +116,9 @@ public class PagoSiniestroDefinition {
       String codigoRetencion,
       int numeroVehiculosInvolucradosTercero)
       throws IOException {
-    /*menuClaimsStep.consultarNumeroReclamacion(
+    menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
-    nuevoPagoStep.consultarPlacaAsegurado();
+    nuevaExposicionVehiculoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
             genericStep.getFilasModelo(
@@ -129,7 +146,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.agregarPagoNuevaLineaReserva();
     nuevoPagoStep.ingresarInformacionPago(
         lineaReserva2, tipoPago, codigoRetencion, pagoSiniestro.getLstPago());
-    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());*/
+    nuevoPagoStep.ingresarInstruccionesPago(lineaReserva, pagoSiniestro.getLstPago());
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
