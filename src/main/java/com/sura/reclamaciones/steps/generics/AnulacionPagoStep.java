@@ -5,7 +5,6 @@ import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.generics.DatoFinancieroPagoPage;
 import com.sura.reclamaciones.pages.generics.DetalleChequePage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
@@ -13,7 +12,6 @@ import org.hamcrest.MatcherAssert;
 import java.util.List;
 
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRANSACCION;
 
 public class AnulacionPagoStep {
 
