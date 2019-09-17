@@ -41,13 +41,11 @@ public class AnulacionPagoStep {
             MatcherAssert.assertThat(
                     "El número de transaccion, no tiene habilitado el boton de anular",
                     detalleChequePage.realizarAnulacionCheque());
-           // Serenity.setSessionVariable(SESION_CC_NUMERO_TRANSACCION.getValor()).to(strNumeroCheque);
         }
     }
 
     @Step
     public void verificarAnulacionPago(String strAnulacionPago) {
-        //Serenity.sessionVariableCalled(SESION_CC_NUMERO_TRANSACCION.getValor());
         menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
                 MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
         MatcherAssert.assertThat(
