@@ -1,6 +1,5 @@
-package com.sura.reclamaciones.pages.anulaciontransaccion;
+package com.sura.reclamaciones.pages.generics;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;

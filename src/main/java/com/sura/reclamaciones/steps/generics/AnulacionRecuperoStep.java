@@ -2,7 +2,7 @@ package com.sura.reclamaciones.steps.generics;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.pages.anulaciontransaccion.DatoRecuperacionPage;
+import com.sura.reclamaciones.pages.generics.DatoRecuperacionPage;
 import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import net.serenitybdd.core.Serenity;
