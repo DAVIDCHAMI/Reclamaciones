@@ -15,23 +15,23 @@ public class DatoFinancieroPagoPage extends GeneralPage {
         super(wdriver);
     }
 
-    public String obtenerNumeroPagoRealizado() {
-        return obtenerDatoTablaCabecera(NUMERO_PAGO.getValor(), 1);
-    }
+  public String obtenerNumeroPagoRealizado() {
+    realizarEsperaCarga();
+    return obtenerDatoTablaCabecera(NUMERO_PAGO.getValor(), 1);
+  }
 
-    public boolean verificarPagoMenuTransaccion(String datoValidar, List<WebElement> lstFilaPago) {
-        int i;
-        for (i = 0; i < lstFilaPago.size(); i++) {
-            String strDatoPantalla = lstFilaPago.get(i).getText();
-            if (strDatoPantalla.contains(COP.getValor()) || strDatoPantalla.contains(USD.getValor())) {
-                strDatoPantalla = strDatoPantalla.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-            }
-            if (strDatoPantalla.equals(datoValidar)) {
-                return true;
-            }
-        }
-        return false;
+  public boolean verificarPagoMenuTransaccion(String datoValidar, List<WebElement> lstFilaPago) {
+    for (int i = 0; i < lstFilaPago.size(); i++) {
+      String strDatoPantalla = lstFilaPago.get(i).getText();
+      if (strDatoPantalla.contains(COP.getValor()) || strDatoPantalla.contains(USD.getValor())) {
+        strDatoPantalla = strDatoPantalla.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+      }
+      if (strDatoPantalla.equals(datoValidar)) {
+        return true;
+      }
     }
+    return false;
+  }
 
     private List<WebElement> obtenerFilaPagoAnulado(String strNumeroTransaccion, String tblPago) {
         List<WebElement> lstPago;
