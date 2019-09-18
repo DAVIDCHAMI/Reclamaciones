@@ -1,17 +1,19 @@
 package com.sura.reclamaciones.pages.generics;
 
-import com.sura.reclamaciones.constantes.ReservaConstante;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+        import com.sura.reclamaciones.constantes.ReservaConstante;
+        import com.sura.reclamaciones.utils.Utilidades;
+        import com.sura.reclamaciones.utils.Variables;
+        import net.serenitybdd.core.annotations.findby.FindBy;
+        import net.serenitybdd.core.pages.WebElementFacade;
+        import org.openqa.selenium.By;
+        import org.openqa.selenium.WebDriver;
+        import org.openqa.selenium.WebElement;
 
-import java.util.List;
+        import java.util.List;
 
-import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
-import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECUPERO;
-import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
+        import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
+        import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECUPERO;
+        import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
 public class DatoFinancieroTransaccionPage extends GeneralPage {
 
@@ -20,6 +22,12 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
                     "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
     )
     private WebElementFacade tblTransaccion;
+
+    @FindBy(
+            xpath =
+                    "//a[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount']"
+    )
+    private WebElementFacade lnkReservaTransaccion;
 
     public DatoFinancieroTransaccionPage(WebDriver wdriver) {
         super(wdriver);
@@ -92,5 +100,17 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
         }
         realizarEsperaCarga();
         return estadoTransaccionPantalla;
+    }
+
+    public String obtenerMontoReserva(String montoReserva) {
+        String validarReservaTransaccion ="";
+        if (lnkReservaTransaccion.isVisible()) {
+            validarReservaTransaccion = lnkReservaTransaccion.waitUntilVisible().getText();
+            validarReservaTransaccion =
+                    validarReservaTransaccion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+        } else {
+            Utilidades.getLogger().info("No se ha generado reserva en la sección de transacciones");
+        }
+        return validarReservaTransaccion;
     }
 }
