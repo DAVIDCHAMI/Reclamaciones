@@ -93,6 +93,7 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
+    realizarEsperaCarga();
     mnuLateralPrimerNivel
         .findElement(
             By.xpath(
