@@ -10,4 +10,4 @@ import org.junit.runner.RunWith;
   glue = {"com.sura.reclamaciones.definitions"},
   tags = {"@reaseguroAnulacionPago"}
 )
-public class ReaseguroAnulacionPagoEmpresarialRunner {}
+  public class ReaseguroAnulacionPagoEmpresarialRunner {}

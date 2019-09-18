@@ -35,7 +35,8 @@ Característica: Realizar pago de un siniestro
     Ejemplos:
       | Línea de Reserva      | Tipo de pago | Beneficiario del pago         | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                                     | Causa          | Valor de Pretensión | Tipo de incidente |
       | (1) 1ª partePropiedad | Parcial      | AURA JUDITH LOPEZ JULIO CQLII | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio       | 5000000             | Propiedad         |
-      | (1) 1ª parteGeneral   | Parcial      | TODO EN VERDE CQLII           | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
+   # | (1) 1ª parteGeneral   | Parcial      | TODO EN VERDE CQLII           | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
+      | (1) 1ª partePropiedad   | Parcial      | MATERIALES LTDA. CQLII        | Caja Sura       | No                 | Multiriesgo corporativo con cobertura básica | Rotura de vidrios | 4000000             | Propiedad           |
 
   @pagoLineaReservaAutos
   @claimsAuto
