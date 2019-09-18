@@ -111,14 +111,17 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     if (strTipoPago.equals(TIPO_PAGO.getValor())) {
       dblCalculoVrReserva = Double.parseDouble(PORCENTAJE.getValor()) * dblValorReserva;
     } else {
-      dblCalculoVrReserva = dblValorReserva/(sizeCodigoRetencion-1);
-          }
+      dblCalculoVrReserva = dblValorReserva / (sizeCodigoRetencion - 1);
+    }
     intCalculoVrReserva = dblCalculoVrReserva.intValue();
     return intCalculoVrReserva;
   }
 
   public void ingresarCantidadPago(
-      String strTipoPago, String strCantidadPago, int posicionIngresoDato, int sizeCodigoRetencion) {
+      String strTipoPago,
+      String strCantidadPago,
+      int posicionIngresoDato,
+      int sizeCodigoRetencion) {
     calcularCantidadPago(strTipoPago, sizeCodigoRetencion);
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocidoPago(

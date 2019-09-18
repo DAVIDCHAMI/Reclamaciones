@@ -5,6 +5,7 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TER
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
+import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
@@ -56,6 +57,27 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
+      "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
+  public void generarPagoReclamacion(
+      String tipoPago,
+      String beneficiarioPago,
+      String metodoPago,
+      String lineaReserva,
+      String cobertura,
+      String aplicaSoloSura)
+      throws IOException {
+    nuevoPagoStep.crearNuevoPago();
+    pagoSiniestro =
+        new PagoSiniestro(
+            (obtenerDatosPrueba(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
+    nuevoPagoStep.crearNuevoPago();
+    informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
+        beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
+    informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
+    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
+  }
+
+  @Cuando(
       "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) donde el responsable (.*) es Sura$")
   public void crearPagoPerdidaTotal(
       String tipoPago,
@@ -71,7 +93,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
         new PagoSiniestro(
-            (genericStep.getFilasModelo(
+            (obtenerDatosPrueba(
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.crearNuevoPago();
@@ -95,11 +117,11 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
-            genericStep.getFilasModelo(
+            obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
                 EXPOSICION_VEHICULAR_TERCERO.getValor()));
     nuevoPagoStep.crearExposicionVehicularManual(
-        genericStep.getFilasModelo(
+        obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros());
     nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
@@ -148,7 +170,7 @@ public class PagoSiniestroDefinition {
       throws IOException {
     pagoSiniestro =
         new PagoSiniestro(
-            (genericStep.getFilasModelo(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
+            (obtenerDatosPrueba(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
     nuevoPagoStep.crearNuevoPago();
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
