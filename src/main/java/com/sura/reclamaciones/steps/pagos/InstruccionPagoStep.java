@@ -6,8 +6,8 @@ import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_RESERVAS;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.pages.generics.DatoFinancieroPagoPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.procesoauditoria.AuditoriaPage;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class InstruccionPagoStep {
 
   @Page EstablecerInstruccionPagoPage establecerInstruccionPagoPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page DatoFinancieroPagoPage datoFinancieroPagoPage;
 
   private static final String MENSAJE_RECHAZO_PAGO =
       "Elementos de línea : Para realizar el pago, primero debe verificar los detalles de investigación de auditoría";
@@ -54,11 +54,10 @@ public class InstruccionPagoStep {
           List<WebElement> lstFilaPago = new ArrayList<>();
           for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
             generalPage.realizarEsperaCarga();
-            String strNumeroTransaccion =
-                verificacionDatosFinancierosPage.obtenerNumeroPagoRealizado();
+            String strNumeroTransaccion = datoFinancieroPagoPage.obtenerNumeroPagoRealizado();
             lstFilaPago =
-                verificacionDatosFinancierosPage.obtenerFilaTabla(
-                    strNumeroTransaccion, verificacionDatosFinancierosPage.getTblPago());
+                datoFinancieroPagoPage.obtenerFilaTabla(
+                    strNumeroTransaccion, datoFinancieroPagoPage.getTblPago());
             WebElement elementoXpath =
                 lstFilaPago.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
             boolean estadoTransaccionPantalla =
@@ -69,11 +68,10 @@ public class InstruccionPagoStep {
               (Serenity.sessionVariableCalled(SESION_CC_TOTAL_PAGO_RESERVAS.getValor()).toString());
           MatcherAssert.assertThat(
               "El valor reservado no es igual al enviado",
-              verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
-                  strValorReserva, lstFilaPago));
+              datoFinancieroPagoPage.verificarPagoMenuTransaccion(strValorReserva, lstFilaPago));
           MatcherAssert.assertThat(
               "No llego a SAP el pago",
-              verificacionDatosFinancierosPage.verificarPagoMenuTransaccion(
+              datoFinancieroPagoPage.verificarPagoMenuTransaccion(
                   validador.getEstadoTransaccion(), lstFilaPago));
         });
   }

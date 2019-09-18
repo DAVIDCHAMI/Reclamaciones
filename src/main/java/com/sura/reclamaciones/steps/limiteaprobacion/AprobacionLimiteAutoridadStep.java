@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.limiteaprobacion;
 
-import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
 import static com.sura.reclamaciones.constantes.MenuConstante.PLAN_TRABAJO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
@@ -35,8 +35,8 @@ public class AprobacionLimiteAutoridadStep {
     } else {
       posicionEstadoVerificar = Integer.parseInt(POSICION_FILA.getValor());
     }
-    for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
       planTrabajoActividadPage.realizarEsperaCarga();
+    for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
       menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
           MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
       verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TRANSACCION_RESERVA);
