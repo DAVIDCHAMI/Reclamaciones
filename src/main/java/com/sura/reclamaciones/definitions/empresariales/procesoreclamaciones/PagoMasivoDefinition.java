@@ -1,24 +1,19 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
-import static com.sura.reclamaciones.constantes.Filtros.CLASE_VEHICULO;
-import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
-import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
-import static com.sura.reclamaciones.constantes.NombresCsv.*;
-
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.*;
 import com.sura.reclamaciones.steps.generics.*;
-import com.sura.reclamaciones.steps.pagomasivo.BusquedaLibretaContactoStep;
-import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
-import com.sura.reclamaciones.steps.pagomasivo.DatoFinancieroPagoStep;
-import com.sura.reclamaciones.steps.pagomasivo.DetalleFacturaVolumenStep;
-import com.sura.reclamaciones.steps.pagomasivo.FacturaVolumenStep;
-import com.sura.reclamaciones.steps.pagomasivo.ResultadoArchivoProcesadoStep;
-import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
+import com.sura.reclamaciones.steps.pagomasivo.*;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
-import java.io.IOException;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
+
+import java.io.IOException;
+
+import static com.sura.reclamaciones.constantes.Filtros.*;
+import static com.sura.reclamaciones.constantes.NombresCsv.*;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 public class PagoMasivoDefinition {
 
@@ -75,7 +70,7 @@ public class PagoMasivoDefinition {
         exposicionVehiculoTercero.getLstExposicionTerceros(),
         numeroVehiculosInvolucradosTercero,
         datosCodigoFasecolda.getLstCodigoFasecolda());
-    /*detalleSiniestroStep.consultarInformacionSiniestro();
+    detalleSiniestroStep.consultarInformacionSiniestro();
     datosExposicionPagoMasivo =
         new Exposicion(
             genericStep.getFilasModelo(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
@@ -92,28 +87,28 @@ public class PagoMasivoDefinition {
         datosReservaPagoMasivo.getLstReserva(),
         datosPagoSiniestroPagoMasivo.getLstPago());
     resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
-    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();*/
+    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }
 
   @Cuando(
       "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
   public void crearPagoMasivo(
       String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
-    /*  detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
+    detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
     detalleFacturaVolumenStep.crearPagoMasivo();
-    procesoBatchStep.ejecutarProcesoBatch();*/
+    procesoBatchStep.ejecutarProcesoBatch();
   }
 
   @Entonces(
       "^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
   public void validarPagoMasivo() {
-    /*facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
+    facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     detalleFacturaVolumenStep.validarPagoMasivo();
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
     datoFinancieroPagoStep.validarPagosIndividuales(
-        MenuConstante.DATOS_FINANCIEROS, MenuConstante.PAGOS);*/
+        MenuConstante.DATOS_FINANCIEROS, MenuConstante.PAGOS);
   }
 }

@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -140,9 +141,18 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   }
 
   public void seleccionarConductoVehiculoAfectado() {
-    cmbNombreConductor.waitUntilVisible().waitUntilClickable().click();
+    /*cmbNombreConductor.waitUntilVisible().waitUntilClickable().click();
+
     seleccionarOpcionCombobox(
         Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor()));
+    realizarEsperaCarga();*/
+
+
+    String nombreConductorTercero =
+            (Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
+                    .toString());
+    cmbNombreConductor.clear();
+    cmbNombreConductor.typeAndTab(nombreConductorTercero);;
     realizarEsperaCarga();
   }
 

@@ -5,6 +5,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_A
 
 import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.generics.CalculadoraCodigoFasecoldaPage;
@@ -30,6 +31,9 @@ public class ExposicionVehicularManualStep {
   @Page CalculadoraCodigoFasecoldaPage calculadoraCodigoFasecoldaPage;
 
   @Page DetalleVehiculoPage detalleVehiculoPage;
+
+    @Page
+    CreacionServicioPage crearServicioPage;
 
   @Step
   public void consultarPlacaAsegurado() {
@@ -62,8 +66,7 @@ public class ExposicionVehicularManualStep {
             opcionesCrearExposicion.listIterator(i).next().get(OPCION_MENU.getValor());
         menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(opcionMenu);
       }
-      nuevaExposicionManualPage.seleccionarReclamanteExposicion(
-          Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor()));
+      nuevaExposicionManualPage.seleccionarReclamanteExposicion();
       nuevaExposicionManualPage.seleccionarTipoReclamanteExposicion(
           RECLAMANTE_CONDUCTOR_AFECTADO.getValor());
       nuevaExposicionManualPage.crearNuevoIncidenteVehicular();
@@ -87,20 +90,18 @@ public class ExposicionVehicularManualStep {
                  nuevoIncidenteVehicularPage.seleccionarCiudadAtencion(formularioLugarAtencion.getCiudadAtencion());
                  nuevoIncidenteVehicularPage.seleccionarDireccionAtencion(formularioLugarAtencion.getDireccionAtencion());
                });
-
-
       nuevoIncidenteVehicularPage.seleccionarConductoVehiculoAfectado();
       nuevoIncidenteVehicularPage.seleccionarServiciosTaller();
       nuevoIncidenteVehicularPage.seleccionarTaller();
       detalleVehiculoPage.buscarProveedor();
       detalleVehiculoPage.realizarEsperaCarga();
-      /*crearServicioPage.seleccionarProveedor(
+      crearServicioPage.seleccionarProveedor(
               datosVehiculoTercero
                       .get(Integer.parseInt(VALOR_CERO.getValor()))
                       .getTallerReparacionAsignado());
       detalleVehiculoPage.aceptarOpcion();
       nuevoIncidenteVehicularPage.aceptarOpcion();
-      nuevaExposicionManualPage.actualizarNuevaExposicion();*/
+      nuevaExposicionManualPage.actualizarNuevaExposicion();
 
     }
   }
