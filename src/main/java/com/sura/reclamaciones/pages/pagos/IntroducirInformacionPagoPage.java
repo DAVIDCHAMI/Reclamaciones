@@ -3,12 +3,12 @@ package com.sura.reclamaciones.pages.pagos;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_PAGOS_CC;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -122,8 +122,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
       String strTipoPago, String strCantidadPago, int posicionIngresoDato) {
     calcularCantidadPago(strTipoPago);
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(
-            tblElementoLinea, strCantidadPago, posicionIngresoDato);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, posicionIngresoDato);
     elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
     evaluateJavascript(
         String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));

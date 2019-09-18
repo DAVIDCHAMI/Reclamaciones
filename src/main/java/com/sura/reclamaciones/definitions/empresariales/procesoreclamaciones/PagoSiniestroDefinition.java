@@ -50,8 +50,7 @@ public class PagoSiniestroDefinition {
 
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
-  @Steps
-  PagoPrimaPendienteStep pagoPrimaPendienteStep;
+  @Steps PagoPrimaPendienteStep pagoPrimaPendienteStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
