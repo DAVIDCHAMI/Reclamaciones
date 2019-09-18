@@ -1,9 +1,22 @@
 package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
 
-import static com.sura.reclamaciones.constantes.NombresCsv.*;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_DIRECCION_SINIESTRO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_EXPOSICION_AUTOMATICA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_PERSONA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_LINEA_RESERVA;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_LESIONES;
+import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
-import com.sura.reclamaciones.models.*;
+import com.sura.reclamaciones.models.ExposicionLesiones;
+import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
+import com.sura.reclamaciones.models.PersonaReclamacion;
+import com.sura.reclamaciones.models.ReclamacionAuto;
+import com.sura.reclamaciones.models.Reserva;
+import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroResumenStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevoAvisoSiniestroAutoStep;
 import cucumber.api.DataTable;
