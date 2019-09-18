@@ -17,6 +17,7 @@ import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroResumenStep;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevoAvisoSiniestroAutoStep;
 import cucumber.api.DataTable;
@@ -29,6 +30,8 @@ import net.thucydides.core.annotations.Steps;
 public class NotificacionAvisoSiniestroAutoDefinition {
 
   @Steps private NuevoAvisoSiniestroAutoStep reclamacionStep;
+
+  @Steps ConsultaDatoFinancieroResumenStep consultaDatoFinancieroResumenStep;
 
   @Steps private NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
@@ -89,7 +92,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new ReclamacionAuto(
             obtenerDatosPrueba(
                 PARAMETROS_DIRECCION_SINIESTRO.getValor(), DIRECCION_EXPOSICION_LESIONES));
-    exposicionLesiones =
+    ExposicionLesiones exposicionLesiones =
         new ExposicionLesiones(
             obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_LESIONES.getValor(),
@@ -117,7 +120,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Reserva(
             obtenerDatosPrueba(
                 PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL));
-    reclamacionStep.validarValorReservas(reserva.getLstReserva());
+    consultaDatoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Daños$")
@@ -146,7 +149,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(obtenerDatosPrueba(PARAMETRO_LINEA_RESERVA.getValor(), LINEA_RESERVA_ARCHIVO));
-    reclamacionStep.validarValorReservas(reserva.getLstReserva());
+    consultaDatoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Subrogación$")
@@ -187,7 +190,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new Reserva(
             obtenerDatosPrueba(
                 PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL));
-    reclamacionStep.validarValorReservas(reserva.getLstReserva());
+    consultaDatoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   private void validarExposicionesAutomaticas() {

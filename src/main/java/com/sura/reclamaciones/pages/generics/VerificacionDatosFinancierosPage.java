@@ -1,9 +1,5 @@
 package com.sura.reclamaciones.pages.generics;
 
-import static com.sura.reclamaciones.constantes.Constantes.COP;
-import static com.sura.reclamaciones.constantes.Constantes.NUMERO_PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.PAGO;
-import static com.sura.reclamaciones.constantes.Constantes.USD;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
@@ -48,45 +44,24 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     return estado;
   }
 
-  public String obtenerNumeroPagoRealizado() {
-    return obtenerDatoTablaCabecera(NUMERO_PAGO.getValor(), 1);
-  }
-
   public String obtenerEstadoReservaRealizada(int posicionEstadoVerificar) {
     final String ESTADO = "Estado";
     return obtenerDatoTablaCabecera(ESTADO, posicionEstadoVerificar);
   }
 
-  public boolean verificarPagoMenuTransaccion(String datoValidar, List<WebElement> lstFilaPago) {
-    int i;
-    for (i = 0; i < lstFilaPago.size(); i++) {
-      String strDatoPantalla = lstFilaPago.get(i).getText();
-      if (strDatoPantalla.contains(COP.getValor()) || strDatoPantalla.contains(USD.getValor())) {
-        strDatoPantalla = strDatoPantalla.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-      }
-      if (strDatoPantalla.equals(datoValidar)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   private List<WebElement> obtenerFilaAnulada(
       String strNumeroTransaccion, String strTipoAnulacion) {
-    List<WebElement> lstPago;
-    if (strTipoAnulacion.equals(PAGO.getValor())) {
-      lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblPago());
-    } else {
-      lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
-    }
-    return lstPago;
+    List<WebElement> lstTransaccion;
+    lstTransaccion =
+        obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
+    return lstTransaccion;
   }
 
   public boolean verificarEstadoAnulado(
       String strAnulacion, String strNumeroTransaccion, String strTipoAnulacion) {
-    List<WebElement> lstPago = obtenerFilaAnulada(strNumeroTransaccion, strTipoAnulacion);
-    for (int i = 0; i < lstPago.size(); i++) {
-      if (lstPago.get(i).getText().equals(strAnulacion)) {
+    List<WebElement> lstTransaccion = obtenerFilaAnulada(strNumeroTransaccion, strTipoAnulacion);
+    for (int i = 0; i < lstTransaccion.size(); i++) {
+      if (lstTransaccion.get(i).getText().equals(strAnulacion)) {
         return true;
       }
     }
