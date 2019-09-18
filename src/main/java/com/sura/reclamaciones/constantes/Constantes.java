@@ -24,6 +24,7 @@ public enum Constantes {
   ESTADO_LEGAL("Rematricula a nombre de Suramericana"),
   EXPEDIENTE_CREADO_EXITOSAMENTE("Expediente creado con éxito"),
   EXPOSICIONES("Exposiciones"),
+  EXPOSICION_DANOS_ASEGURADO("Daños"),
   FECHA_HOY("Hoy"),
   ITERACIONES_ANULACION("20"),
   ITERACIONES_PAGO("20"),
@@ -67,8 +68,8 @@ public enum Constantes {
   VEHICULOS("Vehículos"),
   VER_POLIZA("Ver póliza"),
   VOLVER_BILLINGCENTER("Volver a BillingCenter"),
-  TIEMPO_ESPERA_ELEMENTO_VISIBLE("180"),
   VOLVER_POLICYCENTER("Volver a PolicyCenter"),
+  TIPO("Tipo"),
   VALOR_CERO("0");
 
   private String valor;

@@ -1,13 +1,10 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
-import static com.sura.reclamaciones.constantes.ReclamacionConstante.EXPOSICIONES;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.NombresCsv;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.exposiciones.ExposicionStep;
-import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
@@ -22,8 +19,6 @@ import net.thucydides.core.annotations.Steps;
 public class PagoAutomaticoSiniestroDefinition {
 
   @Steps ReclamacionEmpresarial reclamacionEmpresarial;
-
-  @Steps MenuClaimsStep menuClaimsStep;
 
   @Steps BuscarPolizaStep buscarPolizaStep;
 
@@ -40,8 +35,6 @@ public class PagoAutomaticoSiniestroDefinition {
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
             obtenerDatosPrueba(NombresCsv.RECLAMACION_EMPRESARIAL.getValor(), producto));
-    menuClaimsStep.seleccionarOpcionMenuSegundoNivel(
-        MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
   }
 
@@ -53,9 +46,8 @@ public class PagoAutomaticoSiniestroDefinition {
   }
 
   @Entonces("^se genera una reclamación con exposición automática (.*)$")
-  public void verificarGeneracionExposicionAutomatica(String tipoExposicion){
+  public void verificarGeneracionExposicionAutomatica(String tipoExposicion) {
     nuevaReclamacionGuardadaStep.abrirReclamacionGuardada();
-    menuClaimsStep.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES);
     exposicionStep.validarExposicionEmpresariales(tipoExposicion);
   }
 

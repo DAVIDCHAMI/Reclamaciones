@@ -38,8 +38,7 @@ public final class UtilidadesCSV {
     if ("".equals(cadenaListadoFiltros)) {
       return lstTotalDatosCSV;
     }
-    String[] arrListadoFiltros =
-        cadenaListadoFiltros.split(EnumSeparadores.SEPARADOR_COMA);
+    String[] arrListadoFiltros = cadenaListadoFiltros.split(SEPARADOR_COMA);
     return filtrarDatos(arrListadoFiltros, lstTotalDatosCSV);
   }
 

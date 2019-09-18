@@ -41,8 +41,7 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Page DatosFinancierosPage datosFinancierosPage;
 
-  @Page
-  ExposicionPage exposicionPage;
+  @Page ExposicionPage exposicionPage;
 
   @Page AgregarExposicionLesionesPage agregarExposicionLesionesPage;
 

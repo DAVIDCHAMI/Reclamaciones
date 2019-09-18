@@ -35,11 +35,9 @@ public class NuevoPagoStep {
 
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
 
-  @Page
-  IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
+  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
 
-  @Page
-  VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
   @Page ExposicionPage exposicionPage;
 

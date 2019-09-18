@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.pages.generics;
 
-import static com.sura.reclamaciones.constantes.Constantes.TIEMPO_ESPERA_ELEMENTO_VISIBLE;
-
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.concurrent.TimeUnit;
@@ -39,8 +37,10 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
   }
 
   public void abrirReclamacion() {
-    withTimeoutOf(Integer.parseInt(TIEMPO_ESPERA_ELEMENTO_VISIBLE.getValor()), TimeUnit.SECONDS)
-        .waitFor(lblNumeroReclamacion);
+    lblNumeroReclamacion
+        .withTimeoutOf(180, TimeUnit.SECONDS)
+        .waitUntilVisible()
+        .waitUntilClickable();
     lblNumeroReclamacion.click();
   }
 

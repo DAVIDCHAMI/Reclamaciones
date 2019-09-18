@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import com.sura.reclamaciones.pages.autos.reclamacion.NuevaReclamacionGuardadaPage;
+import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import org.fluentlenium.core.annotation.Page;
 
 public class NuevaReclamacionGuardadaStep {
