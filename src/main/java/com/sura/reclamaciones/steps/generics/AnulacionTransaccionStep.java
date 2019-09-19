@@ -7,8 +7,8 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRAN
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
+import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
@@ -17,17 +17,14 @@ import org.hamcrest.MatcherAssert;
 
 public class AnulacionTransaccionStep {
 
-  private String strTipoAnulacion;
-
   @Page MenuClaimPage menuClaimPage;
 
   @Page DetalleTransaccionPage detalleTransaccionPage;
 
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
+  @Page DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
 
   @Step
   public void ingresarAnulacionRecupero(List<Recupero> lstRecupero) {
-    strTipoAnulacion = RECUPERO.getValor();
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     for (Recupero diligenciador : lstRecupero) {
@@ -40,10 +37,10 @@ public class AnulacionTransaccionStep {
       MatcherAssert.assertThat(
           "El estado de la transaccion no permite que sea anulada",
           detalleTransaccionPage.ingresarAnulacionEmpresarial(
-              strNumeroTransaccion, diligenciador.getEstadoTransaccion(), strTipoAnulacion));
+              strNumeroTransaccion, diligenciador.getEstadoTransaccion(), RECUPERO.getValor()));
       MatcherAssert.assertThat(
           "El número de transaccion, no tiene habilitado el boton de anular",
-          detalleTransaccionPage.realizarAnulacion(strTipoAnulacion));
+          detalleTransaccionPage.realizarAnulacion(RECUPERO.getValor()));
       Serenity.setSessionVariable(SESION_CC_NUMERO_TRANSACCION.getValor()).to(strNumeroTransaccion);
     }
   }
@@ -54,10 +51,10 @@ public class AnulacionTransaccionStep {
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_TRANSACCION.getValor());
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
-    verificacionDatosFinancierosPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
+    datoFinancieroTransaccionPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
     MatcherAssert.assertThat(
         "El recupero no quedo en estado anulado",
-        verificacionDatosFinancierosPage.verificarEstadoAnulado(
-            strAnulacionPago, strNumeroTransaccion, strTipoAnulacion));
+        datoFinancieroTransaccionPage.verificarEstadoAnulado(
+            strAnulacionPago, strNumeroTransaccion));
   }
 }

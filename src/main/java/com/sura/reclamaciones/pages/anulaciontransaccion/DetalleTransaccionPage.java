@@ -29,6 +29,7 @@ public class DetalleTransaccionPage extends GeneralPage {
   }
 
   private void anularTransaccion() {
+    realizarEsperaCarga();
     btnAnular.waitUntilClickable();
     btnAnular.click();
     realizarEsperaCarga();
@@ -49,6 +50,7 @@ public class DetalleTransaccionPage extends GeneralPage {
           realizarEsperaCarga();
           driver.navigate().refresh();
         } else {
+          realizarEsperaCarga();
           anularTransaccion();
           return true;
         }

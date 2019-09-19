@@ -5,7 +5,6 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
 import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
-import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -15,18 +14,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class VerificacionDatosFinancierosPage extends GeneralPage {
+public class DatoFinancieroTransaccionPage extends GeneralPage {
 
   @Page DetalleTransaccionPage detalleTransaccionPage;
-
-  @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV:0:CheckNumber")
-  private WebElementFacade lblNumeroPago;
-
-  @FindBy(
-    xpath =
-        "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
-  )
-  private WebElementFacade lblCantidadDeducible;
 
   @FindBy(
     xpath =
@@ -39,16 +29,8 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
 
   public static final String VALOR_TOTAL = "Valor total";
 
-  public VerificacionDatosFinancierosPage(WebDriver wdriver) {
+  public DatoFinancieroTransaccionPage(WebDriver wdriver) {
     super(wdriver);
-  }
-
-  public boolean verificarNumeroPago() {
-    boolean estado = false;
-    if (lblNumeroPago.isVisible()) {
-      estado = true;
-    }
-    return estado;
   }
 
   public String obtenerEstadoReservaRealizada(int posicionEstadoVerificar) {
@@ -56,17 +38,15 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     return obtenerDatoTablaCabecera(ESTADO, posicionEstadoVerificar);
   }
 
-  private List<WebElement> obtenerFilaAnulada(
-      String strNumeroTransaccion, String strTipoAnulacion) {
+  private List<WebElement> obtenerFilaAnulada(String strNumeroTransaccion) {
     List<WebElement> lstTransaccion;
     lstTransaccion =
         obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
     return lstTransaccion;
   }
 
-  public boolean verificarEstadoAnulado(
-      String strAnulacion, String strNumeroTransaccion, String strTipoAnulacion) {
-    List<WebElement> lstTransaccion = obtenerFilaAnulada(strNumeroTransaccion, strTipoAnulacion);
+  public boolean verificarEstadoAnulado(String strAnulacion, String strNumeroTransaccion) {
+    List<WebElement> lstTransaccion = obtenerFilaAnulada(strNumeroTransaccion);
     for (int i = 0; i < lstTransaccion.size(); i++) {
       if (lstTransaccion.get(i).getText().equals(strAnulacion)) {
         return true;
@@ -75,7 +55,7 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
     return false;
   }
 
-  public String obtenerDeducibleReversionConstitucion() {
+  public void ingresarDatoReserva() {
     irUltimaPagina();
     tblTransaccion.waitUntilPresent();
     List<WebElement> elementroEncontrado =
@@ -92,9 +72,6 @@ public class VerificacionDatosFinancierosPage extends GeneralPage {
                     + datoPosicionReserva
                     + ":Amount']"))
         .click();
-    String cantidadDeducible = lblCantidadDeducible.getText();
-    cantidadDeducible = cantidadDeducible.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    return cantidadDeducible;
   }
 
   public boolean verificarValorPagoPrimaPendiente(String valorPrimaPendiente) {
