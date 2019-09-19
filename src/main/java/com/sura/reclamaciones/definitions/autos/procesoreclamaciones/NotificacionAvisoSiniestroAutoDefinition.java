@@ -38,7 +38,6 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
   private ExposicionVehiculoTercero exposicionVehiculoTercero;
-  private ExposicionLesiones exposicionLesiones;
   private Reserva reserva;
   private ExposicionesAutomaticasAutos exposicionesAutomaticasAutos;
   private static String DIRECCION_EXPOSICION_VEHICULAR = "direccionExposicionVehicular";
