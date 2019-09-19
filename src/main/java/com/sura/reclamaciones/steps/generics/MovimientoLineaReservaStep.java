@@ -1,16 +1,12 @@
-package com.sura.reclamaciones.steps.reserva;
+package com.sura.reclamaciones.steps.generics;
 
-import static com.sura.reclamaciones.constantes.Constantes.CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA;
-import static com.sura.reclamaciones.constantes.Constantes.CC_POSICION_VALOR_RESERVA_EMPRESARIALES;
-import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+import static com.sura.reclamaciones.constantes.Constantes.*;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.reservas.EstablecerReservaPage;
 import org.fluentlenium.core.annotation.Page;
-import org.hamcrest.MatcherAssert;
 
 public class MovimientoLineaReservaStep {
 
@@ -18,25 +14,12 @@ public class MovimientoLineaReservaStep {
       "Categoría de costo";
   private static final String NOMBRE_CAMPO_EXPOSICION_LINEA_RESERVA_EMPRESARIALES = "Exposición";
   private static final String NOMBRE_CAMPO_TIPO_COSTO_RESERVA_EMPRESARIALES = "Tipo de costo";
-  private static final String TIPO_CATEGORIA_COSTO_GASTO = "Gasto";
 
   @Page EstablecerReservaPage establecerReservaPage;
 
   @Page GeneralPage generalPage;
 
   @Page MenuClaimPage menuClaimPage;
-
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
-
-  public void ajustarReserva(String valorAjustar) {
-    menuClaimPage.seleccionarBotonAcciones();
-    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
-    establecerReservaPage.eliminarReservaVacia();
-    establecerReservaPage.diligenciarCampoLineaReserva(
-        valorAjustar,
-        CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
-        Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
-  }
 
   public void crearNuevaLineaReserva(
       String lineaReserva, String tipoCosto, String categoriaCosto, String valorNuevaReserva) {
@@ -61,19 +44,13 @@ public class MovimientoLineaReservaStep {
         Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
   }
 
-  public void verificarAjusteReserva(String categoriaCosto, String deducible) {
-    String deducibleVisualizado;
-    if (categoriaCosto.contains(TIPO_CATEGORIA_COSTO_GASTO)) {
-      deducibleVisualizado = VALOR_CERO.getValor();
-    } else {
-      deducibleVisualizado =
-          verificacionDatosFinancierosPage.obtenerDeducibleReversionConstitucion();
-    }
-    MatcherAssert.assertThat(
-        "Se esperaba un deducible de: "
-            + deducible
-            + " Pero se obtuvo un deducible de: "
-            + deducibleVisualizado,
-        deducibleVisualizado.equals(deducible));
+  public void ajustarReserva(String valorAjustar) {
+    menuClaimPage.seleccionarBotonAcciones();
+    menuClaimPage.seleccionarOpcionMenuAccionesPrimerNivel(RESERVA);
+    establecerReservaPage.eliminarReservaVacia();
+    establecerReservaPage.diligenciarCampoLineaReserva(
+        valorAjustar,
+        CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA.getValor(),
+        Integer.parseInt(CC_POSICION_VALOR_RESERVA_EMPRESARIALES.getValor()));
   }
 }
