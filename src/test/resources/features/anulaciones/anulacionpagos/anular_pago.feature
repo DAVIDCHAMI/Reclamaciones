@@ -3,8 +3,9 @@ Característica: Anulación de pagos
 
   Como analista de reclamaciones
   Quiero generar una anulación de un pago
-  Para verificar que el proceso de pago sea suspendido.
+  Para verificar que el proceso de pago sea suspendido y no sea efectuado.
 
+  @Empresarial
   @claimsEmpresarial
   Esquema del escenario: anulación pago
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
@@ -21,6 +22,7 @@ Característica: Anulación de pagos
       | (1) 1ª partePropiedad | Parcial      | AURA JUDITH LOPEZ JULIO CQLII | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         |
       | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII           | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
 
+  @Autos
   @claimsEmpresarialSuperUsuario
   Esquema del escenario: anulación de un pago de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
