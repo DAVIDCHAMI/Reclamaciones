@@ -20,8 +20,7 @@ public class AnulacionRecuperoDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps
-  AnulacionRecuperoStep anulacionRecuperoStep;
+  @Steps AnulacionRecuperoStep anulacionRecuperoStep;
 
   @Steps RecuperoStep recuperoStep;
 
