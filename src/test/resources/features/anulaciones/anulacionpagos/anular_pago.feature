@@ -3,7 +3,7 @@ Característica: Anulación de pagos
 
   Como analista de reclamaciones
   Quiero generar una anulación de un pago
-  Para verificar que el proceso de pago sea suspendido.
+  Para verificar que el proceso de pago sea suspendido y no sea efectuado.
 
   @anulacionPagoEmpresarial
   @claimsEmpresarial
