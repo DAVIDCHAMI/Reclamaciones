@@ -6,12 +6,12 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroTransaccionStep;
+import com.sura.reclamaciones.steps.generics.MovimientoLineaReservaStep;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
-import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroTransaccionStep;
-import com.sura.reclamaciones.steps.generics.MovimientoLineaReservaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
 import com.sura.reclamaciones.steps.notificacionaviso.PropiedadesImplicadasStep;
 import cucumber.api.java.es.Cuando;
