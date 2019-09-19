@@ -18,8 +18,6 @@ import net.thucydides.core.annotations.Steps;
 
 public class AnulacionRecuperoDefinition {
 
-  @Steps GenericStep genericStep;
-
   @Steps AnulacionRecuperoStep anulacionRecuperoStep;
 
   @Steps RecuperoStep recuperoStep;
