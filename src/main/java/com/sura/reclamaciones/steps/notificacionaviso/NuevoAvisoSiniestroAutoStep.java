@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import static com.sura.reclamaciones.constantes.Constantes.DATOS_FINANCIEROS;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
@@ -10,12 +9,10 @@ import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
-import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarExposicionLesionesPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.DatosFinancierosPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
@@ -39,8 +36,6 @@ public class NuevoAvisoSiniestroAutoStep {
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
   @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
-
-  @Page DatosFinancierosPage datosFinancierosPage;
 
   @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
 
@@ -255,14 +250,6 @@ public class NuevoAvisoSiniestroAutoStep {
   @Step
   public void consultarReclamacionAutos() {
     nuevaReclamacionGuardadaPage.abrirReclamacion();
-  }
-
-  @Step
-  public void validarValorReservas(List<Reserva> lineaReserva) {
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS.getValor());
-    boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
-    MatcherAssert.assertThat(
-        "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
   }
 
   @Step

@@ -2,6 +2,7 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO;
 
+import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.limiteaprobacion.AprobacionLimiteAutoridadStep;
 import com.sura.reclamaciones.steps.login.LoginClaimStep;
 import cucumber.api.java.es.Cuando;
@@ -16,9 +17,12 @@ public class AprobacionLimiteAutoridadDefinition {
 
   @Steps LoginClaimStep loginClaimStep;
 
+  @Steps ConsultaDatoFinancieroTransaccionStep consultaDatoFinancieroTransaccionStep;
+
   @Entonces("^el estado de la transacción de reserva queda en (.*)$")
   public void verificarEstadoTransaccion(String strEstadoTransaccionReserva) {
-    aprobacionLimiteAutoridadStep.verificarEstadoTransaccionReserva(strEstadoTransaccionReserva);
+    consultaDatoFinancieroTransaccionStep.verificarEstadoTransaccionReserva(
+        strEstadoTransaccionReserva);
   }
 
   @Y(

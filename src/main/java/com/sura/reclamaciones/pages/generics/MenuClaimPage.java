@@ -104,6 +104,7 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
+    realizarEsperaCarga();
     seleccionarOpcionMenuLateralPrimerNivel(nombreOpcion);
     realizarEsperaCarga();
     seleccionarOpcionMenuLateralPrimerNivel(subItem);
