@@ -4,9 +4,20 @@ import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.models.*;
-import com.sura.reclamaciones.pages.autos.reclamacion.*;
-import com.sura.reclamaciones.pages.generics.DatoFinancieroResumenPage;
+import com.sura.reclamaciones.models.ExposicionLesiones;
+import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
+import com.sura.reclamaciones.models.PersonaReclamacion;
+import com.sura.reclamaciones.models.ReclamacionAuto;
+import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.DatosPeatonPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
+import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
+import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.generics.InformacionGeneralNuevaExposicionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import java.util.List;
@@ -24,20 +35,19 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
-  @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
-
-  @Page DatoFinancieroResumenPage datoFinancieroResumenPage;
-
   @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
 
-  @Page AgregarExposicionLesionesPage agregarExposicionLesionesPage;
+  @Page DatosPeatonPage agregarExposicionLesionesPage;
 
   @Page MenuClaimPage menuClaimPage;
 
   @Page CreacionServicioPage crearServicioPage;
 
-  @Step
-  public void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
+  @Page GeneralPage generalPage;
+
+  @Page InformacionGeneralNuevaExposicionPage informacionGeneralNuevaExposicionPage;
+
+  private void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
     datosReclamacion.forEach(
         dato -> {
           agregarInformacionPage.cerrarVentanaEmergente();
@@ -50,14 +60,12 @@ public class NuevoAvisoSiniestroAutoStep {
         });
   }
 
-  @Step
-  public void completarDatosReclamacionAutos(List<ReclamacionAuto> datosReclamacion) {
+  private void completarDatosReclamacionAutos(List<ReclamacionAuto> datosReclamacion) {
     for (ReclamacionAuto dato : datosReclamacion) {
       agregarInformacionPage.seleccionarCulpabilidad(dato.getCulpabilidad());
     }
   }
 
-  @Step
   public void crearExposicionVehicular(
       List<ExposicionVehiculoTercero> datosExposicionTercero,
       List<PersonaReclamacion> datosPersonaReclamacion,
@@ -69,8 +77,7 @@ public class NuevoAvisoSiniestroAutoStep {
     agregarDatosExposicionTercero(datosExposicionTercero);
   }
 
-  @Step
-  public void crearExposicionLesiones(
+  private void crearExposicionLesiones(
       List<PersonaReclamacion> datopersonaReclamacion,
       List<ReclamacionAuto> datosReclamacionAuto,
       List<ExposicionLesiones> datosExposicionLesiones) {
@@ -80,28 +87,31 @@ public class NuevoAvisoSiniestroAutoStep {
     agregarDatosExposicionLesiones(datosExposicionLesiones);
   }
 
-  @Step
   private void agregarPersonaConductor(List<PersonaReclamacion> datosPersonaReclamacion) {
     for (PersonaReclamacion conductorVehiculoAfectado : datosPersonaReclamacion) {
-      detalleVehiculoPage.seleccionarTipoDocumento(conductorVehiculoAfectado.getTipoDocumento());
-      detalleVehiculoPage.ingresarNumeroDocumento(conductorVehiculoAfectado.getNumDocumento());
-      detalleVehiculoPage.ingresarPrimerNombre(conductorVehiculoAfectado.getPrimerNombre());
-      detalleVehiculoPage.ingresarPrimerApellido(conductorVehiculoAfectado.getPrimerApellido());
+      informacionGeneralNuevaExposicionPage.seleccionarTipoDocumento(
+          conductorVehiculoAfectado.getTipoDocumento());
+      informacionGeneralNuevaExposicionPage.ingresarNumeroDocumento(
+          conductorVehiculoAfectado.getNumDocumento());
+      informacionGeneralNuevaExposicionPage.ingresarPrimerNombre(
+          conductorVehiculoAfectado.getPrimerNombre());
+      informacionGeneralNuevaExposicionPage.ingresarPrimerApellido(
+          conductorVehiculoAfectado.getPrimerApellido());
     }
   }
 
-  @Step
   private void agregarDireccionConductor(List<ReclamacionAuto> datosReclamacionAuto) {
     for (ReclamacionAuto direccionConductor : datosReclamacionAuto) {
-      detalleVehiculoPage.seleccionarDepartamento(direccionConductor.getDepartamento());
-      detalleVehiculoPage.seleccionarCiudad(direccionConductor.getCiudad());
-      detalleVehiculoPage.ingresarDireccion(direccionConductor.getDireccion());
-      detalleVehiculoPage.seleccionarTipoDireccion(direccionConductor.getTipoDireccion());
-      menuClaimPage.aceptarOpcion();
+      informacionGeneralNuevaExposicionPage.seleccionarDepartamento(
+          direccionConductor.getDepartamento());
+      informacionGeneralNuevaExposicionPage.seleccionarCiudad(direccionConductor.getCiudad());
+      informacionGeneralNuevaExposicionPage.ingresarDireccion(direccionConductor.getDireccion());
+      informacionGeneralNuevaExposicionPage.seleccionarTipoDireccion(
+          direccionConductor.getTipoDireccion());
+      generalPage.aceptarOpcion();
     }
   }
 
-  @Step
   private void agregarDatosExposicionTercero(
       List<ExposicionVehiculoTercero> datosExposicionTercero) {
     for (ExposicionVehiculoTercero datosVehiculo : datosExposicionTercero) {
@@ -116,27 +126,30 @@ public class NuevoAvisoSiniestroAutoStep {
     }
   }
 
-  @Step
   private void agregarPersonaLesionada(List<PersonaReclamacion> datopersonaReclamacion) {
     for (PersonaReclamacion personaLesionada : datopersonaReclamacion) {
-      detalleVehiculoPage.seleccionarTipoDocumento(personaLesionada.getTipoDocumento());
-      detalleVehiculoPage.ingresarNumeroDocumento(personaLesionada.getNumDocumento());
-      detalleVehiculoPage.ingresarPrimerNombre(personaLesionada.getPrimerNombre());
-      detalleVehiculoPage.ingresarPrimerApellido(personaLesionada.getPrimerApellido());
+      informacionGeneralNuevaExposicionPage.seleccionarTipoDocumento(
+          personaLesionada.getTipoDocumento());
+      informacionGeneralNuevaExposicionPage.ingresarNumeroDocumento(
+          personaLesionada.getNumDocumento());
+      informacionGeneralNuevaExposicionPage.ingresarPrimerNombre(
+          personaLesionada.getPrimerNombre());
+      informacionGeneralNuevaExposicionPage.ingresarPrimerApellido(
+          personaLesionada.getPrimerApellido());
     }
   }
 
-  @Step
   private void agregarDireccionLesionado(List<ReclamacionAuto> datosReclamacionAuto) {
     for (ReclamacionAuto direccionLesionado : datosReclamacionAuto) {
-      detalleVehiculoPage.seleccionarDepartamento(direccionLesionado.getDepartamento());
-      detalleVehiculoPage.seleccionarCiudad(direccionLesionado.getCiudad());
-      detalleVehiculoPage.ingresarDireccion(direccionLesionado.getDireccion());
-      detalleVehiculoPage.seleccionarTipoDireccion(direccionLesionado.getTipoDireccion());
+      informacionGeneralNuevaExposicionPage.seleccionarDepartamento(
+          direccionLesionado.getDepartamento());
+      informacionGeneralNuevaExposicionPage.seleccionarCiudad(direccionLesionado.getCiudad());
+      informacionGeneralNuevaExposicionPage.ingresarDireccion(direccionLesionado.getDireccion());
+      informacionGeneralNuevaExposicionPage.seleccionarTipoDireccion(
+          direccionLesionado.getTipoDireccion());
     }
   }
 
-  @Step
   private void agregarDatosExposicionLesiones(List<ExposicionLesiones> datosExposicionLesiones) {
     for (ExposicionLesiones lesionesPersona : datosExposicionLesiones) {
       agregarExposicionLesionesPage.seleccionarLesiones();
@@ -150,8 +163,7 @@ public class NuevoAvisoSiniestroAutoStep {
     }
   }
 
-  @Step
-  public void editarInformacionVehiculo(List<ReclamacionAuto> datosReclamacion) {
+  private void editarInformacionVehiculo(List<ReclamacionAuto> datosReclamacion) {
     agregarInformacionPage.ingresarEdicionVehiculo();
     detalleVehiculoPage.agregarConductor();
     detalleVehiculoPage.seleccionarConductorVehiculoAsegurado();
@@ -173,22 +185,13 @@ public class NuevoAvisoSiniestroAutoStep {
         });
   }
 
-  @Step
-  public void seleccionarNombreAutorReporte(List<ReclamacionAuto> lstReclamacionAuto) {
+  private void seleccionarNombreAutorReporte(List<ReclamacionAuto> lstReclamacionAuto) {
     lstReclamacionAuto.forEach(
         autorReporte -> {
           informacionBasicaPage.seleccionarNombre();
           informacionBasicaPage.validarMsjAdvertenciaRelacionAsegurado(
               autorReporte.getRelacionAsegurado());
         });
-  }
-
-  @Step
-  public void validarReclamacionAutos() {
-    String mensajeValidado = nuevaReclamacionGuardadaPage.obtenerMensajeValidador();
-    MatcherAssert.assertThat(
-        "No se encontro el mensaje a validar",
-        mensajeValidado.equals(ReclamacionConstante.VALIDADOR_NUEVA_RECLAMACION));
   }
 
   @Step
@@ -237,11 +240,6 @@ public class NuevoAvisoSiniestroAutoStep {
   }
 
   @Step
-  public void consultarReclamacionAutos() {
-    nuevaReclamacionGuardadaPage.abrirReclamacion();
-  }
-
-  @Step
   public void consultarPoliza(List<ReclamacionAuto> reclamacionAuto, List<Vehiculo> vehiculo) {
     seleccionarOpcionMenuPrincipal();
     completarFormularioBuscarPoliza(reclamacionAuto, vehiculo);
@@ -255,13 +253,33 @@ public class NuevoAvisoSiniestroAutoStep {
   }
 
   @Step
-  public void crearNuevaExposicionLesiones(
-      List<PersonaReclamacion> personaReclamacionAuto,
-      List<ReclamacionAuto> reclamacionAuto,
+  public void crearAvisoResponsabilidadCivil(
+      List<ReclamacionAuto> datosReclamacionAuto,
+      List<ExposicionVehiculoTercero> datosExposicionTercero,
+      List<PersonaReclamacion> datosPersonaReclamacionVehiculoTercero,
+      List<ReclamacionAuto> direccionExposicionVehicularTercero,
+      List<PersonaReclamacion> datosPersonaLesionada,
+      List<ReclamacionAuto> direccionExposicionLesionado,
       List<ExposicionLesiones> exposicionLesiones) {
-    crearExposicionLesiones(personaReclamacionAuto, reclamacionAuto, exposicionLesiones);
+    seleccionarNombreAutorReporte(datosReclamacionAuto);
+    completarDetalleSiniestro(datosReclamacionAuto);
+    editarInformacionVehiculo(datosReclamacionAuto);
+    completarDatosReclamacionAutos(datosReclamacionAuto);
+    crearExposicionVehicular(
+        datosExposicionTercero,
+        datosPersonaReclamacionVehiculoTercero,
+        direccionExposicionVehicularTercero);
+    crearExposicionLesiones(
+        datosPersonaLesionada, direccionExposicionLesionado, exposicionLesiones);
     finalizarReclamacionAutos();
-    validarReclamacionAutos();
-    consultarReclamacionAutos();
+  }
+
+  @Step
+  public void crearAvisoPerdidaParcialDanos(List<ReclamacionAuto> lstReclamacionAuto) {
+    seleccionarNombreAutorReporte(lstReclamacionAuto);
+    completarDetalleSiniestro(lstReclamacionAuto);
+    editarInformacionVehiculo(lstReclamacionAuto);
+    completarDatosReclamacionAutos(lstReclamacionAuto);
+    finalizarReclamacionAutos();
   }
 }

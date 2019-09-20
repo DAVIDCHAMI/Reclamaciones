@@ -19,5 +19,5 @@ Característica: Notificación de aviso de una reclamación
       | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento                | 200000              |                   | si                  | si               | 200000              |
       | Plan Empresario Sura con Amit                        | Amit/ huelga, conmoción civil | 4000000             | Contenido         | si                  | si               | 3600000             |
       | Incendio con cobertura Daños materiales              | Daños por agua                | 3000000             | Contenido         | si                  | si               | 1437516             |
-      |PES Emergente Incendio	                             | Incendio                      | 3000000             | Contenido         | si                  | si               | 300000              |
-      |PES Emergente Amit                                    | Amit/ huelga, conmoción civil | 4000000             | Contenido         | si                  | si               | 3600000             |
+      | PES Emergente Incendio                               | Incendio                      | 3000000             | Contenido         | no                  | no               |                     |
+      | PES Emergente Amit                                   | Amit/ huelga, conmoción civil | 4000000             | Contenido         | si                  | si               | 3600000             |

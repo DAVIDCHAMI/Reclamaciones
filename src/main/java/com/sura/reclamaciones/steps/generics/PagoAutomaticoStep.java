@@ -2,11 +2,7 @@ package com.sura.reclamaciones.steps.generics;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Reserva;
-import com.sura.reclamaciones.pages.autos.reclamacion.NuevaReclamacionGuardadaPage;
-import com.sura.reclamaciones.pages.generics.DatoFinancieroPagoPage;
-import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.generics.*;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;

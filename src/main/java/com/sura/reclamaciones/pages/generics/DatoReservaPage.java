@@ -19,7 +19,6 @@ public class DatoReservaPage extends GeneralPage {
 
   public String obtenerCantidadReserva() {
     String cantidadReserva = lblCantidad.getText();
-    cantidadReserva = cantidadReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    return cantidadReserva;
+    return cantidadReserva.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
   }
 }
