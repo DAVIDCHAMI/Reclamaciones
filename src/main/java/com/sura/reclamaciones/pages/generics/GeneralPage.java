@@ -78,6 +78,8 @@ public class GeneralPage extends PageObject {
   private String lstDinamico = "//li[.='COMODIN']";
 
   private String auxiliarReemplazo = "";
+  private String pais = "Country-inputEl";
+  private String departamento = "State-inputEl";
 
   protected WebDriver driver;
 
@@ -357,5 +359,13 @@ public class GeneralPage extends PageObject {
     btnAceptar.waitUntilClickable();
     btnAceptar.click();
     realizarEsperaCarga();
+  }
+
+  public void seleccionarPais(String pais) {
+    seleccionarElementoListado(this.pais, pais);
+  }
+
+  public void seleccionarDepartamento(String departamento) {
+    seleccionarElementoListado(this.departamento, departamento);
   }
 }
