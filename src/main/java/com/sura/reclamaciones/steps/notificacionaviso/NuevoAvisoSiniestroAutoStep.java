@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
-import static com.sura.reclamaciones.constantes.Constantes.DATOS_FINANCIEROS;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
@@ -10,17 +9,15 @@ import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
-import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.DatosFinancierosPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DatosPeatonPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
-import com.sura.reclamaciones.pages.generics.DatosGeneralesNuevaExposicionPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.generics.InformacionGeneralNuevaExposicionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.BuscarPolizaPage;
 import java.util.List;
@@ -38,8 +35,6 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
-  @Page DatosFinancierosPage datosFinancierosPage;
-
   @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
 
   @Page DatosPeatonPage agregarExposicionLesionesPage;
@@ -50,7 +45,7 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Page GeneralPage generalPage;
 
-  @Page DatosGeneralesNuevaExposicionPage datosGeneralesNuevaExposicionPage;
+  @Page InformacionGeneralNuevaExposicionPage informacionGeneralNuevaExposicionPage;
 
   private void completarDetalleSiniestro(List<ReclamacionAuto> datosReclamacion) {
     datosReclamacion.forEach(
@@ -94,24 +89,24 @@ public class NuevoAvisoSiniestroAutoStep {
 
   private void agregarPersonaConductor(List<PersonaReclamacion> datosPersonaReclamacion) {
     for (PersonaReclamacion conductorVehiculoAfectado : datosPersonaReclamacion) {
-      datosGeneralesNuevaExposicionPage.seleccionarTipoDocumento(
+      informacionGeneralNuevaExposicionPage.seleccionarTipoDocumento(
           conductorVehiculoAfectado.getTipoDocumento());
-      datosGeneralesNuevaExposicionPage.ingresarNumeroDocumento(
+      informacionGeneralNuevaExposicionPage.ingresarNumeroDocumento(
           conductorVehiculoAfectado.getNumDocumento());
-      datosGeneralesNuevaExposicionPage.ingresarPrimerNombre(
+      informacionGeneralNuevaExposicionPage.ingresarPrimerNombre(
           conductorVehiculoAfectado.getPrimerNombre());
-      datosGeneralesNuevaExposicionPage.ingresarPrimerApellido(
+      informacionGeneralNuevaExposicionPage.ingresarPrimerApellido(
           conductorVehiculoAfectado.getPrimerApellido());
     }
   }
 
   private void agregarDireccionConductor(List<ReclamacionAuto> datosReclamacionAuto) {
     for (ReclamacionAuto direccionConductor : datosReclamacionAuto) {
-      datosGeneralesNuevaExposicionPage.seleccionarDepartamento(
+      informacionGeneralNuevaExposicionPage.seleccionarDepartamento(
           direccionConductor.getDepartamento());
-      datosGeneralesNuevaExposicionPage.seleccionarCiudad(direccionConductor.getCiudad());
-      datosGeneralesNuevaExposicionPage.ingresarDireccion(direccionConductor.getDireccion());
-      datosGeneralesNuevaExposicionPage.seleccionarTipoDireccion(
+      informacionGeneralNuevaExposicionPage.seleccionarCiudad(direccionConductor.getCiudad());
+      informacionGeneralNuevaExposicionPage.ingresarDireccion(direccionConductor.getDireccion());
+      informacionGeneralNuevaExposicionPage.seleccionarTipoDireccion(
           direccionConductor.getTipoDireccion());
       generalPage.aceptarOpcion();
     }
@@ -133,22 +128,24 @@ public class NuevoAvisoSiniestroAutoStep {
 
   private void agregarPersonaLesionada(List<PersonaReclamacion> datopersonaReclamacion) {
     for (PersonaReclamacion personaLesionada : datopersonaReclamacion) {
-      datosGeneralesNuevaExposicionPage.seleccionarTipoDocumento(
+      informacionGeneralNuevaExposicionPage.seleccionarTipoDocumento(
           personaLesionada.getTipoDocumento());
-      datosGeneralesNuevaExposicionPage.ingresarNumeroDocumento(personaLesionada.getNumDocumento());
-      datosGeneralesNuevaExposicionPage.ingresarPrimerNombre(personaLesionada.getPrimerNombre());
-      datosGeneralesNuevaExposicionPage.ingresarPrimerApellido(
+      informacionGeneralNuevaExposicionPage.ingresarNumeroDocumento(
+          personaLesionada.getNumDocumento());
+      informacionGeneralNuevaExposicionPage.ingresarPrimerNombre(
+          personaLesionada.getPrimerNombre());
+      informacionGeneralNuevaExposicionPage.ingresarPrimerApellido(
           personaLesionada.getPrimerApellido());
     }
   }
 
   private void agregarDireccionLesionado(List<ReclamacionAuto> datosReclamacionAuto) {
     for (ReclamacionAuto direccionLesionado : datosReclamacionAuto) {
-      datosGeneralesNuevaExposicionPage.seleccionarDepartamento(
+      informacionGeneralNuevaExposicionPage.seleccionarDepartamento(
           direccionLesionado.getDepartamento());
-      datosGeneralesNuevaExposicionPage.seleccionarCiudad(direccionLesionado.getCiudad());
-      datosGeneralesNuevaExposicionPage.ingresarDireccion(direccionLesionado.getDireccion());
-      datosGeneralesNuevaExposicionPage.seleccionarTipoDireccion(
+      informacionGeneralNuevaExposicionPage.seleccionarCiudad(direccionLesionado.getCiudad());
+      informacionGeneralNuevaExposicionPage.ingresarDireccion(direccionLesionado.getDireccion());
+      informacionGeneralNuevaExposicionPage.seleccionarTipoDireccion(
           direccionLesionado.getTipoDireccion());
     }
   }
@@ -240,14 +237,6 @@ public class NuevoAvisoSiniestroAutoStep {
   public void seleccionarOpcionMenuPrincipal() {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
-  }
-
-  @Step
-  public void validarValorReservas(List<Reserva> lineaReserva) {
-    menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(DATOS_FINANCIEROS.getValor());
-    boolean valorLineaReserva = datosFinancierosPage.obtenerDatosFinancieros(lineaReserva);
-    MatcherAssert.assertThat(
-        "No coinciden todos los valores de las líneas de reserva", valorLineaReserva);
   }
 
   @Step

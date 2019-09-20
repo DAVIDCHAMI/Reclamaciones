@@ -5,7 +5,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class DatosGeneralesNuevaExposicionPage extends GeneralPage {
+public class InformacionGeneralNuevaExposicionPage extends GeneralPage {
 
   @FindBy(
     xpath =
@@ -52,7 +52,7 @@ public class DatosGeneralesNuevaExposicionPage extends GeneralPage {
   )
   WebElementFacade txtDireccion;
 
-  public DatosGeneralesNuevaExposicionPage(WebDriver wdriver) {
+  public InformacionGeneralNuevaExposicionPage(WebDriver wdriver) {
     super(wdriver);
   }
 

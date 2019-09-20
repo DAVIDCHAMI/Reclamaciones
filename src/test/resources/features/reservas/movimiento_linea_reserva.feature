@@ -5,7 +5,7 @@ Característica: Constitución de una línea de reserva de un siniestro
   Quiero que sea posible realizar ajustes en las reservas
   Para que se pueda cubrir el monto del valor del siniestro
 
-  @reversionConstitucion
+  @reversionConstitucionEmpresarial
   @claimsEmpresarial
   Esquema del escenario: reversión de constitución
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <causa>, valor de pretensión <valor de pretension> y tipo incidente de <Tipo de incidente>
@@ -14,10 +14,10 @@ Característica: Constitución de una línea de reserva de un siniestro
 
     Ejemplos:
       | Tipo y Cobertura                             | causa    | valor de pretension | Tipo de incidente | Monto del ajuste | Deducible |
-      | Multiriesgo corporativo con cobertura básica | Incendio | 2000000             | Propiedad         | 4000000          | -727500   |
-      | Multiriesgo corporativo con cobertura básica | Incendio | 2000000             | Propiedad         | 3800000          | -697500   |
+      | Multiriesgo corporativo con cobertura básica | Incendio | 2000000             | Propiedad         | 4000000          | -600000   |
+      | Multiriesgo corporativo con cobertura básica | Incendio | 2000000             | Propiedad         | 3800000          | -570000   |
 
-
+  @creacionLineaReservaEmpresarial
   @claimsEmpresarial
   Esquema del escenario: creación de nueva línea de reserva
     Dado que se genera un siniestro del producto <Tipo y Cobertura> con causa <Causa>, valor de pretensión <Valor de Pretensión> y tipo incidente de <Tipo de incidente>
