@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.generics;
 
+import static com.sura.reclamaciones.constantes.Constantes.ESTADO_ANULACION;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECUPERO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
@@ -37,11 +38,11 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
   }
 
   public boolean verificarEstadoAnuladoRecupero(
-      String strAnulacion, String strNumeroTransaccion, String tblTransaccion) {
+      String strNumeroTransaccion, String tblTransaccion) {
     List<WebElement> lstTransaccion =
         obtenerFilaRecuperoAnulado(strNumeroTransaccion, tblTransaccion);
     for (int i = 0; i < lstTransaccion.size(); i++) {
-      if (lstTransaccion.get(i).getText().equals(strAnulacion)) {
+      if (lstTransaccion.get(i).getText().equals(ESTADO_ANULACION.getValor())) {
         return true;
       }
     }

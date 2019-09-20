@@ -44,7 +44,7 @@ public class AnulacionRecuperoStep {
   }
 
   @Step
-  public void verificarAnulacionRecupero(String strAnulacionPago) {
+  public void verificarAnulacionRecupero() {
     String strNumeroTransaccion =
         Serenity.sessionVariableCalled(SESION_CC_NUMERO_TRANSACCION.getValor());
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
@@ -53,6 +53,6 @@ public class AnulacionRecuperoStep {
     MatcherAssert.assertThat(
         "El recupero no quedo en estado anulado",
         datoFinancieroTransaccionPage.verificarEstadoAnuladoRecupero(
-            strAnulacionPago, strNumeroTransaccion, datoRecuperacionPage.getTblTransaccion()));
+            strNumeroTransaccion, datoRecuperacionPage.getTblTransaccion()));
   }
 }

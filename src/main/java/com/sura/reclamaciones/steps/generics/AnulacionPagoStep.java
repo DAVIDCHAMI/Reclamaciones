@@ -39,12 +39,12 @@ public class AnulacionPagoStep {
   }
 
   @Step
-  public void verificarAnulacionPago(String strAnulacionPago) {
+  public void verificarAnulacionPago() {
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         MenuConstante.DATOS_FINANCIEROS, PAGOS.getValor());
     MatcherAssert.assertThat(
         "El pago no quedo en estado anulado",
         datoFinancieroPagoPage.verificarEstadoAnuladoPago(
-            strAnulacionPago, strNumeroCheque, detalleChequePage.getTblPago()));
+            strNumeroCheque, detalleChequePage.getTblPago()));
   }
 }

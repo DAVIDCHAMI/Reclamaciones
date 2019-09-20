@@ -38,11 +38,10 @@ public class DatoFinancieroPagoPage extends GeneralPage {
     return lstPago;
   }
 
-  public boolean verificarEstadoAnuladoPago(
-      String strAnulacion, String strNumeroTransaccion, String tblPago) {
+  public boolean verificarEstadoAnuladoPago(String strNumeroTransaccion, String tblPago) {
     List<WebElement> lstPago = obtenerFilaPagoAnulado(strNumeroTransaccion, tblPago);
     for (int i = 0; i < lstPago.size(); i++) {
-      if (lstPago.get(i).getText().equals(strAnulacion)) {
+      if (lstPago.get(i).getText().equals(ESTADO_ANULACION.getValor())) {
         return true;
       }
     }

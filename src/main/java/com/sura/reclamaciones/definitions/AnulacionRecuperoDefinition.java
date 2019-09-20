@@ -1,13 +1,11 @@
 package com.sura.reclamaciones.definitions;
 
-import static com.sura.reclamaciones.constantes.Constantes.ESTADO_ANULACION;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.AnulacionRecuperoStep;
-import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -55,6 +53,6 @@ public class AnulacionRecuperoDefinition {
 
   @Entonces("^se debe obtener la anulación del recupero, quedando en estado anulado$")
   public void verificarAnulacionRecupero() {
-    anulacionRecuperoStep.verificarAnulacionRecupero(ESTADO_ANULACION.getValor());
+    anulacionRecuperoStep.verificarAnulacionRecupero();
   }
 }
