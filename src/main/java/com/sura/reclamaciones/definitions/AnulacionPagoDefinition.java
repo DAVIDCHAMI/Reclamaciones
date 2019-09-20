@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.definitions;
 
-import static com.sura.reclamaciones.constantes.Constantes.ESTADO_ANULACION;
+import static com.sura.reclamaciones.constantes.NombresCsv.ANULACION_EMPRESARIAL;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
@@ -49,6 +49,6 @@ public class AnulacionPagoDefinition {
 
   @Entonces("^se debe obtener la anulación del pago, quedando en estado anulado$")
   public void verificarAnulacionPago() {
-    anulacionPagoStep.verificarAnulacionPagoRealizada(ESTADO_ANULACION.getValor());
+    anulacionPagoStep.verificarAnulacionPago();
   }
 }
