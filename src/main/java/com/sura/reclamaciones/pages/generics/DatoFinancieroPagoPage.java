@@ -2,16 +2,13 @@ package com.sura.reclamaciones.pages.generics;
 
 import static com.sura.reclamaciones.constantes.Constantes.*;
 
-import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
-import org.fluentlenium.core.annotation.Page;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class DatoFinancieroPagoPage extends GeneralPage {
-
-  @Page DetalleTransaccionPage detalleTransaccionPage;
 
   public DatoFinancieroPagoPage(WebDriver wdriver) {
     super(wdriver);
@@ -35,19 +32,42 @@ public class DatoFinancieroPagoPage extends GeneralPage {
     return false;
   }
 
-  private List<WebElement> obtenerFilaPagoAnulado(String strNumeroTransaccion) {
-    List<WebElement> lstPago;
-    lstPago = obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblPago());
-    return lstPago;
+  private List<WebElement> obtenerFilaPagoAnulado(String strNumeroTransaccion, String tblPago) {
+    return obtenerFilaTabla(strNumeroTransaccion, tblPago);
   }
 
-  public boolean verificarEstadoAnuladoPago(String strAnulacion, String strNumeroTransaccion) {
-    List<WebElement> lstPago = obtenerFilaPagoAnulado(strNumeroTransaccion);
+  public boolean verificarEstadoAnuladoPago(String strNumeroTransaccion, String tblPago) {
+    List<WebElement> lstPago = obtenerFilaPagoAnulado(strNumeroTransaccion, tblPago);
     for (int i = 0; i < lstPago.size(); i++) {
-      if (lstPago.get(i).getText().equals(strAnulacion)) {
+      if (lstPago.get(i).getText().equals(ESTADO_ANULACION.getValor())) {
         return true;
       }
     }
     return false;
+  }
+
+  public boolean ingresarDetalleCheque(String strNumeroTransaccion, String strEstadoPrevio) {
+    List<WebElement> lstTransaccion;
+    boolean estadoTransaccionPantalla = false;
+    for (int i = 0; i <= Integer.parseInt(ITERACIONES_PAGO.getValor()); i++) {
+      realizarEsperaCarga();
+      lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblPago());
+      WebElement elementoXpath =
+          lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_PAGO.getValor()));
+      estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
+      if (estadoTransaccionPantalla) {
+        lstTransaccion.get(Integer.parseInt(VALOR_CERO.getValor())).click();
+        lstTransaccion
+            .get(Integer.parseInt(VALOR_CERO.getValor()))
+            .findElement(
+                By.xpath(
+                    String.format(
+                        "//a[@class='g-actionable'][contains(text(),'%s')]", strNumeroTransaccion)))
+            .click();
+        break;
+      }
+    }
+    realizarEsperaCarga();
+    return estadoTransaccionPantalla;
   }
 }

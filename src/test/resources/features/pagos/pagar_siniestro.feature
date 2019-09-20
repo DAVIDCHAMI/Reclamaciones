@@ -116,5 +116,5 @@ Característica: Realizar pago de un siniestro
     Y otro con el valor del pago menos la prima pendiente
 
     Ejemplos:
-      | Origen de siniestro | Línea de Reserva                                                                                                         | Tipo de pago | Beneficiario de pago                | Método de pago | Código de Retención | ¿Es pago soloSura? | Tipo de cobertura   |
-      | Servicio de Maca    | (2) 1ª parteVehículo - OSO222  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | ROBIN EDULFO BAUTISTA ALVAREZ CQLII | Caja Sura      | 0099                | No                 | Perdida total Daños |
+      | Origen de siniestro | Línea de Reserva                                                                                                         | Tipo de pago | Beneficiario de pago                | Método de pago | ¿Es pago soloSura? | Tipo de cobertura   |
+      | Servicio de Maca    | (2) 1ª parteVehículo - OSO222  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | ROBIN EDULFO BAUTISTA ALVAREZ CQLII | Caja Sura      | No                 | Perdida total Daños |

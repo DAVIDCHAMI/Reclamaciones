@@ -1,22 +1,21 @@
 package com.sura.reclamaciones.pages.generics;
 
+import static com.sura.reclamaciones.constantes.Constantes.ESTADO_ANULACION;
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
+import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECUPERO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
-import com.sura.reclamaciones.pages.anulaciontransaccion.DetalleTransaccionPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.fluentlenium.core.annotation.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class DatoFinancieroTransaccionPage extends GeneralPage {
-
-  @Page DetalleTransaccionPage detalleTransaccionPage;
 
   @FindBy(
     xpath =
@@ -38,17 +37,17 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
     return obtenerDatoTablaCabecera(ESTADO, posicionEstadoVerificar);
   }
 
-  private List<WebElement> obtenerFilaAnulada(String strNumeroTransaccion) {
-    List<WebElement> lstTransaccion;
-    lstTransaccion =
-        obtenerFilaTabla(strNumeroTransaccion, detalleTransaccionPage.getTblTransaccion());
-    return lstTransaccion;
+  private List<WebElement> obtenerFilaRecuperoAnulado(
+      String strNumeroTransaccion, String tblTransaccion) {
+    return obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
   }
 
-  public boolean verificarEstadoAnulado(String strAnulacion, String strNumeroTransaccion) {
-    List<WebElement> lstTransaccion = obtenerFilaAnulada(strNumeroTransaccion);
+  public boolean verificarEstadoAnuladoRecupero(
+      String strNumeroTransaccion, String tblTransaccion) {
+    List<WebElement> lstTransaccion =
+        obtenerFilaRecuperoAnulado(strNumeroTransaccion, tblTransaccion);
     for (int i = 0; i < lstTransaccion.size(); i++) {
-      if (lstTransaccion.get(i).getText().equals(strAnulacion)) {
+      if (lstTransaccion.get(i).getText().equals(ESTADO_ANULACION.getValor())) {
         return true;
       }
     }
@@ -72,6 +71,33 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
                     + datoPosicionReserva
                     + ":Amount']"))
         .click();
+  }
+
+  public boolean ingresarDatoRecuperacion(String strNumeroTransaccion, String strEstadoPrevio) {
+    final int POSICION_VALOR_MONTO_RECUPERO = 2;
+    List<WebElement> lstTransaccion;
+    boolean estadoTransaccionPantalla = false;
+    for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
+      realizarEsperaCarga();
+      lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, getTblTransaccion());
+      WebElement elementoXpath =
+          lstTransaccion.get(Integer.parseInt(UBICACION_ESTADO_RECUPERO.getValor()));
+      estadoTransaccionPantalla = actualizarPantalla(strEstadoPrevio, elementoXpath);
+      if (estadoTransaccionPantalla) {
+        String strMontoRecupero = lstTransaccion.get(POSICION_VALOR_MONTO_RECUPERO).getText();
+        lstTransaccion
+            .get(POSICION_VALOR_MONTO_RECUPERO)
+            .findElement(
+                By.xpath(
+                    String.format(
+                        "//a[@class='g-actionable'][contains(text(),'" + strMontoRecupero + "')]",
+                        strNumeroTransaccion)))
+            .click();
+        break;
+      }
+    }
+    realizarEsperaCarga();
+    return estadoTransaccionPantalla;
   }
 
   public boolean verificarValorPagoPrimaPendiente(String valorPrimaPendiente) {
