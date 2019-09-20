@@ -30,8 +30,7 @@ public class ExposicionVehicularManualStep {
 
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
-    @Page
-    CreacionServicioPage crearServicioPage;
+  @Page CreacionServicioPage crearServicioPage;
 
   @Step
   public void consultarPlacaAsegurado() {
@@ -70,36 +69,43 @@ public class ExposicionVehicularManualStep {
       nuevaExposicionManualPage.crearNuevoIncidenteVehicular();
       nuevoIncidenteVehicularPage.ingresarPlacaVehiculoAfectado(datosVehiculoTercero, j);
       nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
-      //nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda();
-      if(nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda()==true)
-      {
-          datosCodigoFasecolda.forEach(
-                  formularioCodigoFasecolda -> {
-                      calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(formularioCodigoFasecolda.getClaseVehiculo());
-                      calculadoraCodigoFasecoldaPage.seleccionarModeloVehiculo(formularioCodigoFasecolda.getModelo());
-                      calculadoraCodigoFasecoldaPage.seleccionarMarcaVehiculo(formularioCodigoFasecolda.getMarca());
-                      calculadoraCodigoFasecoldaPage.seleccionarLineaVehiculo(formularioCodigoFasecolda.getLinea());
-                      calculadoraCodigoFasecoldaPage.generarCodigoFasecolda();
-                      calculadoraCodigoFasecoldaPage.crearCodigoFasecoldaVehiculo();
-                  });
+      if (nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda() == true) {
+        datosCodigoFasecolda.forEach(
+            formularioCodigoFasecolda -> {
+              calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(
+                  formularioCodigoFasecolda.getClaseVehiculo());
+              calculadoraCodigoFasecoldaPage.seleccionarModeloVehiculo(
+                  formularioCodigoFasecolda.getModelo());
+              calculadoraCodigoFasecoldaPage.seleccionarMarcaVehiculo(
+                  formularioCodigoFasecolda.getMarca());
+              calculadoraCodigoFasecoldaPage.seleccionarLineaVehiculo(
+                  formularioCodigoFasecolda.getLinea());
+              calculadoraCodigoFasecoldaPage.generarCodigoFasecolda();
+              calculadoraCodigoFasecoldaPage.crearCodigoFasecoldaVehiculo();
+            });
       }
       datosVehiculoTercero.forEach(
-              formularioLugarAtencion -> {
-                      nuevoIncidenteVehicularPage.seleccionarLugarAtencion(formularioLugarAtencion.getLugarAtencion());
-                      nuevoIncidenteVehicularPage.seleccionarPaisAtencion(formularioLugarAtencion.getPaisAtencion());
-                      nuevoIncidenteVehicularPage.seleccionarDepartamentoAtencion(formularioLugarAtencion.getDepartamentoAtencion());
-                      nuevoIncidenteVehicularPage.seleccionarCiudadAtencion(formularioLugarAtencion.getCiudadAtencion());
-                      nuevoIncidenteVehicularPage.seleccionarDireccionAtencion(formularioLugarAtencion.getDireccionAtencion());
-                  });
+          formularioLugarAtencion -> {
+            nuevoIncidenteVehicularPage.seleccionarLugarAtencion(
+                formularioLugarAtencion.getLugarAtencion());
+            nuevoIncidenteVehicularPage.seleccionarPaisAtencion(
+                formularioLugarAtencion.getPaisAtencion());
+            nuevoIncidenteVehicularPage.seleccionarDepartamentoAtencion(
+                formularioLugarAtencion.getDepartamentoAtencion());
+            nuevoIncidenteVehicularPage.seleccionarCiudadAtencion(
+                formularioLugarAtencion.getCiudadAtencion());
+            nuevoIncidenteVehicularPage.seleccionarDireccionAtencion(
+                formularioLugarAtencion.getDireccionAtencion());
+          });
       nuevoIncidenteVehicularPage.seleccionarConductoVehiculoAfectado();
       nuevoIncidenteVehicularPage.seleccionarServiciosTaller();
       nuevoIncidenteVehicularPage.seleccionarTaller();
       detalleVehiculoPage.buscarProveedor();
       detalleVehiculoPage.realizarEsperaCarga();
       crearServicioPage.seleccionarProveedor(
-              datosVehiculoTercero
-                      .get(Integer.parseInt(VALOR_CERO.getValor()))
-                      .getTallerReparacionAsignado());
+          datosVehiculoTercero
+              .get(Integer.parseInt(VALOR_CERO.getValor()))
+              .getTallerReparacionAsignado());
       detalleVehiculoPage.aceptarOpcion();
       nuevoIncidenteVehicularPage.aceptarOpcion();
       nuevaExposicionManualPage.actualizarNuevaExposicion();

@@ -1,14 +1,12 @@
 package com.sura.reclamaciones.pages.generics;
 
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 
 public class NuevaExposicionVehiculoPage extends GeneralPage {
 
@@ -35,9 +33,6 @@ public class NuevaExposicionVehiculoPage extends GeneralPage {
   @FindBy(xpath = "//*[@id=\"NewExposure:NewExposureScreen:Update-btnInnerEl\"]")
   private WebElementFacade btnActualizar;
 
-  ////div[@id='centerPanel']//div[@id='NewExposure/NewExposureCard']//span[contains(text(),'Act')]
-
-
   public NuevaExposicionVehiculoPage(WebDriver wdriver) {
     super(wdriver);
   }
@@ -50,10 +45,11 @@ public class NuevaExposicionVehiculoPage extends GeneralPage {
 
   public void seleccionarReclamanteExposicion() {
     String nombreReclamante =
-            (Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
-                    .toString());
+        (Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
+            .toString());
     txtReclamanteExposicionVehicular.clear();
-    txtReclamanteExposicionVehicular.typeAndTab(nombreReclamante);;
+    txtReclamanteExposicionVehicular.typeAndTab(nombreReclamante);
+    ;
     realizarEsperaCarga();
   }
 
@@ -70,5 +66,4 @@ public class NuevaExposicionVehiculoPage extends GeneralPage {
     btnActualizar.click();
     realizarEsperaFinalizarReclamacion();
   }
-
 }

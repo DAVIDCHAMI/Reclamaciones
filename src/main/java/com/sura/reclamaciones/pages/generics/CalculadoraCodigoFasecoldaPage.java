@@ -54,8 +54,7 @@ public class CalculadoraCodigoFasecoldaPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void crearCodigoFasecoldaVehiculo()
-  {
+  public void crearCodigoFasecoldaVehiculo() {
     btnAceptar.waitUntilClickable();
     btnAceptar.click();
     realizarEsperaCarga();

@@ -1,19 +1,18 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
+import static com.sura.reclamaciones.constantes.Filtros.*;
+import static com.sura.reclamaciones.constantes.NombresCsv.*;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.*;
 import com.sura.reclamaciones.steps.generics.*;
 import com.sura.reclamaciones.steps.pagomasivo.*;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
+import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
-
-import java.io.IOException;
-
-import static com.sura.reclamaciones.constantes.Filtros.*;
-import static com.sura.reclamaciones.constantes.NombresCsv.*;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 public class PagoMasivoDefinition {
 
@@ -57,10 +56,10 @@ public class PagoMasivoDefinition {
       int numeroVehiculosInvolucradosTercero, String coberturasPoliza) throws IOException {
     nuevaExposicionVehiculoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
-            new ExposicionVehiculoTercero(
-                    genericStep.getFilasModelo(
-                            PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
-                            EXPOSICION_VEHICULAR_TERCERO.getValor()));
+        new ExposicionVehiculoTercero(
+            genericStep.getFilasModelo(
+                PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
+                EXPOSICION_VEHICULAR_TERCERO.getValor()));
     datosCodigoFasecolda =
         new CodigoFasecolda(
             genericStep.getFilasModelo(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));

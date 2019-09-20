@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
+
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;
@@ -47,27 +48,39 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   )
   private WebElementFacade btnGenerarCodigoFasecolda;
 
-  @FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:Address_Picker-inputEl"
+  @FindBy(
+    id =
+        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:Address_Picker-inputEl"
   )
   private WebElementFacade cmbLugar;
 
-  @FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Country-inputEl"
+  @FindBy(
+    id =
+        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Country-inputEl"
   )
   private WebElementFacade cmbPais;
 
-  @FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:State-inputEl"
+  @FindBy(
+    id =
+        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:State-inputEl"
   )
   private WebElementFacade cmbDepartamento;
 
-  @FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Sura_Colombian_City-inputEl"
+  @FindBy(
+    id =
+        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Sura_Colombian_City-inputEl"
   )
   private WebElementFacade cmbCiudad;
 
-  @FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl"
+  @FindBy(
+    id =
+        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl"
   )
   private WebElementFacade cmbDireccion;
 
-  @FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:Address_Picker-labelEl"
+  @FindBy(
+    id =
+        "NewVehicleIncidentPopup:NewVehicleIncidentScreen:FNOLSuraVehIncidentDetailDV:FNOLSuraVehicleIncidentDV:CCAddressInputSet:globalAddressContainer:Address_Picker-labelEl"
   )
   private WebElementFacade lblLugar;
 
@@ -76,8 +89,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   }
 
   public void ingresarPlacaVehiculoAfectado(
-      List<ExposicionVehiculoTercero> datosVehiculoTercero, int j)
-  {
+      List<ExposicionVehiculoTercero> datosVehiculoTercero, int j) {
     int posicionCampo = 0;
     int consecutivoPlacaTercero =
         Integer.parseInt(datosVehiculoTercero.get(posicionCampo).getPlacaTercero().substring(3, 6));
@@ -101,46 +113,42 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
       return true;
     } else {
       seleccionarConductoVehiculoAfectado();
-      return  false;
+      return false;
     }
   }
 
-  public void seleccionarLugarAtencion(String lugarAtencion)
-  {
+  public void seleccionarLugarAtencion(String lugarAtencion) {
     cmbLugar.clear();
     cmbLugar.typeAndTab(lugarAtencion);
   }
 
-  public void seleccionarPaisAtencion(String pais)
-  {
+  public void seleccionarPaisAtencion(String pais) {
     cmbPais.clear();
     cmbPais.typeAndTab(pais);
   }
 
-  public void seleccionarDepartamentoAtencion(String departamento)
-  {
+  public void seleccionarDepartamentoAtencion(String departamento) {
     cmbDepartamento.clear();
     cmbDepartamento.typeAndTab(departamento);
   }
 
-  public void seleccionarCiudadAtencion(String ciudad)
-  {
+  public void seleccionarCiudadAtencion(String ciudad) {
     cmbCiudad.clear();
     cmbCiudad.typeAndTab(ciudad);
   }
 
-  public void seleccionarDireccionAtencion(String direccion)
-  {
+  public void seleccionarDireccionAtencion(String direccion) {
     cmbDireccion.clear();
     cmbDireccion.typeAndTab(direccion);
   }
 
   public void seleccionarConductoVehiculoAfectado() {
     String nombreConductorTercero =
-            (Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
-                    .toString());
+        (Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
+            .toString());
     cmbNombreConductor.clear();
-    cmbNombreConductor.typeAndTab(nombreConductorTercero);;
+    cmbNombreConductor.typeAndTab(nombreConductorTercero);
+    ;
     realizarEsperaCarga();
   }
 

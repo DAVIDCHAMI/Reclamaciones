@@ -30,7 +30,6 @@ import cucumber.api.java.es.Y;
 import java.io.IOException;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
-import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoSiniestroDefinition {
@@ -39,11 +38,9 @@ public class PagoSiniestroDefinition {
 
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
 
-  @Steps
-  NuevoPagoStep nuevoPagoStep;
+  @Steps NuevoPagoStep nuevoPagoStep;
 
-  @Steps
-  ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
+  @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
   @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
 
@@ -53,11 +50,9 @@ public class PagoSiniestroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps
-  MenuClaimsStep menuClaimsStep;
+  @Steps MenuClaimsStep menuClaimsStep;
 
-  @Steps
-  InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
+  @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
   CodigoFasecolda datosCodigoFasecolda;
 
