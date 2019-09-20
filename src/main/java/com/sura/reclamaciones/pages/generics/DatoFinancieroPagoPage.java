@@ -33,9 +33,7 @@ public class DatoFinancieroPagoPage extends GeneralPage {
   }
 
   private List<WebElement> obtenerFilaPagoAnulado(String strNumeroTransaccion, String tblPago) {
-    List<WebElement> lstPago;
-    lstPago = obtenerFilaTabla(strNumeroTransaccion, tblPago);
-    return lstPago;
+    return obtenerFilaTabla(strNumeroTransaccion, tblPago);
   }
 
   public boolean verificarEstadoAnuladoPago(String strNumeroTransaccion, String tblPago) {

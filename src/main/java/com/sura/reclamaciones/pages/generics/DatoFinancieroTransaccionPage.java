@@ -32,9 +32,7 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
 
   private List<WebElement> obtenerFilaRecuperoAnulado(
       String strNumeroTransaccion, String tblTransaccion) {
-    List<WebElement> lstTransaccion;
-    lstTransaccion = obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
-    return lstTransaccion;
+    return obtenerFilaTabla(strNumeroTransaccion, tblTransaccion);
   }
 
   public boolean verificarEstadoAnuladoRecupero(
