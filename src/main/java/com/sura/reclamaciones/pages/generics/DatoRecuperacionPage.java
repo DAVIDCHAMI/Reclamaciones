@@ -18,23 +18,10 @@ public class DatoRecuperacionPage extends GeneralPage {
     super(wdriver);
   }
 
-  private void anularRecupero() {
-    realizarEsperaCarga();
-    btnAnular.waitUntilClickable();
-    btnAnular.click();
-    realizarEsperaCarga();
-    btnAnular.waitUntilClickable();
-    btnAnular.click();
-    realizarEsperaCarga();
-    btnAceptar.waitUntilClickable();
-    btnAceptar.click();
-    realizarEsperaCarga();
-  }
-
   public boolean realizarAnulacionRecupero() {
     for (int i = 0; i <= Integer.parseInt(ITERACIONES_ANULACION.getValor()); i++)
       if (btnAnular.isVisible()) {
-        anularRecupero();
+        anularTransaccion();
         return true;
       } else {
         driver.navigate().refresh();
