@@ -3,8 +3,9 @@ Característica: Anulacion de recuperos
 
   Como analista de reclamaciones
   Quiero generar una anulación de un recupero
-  Para verificar que cambie su estado a anulado
+  Para verificar que el proceso de recuperación sea suspendido y no sea efectuado.
 
+  @Empresarial
   @claimsEmpresarial
   Esquema del escenario: anulación de un recupero de empresariales.
     Dado que se tiene una póliza de <Tipo y Cobertura>
@@ -20,7 +21,7 @@ Característica: Anulacion de recuperos
       | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         | Ingreso (otro)   | 0099                         |
       | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           | Subrogación      | 0099                         |
 
-
+  @Autos
   @claimsAuto
   Esquema del escenario: anulación de un recupero de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
