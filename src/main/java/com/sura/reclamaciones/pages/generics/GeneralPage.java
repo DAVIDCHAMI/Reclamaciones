@@ -65,6 +65,9 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[@class='x-panel x-layer x-panel-default x-menu x-border-box']")
   public WebElementFacade lstOpcionesGenerales;
 
+  @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//parent::span")
+  public WebElementFacade btnAnular;
+
   private String tblPago =
       "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
 
@@ -342,6 +345,19 @@ public class GeneralPage extends PageObject {
       return false;
     }
     return true;
+  }
+
+  public void anularTransaccion() {
+    realizarEsperaCarga();
+    btnAnular.waitUntilClickable();
+    btnAnular.click();
+    realizarEsperaCarga();
+    btnAnular.waitUntilClickable();
+    btnAnular.click();
+    realizarEsperaCarga();
+    btnAceptar.waitUntilClickable();
+    btnAceptar.click();
+    realizarEsperaCarga();
   }
 
   public void seleccionarPais(String pais) {
