@@ -83,7 +83,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
         Integer.parseInt(datosVehiculoTercero.get(posicionCampo).getPlacaTercero().substring(3, 6));
     consecutivoPlacaTercero = consecutivoPlacaTercero + j;
     String placaVehiculoTercero =
-        datosVehiculoTercero.get(posicionCampo).getPlacaTercero().substring(0, 5)
+        datosVehiculoTercero.get(posicionCampo).getPlacaTercero().substring(0, 3)
             + Integer.toString(consecutivoPlacaTercero);
     txtPlacaVehiculo.waitUntilClickable().sendKeys(placaVehiculoTercero);
     realizarEsperaCarga();
@@ -94,12 +94,14 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void validarPlacaExisteFasecolda() {
+  public boolean validarPlacaExisteFasecolda() {
     if (btnGenerarCodigoFasecolda.isVisible()) {
       btnGenerarCodigoFasecolda.click();
       realizarEsperaCarga();
+      return true;
     } else {
       seleccionarConductoVehiculoAfectado();
+      return  false;
     }
   }
 

@@ -70,24 +70,27 @@ public class ExposicionVehicularManualStep {
       nuevaExposicionManualPage.crearNuevoIncidenteVehicular();
       nuevoIncidenteVehicularPage.ingresarPlacaVehiculoAfectado(datosVehiculoTercero, j);
       nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
-      nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda();
-      datosCodigoFasecolda.forEach(
-          formularioCodigoFasecolda -> {
-            calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(formularioCodigoFasecolda.getClaseVehiculo());
-            calculadoraCodigoFasecoldaPage.seleccionarModeloVehiculo(formularioCodigoFasecolda.getModelo());
-            calculadoraCodigoFasecoldaPage.seleccionarMarcaVehiculo(formularioCodigoFasecolda.getMarca());
-            calculadoraCodigoFasecoldaPage.seleccionarLineaVehiculo(formularioCodigoFasecolda.getLinea());
-            calculadoraCodigoFasecoldaPage.generarCodigoFasecolda();
-            calculadoraCodigoFasecoldaPage.crearCodigoFasecoldaVehiculo();
-          });
-       datosVehiculoTercero.forEach(
-               formularioLugarAtencion -> {
-                 nuevoIncidenteVehicularPage.seleccionarLugarAtencion(formularioLugarAtencion.getLugarAtencion());
-                 nuevoIncidenteVehicularPage.seleccionarPaisAtencion(formularioLugarAtencion.getPaisAtencion());
-                 nuevoIncidenteVehicularPage.seleccionarDepartamentoAtencion(formularioLugarAtencion.getDepartamentoAtencion());
-                 nuevoIncidenteVehicularPage.seleccionarCiudadAtencion(formularioLugarAtencion.getCiudadAtencion());
-                 nuevoIncidenteVehicularPage.seleccionarDireccionAtencion(formularioLugarAtencion.getDireccionAtencion());
-               });
+      //nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda();
+      if(nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda()==true)
+      {
+          datosCodigoFasecolda.forEach(
+                  formularioCodigoFasecolda -> {
+                      calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(formularioCodigoFasecolda.getClaseVehiculo());
+                      calculadoraCodigoFasecoldaPage.seleccionarModeloVehiculo(formularioCodigoFasecolda.getModelo());
+                      calculadoraCodigoFasecoldaPage.seleccionarMarcaVehiculo(formularioCodigoFasecolda.getMarca());
+                      calculadoraCodigoFasecoldaPage.seleccionarLineaVehiculo(formularioCodigoFasecolda.getLinea());
+                      calculadoraCodigoFasecoldaPage.generarCodigoFasecolda();
+                      calculadoraCodigoFasecoldaPage.crearCodigoFasecoldaVehiculo();
+                  });
+      }
+      datosVehiculoTercero.forEach(
+              formularioLugarAtencion -> {
+                      nuevoIncidenteVehicularPage.seleccionarLugarAtencion(formularioLugarAtencion.getLugarAtencion());
+                      nuevoIncidenteVehicularPage.seleccionarPaisAtencion(formularioLugarAtencion.getPaisAtencion());
+                      nuevoIncidenteVehicularPage.seleccionarDepartamentoAtencion(formularioLugarAtencion.getDepartamentoAtencion());
+                      nuevoIncidenteVehicularPage.seleccionarCiudadAtencion(formularioLugarAtencion.getCiudadAtencion());
+                      nuevoIncidenteVehicularPage.seleccionarDireccionAtencion(formularioLugarAtencion.getDireccionAtencion());
+                  });
       nuevoIncidenteVehicularPage.seleccionarConductoVehiculoAfectado();
       nuevoIncidenteVehicularPage.seleccionarServiciosTaller();
       nuevoIncidenteVehicularPage.seleccionarTaller();

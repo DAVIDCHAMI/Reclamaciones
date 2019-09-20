@@ -6,6 +6,8 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 
 public class NuevaExposicionVehiculoPage extends GeneralPage {
@@ -30,8 +32,11 @@ public class NuevaExposicionVehiculoPage extends GeneralPage {
   @FindBy(xpath = "//span[contains(text(),'Nuevo incidente')]")
   private WebElementFacade lblNuevoIncidente;
 
-  @FindBy(xpath = "//div[@id='centerPanel']//div[@id='NewExposure/NewExposureCard']//span[@id='NewExposure:NewExposureScreen:Update-btnInnerEl']")
+  @FindBy(xpath = "//*[@id=\"NewExposure:NewExposureScreen:Update-btnInnerEl\"]")
   private WebElementFacade btnActualizar;
+
+  ////div[@id='centerPanel']//div[@id='NewExposure/NewExposureCard']//span[contains(text(),'Act')]
+
 
   public NuevaExposicionVehiculoPage(WebDriver wdriver) {
     super(wdriver);
@@ -61,8 +66,9 @@ public class NuevaExposicionVehiculoPage extends GeneralPage {
 
   public void actualizarNuevaExposicion() {
     Actions actions = new Actions(driver);
-    actions.moveToElement(btnActualizar).click().build().perform();
+    actions.moveToElement(btnActualizar).build().perform();
     btnActualizar.click();
-    realizarEsperaCarga();
+    realizarEsperaFinalizarReclamacion();
   }
+
 }
