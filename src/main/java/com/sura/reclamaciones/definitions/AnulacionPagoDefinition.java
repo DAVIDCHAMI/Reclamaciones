@@ -5,15 +5,14 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
-import com.sura.reclamaciones.models.AnulacionEmpresarial;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.AnulacionPagoStep;
+import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
-import cucumber.api.java.es.Y;
 import java.io.IOException;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
@@ -28,37 +27,9 @@ public class AnulacionPagoDefinition {
 
   @Steps InformacionPagoStep informacionPagoStep;
 
-  PagoSiniestro pagoSiniestro;
+  @Steps GenericStep genericStep;
 
-  @Y(
-      "^que se realice un pago, de un siniestro de una póliza empresarial con producto (.*) y código de retención (.*)$")
-  public void crearPago() throws IOException {
-    pagoSiniestro =
-        new PagoSiniestro(
-            obtenerDatosPrueba(
-                PAGO_SINIESTRO.getValor(),
-                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
-    AnulacionEmpresarial anulacionEmpresarial =
-        new AnulacionEmpresarial(
-            (obtenerDatosPrueba(
-                ANULACION_EMPRESARIAL.getValor(),
-                Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor()))));
-    anulacionEmpresarial
-        .getLstAnulacionEmpresarial()
-        .forEach(
-            ajustador -> {
-              nuevoPagoStep.consultarNumeroReclamacion();
-              informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
-                  ajustador.getBeneficiarioPago(),
-                  ajustador.getMetodoPago(),
-                  ajustador.getSoloSura(),
-                  pagoSiniestro.getLstPago());
-              informacionPagoStep.ingresarInformacionPago(
-                  ajustador.getLineaReserva(), ajustador.getTipoPago(), pagoSiniestro.getLstPago());
-              informacionPagoStep.ingresarInformacionPago(
-                  ajustador.getLineaReserva(), ajustador.getTipoPago(), pagoSiniestro.getLstPago());
-            });
-  }
+  PagoSiniestro pagoSiniestro;
 
   @Cuando("^se realice la anulación del pago$")
   public void anularTransaccionPagoEmpresariales() throws IOException {

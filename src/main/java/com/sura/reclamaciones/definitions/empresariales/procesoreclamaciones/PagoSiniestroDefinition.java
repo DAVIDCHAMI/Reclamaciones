@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TER
 import static com.sura.reclamaciones.constantes.NombresCsv.*;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 
@@ -82,8 +83,8 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
-  public void crearPago(
+      "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) donde el responsable (.*) es Sura$")
+  public void crearPagoPerdidaTotal(
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
@@ -104,36 +105,30 @@ public class PagoSiniestroDefinition {
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
-  @Cuando("^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) y (.*) donde el responsable (.*) es Sura con una retención de (.*) donde existe (.*) vehículo involucrado del tercero en el siniestro$")
+  @Cuando(
+      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) y (.*) afectando la cobertura de (.*) es Sura$")
   public void crearMultiPago(
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
       String lineaReserva2,
-      String aplicaSoloSura,
-      int numeroVehiculosInvolucradosTercero)
+      String aplicaSoloSura)
       throws IOException {
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
-    nuevaExposicionVehiculoStep.consultarPlacaAsegurado();
+    nuevoPagoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
-            new ExposicionVehiculoTercero(
-                    genericStep.getFilasModelo(
-                            PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
-                            EXPOSICION_VEHICULAR_TERCERO.getValor()));
-    datosCodigoFasecolda =
-            new CodigoFasecolda(
-                    genericStep.getFilasModelo(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
-    nuevaExposicionVehiculoStep.crearExposicionVehicularManual(
-            genericStep.getFilasModelo(
-                    PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
-            exposicionVehiculoTercero.getLstExposicionTerceros(),
-            numeroVehiculosInvolucradosTercero,
-            datosCodigoFasecolda.getLstCodigoFasecolda());
+        new ExposicionVehiculoTercero(
+            obtenerDatosPrueba(
+                PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
+                EXPOSICION_VEHICULAR_TERCERO.getValor()));
+    nuevoPagoStep.crearExposicionVehicularManual(
+        obtenerDatosPrueba(
+            PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
+        exposicionVehiculoTercero.getLstExposicionTerceros());
     nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
@@ -149,7 +144,6 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.agregarPagoNuevaLineaReserva();
     informacionPagoStep.ingresarInformacionPago(
         lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
