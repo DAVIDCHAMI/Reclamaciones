@@ -6,7 +6,7 @@ import static com.sura.reclamaciones.constantes.Filtros.PERSONA_LESIONADA;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 
 import com.sura.reclamaciones.models.PersonaReclamacion;
@@ -61,8 +61,6 @@ public class ConsumoCreacionAvisoAutosDefinition {
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
         parametroPersonaConductorAuto.getLstPersonaReclamacion(),
         reclamacionVehiculo.getLstVehiculos());
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
   @Entonces("^se le brindará al reclamante el número de reclamación$")
