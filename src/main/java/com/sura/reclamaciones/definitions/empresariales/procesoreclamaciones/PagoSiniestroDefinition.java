@@ -158,9 +158,7 @@ public class PagoSiniestroDefinition {
 
   @Y("^se declara la reclamación como perdida total$")
   public void declararReclamacionPerdidaTotal() {
-    nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
-    nuevoPagoStep.declararReclamacionPerdidaTotal();
-    nuevoPagoStep.ingresarEstadoLegalReclamacion();
+    nuevoPagoStep.marcarReclamacionAutosPerdidaTotal();
   }
 
   @Cuando(
