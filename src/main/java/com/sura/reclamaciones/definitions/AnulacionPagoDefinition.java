@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.definitions;
 
-import static com.sura.reclamaciones.constantes.NombresCsv.ANULACION_EMPRESARIAL;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
