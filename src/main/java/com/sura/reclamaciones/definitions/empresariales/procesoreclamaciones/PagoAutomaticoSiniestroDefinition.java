@@ -30,7 +30,7 @@ public class PagoAutomaticoSiniestroDefinition {
   }
 
   @Entonces("^se genera una reclamación con exposición automática (.*)$")
-  public void verificarGeneracionExposicionAutomatica(String tipoExposicion) throws Throwable {
+  public void verificarGeneracionExposicionAutomatica(String tipoExposicion) {
     //TO DO
   }
 

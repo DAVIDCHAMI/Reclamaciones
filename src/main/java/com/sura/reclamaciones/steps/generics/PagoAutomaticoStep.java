@@ -1,6 +1,9 @@
 package com.sura.reclamaciones.steps.generics;
 
-import static com.sura.reclamaciones.constantes.Constantes.*;
+import static com.sura.reclamaciones.constantes.Constantes.DATOS_FINANCIEROS;
+import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_PAGO;
+import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
+import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO;
 import static com.sura.reclamaciones.constantes.MenuConstante.TRANSACCIONES;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
@@ -30,15 +33,14 @@ public class PagoAutomaticoStep {
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         DATOS_FINANCIEROS.getValor(), TRANSACCIONES);
     lstReserva.forEach(
-        reserva -> {
-          MatcherAssert.assertThat(
-              "El valor de la reserva es diferente a:"
-                  + reserva.getValorReserva()
-                  + ". Revisar en configuración comercial la parametrización de reservas automáticas.",
-              datoFinancieroTransaccionPage
-                  .obtenerMontoReserva(reserva.getValorReserva())
-                  .equals(reserva.getValorReserva()));
-        });
+        reserva ->
+            MatcherAssert.assertThat(
+                "El valor de la reserva es diferente a:"
+                    + reserva.getValorReserva()
+                    + ". Revisar en configuración comercial la parametrización de reservas automáticas.",
+                datoFinancieroTransaccionPage
+                    .obtenerMontoReserva()
+                    .equals(reserva.getValorReserva())));
   }
 
   public void verificarPagoAutomatico(List<PagoSiniestro> lstPago) {

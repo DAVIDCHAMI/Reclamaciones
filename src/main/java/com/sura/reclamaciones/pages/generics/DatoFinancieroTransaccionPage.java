@@ -24,8 +24,7 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
   private WebElementFacade tblTransaccion;
 
   @FindBy(
-    xpath =
-        "//a[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount']"
+    id = "ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount"
   )
   private WebElementFacade lnkReservaTransaccion;
 
@@ -101,7 +100,7 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
     return estadoTransaccionPantalla;
   }
 
-  public String obtenerMontoReserva(String montoReserva) {
+  public String obtenerMontoReserva() {
     String validarReservaTransaccion = "";
     if (lnkReservaTransaccion.isVisible()) {
       validarReservaTransaccion = lnkReservaTransaccion.waitUntilVisible().getText();
