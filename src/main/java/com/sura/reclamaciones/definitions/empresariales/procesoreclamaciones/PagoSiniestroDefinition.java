@@ -108,15 +108,15 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) y (.*) afectando la cobertura de (.*) es Sura$")
+      "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) y (.*) donde el responsable (.*) es Sura donde existe (.*) vehículo involucrado del tercero en el siniestro$")
   public void crearMultiPago(
-      int numeroVehiculosInvolucradosTercero,
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
       String lineaReserva2,
-      String aplicaSoloSura)
+      String aplicaSoloSura,
+      int numeroVehiculosInvolucradosTercero)
       throws IOException {
     menuClaimsStep.consultarNumeroReclamacion(
         Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));

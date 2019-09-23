@@ -51,8 +51,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de Reserva | Tipo de pago | Beneficiario del pago | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
-      | 1ª parteVehículo | Parcial      | SOFIA JARAMILLO       | Caja Sura       | No                 | Perdida total Daños |
+      | Línea de Reserva | Tipo de pago | Beneficiario del pago | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |  Número de vehículos involucrados del tercero en el siniestro|
+      | 1ª parteVehículo | Parcial      | SOFIA JARAMILLO       | Caja Sura       | No                 | Perdida total Daños | 1                                                            |
 
   @pagoPerdidaTotalAutos
   @claimsAuto
@@ -74,15 +74,15 @@ Característica: Realizar pago de un siniestro
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
-    Cuando se genere un pago por siniestro de auto <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las líneas de reserva <Línea de reserva 1> y <Línea de Reserva 2> afectando la cobertura de <Pago Solo Sura> es Sura
+    Cuando se genere un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las líneas de reserva <Línea de reserva 1> y <Línea de reserva 2> donde el responsable <Pago solo Sura> es Sura donde existe <Número de vehículos involucrados del tercero en el siniestro> vehículo involucrado del tercero en el siniestro
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
       | 099                 |
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva 1                       | Línea de Reserva 2   | Tipo de pago | Beneficiario del pago | Método de Pago | Cobertura           | Pago Solo Sura |
-      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | SOFIA JARAMILLO       | Pago por banco | Perdida total Daños | No             |
+      | Línea de reserva 1                       | Línea de reserva 2   | Tipo de pago | Beneficiario del pago | Método de Pago | Cobertura           | Pago solo Sura |Número de vehículos involucrados del tercero en el siniestro|
+      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | SOFIA JARAMILLO       | Pago por banco | Perdida total Daños | No             |1                                                           |
 
   @riesgoConsultableEmpresarial
   @claimsEmpresarial
