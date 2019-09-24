@@ -61,7 +61,6 @@ public class PagoSiniestroDefinition {
       String cobertura,
       String aplicaSoloSura)
       throws IOException {
-    nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
         new PagoSiniestro(
             (obtenerDatosPrueba(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
@@ -147,6 +146,7 @@ public class PagoSiniestroDefinition {
 
   @Y("^se declara la reclamación como perdida total$")
   public void declararReclamacionPerdidaTotal() {
+    nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
   }
