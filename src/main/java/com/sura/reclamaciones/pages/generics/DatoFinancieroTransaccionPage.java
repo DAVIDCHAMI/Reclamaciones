@@ -7,6 +7,8 @@ import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
+import com.sura.reclamaciones.utils.Utilidades;
+import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -22,6 +24,11 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
         "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
   )
   private WebElementFacade tblTransaccion;
+
+  @FindBy(
+    id = "ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount"
+  )
+  private WebElementFacade lnkReservaTransaccion;
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
   private WebElementFacade tblDatosFinancierosPagos;
@@ -98,6 +105,18 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
     }
     realizarEsperaCarga();
     return estadoTransaccionPantalla;
+  }
+
+  public String obtenerMontoReserva() {
+    String validarReservaTransaccion = "";
+    if (lnkReservaTransaccion.isVisible()) {
+      validarReservaTransaccion = lnkReservaTransaccion.waitUntilVisible().getText();
+      validarReservaTransaccion =
+          validarReservaTransaccion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    } else {
+      Utilidades.getLogger().info("No se ha generado reserva en la sección de transacciones");
+    }
+    return validarReservaTransaccion;
   }
 
   public boolean verificarValorPagoPrimaPendiente(String valorPrimaPendiente) {
