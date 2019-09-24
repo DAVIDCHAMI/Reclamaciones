@@ -47,7 +47,6 @@ public class NotificacionAvisoSiniestroAutoDefinition {
 
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
-  private ExposicionVehiculoTercero exposicionVehiculoTercero;
   private Reserva reserva;
   private ExposicionesAutomaticasAutos exposicionesAutomaticasAutos;
   private static String RESPONSABILIDAD_CIVIL_VEHICULO;
@@ -71,6 +70,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
       "^se genere un siniestro por la causa y la culpabilidad Responsabilidad civil daños persona y Responsabilidad civil daños vehículo$")
   public void ingresarDatosSiniestroResponsabilidadCivil(DataTable parametrosSiniestro)
       throws IOException {
+    ExposicionVehiculoTercero exposicionVehiculoTercero;
     RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2);
     RESPONSABILIDAD_CIVIL_VEHICULO = parametrosSiniestro.raw().get(1).get(3);
     exposicionVehiculoTercero =

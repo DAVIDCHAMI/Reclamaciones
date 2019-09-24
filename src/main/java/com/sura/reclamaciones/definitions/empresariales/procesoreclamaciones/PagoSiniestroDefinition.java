@@ -64,7 +64,6 @@ public class PagoSiniestroDefinition {
       String cobertura,
       String aplicaSoloSura)
       throws IOException {
-    nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
         new PagoSiniestro(
             (obtenerDatosPrueba(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
