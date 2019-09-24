@@ -1,5 +1,15 @@
 package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
 
+import static com.sura.reclamaciones.constantes.Filtros.DIRECCION_EXPOSICION_LESIONES;
+import static com.sura.reclamaciones.constantes.Filtros.DIRECCION_EXPOSICION_VEHICULAR;
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICIONES_ARCHIVO;
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICIONES_RESPONSABILIDAD_CIVIL;
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICIONES_SOLO_RESPONSABILIDAD_CIVIL;
+import static com.sura.reclamaciones.constantes.Filtros.LINEA_RESERVA_ARCHIVO;
+import static com.sura.reclamaciones.constantes.Filtros.RECLAMACION_ARCHIVO;
+import static com.sura.reclamaciones.constantes.Filtros.RECLAMACION_RESPONSABILIDAD_CIVIL;
+import static com.sura.reclamaciones.constantes.Filtros.RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL;
+import static com.sura.reclamaciones.constantes.Filtros.RECLAMACION_SUBROGACION;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_DIRECCION_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_EXPOSICION_AUTOMATICA;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_PERSONA;
@@ -17,6 +27,7 @@ import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroResumenStep;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevoAvisoSiniestroAutoStep;
 import cucumber.api.DataTable;
@@ -30,24 +41,15 @@ public class NotificacionAvisoSiniestroAutoDefinition {
 
   @Steps private NuevoAvisoSiniestroAutoStep reclamacionStep;
 
+  @Steps ConsultaDatoFinancieroResumenStep consultaDatoFinancieroResumenStep;
+
   @Steps private NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   private ReclamacionAuto reclamacionAuto;
   private Vehiculo vehiculo;
   private ExposicionVehiculoTercero exposicionVehiculoTercero;
-  private ExposicionLesiones exposicionLesiones;
   private Reserva reserva;
   private ExposicionesAutomaticasAutos exposicionesAutomaticasAutos;
-  private static String DIRECCION_EXPOSICION_VEHICULAR = "direccionExposicionVehicular";
-  private static String DIRECCION_EXPOSICION_LESIONES = "direccionExposicionLesiones";
-  private static String EXPOSICIONES_RESPONSABILIDAD_CIVIL = "exposicionesRC";
-  private static String EXPOSICIONES_SOLO_RESPONSABILIDAD_CIVIL = "exposicionesSoloRC";
-  private static String RECLAMACION_RESPONSABILIDAD_CIVIL = "responsabilidadCivil";
-  private static String RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL = "soloRC";
-  private static String RECLAMACION_ARCHIVO = "archivo";
-  private static String RECLAMACION_SUBROGACION = "subrogacion";
-  private static String EXPOSICIONES_ARCHIVO = "exposicionesArchivo";
-  private static String LINEA_RESERVA_ARCHIVO = "archivoSubrogacion";
   private static String RESPONSABILIDAD_CIVIL_VEHICULO;
   private static String RESPONSABILIDAD_CIVIL_LESIONES;
 
@@ -56,10 +58,11 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     reclamacionAuto =
         new ReclamacionAuto(
             obtenerDatosPrueba(
-                PARAMETROS_RECLAMACION.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL));
+                PARAMETROS_RECLAMACION.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL.getValor()));
     vehiculo =
         new Vehiculo(
-            obtenerDatosPrueba(PARAMETROS_VEHICULO.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL));
+            obtenerDatosPrueba(
+                PARAMETROS_VEHICULO.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL.getValor()));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
@@ -81,15 +84,17 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     ReclamacionAuto direccionExposicionVehicularTercero =
         new ReclamacionAuto(
             obtenerDatosPrueba(
-                PARAMETROS_DIRECCION_SINIESTRO.getValor(), DIRECCION_EXPOSICION_VEHICULAR));
+                PARAMETROS_DIRECCION_SINIESTRO.getValor(),
+                DIRECCION_EXPOSICION_VEHICULAR.getValor()));
     PersonaReclamacion personaReclamacionLesionado =
         new PersonaReclamacion(
             obtenerDatosPrueba(PARAMETROS_PERSONA.getValor(), RESPONSABILIDAD_CIVIL_LESIONES));
     ReclamacionAuto direccionExposicionLesionado =
         new ReclamacionAuto(
             obtenerDatosPrueba(
-                PARAMETROS_DIRECCION_SINIESTRO.getValor(), DIRECCION_EXPOSICION_LESIONES));
-    exposicionLesiones =
+                PARAMETROS_DIRECCION_SINIESTRO.getValor(),
+                DIRECCION_EXPOSICION_LESIONES.getValor()));
+    ExposicionLesiones exposicionLesiones =
         new ExposicionLesiones(
             obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_LESIONES.getValor(),
@@ -111,22 +116,24 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     exposicionesAutomaticasAutos =
         new ExposicionesAutomaticasAutos(
             obtenerDatosPrueba(
-                PARAMETROS_EXPOSICION_AUTOMATICA.getValor(), EXPOSICIONES_RESPONSABILIDAD_CIVIL));
+                PARAMETROS_EXPOSICION_AUTOMATICA.getValor(),
+                EXPOSICIONES_RESPONSABILIDAD_CIVIL.getValor()));
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
             obtenerDatosPrueba(
-                PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL));
-    reclamacionStep.validarValorReservas(reserva.getLstReserva());
+                PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_RESPONSABILIDAD_CIVIL.getValor()));
+    consultaDatoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Daños$")
   public void recibirReclamoArchivo(DataTable cobertura) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(
-            obtenerDatosPrueba(PARAMETROS_RECLAMACION.getValor(), RECLAMACION_ARCHIVO));
+            obtenerDatosPrueba(PARAMETROS_RECLAMACION.getValor(), RECLAMACION_ARCHIVO.getValor()));
     vehiculo =
-        new Vehiculo(obtenerDatosPrueba(PARAMETROS_VEHICULO.getValor(), RECLAMACION_ARCHIVO));
+        new Vehiculo(
+            obtenerDatosPrueba(PARAMETROS_VEHICULO.getValor(), RECLAMACION_ARCHIVO.getValor()));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
@@ -142,20 +149,25 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   public void generarReclamacionArchivo() throws IOException {
     exposicionesAutomaticasAutos =
         new ExposicionesAutomaticasAutos(
-            obtenerDatosPrueba(PARAMETROS_EXPOSICION_AUTOMATICA.getValor(), EXPOSICIONES_ARCHIVO));
+            obtenerDatosPrueba(
+                PARAMETROS_EXPOSICION_AUTOMATICA.getValor(), EXPOSICIONES_ARCHIVO.getValor()));
     validarExposicionesAutomaticas();
     reserva =
-        new Reserva(obtenerDatosPrueba(PARAMETRO_LINEA_RESERVA.getValor(), LINEA_RESERVA_ARCHIVO));
-    reclamacionStep.validarValorReservas(reserva.getLstReserva());
+        new Reserva(
+            obtenerDatosPrueba(
+                PARAMETRO_LINEA_RESERVA.getValor(), LINEA_RESERVA_ARCHIVO.getValor()));
+    consultaDatoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   @Dado("^que se tiene una póliza con las coberturas para Subrogación$")
   public void recibirReclamoSubrogacion(DataTable cobertura) throws IOException {
     reclamacionAuto =
         new ReclamacionAuto(
-            obtenerDatosPrueba(PARAMETROS_RECLAMACION.getValor(), RECLAMACION_SUBROGACION));
+            obtenerDatosPrueba(
+                PARAMETROS_RECLAMACION.getValor(), RECLAMACION_SUBROGACION.getValor()));
     vehiculo =
-        new Vehiculo(obtenerDatosPrueba(PARAMETROS_VEHICULO.getValor(), RECLAMACION_SUBROGACION));
+        new Vehiculo(
+            obtenerDatosPrueba(PARAMETROS_VEHICULO.getValor(), RECLAMACION_SUBROGACION.getValor()));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
@@ -165,11 +177,12 @@ public class NotificacionAvisoSiniestroAutoDefinition {
     reclamacionAuto =
         new ReclamacionAuto(
             obtenerDatosPrueba(
-                PARAMETROS_RECLAMACION.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL));
+                PARAMETROS_RECLAMACION.getValor(),
+                RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL.getValor()));
     vehiculo =
         new Vehiculo(
             obtenerDatosPrueba(
-                PARAMETROS_VEHICULO.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL));
+                PARAMETROS_VEHICULO.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL.getValor()));
     reclamacionStep.consultarPoliza(
         reclamacionAuto.getLstReclamacionAuto(), vehiculo.getLstVehiculos());
   }
@@ -181,13 +194,14 @@ public class NotificacionAvisoSiniestroAutoDefinition {
         new ExposicionesAutomaticasAutos(
             obtenerDatosPrueba(
                 PARAMETROS_EXPOSICION_AUTOMATICA.getValor(),
-                EXPOSICIONES_SOLO_RESPONSABILIDAD_CIVIL));
+                EXPOSICIONES_SOLO_RESPONSABILIDAD_CIVIL.getValor()));
     validarExposicionesAutomaticas();
     reserva =
         new Reserva(
             obtenerDatosPrueba(
-                PARAMETRO_LINEA_RESERVA.getValor(), RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL));
-    reclamacionStep.validarValorReservas(reserva.getLstReserva());
+                PARAMETRO_LINEA_RESERVA.getValor(),
+                RECLAMACION_SOLO_RESPONSABILIDAD_CIVIL.getValor()));
+    consultaDatoFinancieroResumenStep.validarValorReservas(reserva.getLstReserva());
   }
 
   private void validarExposicionesAutomaticas() {
