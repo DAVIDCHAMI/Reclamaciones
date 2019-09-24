@@ -8,14 +8,12 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 
-import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
-import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -30,10 +28,6 @@ public class RecuperoSiniestroDefinition {
   @Steps RecuperoStep recuperoStep;
 
   @Steps GenericStep genericStep;
-
-  @Steps NuevoPagoStep nuevoPagoStep;
-
-  @Steps PagoSiniestro pagoSiniestro;
 
   Recupero recupero;
 

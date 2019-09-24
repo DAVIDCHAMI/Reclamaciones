@@ -37,17 +37,6 @@ public class ResumenReclamacionPage extends GeneralPage {
     super(driver);
   }
 
-  public String obtenerNumeroReclamacion() {
-    String numeroReclamacion;
-    divNumeroReclamacion.waitUntilVisible().waitUntilClickable();
-    numeroReclamacion = divNumeroReclamacion.getText();
-    numeroReclamacion = numeroReclamacion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
-    Utilidades.getLogger()
-        .info(String.format("el número de reclamación generado es: %s%n", numeroReclamacion));
-    divNumeroReclamacion.click();
-    return numeroReclamacion;
-  }
-
   public String validarExposicion() {
     String validadorExposicion;
     String validador;
