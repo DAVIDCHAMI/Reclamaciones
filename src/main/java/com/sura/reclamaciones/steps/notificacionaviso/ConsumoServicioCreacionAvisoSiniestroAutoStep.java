@@ -19,15 +19,13 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
 
   @Page MenuClaimPage menuClaimPage;
 
-  ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos =
-      new ConsumoServicioCreacionSiniestroAutos();
-
   @Step
   public void siniestrarPolizaAutos(
       List<ReclamacionAuto> lstReclamacionAuto,
       List<PersonaReclamacion> lstPersonaLesionada,
       List<PersonaReclamacion> lstConductor,
       List<Vehiculo> lstVehiculoParam) {
+    ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos = new ConsumoServicioCreacionSiniestroAutos ();
     consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
     menuClaimPage.buscarReclamacion(

@@ -4,7 +4,6 @@ import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -12,8 +11,6 @@ import java.io.IOException;
 import net.thucydides.core.annotations.Steps;
 
 public class RecuperoSiniestroDefinition {
-
-  @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
   @Steps RecuperoStep recuperoStep;
 
