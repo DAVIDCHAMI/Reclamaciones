@@ -6,14 +6,12 @@ import static com.sura.reclamaciones.constantes.Filtros.PERSONA_LESIONADA;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_VEHICULO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
-import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -24,13 +22,10 @@ import net.thucydides.core.annotations.Steps;
 
 public class ConsumoCreacionAvisoAutosDefinition {
 
-  ReclamacionAuto parametroAviso = new ReclamacionAuto();
-  PersonaReclamacion parametroPersonaReclamacionAuto = new PersonaReclamacion();
-  PersonaReclamacion parametroPersonaConductorAuto = new PersonaReclamacion();
-  Vehiculo reclamacionVehiculo = new Vehiculo();
-  GenericStep genericStep = new GenericStep();
-
-  @Steps MenuClaimsStep menuClaimsStep;
+  ReclamacionAuto parametroAviso;
+  PersonaReclamacion parametroPersonaReclamacionAuto;
+  PersonaReclamacion parametroPersonaConductorAuto;
+  Vehiculo reclamacionVehiculo;
 
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
@@ -39,17 +34,17 @@ public class ConsumoCreacionAvisoAutosDefinition {
   public void parametrizarValoresSiniestro(String origenSinestro) throws IOException {
     parametroPersonaReclamacionAuto =
         new PersonaReclamacion(
-            genericStep.getFilasModelo(
+            obtenerDatosPrueba(
                 PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(), PERSONA_LESIONADA.getValor()));
     parametroPersonaConductorAuto =
         new PersonaReclamacion(
-            genericStep.getFilasModelo(
+            obtenerDatosPrueba(
                 PARAMETROS_RECLAMACION_PERSONA_AUTO.getValor(), PERSONA_CONDUCTOR.getValor()));
     reclamacionVehiculo =
-        new Vehiculo(genericStep.getFilasModelo(PARAMETROS_VEHICULO.getValor(), origenSinestro));
+        new Vehiculo(obtenerDatosPrueba(PARAMETROS_VEHICULO.getValor(), origenSinestro));
     parametroAviso =
         new ReclamacionAuto(
-            genericStep.getFilasModelo(
+            obtenerDatosPrueba(
                 PARAMETROS_SINIESTRO_AUTOS.getValor(), CREACION_AVISO_AUTOS_WS.getValor()));
   }
 
@@ -61,8 +56,6 @@ public class ConsumoCreacionAvisoAutosDefinition {
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
         parametroPersonaConductorAuto.getLstPersonaReclamacion(),
         reclamacionVehiculo.getLstVehiculos());
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
   @Entonces("^se le brindará al reclamante el número de reclamación$")

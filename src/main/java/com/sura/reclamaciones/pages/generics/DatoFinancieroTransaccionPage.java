@@ -6,6 +6,8 @@ import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECU
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
+import com.sura.reclamaciones.utils.Utilidades;
+import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -20,6 +22,11 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
         "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
   )
   private WebElementFacade tblTransaccion;
+
+  @FindBy(
+    id = "ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount"
+  )
+  private WebElementFacade lnkReservaTransaccion;
 
   public DatoFinancieroTransaccionPage(WebDriver wdriver) {
     super(wdriver);
@@ -91,5 +98,17 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
     }
     realizarEsperaCarga();
     return estadoTransaccionPantalla;
+  }
+
+  public String obtenerMontoReserva() {
+    String validarReservaTransaccion = "";
+    if (lnkReservaTransaccion.isVisible()) {
+      validarReservaTransaccion = lnkReservaTransaccion.waitUntilVisible().getText();
+      validarReservaTransaccion =
+          validarReservaTransaccion.replaceAll(Variables.FORMATEAR_MONTOS.getValor(), "");
+    } else {
+      Utilidades.getLogger().info("No se ha generado reserva en la sección de transacciones");
+    }
+    return validarReservaTransaccion;
   }
 }

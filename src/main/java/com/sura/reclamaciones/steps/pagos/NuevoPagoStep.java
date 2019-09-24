@@ -17,6 +17,7 @@ import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevaExposicionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import java.util.List;
@@ -45,9 +46,11 @@ public class NuevoPagoStep {
 
   @Page CreacionServicioPage crearServicioPage;
 
+  @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
+
   @Step
   public void consultarNumeroReclamacion() {
-    resumenReclamacionPage.obtenerNumeroReclamacion();
+    nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
   }
 
   @Step

@@ -14,13 +14,11 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
-import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.DataTable;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -47,8 +45,6 @@ public class PagoSiniestroDefinition {
 
   @Steps GenericStep genericStep;
 
-  @Steps MenuClaimsStep menuClaimsStep;
-
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
@@ -66,7 +62,6 @@ public class PagoSiniestroDefinition {
       String cobertura,
       String aplicaSoloSura)
       throws IOException {
-    nuevoPagoStep.crearNuevoPago();
     pagoSiniestro =
         new PagoSiniestro(
             (obtenerDatosPrueba(String.valueOf(PAGO_SINIESTRO.getValor()), cobertura)));
@@ -86,8 +81,6 @@ public class PagoSiniestroDefinition {
       String lineaReserva,
       String aplicaSoloSura)
       throws IOException {
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
@@ -112,8 +105,6 @@ public class PagoSiniestroDefinition {
       String lineaReserva2,
       String aplicaSoloSura)
       throws IOException {
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
@@ -154,6 +145,7 @@ public class PagoSiniestroDefinition {
 
   @Y("^se declara la reclamación como perdida total$")
   public void declararReclamacionPerdidaTotal() {
+    nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
   }
