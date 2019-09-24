@@ -1,6 +1,6 @@
-id;idFiltro;placa;modelo;marca;motor;chasis;anio;color;tipoVehiculo;codigoFasecolda
-1;responsabilidadCivil;KCS845;Mazda;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
-2;archivo;KCS845;Mazda;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
-3;subrogacion;TED111;Mazda;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
-4;soloRC;TED111;Mazda;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
-5;creacionAvisoMACA;YDC987;TWIZY TECHNIC - MT 13KW ELECTR;RENAULT;JUBIKIAIKIAS10A502A23A;IOANIOAONISONA156A0;2018;AZUL BLANCO MARFIL;1;08001165
+id;idFiltro;placa;claseVehiculo;modelo;marca;lineaVehiculo;motor;chasis;anio;color;tipoVehiculo;codigoFasecolda
+1;responsabilidadCivil;KCS845;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
+2;archivo;KCS845;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
+3;subrogacion;KCS845;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
+4;soloRC;KCS845;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
+5;creacionAvisoMACA;YDC987;vehiculo;TWIZY TECHNIC - MT 13KW ELECTR;RENAULT;;JUBIKIAIKIAS10A502A23A;IOANIOAONISONA156A0;2018;AZUL BLANCO MARFIL;1;08001165

@@ -25,7 +25,8 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
       List<PersonaReclamacion> lstPersonaLesionada,
       List<PersonaReclamacion> lstConductor,
       List<Vehiculo> lstVehiculoParam) {
-    ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos = new ConsumoServicioCreacionSiniestroAutos ();
+    ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos =
+        new ConsumoServicioCreacionSiniestroAutos();
     consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
     menuClaimPage.buscarReclamacion(
