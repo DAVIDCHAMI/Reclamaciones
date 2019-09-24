@@ -8,7 +8,12 @@ import static com.sura.reclamaciones.constantes.MenuConstante.TRANSACCIONES;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Reserva;
-import com.sura.reclamaciones.pages.generics.*;
+
+import com.sura.reclamaciones.pages.generics.DatoFinancieroPagoPage;
+import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
+import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import java.util.List;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
