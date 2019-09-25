@@ -4,11 +4,13 @@ import static com.sura.reclamaciones.constantes.Constantes.ESTADO_ANULACION;
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_RECUPERO;
 import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECUPERO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 
 import com.sura.reclamaciones.constantes.ReservaConstante;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
@@ -27,6 +29,11 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
     id = "ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount"
   )
   private WebElementFacade lnkReservaTransaccion;
+
+  @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")
+  private WebElementFacade tblDatosFinancierosPagos;
+
+  public static final String VALOR_TOTAL = "Valor total";
 
   public DatoFinancieroTransaccionPage(WebDriver wdriver) {
     super(wdriver);
@@ -110,5 +117,33 @@ public class DatoFinancieroTransaccionPage extends GeneralPage {
       Utilidades.getLogger().info("No se ha generado reserva en la sección de transacciones");
     }
     return validarReservaTransaccion;
+  }
+
+  public boolean verificarValorPagoPrimaPendiente(String valorPrimaPendiente) {
+    List<WebElement> lstValorTotal =
+        obtenerElementoTablaDatoDesconocido(
+            tblDatosFinancierosPagos, VALOR_TOTAL, Integer.parseInt(POSICION_FILA.getValor()));
+    for (int i = 0; i < lstValorTotal.size(); i++) {
+      if (valorPrimaPendiente.equals(lstValorTotal.get(i).getText())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public boolean verificarValorPagoMenosPrimaPendiente(String valorPrimaPendiente) {
+    int valorPago = (Serenity.sessionVariableCalled(SESION_CC_VALOR_PAGO.getValor()));
+    int valorPagoMenosPrimaPendiente =
+        valorPago - Integer.parseInt(valorPrimaPendiente.replaceAll("\\D+", ""));
+    List<WebElement> lstValorTotal =
+        obtenerElementoTablaDatoDesconocido(
+            tblDatosFinancierosPagos, VALOR_TOTAL, Integer.parseInt(POSICION_FILA.getValor()));
+    for (int i = 0; i < lstValorTotal.size(); i++) {
+      String valorTransaccionPago = lstValorTotal.get(i).getText().replaceAll("\\D+", "");
+      if (Integer.parseInt(valorTransaccionPago) == valorPagoMenosPrimaPendiente) {
+        return true;
+      }
+    }
+    return false;
   }
 }

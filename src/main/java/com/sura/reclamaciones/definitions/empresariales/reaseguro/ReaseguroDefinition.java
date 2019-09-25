@@ -61,7 +61,8 @@ public class ReaseguroDefinition {
   }
 
   @Y("^se realice al siniestro un recupero con un código de retención (.*)$")
-  public void realizarRecuperoSiniestroEmpresarial(String strCodigoRetencionRecupero) throws IOException {
+  public void realizarRecuperoSiniestroEmpresarial(String strCodigoRetencionRecupero)
+      throws IOException {
     Recupero recupero =
         new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoContrato));
     recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), strCodigoRetencionRecupero);

@@ -57,8 +57,8 @@ public class RecuperoStep {
   @Step
   public void verificarCreacionRecupero(List<Recupero> lstRecupero) {
     lstRecupero.forEach(
-         (Recupero validador) -> {
-           List<WebElement> lstFilaRecupero = new ArrayList<> ();
+        (Recupero validador) -> {
+          List<WebElement> lstFilaRecupero = new ArrayList<>();
           for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
             generalPage.realizarEsperaCarga();
             lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();
