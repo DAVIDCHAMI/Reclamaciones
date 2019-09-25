@@ -13,6 +13,7 @@ import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
+import java.util.ArrayList;
 import java.util.List;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
@@ -33,6 +34,7 @@ public class PagoAutomaticoStep {
   NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
 
   public void verificarMontoReservaAutomatica(List<Reserva> lstReserva) {
+    lstReserva = new ArrayList<>();
     nuevaReclamacionGuardadaPage.abrirReclamacion();
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         DATOS_FINANCIEROS.getValor(), TRANSACCIONES);
