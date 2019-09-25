@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
@@ -18,11 +19,10 @@ public class RecuperoSiniestroDefinition {
 
   Recupero recupero;
 
-  @Cuando(
-      "^se cree el recupero por el tipo de (.*) con un código de retención (.*) a una cobertura (.*)$")
+  @Cuando("^se cree el recupero con un código de retención (.*) a una cobertura (.*)$")
   public void crearRecuperoReclamacionAutos(String codigoRetencion, String cobertura)
       throws IOException {
-    recupero = new Recupero((genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), cobertura)));
+    recupero = new Recupero((obtenerDatosPrueba(RECUPERO_SINIESTRO.getValor(), cobertura)));
     recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), codigoRetencion);
   }
 
