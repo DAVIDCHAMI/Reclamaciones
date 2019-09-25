@@ -10,13 +10,11 @@ import org.hamcrest.MatcherAssert;
 
 public class PagoPrimaPendienteStep {
 
-  @Page
-  InformacionPolizaGeneralPage informacionPolizaGeneralPage;
+  @Page InformacionPolizaGeneralPage informacionPolizaGeneralPage;
 
   @Page MenuClaimPage menuClaimPage;
 
-  @Page
-  DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
+  @Page DatoFinancieroTransaccionPage datoFinancieroTransaccionPage;
 
   String valorPrimaPendiente;
 
@@ -34,7 +32,6 @@ public class PagoPrimaPendienteStep {
   public void verificarValorPagoMenosPrimaPendiente() {
     MatcherAssert.assertThat(
         "El valor del pago menos la prima pendiente no es correcto",
-        datoFinancieroTransaccionPage.verificarValorPagoMenosPrimaPendiente(
-            valorPrimaPendiente));
+        datoFinancieroTransaccionPage.verificarValorPagoMenosPrimaPendiente(valorPrimaPendiente));
   }
 }
