@@ -36,7 +36,7 @@ Característica: Distribución del reaseguro de un siniestro
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
     Y un incidente de tipo <Tipo de incidente>
     Cuando  se realice al siniestro un pago <Tipo Pago> a un <Beneficiario Pago> por medio de <Método Pago> el cual cuenta con una línea de reserva <Línea Reserva> donde el responsable <¿Solo Sura?> es Sura por una retención de <Código Retención Pago>
-    Y se realice al siniestro un recupero de tipo <Tipo Recupero> con un código de retención <Código Retención Recupero>
+    Y se realice al siniestro un recupero con un código de retención <Código Retención Recupero>
     Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
 
     Ejemplos:

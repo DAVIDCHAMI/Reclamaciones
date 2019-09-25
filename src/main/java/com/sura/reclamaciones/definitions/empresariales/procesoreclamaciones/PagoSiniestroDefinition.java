@@ -12,7 +12,6 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
@@ -33,7 +32,7 @@ public class PagoSiniestroDefinition {
 
   PagoSiniestro pagoSiniestro;
 
-  ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
+  ExposicionVehiculoTercero exposicionVehiculoTercero;
 
   @Steps NuevoPagoStep nuevoPagoStep;
 
@@ -42,8 +41,6 @@ public class PagoSiniestroDefinition {
   @Steps InformacionPagoStep informacionPagoStep;
 
   @Steps InstruccionPagoStep instruccionPagoStep;
-
-  @Steps GenericStep genericStep;
 
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
@@ -123,7 +120,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
         new PagoSiniestro(
-            (genericStep.getFilasModelo(
+            (obtenerDatosPrueba(
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.crearNuevoPago();

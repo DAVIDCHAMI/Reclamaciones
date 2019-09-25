@@ -14,7 +14,6 @@ import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
-import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.reaseguro.ReaseguroStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
@@ -32,8 +31,6 @@ public class ReaseguroDefinition {
   @Steps ReaseguroStep reaseguroStep;
 
   @Steps GenericStep genericStep;
-
-  @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
 
@@ -63,9 +60,8 @@ public class ReaseguroDefinition {
     instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
-  @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")
-  public void realizarRecuperoSiniestroEmpresarial(
-      String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException {
+  @Y("^se realice al siniestro un recupero con un código de retención (.*)$")
+  public void realizarRecuperoSiniestroEmpresarial(String strCodigoRetencionRecupero) throws IOException {
     Recupero recupero =
         new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoContrato));
     recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), strCodigoRetencionRecupero);
