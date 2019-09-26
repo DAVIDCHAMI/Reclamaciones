@@ -42,33 +42,6 @@ public class MenuClaimPage extends GeneralPage {
   )
   private List<WebElementFacade> mnuPanelOpcionesPrimerNivel;
 
-  @FindBy(xpath = "//span[contains(@class,'x-menu-item-text')][contains(text(),'")
-  private WebElementFacade opcionMenuAcciones;
-
-  @FindBy(
-    id =
-        "Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:NewExposureMenuItemSet_ByCoverage:0:item-textEl"
-  )
-  private WebElementFacade mnuNuevaExposicion;
-
-  @FindBy(
-    id =
-        "Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:NewExposureMenuItemSet_ByCoverage"
-  )
-  private WebElementFacade mnuExposicion;
-
-  @FindBy(
-    xpath =
-        ".//div[@class='x-panel x-layer x-panel-default x-menu x-border-box x-vertical-scroller x-panel-vertical-scroller x-panel-default-vertical-scroller']"
-  )
-  WebElementFacade mnuReclamacion;
-
-  @FindBy(
-    id =
-        "Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewTransaction_CheckSet-textEl"
-  )
-  WebElementFacade lblPagos;
-
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);
   }
@@ -93,7 +66,8 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
-    realizarEsperaCarga();
+  //  realizarEsperaCarga();
+    realizarEsperaFinalizarReclamacion();
     mnuLateralPrimerNivel
         .findElement(
             By.xpath(
@@ -105,7 +79,7 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
-    realizarEsperaCarga();
+    //realizarEsperaCarga();
     seleccionarOpcionMenuLateralPrimerNivel(nombreOpcion);
     realizarEsperaCarga();
     seleccionarOpcionMenuLateralPrimerNivel(subItem);

@@ -18,15 +18,7 @@ import net.thucydides.core.annotations.Steps;
 
 public class AnulacionPagoDefinition {
 
-  @Steps NuevoPagoStep nuevoPagoStep;
-
   @Steps AnulacionPagoStep anulacionPagoStep;
-
-  @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
-
-  @Steps InformacionPagoStep informacionPagoStep;
-
-  @Steps GenericStep genericStep;
 
   PagoSiniestro pagoSiniestro;
 

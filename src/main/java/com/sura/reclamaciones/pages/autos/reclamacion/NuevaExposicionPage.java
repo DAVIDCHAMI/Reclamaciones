@@ -5,6 +5,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class NuevaExposicionPage extends GeneralPage {
@@ -29,9 +30,12 @@ public class NuevaExposicionPage extends GeneralPage {
   @FindBy(xpath = "//span[contains(text(),'Nuevo incidente')]")
   private WebElementFacade lblNuevoIncidente;
 
-  @FindBy(
+  /*@FindBy(
     xpath = "//span[contains(@class,'x-btn-inner x-btn-inner-center')][contains(text(),'Act')]"
   )
+  private WebElementFacade btnActualizar;*/
+
+  @FindBy(xpath = "//*[@id=\"NewExposure:NewExposureScreen:Update-btnInnerEl\"]")
   private WebElementFacade btnActualizar;
 
   public NuevaExposicionPage(WebDriver wdriver) {
@@ -58,9 +62,14 @@ public class NuevaExposicionPage extends GeneralPage {
   }
 
   public void actualizarNuevaExposicion() {
-    btnActualizar.waitUntilVisible().waitUntilClickable().click();
+  /*  btnActualizar.waitUntilVisible().waitUntilClickable().click();
     waitFor(
         ExpectedConditions.presenceOfElementLocated(
             By.id("ClaimExposures:ClaimExposuresScreen:ClaimExposures_CloseExposure-btnInnerEl")));
+    realizarEsperaFinalizarReclamacion();*/
+    Actions actions = new Actions(driver);
+    actions.moveToElement(btnActualizar).build().perform();
+    btnActualizar.click();
+    realizarEsperaFinalizarReclamacion();
   }
 }

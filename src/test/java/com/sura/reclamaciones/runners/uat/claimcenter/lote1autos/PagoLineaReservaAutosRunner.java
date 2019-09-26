@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.runners.uat.claimcenter.lote2empresariales;
+package com.sura.reclamaciones.runners.uat.claimcenter.lote1autos;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
   features = "src/test/resources/features/pagos/pago_siniestro.feature",
   glue = {"com.sura.reclamaciones.definitions"},
-  tags = {"@chequeMultiplesPagosAutos"}
+  tags = {"@pagoLineaReservaAutos"}
 )
-public class PagoMultiplesPagosAutosRunner {}
+public class PagoLineaReservaAutosRunner {}

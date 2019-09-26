@@ -68,12 +68,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   @FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:Add-btnInnerEl")
   private WebElementFacade btnAgregarPago;
 
-  @FindBy(
-    xpath =
-        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewCheckPaymentsLV'][contains(@class,'x-panel x-panel-default x-grid')]"
-  )
-  private WebElementFacade tblPagoMultiplesReservas;
-
   public IntroducirInformacionPagoPage(WebDriver driver) {
     super(driver);
   }
@@ -105,13 +99,13 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     return dblValorReserva;
   }
 
-  private Integer calcularCantidadPago(String strTipoPago, int sizeCodigoRetencion) {
+  private Integer calcularCantidadPago(String strTipoPago, int cantidadCodigosRetencion) {
     double dblValorReserva = obtenerValorPagoReserva();
     Double dblCalculoVrReserva = null;
     if (strTipoPago.equals(TIPO_PAGO.getValor())) {
       dblCalculoVrReserva = Double.parseDouble(PORCENTAJE.getValor()) * dblValorReserva;
     } else {
-      dblCalculoVrReserva = dblValorReserva / (sizeCodigoRetencion - 1);
+      dblCalculoVrReserva = dblValorReserva / (cantidadCodigosRetencion - 1);
     }
     intCalculoVrReserva = dblCalculoVrReserva.intValue();
     return intCalculoVrReserva;
@@ -121,8 +115,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
       String strTipoPago,
       String strCantidadPago,
       int posicionIngresoDato,
-      int sizeCodigoRetencion) {
-    calcularCantidadPago(strTipoPago, sizeCodigoRetencion);
+      int cantidadCodigosRetencion) {
+    calcularCantidadPago(strTipoPago, cantidadCodigosRetencion);
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocidoPago(
             tblElementoLinea, strCantidadPago, posicionIngresoDato);

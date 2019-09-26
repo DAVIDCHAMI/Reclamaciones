@@ -35,7 +35,7 @@ Característica: Realizar pago de un siniestro
     Ejemplos:
       | Línea de Reserva      | Tipo de pago | Beneficiario del pago         | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                                     | Causa          | Valor de Pretensión | Tipo de incidente |
       | (1) 1ª partePropiedad | Parcial      | AURA JUDITH LOPEZ JULIO CQLII | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio       | 5000000             | Propiedad         |
-   # | (1) 1ª parteGeneral   | Parcial      | TODO EN VERDE CQLII           | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
+      | (1) 1ª parteGeneral   | Parcial      | TODO EN VERDE CQLII           | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
       | (1) 1ª partePropiedad   | Final      | MATERIALES LTDA. CQLII        | Caja Sura       | No                 | Multiriesgo corporativo con cobertura básica | Rotura de vidrios | 4000000             | Propiedad           |
 
   @pagoLineaReservaAutos
@@ -73,7 +73,7 @@ Característica: Realizar pago de un siniestro
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
-    Cuando se genere un pago por siniestro de auto <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las líneas de reserva <Línea de reserva 1> y <Línea de Reserva 2> afectando la cobertura de <Pago Solo Sura> es Sura
+    Cuando se genere un pago por siniestro de auto <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las líneas de reserva <Línea de reserva 1> y <Línea de Reserva 2> cuyo responsable <Pago Solo Sura> es Sura
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
       | 099                 |
@@ -81,7 +81,7 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de reserva 1                       | Línea de Reserva 2   | Tipo de pago | Beneficiario del pago | Método de Pago | Cobertura           | Pago Solo Sura |
-      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | SOFIA JARAMILLO       | Pago por banco | Perdida total Daños | No             |
+      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | SOFIA JARAMILLO     | Pago por banco | Perdida total Daños | No             |
 
   @riesgoConsultableEmpresarial
   @claimsEmpresarial
