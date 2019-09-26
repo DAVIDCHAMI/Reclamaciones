@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.pagos;
 
+import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
@@ -119,8 +120,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
       int cantidadCodigosRetencion) {
     calcularCantidadPago(strTipoPago, cantidadCodigosRetencion);
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, posicionIngresoDato);
+      //  obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, posicionIngresoDato);
+    obtenerElementoTablaDatoDesconocidoPago(
+        tblElementoLinea, CANTIDAD.getValor(), posicionIngresoDato);
     elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
+
     evaluateJavascript(
         String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
     Serenity.setSessionVariable(SESION_CC_VALOR_PAGO.getValor()).to(intCalculoVrReserva);
