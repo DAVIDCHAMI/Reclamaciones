@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-  features = "src/test/resources/features/pagos/pago_siniestro.feature",
+  features = "src/test/resources/features/pagos/pagar_siniestro.feature",
   glue = {"com.sura.reclamaciones.definitions"},
   tags = {"@pagoLineaReservaEmpresariales"}
 )

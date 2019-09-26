@@ -136,4 +136,10 @@ public class NuevoPagoStep {
     nuevoIncidenteVehicularPage.aceptarOpcion();
     nuevaExposicionManualPage.actualizarNuevaExposicion();
   }
+
+  public void marcarReclamacionAutosPerdidaTotal() {
+    seleccionarExposicionVehicularAsegurado();
+    declararReclamacionPerdidaTotal();
+    ingresarEstadoLegalReclamacion();
+  }
 }

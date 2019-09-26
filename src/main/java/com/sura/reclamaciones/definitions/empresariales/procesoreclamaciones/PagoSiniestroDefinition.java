@@ -17,6 +17,7 @@ import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
+import com.sura.reclamaciones.steps.primapendiente.PagoPrimaPendienteStep;
 import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
 import cucumber.api.DataTable;
 import cucumber.api.java.es.Cuando;
@@ -46,13 +47,15 @@ public class PagoSiniestroDefinition {
 
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
+  @Steps PagoPrimaPendienteStep pagoPrimaPendienteStep;
+
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
     //TODO: Falta adaptar con la automatización de marcación de audotoría
   }
 
   @Cuando(
-      "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de  (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
+      "^se realiza un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) con cobertura de (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
   public void generarPagoReclamacion(
       String tipoPago,
       String beneficiarioPago,
@@ -144,9 +147,7 @@ public class PagoSiniestroDefinition {
 
   @Y("^se declara la reclamación como perdida total$")
   public void declararReclamacionPerdidaTotal() {
-    nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
-    nuevoPagoStep.declararReclamacionPerdidaTotal();
-    nuevoPagoStep.ingresarEstadoLegalReclamacion();
+    nuevoPagoStep.marcarReclamacionAutosPerdidaTotal();
   }
 
   @Cuando(
@@ -176,5 +177,21 @@ public class PagoSiniestroDefinition {
     instruccionPagoStep.finalizarCreacionPago(
         pagoSiniestro.getLstPago(),
         Serenity.sessionVariableCalled(SESION_CC_LINEA_RESERVA.getValor()));
+  }
+
+  @Y("^la póliza esta marcada como financiada, con prima pendiente por pagar$")
+  public void verificarExistenciaPrimaPendiente() {
+    pagoPrimaPendienteStep.verificarEstadoPrimaPendiente();
+  }
+
+  @Entonces(
+      "^en la transacción del pago deben generarse dos registros, uno con el valor de la prima pendiente$")
+  public void verificarPagoPrimaPendiente() {
+    pagoPrimaPendienteStep.verificarValorPagoPrimaPendiente();
+  }
+
+  @Y("^otro con el valor del pago menos la prima pendiente")
+  public void verificarValorPago() {
+    pagoPrimaPendienteStep.verificarValorPagoMenosPrimaPendiente();
   }
 }
