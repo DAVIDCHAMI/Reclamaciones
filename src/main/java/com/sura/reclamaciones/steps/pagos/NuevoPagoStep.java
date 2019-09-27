@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import net.thucydides.core.annotations.Step;
@@ -22,6 +23,13 @@ public class NuevoPagoStep {
   @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
+
+  @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
+
+  @Step
+  public void consultarNumeroReclamacion() {
+    nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
+  }
 
   @Step
   public void agregarPagoNuevaLineaReserva() {

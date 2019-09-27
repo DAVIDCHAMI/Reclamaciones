@@ -20,9 +20,6 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
   )
   private WebElementFacade lblNumeroReclamacion;
 
-  @FindBy(xpath = "//input[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
-  private WebElementFacade mnuBuscar;
-
   public NuevaReclamacionGuardadaPage(WebDriver wdriver) {
     super(wdriver);
   }
@@ -51,11 +48,5 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
         .info(String.format("el número de reclamación generado es: %s%n", numeroReclamacion));
     lblNumeroReclamacion.click();
     return numeroReclamacion;
-  }
-
-  public void buscarReclamacion(String strReclamacion) {
-    mnuBuscar.click();
-    mnuBuscar.typeAndEnter(strReclamacion);
-    realizarEsperaCarga();
   }
 }

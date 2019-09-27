@@ -2,7 +2,7 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.Filtros.*;
 import static com.sura.reclamaciones.constantes.NombresCsv.*;
-
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.*;
 import com.sura.reclamaciones.steps.generics.*;
@@ -10,7 +10,7 @@ import com.sura.reclamaciones.steps.pagomasivo.*;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
-
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoMasivoDefinition {
@@ -103,6 +103,8 @@ public class PagoMasivoDefinition {
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     detalleFacturaVolumenStep.validarPagoMasivo();
     datoFinancieroPagoStep.validarPagosIndividuales(
-        strOpcionMenu, numReclamacion, MenuConstante.DATOS_FINANCIEROS, MenuConstante.PAGOS);
+        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()),
+        MenuConstante.DATOS_FINANCIEROS,
+        MenuConstante.PAGOS);
   }
 }

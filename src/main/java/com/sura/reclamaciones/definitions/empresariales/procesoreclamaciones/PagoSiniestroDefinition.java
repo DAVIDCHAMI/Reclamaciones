@@ -150,7 +150,7 @@ public class PagoSiniestroDefinition {
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
   public void notificarProcesoAuditoria(String requiereAuditoria) {
-    //nuevoPagoStep.consultarNumeroReclamacion();
+    nuevoPagoStep.consultarNumeroReclamacion();
     inclusionProcesoAuditoriaStep.marcarAuditoria(requiereAuditoria);
   }
 
