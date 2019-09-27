@@ -46,12 +46,12 @@ Característica: Realizar pago de un siniestro
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
-      | 028                 |
+      | 099                 |
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
       | Línea de Reserva | Tipo de pago | Beneficiario del pago | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
-      | 1ª parteVehículo | Parcial      | SOFIA JARAMILLO       | Caja Sura       | No                 | Perdida total Daños |
+      | 1ª parteVehículo | Parcial      |  JOSE GREGORIO RECALDE DIAZ CQLII  | Caja Sura       | No                 | Perdida total Daños |
 
   @pagoPerdidaTotalAutos
   @claimsAuto

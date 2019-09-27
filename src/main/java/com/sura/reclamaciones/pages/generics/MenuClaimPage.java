@@ -66,8 +66,7 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
-  //  realizarEsperaCarga();
-    realizarEsperaFinalizarReclamacion();
+    realizarTiempoEsperaCarga();
     mnuLateralPrimerNivel
         .findElement(
             By.xpath(
@@ -79,7 +78,6 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuLateralSegundoNivel(String nombreOpcion, String subItem) {
-    //realizarEsperaCarga();
     seleccionarOpcionMenuLateralPrimerNivel(nombreOpcion);
     realizarEsperaCarga();
     seleccionarOpcionMenuLateralPrimerNivel(subItem);

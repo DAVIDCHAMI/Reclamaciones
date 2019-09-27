@@ -120,9 +120,9 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
       int cantidadCodigosRetencion) {
     calcularCantidadPago(strTipoPago, cantidadCodigosRetencion);
     List<WebElement> elementoEncontrado =
-      //  obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, posicionIngresoDato);
-    obtenerElementoTablaDatoDesconocidoPago(
-        tblElementoLinea, CANTIDAD.getValor(), posicionIngresoDato);
+        //  obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, posicionIngresoDato);
+        obtenerElementoTablaDatoDesconocidoPago(
+            tblElementoLinea, CANTIDAD.getValor(), posicionIngresoDato);
     elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
 
     evaluateJavascript(
