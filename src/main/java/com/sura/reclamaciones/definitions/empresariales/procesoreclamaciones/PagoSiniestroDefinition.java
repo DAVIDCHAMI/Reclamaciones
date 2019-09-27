@@ -128,9 +128,6 @@ public class PagoSiniestroDefinition {
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    //  nuevoPagoStep.agregarPagoNuevaLineaReserva();
-    //  informacionPagoStep.ingresarInformacionPago(
-    //    lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
