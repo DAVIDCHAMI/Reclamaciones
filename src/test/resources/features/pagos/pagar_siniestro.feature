@@ -81,7 +81,7 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de reserva 1                       | Línea de Reserva 2   | Tipo de pago | Beneficiario del pago | Método de Pago | Cobertura           | Pago Solo Sura |
-      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | SOFIA JARAMILLO     | Pago por banco | Perdida total Daños | No             |
+      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | JOSE GREGORIO RECALDE DIAZ CQLII     | Pago por banco | Perdida total Daños | No             |
 
   @riesgoConsultableEmpresarial
   @claimsEmpresarial

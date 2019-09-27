@@ -56,10 +56,6 @@ public class NuevaExposicionPage extends GeneralPage {
   }
 
   public void actualizarNuevaExposicion() {
-    /*  btnActualizar.waitUntilVisible().waitUntilClickable().click();
-    waitFor(
-        ExpectedConditions.presenceOfElementLocated(
-            By.id("ClaimExposures:ClaimExposuresScreen:ClaimExposures_CloseExposure-btnInnerEl")));*/
     Actions actions = new Actions(driver);
     actions.moveToElement(btnActualizar).build().perform();
     btnActualizar.click();
