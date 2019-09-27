@@ -25,9 +25,6 @@ public class MenuClaimPage extends GeneralPage {
   )
   private WebElementFacade mnuSegundoNivelEscritorio;
 
-  @FindBy(xpath = "//input[@id='QuickJump-inputEl']")
-  private WebElementFacade txtComandoPolicy;
-
   @FindBy(xpath = " //div[@id='westPanel-innerCt']")
   private WebElementFacade mnuLateralPrimerNivel;
 
