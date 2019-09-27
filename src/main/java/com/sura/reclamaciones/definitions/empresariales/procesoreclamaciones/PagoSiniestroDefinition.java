@@ -6,7 +6,6 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TER
 import static com.sura.reclamaciones.constantes.NombresCsv.*;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 
@@ -15,13 +14,11 @@ import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.generics.MenuClaimsStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
 import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import com.sura.reclamaciones.steps.procesoauditoria.InclusionProcesoAuditoriaStep;
-import com.sura.reclamaciones.utils.VariablesSesion;
 import cucumber.api.DataTable;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -49,8 +46,6 @@ public class PagoSiniestroDefinition {
   @Steps InstruccionPagoStep instruccionPagoStep;
 
   @Steps GenericStep genericStep;
-
-  @Steps MenuClaimsStep menuClaimsStep;
 
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
 
@@ -91,8 +86,6 @@ public class PagoSiniestroDefinition {
       String lineaReserva,
       String aplicaSoloSura)
       throws IOException {
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
@@ -118,23 +111,21 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura,
       int numeroVehiculosInvolucradosTercero)
       throws IOException {
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(VariablesSesion.SESION_CC_NUMERO_SINIESTRO.getValor()));
     nuevaExposicionVehiculoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
-            new ExposicionVehiculoTercero(
-                    genericStep.getFilasModelo(
-                            PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
-                            EXPOSICION_VEHICULAR_TERCERO.getValor()));
-    datosCodigoFasecolda =
-            new CodigoFasecolda(
-                    genericStep.getFilasModelo(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
-    nuevaExposicionVehiculoStep.crearExposicionVehicularManual(
+        new ExposicionVehiculoTercero(
             genericStep.getFilasModelo(
-                    PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
-            exposicionVehiculoTercero.getLstExposicionTerceros(),
-            numeroVehiculosInvolucradosTercero,
-            datosCodigoFasecolda.getLstCodigoFasecolda());
+                PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
+                EXPOSICION_VEHICULAR_TERCERO.getValor()));
+    datosCodigoFasecolda =
+        new CodigoFasecolda(
+            genericStep.getFilasModelo(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
+    nuevaExposicionVehiculoStep.crearExposicionVehicularManual(
+        genericStep.getFilasModelo(
+            PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
+        exposicionVehiculoTercero.getLstExposicionTerceros(),
+        numeroVehiculosInvolucradosTercero,
+        datosCodigoFasecolda.getLstCodigoFasecolda());
     nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
@@ -159,7 +150,7 @@ public class PagoSiniestroDefinition {
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
   public void notificarProcesoAuditoria(String requiereAuditoria) {
-    nuevoPagoStep.consultarNumeroReclamacion();
+    //nuevoPagoStep.consultarNumeroReclamacion();
     inclusionProcesoAuditoriaStep.marcarAuditoria(requiereAuditoria);
   }
 

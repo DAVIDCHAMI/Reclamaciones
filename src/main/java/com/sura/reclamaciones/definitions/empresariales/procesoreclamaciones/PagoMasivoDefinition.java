@@ -2,7 +2,6 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.Filtros.*;
 import static com.sura.reclamaciones.constantes.NombresCsv.*;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.*;
@@ -11,7 +10,7 @@ import com.sura.reclamaciones.steps.pagomasivo.*;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
-import net.serenitybdd.core.Serenity;
+
 import net.thucydides.core.annotations.Steps;
 
 public class PagoMasivoDefinition {
@@ -33,8 +32,6 @@ public class PagoMasivoDefinition {
   @Steps ProcesoBatchStep procesoBatchStep;
 
   @Steps FacturaVolumenStep facturaVolumenStep;
-
-  @Steps MenuClaimsStep menuClaimsStep;
 
   @Steps DatoFinancieroPagoStep datoFinancieroPagoStep;
 
@@ -101,13 +98,11 @@ public class PagoMasivoDefinition {
 
   @Entonces(
       "^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
-  public void validarPagoMasivo() {
+  public void validarPagoMasivo(String strOpcionMenu, String numReclamacion) {
     facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
         MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
     detalleFacturaVolumenStep.validarPagoMasivo();
-    menuClaimsStep.consultarNumeroReclamacion(
-        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
     datoFinancieroPagoStep.validarPagosIndividuales(
-        MenuConstante.DATOS_FINANCIEROS, MenuConstante.PAGOS);
+        strOpcionMenu, numReclamacion, MenuConstante.DATOS_FINANCIEROS, MenuConstante.PAGOS);
   }
 }

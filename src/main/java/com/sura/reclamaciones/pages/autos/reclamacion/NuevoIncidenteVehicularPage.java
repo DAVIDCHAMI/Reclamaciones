@@ -1,6 +1,7 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
+
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import java.util.List;

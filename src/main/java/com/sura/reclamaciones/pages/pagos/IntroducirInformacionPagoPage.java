@@ -8,6 +8,7 @@ import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_PAGOS_CC;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -124,11 +125,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
       int sizeCodigoRetencion) {
     calcularCantidadPago(strTipoPago, sizeCodigoRetencion);
     List<WebElement> elementoEncontrado =
-        obtenerElementoTablaDatoDesconocidoPago(
-            tblElementoLinea, strCantidadPago, posicionIngresoDato);
+        obtenerElementoTablaDatoDesconocido(tblElementoLinea, strCantidadPago, posicionIngresoDato);
     elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
     evaluateJavascript(
         String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
+    Serenity.setSessionVariable(SESION_CC_VALOR_PAGO.getValor()).to(intCalculoVrReserva);
   }
 
   public void agregarNuevoPago() {

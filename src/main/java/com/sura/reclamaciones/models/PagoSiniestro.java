@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class PagoSiniestro extends Transacciones {
 
-  private List<PagoSiniestro> lstPagoSiniestro = new ArrayList<PagoSiniestro>();
+  private List<PagoSiniestro> lstPagoSiniestro = new ArrayList<>();
   private String tipoBeneficiario;
   private String comentario;
   private String numeroFactura;
@@ -22,10 +22,9 @@ public class PagoSiniestro extends Transacciones {
   private String description;
   private String condicionPago;
   private String paymentConditionTypeExt;
+  private String esPagoAutomatico;
 
-  public PagoSiniestro() {
-    super();
-  }
+  public PagoSiniestro() {}
 
   private PagoSiniestro(Map<String, String> datosPagosEmpresariales) {
     super(datosPagosEmpresariales);
@@ -44,10 +43,13 @@ public class PagoSiniestro extends Transacciones {
     this.description = datosPagosEmpresariales.get("description");
     this.condicionPago = datosPagosEmpresariales.get("condicionPago");
     this.paymentConditionTypeExt = datosPagosEmpresariales.get("paymentConditionType_Ext");
+    this.esPagoAutomatico = datosPagosEmpresariales.get("esPagoAutomatico");
   }
 
   public PagoSiniestro(List<Map<String, String>> datosPagosEmpresariales) {
-    asignarDatos(datosPagosEmpresariales);
+    for (Map<String, String> dato : datosPagosEmpresariales) {
+      lstPagoSiniestro.add(new PagoSiniestro(dato));
+    }
   }
 
   public String getTipoBeneficiario() {
@@ -64,6 +66,10 @@ public class PagoSiniestro extends Transacciones {
 
   public String getTipoDireccion() {
     return tipoDireccion;
+  }
+
+  public String getEsPagoAutomatico() {
+    return esPagoAutomatico;
   }
 
   public List<PagoSiniestro> getLstPago() {

@@ -2,6 +2,7 @@ package com.sura.reclamaciones.steps.pagos;
 
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
+
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -21,11 +22,6 @@ public class NuevoPagoStep {
   @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
-
-  @Step
-  public void consultarNumeroReclamacion() {
-    resumenReclamacionPage.obtenerNumeroReclamacion();
-  }
 
   @Step
   public void agregarPagoNuevaLineaReserva() {
