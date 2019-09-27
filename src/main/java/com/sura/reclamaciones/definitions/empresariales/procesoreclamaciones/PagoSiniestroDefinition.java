@@ -98,13 +98,12 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) y (.*) cuyo responsable (.*) es Sura$")
+      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) cuyo responsable (.*) es Sura$")
   public void crearMultiPago(
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
-      String lineaReserva2,
       String aplicaSoloSura)
       throws IOException {
     nuevoPagoStep.consultarPlacaAsegurado();
@@ -129,9 +128,9 @@ public class PagoSiniestroDefinition {
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    nuevoPagoStep.agregarPagoNuevaLineaReserva();
-    informacionPagoStep.ingresarInformacionPago(
-        lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
+  //  nuevoPagoStep.agregarPagoNuevaLineaReserva();
+  //  informacionPagoStep.ingresarInformacionPago(
+    //    lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")

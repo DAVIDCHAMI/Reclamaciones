@@ -73,15 +73,15 @@ Característica: Realizar pago de un siniestro
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
-    Cuando se genere un pago por siniestro de auto <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las líneas de reserva <Línea de reserva 1> y <Línea de Reserva 2> cuyo responsable <Pago Solo Sura> es Sura
+    Cuando se genere un pago por siniestro de auto <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las líneas de reserva <Línea de reserva 1> cuyo responsable <Pago Solo Sura> es Sura
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
       | 099                 |
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva 1                       | Línea de Reserva 2   | Tipo de pago | Beneficiario del pago | Método de Pago | Cobertura           | Pago Solo Sura |
-      | Perdida total Daños pago por en EFECTIVO | Gastos de Transporte | Final        | JOSE GREGORIO RECALDE DIAZ CQLII     | Pago por banco | Perdida total Daños | No             |
+      | Línea de reserva 1                       |  Tipo de pago | Beneficiario del pago | Método de Pago | Cobertura           | Pago Solo Sura |
+      | Perdida total Daños pago por en EFECTIVO | Final        | JOSE GREGORIO RECALDE DIAZ CQLII     | Pago por banco | Perdida total Daños | No             |
 
   @riesgoConsultableEmpresarial
   @claimsEmpresarial
