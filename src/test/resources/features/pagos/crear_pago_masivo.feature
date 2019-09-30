@@ -16,4 +16,4 @@ Característica: Realizar un pago masivo a un proveedor
 
     Ejemplos:
       | Tipo de contacto | Proveedor  | Tipo de moneda | Método de pago |Número de vehículos involucrados del tercero en el siniestro|Coberturas de la póliza          |
-      | Empresa          | ANDAR S.A. | COP            | Pago por banco |4                                                           |Daños al carro y daños a terceros|
+      | Empresa          | ANDAR S.A. | COP            | Pago por banco |2                                                        |Daños al carro y daños a terceros|
