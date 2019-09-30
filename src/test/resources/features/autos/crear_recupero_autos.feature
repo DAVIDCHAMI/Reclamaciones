@@ -10,7 +10,10 @@ Característica: Crear un recupero de un siniestro
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
     Y se declara la reclamación como perdida total
-    Y se realiza un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura con una retención de <Código de retención pago>
+    Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura
+    Y se apliquen las siguientes retenciones
+      |Codigos_Retenciones|
+      |0099   |
     Y se genera una orden de pago para que le sea entregado al usuario
     Cuando se cree el recupero con un código de retención <Código de retención recupero> a una cobertura <Tipo de cobertura>
     Entonces se obtiene un ingreso de dinero sobre el siniestro
