@@ -143,6 +143,6 @@ public class AgregarInformacionPage extends GeneralPage {
   public void concluirReclamacion() {
     btnFinalizar.waitUntilVisible();
     btnFinalizar.click();
-    realizarEsperaFinalizarReclamacion();
+    realizarTiempoEsperaCarga();
   }
 }

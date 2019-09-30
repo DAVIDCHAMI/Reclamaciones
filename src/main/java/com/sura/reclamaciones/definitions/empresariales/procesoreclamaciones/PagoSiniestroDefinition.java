@@ -75,8 +75,8 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) donde el responsable (.*) es Sura con una retención de (.*)$")
-  public void crearPago(
+      "^se genere un pago (.*) al beneficiario (.*) por el medio de pago de (.*) sobre la línea de reserva (.*) donde el responsable (.*) es Sura$")
+  public void crearPagoPerdidaTotal(
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
@@ -95,17 +95,15 @@ public class PagoSiniestroDefinition {
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Cuando(
-      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) y (.*) afectando la cobertura de (.*) es Sura con una retención de (.*)$")
+      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) cuyo responsable (.*) es Sura$")
   public void crearMultiPago(
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
-      String lineaReserva2,
       String aplicaSoloSura)
       throws IOException {
     nuevoPagoStep.consultarPlacaAsegurado();
@@ -130,10 +128,6 @@ public class PagoSiniestroDefinition {
     informacionBeneficiarioPagoStep.ingresarInformacionBeneficiarioPago(
         beneficiarioPago, metodoPago, aplicaSoloSura, pagoSiniestro.getLstPago());
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
-    nuevoPagoStep.agregarPagoNuevaLineaReserva();
-    informacionPagoStep.ingresarInformacionPago(
-        lineaReserva2, tipoPago, pagoSiniestro.getLstPago());
-    instruccionPagoStep.finalizarCreacionPago(pagoSiniestro.getLstPago(), lineaReserva);
   }
 
   @Entonces("^se genera una orden de pago para que le sea entregado al usuario$")
