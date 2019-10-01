@@ -16,9 +16,9 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de Reserva      | Tipo de pago | Beneficiario del pago           | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                                     | Causa          | Valor de Pretensión | Tipo de incidente |
-      | (1) 1ª partePropiedad | Parcial        | AURA JUDITH LOPEZ JULIO CQLII   | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         |
-      | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII             | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
+      | Línea de Reserva      | Tipo de pago | Beneficiario del pago         | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                                     | Causa          | Valor de Pretensión | Tipo de incidente |
+      | (1) 1ª partePropiedad | Parcial      | AURA JUDITH LOPEZ JULIO CQLII | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio       | 2000000             | Propiedad         |
+      | (1) 1ª parteGeneral   | Final        | TODO EN VERDE CQLII           | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
 
   @pagoMultipleRetencionEmpresariales
   @claimsEmpresarial
@@ -33,10 +33,10 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de Reserva      | Tipo de pago | Beneficiario del pago         | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                                     | Causa          | Valor de Pretensión | Tipo de incidente |
-      | (1) 1ª partePropiedad | Parcial      | AURA JUDITH LOPEZ JULIO CQLII | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio       | 5000000             | Propiedad         |
-      | (1) 1ª parteGeneral   | Parcial      | TODO EN VERDE CQLII           | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento | 3000000             | General           |
-      | (1) 1ª partePropiedad   | Final      | MATERIALES LTDA. CQLII        | Caja Sura       | No                 | Multiriesgo corporativo con cobertura básica | Rotura de vidrios | 4000000             | Propiedad           |
+      | Línea de Reserva      | Tipo de pago | Beneficiario del pago         | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura                                     | Causa             | Valor de Pretensión | Tipo de incidente |
+      | (1) 1ª partePropiedad | Parcial      | AURA JUDITH LOPEZ JULIO CQLII | Caja Sura       | No                 | Hogar con cobertura básica                           | Incendio          | 5000000             | Propiedad         |
+      | (1) 1ª parteGeneral   | Parcial      | TODO EN VERDE CQLII           | Caja Sura       | No                 | Cumplimiento con cobertura Cumplimiento del contrato | Incumplimiento    | 3000000             | General           |
+      | (1) 1ª partePropiedad | Final        | MATERIALES LTDA. CQLII        | Caja Sura       | No                 | Multiriesgo corporativo con cobertura básica         | Rotura de vidrios | 4000000             | Propiedad         |
 
   @pagoLineaReservaAutos
   @claimsAuto
@@ -50,8 +50,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de Reserva | Tipo de pago | Beneficiario del pago | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
-      | 1ª parteVehículo | Parcial      |  JOSE GREGORIO RECALDE DIAZ CQLII  | Caja Sura       | No                 | Perdida total Daños |
+      | Línea de Reserva | Tipo de pago | Beneficiario del pago            | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
+      | 1ª parteVehículo | Parcial      | JOSE GREGORIO RECALDE DIAZ CQLII | Caja Sura       | No                 | Perdida total Daños |
 
   @pagoPerdidaTotalAutos
   @claimsAuto
@@ -65,8 +65,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva | Tipo de pago | Beneficiario de pago | Método de pago | Solo Sura | Cobertura           |
-      | 1ª parteVehículo | Parcial      | SOFIA JARAMILLO      | Caja Sura      | No        | Perdida total Daños |
+      | Línea de reserva | Tipo de pago | Beneficiario de pago             | Método de pago | Solo Sura | Cobertura           |
+      | 1ª parteVehículo | Parcial      | JOSE GREGORIO RECALDE DIAZ CQLII | Caja Sura      | No        | Perdida total Daños |
 
   @chequeMultiplesPagosAutos
   @claimsAuto
@@ -80,8 +80,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva 1                       |  Tipo de pago | Beneficiario del pago | Método de Pago | Cobertura           | Pago Solo Sura |
-      | Perdida total Daños pago por en EFECTIVO | Final        | JOSE GREGORIO RECALDE DIAZ CQLII     | Pago por banco | Perdida total Daños | No             |
+      | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago            | Método de Pago | Cobertura           | Pago Solo Sura |
+      | Perdida total Daños pago por en EFECTIVO | Final        | JOSE GREGORIO RECALDE DIAZ CQLII | Pago por banco | Perdida total Daños | No             |
 
   @riesgoConsultableEmpresarial
   @claimsEmpresarial
