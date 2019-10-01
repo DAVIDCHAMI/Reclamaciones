@@ -120,26 +120,31 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   public void seleccionarLugarAtencion(String lugarAtencion) {
     cmbLugar.clear();
     cmbLugar.typeAndTab(lugarAtencion);
+    realizarEsperaCarga();
   }
 
   public void seleccionarPaisAtencion(String pais) {
     cmbPais.clear();
     cmbPais.typeAndTab(pais);
+    realizarEsperaCarga();
   }
 
   public void seleccionarDepartamentoAtencion(String departamento) {
     cmbDepartamento.clear();
     cmbDepartamento.typeAndTab(departamento);
+    realizarEsperaCarga();
   }
 
   public void seleccionarCiudadAtencion(String ciudad) {
     cmbCiudad.clear();
     cmbCiudad.typeAndTab(ciudad);
+    realizarEsperaCarga();
   }
 
   public void seleccionarDireccionAtencion(String direccion) {
     cmbDireccion.clear();
     cmbDireccion.typeAndTab(direccion);
+    realizarEsperaCarga();
   }
 
   public void seleccionarConductoVehiculoAfectado() {
