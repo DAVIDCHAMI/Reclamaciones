@@ -30,9 +30,9 @@ public class ReaseguroDefinition {
 
   @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
-  @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")
-  public void realizarRecuperoSiniestroEmpresarial(
-      String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException {
+  @Y("^se realice al siniestro un recupero con un código de retención (.*)$")
+  public void realizarRecuperoSiniestroEmpresarial(String strCodigoRetencionRecupero)
+      throws IOException {
     Recupero recupero =
         new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoContrato));
     recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), strCodigoRetencionRecupero);

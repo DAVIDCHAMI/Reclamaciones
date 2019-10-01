@@ -41,12 +41,12 @@ Característica: Distribución del reaseguro de un siniestro
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
       | 099                 |
-    Y se realice al siniestro un recupero de tipo <Tipo Recupero> con un código de retención <Código Retención Recupero>
+    Y se realice al siniestro un recupero con un código de retención <Código Retención Recupero>
     Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
 
     Ejemplos:
-      | Tipo y Cobertura                        | Línea de Reserva      | Tipo de pago | Beneficiario del pago           | Método del pago | ¿Es pago soloSura? | Tipo Transacción | Tipo Recupero | Código Retención Recupero | Causa          | Valor de Pretensión | Tipo de incidente |
-      | Incendio con cobertura Daños materiales | (1) 1ª parteContenido | Final        | MARTHA ENID ROJAS MARIACA CQLII | Caja Sura       | No                 | Recupero         | Salvamento    | 0099                      | Daños por agua | 3000000             | Contenido         |
+      | Tipo y Cobertura                        | Línea de Reserva      | Tipo de pago | Beneficiario del pago           | Método del pago | ¿Es pago soloSura? | Tipo Transacción |Código Retención Recupero | Causa          | Valor de Pretensión | Tipo de incidente |
+      | Incendio con cobertura Daños materiales | (1) 1ª parteContenido | Final        | MARTHA ENID ROJAS MARIACA CQLII | Caja Sura       | No                 | Recupero         | 0099                      | Daños por agua | 3000000             | Contenido         |
 
   @reaseguroRecupero
   @claimsEmpresarial
@@ -54,12 +54,12 @@ Característica: Distribución del reaseguro de un siniestro
     Dado que se tiene una póliza de <Tipo y Cobertura>
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
     Y un incidente de tipo <Tipo de incidente>
-    Cuando se genere un recupero de tipo <Tipo Recupero> con un código de retención <Código Retención Recupero>
+    Cuando se genere un recupero con un código de retención <Código Retención Recupero>
     Entonces para la transacción <Tipo Transacción> se distribuye el reaseguro según el retenido y el cedido de manera adecuada
 
     Ejemplos:
-      | Tipo y Cobertura                        | Tipo Transacción | Tipo Recupero | Código Retención Recupero | Causa          | Valor de Pretensión | Tipo de incidente |
-      | Incendio con cobertura Daños materiales | Recupero         | Salvamento    | 0099                      | Daños por agua | 3000000             | Contenido         |
+      | Tipo y Cobertura                        | Tipo Transacción | Código Retención Recupero | Causa          | Valor de Pretensión | Tipo de incidente |
+      | Incendio con cobertura Daños materiales | Recupero         | 0099                      | Daños por agua | 3000000             | Contenido         |
 
   @reaseguroAnulacionPago
   @claimsEmpresarial
