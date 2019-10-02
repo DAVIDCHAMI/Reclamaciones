@@ -11,7 +11,7 @@ Característica: Anulacion de recuperos
     Dado que se tiene una póliza de <Tipo y Cobertura>
     Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
     Y un incidente de tipo <Tipo de incidente>
-    Y se genere un recupero de tipo <Tipo de recupero> con un código de retención <Código de retención recupero>
+    Y se genere un recupero con un código de retención <Código de retención recupero>
     Y se obtiene un reintegro de dinero al siniestro
     Cuando se realice la anulación del recupero
     Entonces se debe obtener la anulación del recupero, quedando en estado anulado

@@ -8,7 +8,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.reaseguro.ReaseguroStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Entonces;
@@ -28,22 +28,21 @@ public class ReaseguroDefinition {
 
   @Steps RecuperoStep recuperoStep;
 
-  @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
-  @Y("^se realice al siniestro un recupero de tipo (.*) con un código de retención (.*)$")
-  public void realizarRecuperoSiniestroEmpresarial(
-      String strTipoRecupero, String strCodigoRetencionRecupero) throws IOException {
+  @Y("^se realice al siniestro un recupero con un código de retención (.*)$")
+  public void realizarRecuperoSiniestroEmpresarial(String strCodigoRetencionRecupero)
+      throws IOException {
     Recupero recupero =
         new Recupero(genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), strTipoContrato));
-    recuperoStep.diligenciarCreacionRecupero(
-        recupero.getLstRecupero(), strTipoRecupero, strCodigoRetencionRecupero);
+    recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), strCodigoRetencionRecupero);
   }
 
   @Entonces(
       "^para la transacción (.*) se distribuye el reaseguro según el retenido y el cedido de manera adecuada$")
   public void verificarReaseguro(String strTransaccion) throws IOException {
     if (strTransaccion.equals(RESERVA.getValor())) {
-      nuevaReclamacionEmpresarialStep.visualizarResumenReclamacion();
+      nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
     }
     Contrato contrato =
         new Contrato(genericStep.getFilasModelo(CONTRATO.getValor(), strTipoContrato));

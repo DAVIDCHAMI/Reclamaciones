@@ -12,7 +12,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
@@ -33,8 +33,6 @@ public class PagoSiniestroDefinition {
 
   PagoSiniestro pagoSiniestro;
 
-  ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
-
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
@@ -43,9 +41,9 @@ public class PagoSiniestroDefinition {
 
   @Steps InstruccionPagoStep instruccionPagoStep;
 
-  @Steps GenericStep genericStep;
-
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
+
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Steps PagoPrimaPendienteStep pagoPrimaPendienteStep;
 
@@ -107,7 +105,7 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura)
       throws IOException {
     nuevoPagoStep.consultarPlacaAsegurado();
-    exposicionVehiculoTercero =
+    ExposicionVehiculoTercero exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
             obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
@@ -121,7 +119,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
         new PagoSiniestro(
-            (genericStep.getFilasModelo(
+            (obtenerDatosPrueba(
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.crearNuevoPago();
@@ -137,7 +135,7 @@ public class PagoSiniestroDefinition {
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
   public void notificarProcesoAuditoria(String requiereAuditoria) {
-    nuevoPagoStep.consultarNumeroReclamacion();
+    nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
     inclusionProcesoAuditoriaStep.marcarAuditoria(requiereAuditoria);
   }
 

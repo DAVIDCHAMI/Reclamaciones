@@ -8,10 +8,10 @@ import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_RECU
 import com.sura.reclamaciones.models.Recupero;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
-import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
+import java.util.ArrayList;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
@@ -20,15 +20,11 @@ import org.openqa.selenium.WebElement;
 
 public class RecuperoStep {
 
-  List<WebElement> lstFilaRecupero;
-
   @Page CreacionRecuperoPage creacionRecuperoPage;
 
   @Page GeneralPage generalPage;
 
   @Page MenuRecuperoPage menuRecuperoPage;
-
-  @Page ResumenReclamacionPage resumenReclamacionPage;
 
   @Page VerificacionRecuperoPage verificacionRecuperoPage;
 
@@ -40,8 +36,7 @@ public class RecuperoStep {
   }
 
   @Step
-  public void diligenciarCreacionRecupero(
-      List<Recupero> lstRecupero, String tipoRecupero, String codigoRetencion) {
+  public void diligenciarCreacionRecupero(List<Recupero> lstRecupero, String codigoRetencion) {
     menuRecuperoPage.ingresarMenuRecupero();
     lstRecupero.forEach(
         formulario -> {
@@ -63,6 +58,7 @@ public class RecuperoStep {
   public void verificarCreacionRecupero(List<Recupero> lstRecupero) {
     lstRecupero.forEach(
         (Recupero validador) -> {
+          List<WebElement> lstFilaRecupero = new ArrayList<>();
           for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
             generalPage.realizarEsperaCarga();
             lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();

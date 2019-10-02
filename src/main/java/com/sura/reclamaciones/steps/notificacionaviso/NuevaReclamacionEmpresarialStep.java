@@ -5,7 +5,6 @@ import static com.sura.reclamaciones.constantes.Constantes.VALIDADOR_NUEVA_RECLA
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.notificacionaviso.InformacionReclamacionPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import java.util.List;
@@ -20,8 +19,6 @@ public class NuevaReclamacionEmpresarialStep {
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
 
-  @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
-
   public void validarReclamacion() {
     String verificar;
     verificar = informacionReclamacionPage.obtenerTituloReclamacionGenerada();
@@ -32,10 +29,6 @@ public class NuevaReclamacionEmpresarialStep {
 
   public void seleccionarNuevaReclamacion(String nombreOpcion, String subItem) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
-  }
-
-  public void visualizarResumenReclamacion() {
-    nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
   }
 
   public void validarExposicionVisualizada(String exposicion) {
