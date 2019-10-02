@@ -50,8 +50,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de Reserva | Tipo de pago | Beneficiario del pago            | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
-      | 1ª parteVehículo | Parcial      | JOSE GREGORIO RECALDE DIAZ CQLII | Caja Sura       | No                 | Perdida total Daños |
+      | Línea de Reserva | Tipo de pago | Beneficiario del pago                      | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
+      | 1ª parteVehículo | Parcial      | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Caja Sura       | No                 | Perdida total Daños |
 
   @pagoPerdidaTotalAutos
   @claimsAuto
@@ -65,8 +65,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva | Tipo de pago | Beneficiario de pago             | Método de pago | Solo Sura | Cobertura           |
-      | 1ª parteVehículo | Parcial      | JOSE GREGORIO RECALDE DIAZ CQLII | Caja Sura      | No        | Perdida total Daños |
+      | Línea de reserva | Tipo de pago | Beneficiario de pago                       | Método de pago | Solo Sura | Cobertura           |
+      | 1ª parteVehículo | Parcial      | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Caja Sura      | No        | Perdida total Daños |
 
   @chequeMultiplesPagosAutos
   @claimsAuto
@@ -80,8 +80,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago            | Método de Pago | Cobertura           | Pago Solo Sura |
-      | Perdida total Daños pago por en EFECTIVO | Final        | JOSE GREGORIO RECALDE DIAZ CQLII | Pago por banco | Perdida total Daños | No             |
+      | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago                      | Método de Pago | Cobertura           | Pago Solo Sura |
+      | Perdida total Daños pago por en EFECTIVO | Final        | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Pago por banco | Perdida total Daños | No             |
 
   @riesgoConsultableEmpresarial
   @claimsEmpresarial
