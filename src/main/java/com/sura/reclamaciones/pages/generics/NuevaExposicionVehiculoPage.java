@@ -65,6 +65,6 @@ public class NuevaExposicionVehiculoPage extends GeneralPage {
     Actions actions = new Actions(driver);
     actions.moveToElement(btnActualizar).build().perform();
     btnActualizar.click();
-    realizarEsperaFinalizarReclamacion();
+    realizarTiempoEsperaCarga();
   }
 }

@@ -65,4 +65,10 @@ public class NuevoPagoStep {
     detalleExposicionAutomaticaPage.ingresarEstadoLegalReclamacion();
     detalleExposicionAutomaticaPage.actualizarDetalleExposicion();
   }
+
+  public void marcarReclamacionAutosPerdidaTotal() {
+    seleccionarExposicionVehicularAsegurado();
+    declararReclamacionPerdidaTotal();
+    ingresarEstadoLegalReclamacion();
+  }
 }

@@ -190,7 +190,7 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public void realizarEsperaFinalizarReclamacion() {
+  public void realizarTiempoEsperaCarga() {
     int numeroIntentos = Integer.parseInt(NUMERO_INTENTOS_ESPERA_ELEMENTO.getValor());
     while (numeroIntentos > 0) {
       if (!pgrBarCarga.isPresent()) {

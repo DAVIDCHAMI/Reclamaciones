@@ -6,10 +6,6 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.AnulacionPagoStep;
-import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
-import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
-import com.sura.reclamaciones.steps.pagos.NuevoPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
@@ -18,15 +14,7 @@ import net.thucydides.core.annotations.Steps;
 
 public class AnulacionPagoDefinition {
 
-  @Steps NuevoPagoStep nuevoPagoStep;
-
   @Steps AnulacionPagoStep anulacionPagoStep;
-
-  @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
-
-  @Steps InformacionPagoStep informacionPagoStep;
-
-  @Steps GenericStep genericStep;
 
   PagoSiniestro pagoSiniestro;
 
