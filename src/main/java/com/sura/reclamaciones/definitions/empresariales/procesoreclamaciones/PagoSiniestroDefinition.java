@@ -33,8 +33,6 @@ public class PagoSiniestroDefinition {
 
   PagoSiniestro pagoSiniestro;
 
-  ExposicionVehiculoTercero exposicionVehiculoTercero;
-
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
@@ -107,7 +105,7 @@ public class PagoSiniestroDefinition {
       String aplicaSoloSura)
       throws IOException {
     nuevoPagoStep.consultarPlacaAsegurado();
-    exposicionVehiculoTercero =
+    ExposicionVehiculoTercero exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
             obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
