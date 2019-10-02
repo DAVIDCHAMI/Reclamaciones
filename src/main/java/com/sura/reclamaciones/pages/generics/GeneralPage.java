@@ -66,6 +66,9 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//div[@class='x-panel x-layer x-panel-default x-menu x-border-box']")
   public WebElementFacade lstOpcionesGenerales;
 
+  @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//parent::span")
+  public WebElementFacade btnAnular;
+
   private String tblPago =
       "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
 
@@ -77,7 +80,6 @@ public class GeneralPage extends PageObject {
   private String auxiliarReemplazo = "";
   private String pais = "Country-inputEl";
   private String departamento = "State-inputEl";
-  private String ciudad = "City-inputEl";
 
   protected WebDriver driver;
 
@@ -189,7 +191,7 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public void realizarEsperaFinalizarReclamacion() {
+  public void realizarTiempoEsperaCarga() {
     int numeroIntentos = Integer.parseInt(NUMERO_INTENTOS_ESPERA_ELEMENTO.getValor());
     while (numeroIntentos > 0) {
       if (!pgrBarCarga.isPresent()) {
@@ -212,8 +214,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void finalizarProceso() {
-    btnFinalizar.waitUntilClickable();
-    btnFinalizar.click();
+    btnFinalizar.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
   }
 
@@ -344,6 +345,19 @@ public class GeneralPage extends PageObject {
       return false;
     }
     return true;
+  }
+
+  public void anularTransaccion() {
+    realizarEsperaCarga();
+    btnAnular.waitUntilClickable();
+    btnAnular.click();
+    realizarEsperaCarga();
+    btnAnular.waitUntilClickable();
+    btnAnular.click();
+    realizarEsperaCarga();
+    btnAceptar.waitUntilClickable();
+    btnAceptar.click();
+    realizarEsperaCarga();
   }
 
   public void seleccionarPais(String pais) {

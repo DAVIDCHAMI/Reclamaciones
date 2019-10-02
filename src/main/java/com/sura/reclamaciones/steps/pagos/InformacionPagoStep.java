@@ -1,7 +1,5 @@
 package com.sura.reclamaciones.steps.pagos;
 
-import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
-
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import java.util.List;
@@ -24,7 +22,7 @@ public class InformacionPagoStep {
   public void ingresarInformacionRetencion(List<String> codigoRetencion, String tipoPago) {
     for (int i = 1; i < codigoRetencion.size(); i++) {
       introducirInformacionPagoPage.agregarCodigoRetencion(codigoRetencion.get(i), i);
-      introducirInformacionPagoPage.ingresarCantidadPago(tipoPago, CANTIDAD.getValor(), i);
+      introducirInformacionPagoPage.ingresarCantidadPago(tipoPago, i, codigoRetencion.size());
       if (i < (codigoRetencion.size() - 1)) {
         introducirInformacionPagoPage.agregarNuevaRetencion();
       }

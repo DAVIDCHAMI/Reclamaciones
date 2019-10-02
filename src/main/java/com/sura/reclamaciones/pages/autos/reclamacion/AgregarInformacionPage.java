@@ -121,7 +121,7 @@ public class AgregarInformacionPage extends GeneralPage {
   }
 
   public void agregarExposicionVehiculoTercero() {
-    btnAgregarVehiculo.click();
+    btnAgregarVehiculo.waitUntilVisible().waitUntilClickable().click();
   }
 
   public void agregarExposicionPersona() {
@@ -143,6 +143,6 @@ public class AgregarInformacionPage extends GeneralPage {
   public void concluirReclamacion() {
     btnFinalizar.waitUntilVisible();
     btnFinalizar.click();
-    realizarEsperaFinalizarReclamacion();
+    realizarTiempoEsperaCarga();
   }
 }
