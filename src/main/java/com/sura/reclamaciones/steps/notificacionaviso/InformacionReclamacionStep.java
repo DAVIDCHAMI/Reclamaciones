@@ -7,11 +7,11 @@ public class InformacionReclamacionStep {
 
   @Page InformacionReclamacionPage informacionReclamacionPage;
 
-  public void diligenciarInformacionReclamacion(
+  public void diligenciarInformacionIncidente(
       String causa, String valorPretension, String tipoIncidente) {
     informacionReclamacionPage.cerrarReclamosDuplicados();
-    informacionReclamacionPage.seleccionarCausaSiniestro(causa);
     informacionReclamacionPage.escribirValorPretension(valorPretension);
+    informacionReclamacionPage.seleccionarCausaSiniestro(causa);
     informacionReclamacionPage.seleccionarTipoIncidente(tipoIncidente);
     informacionReclamacionPage.finalizarSiniestro();
   }

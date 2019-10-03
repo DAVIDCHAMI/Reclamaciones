@@ -20,8 +20,8 @@ public class RecuperoSiniestroDefinition {
 
   Recupero recupero;
 
-  @Cuando("^se genere un recupero de tipo (.*) con un código de retención (.*)$")
-  public void diligenciarRecupero(String tipoRecupero, String codigoRetencion) throws IOException {
+  @Cuando("^se genere un recupero con un código de retención (.*)$")
+  public void diligenciarRecupero(String codigoRetencion) throws IOException {
     recupero =
         new Recupero(
             genericStep.getFilasModelo(

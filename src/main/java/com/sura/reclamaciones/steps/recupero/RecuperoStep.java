@@ -11,6 +11,7 @@ import com.sura.reclamaciones.pages.generics.NuevaReclamacionGuardadaPage;
 import com.sura.reclamaciones.pages.recupero.CreacionRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.MenuRecuperoPage;
 import com.sura.reclamaciones.pages.recupero.VerificacionRecuperoPage;
+import java.util.ArrayList;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
@@ -18,8 +19,6 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 
 public class RecuperoStep {
-
-  List<WebElement> lstFilaRecupero;
 
   @Page CreacionRecuperoPage creacionRecuperoPage;
 
@@ -59,6 +58,7 @@ public class RecuperoStep {
   public void verificarCreacionRecupero(List<Recupero> lstRecupero) {
     lstRecupero.forEach(
         (Recupero validador) -> {
+          List<WebElement> lstFilaRecupero = new ArrayList<>();
           for (int i = 0; i <= Integer.parseInt(ITERACIONES_RECUPERO.getValor()); i++) {
             generalPage.realizarEsperaCarga();
             lstFilaRecupero = verificacionRecuperoPage.obtenerListaRecupero();

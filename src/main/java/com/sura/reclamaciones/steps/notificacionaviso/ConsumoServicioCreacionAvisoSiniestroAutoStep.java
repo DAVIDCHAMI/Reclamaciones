@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.steps.notificacionaviso;
 
+import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
@@ -19,20 +19,18 @@ public class ConsumoServicioCreacionAvisoSiniestroAutoStep {
 
   @Page MenuClaimPage menuClaimPage;
 
-  ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos =
-      new ConsumoServicioCreacionSiniestroAutos();
-
   @Step
   public void siniestrarPolizaAutos(
       List<ReclamacionAuto> lstReclamacionAuto,
       List<PersonaReclamacion> lstPersonaLesionada,
       List<PersonaReclamacion> lstConductor,
       List<Vehiculo> lstVehiculoParam) {
+    ConsumoServicioCreacionSiniestroAutos consumoServicioCreacionSiniestroAutos =
+        new ConsumoServicioCreacionSiniestroAutos();
     consumoServicioCreacionSiniestroAutos.asignarParametrosRequest(
         lstReclamacionAuto, lstPersonaLesionada, lstConductor, lstVehiculoParam);
     menuClaimPage.buscarReclamacion(
-        MenuConstante.RECLAMACION_MENU,
-        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
+        RECLAMACION_MENU, Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
   @Step

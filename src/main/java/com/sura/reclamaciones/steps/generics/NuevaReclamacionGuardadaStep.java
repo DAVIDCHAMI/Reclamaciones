@@ -13,8 +13,7 @@ public class NuevaReclamacionGuardadaStep {
     nuevaReclamacionGuardadaPage.obtenerNumeroReclamacion();
   }
 
-  @Step
-  public void abrirReclamacionGuardada() {
+  public void abrirNuevaReclamacionGuardada() {
     nuevaReclamacionGuardadaPage.abrirReclamacion();
   }
 }

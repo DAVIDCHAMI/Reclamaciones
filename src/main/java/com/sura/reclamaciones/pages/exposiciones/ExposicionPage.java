@@ -27,8 +27,7 @@ public class ExposicionPage extends GeneralPage {
   }
 
   public void seleccionarExposicion() {
-    obtenerCabecerasTabla(
-        $("//div[@id='ClaimExposures:ClaimExposuresScreen:ExposuresLV']"), Tablas.CABECERAS_CC);
+    obtenerCabecerasTabla(tblExposicionesAutomaticas, Tablas.CABECERAS_CC);
     obtenerTextoElementoLista(
             tblExposicionesAutomaticas,
             Tablas.CABECERAS_CC,

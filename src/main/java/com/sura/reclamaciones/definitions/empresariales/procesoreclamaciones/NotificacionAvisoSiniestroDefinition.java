@@ -3,6 +3,7 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
+import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
@@ -40,6 +41,8 @@ public class NotificacionAvisoSiniestroDefinition {
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
             obtenerDatosPrueba(ReclamacionConstante.RECLAMACION_EMPRESARIAL, tipoCobertura));
+    nuevaReclamacionEmpresarialStep.seleccionarNuevaReclamacion(
+        MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
   }
 
@@ -49,14 +52,14 @@ public class NotificacionAvisoSiniestroDefinition {
       String causaSiniestro, String valorPretension, String tipoIncidente) {
     propiedadesImplicadasStep.seleccionarPropiedadImplicada();
     informacionBasicaStep.diligenciarInformacionBasica(reclamacionEmpresarial.getLstReclamo());
-    informacionReclamacionStep.diligenciarInformacionReclamacion(
+    informacionReclamacionStep.diligenciarInformacionIncidente(
         causaSiniestro, valorPretension, tipoIncidente);
   }
 
   @Entonces("^se obtiene una reclamación que (.*) genera exposición$")
   public void verificarExposicion(String exposicion) {
     nuevaReclamacionEmpresarialStep.validarReclamacion();
-    nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
+    nuevaReclamacionGuardadaStep.abrirNuevaReclamacionGuardada();
     nuevaReclamacionEmpresarialStep.validarExposicionVisualizada(exposicion);
   }
 

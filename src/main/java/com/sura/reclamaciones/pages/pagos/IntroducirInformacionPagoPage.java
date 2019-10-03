@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.pagos;
 
+import static com.sura.reclamaciones.constantes.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.constantes.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.constantes.Constantes.PORCENTAJE;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO_PAGO;
@@ -8,6 +9,7 @@ import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_PAGOS_CC;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -68,12 +70,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   @FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:Add-btnInnerEl")
   private WebElementFacade btnAgregarPago;
 
-  @FindBy(
-    xpath =
-        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewCheckPaymentsLV'][contains(@class,'x-panel x-panel-default x-grid')]"
-  )
-  private WebElementFacade tblPagoMultiplesReservas;
-
   public IntroducirInformacionPagoPage(WebDriver driver) {
     super(driver);
   }
@@ -105,27 +101,28 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     return dblValorReserva;
   }
 
-  private Integer calcularCantidadPago(String strTipoPago) {
+  private Integer calcularCantidadPago(String strTipoPago, int cantidadCodigosRetencion) {
     double dblValorReserva = obtenerValorPagoReserva();
-    Double dblCalculoVrReserva;
+    Double dblCalculoVrReserva = null;
     if (strTipoPago.equals(TIPO_PAGO.getValor())) {
       dblCalculoVrReserva = Double.parseDouble(PORCENTAJE.getValor()) * dblValorReserva;
     } else {
-      dblCalculoVrReserva = dblValorReserva;
+      dblCalculoVrReserva = dblValorReserva / (cantidadCodigosRetencion - 1);
     }
     intCalculoVrReserva = dblCalculoVrReserva.intValue();
     return intCalculoVrReserva;
   }
 
   public void ingresarCantidadPago(
-      String strTipoPago, String strCantidadPago, int posicionIngresoDato) {
-    calcularCantidadPago(strTipoPago);
+      String strTipoPago, int posicionIngresoDato, int cantidadCodigosRetencion) {
+    calcularCantidadPago(strTipoPago, cantidadCodigosRetencion);
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocidoPago(
-            tblElementoLinea, strCantidadPago, posicionIngresoDato);
+            tblElementoLinea, CANTIDAD.getValor(), posicionIngresoDato);
     elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
     evaluateJavascript(
         String.format("$('input[name|=\"Amount\"]').val('%s')", intCalculoVrReserva));
+    Serenity.setSessionVariable(SESION_CC_VALOR_PAGO.getValor()).to(intCalculoVrReserva);
   }
 
   public void agregarNuevoPago() {

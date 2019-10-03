@@ -6,13 +6,12 @@ import java.util.Map;
 
 public class PagoSiniestro extends Transacciones {
 
-  private List<PagoSiniestro> lstPagoSiniestro = new ArrayList<PagoSiniestro>();
+  private List<PagoSiniestro> lstPagoSiniestro = new ArrayList<>();
   private String tipoBeneficiario;
   private String comentario;
   private String numeroFactura;
   private String tipoDireccion;
-  private String limiteInferiorPagoAutomatico;
-  private String limiteSuperiorPagoAutomatico;
+  private String esPagoAutomatico;
 
   public PagoSiniestro() {
     super();
@@ -24,12 +23,13 @@ public class PagoSiniestro extends Transacciones {
     this.comentario = datosPagosEmpresariales.get("comentario");
     this.numeroFactura = datosPagosEmpresariales.get("numeroFactura");
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
-    this.limiteInferiorPagoAutomatico = datosPagosEmpresariales.get("limiteInferiorPagoAutomatico");
-    this.limiteSuperiorPagoAutomatico = datosPagosEmpresariales.get("limiteSuperiorPagoAutomatico");
+    this.esPagoAutomatico = datosPagosEmpresariales.get("esPagoAutomatico");
   }
 
   public PagoSiniestro(List<Map<String, String>> datosPagosEmpresariales) {
-    asignarDatos(datosPagosEmpresariales);
+    for (Map<String, String> dato : datosPagosEmpresariales) {
+      lstPagoSiniestro.add(new PagoSiniestro(dato));
+    }
   }
 
   public String getTipoBeneficiario() {
@@ -48,21 +48,11 @@ public class PagoSiniestro extends Transacciones {
     return tipoDireccion;
   }
 
-  public String getLimiteInferiorPagoAutomatico() {
-    return limiteInferiorPagoAutomatico;
-  }
-
-  public String getLimiteSuperiorPagoAutomatico() {
-    return limiteSuperiorPagoAutomatico;
+  public String getEsPagoAutomatico() {
+    return esPagoAutomatico;
   }
 
   public List<PagoSiniestro> getLstPago() {
     return lstPagoSiniestro;
-  }
-
-  private void asignarDatos(List<Map<String, String>> datosPagosEmpresarial) {
-    for (Map<String, String> dato : datosPagosEmpresarial) {
-      lstPagoSiniestro.add(new PagoSiniestro(dato));
-    }
   }
 }

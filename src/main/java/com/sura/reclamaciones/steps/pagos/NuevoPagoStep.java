@@ -17,9 +17,7 @@ import com.sura.reclamaciones.pages.autos.reclamacion.NuevaExposicionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.exposiciones.ExposicionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.generics.VerificacionDatosFinancierosPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
-import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import java.util.List;
 import java.util.Map;
@@ -34,10 +32,6 @@ public class NuevoPagoStep {
   @Page DetalleExposicionAutomaticaPage detalleExposicionAutomaticaPage;
 
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
-
-  @Page IntroducirInformacionBeneficiarioPage introducirInformacionBeneficiarioPage;
-
-  @Page VerificacionDatosFinancierosPage verificacionDatosFinancierosPage;
 
   @Page ExposicionPage exposicionPage;
 
@@ -129,5 +123,10 @@ public class NuevoPagoStep {
     detalleVehiculoPage.aceptarOpcion();
     nuevoIncidenteVehicularPage.aceptarOpcion();
     nuevaExposicionManualPage.actualizarNuevaExposicion();
+  }
+
+  public void marcarReclamacionAutosPerdidaTotal() {
+    declararReclamacionPerdidaTotal();
+    ingresarEstadoLegalReclamacion();
   }
 }
