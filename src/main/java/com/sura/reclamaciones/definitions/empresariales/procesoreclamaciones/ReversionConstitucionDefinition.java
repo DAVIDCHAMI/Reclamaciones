@@ -30,6 +30,7 @@ public class ReversionConstitucionDefinition {
   @Steps NuevaReclamacionEmpresarialStep reclamacionEmpresarialStep;
 
   @Steps ConsultaDatoFinancieroTransaccionStep consultaDatoFinancieroTransaccionStep;
+
   @Steps InformacionReclamacionStep informacionReclamacionStep;
 
   @Steps BuscarPolizaStep buscarPolizaStep;
