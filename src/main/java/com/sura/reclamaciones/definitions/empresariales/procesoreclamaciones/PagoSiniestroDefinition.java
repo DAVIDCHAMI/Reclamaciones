@@ -81,7 +81,6 @@ public class PagoSiniestroDefinition {
       String lineaReserva,
       String aplicaSoloSura)
       throws IOException {
-    nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
@@ -114,7 +113,6 @@ public class PagoSiniestroDefinition {
         obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros());
-    nuevoPagoStep.seleccionarExposicionVehicularAsegurado();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =

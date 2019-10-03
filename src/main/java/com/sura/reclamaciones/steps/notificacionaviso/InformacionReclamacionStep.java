@@ -7,14 +7,12 @@ public class InformacionReclamacionStep {
 
   @Page InformacionReclamacionPage informacionReclamacionPage;
 
-  public void seleccionarCausalIncidente(String causa, String valorPretension) {
+  public void diligenciarInformacionIncidente(
+      String causa, String valorPretension, String tipoIncidente) {
     informacionReclamacionPage.cerrarReclamosDuplicados();
     informacionReclamacionPage.escribirValorPretension(valorPretension);
     informacionReclamacionPage.seleccionarCausaSiniestro(causa);
-  }
-
-  public void diligenciarInformacionIncidente(String incidente) {
-    informacionReclamacionPage.seleccionarTipoIncidente(incidente);
+    informacionReclamacionPage.seleccionarTipoIncidente(tipoIncidente);
     informacionReclamacionPage.finalizarSiniestro();
   }
 }
