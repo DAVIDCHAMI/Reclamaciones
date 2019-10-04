@@ -1,9 +1,9 @@
 package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
 import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.recupero.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -14,17 +14,13 @@ public class RecuperoSiniestroDefinition {
 
   @Steps RecuperoStep recuperoStep;
 
-  @Steps GenericStep genericStep;
-
   Recupero recupero;
 
-  @Cuando(
-      "^se cree el recupero por el tipo de (.*) con un código de retención (.*) a una cobertura (.*)$")
-  public void crearRecuperoReclamacionAutos(
-      String tipoRecupero, String codigoRetencion, String cobertura) throws IOException {
-    recupero = new Recupero((genericStep.getFilasModelo(RECUPERO_SINIESTRO.getValor(), cobertura)));
-    recuperoStep.diligenciarCreacionRecupero(
-        recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
+  @Cuando("^se cree el recupero con un código de retención (.*) a una cobertura (.*)$")
+  public void crearRecuperoReclamacionAutos(String codigoRetencion, String cobertura)
+      throws IOException {
+    recupero = new Recupero((obtenerDatosPrueba(RECUPERO_SINIESTRO.getValor(), cobertura)));
+    recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), codigoRetencion);
   }
 
   @Entonces("^se obtiene un ingreso de dinero sobre el siniestro$")

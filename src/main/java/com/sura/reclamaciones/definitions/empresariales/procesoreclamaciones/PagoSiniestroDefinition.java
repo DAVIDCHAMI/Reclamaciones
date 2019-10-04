@@ -1,19 +1,15 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
-import static com.sura.reclamaciones.constantes.Filtros.CLASE_VEHICULO;
-import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
-import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
+import static com.sura.reclamaciones.constantes.Filtros.*;
 import static com.sura.reclamaciones.constantes.NombresCsv.*;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
+import static com.sura.reclamaciones.utils.VariablesSesion.*;
 
 import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
-import com.sura.reclamaciones.steps.generics.GenericStep;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
 import com.sura.reclamaciones.steps.pagos.InstruccionPagoStep;
@@ -34,8 +30,6 @@ public class PagoSiniestroDefinition {
 
   PagoSiniestro pagoSiniestro;
 
-  ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
-
   @Steps NuevoPagoStep nuevoPagoStep;
 
   @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
@@ -46,9 +40,9 @@ public class PagoSiniestroDefinition {
 
   @Steps InstruccionPagoStep instruccionPagoStep;
 
-  @Steps GenericStep genericStep;
-
   @Steps InclusionProcesoAuditoriaStep inclusionProcesoAuditoriaStep;
+
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Steps PagoPrimaPendienteStep pagoPrimaPendienteStep;
 
@@ -113,16 +107,16 @@ public class PagoSiniestroDefinition {
       int numeroVehiculosInvolucradosTercero)
       throws IOException {
     nuevaExposicionVehiculoStep.consultarPlacaAsegurado();
-    exposicionVehiculoTercero =
+    ExposicionVehiculoTercero exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
-            genericStep.getFilasModelo(
+            obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
                 EXPOSICION_VEHICULAR_TERCERO.getValor()));
     datosCodigoFasecolda =
         new CodigoFasecolda(
-            genericStep.getFilasModelo(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
+            obtenerDatosPrueba(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
     nuevaExposicionVehiculoStep.crearExposicionVehicularManual(
-        genericStep.getFilasModelo(
+        obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros(),
         numeroVehiculosInvolucradosTercero,
@@ -132,7 +126,7 @@ public class PagoSiniestroDefinition {
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
         new PagoSiniestro(
-            (genericStep.getFilasModelo(
+            (obtenerDatosPrueba(
                 PAGO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()))));
     nuevoPagoStep.crearNuevoPago();
@@ -148,7 +142,7 @@ public class PagoSiniestroDefinition {
 
   @Cuando("^(.*)se notifique el proceso al área de auditoría$")
   public void notificarProcesoAuditoria(String requiereAuditoria) {
-    nuevoPagoStep.consultarNumeroReclamacion();
+    nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
     inclusionProcesoAuditoriaStep.marcarAuditoria(requiereAuditoria);
   }
 

@@ -47,8 +47,7 @@ public class AnulacionRecuperoDefinition {
             obtenerDatosPrueba(
                 RECUPERO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
-    recuperoStep.diligenciarCreacionRecupero(
-        recupero.getLstRecupero(), recupero.getCategoriaRecupero(), strCodigoRetencion);
+    recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), strCodigoRetencion);
   }
 
   @Entonces("^se debe obtener la anulación del recupero, quedando en estado anulado$")

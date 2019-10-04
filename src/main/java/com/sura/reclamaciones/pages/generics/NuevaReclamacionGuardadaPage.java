@@ -24,13 +24,6 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
     super(wdriver);
   }
 
-  public String obtenerMensajeValidador() {
-    String valorMensaje;
-    lblMensajeValidar.waitUntilVisible();
-    valorMensaje = lblMensajeValidar.getText();
-    return valorMensaje;
-  }
-
   public void abrirReclamacion() {
     lblNumeroReclamacion
         .withTimeoutOf(180, TimeUnit.SECONDS)

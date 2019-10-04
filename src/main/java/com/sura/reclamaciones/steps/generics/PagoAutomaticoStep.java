@@ -30,7 +30,7 @@ public class PagoAutomaticoStep {
 
   @Page MenuClaimPage menuClaimPage;
 
-  NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
+  @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
 
   public void verificarMontoReservaAutomatica(List<Reserva> lstReserva) {
     nuevaReclamacionGuardadaPage.abrirReclamacion();

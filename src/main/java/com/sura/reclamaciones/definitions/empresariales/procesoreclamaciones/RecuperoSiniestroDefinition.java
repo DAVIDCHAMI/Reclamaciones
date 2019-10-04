@@ -20,16 +20,15 @@ public class RecuperoSiniestroDefinition {
 
   Recupero recupero;
 
-  @Cuando("^se genere un recupero de tipo (.*) con un código de retención (.*)$")
-  public void diligenciarRecupero(String tipoRecupero, String codigoRetencion) throws IOException {
+  @Cuando("^se genere un recupero con un código de retención (.*)$")
+  public void diligenciarRecupero(String codigoRetencion) throws IOException {
     recupero =
         new Recupero(
             genericStep.getFilasModelo(
                 RECUPERO_SINIESTRO.getValor(),
                 Serenity.sessionVariableCalled(SESION_CC_TIPO_PRODUCTO_EMPRESARIAL.getValor())));
     recuperoStep.seleccionarNumeroReclamacion();
-    recuperoStep.diligenciarCreacionRecupero(
-        recupero.getLstRecupero(), tipoRecupero, codigoRetencion);
+    recuperoStep.diligenciarCreacionRecupero(recupero.getLstRecupero(), codigoRetencion);
   }
 
   @Entonces("^se obtiene un reintegro de dinero al siniestro$")

@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
+import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
@@ -31,6 +32,8 @@ public class NotificacionAvisoSiniestroDefinition {
   @Steps InformacionBasicaStep informacionBasicaStep;
 
   @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
+
+  @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Dado("^que se tiene una póliza de (.*)$")
   public void buscarPoliza(String tipoCobertura) throws IOException {
@@ -58,7 +61,7 @@ public class NotificacionAvisoSiniestroDefinition {
   @Entonces("^se obtiene una reclamación que (.*) genera exposición$")
   public void verificarExposicion(String exposicion) {
     nuevaReclamacionEmpresarialStep.validarReclamacion();
-    nuevaReclamacionEmpresarialStep.visualizarResumenReclamacion();
+    nuevaReclamacionGuardadaStep.abrirNuevaReclamacionGuardada();
     nuevaReclamacionEmpresarialStep.validarExposicionVisualizada(exposicion);
   }
 
