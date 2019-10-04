@@ -8,7 +8,7 @@ import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.steps.exposiciones.ExposicionStep;
 import com.sura.reclamaciones.steps.generics.PagoAutomaticoStep;
-import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.BusquedaPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionGuardadaStep;
@@ -21,13 +21,13 @@ import net.thucydides.core.annotations.Steps;
 
 public class PagoAutomaticoSiniestroDefinition {
 
+  ReclamacionEmpresarial reclamacionEmpresarial;
+
   String productoPoliza = "";
 
-  @Steps PagoAutomaticoStep pagoAutomaticoStep;
+  @Steps PagoAutomaticoStep pagoAutomatico;
 
-  @Steps ReclamacionEmpresarial reclamacionEmpresarial;
-
-  @Steps BuscarPolizaStep buscarPolizaStep;
+  @Steps BusquedaPolizaStep busquedaPolizaStep;
 
   @Steps InformacionBasicaStep informacionBasicaStep;
 
@@ -43,7 +43,7 @@ public class PagoAutomaticoSiniestroDefinition {
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
             obtenerDatosPrueba(NombresCsv.RECLAMACION_EMPRESARIAL.getValor(), productoPoliza));
-    buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
+    busquedaPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
   }
 
   @Cuando("^se realiza un siniestro por causa (.*) con valor de pretensión (.*) e incidente (.*)$")
@@ -65,13 +65,13 @@ public class PagoAutomaticoSiniestroDefinition {
     Reserva reserva =
         new Reserva(
             obtenerDatosPrueba(NombresCsv.PARAMETRO_LINEA_RESERVA.getValor(), productoPoliza));
-    pagoAutomaticoStep.verificarMontoReservaAutomatica(reserva.getLstReserva());
+    pagoAutomatico.verificarMontoReservaAutomatica(reserva.getLstReserva());
   }
 
   @Y("^un pago automático$")
   public void verificarGeneracionPagoAutomatico() throws IOException {
     PagoSiniestro pago =
         new PagoSiniestro(obtenerDatosPrueba(NombresCsv.PAGO_SINIESTRO.getValor(), productoPoliza));
-    pagoAutomaticoStep.verificarPagoAutomatico(pago.getLstPago());
+    pagoAutomatico.verificarPagoAutomatico(pago.getLstPago());
   }
 }

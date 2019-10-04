@@ -9,7 +9,7 @@ import java.util.List;
 import net.serenitybdd.core.Serenity;
 import org.fluentlenium.core.annotation.Page;
 
-public class BuscarPolizaStep {
+public class BusquedaPolizaStep {
 
   private static String FECHA_HOY = "Hoy";
 

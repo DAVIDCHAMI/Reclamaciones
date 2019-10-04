@@ -9,7 +9,7 @@ import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.generics.MovimientoLineaReservaStep;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
-import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.BusquedaPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
@@ -33,7 +33,7 @@ public class ReversionConstitucionDefinition {
 
   @Steps InformacionReclamacionStep informacionReclamacionStep;
 
-  @Steps BuscarPolizaStep buscarPolizaStep;
+  @Steps BusquedaPolizaStep busquedaPolizaStep;
 
   @Steps PropiedadesImplicadasStep propiedadesImplicadasStep;
 
@@ -52,7 +52,7 @@ public class ReversionConstitucionDefinition {
             obtenerDatosPrueba(RECLAMACION_EMPRESARIAL.getValor(), producto));
     reclamacionEmpresarialStep.seleccionarNuevaReclamacion(
         MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
-    buscarPolizaStep.buscarPolizaEmpresarial(reserva.getLstReclamo());
+    busquedaPolizaStep.buscarPolizaEmpresarial(reserva.getLstReclamo());
     propiedadesImplicadasStep.seleccionarPropiedadImplicada();
     informacionBasicaStep.diligenciarInformacionBasica(reserva.getLstReclamo());
     informacionReclamacionStep.diligenciarInformacionIncidente(
