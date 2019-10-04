@@ -67,8 +67,6 @@ public enum Constantes {
   VALOR_RETENIDO_CUOTA_PARTE("Valor retenido cuota parte"),
   VEHICULOS("Vehículos"),
   VER_POLIZA("Ver póliza"),
-  VOLVER_BILLINGCENTER("Volver a BillingCenter"),
-  VOLVER_POLICYCENTER("Volver a PolicyCenter"),
   TIPO("Tipo"),
   VALOR_CERO("0");
 
