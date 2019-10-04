@@ -1,6 +1,5 @@
 package com.sura.reclamaciones.pages.exposiciones;
 
-import static com.sura.reclamaciones.constantes.Constantes.EXPOSICION_DANOS_ASEGURADO;
 import static com.sura.reclamaciones.constantes.Constantes.TIPO;
 
 import com.sura.reclamaciones.constantes.Tablas;
@@ -15,6 +14,7 @@ public class ExposicionPage extends GeneralPage {
 
   private String columnaTipoExposicion;
   private boolean valorLineaReserva = true;
+  private static String EXPOSICION_DANOS_ASEGURADO = "Daños";
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
   private WebElementFacade tblExposicionesAutomaticas;
@@ -32,7 +32,7 @@ public class ExposicionPage extends GeneralPage {
             tblExposicionesAutomaticas,
             Tablas.CABECERAS_CC,
             Tablas.REGISTROS_CC,
-            EXPOSICION_DANOS_ASEGURADO.getValor(),
+            EXPOSICION_DANOS_ASEGURADO,
             TIPO.getValor())
         .click();
     realizarEsperaCarga();

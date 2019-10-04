@@ -24,8 +24,6 @@ public enum Constantes {
   ESTADO_LEGAL("Rematricula a nombre de Suramericana"),
   EXPEDIENTE_CREADO_EXITOSAMENTE("Expediente creado con éxito"),
   EXPOSICIONES("Exposiciones"),
-  EXPOSICION_DANOS_ASEGURADO("Daños"),
-  FECHA_HOY("Hoy"),
   ITERACIONES_ANULACION("20"),
   ITERACIONES_PAGO("20"),
   ITERACIONES_RECUPERO("3"),
@@ -61,12 +59,6 @@ public enum Constantes {
   USD("USD"),
   USUARIO("GW_CONF"),
   VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
-  VALOR("Valor"),
-  VALOR_ANTERIOR("."),
-  VALOR_RETEFUENTE("Valor retefuente"),
-  VALOR_RETENIDO_CUOTA_PARTE("Valor retenido cuota parte"),
-  VEHICULOS("Vehículos"),
-  VER_POLIZA("Ver póliza"),
   TIPO("Tipo"),
   VALOR_CERO("0");
 
