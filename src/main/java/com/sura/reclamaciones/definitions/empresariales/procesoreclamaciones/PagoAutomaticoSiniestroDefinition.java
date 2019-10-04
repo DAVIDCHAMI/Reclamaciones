@@ -24,6 +24,7 @@ public class PagoAutomaticoSiniestroDefinition {
   String productoPoliza = "";
 
   @Steps PagoAutomaticoStep pagoAutomaticoStep;
+
   @Steps ReclamacionEmpresarial reclamacionEmpresarial;
 
   @Steps BuscarPolizaStep buscarPolizaStep;
@@ -38,9 +39,10 @@ public class PagoAutomaticoSiniestroDefinition {
 
   @Dado("^que se tiene una póliza del producto (.*)$")
   public void obtenerPoliza(String producto) throws IOException {
+    productoPoliza = producto;
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
-            obtenerDatosPrueba(NombresCsv.RECLAMACION_EMPRESARIAL.getValor(), producto));
+            obtenerDatosPrueba(NombresCsv.RECLAMACION_EMPRESARIAL.getValor(), productoPoliza));
     buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
   }
 

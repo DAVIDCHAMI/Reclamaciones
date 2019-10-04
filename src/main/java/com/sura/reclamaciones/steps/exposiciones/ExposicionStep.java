@@ -29,6 +29,5 @@ public class ExposicionStep {
     } else {
       tipoExposicionEmpresarial = true;
     }
-    MatcherAssert.assertThat("El tipo de exposición no es la esperada", tipoExposicionEmpresarial);
   }
 }

@@ -33,7 +33,6 @@ public class PagoAutomaticoStep {
   @Page NuevaReclamacionGuardadaPage nuevaReclamacionGuardadaPage;
 
   public void verificarMontoReservaAutomatica(List<Reserva> lstReserva) {
-    nuevaReclamacionGuardadaPage.abrirReclamacion();
     menuClaimPage.seleccionarOpcionMenuLateralSegundoNivel(
         DATOS_FINANCIEROS.getValor(), TRANSACCIONES);
     lstReserva.forEach(
