@@ -9,8 +9,7 @@ Característica: Generación de pago automático en un siniestro
   @claimsEmpresarial
   Esquema del escenario: Crear Pago automático
     Dado que se tiene una póliza de <Tipo y Cobertura>
-    Cuando se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
-    Y un incidente de tipo <Tipo de incidente>
+    Cuando se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión> y un incidente de tipo <Tipo de incidente>
     Entonces se genera una reclamación con exposición automática <Tipo de Exposición>
     Y una reserva automática
     Y un pago automático
