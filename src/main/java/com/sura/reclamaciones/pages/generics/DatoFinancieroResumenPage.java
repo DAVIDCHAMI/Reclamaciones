@@ -36,7 +36,7 @@ public class DatoFinancieroResumenPage extends GeneralPage {
                     Tablas.CABECERAS_CC,
                     Tablas.REGISTROS_CC,
                     datosLineaReserva.get(i).getLineaReserva(),
-                DATO_RESERVA_DISPONIBLE)
+                    DATO_RESERVA_DISPONIBLE)
                 .getText();
         if (valorReserva.equals(datosLineaReserva.get(i).getValorReserva())) {
           valorLineaReserva = true;
