@@ -6,6 +6,7 @@ import com.sura.reclamaciones.constantes.NombresCsv;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.models.Reserva;
+
 import com.sura.reclamaciones.steps.exposiciones.ExposicionStep;
 import com.sura.reclamaciones.steps.generics.PagoAutomaticoStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BusquedaPolizaStep;
@@ -61,7 +62,6 @@ public class PagoAutomaticoSiniestroDefinition {
 
   @Y("^una reserva automática$")
   public void verificarGeneracionReservaAutomatica() throws IOException {
-    productoPoliza = "Multiriesgo Corporativo pago automático 1";
     Reserva reserva =
         new Reserva(
             obtenerDatosPrueba(NombresCsv.PARAMETRO_LINEA_RESERVA.getValor(), productoPoliza));

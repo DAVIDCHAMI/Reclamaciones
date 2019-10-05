@@ -57,6 +57,7 @@ public enum Constantes {
   UBICACION_ESTADO_RECUPERO("9"),
   URL("jdbc:oracle:thin:@clustercsl01:1537/labgwcc"),
   USD("USD"),
+  CC_PRODUCTO_EMPRESARIAL("producto empresarial"),
   USUARIO("GW_CONF"),
   VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
   TIPO("Tipo"),

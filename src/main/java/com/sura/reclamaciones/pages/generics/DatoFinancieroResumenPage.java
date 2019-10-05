@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 public class DatoFinancieroResumenPage extends GeneralPage {
 
   private boolean valorLineaReserva = true;
-  private static final String DATODEVOLVER = "Reservas disponibles";
+  private static final String DATO_RESERVA_DISPONIBLE = "Reservas disponibles";
 
   public DatoFinancieroResumenPage(WebDriver wdriver) {
     super(wdriver);
@@ -36,7 +36,7 @@ public class DatoFinancieroResumenPage extends GeneralPage {
                     Tablas.CABECERAS_CC,
                     Tablas.REGISTROS_CC,
                     datosLineaReserva.get(i).getLineaReserva(),
-                    DATODEVOLVER)
+                DATO_RESERVA_DISPONIBLE)
                 .getText();
         if (valorReserva.equals(datosLineaReserva.get(i).getValorReserva())) {
           valorLineaReserva = true;

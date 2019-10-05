@@ -4,7 +4,6 @@ import static com.sura.reclamaciones.constantes.NombresCsv.RECLAMACION_EMPRESARI
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.generics.MovimientoLineaReservaStep;
@@ -12,7 +11,6 @@ import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.BusquedaPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
-import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
 import com.sura.reclamaciones.steps.notificacionaviso.PropiedadesImplicadasStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -26,8 +24,6 @@ public class ReversionConstitucionDefinition {
   private static final String TIPO_CATEGORIA_COSTO_RESERVA = "Costo";
 
   @Steps MovimientoLineaReservaStep movimientoLineaReserva;
-
-  @Steps NuevaReclamacionEmpresarialStep reclamacionEmpresarialStep;
 
   @Steps ConsultaDatoFinancieroTransaccionStep consultaDatoFinancieroTransaccionStep;
 
@@ -50,8 +46,6 @@ public class ReversionConstitucionDefinition {
     ReclamacionEmpresarial reserva =
         new ReclamacionEmpresarial(
             obtenerDatosPrueba(RECLAMACION_EMPRESARIAL.getValor(), producto));
-    reclamacionEmpresarialStep.seleccionarNuevaReclamacion(
-        MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
     busquedaPolizaStep.buscarPolizaEmpresarial(reserva.getLstReclamo());
     propiedadesImplicadasStep.seleccionarPropiedadImplicada();
     informacionBasicaStep.diligenciarInformacionBasica(reserva.getLstReclamo());

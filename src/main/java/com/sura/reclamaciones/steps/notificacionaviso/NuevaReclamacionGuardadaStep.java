@@ -10,4 +10,5 @@ public class NuevaReclamacionGuardadaStep {
   public void abrirReclamacionGuardada() {
     nuevaReclamacionGuardadaPage.abrirReclamacion();
   }
+  
 }
