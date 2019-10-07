@@ -29,11 +29,9 @@ public class PagoMasivoDefinition {
 
   @Steps CargaArchivoPagoMasivoStep cargaArchivoPagoMasivoStep;
 
-  @Steps ResultadoValidacionArchivoStep resultadoValidacionArchivoStep;
-
+  
   @Steps DetalleSiniestroStep detalleSiniestroStep;
 
-  @Steps ResultadoArchivoProcesadoStep resultadoArchivoProcesadoStep;
 
   @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
