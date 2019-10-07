@@ -6,7 +6,7 @@ import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagomasivo.CargaArchivoPagoMasivoPage;
-import com.sura.reclamaciones.utils.LlenadoArchivoXLS;
+import com.sura.reclamaciones.utils.LlenadoArchivoExcel;
 import java.io.File;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
@@ -14,7 +14,7 @@ import org.fluentlenium.core.annotation.Page;
 
 public class CargaArchivoPagoMasivoStep {
 
-  LlenadoArchivoXLS llenadoArchivoXLS = new LlenadoArchivoXLS();
+  LlenadoArchivoExcel llenadoArchivoXLS = new LlenadoArchivoExcel();
   String nombreArchivoPagoMasivo = "PlantillaPagosMasivos.xlsx";
   File resourcesDirectory = new File("src/test/resources/files");
 

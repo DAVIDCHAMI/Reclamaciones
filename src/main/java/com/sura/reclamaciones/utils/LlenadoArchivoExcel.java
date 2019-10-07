@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 import net.serenitybdd.core.Serenity;
 
-public class LlenadoArchivoXLS {
+public class LlenadoArchivoExcel {
 
   Random numeroRandom = new Random();
 
