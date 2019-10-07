@@ -4,11 +4,9 @@ import static com.sura.reclamaciones.constantes.Filtros.CLASE_VEHICULO;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
 import static com.sura.reclamaciones.constantes.NombresCsv.CODIGO_FASECOLDA;
-import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_MASIVO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
-
 import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.Exposicion;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
@@ -32,12 +30,6 @@ public class PagoMasivoDefinition {
 
   @Steps GenericStep genericStep;
 
-  Exposicion datosExposicionPagoMasivo;
-
-  Reserva datosReservaPagoMasivo;
-
-  PagoSiniestro datosPagoSiniestroPagoMasivo;
-
   CodigoFasecolda datosCodigoFasecolda;
 
   @Cuando(
@@ -60,14 +52,6 @@ public class PagoMasivoDefinition {
         numeroVehiculosInvolucradosTercero,
         datosCodigoFasecolda.getLstCodigoFasecolda());
     detalleSiniestroStep.consultarInformacionSiniestro();
-    datosExposicionPagoMasivo =
-        new Exposicion(
-            obtenerDatosPrueba(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
-    datosReservaPagoMasivo =
-        new Reserva(obtenerDatosPrueba(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
-    datosPagoSiniestroPagoMasivo =
-        new PagoSiniestro(
-            obtenerDatosPrueba(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
   }
 
   @Cuando(
