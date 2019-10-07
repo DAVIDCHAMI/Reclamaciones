@@ -8,8 +8,6 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_MASIVO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
-
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.Exposicion;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
@@ -18,7 +16,6 @@ import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
@@ -27,8 +24,6 @@ import net.thucydides.core.annotations.Steps;
 public class PagoMasivoDefinition {
 
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
-
-  @Steps CargaArchivoPagoMasivoStep cargaArchivoPagoMasivoStep;
 
   @Steps DetalleSiniestroStep detalleSiniestroStep;
 
@@ -72,12 +67,6 @@ public class PagoMasivoDefinition {
     datosPagoSiniestroPagoMasivo =
         new PagoSiniestro(
             obtenerDatosPrueba(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
-    cargaArchivoPagoMasivoStep.cargarArchivoXls(
-        MenuConstante.ESCRITORIO_MENU,
-        MenuConstante.FACTURAS_VOLUMEN_MENU,
-        datosExposicionPagoMasivo.getLstExposicion(),
-        datosReservaPagoMasivo.getLstReserva(),
-        datosPagoSiniestroPagoMasivo.getLstPago());
   }
 
   @Cuando(
