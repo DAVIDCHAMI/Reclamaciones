@@ -2,12 +2,10 @@ package com.sura.reclamaciones.steps.generics;
 
 import static com.sura.reclamaciones.constantes.Constantes.*;
 
-import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
-import com.sura.reclamaciones.pages.generics.CalculadoraCodigoFasecoldaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.NuevaExposicionVehiculoPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
@@ -27,8 +25,6 @@ public class ExposicionVehicularManualStep {
 
   @Page NuevoIncidenteVehicularPage nuevoIncidenteVehicularPage;
 
-  @Page CalculadoraCodigoFasecoldaPage calculadoraCodigoFasecoldaPage;
-
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
   @Page CreacionServicioPage crearServicioPage;
@@ -42,8 +38,7 @@ public class ExposicionVehicularManualStep {
   public void crearExposicionVehicularManual(
       List<Map<String, String>> opcionesCrearExposicion,
       List<ExposicionVehiculoTercero> datosVehiculoTercero,
-      int numeroVehiculosInvolucradosTercero,
-      List<CodigoFasecolda> datosCodigoFasecolda) {
+      int numeroVehiculosInvolucradosTercero) {
     for (int j = 0; j <= numeroVehiculosInvolucradosTercero - 1; j++) {
       menuClaimPage.seleccionarBotonAcciones();
       for (int i = 0; i < opcionesCrearExposicion.size(); i++) {
@@ -70,21 +65,7 @@ public class ExposicionVehicularManualStep {
       nuevaExposicionManualPage.crearNuevoIncidenteVehicular();
       nuevoIncidenteVehicularPage.ingresarPlacaVehiculoAfectado(datosVehiculoTercero, j);
       nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
-      if (nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda() == true) {
-        datosCodigoFasecolda.forEach(
-            formularioCodigoFasecolda -> {
-              calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(
-                  formularioCodigoFasecolda.getClaseVehiculo());
-              calculadoraCodigoFasecoldaPage.seleccionarModeloVehiculo(
-                  formularioCodigoFasecolda.getModelo());
-              calculadoraCodigoFasecoldaPage.seleccionarMarcaVehiculo(
-                  formularioCodigoFasecolda.getMarca());
-              calculadoraCodigoFasecoldaPage.seleccionarLineaVehiculo(
-                  formularioCodigoFasecolda.getLinea());
-              calculadoraCodigoFasecoldaPage.generarCodigoFasecolda();
-              calculadoraCodigoFasecoldaPage.crearCodigoFasecoldaVehiculo();
-            });
-      }
+      nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda();
       datosVehiculoTercero.forEach(
           formularioLugarAtencion -> {
             nuevoIncidenteVehicularPage.seleccionarLugarAtencion(

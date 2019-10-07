@@ -5,7 +5,6 @@ import static com.sura.reclamaciones.constantes.NombresCsv.*;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.*;
 
-import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
@@ -45,8 +44,6 @@ public class PagoSiniestroDefinition {
   @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Steps PagoPrimaPendienteStep pagoPrimaPendienteStep;
-
-  CodigoFasecolda datosCodigoFasecolda;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -111,15 +108,11 @@ public class PagoSiniestroDefinition {
             obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
                 EXPOSICION_VEHICULAR_TERCERO.getValor()));
-    datosCodigoFasecolda =
-        new CodigoFasecolda(
-            obtenerDatosPrueba(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
     nuevaExposicionVehiculoStep.crearExposicionVehicularManual(
         obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros(),
-        numeroVehiculosInvolucradosTercero,
-        datosCodigoFasecolda.getLstCodigoFasecolda());
+        numeroVehiculosInvolucradosTercero);
     exposicionVehiculoTercero.getLstExposicionTerceros();
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
