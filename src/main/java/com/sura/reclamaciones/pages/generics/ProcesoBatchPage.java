@@ -29,15 +29,16 @@ public class ProcesoBatchPage extends GeneralPage {
   @FindBy(xpath = "//div[contains(@class, 'x-box-inner x-vertical-box-overflow-body')]")
   private List<WebElementFacade> mnuPanelOpcionesPrimerNivel;
 
+  static final String LETRA_T = "T";
+
   public void ejecutarBatch() {
-    String LETRA_T = "T";
     String comando = Keys.chord(Keys.ALT, Keys.SHIFT, LETRA_T);
     txtBuscarClaim.sendKeys(comando);
     realizarEsperaCarga();
   }
 
   public void ejecutarProcesoBatch(String nombreProcesoBatch) {
-    List<String> nombresProcesoBatch = new ArrayList<String>();
+    List<String> nombresProcesoBatch = new ArrayList();
     final String NOMBRE_BATCH = "Proceso por lotes";
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(

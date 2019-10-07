@@ -80,8 +80,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago                      | Método de Pago | Cobertura           | Pago Solo Sura |
-      | Perdida total Daños pago por en EFECTIVO | Final        | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Pago por banco | Perdida total Daños | No             |
+      | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago                      | Método de Pago | Cobertura           | Pago Solo Sura | Número de vehículos involucrados del tercero en el siniestro |
+      | Perdida total Daños pago por en EFECTIVO | Final        | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Pago por banco | Perdida total Daños | No             | 1                                                            |
 
   @riesgoConsultableEmpresarial
   @claimsEmpresarial

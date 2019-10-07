@@ -30,6 +30,7 @@ public class ReversionConstitucionDefinition {
   @Steps NuevaReclamacionEmpresarialStep reclamacionEmpresarialStep;
 
   @Steps ConsultaDatoFinancieroTransaccionStep consultaDatoFinancieroTransaccionStep;
+
   @Steps InformacionReclamacionStep informacionReclamacionStep;
 
   @Steps BuscarPolizaStep buscarPolizaStep;
@@ -54,8 +55,8 @@ public class ReversionConstitucionDefinition {
     buscarPolizaStep.buscarPolizaEmpresarial(reserva.getLstReclamo());
     propiedadesImplicadasStep.seleccionarPropiedadImplicada();
     informacionBasicaStep.diligenciarInformacionBasica(reserva.getLstReclamo());
-    informacionReclamacionStep.seleccionarCausalIncidente(causaSiniestro, valorPretension);
-    informacionReclamacionStep.diligenciarInformacionIncidente(tipoIncidente);
+    informacionReclamacionStep.diligenciarInformacionIncidente(
+        causaSiniestro, valorPretension, tipoIncidente);
     nuevaReclamacionGuardadaStep.obtenerNumeroReclamacionGuardada();
   }
 

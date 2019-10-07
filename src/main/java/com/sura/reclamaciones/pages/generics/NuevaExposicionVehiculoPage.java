@@ -50,7 +50,6 @@ public class NuevaExposicionVehiculoPage extends GeneralPage {
             .toString());
     txtReclamanteExposicionVehicular.clear();
     txtReclamanteExposicionVehicular.typeAndTab(nombreReclamante);
-    ;
     realizarEsperaCarga();
   }
 

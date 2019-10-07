@@ -123,7 +123,7 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
   }
 
   public void obtenerNumeroPagoIndividual() {
-    List<String> numeroPagosIndividuales = new ArrayList<String>();
+    List<String> numeroPagosIndividuales = new ArrayList();
     final String NUMERO_PAGO_INDIVIDUAL = "N.° de pago";
     int j = 0;
     List<WebElement> elementoEncontrado =

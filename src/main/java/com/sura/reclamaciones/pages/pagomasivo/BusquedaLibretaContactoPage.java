@@ -38,8 +38,6 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
   @FindBy(id = "ext-gen")
   private WebElementFacade btnSeleccionarContactoPagoMasivo;
 
-  int posicionNombreContactoEncontrado, tamanoLista;
-
   public BusquedaLibretaContactoPage(WebDriver wdriver) {
     super(wdriver);
   }
@@ -65,7 +63,7 @@ public class BusquedaLibretaContactoPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void seleccionarContactoPagoMasivo(String nombreContacto) {
+  public void seleccionarContactoPagoMasivo() {
     final String RESULTADO_BUSQUEDA_CONTACTO = "Nombre";
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(
