@@ -11,9 +11,6 @@ public class PagoSiniestro extends Transacciones {
   private String comentario;
   private String numeroFactura;
   private String tipoDireccion;
-  private String descuento;
-  private String impuesto;
-  private String description;
   private String esPagoAutomatico;
 
   public PagoSiniestro() {}
@@ -24,9 +21,6 @@ public class PagoSiniestro extends Transacciones {
     this.comentario = datosPagosEmpresariales.get("comentario");
     this.numeroFactura = datosPagosEmpresariales.get("numeroFactura");
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
-    this.descuento = datosPagosEmpresariales.get("descuento");
-    this.impuesto = datosPagosEmpresariales.get("impuesto");
-    this.description = datosPagosEmpresariales.get("description");
     this.esPagoAutomatico = datosPagosEmpresariales.get("esPagoAutomatico");
   }
 
@@ -58,18 +52,6 @@ public class PagoSiniestro extends Transacciones {
 
   public List<PagoSiniestro> getLstPago() {
     return lstPagoSiniestro;
-  }
-
-  public String getDescuento() {
-    return descuento;
-  }
-
-  public String getImpuesto() {
-    return impuesto;
-  }
-
-  public String getDescription() {
-    return description;
   }
 
   private void asignarDatos(List<Map<String, String>> datosPagosEmpresarial) {
