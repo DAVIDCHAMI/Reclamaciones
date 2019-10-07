@@ -18,8 +18,6 @@ import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
-import com.sura.reclamaciones.steps.pagomasivo.ResultadoArchivoProcesadoStep;
-import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
@@ -83,8 +81,6 @@ public class PagoMasivoDefinition {
         datosExposicionPagoMasivo.getLstExposicion(),
         datosReservaPagoMasivo.getLstReserva(),
         datosPagoSiniestroPagoMasivo.getLstPago());
-    resultadoValidacionArchivoStep.validarNumeroRegistrosArchivo();
-    resultadoArchivoProcesadoStep.consultarResultadoArchivoProcesado();
   }
 
   @Cuando(

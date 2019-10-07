@@ -206,12 +206,6 @@ public class GeneralPage extends PageObject {
     realizarEsperaCarga();
   }
 
-  public void continuarSiguientePantalla() {
-    btnSiguiente.waitUntilClickable();
-    btnSiguiente.click();
-    realizarEsperaCarga();
-  }
-
   public void finalizarProceso() {
     btnFinalizar.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
