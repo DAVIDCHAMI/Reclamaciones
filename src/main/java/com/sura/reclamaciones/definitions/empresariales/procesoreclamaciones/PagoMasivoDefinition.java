@@ -8,7 +8,6 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_MASIVO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
-
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.Exposicion;
@@ -18,9 +17,7 @@ import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.pagomasivo.BusquedaLibretaContactoStep;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
-import com.sura.reclamaciones.steps.pagomasivo.DetalleFacturaVolumenStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoArchivoProcesadoStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import cucumber.api.java.es.Cuando;
@@ -39,10 +36,6 @@ public class PagoMasivoDefinition {
   @Steps DetalleSiniestroStep detalleSiniestroStep;
 
   @Steps ResultadoArchivoProcesadoStep resultadoArchivoProcesadoStep;
-
-  @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
-
-  @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
 
   @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
@@ -96,15 +89,15 @@ public class PagoMasivoDefinition {
 
   @Cuando(
       "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
-  public void crearPagoMasivo(
-      String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
-    detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
-    busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
+  public void crearPagoMasivo()
+  {
+    //ToDo
+
   }
 
   @Entonces(
       "^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
-  public void validarPagoMasivo(String strOpcionMenu, String numReclamacion) {
+  public void validarPagoMasivo() {
     //ToDo
   }
 }
