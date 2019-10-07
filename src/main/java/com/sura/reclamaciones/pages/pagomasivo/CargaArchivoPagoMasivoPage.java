@@ -24,12 +24,4 @@ public class CargaArchivoPagoMasivoPage extends GeneralPage {
     btnFacturacionMasiva.waitUntilClickable();
     btnFacturacionMasiva.click();
   }
-
-  public void buscarArchivoPagoMasivo(String rutaArchivoPagoMasivo) {
-    WebDriverWait wait = new WebDriverWait(getDriver(), Integer.parseInt(VALOR_CERO.getValor()));
-    WebElement btnExaminar =
-        wait.until(
-            ExpectedConditions.presenceOfElementLocated(By.xpath(".//input[@name='fileContent']")));
-    btnExaminar.sendKeys(rutaArchivoPagoMasivo);
-  }
 }

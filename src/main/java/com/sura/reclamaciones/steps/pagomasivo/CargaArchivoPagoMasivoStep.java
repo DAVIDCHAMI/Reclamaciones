@@ -41,7 +41,5 @@ public class CargaArchivoPagoMasivoStep {
         datosExposicionPagoMasivo,
         datosReservaPagoMasivo,
         datosPagoSiniestroPagoMasivo);
-    cargaArchivoPagoMasivoPage.buscarArchivoPagoMasivo(rutaArchivoPagoMasivo);
-    generalPage.continuarSiguientePantalla();
   }
 }

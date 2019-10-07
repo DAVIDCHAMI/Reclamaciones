@@ -251,6 +251,12 @@ public class GeneralPage extends PageObject {
     }
   }
 
+  public void continuarSiguientePantalla() {
+    btnSiguiente.waitUntilClickable();
+    btnSiguiente.click();
+    realizarEsperaCarga();
+  }
+
   public String obtenerDatoTablaCabecera(String strDatoCabecera, int posicionElemento) {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocido(tblVerificacion, strDatoCabecera, 1);

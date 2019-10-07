@@ -8,6 +8,7 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_MASIVO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
+
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.Exposicion;
@@ -29,9 +30,7 @@ public class PagoMasivoDefinition {
 
   @Steps CargaArchivoPagoMasivoStep cargaArchivoPagoMasivoStep;
 
-
   @Steps DetalleSiniestroStep detalleSiniestroStep;
-
 
   @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
@@ -83,8 +82,7 @@ public class PagoMasivoDefinition {
 
   @Cuando(
       "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
-  public void crearPagoMasivo()
-  {
+  public void crearPagoMasivo() {
     //ToDo
 
   }
