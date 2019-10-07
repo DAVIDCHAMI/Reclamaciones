@@ -9,10 +9,7 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABIL
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
 import com.sura.reclamaciones.models.CodigoFasecolda;
-
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
-
-import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import cucumber.api.java.es.Cuando;
@@ -23,8 +20,6 @@ import net.thucydides.core.annotations.Steps;
 public class PagoMasivoDefinition {
 
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
-
-  @Steps DetalleSiniestroStep detalleSiniestroStep;
 
   @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
@@ -51,7 +46,6 @@ public class PagoMasivoDefinition {
         exposicionVehiculoTercero.getLstExposicionTerceros(),
         numeroVehiculosInvolucradosTercero,
         datosCodigoFasecolda.getLstCodigoFasecolda());
-    detalleSiniestroStep.consultarInformacionSiniestro();
   }
 
   @Cuando(
