@@ -8,7 +8,6 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_MASIVO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.CodigoFasecolda;
@@ -19,18 +18,14 @@ import com.sura.reclamaciones.models.Reserva;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.generics.ProcesoBatchStep;
 import com.sura.reclamaciones.steps.pagomasivo.BusquedaLibretaContactoStep;
 import com.sura.reclamaciones.steps.pagomasivo.CargaArchivoPagoMasivoStep;
-import com.sura.reclamaciones.steps.pagomasivo.DatoFinancieroPagoStep;
 import com.sura.reclamaciones.steps.pagomasivo.DetalleFacturaVolumenStep;
-import com.sura.reclamaciones.steps.pagomasivo.FacturaVolumenStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoArchivoProcesadoStep;
 import com.sura.reclamaciones.steps.pagomasivo.ResultadoValidacionArchivoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 
 public class PagoMasivoDefinition {
@@ -48,12 +43,6 @@ public class PagoMasivoDefinition {
   @Steps DetalleFacturaVolumenStep detalleFacturaVolumenStep;
 
   @Steps BusquedaLibretaContactoStep busquedaLibretaContactoStep;
-
-  @Steps ProcesoBatchStep procesoBatchStep;
-
-  @Steps FacturaVolumenStep facturaVolumenStep;
-
-  @Steps DatoFinancieroPagoStep datoFinancieroPagoStep;
 
   @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
@@ -111,19 +100,11 @@ public class PagoMasivoDefinition {
       String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
     detalleFacturaVolumenStep.ingresarInformacionFactura(tipoMoneda, metodoPago);
     busquedaLibretaContactoStep.buscarContactoPagoMasivo(tipoContacto, contacto);
-    detalleFacturaVolumenStep.crearPagoMasivo();
-    procesoBatchStep.ejecutarProcesoBatch();
   }
 
   @Entonces(
       "^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
   public void validarPagoMasivo(String strOpcionMenu, String numReclamacion) {
-    facturaVolumenStep.buscarNumeroFacturaPagoMasivo(
-        MenuConstante.ESCRITORIO_MENU, MenuConstante.FACTURAS_VOLUMEN_MENU);
-    detalleFacturaVolumenStep.validarPagoMasivo();
-    datoFinancieroPagoStep.validarPagosIndividuales(
-        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()),
-        MenuConstante.DATOS_FINANCIEROS,
-        MenuConstante.PAGOS);
+    //ToDo
   }
 }

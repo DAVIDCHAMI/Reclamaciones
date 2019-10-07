@@ -2,7 +2,6 @@ package com.sura.reclamaciones.pages.pagomasivo;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CANTIDAD_PAGO_INDIVIDUAL;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_FACTURA_PAGO_MASIVO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PAGO_INDIVIDUAL;
 
 import com.sura.reclamaciones.pages.generics.GeneralPage;
@@ -95,24 +94,6 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
                     + metodoPago
                     + "')]//preceding-sibling::input"))
         .click();
-  }
-
-  public void finalizarPagoMasivo() {
-    btnFinalizarPagoMasivo.waitUntilClickable();
-    btnFinalizarPagoMasivo.click();
-    realizarEsperaCarga();
-  }
-
-  public void enviarPagoMasivo() {
-    btnEnviarPagoMasivo.waitUntilClickable();
-    btnEnviarPagoMasivo.click();
-    realizarEsperaCarga();
-  }
-
-  public void obtenerNumeroFacturaPagoMasivo() {
-    lblNumeroFacturaPagoMasivo.getText();
-    Serenity.setSessionVariable(SESION_CC_NUMERO_FACTURA_PAGO_MASIVO.getValor())
-        .to(lblNumeroFacturaPagoMasivo);
   }
 
   public void validarEstadoPagoMasivo() {
