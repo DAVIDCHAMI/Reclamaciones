@@ -7,11 +7,11 @@ import static com.sura.reclamaciones.constantes.NombresCsv.CODIGO_FASECOLDA;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
+
 import com.sura.reclamaciones.models.CodigoFasecolda;
-import com.sura.reclamaciones.models.Exposicion;
+
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
-import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.models.Reserva;
+
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
