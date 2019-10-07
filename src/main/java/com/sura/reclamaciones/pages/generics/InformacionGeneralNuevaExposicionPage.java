@@ -76,7 +76,6 @@ public class InformacionGeneralNuevaExposicionPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  @Override
   public void seleccionarDepartamento(String departamento) {
     cmbDepartamento.clear();
     cmbDepartamento.sendKeys(departamento);
