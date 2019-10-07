@@ -29,7 +29,7 @@ public class PagoMasivoDefinition {
 
   @Steps CargaArchivoPagoMasivoStep cargaArchivoPagoMasivoStep;
 
-  
+
   @Steps DetalleSiniestroStep detalleSiniestroStep;
 
 
