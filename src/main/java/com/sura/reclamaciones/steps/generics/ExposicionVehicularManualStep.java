@@ -1,10 +1,11 @@
 package com.sura.reclamaciones.steps.generics;
 
-import static com.sura.reclamaciones.constantes.Constantes.PLACA;
-import static com.sura.reclamaciones.constantes.Constantes.OPCION_MENU;
 import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
+import static com.sura.reclamaciones.constantes.Constantes.OPCION_MENU;
+import static com.sura.reclamaciones.constantes.Constantes.PLACA;
 import static com.sura.reclamaciones.constantes.Constantes.RECLAMANTE_CONDUCTOR_AFECTADO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
+
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;

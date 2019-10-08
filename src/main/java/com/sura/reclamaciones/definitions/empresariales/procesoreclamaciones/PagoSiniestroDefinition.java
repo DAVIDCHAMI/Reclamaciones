@@ -1,14 +1,15 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
-import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
+import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PAGO_SINIESTRO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
+import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESERVA;
+
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;

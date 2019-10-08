@@ -53,10 +53,4 @@ public class PagoSiniestro extends Transacciones {
   public List<PagoSiniestro> getLstPago() {
     return lstPagoSiniestro;
   }
-
-  private void asignarDatos(List<Map<String, String>> datosPagosEmpresarial) {
-    for (Map<String, String> dato : datosPagosEmpresarial) {
-      lstPagoSiniestro.add(new PagoSiniestro(dato));
-    }
-  }
 }
