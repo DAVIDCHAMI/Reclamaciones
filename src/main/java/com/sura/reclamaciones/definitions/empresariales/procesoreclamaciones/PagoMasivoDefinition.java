@@ -42,7 +42,6 @@ public class PagoMasivoDefinition {
       "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
   public void crearPagoMasivo(String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
     //ToDo
-
   }
 
   @Entonces(
