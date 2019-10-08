@@ -16,10 +16,9 @@ public class ExposicionStep {
 
   @Page MenuClaimPage menuClaimPage;
 
-  private boolean tipoExposicionEmpresarial;
-
   @Step
   public void validarExposicionEmpresariales(String tipoExposicion) {
+    boolean tipoExposicionEmpresarial;
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES);
     String valorTipoExposicion =
         generalPage.obtenerDatoTablaCabecera(

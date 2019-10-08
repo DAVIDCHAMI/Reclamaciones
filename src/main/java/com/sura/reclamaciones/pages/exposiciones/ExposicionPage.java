@@ -12,8 +12,6 @@ import org.openqa.selenium.WebDriver;
 
 public class ExposicionPage extends GeneralPage {
 
-  private String columnaTipoExposicion;
-  private boolean valorLineaReserva = true;
   private static String EXPOSICION_DANOS_ASEGURADO = "Daños";
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
@@ -40,6 +38,7 @@ public class ExposicionPage extends GeneralPage {
 
   public boolean validarExposiciones(
       List<ExposicionesAutomaticasAutos> datosExposicionesAutomaticas) {
+    boolean valorLineaReserva = true;
     obtenerCabecerasTabla(
         $("//div[@id='ClaimExposures:ClaimExposuresScreen:ExposuresLV']"), Tablas.CABECERAS_CC);
     for (int i = 0; i < datosExposicionesAutomaticas.size(); i++) {

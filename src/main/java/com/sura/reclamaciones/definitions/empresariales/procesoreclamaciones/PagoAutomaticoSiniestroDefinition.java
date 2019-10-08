@@ -23,7 +23,7 @@ public class PagoAutomaticoSiniestroDefinition {
 
   ReclamacionEmpresarial reclamacionEmpresarial;
 
-  String productoPoliza = "";
+  private String productoPoliza;
 
   @Steps PagoAutomaticoStep pagoAutomatico;
 
