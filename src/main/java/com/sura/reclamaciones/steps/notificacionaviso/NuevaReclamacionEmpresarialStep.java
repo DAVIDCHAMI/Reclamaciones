@@ -27,10 +27,6 @@ public class NuevaReclamacionEmpresarialStep {
         verificar.equals(VALIDADOR_NUEVA_RECLAMACION.getValor()));
   }
 
-  public void seleccionarNuevaReclamacion(String nombreOpcion, String subItem) {
-    menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
-  }
-
   public void validarExposicionVisualizada(String exposicion) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(ReclamacionConstante.EXPOSICIONES);
     MatcherAssert.assertThat(

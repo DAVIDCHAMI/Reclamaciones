@@ -4,7 +4,7 @@ import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
+import com.sura.reclamaciones.pages.exposiciones.ExposicionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import net.thucydides.core.annotations.Step;
@@ -18,7 +18,7 @@ public class NuevoPagoStep {
 
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
 
-  @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
+  @Page ExposicionPage exposicionPage;
 
   @Step
   public void crearNuevoPago() {
@@ -29,7 +29,7 @@ public class NuevoPagoStep {
   @Step
   public void declararReclamacionPerdidaTotal() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
-    exposicionAutomaticaPage.seleccionarExposicion();
+    exposicionPage.seleccionarExposicion();
     detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.editarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.seleccionarIncineracionTotalVehiculo();

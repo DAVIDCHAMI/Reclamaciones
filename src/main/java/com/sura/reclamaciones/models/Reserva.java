@@ -7,20 +7,36 @@ import java.util.Map;
 public class Reserva {
 
   private List<Reserva> lstReserva = new ArrayList<>();
+  private String monedaReserva;
+  private String tipoCosto;
+  private String categoriaCosto;
   private String lineaReserva;
   private String valorReserva;
-  private String datoDevolverTablaDatosFinancieros;
   private String valorDeducible;
 
   public Reserva(Map<String, String> datosReserva) {
+    this.monedaReserva = datosReserva.get("monedaReserva");
+    this.tipoCosto = datosReserva.get("tipoCosto");
+    this.categoriaCosto = datosReserva.get("categoriaCosto");
     this.lineaReserva = datosReserva.get("lineaReserva");
     this.valorReserva = datosReserva.get("valorReserva");
-    this.datoDevolverTablaDatosFinancieros = datosReserva.get("datoDevolver");
     this.valorDeducible = datosReserva.get("valorDeducible");
   }
 
   public Reserva(List<Map<String, String>> datosReclamaciones) {
     asignarDatos(datosReclamaciones);
+  }
+
+  public String getMonedaReserva() {
+    return monedaReserva;
+  }
+
+  public String getTipoCosto() {
+    return tipoCosto;
+  }
+
+  public String getCategoriaCosto() {
+    return categoriaCosto;
   }
 
   public List<Reserva> getLstReserva() {
@@ -37,10 +53,6 @@ public class Reserva {
 
   public String getValorReserva() {
     return valorReserva;
-  }
-
-  public String getDatoDevolverTablaDatosFinancieros() {
-    return datoDevolverTablaDatosFinancieros;
   }
 
   private void asignarDatos(List<Map<String, String>> datosReserva) {
