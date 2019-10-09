@@ -14,8 +14,8 @@ import com.sura.reclamaciones.pages.autos.reclamacion.AgregarInformacionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DatosPeatonPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.InformacionBasicaPage;
+import com.sura.reclamaciones.pages.exposiciones.ExposicionPage;
 import com.sura.reclamaciones.pages.generics.GeneralPage;
 import com.sura.reclamaciones.pages.generics.InformacionGeneralNuevaExposicionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
@@ -35,7 +35,7 @@ public class NuevoAvisoSiniestroAutoStep {
 
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
-  @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
+  @Page ExposicionPage exposicionPage;
 
   @Page DatosPeatonPage agregarExposicionLesionesPage;
 
@@ -197,8 +197,7 @@ public class NuevoAvisoSiniestroAutoStep {
   @Step
   public void validarExposicion(List<ExposicionesAutomaticasAutos> datosExposicionAutomatica) {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
-    boolean exposicionAutomatica =
-        exposicionAutomaticaPage.validarExposiciones(datosExposicionAutomatica);
+    boolean exposicionAutomatica = exposicionPage.validarExposiciones(datosExposicionAutomatica);
     MatcherAssert.assertThat(
         "No coinciden todos los valores de las líneas de reserva", exposicionAutomatica);
   }

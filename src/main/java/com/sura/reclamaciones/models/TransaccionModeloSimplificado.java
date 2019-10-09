@@ -7,7 +7,6 @@ import java.util.Map;
 public class TransaccionModeloSimplificado {
 
   private String numeroMovimientoFinanciero;
-  private String numeroReclamacion;
   private String valorCedidoReaseguradoras;
   private String valorNeto;
   private String valorMovimientoFinanciero;
@@ -29,7 +28,6 @@ public class TransaccionModeloSimplificado {
   }
 
   public void obtenerCamposBaseDatos(Map<String, String> datosModeloSimplificado) {
-    this.numeroReclamacion = datosModeloSimplificado.get("NUMERORECLAMACION");
     this.numeroMovimientoFinanciero = datosModeloSimplificado.get("NUMEROMOVIMIENTOFINANCIERO");
     this.valorMovimientoFinanciero = datosModeloSimplificado.get("VALORMOVIMIENTOFINANCIERO");
     this.valorCedidoReaseguradoras = datosModeloSimplificado.get("VALORCEDIDOREASEGURADORAS");
@@ -38,7 +36,6 @@ public class TransaccionModeloSimplificado {
   }
 
   public void obtenerCamposCsv(Map<String, String> datosModeloSimplificado) {
-    this.numeroReclamacion = datosModeloSimplificado.get("numeroReclamacion");
     this.numeroMovimientoFinanciero = datosModeloSimplificado.get("numeroMovimientoFinanciero");
     this.valorMovimientoFinanciero = datosModeloSimplificado.get("valorMovimientoFinanciero");
     this.valorCedidoReaseguradoras = datosModeloSimplificado.get("valorCedidoReaseguradoras");
@@ -60,10 +57,6 @@ public class TransaccionModeloSimplificado {
 
   public String getValorNeto() {
     return valorNeto;
-  }
-
-  public String getNumeroReclamacion() {
-    return numeroReclamacion;
   }
 
   public String getEstadoMovimientoFinanciero() {

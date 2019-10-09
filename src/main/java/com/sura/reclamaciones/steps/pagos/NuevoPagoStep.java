@@ -13,9 +13,9 @@ import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
-import com.sura.reclamaciones.pages.autos.reclamacion.ExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevaExposicionPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
+import com.sura.reclamaciones.pages.exposiciones.ExposicionPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
@@ -33,7 +33,7 @@ public class NuevoPagoStep {
 
   @Page IntroducirInformacionPagoPage introducirInformacionPagoPage;
 
-  @Page ExposicionAutomaticaPage exposicionAutomaticaPage;
+  @Page ExposicionPage exposicionPage;
 
   @Page ResumenReclamacionPage resumenReclamacionPage;
 
@@ -59,7 +59,7 @@ public class NuevoPagoStep {
   @Step
   public void declararReclamacionPerdidaTotal() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(EXPOSICIONES.getValor());
-    exposicionAutomaticaPage.seleccionarExposicion();
+    exposicionPage.seleccionarExposicion();
     detalleExposicionAutomaticaPage.seleccionarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.editarCalculadoraPerdidaTotal();
     detalleExposicionAutomaticaPage.seleccionarIncineracionTotalVehiculo();

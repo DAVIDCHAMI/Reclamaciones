@@ -13,7 +13,9 @@ public class PagoSiniestro extends Transacciones {
   private String tipoDireccion;
   private String esPagoAutomatico;
 
-  public PagoSiniestro() {}
+  public PagoSiniestro() {
+    super();
+  }
 
   private PagoSiniestro(Map<String, String> datosPagosEmpresariales) {
     super(datosPagosEmpresariales);
