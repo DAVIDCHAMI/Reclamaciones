@@ -21,4 +21,4 @@ Característica: Crear un recupero de un siniestro
     Ejemplos:
       | Línea de Reserva                | Tipo de pago | Beneficiario del pago                      | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   | Código de retención recupero |
       | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR                        | Pago por banco  | No                 | RC Lesión a Persona | 0099                         |
-      | (2) 1ª parteVehículo            | Parcial      | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Caja Sura       | No                 | Perdida total Daños | 0099                         |
+
