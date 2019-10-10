@@ -91,12 +91,11 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
 
   public void ingresarPlacaVehiculoAfectado(
       List<ExposicionVehiculoTercero> datosVehiculoTercero, int j) {
-    int posicionCampo = 0;
     int consecutivoPlacaTercero =
-        Integer.parseInt(datosVehiculoTercero.get(posicionCampo).getPlacaTercero().substring(3, 6));
+        Integer.parseInt(datosVehiculoTercero.get(Integer.parseInt(VALOR_CERO.getValor())).getPlacaTercero().substring(3, 6));
     consecutivoPlacaTercero = consecutivoPlacaTercero + j;
     String placaVehiculoTercero =
-        datosVehiculoTercero.get(posicionCampo).getPlacaTercero().substring(0, 3)
+        datosVehiculoTercero.get(Integer.parseInt(VALOR_CERO.getValor())).getPlacaTercero().substring(0, 3)
             + Integer.toString(consecutivoPlacaTercero);
     txtPlacaVehiculo.waitUntilClickable().sendKeys(placaVehiculoTercero);
     realizarEsperaCarga();
