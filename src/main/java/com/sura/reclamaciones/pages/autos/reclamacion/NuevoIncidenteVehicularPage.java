@@ -92,10 +92,17 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   public void ingresarPlacaVehiculoAfectado(
       List<ExposicionVehiculoTercero> datosVehiculoTercero, int j) {
     int consecutivoPlacaTercero =
-        Integer.parseInt(datosVehiculoTercero.get(Integer.parseInt(VALOR_CERO.getValor())).getPlacaTercero().substring(3, 6));
+        Integer.parseInt(
+            datosVehiculoTercero
+                .get(Integer.parseInt(VALOR_CERO.getValor()))
+                .getPlacaTercero()
+                .substring(3, 6));
     consecutivoPlacaTercero = consecutivoPlacaTercero + j;
     String placaVehiculoTercero =
-        datosVehiculoTercero.get(Integer.parseInt(VALOR_CERO.getValor())).getPlacaTercero().substring(0, 3)
+        datosVehiculoTercero
+                .get(Integer.parseInt(VALOR_CERO.getValor()))
+                .getPlacaTercero()
+                .substring(0, 3)
             + Integer.toString(consecutivoPlacaTercero);
     txtPlacaVehiculo.waitUntilClickable().sendKeys(placaVehiculoTercero);
     realizarEsperaCarga();
@@ -104,17 +111,6 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   public void consultarInformacionVehiculoAfectado() {
     btnRecuperarInformacion.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
-  }
-
-  public boolean validarPlacaExisteFasecolda() {
-    if (btnGenerarCodigoFasecolda.isVisible()) {
-      btnGenerarCodigoFasecolda.click();
-      realizarEsperaCarga();
-      return true;
-    } else {
-      seleccionarConductorVehiculoAfectado();
-      return false;
-    }
   }
 
   public void seleccionarLugarAtencion(String lugarAtencion) {

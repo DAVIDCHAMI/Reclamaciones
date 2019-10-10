@@ -69,7 +69,6 @@ public class ExposicionVehicularManualStep {
       nuevaExposicionManualPage.crearNuevoIncidenteVehicular();
       nuevoIncidenteVehicularPage.ingresarPlacaVehiculoAfectado(datosVehiculoTercero, j);
       nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
-      nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda();
       datosVehiculoTercero.forEach(
           formularioLugarAtencion -> {
             nuevoIncidenteVehicularPage.seleccionarLugarAtencion(
