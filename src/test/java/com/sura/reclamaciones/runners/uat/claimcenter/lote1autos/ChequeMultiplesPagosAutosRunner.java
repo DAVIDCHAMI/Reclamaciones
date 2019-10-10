@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
   features = "src/test/resources/features/pagos/pagar_siniestro.feature",
   glue = {"com.sura.reclamaciones.definitions"},
-  tags = {"@pagoLineaReservaAutos"}
+  tags = {"@chequeMultiplesPagosAutos"}
 )
-public class ChequeMultipagosAutosRunner {}
+public class ChequeMultiplesPagosAutosRunner {}
