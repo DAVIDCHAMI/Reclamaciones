@@ -83,7 +83,7 @@ public class ExposicionVehicularManualStep {
             nuevoIncidenteVehicularPage.seleccionarDireccionAtencion(
                 formularioLugarAtencion.getDireccionAtencion());
           });
-      nuevoIncidenteVehicularPage.seleccionarConductoVehiculoAfectado();
+      nuevoIncidenteVehicularPage.seleccionarConductorVehiculoAfectado();
       nuevoIncidenteVehicularPage.seleccionarServiciosTaller();
       nuevoIncidenteVehicularPage.seleccionarTaller();
       detalleVehiculoPage.buscarProveedor();

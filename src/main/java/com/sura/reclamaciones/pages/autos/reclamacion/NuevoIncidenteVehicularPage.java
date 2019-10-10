@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.autos.reclamacion;
 
+import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
@@ -112,7 +113,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
       realizarEsperaCarga();
       return true;
     } else {
-      seleccionarConductoVehiculoAfectado();
+      seleccionarConductorVehiculoAfectado();
       return false;
     }
   }
@@ -147,7 +148,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
     realizarEsperaCarga();
   }
 
-  public void seleccionarConductoVehiculoAfectado() {
+  public void seleccionarConductorVehiculoAfectado() {
     String nombreConductorTercero =
         (Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
             .toString());
