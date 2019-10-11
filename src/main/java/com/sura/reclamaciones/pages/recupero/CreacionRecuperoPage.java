@@ -17,7 +17,6 @@ public class CreacionRecuperoPage extends GeneralPage {
   private String departamento = "State-inputEl";
   private String ciudad = "City-inputEl";
   private String seleccionarOpcion = "//li[.='COMODIN']";
-  private String auxiliarSeleccionarOpcion = "";
 
   @FindBy(
     xpath =
@@ -90,6 +89,7 @@ public class CreacionRecuperoPage extends GeneralPage {
   }
 
   public void seleccionarCategoriaRecuperacion(String recupero) {
+    String auxiliarSeleccionarOpcion = "";
     txtCategoriaRecuperacion.click();
     auxiliarSeleccionarOpcion = seleccionarOpcion.replace(COMODIN.getValor(), recupero);
     $(auxiliarSeleccionarOpcion).click();

@@ -812,7 +812,7 @@ public class CreacionSiniestroAutosFactory {
   }
 
   public List<Object> listParamFactory() {
-    List<Object> listParams = new ArrayList<Object>();
+    List<Object> listParams = new ArrayList();
     Params parametro = paramAutoFactory();
     listParams.add(getPolicyNumber());
     listParams.add(parametro);

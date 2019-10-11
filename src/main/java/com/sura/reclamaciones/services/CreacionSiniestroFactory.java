@@ -25,6 +25,7 @@ public class CreacionSiniestroFactory {
   private static final String METHOD_CREATE_CLAIM = "createClaim";
   private static final String LOSS_TYPE_EMPRESARIAL = "PR";
   private static final String JSONRPC_2 = "2.0";
+  private static final String DESCRIPCION="Justificación valor total reclamado";
 
   private String policyNumber;
   private String lossDate;
@@ -65,6 +66,7 @@ public class CreacionSiniestroFactory {
   private String nameAuthor;
   private boolean fixedPropertyIncident;
   private boolean propertyContentsIncident;
+
 
   public String getLossDate() {
     return lossDate;
@@ -384,7 +386,7 @@ public class CreacionSiniestroFactory {
   }
 
   public List<Object> listParamFactory() {
-    List<Object> listParams = new ArrayList<Object>();
+    List<Object> listParams = new ArrayList<>();
     Params param = paramFactory();
     listParams.add(policyNumber);
     listParams.add(param);
@@ -434,17 +436,17 @@ public class CreacionSiniestroFactory {
 
   FixedPropertyIncident fixedPropertyIncidentFactory() {
     FixedPropertyIncident fixedPropertyIncidentFac = new FixedPropertyIncident();
-    fixedPropertyIncidentFac.setDescription("Justificación valor total reclamado");
+    fixedPropertyIncidentFac.setDescription(DESCRIPCION);
     fixedPropertyIncidentFac.setIsPolicyProperty(true);
     fixedPropertyIncidentFac.setProperty(propertyFactory());
     fixedPropertyIncidentFac.setClaimant(claimantFactory());
-    fixedPropertyIncidentFac.setPropertyDesc("Justificación valor total reclamado");
+    fixedPropertyIncidentFac.setPropertyDesc(DESCRIPCION);
     return fixedPropertyIncidentFac;
   }
 
   public List<PropertyContentsIncident> listPropertyContentsIncidentFactory() {
     List<PropertyContentsIncident> listPropertyContentsIncident =
-        new ArrayList<PropertyContentsIncident>();
+        new ArrayList<>();
     PropertyContentsIncident propertyContentsIncidentFac = propertyContentsIncident();
     listPropertyContentsIncident.add(propertyContentsIncidentFac);
     return listPropertyContentsIncident;
@@ -452,7 +454,7 @@ public class CreacionSiniestroFactory {
 
   PropertyContentsIncident propertyContentsIncident() {
     PropertyContentsIncident propertyContentsIncidentFac = new PropertyContentsIncident();
-    propertyContentsIncidentFac.setDescription("Justificación valor total reclamado");
+    propertyContentsIncidentFac.setDescription(DESCRIPCION);
     return propertyContentsIncidentFac;
   }
 
