@@ -12,6 +12,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
+import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.pagos.InformacionBeneficiarioPagoStep;
 import com.sura.reclamaciones.steps.pagos.InformacionPagoStep;
@@ -34,6 +35,8 @@ public class PagoSiniestroDefinition {
   PagoSiniestro pagoSiniestro;
 
   @Steps NuevoPagoStep nuevoPagoStep;
+
+  @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
   @Steps InformacionBeneficiarioPagoStep informacionBeneficiarioPagoStep;
 
@@ -95,24 +98,26 @@ public class PagoSiniestroDefinition {
   }
 
   @Cuando(
-      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) cuyo responsable (.*) es Sura$")
+      "^se genere un pago por siniestro de auto (.*) al beneficiario (.*) por el medio de pago de (.*) sobre las líneas de reserva (.*) cuyo responsable (.*) es Sura donde existe (.*) vehículo involucrado del tercero en el siniestro$")
   public void crearMultiPago(
       String tipoPago,
       String beneficiarioPago,
       String metodoPago,
       String lineaReserva,
-      String aplicaSoloSura)
+      String aplicaSoloSura,
+      int numeroVehiculosInvolucradosTercero)
       throws IOException {
-    nuevoPagoStep.consultarPlacaAsegurado();
+    nuevaExposicionVehiculoStep.consultarPlacaAsegurado();
     ExposicionVehiculoTercero exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
             obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
                 EXPOSICION_VEHICULAR_TERCERO.getValor()));
-    nuevoPagoStep.crearExposicionVehicularManual(
+    nuevaExposicionVehiculoStep.crearExposicionVehicularManual(
         obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
-        exposicionVehiculoTercero.getLstExposicionTerceros());
+        exposicionVehiculoTercero.getLstExposicionTerceros(),
+        numeroVehiculosInvolucradosTercero);
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =
