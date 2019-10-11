@@ -30,11 +30,11 @@ Característica: Anulacion de recuperos
       |Codigos_Retenciones|
       |0099   |
     Y se genera una orden de pago para que le sea entregado al usuario
-    Y se cree el recupero por el tipo de <Tipo de recupero> con un código de retención <Código de retención recupero> a una cobertura <Tipo de cobertura>
+    Y se cree el recupero con un código de retención <Código de retención recupero> a una cobertura <Tipo de cobertura>
     Y se obtiene un ingreso de dinero sobre el siniestro
     Cuando se anula el ingreso con cobertura <Tipo de cobertura>
     Entonces se debe obtener la anulación del recupero, quedando en estado anulado
 
     Ejemplos:
       | Línea de Reserva                | Tipo de pago | Beneficiario del pago | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   | Tipo de recupero | Código de retención recupero |
-      | (3) 1ª parteVehículo            | Parcial      | SOFIA JARAMILLO       | Caja Sura       | No                 | Perdida total Daños | Subrogación      | 0099                         |
+      | (3) 1ª parteVehículo            | Parcial      |  YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII       | Caja Sura       | No                 | Perdida total Daños | Subrogación      | 0099                         |

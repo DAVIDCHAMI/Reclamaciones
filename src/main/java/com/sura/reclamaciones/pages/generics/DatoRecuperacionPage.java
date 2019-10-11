@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class DatoRecuperacionPage extends GeneralPage {
 
- // @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//parent::span")
+  // @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//parent::span")
   // private WebElementFacade btnAnular;
 
   @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Aceptar')]")

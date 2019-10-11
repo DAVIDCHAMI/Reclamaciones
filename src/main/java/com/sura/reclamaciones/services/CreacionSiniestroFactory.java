@@ -25,7 +25,7 @@ public class CreacionSiniestroFactory {
   private static final String METHOD_CREATE_CLAIM = "createClaim";
   private static final String LOSS_TYPE_EMPRESARIAL = "PR";
   private static final String JSONRPC_2 = "2.0";
-  private static final String DESCRIPCION="Justificación valor total reclamado";
+  private static final String DESCRIPCION = "Justificación valor total reclamado";
 
   private String policyNumber;
   private String lossDate;
@@ -66,7 +66,6 @@ public class CreacionSiniestroFactory {
   private String nameAuthor;
   private boolean fixedPropertyIncident;
   private boolean propertyContentsIncident;
-
 
   public String getLossDate() {
     return lossDate;
@@ -445,8 +444,7 @@ public class CreacionSiniestroFactory {
   }
 
   public List<PropertyContentsIncident> listPropertyContentsIncidentFactory() {
-    List<PropertyContentsIncident> listPropertyContentsIncident =
-        new ArrayList<>();
+    List<PropertyContentsIncident> listPropertyContentsIncident = new ArrayList<>();
     PropertyContentsIncident propertyContentsIncidentFac = propertyContentsIncident();
     listPropertyContentsIncident.add(propertyContentsIncidentFac);
     return listPropertyContentsIncident;
