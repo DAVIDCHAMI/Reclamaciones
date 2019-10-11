@@ -277,7 +277,7 @@ public class ConsumoServicioCreacionSiniestroAutos {
     Utilidades.getLogger()
         .info(
             String.format(
-                "[contains(.,'Número de siniestro: ')]" + response.getResult().getClaimNumber()));
+                "[contains(.,'Número de siniestro: %s')]" , response.getResult().getClaimNumber()));
     Serenity.setSessionVariable(SESION_CC_NUMERO_SINIESTRO.getValor())
         .to(response.getResult().getClaimNumber());
   }

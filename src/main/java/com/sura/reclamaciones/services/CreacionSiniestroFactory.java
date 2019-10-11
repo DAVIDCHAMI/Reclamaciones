@@ -428,7 +428,7 @@ public class CreacionSiniestroFactory {
   }
 
   public List<FixedPropertyIncident> listFixedPropertyIncidentFactory() {
-    List<FixedPropertyIncident> listFixedPropertyIncident = new ArrayList<FixedPropertyIncident>();
+    List<FixedPropertyIncident> listFixedPropertyIncident = new ArrayList<>();
     FixedPropertyIncident fixedPropertyIncidentFac = fixedPropertyIncidentFactory();
     listFixedPropertyIncident.add(fixedPropertyIncidentFac);
     return listFixedPropertyIncident;
