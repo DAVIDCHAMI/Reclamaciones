@@ -4,7 +4,6 @@ import java.util.Map;
 
 public abstract class Transacciones {
 
-  private String numeroReclamacion;
   private String pais;
   private String departamento;
   private String ciudad;
@@ -14,16 +13,11 @@ public abstract class Transacciones {
   public Transacciones() {}
 
   Transacciones(Map<String, String> datosTransaccion) {
-    this.numeroReclamacion = datosTransaccion.get("numeroReclamacion");
     this.pais = datosTransaccion.get("pais");
     this.departamento = datosTransaccion.get("departamento");
     this.ciudad = datosTransaccion.get("ciudad");
     this.valorTransaccion = datosTransaccion.get("valorTransaccion");
     this.estadoTransaccion = datosTransaccion.get("estadoTransaccion");
-  }
-
-  public String getNumeroReclamacion() {
-    return numeroReclamacion;
   }
 
   public String getPais() {

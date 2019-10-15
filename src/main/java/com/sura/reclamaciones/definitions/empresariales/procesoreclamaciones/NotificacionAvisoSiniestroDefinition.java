@@ -3,11 +3,10 @@ package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
-import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
-import com.sura.reclamaciones.steps.notificacionaviso.BuscarPolizaStep;
+import com.sura.reclamaciones.steps.notificacionaviso.BusquedaPolizaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
 import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
@@ -25,7 +24,7 @@ public class NotificacionAvisoSiniestroDefinition {
 
   @Steps NuevaReclamacionEmpresarialStep nuevaReclamacionEmpresarialStep;
 
-  @Steps BuscarPolizaStep buscarPolizaStep;
+  @Steps BusquedaPolizaStep busquedaPolizaStep;
 
   @Steps InformacionReclamacionStep informacionReclamacionStep;
 
@@ -41,9 +40,7 @@ public class NotificacionAvisoSiniestroDefinition {
     reclamacionEmpresarial =
         new ReclamacionEmpresarial(
             obtenerDatosPrueba(ReclamacionConstante.RECLAMACION_EMPRESARIAL, tipoCobertura));
-    nuevaReclamacionEmpresarialStep.seleccionarNuevaReclamacion(
-        MenuConstante.RECLAMACION_MENU, MenuConstante.NUEVA_RECLAMACION_MENU);
-    buscarPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
+    busquedaPolizaStep.buscarPolizaEmpresarial(reclamacionEmpresarial.getLstReclamo());
   }
 
   @Cuando(

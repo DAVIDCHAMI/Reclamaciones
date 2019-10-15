@@ -9,10 +9,6 @@ public class ReclamacionEmpresarial extends Reclamacion {
   private List<ReclamacionEmpresarial> lstReclamoEmp = new ArrayList<>();
   private String numeroContrato;
   private String detalleHechos;
-  private String pais;
-  private String departamento;
-  private String ciudad;
-  private String direccion;
   private String causaHechosSiniestro;
   private String valorPretension;
   private String tipoIncidente;
@@ -29,10 +25,6 @@ public class ReclamacionEmpresarial extends Reclamacion {
     super(datosReclamacionEmpresarial);
     this.numeroContrato = datosReclamacionEmpresarial.get("numeroContrato");
     this.detalleHechos = datosReclamacionEmpresarial.get("detalleHechos");
-    this.pais = datosReclamacionEmpresarial.get("pais");
-    this.departamento = datosReclamacionEmpresarial.get("departamento");
-    this.ciudad = datosReclamacionEmpresarial.get("ciudad");
-    this.direccion = datosReclamacionEmpresarial.get("direccion");
     this.causaHechosSiniestro = datosReclamacionEmpresarial.get("causa");
     this.valorPretension = datosReclamacionEmpresarial.get("valorPretension");
     this.tipoIncidente = datosReclamacionEmpresarial.get("tipoIncidente");
@@ -44,22 +36,6 @@ public class ReclamacionEmpresarial extends Reclamacion {
 
   public ReclamacionEmpresarial(List<Map<String, String>> datosReclamacionesEmp) {
     asignarDatos(datosReclamacionesEmp);
-  }
-
-  public String getPais() {
-    return pais;
-  }
-
-  public String getDepartamento() {
-    return departamento;
-  }
-
-  public String getCiudad() {
-    return ciudad;
-  }
-
-  public String getDireccion() {
-    return direccion;
   }
 
   public String getNumeroContrato() {

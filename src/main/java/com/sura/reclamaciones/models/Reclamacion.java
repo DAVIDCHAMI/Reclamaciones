@@ -4,12 +4,14 @@ import java.util.Map;
 
 public abstract class Reclamacion {
 
+  private String numeroReclamacion;
   private String origen;
   private String tipoPoliza;
   private String numPoliza;
   private String fechaSiniestro;
   private String lugarSiniestro;
   private String reservaTransaccion;
+  private String pais;
   private String departamento;
   private String ciudad;
   private String direccion;
@@ -25,12 +27,14 @@ public abstract class Reclamacion {
   public Reclamacion() {}
 
   public Reclamacion(Map<String, String> datosReclamacion) {
+    this.numeroReclamacion = datosReclamacion.get("numeroReclamacion");
     this.origen = datosReclamacion.get("origen");
     this.fechaSiniestro = datosReclamacion.get("fechaSiniestro");
     this.tipoPoliza = datosReclamacion.get("tipoPoliza");
     this.numPoliza = datosReclamacion.get("numPoliza");
     this.lugarSiniestro = datosReclamacion.get("lugar");
     this.reservaTransaccion = datosReclamacion.get("reservaTransaccion");
+    this.pais = datosReclamacion.get("pais");
     this.departamento = datosReclamacion.get("departamento");
     this.ciudad = datosReclamacion.get("ciudad");
     this.direccion = datosReclamacion.get("direccion");
@@ -42,6 +46,10 @@ public abstract class Reclamacion {
     this.valorPerdidaSiniestro = datosReclamacion.get("valorPerdida");
     this.tipoMonedaPoliza = datosReclamacion.get("tipoMoneda");
     this.esPolizaPropiedad = datosReclamacion.get("esPolizaPropiedad");
+  }
+
+  public String getNumeroReclamacion() {
+    return numeroReclamacion;
   }
 
   public String getOrigen() {
@@ -66,6 +74,10 @@ public abstract class Reclamacion {
 
   public String getReservaTransaccion() {
     return reservaTransaccion;
+  }
+
+  public String getPais() {
+    return pais;
   }
 
   public String getDepartamento() {

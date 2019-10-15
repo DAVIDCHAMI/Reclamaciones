@@ -85,8 +85,9 @@ public class BuscarPolizaPage extends GeneralPage {
   }
 
   public void seleccionarOpcionBuscarPoliza() {
-    rbtBuscarPoliza.waitUntilVisible();
-    rbtBuscarPoliza.click();
+    if (rbtBuscarPoliza.isVisible()) {
+      rbtBuscarPoliza.click();
+    }
   }
 
   public void escribirNumeroPoliza(String numPoliza) {
