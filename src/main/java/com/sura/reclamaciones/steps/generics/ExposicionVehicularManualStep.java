@@ -11,6 +11,7 @@ import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
+import com.sura.reclamaciones.pages.generics.CalculadoraCodigoFasecoldaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.NuevaExposicionVehiculoPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
@@ -33,6 +34,8 @@ public class ExposicionVehicularManualStep {
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
   @Page CreacionServicioPage crearServicioPage;
+
+  @Page CalculadoraCodigoFasecoldaPage calculadoraCodigoFasecoldaPage;
 
   @Step
   public void consultarPlacaAsegurado() {
