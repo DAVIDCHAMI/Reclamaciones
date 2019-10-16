@@ -160,4 +160,15 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   public void seleccionarTaller() {
     btnAgregarTaller.waitUntilClickable().click();
   }
+
+  public boolean validarPlacaExisteFasecolda() {
+    if (btnGenerarCodigoFasecolda.isVisible()) {
+      btnGenerarCodigoFasecolda.click();
+      realizarEsperaCarga();
+      return true;
+    } else {
+      //seleccionarConductoVehiculoAfectado();
+      return false;
+    }
+  }
 }
