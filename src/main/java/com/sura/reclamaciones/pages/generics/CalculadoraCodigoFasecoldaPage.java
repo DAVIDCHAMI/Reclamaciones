@@ -31,21 +31,25 @@ public class CalculadoraCodigoFasecoldaPage extends GeneralPage {
   public void seleccionarClaseVehiculo(String claseVehiculo) {
     cmbClaseVehiculo.clear();
     cmbClaseVehiculo.typeAndTab(claseVehiculo);
+    realizarEsperaCarga();
   }
 
   public void seleccionarModeloVehiculo(String modeloVehiculo) {
     cmbModelo.clear();
     cmbModelo.typeAndTab(modeloVehiculo);
+    realizarEsperaCarga();
   }
 
   public void seleccionarMarcaVehiculo(String marcaVehiculo) {
     cmbMarca.clear();
     cmbMarca.typeAndTab(marcaVehiculo);
+    realizarEsperaCarga();
   }
 
   public void seleccionarLineaVehiculo(String lineaVehiculo) {
     cmbLinea.clear();
     cmbLinea.typeAndTab(lineaVehiculo);
+    realizarEsperaCarga();
   }
 
   public void generarCodigoFasecolda() {
