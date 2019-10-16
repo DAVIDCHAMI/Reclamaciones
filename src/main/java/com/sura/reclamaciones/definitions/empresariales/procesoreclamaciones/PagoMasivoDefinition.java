@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
+import static com.sura.reclamaciones.constantes.Constantes.PAGO_MASIVO;
 import static com.sura.reclamaciones.constantes.Filtros.CLASE_VEHICULO;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
@@ -8,8 +9,7 @@ import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
-import com.sura.reclamaciones.models.CodigoFasecolda;
-import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.models.*;
 import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import cucumber.api.java.es.Cuando;
@@ -26,6 +26,12 @@ public class PagoMasivoDefinition {
   @Steps DetalleSiniestroStep detalleSiniestroStep;
 
   CodigoFasecolda datosCodigoFasecolda;
+
+  Exposicion datosExposicionPagoMasivo;
+
+  Reserva datosReservaPagoMasivo;
+
+  PagoSiniestro datosPagoSiniestroPagoMasivo;
 
   @Cuando(
       "^se registra la información de las facturas del pago masivo a un proveedor de (.*) vehículos involucrados en el siniestro con coberturas (.*)")
@@ -47,6 +53,14 @@ public class PagoMasivoDefinition {
         numeroVehiculosInvolucradosTercero,
         datosCodigoFasecolda.getLstCodigoFasecolda());
     detalleSiniestroStep.consultarInformacionSiniestro();
+    datosExposicionPagoMasivo =
+        new Exposicion(
+            obtenerDatosPrueba(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
+    datosReservaPagoMasivo =
+        new Reserva(obtenerDatosPrueba(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
+    datosPagoSiniestroPagoMasivo =
+        new PagoSiniestro(
+            obtenerDatosPrueba(String.valueOf(PAGO_MASIVO.getValor()), coberturasPoliza));
   }
 
   @Cuando(

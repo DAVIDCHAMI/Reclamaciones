@@ -12,6 +12,17 @@ public class PagoSiniestro extends Transacciones {
   private String numeroFactura;
   private String tipoDireccion;
   private String esPagoAutomatico;
+  private String tipoPago;
+  private String paymentType;
+  private String descuento;
+  private String codigoRetencion;
+  private String lineCategory;
+  private String impuesto;
+  private String taxesTypeExt;
+  private String codigoProducto;
+  private String description;
+  private String condicionPago;
+  private String paymentConditionTypeExt;
 
   public PagoSiniestro() {
     super();
@@ -24,6 +35,17 @@ public class PagoSiniestro extends Transacciones {
     this.numeroFactura = datosPagosEmpresariales.get("numeroFactura");
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
     this.esPagoAutomatico = datosPagosEmpresariales.get("esPagoAutomatico");
+    this.tipoPago = datosPagosEmpresariales.get("tipoPago");
+    this.paymentType = datosPagosEmpresariales.get("paymentType");
+    this.descuento = datosPagosEmpresariales.get("descuento");
+    this.codigoRetencion = datosPagosEmpresariales.get("codigoRetencion");
+    this.lineCategory = datosPagosEmpresariales.get("lineCategory");
+    this.impuesto = datosPagosEmpresariales.get("impuesto");
+    this.taxesTypeExt = datosPagosEmpresariales.get("taxesType_Ext");
+    this.codigoProducto = datosPagosEmpresariales.get("prefijo");
+    this.description = datosPagosEmpresariales.get("description");
+    this.condicionPago = datosPagosEmpresariales.get("condicionPago");
+    this.paymentConditionTypeExt = datosPagosEmpresariales.get("paymentConditionType_Ext");
   }
 
   public PagoSiniestro(List<Map<String, String>> datosPagosEmpresariales) {
@@ -54,5 +76,49 @@ public class PagoSiniestro extends Transacciones {
 
   public List<PagoSiniestro> getLstPago() {
     return lstPagoSiniestro;
+  }
+
+  public String getTipoPago() {
+    return tipoPago;
+  }
+
+  public String getPaymentType() {
+    return paymentType;
+  }
+
+  public String getDescuento() {
+    return descuento;
+  }
+
+  public String getCodigoRetencion() {
+    return codigoRetencion;
+  }
+
+  public String getLineCategory() {
+    return lineCategory;
+  }
+
+  public String getImpuesto() {
+    return impuesto;
+  }
+
+  public String getTaxesTypeExt() {
+    return taxesTypeExt;
+  }
+
+  public String getCodigoProducto() {
+    return codigoProducto;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public String getCondicionPago() {
+    return condicionPago;
+  }
+
+  public String getPaymentConditionTypeExt() {
+    return paymentConditionTypeExt;
   }
 }

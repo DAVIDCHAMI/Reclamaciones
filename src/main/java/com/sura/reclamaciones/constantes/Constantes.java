@@ -11,6 +11,7 @@ public enum Constantes {
   CANTIDAD("Cantidad"),
   CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA("Nuevas reservas disponibles"),
   CC_POSICION_VALOR_RESERVA_EMPRESARIALES("-1"),
+  CC_PRODUCTO_EMPRESARIAL("producto empresarial"),
   CLAVE("cor3sur4"),
   CODIGO_RETENCION("Código de retención"),
   COMODIN("COMODIN"),
@@ -38,6 +39,7 @@ public enum Constantes {
   OPCION_MENU("opcionMenu"),
   PAGO("Pago"),
   PAGOS("Pagos"),
+  PAGO_MASIVO("pago_masivo"),
   PLACA("PLACA"),
   PORCENTAJE("0.20"),
   PORCIENTO("100"),
@@ -49,6 +51,7 @@ public enum Constantes {
   RUTA_LOG_EMPRESARIAL("C:\\Log\\RegistrosEmpresarial.txt"),
   SELECCIONAR("Seleccionar"),
   SI("si"),
+  TIPO("Tipo"),
   TIPO_PAGO("Parcial"),
   TIPO_TRANSACCION("Recuperaciones"),
   TRANSFERENCIA_ELECTRONICA("Transferencia"),
@@ -57,10 +60,8 @@ public enum Constantes {
   UBICACION_ESTADO_RECUPERO("9"),
   URL("jdbc:oracle:thin:@clustercsl01:1537/labgwcc"),
   USD("USD"),
-  CC_PRODUCTO_EMPRESARIAL("producto empresarial"),
   USUARIO("GW_CONF"),
   VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
-  TIPO("Tipo"),
   VALOR_CERO("0");
 
   private String valor;
