@@ -50,14 +50,12 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuSegundoNivel(String nombreOpcion, String subItem) {
-    final String OPCION_MENU=".//a[contains(.,'";
+    final String OPCION_MENU = ".//a[contains(.,'";
     mnuPrimerNivel
         .findElement(By.xpath(OPCION_MENU + nombreOpcion + "')]"))
         .sendKeys(Keys.ARROW_DOWN);
     if (nombreOpcion.equals(MenuConstante.ESCRITORIO_MENU)) {
-      mnuSegundoNivelEscritorio
-          .findElement(By.xpath(OPCION_MENU + subItem + "')]"))
-          .click();
+      mnuSegundoNivelEscritorio.findElement(By.xpath(OPCION_MENU + subItem + "')]")).click();
     } else if (nombreOpcion.equals(MenuConstante.RECLAMACION_MENU)) {
       mnuSegundoNivel.findElement(By.xpath(OPCION_MENU + subItem + "')]")).click();
     }

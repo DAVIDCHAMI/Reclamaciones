@@ -67,8 +67,7 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   @Cuando(
       "^se genere un siniestro por la causa y la culpabilidad Responsabilidad civil daños persona y Responsabilidad civil daños vehículo$")
   public void ingresarDatosSiniestroResponsabilidadCivil(DataTable parametrosSiniestro)
-      throws IOException
-  {
+      throws IOException {
     ExposicionVehiculoTercero exposicionVehiculoTercero;
     final String RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2);
     final String RESPONSABILIDAD_CIVIL_VEHICULO = parametrosSiniestro.raw().get(1).get(3);

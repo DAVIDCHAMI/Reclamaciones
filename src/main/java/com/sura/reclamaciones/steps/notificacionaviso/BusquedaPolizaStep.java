@@ -13,7 +13,7 @@ import org.fluentlenium.core.annotation.Page;
 
 public class BusquedaPolizaStep {
 
-    private static final String FECHA_HOY = "Hoy";
+  private static final String FECHA_HOY = "Hoy";
 
   @Page BuscarPolizaPage buscarPolizaPage;
 

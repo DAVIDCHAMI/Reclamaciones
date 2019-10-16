@@ -76,7 +76,6 @@ public class GeneralPage extends PageObject {
 
   private String lstDinamico = "//li[.='COMODIN']";
 
-
   private String pais = "Country-inputEl";
   private String departamento = "State-inputEl";
 
