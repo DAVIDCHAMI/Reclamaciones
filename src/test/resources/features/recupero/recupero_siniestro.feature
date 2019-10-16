@@ -4,7 +4,6 @@ Característica:Recupero de una reclamacion
   Como analista de reclamacion
   Quiero registrar un recupero a partir de una reserva
 
-
   @claimsEmpresarial
   Esquema del escenario: recupero
     Dado que se tiene una póliza de <Tipo y Cobertura>

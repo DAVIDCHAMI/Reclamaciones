@@ -36,6 +36,6 @@ Característica: Anulación de pagos
     Entonces se debe obtener la anulación del pago, quedando en estado anulado
 
     Ejemplos:
-      | Línea de Reserva     | Tipo de pago | Beneficiario de pago                       | Método de pago | ¿Es pago soloSura? | Tipo de cobertura   |
-      | (2) 1ª parteVehículo | Parcial      | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Caja Sura      | No                 | Perdida total Daños |
-      | (2) 1ª parteVehículo | Parcial      | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Caja Sura      | No                 | Perdida total Daños |
+      | Línea de Reserva     | Tipo de pago | Beneficiario de pago               | Método de pago | ¿Es pago soloSura? | Tipo de cobertura   |
+      | (2) 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII | Caja Sura      | No                 | Perdida total Daños |
+      | (3) 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII | Caja Sura      | No                 | Perdida total Daños |

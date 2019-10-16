@@ -50,8 +50,8 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de Reserva | Tipo de pago | Beneficiario del pago                      | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
-      | 1ª parteVehículo | Parcial      | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Caja Sura       | No                 | Perdida total Daños |
+      | Línea de Reserva | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
+      | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII| Caja Sura       | No                 | Perdida total Daños |
 
   @pagoPerdidaTotalAutos
   @claimsAuto
@@ -65,23 +65,23 @@ Característica: Realizar pago de un siniestro
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva | Tipo de pago | Beneficiario de pago                       | Método de pago | Solo Sura | Cobertura           |
-      | 1ª parteVehículo | Parcial      | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Caja Sura      | No        | Perdida total Daños |
+      | Línea de reserva | Tipo de pago | Beneficiario de pago               | Método de pago | Solo Sura | Cobertura           |
+      | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII | Caja Sura      | No        | Perdida total Daños |
 
   @chequeMultiplesPagosAutos
   @claimsAuto
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
-    Cuando se genere un pago por siniestro de auto <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las líneas de reserva <Línea de reserva 1> cuyo responsable <Pago Solo Sura> es Sura donde existe <Número de vehículos involucrados del tercero en el siniestro> vehículo involucrado del tercero en el siniestro
+    Cuando se genere un pago por siniestro de auto <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las líneas de reserva <Línea de reserva 1> cuyo responsable <Pago Solo Sura> es Sura
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
       | 099                 |
     Entonces se genera una orden de pago para que le sea entregado al usuario
 
     Ejemplos:
-      | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago                      | Método de Pago | Cobertura           | Pago Solo Sura | Número de vehículos involucrados del tercero en el siniestro |
-      | Perdida total Daños pago por en EFECTIVO | Final        | YANET ALEXANDRA DE LA CRUZ QUISOBONI CQLII | Pago por banco | Perdida total Daños | No             | 1                                                            |
+      | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |
+      | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |
 
   @riesgoConsultableEmpresarial
   @claimsEmpresarial
