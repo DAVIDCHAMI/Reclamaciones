@@ -10,6 +10,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_LINEA_RESER
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 
+import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
@@ -49,6 +50,8 @@ public class PagoSiniestroDefinition {
   @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Steps PagoPrimaPendienteStep pagoPrimaPendienteStep;
+
+  CodigoFasecolda datosCodigoFasecolda;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -117,7 +120,8 @@ public class PagoSiniestroDefinition {
         obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros(),
-        numeroVehiculosInvolucradosTercero);
+        numeroVehiculosInvolucradosTercero,
+        datosCodigoFasecolda.getLstCodigoFasecolda());
     nuevoPagoStep.declararReclamacionPerdidaTotal();
     nuevoPagoStep.ingresarEstadoLegalReclamacion();
     pagoSiniestro =

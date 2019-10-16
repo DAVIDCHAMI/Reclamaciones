@@ -11,7 +11,6 @@ import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
-import com.sura.reclamaciones.steps.generics.GenericStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;
@@ -23,8 +22,6 @@ public class PagoMasivoDefinition {
 
   @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
 
-  @Steps GenericStep genericStep;
-
   CodigoFasecolda datosCodigoFasecolda;
 
   @Cuando(
@@ -34,17 +31,18 @@ public class PagoMasivoDefinition {
     nuevaExposicionVehiculoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
-                obtenerDatosPrueba(
+            obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
                 EXPOSICION_VEHICULAR_TERCERO.getValor()));
     datosCodigoFasecolda =
-            new CodigoFasecolda(
-                    obtenerDatosPrueba(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
+        new CodigoFasecolda(
+            obtenerDatosPrueba(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
     nuevaExposicionVehiculoStep.crearExposicionVehicularManual(
-            obtenerDatosPrueba(
+        obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros(),
-        numeroVehiculosInvolucradosTercero, datosCodigoFasecolda.getLstCodigoFasecolda());
+        numeroVehiculosInvolucradosTercero,
+        datosCodigoFasecolda.getLstCodigoFasecolda());
   }
 
   @Cuando(
