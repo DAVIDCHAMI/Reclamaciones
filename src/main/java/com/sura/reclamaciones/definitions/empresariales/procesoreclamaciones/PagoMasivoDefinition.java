@@ -1,11 +1,14 @@
 package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
 
+import static com.sura.reclamaciones.constantes.Filtros.CLASE_VEHICULO;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
+import static com.sura.reclamaciones.constantes.NombresCsv.CODIGO_FASECOLDA;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
+import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import com.sura.reclamaciones.steps.generics.GenericStep;
@@ -22,6 +25,8 @@ public class PagoMasivoDefinition {
 
   @Steps GenericStep genericStep;
 
+  CodigoFasecolda datosCodigoFasecolda;
+
   @Cuando(
       "^se registra la información de las facturas del pago masivo a un proveedor de (.*) vehículos involucrados en el siniestro con coberturas (.*)")
   public void ingresarInformacionFactura(
@@ -32,6 +37,9 @@ public class PagoMasivoDefinition {
                 obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
                 EXPOSICION_VEHICULAR_TERCERO.getValor()));
+    datosCodigoFasecolda =
+            new CodigoFasecolda(
+                    obtenerDatosPrueba(CODIGO_FASECOLDA.getValor(), CLASE_VEHICULO.getValor()));
     nuevaExposicionVehiculoStep.crearExposicionVehicularManual(
             obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
