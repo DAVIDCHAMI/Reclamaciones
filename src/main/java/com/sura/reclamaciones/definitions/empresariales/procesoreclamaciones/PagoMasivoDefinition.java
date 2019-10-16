@@ -10,6 +10,7 @@ import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
 import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.steps.generics.DetalleSiniestroStep;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
@@ -21,6 +22,8 @@ public class PagoMasivoDefinition {
   ExposicionVehiculoTercero exposicionVehiculoTercero = new ExposicionVehiculoTercero();
 
   @Steps ExposicionVehicularManualStep nuevaExposicionVehiculoStep;
+
+  @Steps DetalleSiniestroStep detalleSiniestroStep;
 
   CodigoFasecolda datosCodigoFasecolda;
 
@@ -43,6 +46,7 @@ public class PagoMasivoDefinition {
         exposicionVehiculoTercero.getLstExposicionTerceros(),
         numeroVehiculosInvolucradosTercero,
         datosCodigoFasecolda.getLstCodigoFasecolda());
+    detalleSiniestroStep.consultarInformacionSiniestro();
   }
 
   @Cuando(
