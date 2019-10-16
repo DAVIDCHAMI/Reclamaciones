@@ -44,7 +44,7 @@ public class PagoMasivoDefinition {
             obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros(),
-        numeroVehiculosInvolucradosTercero);
+        numeroVehiculosInvolucradosTercero, datosCodigoFasecolda.getLstCodigoFasecolda());
   }
 
   @Cuando(

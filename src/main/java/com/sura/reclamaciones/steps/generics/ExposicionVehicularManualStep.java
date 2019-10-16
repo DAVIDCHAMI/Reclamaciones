@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.constantes.Constantes.PLACA;
 import static com.sura.reclamaciones.constantes.Constantes.RECLAMANTE_CONDUCTOR_AFECTADO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 
+import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
@@ -42,7 +43,9 @@ public class ExposicionVehicularManualStep {
   public void crearExposicionVehicularManual(
       List<Map<String, String>> opcionesCrearExposicion,
       List<ExposicionVehiculoTercero> datosVehiculoTercero,
-      int numeroVehiculosInvolucradosTercero) {
+      int numeroVehiculosInvolucradosTercero,
+      List<CodigoFasecolda> datosCodigoFasecolda)
+  {
     for (int j = 0; j <= numeroVehiculosInvolucradosTercero - 1; j++) {
       menuClaimPage.seleccionarBotonAcciones();
       for (int i = 0; i < opcionesCrearExposicion.size(); i++) {
@@ -69,6 +72,21 @@ public class ExposicionVehicularManualStep {
       nuevaExposicionManualPage.crearNuevoIncidenteVehicular();
       nuevoIncidenteVehicularPage.ingresarPlacaVehiculoAfectado(datosVehiculoTercero, j);
       nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
+      /*if (nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda()) {
+        datosCodigoFasecolda.forEach(
+                formularioCodigoFasecolda -> {
+                  calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(
+                          formularioCodigoFasecolda.getClaseVehiculo());
+                  calculadoraCodigoFasecoldaPage.seleccionarModeloVehiculo(
+                          formularioCodigoFasecolda.getModelo());
+                  calculadoraCodigoFasecoldaPage.seleccionarMarcaVehiculo(
+                          formularioCodigoFasecolda.getMarca());
+                  calculadoraCodigoFasecoldaPage.seleccionarLineaVehiculo(
+                          formularioCodigoFasecolda.getLinea());
+                  calculadoraCodigoFasecoldaPage.generarCodigoFasecolda();
+                  calculadoraCodigoFasecoldaPage.crearCodigoFasecoldaVehiculo();
+                });
+      }*/
       datosVehiculoTercero.forEach(
           formularioLugarAtencion -> {
             nuevoIncidenteVehicularPage.seleccionarLugarAtencion(
