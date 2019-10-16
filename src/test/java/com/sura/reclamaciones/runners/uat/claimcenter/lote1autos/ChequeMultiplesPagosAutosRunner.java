@@ -10,4 +10,4 @@ import org.junit.runner.RunWith;
   glue = {"com.sura.reclamaciones.definitions"},
   tags = {"@chequeMultiplesPagosAutos"}
 )
-public class PagoMultiplesPagosAutosRunner {}
+public class ChequeMultiplesPagosAutosRunner {}
