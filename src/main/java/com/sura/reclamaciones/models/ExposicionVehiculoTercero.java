@@ -8,6 +8,11 @@ public class ExposicionVehiculoTercero {
 
   private String placaTercero;
   private String tallerReparacionAsignado;
+  private String lugarAtencion;
+  private String paisAtencion;
+  private String departamentoAtencion;
+  private String ciudadAtencion;
+  private String direccionAtencion;
 
   private List<ExposicionVehiculoTercero> lstExposicionTercero = new ArrayList<>();
 
@@ -18,6 +23,11 @@ public class ExposicionVehiculoTercero {
   private ExposicionVehiculoTercero(Map<String, String> datosExposicionTercero) {
     this.placaTercero = datosExposicionTercero.get("placaTercero");
     this.tallerReparacionAsignado = datosExposicionTercero.get("tallerReparacionAsignado");
+    this.lugarAtencion = datosExposicionTercero.get("lugarAtencion");
+    this.paisAtencion = datosExposicionTercero.get("PaisAtencion");
+    this.departamentoAtencion = datosExposicionTercero.get("DepartamentoAtencion");
+    this.ciudadAtencion = datosExposicionTercero.get("CiudadAtencion");
+    this.direccionAtencion = datosExposicionTercero.get("DireccionAtencion");
   }
 
   public ExposicionVehiculoTercero(List<Map<String, String>> datosTerceroAuto) {
@@ -34,6 +44,26 @@ public class ExposicionVehiculoTercero {
 
   public String getPlacaTercero() {
     return placaTercero;
+  }
+
+  public String getLugarAtencion() {
+    return lugarAtencion;
+  }
+
+  public String getPaisAtencion() {
+    return paisAtencion;
+  }
+
+  public String getDepartamentoAtencion() {
+    return departamentoAtencion;
+  }
+
+  public String getCiudadAtencion() {
+    return ciudadAtencion;
+  }
+
+  public String getDireccionAtencion() {
+    return direccionAtencion;
   }
 
   private void asignarDatos(List<Map<String, String>> datosTerceroAuto) {

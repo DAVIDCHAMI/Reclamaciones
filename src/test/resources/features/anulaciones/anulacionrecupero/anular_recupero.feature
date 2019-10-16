@@ -27,8 +27,8 @@ Característica: Anulacion de recuperos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
-      |Codigos_Retenciones|
-      |0099   |
+      | Codigos_Retenciones |
+      | 0099                |
     Y se genera una orden de pago para que le sea entregado al usuario
     Y se cree el recupero con un código de retención <Código de retención recupero> a una cobertura <Tipo de cobertura>
     Y se obtiene un ingreso de dinero sobre el siniestro
