@@ -4,6 +4,7 @@ import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICU
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_VEHICULAR_TERCERO;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETROS_NAVEGACION_MENU_ACCIONES;
 import static com.sura.reclamaciones.constantes.NombresCsv.PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO;
+import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.steps.generics.ExposicionVehicularManualStep;
@@ -28,11 +29,11 @@ public class PagoMasivoDefinition {
     nuevaExposicionVehiculoStep.consultarPlacaAsegurado();
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
-            genericStep.getFilasModelo(
+                obtenerDatosPrueba(
                 PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO.getValor(),
                 EXPOSICION_VEHICULAR_TERCERO.getValor()));
     nuevaExposicionVehiculoStep.crearExposicionVehicularManual(
-        genericStep.getFilasModelo(
+            obtenerDatosPrueba(
             PARAMETROS_NAVEGACION_MENU_ACCIONES.getValor(), EXPOSICION_MANUAL_VEHICULAR.getValor()),
         exposicionVehiculoTercero.getLstExposicionTerceros(),
         numeroVehiculosInvolucradosTercero);
