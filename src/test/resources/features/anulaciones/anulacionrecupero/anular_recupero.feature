@@ -9,8 +9,7 @@ Característica: Anulacion de recuperos
   @claimsEmpresarial
   Esquema del escenario: anulación de un recupero de empresariales.
     Dado que se tiene una póliza de <Tipo y Cobertura>
-    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión>
-    Y un incidente de tipo <Tipo de incidente>
+    Y se genere un siniestro por causal <Causa> con un valor de pretensión de <Valor de Pretensión> y un incidente de tipo <Tipo de incidente>
     Y se genere un recupero con un código de retención <Código de retención recupero>
     Y se obtiene un reintegro de dinero al siniestro
     Cuando se realice la anulación del recupero
