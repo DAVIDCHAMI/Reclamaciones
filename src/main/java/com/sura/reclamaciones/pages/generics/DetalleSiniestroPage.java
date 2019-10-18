@@ -51,8 +51,6 @@ public class DetalleSiniestroPage extends GeneralPage {
     }
     Serenity.setSessionVariable(SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS.getValor())
         .to(placaVehiculosInvolucrados);
-    List<String> vehiculosInvolucrados =
-        Serenity.sessionVariableCalled(SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS.getValor());
   }
 
   public String obtenerNumeroSiniestro() {
@@ -60,8 +58,6 @@ public class DetalleSiniestroPage extends GeneralPage {
   }
 
   public String obtenerPlacaAsegurado() {
-    String placaAsegurado = lblPlacaAsegurado.getText();
-    String placaAseguradoSiniestro = placaAsegurado.substring(7, 13);
-    return placaAseguradoSiniestro;
+    return  lblPlacaAsegurado.getText().substring(7, 13);
   }
 }
