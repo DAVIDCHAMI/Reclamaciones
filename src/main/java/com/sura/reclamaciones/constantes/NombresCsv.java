@@ -3,7 +3,6 @@ package com.sura.reclamaciones.constantes;
 public enum NombresCsv {
   ANULACION_EMPRESARIAL("anulacion_empresarial"),
   CODIGO_FASECOLDA("codigo_fasecolda"),
-  PAGO_MASIVO("pago_masivo"),
   CONTRATO("contrato"),
   CREDENCIAL("Credencial"),
   EXPEDICION_AUTOS("expedicion_autos"),

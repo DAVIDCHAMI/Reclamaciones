@@ -52,12 +52,10 @@ public class PagoMasivoDefinition {
         numeroVehiculosInvolucradosTercero,
         datosVehiculos.getLstVehiculos());
     detalleSiniestroStep.consultarInformacionSiniestro();
-    datosExposicionPagoMasivo =
-        new Exposicion(obtenerDatosPrueba(String.valueOf(PAGO_MASIVO), coberturasPoliza));
-    datosReservaPagoMasivo =
-        new Reserva(obtenerDatosPrueba(String.valueOf(PAGO_MASIVO), coberturasPoliza));
+    datosExposicionPagoMasivo = new Exposicion(obtenerDatosPrueba(PAGO_MASIVO, coberturasPoliza));
+    datosReservaPagoMasivo = new Reserva(obtenerDatosPrueba(PAGO_MASIVO, coberturasPoliza));
     datosPagoSiniestroPagoMasivo =
-        new PagoSiniestro(obtenerDatosPrueba(String.valueOf(PAGO_MASIVO), coberturasPoliza));
+        new PagoSiniestro(obtenerDatosPrueba(PAGO_MASIVO, coberturasPoliza));
   }
 
   @Cuando(
