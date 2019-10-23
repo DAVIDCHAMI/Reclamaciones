@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Vehiculo {
+  private String claseVehiculo;
+  private String linea;
   private String placa;
   private String modelo;
   private String marca;
@@ -25,6 +27,8 @@ public class Vehiculo {
   }
 
   private Vehiculo(Map<String, String> datosVehiculos) {
+    this.claseVehiculo = datosVehiculos.get("claseVehiculo");
+    this.linea = datosVehiculos.get("linea");
     this.placa = datosVehiculos.get("placa");
     this.modelo = datosVehiculos.get("modelo");
     this.marca = datosVehiculos.get("marca");
@@ -34,6 +38,14 @@ public class Vehiculo {
     this.color = datosVehiculos.get("color");
     this.codigoFasecolda = datosVehiculos.get("codigoFasecolda");
     this.tipoVehiculo = datosVehiculos.get("tipoVehiculo");
+  }
+
+  public String getClaseVehiculo() {
+    return claseVehiculo;
+  }
+
+  public String getLinea() {
+    return linea;
   }
 
   public String getPlaca() {

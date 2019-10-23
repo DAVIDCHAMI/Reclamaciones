@@ -58,6 +58,6 @@ public class DetalleSiniestroPage extends GeneralPage {
   }
 
   public String obtenerPlacaAsegurado() {
-    return  lblPlacaAsegurado.getText().substring(7, 13);
+    return lblPlacaAsegurado.getText().substring(7, 13);
   }
 }

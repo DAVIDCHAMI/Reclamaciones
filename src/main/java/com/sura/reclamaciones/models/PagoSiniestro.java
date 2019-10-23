@@ -13,16 +13,16 @@ public class PagoSiniestro extends Transacciones {
   private String tipoDireccion;
   private String esPagoAutomatico;
   private String tipoPago;
-  private String paymentType;
+  private String codigoTipoPago;
   private String descuento;
   private String codigoRetencion;
-  private String lineCategory;
+  private String codigoLineaCategoria;
   private String impuesto;
-  private String taxesTypeExt;
+  private String codigoTipoImpuesto;
   private String codigoProducto;
-  private String description;
+  private String descripcion;
   private String condicionPago;
-  private String paymentConditionTypeExt;
+  private String codigoCondicionTipoPago;
 
   public PagoSiniestro() {
     super();
@@ -36,16 +36,16 @@ public class PagoSiniestro extends Transacciones {
     this.tipoDireccion = datosPagosEmpresariales.get("tipoDireccion");
     this.esPagoAutomatico = datosPagosEmpresariales.get("esPagoAutomatico");
     this.tipoPago = datosPagosEmpresariales.get("tipoPago");
-    this.paymentType = datosPagosEmpresariales.get("paymentType");
+    this.codigoTipoPago = datosPagosEmpresariales.get("paymentType");
     this.descuento = datosPagosEmpresariales.get("descuento");
     this.codigoRetencion = datosPagosEmpresariales.get("codigoRetencion");
-    this.lineCategory = datosPagosEmpresariales.get("lineCategory");
+    this.codigoLineaCategoria = datosPagosEmpresariales.get("lineCategory");
     this.impuesto = datosPagosEmpresariales.get("impuesto");
-    this.taxesTypeExt = datosPagosEmpresariales.get("taxesType_Ext");
+    this.codigoTipoImpuesto = datosPagosEmpresariales.get("taxesType_Ext");
     this.codigoProducto = datosPagosEmpresariales.get("prefijo");
-    this.description = datosPagosEmpresariales.get("description");
+    this.descripcion = datosPagosEmpresariales.get("description");
     this.condicionPago = datosPagosEmpresariales.get("condicionPago");
-    this.paymentConditionTypeExt = datosPagosEmpresariales.get("paymentConditionType_Ext");
+    this.codigoCondicionTipoPago = datosPagosEmpresariales.get("paymentConditionType_Ext");
   }
 
   public PagoSiniestro(List<Map<String, String>> datosPagosEmpresariales) {
@@ -82,8 +82,8 @@ public class PagoSiniestro extends Transacciones {
     return tipoPago;
   }
 
-  public String getPaymentType() {
-    return paymentType;
+  public String getCodigoTipoPago() {
+    return codigoTipoPago;
   }
 
   public String getDescuento() {
@@ -94,31 +94,31 @@ public class PagoSiniestro extends Transacciones {
     return codigoRetencion;
   }
 
-  public String getLineCategory() {
-    return lineCategory;
+  public String getCodigoLineaCategoria() {
+    return codigoLineaCategoria;
   }
 
   public String getImpuesto() {
     return impuesto;
   }
 
-  public String getTaxesTypeExt() {
-    return taxesTypeExt;
+  public String getCodigoTipoImpuesto() {
+    return codigoTipoImpuesto;
   }
 
   public String getCodigoProducto() {
     return codigoProducto;
   }
 
-  public String getDescription() {
-    return description;
+  public String getDescripcion() {
+    return descripcion;
   }
 
   public String getCondicionPago() {
     return condicionPago;
   }
 
-  public String getPaymentConditionTypeExt() {
-    return paymentConditionTypeExt;
+  public String getCodigoCondicionTipoPago() {
+    return codigoCondicionTipoPago;
   }
 }

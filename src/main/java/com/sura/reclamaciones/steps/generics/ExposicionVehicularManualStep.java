@@ -6,8 +6,8 @@ import static com.sura.reclamaciones.constantes.Constantes.PLACA;
 import static com.sura.reclamaciones.constantes.Constantes.RECLAMANTE_CONDUCTOR_AFECTADO;
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 
-import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
@@ -47,7 +47,7 @@ public class ExposicionVehicularManualStep {
       List<Map<String, String>> opcionesCrearExposicion,
       List<ExposicionVehiculoTercero> datosVehiculoTercero,
       int numeroVehiculosInvolucradosTercero,
-      List<CodigoFasecolda> datosCodigoFasecolda) {
+      List<Vehiculo> datosVehiculos) {
     for (int j = 0; j <= numeroVehiculosInvolucradosTercero - 1; j++) {
       menuClaimPage.seleccionarBotonAcciones();
       for (int i = 0; i < opcionesCrearExposicion.size(); i++) {
@@ -75,7 +75,7 @@ public class ExposicionVehicularManualStep {
       nuevoIncidenteVehicularPage.ingresarPlacaVehiculoAfectado(datosVehiculoTercero, j);
       nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
       if (nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda()) {
-        datosCodigoFasecolda.forEach(
+        datosVehiculos.forEach(
             formularioCodigoFasecolda -> {
               calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(
                   formularioCodigoFasecolda.getClaseVehiculo());
