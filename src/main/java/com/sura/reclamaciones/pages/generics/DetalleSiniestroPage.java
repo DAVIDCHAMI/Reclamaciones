@@ -53,10 +53,6 @@ public class DetalleSiniestroPage extends GeneralPage {
         .to(placaVehiculosInvolucrados);
   }
 
-  public String obtenerNumeroSiniestro() {
-    return lblNumeroSiniestro.waitUntilClickable().getText();
-  }
-
   public String obtenerPlacaAsegurado() {
     return lblPlacaAsegurado.getText().substring(7, 13);
   }

@@ -13,8 +13,6 @@ public class DetalleSiniestroStep {
 
   public void consultarInformacionSiniestro() {
     menuClaimPage.seleccionarOpcionMenuLateralPrimerNivel(MenuConstante.DETALLES_SINIESTRO);
-    detalleSiniestroPage.obtenerPlacaAsegurado();
     detalleSiniestroPage.obtenerNumeroPlacaPartesImplicadas();
-    detalleSiniestroPage.obtenerNumeroSiniestro();
   }
 }
