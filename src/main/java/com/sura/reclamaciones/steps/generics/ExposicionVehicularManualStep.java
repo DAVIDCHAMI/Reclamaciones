@@ -77,13 +77,13 @@ public class ExposicionVehicularManualStep {
       if (nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda()) {
         datosVehiculos.forEach(
             formularioCodigoFasecolda -> {
-              calculadoraCodigoFasecoldaPage.seleccionarClaseVehiculo(
+              calculadoraCodigoFasecoldaPage.diligenciarClaseVehiculo(
                   formularioCodigoFasecolda.getClaseVehiculo());
-              calculadoraCodigoFasecoldaPage.seleccionarModeloVehiculo(
+              calculadoraCodigoFasecoldaPage.diligenciarModeloVehiculo(
                   formularioCodigoFasecolda.getModelo());
-              calculadoraCodigoFasecoldaPage.seleccionarMarcaVehiculo(
+              calculadoraCodigoFasecoldaPage.diligenciarMarcaVehiculo(
                   formularioCodigoFasecolda.getMarca());
-              calculadoraCodigoFasecoldaPage.seleccionarLineaVehiculo(
+              calculadoraCodigoFasecoldaPage.diligenciarLineaVehiculo(
                   formularioCodigoFasecolda.getLinea());
               calculadoraCodigoFasecoldaPage.generarCodigoFasecolda();
               calculadoraCodigoFasecoldaPage.crearCodigoFasecoldaVehiculo();

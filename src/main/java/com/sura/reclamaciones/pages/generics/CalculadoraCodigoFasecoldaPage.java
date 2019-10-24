@@ -28,25 +28,25 @@ public class CalculadoraCodigoFasecoldaPage extends GeneralPage {
     super(wdriver);
   }
 
-  public void seleccionarClaseVehiculo(String claseVehiculo) {
+  public void diligenciarClaseVehiculo(String claseVehiculo) {
     cmbClaseVehiculo.clear();
     cmbClaseVehiculo.typeAndTab(claseVehiculo);
     realizarEsperaCarga();
   }
 
-  public void seleccionarModeloVehiculo(String modeloVehiculo) {
+  public void diligenciarModeloVehiculo(String modeloVehiculo) {
     cmbModelo.clear();
     cmbModelo.typeAndTab(modeloVehiculo);
     realizarEsperaCarga();
   }
 
-  public void seleccionarMarcaVehiculo(String marcaVehiculo) {
+  public void diligenciarMarcaVehiculo(String marcaVehiculo) {
     cmbMarca.clear();
     cmbMarca.typeAndTab(marcaVehiculo);
     realizarEsperaCarga();
   }
 
-  public void seleccionarLineaVehiculo(String lineaVehiculo) {
+  public void diligenciarLineaVehiculo(String lineaVehiculo) {
     cmbLinea.clear();
     cmbLinea.typeAndTab(lineaVehiculo);
     realizarEsperaCarga();
