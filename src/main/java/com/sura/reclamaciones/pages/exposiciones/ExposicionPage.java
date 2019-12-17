@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ExposicionPage extends GeneralPage {
 
-  private static String EXPOSICION_DANOS_ASEGURADO = "Daños";
+  private static final String EXPOSICION_DANOS_ASEGURADO = "Daños";
 
   @FindBy(id = "ClaimExposures:ClaimExposuresScreen:ExposuresLV")
   private WebElementFacade tblExposicionesAutomaticas;

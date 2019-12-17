@@ -49,8 +49,6 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   private Vehiculo vehiculo;
   private Reserva reserva;
   private ExposicionesAutomaticasAutos exposicionesAutomaticasAutos;
-  private static String RESPONSABILIDAD_CIVIL_VEHICULO;
-  private static String RESPONSABILIDAD_CIVIL_LESIONES;
 
   @Dado("^que se tiene una póliza con las coberturas$")
   public void recibirReclamoResponsabilidadCivil(DataTable coberturas) throws IOException {
@@ -71,8 +69,8 @@ public class NotificacionAvisoSiniestroAutoDefinition {
   public void ingresarDatosSiniestroResponsabilidadCivil(DataTable parametrosSiniestro)
       throws IOException {
     ExposicionVehiculoTercero exposicionVehiculoTercero;
-    RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2);
-    RESPONSABILIDAD_CIVIL_VEHICULO = parametrosSiniestro.raw().get(1).get(3);
+    final String RESPONSABILIDAD_CIVIL_LESIONES = parametrosSiniestro.raw().get(1).get(2);
+    final String RESPONSABILIDAD_CIVIL_VEHICULO = parametrosSiniestro.raw().get(1).get(3);
     exposicionVehiculoTercero =
         new ExposicionVehiculoTercero(
             obtenerDatosPrueba(

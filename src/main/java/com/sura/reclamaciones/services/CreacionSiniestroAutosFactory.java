@@ -812,7 +812,7 @@ public class CreacionSiniestroAutosFactory {
   }
 
   public List<Object> listParamFactory() {
-    List<Object> listParams = new ArrayList<Object>();
+    List<Object> listParams = new ArrayList();
     Params parametro = paramAutoFactory();
     listParams.add(getPolicyNumber());
     listParams.add(parametro);
@@ -896,7 +896,7 @@ public class CreacionSiniestroAutosFactory {
   }
 
   public List<VehicleIncident> listVehicleIncidentsFactory() {
-    List<VehicleIncident> listVehicleIncident = new ArrayList<VehicleIncident>();
+    List<VehicleIncident> listVehicleIncident = new ArrayList<>();
     VehicleIncident vehicleIncident = vehicleIncidentFactory();
     listVehicleIncident.add(vehicleIncident);
     return listVehicleIncident;
@@ -955,7 +955,7 @@ public class CreacionSiniestroAutosFactory {
   }
 
   public List<InjuryIncident> listInjuryIncidentFactory() {
-    List<InjuryIncident> listInjuryIncident = new ArrayList<InjuryIncident>();
+    List<InjuryIncident> listInjuryIncident = new ArrayList<>();
     InjuryIncident injuryIncident = injuryIncidentFactory();
     listInjuryIncident.add(injuryIncident);
     return listInjuryIncident;
@@ -989,7 +989,7 @@ public class CreacionSiniestroAutosFactory {
   }
 
   public List<BodyPartDetail> listBodyPartDetailFactory() {
-    List<BodyPartDetail> listBodyPartDetail = new ArrayList<BodyPartDetail>();
+    List<BodyPartDetail> listBodyPartDetail = new ArrayList<>();
     listBodyPartDetail.add(bodyPartDetail1Factory());
     listBodyPartDetail.add(bodyPartDetail2Factory());
     return listBodyPartDetail;

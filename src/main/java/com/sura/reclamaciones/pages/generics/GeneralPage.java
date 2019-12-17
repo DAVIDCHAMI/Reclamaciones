@@ -76,7 +76,6 @@ public class GeneralPage extends PageObject {
 
   private String lstDinamico = "//li[.='COMODIN']";
 
-  private String auxiliarReemplazo = "";
   private String pais = "Country-inputEl";
   private String departamento = "State-inputEl";
 
@@ -230,6 +229,7 @@ public class GeneralPage extends PageObject {
   }
 
   public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
+    String auxiliarReemplazo = "";
     mnuDinamico
         .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
         .click();

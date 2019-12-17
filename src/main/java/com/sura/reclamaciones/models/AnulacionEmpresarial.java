@@ -6,8 +6,7 @@ import java.util.Map;
 
 public class AnulacionEmpresarial extends Transacciones {
 
-  private List<AnulacionEmpresarial> lstAnulacionEmpresarial =
-      new ArrayList<AnulacionEmpresarial>();
+  private List<AnulacionEmpresarial> lstAnulacionEmpresarial = new ArrayList<>();
 
   private String lineaReserva;
   private String beneficiarioPago;
