@@ -9,7 +9,9 @@ public class Reserva {
   private List<Reserva> lstReserva = new ArrayList<>();
   private String monedaReserva;
   private String tipoCosto;
+  private String codigoTipoCosto;
   private String categoriaCosto;
+  private String codigoCategoriaCosto;
   private String lineaReserva;
   private String valorReserva;
   private String valorDeducible;
@@ -17,7 +19,9 @@ public class Reserva {
   public Reserva(Map<String, String> datosReserva) {
     this.monedaReserva = datosReserva.get("monedaReserva");
     this.tipoCosto = datosReserva.get("tipoCosto");
+    this.codigoTipoCosto = datosReserva.get("costType");
     this.categoriaCosto = datosReserva.get("categoriaCosto");
+    this.codigoCategoriaCosto = datosReserva.get("costCategory");
     this.lineaReserva = datosReserva.get("lineaReserva");
     this.valorReserva = datosReserva.get("valorReserva");
     this.valorDeducible = datosReserva.get("valorDeducible");
@@ -35,8 +39,16 @@ public class Reserva {
     return tipoCosto;
   }
 
+  public String getCodigoTipoCosto() {
+    return codigoTipoCosto;
+  }
+
   public String getCategoriaCosto() {
     return categoriaCosto;
+  }
+
+  public String getCodigoCategoriaCosto() {
+    return codigoCategoriaCosto;
   }
 
   public List<Reserva> getLstReserva() {

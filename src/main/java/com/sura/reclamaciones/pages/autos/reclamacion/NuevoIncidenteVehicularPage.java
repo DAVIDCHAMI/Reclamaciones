@@ -148,7 +148,9 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
         (Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
             .toString());
     cmbNombreConductor.clear();
-    cmbNombreConductor.typeAndTab(nombreConductorTercero);
+    cmbNombreConductor.typeAndTab(
+        Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
+            .toString());
     realizarEsperaCarga();
   }
 
@@ -159,5 +161,16 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
 
   public void seleccionarTaller() {
     btnAgregarTaller.waitUntilClickable().click();
+  }
+
+  public boolean validarPlacaExisteFasecolda() {
+    if (btnGenerarCodigoFasecolda.isVisible()) {
+      btnGenerarCodigoFasecolda.click();
+      realizarEsperaCarga();
+      return true;
+    } else {
+      seleccionarConductorVehiculoAfectado();
+      return false;
+    }
   }
 }

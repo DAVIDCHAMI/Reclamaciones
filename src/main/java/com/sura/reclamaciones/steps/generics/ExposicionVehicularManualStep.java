@@ -7,9 +7,11 @@ import static com.sura.reclamaciones.constantes.Constantes.RECLAMANTE_CONDUCTOR_
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
+import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.autos.reclamacion.CreacionServicioPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleVehiculoPage;
 import com.sura.reclamaciones.pages.autos.reclamacion.NuevoIncidenteVehicularPage;
+import com.sura.reclamaciones.pages.generics.CalculadoraCodigoFasecoldaPage;
 import com.sura.reclamaciones.pages.generics.MenuClaimPage;
 import com.sura.reclamaciones.pages.generics.NuevaExposicionVehiculoPage;
 import com.sura.reclamaciones.pages.notificacionaviso.ResumenReclamacionPage;
@@ -33,6 +35,8 @@ public class ExposicionVehicularManualStep {
 
   @Page CreacionServicioPage crearServicioPage;
 
+  @Page CalculadoraCodigoFasecoldaPage calculadoraCodigoFasecoldaPage;
+
   @Step
   public void consultarPlacaAsegurado() {
     Serenity.setSessionVariable(PLACA.getValor()).to(resumenReclamacionPage.consultarNumeroPlaca());
@@ -42,7 +46,8 @@ public class ExposicionVehicularManualStep {
   public void crearExposicionVehicularManual(
       List<Map<String, String>> opcionesCrearExposicion,
       List<ExposicionVehiculoTercero> datosVehiculoTercero,
-      int numeroVehiculosInvolucradosTercero) {
+      int numeroVehiculosInvolucradosTercero,
+      List<Vehiculo> datosVehiculos) {
     for (int j = 0; j <= numeroVehiculosInvolucradosTercero - 1; j++) {
       menuClaimPage.seleccionarBotonAcciones();
       for (int i = 0; i < opcionesCrearExposicion.size(); i++) {
@@ -69,6 +74,21 @@ public class ExposicionVehicularManualStep {
       nuevaExposicionManualPage.crearNuevoIncidenteVehicular();
       nuevoIncidenteVehicularPage.ingresarPlacaVehiculoAfectado(datosVehiculoTercero, j);
       nuevoIncidenteVehicularPage.consultarInformacionVehiculoAfectado();
+      if (nuevoIncidenteVehicularPage.validarPlacaExisteFasecolda()) {
+        datosVehiculos.forEach(
+            formularioCodigoFasecolda -> {
+              calculadoraCodigoFasecoldaPage.diligenciarClaseVehiculo(
+                  formularioCodigoFasecolda.getClaseVehiculo());
+              calculadoraCodigoFasecoldaPage.diligenciarModeloVehiculo(
+                  formularioCodigoFasecolda.getModelo());
+              calculadoraCodigoFasecoldaPage.diligenciarMarcaVehiculo(
+                  formularioCodigoFasecolda.getMarca());
+              calculadoraCodigoFasecoldaPage.diligenciarLineaVehiculo(
+                  formularioCodigoFasecolda.getLinea());
+              calculadoraCodigoFasecoldaPage.generarCodigoFasecolda();
+              calculadoraCodigoFasecoldaPage.crearCodigoFasecoldaVehiculo();
+            });
+      }
       datosVehiculoTercero.forEach(
           formularioLugarAtencion -> {
             nuevoIncidenteVehicularPage.seleccionarLugarAtencion(
