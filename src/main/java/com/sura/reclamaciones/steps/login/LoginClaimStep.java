@@ -3,7 +3,7 @@ package com.sura.reclamaciones.steps.login;
 import static net.serenitybdd.core.pages.PageObject.withParameters;
 
 import com.sura.reclamaciones.models.Credencial;
-import com.sura.reclamaciones.pages.login.LoginClaimPage;
+import com.sura.reclamaciones.pages.guidewire.claimscenter.LoginClaimPage;
 import com.sura.reclamaciones.steps.generics.GenericStep;
 import com.sura.reclamaciones.utils.AmbientesUtil;
 import java.io.IOException;

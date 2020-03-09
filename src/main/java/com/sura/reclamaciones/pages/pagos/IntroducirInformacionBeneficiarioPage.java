@@ -2,7 +2,7 @@ package com.sura.reclamaciones.pages.pagos;
 
 import static com.sura.reclamaciones.constantes.Constantes.TRANSFERENCIA_ELECTRONICA;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;

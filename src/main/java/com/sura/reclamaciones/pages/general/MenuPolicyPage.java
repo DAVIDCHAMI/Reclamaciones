@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.generics;
+package com.sura.reclamaciones.pages.general;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;

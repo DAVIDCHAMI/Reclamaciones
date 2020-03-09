@@ -3,7 +3,7 @@ package com.sura.reclamaciones.pages.recupero;
 import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_RECUPERO;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;

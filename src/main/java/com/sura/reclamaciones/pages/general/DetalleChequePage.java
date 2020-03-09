@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.generics;
+package com.sura.reclamaciones.pages.general;
 
 import static com.sura.reclamaciones.constantes.Constantes.ITERACIONES_ANULACION;
 

@@ -3,7 +3,7 @@ package com.sura.reclamaciones.steps.smocktest;
 import static com.sura.reclamaciones.constantes.Constantes.ACTIVIDADES;
 import static com.sura.reclamaciones.constantes.Constantes.ACTIVITIES;
 
-import com.sura.reclamaciones.pages.smocktest.CambiarIdiomaPage;
+import com.sura.reclamaciones.pages.guidewire.smocktest.CambiarIdiomaPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;

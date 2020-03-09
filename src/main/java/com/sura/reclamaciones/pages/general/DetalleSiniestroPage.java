@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.generics;
+package com.sura.reclamaciones.pages.general;
 
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;

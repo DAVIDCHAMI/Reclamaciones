@@ -4,7 +4,7 @@ import static com.sura.reclamaciones.constantes.Constantes.REASEGURO_DETALLADO;
 import static com.sura.reclamaciones.constantes.Constantes.RETENCION_PURA;
 
 import com.sura.reclamaciones.models.Contrato;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import com.sura.reclamaciones.pages.reaseguro.ReaseguroDetalladoTransaccionPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;

@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.pages.generics;
+package com.sura.reclamaciones.pages.general;
 
 import com.sura.reclamaciones.constantes.Tablas;
 import com.sura.reclamaciones.models.Reserva;

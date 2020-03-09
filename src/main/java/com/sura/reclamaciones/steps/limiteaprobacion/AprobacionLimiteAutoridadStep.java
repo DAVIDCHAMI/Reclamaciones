@@ -3,8 +3,8 @@ package com.sura.reclamaciones.steps.limiteaprobacion;
 import static com.sura.reclamaciones.constantes.MenuConstante.PLAN_TRABAJO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
-import com.sura.reclamaciones.pages.limiteaprobacion.PlanTrabajoActividadPage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
+import com.sura.reclamaciones.pages.guidewire.claimscenter.PlanTrabajoActividadPage;
 import com.sura.reclamaciones.pages.reservas.ConsultaReclamacionPage;
 import net.serenitybdd.core.Serenity;
 import org.fluentlenium.core.annotation.Page;

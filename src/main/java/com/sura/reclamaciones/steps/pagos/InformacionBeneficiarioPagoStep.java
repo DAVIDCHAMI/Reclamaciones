@@ -4,7 +4,7 @@ import static com.sura.reclamaciones.constantes.Constantes.CUENTA;
 import static com.sura.reclamaciones.constantes.Constantes.SELECCIONAR;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionBeneficiarioPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;

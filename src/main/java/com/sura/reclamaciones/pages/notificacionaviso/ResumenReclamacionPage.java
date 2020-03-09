@@ -4,7 +4,7 @@ import static com.sura.reclamaciones.constantes.Constantes.NO;
 import static com.sura.reclamaciones.constantes.Constantes.SI;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.Variables;
 import net.serenitybdd.core.annotations.findby.FindBy;

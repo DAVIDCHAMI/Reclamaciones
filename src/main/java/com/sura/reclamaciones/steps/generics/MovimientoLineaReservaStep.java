@@ -3,8 +3,8 @@ package com.sura.reclamaciones.steps.generics;
 import static com.sura.reclamaciones.constantes.Constantes.*;
 import static com.sura.reclamaciones.constantes.MenuConstante.RESERVA;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import com.sura.reclamaciones.pages.reservas.EstablecerReservaPage;
 import org.fluentlenium.core.annotation.Page;
 

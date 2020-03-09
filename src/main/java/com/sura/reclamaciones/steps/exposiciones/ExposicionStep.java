@@ -4,8 +4,8 @@ import static com.sura.reclamaciones.constantes.Constantes.TIPO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 import static com.sura.reclamaciones.constantes.ReclamacionConstante.EXPOSICIONES;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;

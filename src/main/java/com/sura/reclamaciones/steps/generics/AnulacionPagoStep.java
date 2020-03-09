@@ -4,9 +4,9 @@ import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.pages.generics.DatoFinancieroPagoPage;
-import com.sura.reclamaciones.pages.generics.DetalleChequePage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.general.DatoFinancieroPagoPage;
+import com.sura.reclamaciones.pages.general.DetalleChequePage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;

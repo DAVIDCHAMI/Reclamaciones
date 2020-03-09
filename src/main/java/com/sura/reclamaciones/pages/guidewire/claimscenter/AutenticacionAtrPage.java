@@ -1,8 +1,8 @@
-package com.sura.reclamaciones.pages.login;
+package com.sura.reclamaciones.pages.guidewire.claimscenter;
 
 import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;

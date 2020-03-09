@@ -5,7 +5,7 @@ import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 
 import com.sura.reclamaciones.pages.autos.reclamacion.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.exposiciones.ExposicionPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import com.sura.reclamaciones.pages.pagos.IntroducirInformacionPagoPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;

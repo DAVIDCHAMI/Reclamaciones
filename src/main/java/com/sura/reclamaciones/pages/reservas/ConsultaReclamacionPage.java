@@ -2,8 +2,8 @@ package com.sura.reclamaciones.pages.reservas;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.RECLAMACION_MENU;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.annotation.Page;

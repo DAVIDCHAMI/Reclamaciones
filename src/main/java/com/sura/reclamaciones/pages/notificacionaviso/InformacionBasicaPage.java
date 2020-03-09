@@ -3,7 +3,7 @@ package com.sura.reclamaciones.pages.notificacionaviso;
 import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
 import static com.sura.reclamaciones.constantes.Constantes.NIT;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import com.sura.reclamaciones.utils.Utilidades;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;

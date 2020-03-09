@@ -6,8 +6,8 @@ import static com.sura.reclamaciones.constantes.Constantes.UBICACION_ESTADO_PAGO
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_RESERVAS;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.pages.generics.DatoFinancieroPagoPage;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.DatoFinancieroPagoPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import com.sura.reclamaciones.pages.pagos.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.procesoauditoria.AuditoriaPage;
 import java.util.ArrayList;

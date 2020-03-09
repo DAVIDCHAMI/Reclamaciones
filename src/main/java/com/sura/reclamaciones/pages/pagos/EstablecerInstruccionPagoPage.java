@@ -3,7 +3,7 @@ package com.sura.reclamaciones.pages.pagos;
 import static com.sura.reclamaciones.utils.Utilidades.obtenerFechaActual;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_RESERVAS;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;

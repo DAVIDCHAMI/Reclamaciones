@@ -12,7 +12,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PAGO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_VALOR_PAGO;
 import static org.openqa.selenium.By.xpath;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import com.sura.reclamaciones.utils.Variables;
 import java.util.List;
 import java.util.stream.Collectors;

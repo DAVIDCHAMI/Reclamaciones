@@ -4,7 +4,7 @@ import static com.sura.reclamaciones.constantes.Constantes.TIPO;
 
 import com.sura.reclamaciones.constantes.Tablas;
 import com.sura.reclamaciones.models.ExposicionesAutomaticasAutos;
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;

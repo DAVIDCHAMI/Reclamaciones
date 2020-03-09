@@ -5,9 +5,9 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_TRAN
 
 import com.sura.reclamaciones.constantes.MenuConstante;
 import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
-import com.sura.reclamaciones.pages.generics.DatoRecuperacionPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.general.DatoFinancieroTransaccionPage;
+import com.sura.reclamaciones.pages.general.DatoRecuperacionPage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;

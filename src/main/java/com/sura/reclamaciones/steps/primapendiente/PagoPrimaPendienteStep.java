@@ -3,8 +3,8 @@ package com.sura.reclamaciones.steps.primapendiente;
 import static com.sura.reclamaciones.constantes.MenuConstante.POLIZA;
 
 import com.sura.reclamaciones.pages.autos.reclamacion.InformacionPolizaGeneralPage;
-import com.sura.reclamaciones.pages.generics.DatoFinancieroTransaccionPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.general.DatoFinancieroTransaccionPage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 

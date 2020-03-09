@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.steps.generics;
 
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.pages.generics.UbicacionPage;
+import com.sura.reclamaciones.pages.general.UbicacionPage;
 import java.util.List;
 import org.fluentlenium.core.annotation.Page;
 

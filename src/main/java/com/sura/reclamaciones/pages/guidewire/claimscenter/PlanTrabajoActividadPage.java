@@ -1,9 +1,9 @@
-package com.sura.reclamaciones.pages.limiteaprobacion;
+package com.sura.reclamaciones.pages.guidewire.claimscenter;
 
 import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.constantes.Posiciones.POSICION_FILA;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;

@@ -2,7 +2,7 @@ package com.sura.reclamaciones.pages.recupero;
 
 import static com.sura.reclamaciones.constantes.Constantes.NUMERO_TRANSACCION;
 
-import com.sura.reclamaciones.pages.generics.GeneralPage;
+import com.sura.reclamaciones.pages.general.GeneralPage;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

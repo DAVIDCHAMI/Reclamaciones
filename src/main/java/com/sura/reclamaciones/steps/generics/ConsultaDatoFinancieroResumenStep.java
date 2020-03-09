@@ -3,8 +3,8 @@ package com.sura.reclamaciones.steps.generics;
 import static com.sura.reclamaciones.constantes.Constantes.DATOS_FINANCIEROS;
 
 import com.sura.reclamaciones.models.Reserva;
-import com.sura.reclamaciones.pages.generics.DatoFinancieroResumenPage;
-import com.sura.reclamaciones.pages.generics.MenuClaimPage;
+import com.sura.reclamaciones.pages.general.DatoFinancieroResumenPage;
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
