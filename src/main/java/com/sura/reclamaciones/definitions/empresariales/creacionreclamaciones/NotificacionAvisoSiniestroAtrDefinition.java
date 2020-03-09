@@ -3,11 +3,11 @@ package com.sura.reclamaciones.definitions.empresariales.creacionreclamaciones;
 import static com.sura.reclamaciones.constantes.NombresCsv.*;
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
-import com.sura.reclamaciones.definitions.SeleccionAmbiente;
+import com.sura.reclamaciones.definitions.comunes.SeleccionAmbiente;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionAtrEmpresarialStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.GenericStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.NuevaReclamacionAtrEmpresarialStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;

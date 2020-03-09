@@ -5,8 +5,8 @@ import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.steps.generics.AnulacionRecuperoStep;
-import com.sura.reclamaciones.steps.recupero.RecuperoStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.AnulacionRecuperoStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;

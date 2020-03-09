@@ -12,7 +12,7 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_COBERT
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
-import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionAvisoSiniestroAutoStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;

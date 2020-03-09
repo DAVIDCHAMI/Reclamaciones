@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.definitions.comunes;
 
-import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroTransaccionStep;
-import com.sura.reclamaciones.steps.generics.MovimientoLineaReservaStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.ConsultaDatoFinancieroTransaccionStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.MovimientoLineaReservaStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import net.thucydides.core.annotations.Steps;

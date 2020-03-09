@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.definitions.empresariales.creacionreclamaciones;
 
-import com.sura.reclamaciones.steps.notificacionaviso.ConsumoServicioCreacionSiniestroStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.ConsumoServicioCreacionSiniestroStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;

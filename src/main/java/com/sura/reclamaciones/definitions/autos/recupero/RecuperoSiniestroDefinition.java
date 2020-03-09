@@ -4,7 +4,7 @@ import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 
 import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.steps.recupero.RecuperoStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;

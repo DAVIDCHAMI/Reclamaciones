@@ -4,8 +4,8 @@ import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.recupero.RecuperoStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.GenericStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.RecuperoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;

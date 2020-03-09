@@ -5,7 +5,7 @@ import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.models.PagoSiniestro;
-import com.sura.reclamaciones.steps.generics.AnulacionPagoStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.AnulacionPagoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import java.io.IOException;

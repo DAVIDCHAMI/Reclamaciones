@@ -1,8 +1,8 @@
 package com.sura.reclamaciones.definitions.empresariales.modelosimplificado;
 
 import com.sura.reclamaciones.models.TransaccionModeloSimplificado;
-import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.modelosimplificado.ConsultarTransaccionModeloSimplificadoStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.GenericStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.ConsultarTransaccionModeloSimplificadoStep;
 import cucumber.api.java.ast.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;

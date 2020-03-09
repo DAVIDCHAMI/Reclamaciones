@@ -5,12 +5,12 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUC
 
 import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
-import com.sura.reclamaciones.steps.notificacionaviso.BusquedaPolizaStep;
-import com.sura.reclamaciones.steps.notificacionaviso.InformacionBasicaStep;
-import com.sura.reclamaciones.steps.notificacionaviso.InformacionReclamacionStep;
-import com.sura.reclamaciones.steps.notificacionaviso.NuevaReclamacionEmpresarialStep;
-import com.sura.reclamaciones.steps.notificacionaviso.PropiedadesImplicadasStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.NuevaReclamacionGuardadaStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.BusquedaPolizaStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.InformacionBasicaStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.InformacionReclamacionStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.NuevaReclamacionEmpresarialStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.PropiedadesImplicadasStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
