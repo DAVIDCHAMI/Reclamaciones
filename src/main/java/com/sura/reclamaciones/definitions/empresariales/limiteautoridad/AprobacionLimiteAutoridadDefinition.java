@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
+package com.sura.reclamaciones.definitions.empresariales.limiteautoridad;
 
 import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO;
 

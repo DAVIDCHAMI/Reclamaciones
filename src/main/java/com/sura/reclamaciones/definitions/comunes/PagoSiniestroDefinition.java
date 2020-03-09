@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
+package com.sura.reclamaciones.definitions.comunes;
 
 import static com.sura.reclamaciones.constantes.Filtros.CLASE_VEHICULO;
 import static com.sura.reclamaciones.constantes.Filtros.EXPOSICION_MANUAL_VEHICULAR;

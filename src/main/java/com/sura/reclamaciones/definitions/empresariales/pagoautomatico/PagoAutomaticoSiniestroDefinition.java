@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
+package com.sura.reclamaciones.definitions.empresariales.pagoautomatico;
 
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 

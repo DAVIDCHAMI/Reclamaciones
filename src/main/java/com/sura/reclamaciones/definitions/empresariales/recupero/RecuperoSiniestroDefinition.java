@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
+package com.sura.reclamaciones.definitions.empresariales.recupero;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;

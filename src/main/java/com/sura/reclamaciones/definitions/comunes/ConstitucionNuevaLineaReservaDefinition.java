@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
+package com.sura.reclamaciones.definitions.comunes;
 
 import com.sura.reclamaciones.steps.generics.ConsultaDatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.generics.MovimientoLineaReservaStep;

@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.empresariales.procesoreclamaciones;
+package com.sura.reclamaciones.definitions.comunes;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.RECLAMACION_EMPRESARIAL;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;

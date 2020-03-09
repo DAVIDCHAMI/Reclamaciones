@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
+package com.sura.reclamaciones.definitions.autos.creacionclamaciones;
 
 import static com.sura.reclamaciones.constantes.Filtros.DIRECCION_EXPOSICION_LESIONES;
 import static com.sura.reclamaciones.constantes.Filtros.DIRECCION_EXPOSICION_VEHICULAR;

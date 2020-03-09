@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.modelosimplificado;
+package com.sura.reclamaciones.definitions.empresariales.modelosimplificado;
 
 import com.sura.reclamaciones.models.TransaccionModeloSimplificado;
 import com.sura.reclamaciones.steps.generics.GenericStep;

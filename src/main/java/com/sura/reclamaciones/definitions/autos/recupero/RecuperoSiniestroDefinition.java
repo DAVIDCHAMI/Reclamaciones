@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.definitions.autos.procesoreclamaciones;
+package com.sura.reclamaciones.definitions.autos.recupero;
 
 import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
