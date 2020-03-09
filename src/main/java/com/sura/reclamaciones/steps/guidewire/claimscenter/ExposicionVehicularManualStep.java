@@ -8,12 +8,12 @@ import static com.sura.reclamaciones.constantes.Constantes.VALOR_CERO;
 
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.Vehiculo;
-import com.sura.reclamaciones.pages.guidewire.claimscenter.CreacionServicioPage;
-import com.sura.reclamaciones.pages.guidewire.claimscenter.DetalleVehiculoPage;
-import com.sura.reclamaciones.pages.guidewire.claimscenter.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.general.CalculadoraCodigoFasecoldaPage;
 import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import com.sura.reclamaciones.pages.general.NuevaExposicionVehiculoPage;
+import com.sura.reclamaciones.pages.guidewire.claimscenter.CreacionServicioPage;
+import com.sura.reclamaciones.pages.guidewire.claimscenter.DetalleVehiculoPage;
+import com.sura.reclamaciones.pages.guidewire.claimscenter.NuevoIncidenteVehicularPage;
 import com.sura.reclamaciones.pages.guidewire.claimscenter.ResumenReclamacionPage;
 import java.util.List;
 import java.util.Map;

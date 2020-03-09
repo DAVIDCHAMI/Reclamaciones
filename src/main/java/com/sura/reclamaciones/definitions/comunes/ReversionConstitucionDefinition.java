@@ -5,12 +5,12 @@ import static com.sura.reclamaciones.utils.UtilidadesCSV.obtenerDatosPrueba;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
-import com.sura.reclamaciones.steps.guidewire.claimscenter.ConsultaDatoFinancieroTransaccionStep;
-import com.sura.reclamaciones.steps.guidewire.claimscenter.MovimientoLineaReservaStep;
-import com.sura.reclamaciones.steps.guidewire.claimscenter.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.guidewire.claimscenter.BusquedaPolizaStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.ConsultaDatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.guidewire.claimscenter.InformacionBasicaStep;
 import com.sura.reclamaciones.steps.guidewire.claimscenter.InformacionReclamacionStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.MovimientoLineaReservaStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.NuevaReclamacionGuardadaStep;
 import com.sura.reclamaciones.steps.guidewire.claimscenter.PropiedadesImplicadasStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;

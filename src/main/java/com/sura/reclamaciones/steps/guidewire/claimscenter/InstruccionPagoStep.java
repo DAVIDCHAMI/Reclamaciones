@@ -8,8 +8,8 @@ import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TOTAL_PAGO_
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.pages.general.DatoFinancieroPagoPage;
 import com.sura.reclamaciones.pages.general.GeneralPage;
-import com.sura.reclamaciones.pages.guidewire.claimscenter.EstablecerInstruccionPagoPage;
 import com.sura.reclamaciones.pages.guidewire.claimscenter.AuditoriaPage;
+import com.sura.reclamaciones.pages.guidewire.claimscenter.EstablecerInstruccionPagoPage;
 import java.util.ArrayList;
 import java.util.List;
 import net.serenitybdd.core.Serenity;

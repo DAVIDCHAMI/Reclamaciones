@@ -3,9 +3,9 @@ package com.sura.reclamaciones.steps.guidewire.claimscenter;
 import static com.sura.reclamaciones.constantes.Constantes.EXPOSICIONES;
 import static com.sura.reclamaciones.constantes.Constantes.PAGOS;
 
+import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import com.sura.reclamaciones.pages.guidewire.claimscenter.DetalleExposicionAutomaticaPage;
 import com.sura.reclamaciones.pages.guidewire.claimscenter.ExposicionPage;
-import com.sura.reclamaciones.pages.general.MenuClaimPage;
 import com.sura.reclamaciones.pages.guidewire.claimscenter.IntroducirInformacionPagoPage;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;

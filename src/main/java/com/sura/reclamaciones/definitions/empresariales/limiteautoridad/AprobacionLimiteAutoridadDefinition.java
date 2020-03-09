@@ -2,8 +2,8 @@ package com.sura.reclamaciones.definitions.empresariales.limiteautoridad;
 
 import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO;
 
-import com.sura.reclamaciones.steps.guidewire.claimscenter.ConsultaDatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.guidewire.claimscenter.AprobacionLimiteAutoridadStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.ConsultaDatoFinancieroTransaccionStep;
 import com.sura.reclamaciones.steps.guidewire.claimscenter.LoginClaimStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;

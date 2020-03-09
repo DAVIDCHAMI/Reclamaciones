@@ -4,8 +4,8 @@ import static com.sura.reclamaciones.constantes.MenuConstante.PLAN_TRABAJO;
 import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.pages.general.MenuClaimPage;
-import com.sura.reclamaciones.pages.guidewire.claimscenter.PlanTrabajoActividadPage;
 import com.sura.reclamaciones.pages.guidewire.claimscenter.ConsultaReclamacionPage;
+import com.sura.reclamaciones.pages.guidewire.claimscenter.PlanTrabajoActividadPage;
 import net.serenitybdd.core.Serenity;
 import org.fluentlenium.core.annotation.Page;
 

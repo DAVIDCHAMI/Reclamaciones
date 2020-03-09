@@ -8,7 +8,6 @@ import com.sura.reclamaciones.constantes.ReclamacionConstante;
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionEmpresarial;
 import com.sura.reclamaciones.services.ConsumoServicioCreacionSiniestro;
-
 import java.io.IOException;
 import java.util.List;
 import net.serenitybdd.core.Serenity;

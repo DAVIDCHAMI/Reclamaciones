@@ -2,9 +2,9 @@ package com.sura.reclamaciones.steps.guidewire.claimscenter;
 
 import static com.sura.reclamaciones.constantes.MenuConstante.POLIZA;
 
-import com.sura.reclamaciones.pages.guidewire.claimscenter.InformacionPolizaGeneralPage;
 import com.sura.reclamaciones.pages.general.DatoFinancieroTransaccionPage;
 import com.sura.reclamaciones.pages.general.MenuClaimPage;
+import com.sura.reclamaciones.pages.guidewire.claimscenter.InformacionPolizaGeneralPage;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 
