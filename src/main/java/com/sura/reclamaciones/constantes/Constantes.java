@@ -9,7 +9,7 @@ public enum Constantes {
   ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO("superUsuario"),
   ANULACION_PAGO("Anulación Pago"),
   CANTIDAD("Cantidad"),
-  CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA("Nuevas reservas disponibles"),
+  CC_NOMBRE_CAMPO_VALOR_NUEVA_RESERVA("Nuevas creacionreservas disponibles"),
   CC_POSICION_VALOR_RESERVA_EMPRESARIALES("-1"),
   CLAVE("cor3sur4"),
   CODIGO_RETENCION("Código de retención"),
