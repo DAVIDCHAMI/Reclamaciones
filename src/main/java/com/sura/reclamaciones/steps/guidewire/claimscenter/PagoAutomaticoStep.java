@@ -40,7 +40,7 @@ public class PagoAutomaticoStep {
             MatcherAssert.assertThat(
                 "El valor de la reserva es diferente a:"
                     + reserva.getValorReserva()
-                    + ". Revisar en configuración comercial la parametrización de reservas automáticas.",
+                    + ". Revisar en configuración comercial la parametrización de creacionreservas automáticas.",
                 datoFinancieroTransaccionPage
                     .obtenerMontoReserva()
                     .equals(reserva.getValorReserva())));
@@ -64,7 +64,7 @@ public class PagoAutomaticoStep {
             if (estadoTransaccionPantalla) break;
           }
           MatcherAssert.assertThat(
-              "No se realizó el pago automático. Revisar en configuración comercial la parametrización de pagos automáticos.",
+              "No se realizó el pago automático. Revisar en configuración comercial la parametrización de creacionpagos automáticos.",
               datoFinancieroPagoPage.verificarPagoMenuTransaccion(
                   pago.getEsPagoAutomatico(), lstFilaPago));
           MatcherAssert.assertThat(

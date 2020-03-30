@@ -69,11 +69,11 @@ public class RecuperoStep {
             if (estadoTransaccionPantalla) break;
           }
           MatcherAssert.assertThat(
-              "No coincide la categoria del recupero",
+              "No coincide la categoria del creacionrecupero",
               verificacionRecuperoPage.verificarRecupero(
                   validador.getCategoriaRecupero(), lstFilaRecupero));
           MatcherAssert.assertThat(
-              "No llego a SAP el recupero",
+              "No llego a SAP el creacionrecupero",
               verificacionRecuperoPage.verificarRecupero(
                   validador.getEstadoTransaccion(), lstFilaRecupero));
         });
