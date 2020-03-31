@@ -1,11 +1,11 @@
 package com.sura.reclamaciones.pages.general;
 
-import static com.sura.reclamaciones.constantes.Constantes.COMODIN;
-import static com.sura.reclamaciones.constantes.Constantes.NUMERO_INTENTOS_ESPERA_ELEMENTO;
-import static com.sura.reclamaciones.constantes.Tablas.CABECERAS_CC;
-import static com.sura.reclamaciones.constantes.Tablas.REGISTROS_CC;
+import static com.sura.reclamaciones.utils.enums.Constantes.COMODIN;
+import static com.sura.reclamaciones.utils.enums.Constantes.NUMERO_INTENTOS_ESPERA_ELEMENTO;
+import static com.sura.reclamaciones.utils.enums.Tablas.CABECERAS_CC;
+import static com.sura.reclamaciones.utils.enums.Tablas.REGISTROS_CC;
 
-import com.sura.reclamaciones.constantes.Tablas;
+import com.sura.reclamaciones.utils.enums.Tablas;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;

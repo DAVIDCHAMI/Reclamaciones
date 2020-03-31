@@ -1,14 +1,14 @@
 package com.sura.reclamaciones.definitions.comunes;
 
-import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_ATR;
-import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_AUTO;
-import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL;
-import static com.sura.reclamaciones.constantes.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO;
-import static com.sura.reclamaciones.constantes.Constantes.DESARROLLO;
-import static com.sura.reclamaciones.constantes.Constantes.LABORATORIO;
+import static com.sura.reclamaciones.utils.enums.Constantes.ANALISTA_RECLAMACION_ATR;
+import static com.sura.reclamaciones.utils.enums.Constantes.ANALISTA_RECLAMACION_AUTO;
+import static com.sura.reclamaciones.utils.enums.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL;
+import static com.sura.reclamaciones.utils.enums.Constantes.ANALISTA_RECLAMACION_EMPRESARIAL_SUPER_USUARIO;
+import static com.sura.reclamaciones.utils.enums.Constantes.DESARROLLO;
+import static com.sura.reclamaciones.utils.enums.Constantes.LABORATORIO;
 
-import com.sura.reclamaciones.steps.guidewire.claimscenter.LoginAtrStep;
-import com.sura.reclamaciones.steps.guidewire.claimscenter.LoginClaimStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.comunes.LoginClaimStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.empresariales.LoginAtrStep;
 import com.sura.reclamaciones.utils.AmbientesUtil;
 import cucumber.api.java.Before;
 import java.io.IOException;

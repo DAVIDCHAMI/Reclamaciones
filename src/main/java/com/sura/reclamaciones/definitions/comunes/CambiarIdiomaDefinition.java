@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.definitions.comunes;
 
-import com.sura.reclamaciones.steps.guidewire.claimscenter.CambiarIdiomaStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.comunes.CambiarIdiomaStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Entonces;
 import net.thucydides.core.annotations.Steps;

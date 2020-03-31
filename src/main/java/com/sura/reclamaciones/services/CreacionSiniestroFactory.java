@@ -1,6 +1,6 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.constantes.Constantes.TRUE;
+import static com.sura.reclamaciones.utils.enums.Constantes.TRUE;
 
 import com.sura.service.creacionSiniestro.gen.Author;
 import com.sura.service.creacionSiniestro.gen.CPLine;

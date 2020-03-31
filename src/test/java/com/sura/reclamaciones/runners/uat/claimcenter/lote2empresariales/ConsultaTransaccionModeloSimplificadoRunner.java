@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
   features =
-      "src/test/resources/features/modelosimplificado/consultar_transaccion_modelo_simplificado.feature",
+      "src/test/resources/features/consultas/consultar_transaccion_modelo_simplificado.feature",
   glue = {"com.sura.reclamaciones.definitions"}
 )
 public class ConsultaTransaccionModeloSimplificadoRunner {}
