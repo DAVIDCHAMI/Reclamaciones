@@ -64,7 +64,7 @@ public class PagoAutomaticoStep {
             if (estadoTransaccionPantalla) break;
           }
           MatcherAssert.assertThat(
-              "No se realizó el pago automático. Revisar en configuración comercial la parametrización de creacionpagos automáticos.",
+              "No se realizó el pago automático. Revisar en configuración comercial la parametrización de pagos automáticos.",
               datoFinancieroPagoPage.verificarPagoMenuTransaccion(
                   pago.getEsPagoAutomatico(), lstFilaPago));
           MatcherAssert.assertThat(

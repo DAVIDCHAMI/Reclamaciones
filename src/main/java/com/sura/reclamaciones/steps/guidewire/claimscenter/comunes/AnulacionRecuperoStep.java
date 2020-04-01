@@ -51,7 +51,7 @@ public class AnulacionRecuperoStep {
         MenuConstante.DATOS_FINANCIEROS, MenuConstante.TRANSACCIONES);
     datoFinancieroTransaccionPage.seleccionarTipoTransaccion(TIPO_TRANSACCION.getValor());
     MatcherAssert.assertThat(
-        "El creacionrecupero no quedo en estado anulado",
+        "El recupero no quedo en estado anulado",
         datoFinancieroTransaccionPage.verificarEstadoAnuladoRecupero(
             strNumeroTransaccion, datoRecuperacionPage.getTblTransaccion()));
   }
