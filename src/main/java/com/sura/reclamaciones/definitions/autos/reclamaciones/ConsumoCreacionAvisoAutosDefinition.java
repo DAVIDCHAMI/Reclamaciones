@@ -12,7 +12,7 @@ import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_TIPO_
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
-import com.sura.reclamaciones.steps.guidewire.claimscenter.autos.ConsumoServicioCreacionAvisoSiniestroAutoStep;
+import com.sura.reclamaciones.steps.maca.autos.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;

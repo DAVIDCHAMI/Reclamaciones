@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.steps.guidewire.claimscenter.autos;
+package com.sura.reclamaciones.steps.maca.autos;
 
 import static com.sura.reclamaciones.utils.constantes.MenuConstante.RECLAMACION_MENU;
 import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;

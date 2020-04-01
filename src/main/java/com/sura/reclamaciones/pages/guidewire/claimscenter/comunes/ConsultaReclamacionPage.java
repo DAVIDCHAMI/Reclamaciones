@@ -3,7 +3,6 @@ package com.sura.reclamaciones.pages.guidewire.claimscenter.comunes;
 import static com.sura.reclamaciones.utils.constantes.MenuConstante.RECLAMACION_MENU;
 
 import com.sura.reclamaciones.pages.general.GeneralPage;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.annotation.Page;
