@@ -1,7 +1,7 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;

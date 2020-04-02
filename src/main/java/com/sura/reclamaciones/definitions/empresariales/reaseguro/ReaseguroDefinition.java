@@ -1,16 +1,16 @@
 package com.sura.reclamaciones.definitions.empresariales.reaseguro;
 
-import static com.sura.reclamaciones.constantes.Constantes.RESERVA;
-import static com.sura.reclamaciones.constantes.NombresCsv.CONTRATO;
-import static com.sura.reclamaciones.constantes.NombresCsv.RECUPERO_SINIESTRO;
-import static com.sura.reclamaciones.utils.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
+import static com.sura.reclamaciones.utils.enums.Constantes.RESERVA;
+import static com.sura.reclamaciones.utils.enums.NombresCsv.CONTRATO;
+import static com.sura.reclamaciones.utils.enums.NombresCsv.RECUPERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_TIPO_PRODUCTO_EMPRESARIAL;
 
 import com.sura.reclamaciones.models.Contrato;
 import com.sura.reclamaciones.models.Recupero;
-import com.sura.reclamaciones.steps.generics.GenericStep;
-import com.sura.reclamaciones.steps.generics.NuevaReclamacionGuardadaStep;
-import com.sura.reclamaciones.steps.reaseguro.ReaseguroStep;
-import com.sura.reclamaciones.steps.recupero.RecuperoStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.comunes.GenericStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.comunes.NuevaReclamacionGuardadaStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.comunes.RecuperoStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.empresariales.ReaseguroStep;
 import cucumber.api.java.es.Entonces;
 import cucumber.api.java.es.Y;
 import java.io.IOException;

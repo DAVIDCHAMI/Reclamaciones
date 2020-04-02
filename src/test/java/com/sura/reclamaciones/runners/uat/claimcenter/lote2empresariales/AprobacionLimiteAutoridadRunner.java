@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-  features = "src/test/resources/features/limiteaprobacion/aprobar_limite_autoridad.feature",
+  features =
+      "src/test/resources/features/empresariales/aprobaciones/aprobar_limite_autoridad.feature",
   glue = {"com.sura.reclamaciones.definitions"},
   tags = {"@aprobarReserva"}
 )
