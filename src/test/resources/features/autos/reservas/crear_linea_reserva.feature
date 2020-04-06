@@ -2,8 +2,8 @@
 Característica: Constitución de una línea de reserva de un siniestro
 
   Como analista de reclamaciones
-  Quiero que sea posible realizar ajustes en las reservas
-  Para que se pueda cubrir el monto del valor del siniestro
+  Quiero que sea posible crear una línea de reserva a una exposición
+  Para que se pueda cubrir los costos y los gastos que se tienen en un siniestro
 
   @creacionLineaReserva
   @claimsAuto

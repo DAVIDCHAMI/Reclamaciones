@@ -1,5 +1,5 @@
 # language: es
-Característica: Constitución de una línea de reserva de un siniestro
+Característica: reversión de una línea de reserva de un siniestro
 
   Como analista de reclamaciones
   Quiero que sea posible realizar ajustes en las reservas
