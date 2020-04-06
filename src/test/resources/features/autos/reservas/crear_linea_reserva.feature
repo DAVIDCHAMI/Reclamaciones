@@ -7,7 +7,7 @@ Característica: Constitución de una línea de reserva de un siniestro
 
   @creacionLineaReserva
   @claimsAuto
-  Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamaciòn de autos
+  Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamación de autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
     Cuando se crea una nueva línea de reserva por la Exposición de <Exposición> por <Categoría> con un tipo de costo <Tipo costo> por un valor de <Valor de Pretensión>

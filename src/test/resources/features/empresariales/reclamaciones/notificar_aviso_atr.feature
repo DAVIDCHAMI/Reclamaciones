@@ -1,5 +1,5 @@
 # language: es
-Característica: Notificacion de aviso de una reclamacion desde ATR
+Característica: Notificacion de aviso de una reclamación desde ATR
 
   Como Analista reclamaciones, coordinador atención reclamaciones, call_center, asesor
   quiero que se generen avisos internos de los diferentes productos que tiene la compañía en empresariales

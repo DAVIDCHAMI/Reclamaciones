@@ -1,7 +1,7 @@
 # language: es
-Característica:Recupero de una reclamacion
+Característica:Recupero de una reclamación
 
-  Como analista de reclamacion
+  Como analista de reclamación
   Quiero registrar un recupero a partir de una reserva
 
   @claimsEmpresarial
