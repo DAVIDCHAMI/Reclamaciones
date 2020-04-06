@@ -55,7 +55,7 @@ public class PagoSiniestroDefinition {
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
-    //TODO: Falta adaptar con la automatización de marcación de audotoría
+    // TODO: Falta adaptar con la automatización de marcación de audotoría
   }
 
   @Cuando(

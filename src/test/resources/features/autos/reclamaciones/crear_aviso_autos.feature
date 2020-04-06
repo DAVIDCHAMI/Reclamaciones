@@ -3,7 +3,7 @@ Característica: Generación avisos de siniestros autos
 
   Yo como facilitador Maca/ abogado en sitio/ funcionario de la línea de solución
   Quiero que se puedan generar avisos de autos
-  Para afectar las coberturas de una póliza, cuando un afiliado sufra un siniestro
+  Para afectar las coberturas de una póliza, cuando un asegurado tenga un siniestro
 
   @claimsAuto
   @pruebaRegresion

@@ -13,27 +13,23 @@ import org.openqa.selenium.WebDriver;
 public class EstablecerInstruccionPagoPage extends GeneralPage {
 
   @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_DateOfService-inputEl']"
-  )
+      xpath =
+          "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_DateOfService-inputEl']")
   private WebElementFacade txtFechaPago;
 
   @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:ScheduledPayDate_Ext-inputEl']"
-  )
+      xpath =
+          "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:ScheduledPayDate_Ext-inputEl']")
   private WebElementFacade txtFechaPosiblePago;
 
   @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_InvoiceNumber-inputEl'][contains(@class,'x-form-field x-form-text')]"
-  )
+      xpath =
+          "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_InvoiceNumber-inputEl'][contains(@class,'x-form-field x-form-text')]")
   private WebElementFacade txtNumeroFactura;
 
   @FindBy(
-    xpath =
-        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Amount_Net-inputEl'][contains(@class,'x-form-display-field')]"
-  )
+      xpath =
+          "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Amount_Net-inputEl'][contains(@class,'x-form-display-field')]")
   private WebElementFacade txtMontoNeto;
 
   public EstablecerInstruccionPagoPage(WebDriver driver) {

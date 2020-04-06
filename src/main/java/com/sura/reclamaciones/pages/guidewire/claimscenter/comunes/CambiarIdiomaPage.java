@@ -22,9 +22,8 @@ public class CambiarIdiomaPage extends GeneralPage {
   private WebElementFacade lnkIdioma;
 
   @FindBy(
-    xpath =
-        "//div[@class='x-component x-header-text-container x-container-text-container x-container-text-container-default x-box-item x-component-default']/span/span"
-  )
+      xpath =
+          "//div[@class='x-component x-header-text-container x-container-text-container x-container-text-container-default x-box-item x-component-default']/span/span")
   private WebElementFacade letraComprobante;
 
   @FindBy(xpath = "//span[@id ='TabBar:LanguageTabBarLink:languageSwitcher:0:langs-textEl']")

@@ -24,9 +24,8 @@ import org.slf4j.LoggerFactory;
 
 public class GeneralPage extends PageObject {
   @FindBy(
-    xpath =
-        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul"
-  )
+      xpath =
+          "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]/div/ul")
   public WebElementFacade lstOpcionesCombobox;
 
   @FindBy(xpath = "//div[contains(@class,'x-mask x-mask-fixed')]")
@@ -36,9 +35,8 @@ public class GeneralPage extends PageObject {
   private WebElementFacade btnSiguiente;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a"
-  )
+      xpath =
+          "//span[@id='FNOLWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnInnerEl' or @id='NormalCreateCheckWizard:Next-btnWrap']//parent::a")
   private WebElementFacade btnCambioPagina;
 
   @FindBy(xpath = ".//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Aceptar')]")
@@ -48,9 +46,8 @@ public class GeneralPage extends PageObject {
   private WebElementFacade btnFinalizar;
 
   @FindBy(
-    xpath =
-        "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']"
-  )
+      xpath =
+          "//input[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl']")
   private WebElementFacade txtTransacciones;
 
   @FindBy(xpath = "//div[@class='x-panel x-panel-default x-grid']")

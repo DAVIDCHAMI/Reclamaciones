@@ -17,8 +17,7 @@ public class NuevaReclamacionGuardadaPage extends GeneralPage {
   private WebElementFacade txtNumeroReclamacion;
 
   @FindBy(
-    xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']"
-  )
+      xpath = "//div[@id='NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl']")
   private WebElementFacade lblNumeroReclamacion;
 
   public NuevaReclamacionGuardadaPage(WebDriver wdriver) {

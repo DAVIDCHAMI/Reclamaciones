@@ -16,15 +16,13 @@ import org.openqa.selenium.WebElement;
 public class DetalleSiniestroPage extends GeneralPage {
 
   @FindBy(
-    id =
-        "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:EditableVehicleIncidentsLV"
-  )
+      id =
+          "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:EditableVehicleIncidentsLV")
   private WebElementFacade tblPlacasVehiculosInvolucrados;
 
   @FindBy(
-    id =
-        "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl"
-  )
+      id =
+          "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl")
   private WebElementFacade lblNumeroSiniestro;
 
   @FindBy(id = "Claim:ClaimInfoBar:LicensePlate-btnInnerEl")

@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 @DefaultUrl("https://labcoreseguros.suramericana.com/cc/ClaimCenter.do")
 @NamedUrls({
-  //@NamedUrl(name = "local", url = "http://todomvc.com/examples/angularjs/#"),
+  // @NamedUrl(name = "local", url = "http://todomvc.com/examples/angularjs/#"),
   @NamedUrl(name = "dllo", url = "http://dllocoreseguros.suramericana.com:7005/cc/ClaimCenter.do"),
   @NamedUrl(name = "uat", url = "https://labcoreseguros.suramericana.com/cc/ClaimCenter.do"),
   @NamedUrl(name = "pdn", url = "https://coreseguros.suramericana.com/cc/ClaimCenter.do"),

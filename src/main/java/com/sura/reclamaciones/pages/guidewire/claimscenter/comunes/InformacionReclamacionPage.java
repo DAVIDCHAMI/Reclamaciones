@@ -8,45 +8,38 @@ import org.openqa.selenium.WebDriver;
 public class InformacionReclamacionPage extends GeneralPage {
 
   @FindBy(
-    xpath =
-        "//span[@id='NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnInnerEl']"
-  )
+      xpath =
+          "//span[@id='NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnInnerEl']")
   private WebElementFacade btnCerrar;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:LossEstimate-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:LossEstimate-inputEl']")
   private WebElementFacade txtValorPretension;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableFixedPropertyIncidentsLV_tb:Add-btnInnerEl']"
-  )
+      xpath =
+          "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableFixedPropertyIncidentsLV_tb:Add-btnInnerEl']")
   private WebElementFacade btnIncidentePropiedad;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:FNOLSuraEditableContentPropertyIncidentsLV_tb:Add-btnInnerEl']"
-  )
+      xpath =
+          "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:FNOLSuraEditableContentPropertyIncidentsLV_tb:Add-btnInnerEl']")
   private WebElementFacade btnIncidenteContenido;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableInjuryIncidentsLV_tb:Add-btnInnerEl']"
-  )
+      xpath =
+          "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:EditableInjuryIncidentsLV_tb:Add-btnInnerEl']")
   private WebElementFacade btnIncidenteLesiones;
 
   @FindBy(
-    xpath =
-        "//span[.='Aceptar']/span[@id='NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Update-btnInnerEl']"
-  )
+      xpath =
+          "//span[.='Aceptar']/span[@id='NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Update-btnInnerEl']")
   private WebElementFacade btnAceptarIncPropiedad;
 
   @FindBy(
-    xpath =
-        "//span[.='Aceptar']/span[@id='NewPropertyContentsIncidentPopup:NewPropertyContentsIncidentScreen:Update-btnInnerEl']"
-  )
+      xpath =
+          "//span[.='Aceptar']/span[@id='NewPropertyContentsIncidentPopup:NewPropertyContentsIncidentScreen:Update-btnInnerEl']")
   private WebElementFacade btnAceptarIncContenido;
 
   @FindBy(xpath = "//span[.='Finalizar']/span[@id='FNOLWizard:Finish-btnInnerEl']")
@@ -56,9 +49,8 @@ public class InformacionReclamacionPage extends GeneralPage {
   private WebElementFacade spanNuevaReclamacion;
 
   @FindBy(
-    xpath =
-        "//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:Claim_LossCause-inputCell']"
-  )
+      xpath =
+          "//td[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_LossDetailsScreen:NewClaimLossDetailsDV:Claim_LossCause-inputCell']")
   private WebElementFacade mnuCausa;
 
   @FindBy(xpath = "//div[@id='causaSiniestroInformacionSiniestroEmp']/input")

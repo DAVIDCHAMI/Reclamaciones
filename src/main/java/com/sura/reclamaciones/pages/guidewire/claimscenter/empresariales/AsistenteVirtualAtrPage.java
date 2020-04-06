@@ -12,8 +12,8 @@ public class AsistenteVirtualAtrPage extends GeneralPage {
   private WebElementFacade bntAsistenteVirtual;
 
   @FindBy(
-    xpath = "//div[@class='ig_ac11e92_r5 rootMenu rootMenu nodeSubMenu nodeSubMenuSelected']/span"
-  )
+      xpath =
+          "//div[@class='ig_ac11e92_r5 rootMenu rootMenu nodeSubMenu nodeSubMenuSelected']/span")
   private WebElementFacade lstAsistenteVirtual;
 
   @FindBy(id = "slbProducto")

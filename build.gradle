@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath "net.serenity-bdd:serenity-gradle-plugin:1.9.4"
-        classpath "gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6"
+        classpath "gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.8"
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
     }
 }
@@ -144,7 +144,7 @@ tasks.withType(Test) {
 }
 
 task unitTest(type: Test) {
-    testClassesDir = sourceSets.unitTest.output.classesDir
+    testClassesDirs = sourceSets.unitTest.output.classesDirs
     classpath = sourceSets.unitTest.runtimeClasspath
     outputs.upToDateWhen { false }
     reports.html.destination = file("${reporting.baseDir}/${name}")

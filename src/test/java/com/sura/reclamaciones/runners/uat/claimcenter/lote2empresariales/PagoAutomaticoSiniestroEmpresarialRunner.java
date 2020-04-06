@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-  features = "src/test/resources/features/autos/pagos/pago_automatico_siniestro.feature",
-  glue = {"com.sura.reclamaciones.definitions"},
-  tags = {"@PagoAutomatico"}
-)
+    features =
+        "src/test/resources/features/empresariales/pagos/crear_pago_automatico_siniestro.feature",
+    glue = {"com.sura.reclamaciones.definitions"},
+    tags = {"@PagoAutomatico"})
 public class PagoAutomaticoSiniestroEmpresarialRunner {}

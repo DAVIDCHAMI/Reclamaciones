@@ -15,15 +15,13 @@ public class MenuClaimPage extends GeneralPage {
   private WebElementFacade mnuPrimerNivel;
 
   @FindBy(
-    xpath =
-        ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
-  )
+      xpath =
+          ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']")
   private WebElementFacade mnuSegundoNivel;
 
   @FindBy(
-    xpath =
-        ".//div[contains(@id,'ext-gen') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
-  )
+      xpath =
+          ".//div[contains(@id,'ext-gen') and @class='x-panel x-layer x-panel-default x-menu x-border-box']")
   private WebElementFacade mnuSegundoNivelEscritorio;
 
   @FindBy(xpath = " //div[@id='westPanel-innerCt']")
@@ -36,8 +34,8 @@ public class MenuClaimPage extends GeneralPage {
   private WebElementFacade btnAcciones;
 
   @FindBy(
-    xpath = "//table[@class='x-columnmenu-table']//td//a[contains(@id, 'Claim:ClaimMenuActions')]"
-  )
+      xpath =
+          "//table[@class='x-columnmenu-table']//td//a[contains(@id, 'Claim:ClaimMenuActions')]")
   private List<WebElementFacade> mnuPanelOpcionesPrimerNivel;
 
   public MenuClaimPage(WebDriver wDriver) {

@@ -8,44 +8,38 @@ import org.openqa.selenium.WebDriver;
 public class DetalleVehiculoPage extends GeneralPage {
 
   @FindBy(
-    xpath =
-        "//span[@class='x-btn-button']/span[@class='x-btn-inner x-btn-inner-center' and contains(.,'conductor')]"
-  )
+      xpath =
+          "//span[@class='x-btn-button']/span[@class='x-btn-inner x-btn-inner-center' and contains(.,'conductor')]")
   WebElementFacade btnAgregarConductor;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:ClaimContactPerson-inputEl']/../following-sibling::td"
-  )
+      xpath =
+          "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:ClaimContactPerson-inputEl']/../following-sibling::td")
   WebElementFacade cmbPersona;
 
   @FindBy(
-    xpath =
-        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]//ul/li/following-sibling::li"
-  )
+      xpath =
+          "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box')]//ul/li/following-sibling::li")
   WebElementFacade lstNombrePersona;
 
   @FindBy(xpath = "//input[@class='x-form-field x-form-checkbox x-form-cb']")
   WebElementFacade chkServicioTaller;
 
   @FindBy(
-    xpath = "//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Agregar Taller')]"
-  )
+      xpath = "//span[@class='x-btn-inner x-btn-inner-center' and contains(.,'Agregar Taller')]")
   WebElementFacade btnAgregarTaller;
 
   @FindBy(id = "OtherServiceRequestPopup:NewServiceRequestDV:btnSearchProvider-btnInnerEl")
   WebElementFacade btnBuscarProveedor;
 
   @FindBy(
-    id =
-        "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleDetailInputSet:Vehicle_LicensePlate-inputEl"
-  )
+      id =
+          "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleDetailInputSet:Vehicle_LicensePlate-inputEl")
   WebElementFacade txtPlaca;
 
   @FindBy(
-    id =
-        "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleDetailInputSet:fasecoldaGet-btnInnerEl"
-  )
+      id =
+          "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleDetailInputSet:fasecoldaGet-btnInnerEl")
   WebElementFacade btnRecuperarInformacion;
 
   public DetalleVehiculoPage(WebDriver wdriver) {
