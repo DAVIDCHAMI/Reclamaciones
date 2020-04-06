@@ -12,30 +12,26 @@ public class BuscarPolizaPage extends GeneralPage {
   private String auxTipoDocumento = "";
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:licensePlate-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:licensePlate-inputEl']")
   private WebElementFacade txtPlaca;
 
   @FindBy(xpath = "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_true-inputEl']")
   private WebElementFacade rbtBuscarPoliza;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:policyNumber-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:policyNumber-inputEl']")
   private WebElementFacade txtNumeroPoliza;
 
   @FindBy(
-    xpath =
-        "//td[.='Tipo documento del asegurado']//div[@class='x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first']"
-  )
+      xpath =
+          "//td[.='Tipo documento del asegurado']//div[@class='x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first']")
   private WebElementFacade mnuTipoDocumento;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:ssn-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:ssn-inputEl']")
   private WebElementFacade txtNumeroDocumento;
 
   @FindBy(xpath = "//td[.='Fecha del siniestro']//div")
@@ -45,18 +41,16 @@ public class BuscarPolizaPage extends GeneralPage {
   private WebElementFacade btnFechaHoy;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:date-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:date-inputEl']")
   private WebElementFacade txtFecha;
 
   @FindBy(xpath = "//span[@class='g-underlined'][contains(text(),'s')]")
   private WebElementFacade btnBuscar;
 
   @FindBy(
-    xpath =
-        "//a[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyResultLV:0:selectButton']"
-  )
+      xpath =
+          "//a[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyResultLV:0:selectButton']")
   private WebElementFacade btnPoliza;
 
   @FindBy(id = "snfPolizaInformacionAsegurado")

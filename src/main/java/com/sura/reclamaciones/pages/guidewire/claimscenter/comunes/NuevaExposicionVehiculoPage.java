@@ -13,20 +13,18 @@ import org.openqa.selenium.interactions.Actions;
 public class NuevaExposicionVehiculoPage extends GeneralPage {
 
   @FindBy(
-    id =
-        "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Picker-inputEl"
-  )
+      id =
+          "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Picker-inputEl")
   private WebElementFacade txtReclamanteExposicionVehicular;
 
   @FindBy(
-    id = "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Type-inputEl"
-  )
+      id =
+          "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Claimant_Type-inputEl")
   private WebElementFacade txtTipoReclamanteExposicion;
 
   @FindBy(
-    id =
-        "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Vehicle_Incident:Vehicle_IncidentMenuIcon"
-  )
+      id =
+          "NewExposure:NewExposureScreen:NewExposureDV:NewClaimVehicleDamageDV:Vehicle_Incident:Vehicle_IncidentMenuIcon")
   private WebElementFacade btnNuevoIncidenteVehicular;
 
   @FindBy(xpath = "//span[contains(text(),'Nuevo incidente')]")

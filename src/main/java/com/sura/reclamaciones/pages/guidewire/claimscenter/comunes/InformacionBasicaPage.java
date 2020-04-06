@@ -13,57 +13,48 @@ import org.openqa.selenium.WebDriver;
 public class InformacionBasicaPage extends GeneralPage {
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name-inputEl']")
   private WebElementFacade txtNombreAutor;
 
   @FindBy(
-    xpath =
-        "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li[2]"
-  )
+      xpath =
+          "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li[2]")
   private WebElementFacade lstAutorReporteCliente;
 
   @FindBy(
-    xpath =
-        "//textarea[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Description-inputEl']"
-  )
+      xpath =
+          "//textarea[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Description-inputEl']")
   private WebElementFacade txtDetalleHechos;
 
   @FindBy(
-    xpath =
-        " //a[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:ReportedBy_NameMenuIcon']"
-  )
+      xpath =
+          " //a[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:ReportedBy_NameMenuIcon']")
   private WebElementFacade btnContactManager;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:MenuItem_Search-textEl']"
-  )
+      xpath =
+          "//span[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:ReportedBy_Name:MenuItem_Search-textEl']")
   private WebElementFacade btnBuscarContactoExistente;
 
   @FindBy(
-    xpath =
-        "//input[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:TaxID-inputEl']"
-  )
+      xpath =
+          "//input[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:TaxID-inputEl']")
   private WebElementFacade txtNit;
 
   @FindBy(
-    xpath =
-        "//a[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']"
-  )
+      xpath =
+          "//a[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
   private WebElementFacade btnBuscarNit;
 
   @FindBy(
-    xpath =
-        "//a[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV:0:_Select']"
-  )
+      xpath =
+          "//a[@id='AddressBookPickerPopup:AddressBookSearchScreen:AddressBookSearchLV:0:_Select']")
   private WebElementFacade btnSeleccionarContacto;
 
   @FindBy(
-    xpath =
-        " //input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Claim_ReportedByType-inputEl']"
-  )
+      xpath =
+          " //input[@id='FNOLWizard:GeneralPropertyWizardStepSet:NewClaimWizard_MainContactsScreen:NewClaimPeopleDV:Claim_ReportedByType-inputEl']")
   private WebElementFacade btnRelacionAsegurado;
 
   @FindBy(xpath = "//li[contains(text(),'Amigo')]")
@@ -76,24 +67,21 @@ public class InformacionBasicaPage extends GeneralPage {
   private WebElementFacade lblAnioMes;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']/../following-sibling::td"
-  )
+      xpath =
+          "//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']/../following-sibling::td")
   private WebElementFacade cmbNombre;
 
   @FindBy(
-    xpath =
-        "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li/following-sibling::li"
-  )
+      xpath =
+          "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']//li/following-sibling::li")
   private WebElementFacade lstNombreAutor;
 
   @FindBy(xpath = ".//div[@class='message']/img[@class='error_icon']")
   private WebElementFacade msjAdvertenciaRelacionAsegurado;
 
   @FindBy(
-    xpath =
-        ".//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputCell']/input"
-  )
+      xpath =
+          ".//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputCell']/input")
   private WebElementFacade txtRelacionAsegurado;
 
   private String btnCambioMesAnio =

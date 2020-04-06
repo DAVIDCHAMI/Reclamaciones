@@ -11,9 +11,8 @@ import org.openqa.selenium.WebDriver;
 public class InformacionPolizaGeneralPage extends GeneralPage {
 
   @FindBy(
-    id =
-        "ClaimPolicyGeneral:ClaimPolicyGeneralScreen:PolicyGeneralPanelSet:PolicyGeneralDV:FinancedPolicyBalanceSAP-inputEl"
-  )
+      id =
+          "ClaimPolicyGeneral:ClaimPolicyGeneralScreen:PolicyGeneralPanelSet:PolicyGeneralDV:FinancedPolicyBalanceSAP-inputEl")
   private WebElementFacade lblValorPrimaPendiente;
 
   public InformacionPolizaGeneralPage(WebDriver wdriver) {

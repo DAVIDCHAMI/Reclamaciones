@@ -9,9 +9,8 @@ import org.openqa.selenium.WebDriver;
 public class DatoReservaPage extends GeneralPage {
 
   @FindBy(
-    xpath =
-        "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']"
-  )
+      xpath =
+          "//div[@id='ClaimFinancialsTransactionsDetail:ClaimFinancialsTransactionsDetailScreen:TransactionDetailPanelSet:TransactionReserveDV:TransactionBasicsInputSet:Amount-inputEl']")
   private WebElementFacade lblCantidad;
 
   public DatoReservaPage(WebDriver wdriver) {

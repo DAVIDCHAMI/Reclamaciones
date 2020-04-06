@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-  features = "src/test/resources/features/empresariales/reclamaciones/notificaravisoatr.feature",
-  glue = {"com.sura.reclamaciones.definitions"}
-)
+    features = "src/test/resources/features/empresariales/reclamaciones/notificaravisoatr.feature",
+    glue = {"com.sura.reclamaciones.definitions"})
 public class NotificacionAvisoAtrRunner {}

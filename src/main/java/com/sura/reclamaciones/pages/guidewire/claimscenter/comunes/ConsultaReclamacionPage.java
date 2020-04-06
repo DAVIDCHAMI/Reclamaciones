@@ -11,9 +11,8 @@ import org.openqa.selenium.WebDriver;
 public class ConsultaReclamacionPage extends GeneralPage {
 
   @FindBy(
-    id =
-        "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl"
-  )
+      id =
+          "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ClaimNumber-inputEl")
   private WebElementFacade lblNumeroSiniestro;
 
   @FindBy(id = "TabBar:ClaimTab-btnInnerEl")

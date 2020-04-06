@@ -21,14 +21,12 @@ import org.openqa.selenium.WebElement;
 public class DatoFinancieroTransaccionPage extends GeneralPage {
 
   @FindBy(
-    xpath =
-        "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']"
-  )
+      xpath =
+          "//div[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV']")
   private WebElementFacade tblTransaccion;
 
   @FindBy(
-    id = "ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount"
-  )
+      id = "ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLV:0:Amount")
   private WebElementFacade lnkReservaTransaccion;
 
   @FindBy(id = "ClaimFinancialsChecks:ClaimFinancialsChecksScreen:ChecksLV")

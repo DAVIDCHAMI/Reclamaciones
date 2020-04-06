@@ -19,15 +19,13 @@ public class CreacionRecuperoPage extends GeneralPage {
   private String seleccionarOpcion = "//li[.='COMODIN']";
 
   @FindBy(
-    xpath =
-        "//table[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:Payer-triggerWrap']//td/following-sibling::td/div"
-  )
+      xpath =
+          "//table[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:Payer-triggerWrap']//td/following-sibling::td/div")
   private WebElementFacade txtPagador;
 
   @FindBy(
-    xpath =
-        "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:ReserveLineInputSet:ReserveLine-inputEl']"
-  )
+      xpath =
+          "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:ReserveLineInputSet:ReserveLine-inputEl']")
   private WebElementFacade txtLineaReserva;
 
   @FindBy(id = "NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:RecoveryCategory-inputEl")
@@ -43,20 +41,17 @@ public class CreacionRecuperoPage extends GeneralPage {
   private WebElementFacade txtCantidad;
 
   @FindBy(
-    xpath =
-        "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:dateTransaction-inputEl']"
-  )
+      xpath =
+          "//input[@id='NewRecoverySet:NewRecoveryScreen:RecoveryDetailDV:dateTransaction-inputEl']")
   private WebElementFacade txtFechaComprobante;
 
   @FindBy(
-    xpath =
-        "//a[@class='x-btn x-unselectable x-btn-toolbar x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']/span[@id='NewRecoverySet:NewRecoveryScreen:Update-btnWrap']"
-  )
+      xpath =
+          "//a[@class='x-btn x-unselectable x-btn-toolbar x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']/span[@id='NewRecoverySet:NewRecoveryScreen:Update-btnWrap']")
   private WebElementFacade btnActualizar;
 
   @FindBy(
-    xpath = "//span[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:ttlBar']"
-  )
+      xpath = "//span[@id='ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:ttlBar']")
   private WebElementFacade lblTituloRecupero;
 
   public CreacionRecuperoPage(WebDriver driver) {

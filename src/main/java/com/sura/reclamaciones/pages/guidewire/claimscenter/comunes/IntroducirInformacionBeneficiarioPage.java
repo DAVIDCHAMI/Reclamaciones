@@ -13,24 +13,21 @@ import org.openqa.selenium.WebElement;
 public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
   @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PrimaryPayee_Name-inputEl']"
-  )
+      xpath =
+          "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PrimaryPayee_Name-inputEl']")
   private WebElementFacade cmbNombreBeneficiario;
 
   @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PrimaryPayee_Type-inputEl']"
-  )
+      xpath =
+          "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:PrimaryPayee_Type-inputEl']")
   private WebElementFacade cmbTipoBeneficiario;
 
   @FindBy(xpath = "//input[contains(@class, 'x-form-field x-form-radio x-form-cb')]")
   private WebElementFacade rbtPago;
 
   @FindBy(
-    xpath =
-        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:contactEFTLVid:ContactEFTSAPCheckLV']"
-  )
+      xpath =
+          "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPayeesScreen:NewCheckPayeeDV:contactEFTLVid:ContactEFTSAPCheckLV']")
   private WebElementFacade tblCuentaElectronica;
 
   private String pais = "Country-inputEl";

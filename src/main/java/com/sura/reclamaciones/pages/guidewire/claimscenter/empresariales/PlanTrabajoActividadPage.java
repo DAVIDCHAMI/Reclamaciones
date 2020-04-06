@@ -17,9 +17,8 @@ public class PlanTrabajoActividadPage extends GeneralPage {
   public WebElementFacade tblPlanTrabajo;
 
   @FindBy(
-    id =
-        "ApprovalDetailWorksheet:ApprovalDetailScreen:ApprovalDetailWorksheet_ApproveButton-btnInnerEl"
-  )
+      id =
+          "ApprovalDetailWorksheet:ApprovalDetailScreen:ApprovalDetailWorksheet_ApproveButton-btnInnerEl")
   public WebElementFacade btnAprobarActividad;
 
   private static final String CAMPO_NOMBRE_ACTIVIDAD = "Asunto";

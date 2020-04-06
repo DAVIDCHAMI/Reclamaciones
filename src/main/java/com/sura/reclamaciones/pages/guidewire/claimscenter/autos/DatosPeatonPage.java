@@ -9,39 +9,33 @@ import org.openqa.selenium.WebDriver;
 public class DatosPeatonPage extends GeneralPage {
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_true-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_true-inputEl']")
   WebElementFacade chkLesiones;
 
   @FindBy(
-    xpath =
-        "//span[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPedestrianButton-btnInnerEl']"
-  )
+      xpath =
+          "//span[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPedestrianButton-btnInnerEl']")
   WebElementFacade btnAgregarPeaton;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:Severity-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:Severity-inputEl']")
   WebElementFacade cmbGravedadLesion;
 
   @FindBy(
-    xpath =
-        "//textarea[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:InjuryDescription-inputEl']"
-  )
+      xpath =
+          "//textarea[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:InjuryDescription-inputEl']")
   WebElementFacade txtDescribirLesiones;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:PrimaryInjuryType-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:PrimaryInjuryType-inputEl']")
   WebElementFacade cmbTipoLesion;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:DetailedInjuryType-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:DetailedInjuryType-inputEl']")
   WebElementFacade cmbDetalleLesion;
 
   public DatosPeatonPage(WebDriver wdriver) {

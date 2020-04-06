@@ -29,42 +29,36 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   private Integer intCalculoVrReserva;
 
   @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:ReserveLineInputSet:ReserveLine-inputEl']"
-  )
+      xpath =
+          "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:ReserveLineInputSet:ReserveLine-inputEl']")
   private WebElementFacade cmbLineaReserva;
 
   @FindBy(
-    xpath =
-        "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_PaymentType-inputEl']"
-  )
+      xpath =
+          "//input[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_PaymentType-inputEl']")
   private WebElementFacade cmbTipoPago;
 
   @FindBy(
-    xpath =
-        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Transaction_AvailableReserves-inputEl']"
-  )
+      xpath =
+          "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Transaction_AvailableReserves-inputEl']")
   private WebElementFacade txtValorReserva;
 
   @FindBy(
-    xpath =
-        "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV']"
-  )
+      xpath =
+          "//div[@id='NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV']")
   private WebElementFacade tblElementoLinea;
 
   @FindBy(xpath = "//textarea")
   private WebElementFacade txtComentarioPago;
 
   @FindBy(
-    xpath =
-        "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]"
-  )
+      xpath =
+          "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]")
   private WebElementFacade lstCodigoRetencion;
 
   @FindBy(
-    xpath =
-        "//div[@id='centerPanel']//div[@id='NormalCreateCheckWizard/NewCheckPayments']//*[contains(text(),'Agregar')]"
-  )
+      xpath =
+          "//div[@id='centerPanel']//div[@id='NormalCreateCheckWizard/NewCheckPayments']//*[contains(text(),'Agregar')]")
   private WebElementFacade btnAgregarRetencion;
 
   @FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:Add-btnInnerEl")

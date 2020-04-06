@@ -62,12 +62,12 @@ public class PagoMasivoDefinition {
       "^se ingresa el tipo de proveedor (.*) y el nombre del proveedor (.*) con el tipo de moneda (.*) de la factura y el método de pago (.*) del cheque")
   public void crearPagoMasivo(
       String tipoContacto, String contacto, String tipoMoneda, String metodoPago) {
-    //ToDo
+    // ToDo
   }
 
   @Entonces(
       "^se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado$")
   public void validarPagoMasivo() {
-    //ToDo
+    // ToDo
   }
 }

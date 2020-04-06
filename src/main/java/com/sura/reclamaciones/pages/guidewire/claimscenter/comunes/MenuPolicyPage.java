@@ -13,9 +13,8 @@ public class MenuPolicyPage extends GeneralPage {
   private static final String XPATH_CONTENEDOR_MENU_SUPERIOR = ".//*[@id=':tabs-innerCt']";
 
   @FindBy(
-    xpath =
-        ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']"
-  )
+      xpath =
+          ".//div[contains(@id,'menu-') and @class='x-panel x-layer x-panel-default x-menu x-border-box']")
   WebElementFacade mnuSegundoNivel;
 
   @FindBy(xpath = "//input[@id='QuickJump-inputEl']")
@@ -34,9 +33,8 @@ public class MenuPolicyPage extends GeneralPage {
   WebElementFacade mnuAccionesPrincipal;
 
   @FindBy(
-    xpath =
-        ".//div[@class='x-panel-body x-menu-body x-unselectable x-panel-body-default x-box-layout-ct x-panel-body-default x-noborder-trbl']"
-  )
+      xpath =
+          ".//div[@class='x-panel-body x-menu-body x-unselectable x-panel-body-default x-box-layout-ct x-panel-body-default x-noborder-trbl']")
   WebElementFacade lstOpcionMenuAccionesPrincipal;
 
   public MenuPolicyPage(WebDriver wDriver) {

@@ -10,36 +10,31 @@ import org.openqa.selenium.WebDriver;
 public class AgregarInformacionPage extends GeneralPage {
 
   @FindBy(
-    id =
-        "NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl"
-  )
+      id =
+          "NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl")
   private WebElementFacade btnCerrarVentanaEmergente;
 
   @FindBy(
-    xpath =
-        ".//input[@role='textbox' and @id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:LossEstimate-inputEl']"
-  )
+      xpath =
+          ".//input[@role='textbox' and @id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:LossEstimate-inputEl']")
   WebElementFacade txtPretension;
 
   @FindBy(xpath = ".//label[contains(.,'Causa')]/../following-sibling::td//input")
   private WebElementFacade cmbCausaSiniestro;
 
   @FindBy(
-    xpath =
-        "//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:OriginCause-inputEl']"
-  )
+      xpath =
+          "//input[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:OriginCause-inputEl']")
   private WebElementFacade cmbOrigenSiniestro;
 
   @FindBy(
-    xpath =
-        "//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:CategorizationDV:Notification_Fault-inputCell']//input"
-  )
+      xpath =
+          "//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:CategorizationDV:Notification_Fault-inputCell']//input")
   private WebElementFacade cmbCulpabilidad;
 
   @FindBy(
-    xpath =
-        "//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker-inputCell']/following-sibling::td"
-  )
+      xpath =
+          "//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker-inputCell']/following-sibling::td")
   private WebElementFacade cmbLugar;
 
   @FindBy(xpath = "//td[@class='g-after-input-cell']/a/img")
@@ -49,30 +44,26 @@ public class AgregarInformacionPage extends GeneralPage {
   private WebElementFacade btnEditarVehiculo;
 
   @FindBy(
-    xpath =
-        ".//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AuthorityTransit-inputCell']/input"
-  )
+      xpath =
+          ".//td[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AuthorityTransit-inputCell']/input")
   private WebElementFacade txtIntervinoAutoridad;
 
   @FindBy(
-    id =
-        "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Description-inputEl"
-  )
+      id =
+          "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Description-inputEl")
   private WebElementFacade txtDescripcionHechos;
 
   @FindBy(
-    id =
-        "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddVehicleButton-btnInnerEl"
-  )
+      id =
+          "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddVehicleButton-btnInnerEl")
   private WebElementFacade btnAgregarVehiculo;
 
   @FindBy(xpath = ".//span[@class='g-underlined' and contains(.,'F')]")
   private WebElementFacade btnFinalizar;
 
   @FindBy(
-    id =
-        "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPedestrianButton-btnInnerEl"
-  )
+      id =
+          "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPedestrianButton-btnInnerEl")
   WebElementFacade btnAgregarPeaton;
 
   public AgregarInformacionPage(WebDriver wdriver) {

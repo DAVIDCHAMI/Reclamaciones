@@ -12,45 +12,39 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class DetalleExposicionAutomaticaPage extends GeneralPage {
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:SubView_AutoTotalLossCalculatorCardTab-btnInnerEl"
-  )
+      id =
+          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:SubView_AutoTotalLossCalculatorCardTab-btnInnerEl")
   WebElementFacade lblCalculadoraPerdidaTotal;
 
   @FindBy(id = "ExposureDetail:ExposureDetailScreen:Edit-btnInnerEl")
   WebElementFacade btnEditar;
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnDash_true-inputEl"
-  )
+      id =
+          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnDash_true-inputEl")
   WebElementFacade rbtIncineracionTotalVehiculo;
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnEngine_true-inputEl"
-  )
+      id =
+          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnEngine_true-inputEl")
   WebElementFacade rbtMotorDestruidoFuego;
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnWindshield_true-inputEl"
-  )
+      id =
+          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:TotalLossCalculatorDV:FireBurnWindshield_true-inputEl")
   WebElementFacade rbtHabitaculoPasajerosIncineradoTotalmente;
 
   @FindBy(id = "ExposureDetail:ExposureDetailScreen:Update-btnInnerEl")
   WebElementFacade btnActualizar;
 
   @FindBy(
-    id =
-        "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamage_DetailsCardTab-btnInnerEl"
-  )
+      id =
+          "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamage_DetailsCardTab-btnInnerEl")
   WebElementFacade lblDetallesExposicion;
 
   @FindBy(
-    xpath =
-        "//input[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl']"
-  )
+      xpath =
+          "//input[@id='ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:LegalStatus-inputEl']")
   WebElementFacade cmbEstadoLegal;
 
   public DetalleExposicionAutomaticaPage(WebDriver wdriver) {

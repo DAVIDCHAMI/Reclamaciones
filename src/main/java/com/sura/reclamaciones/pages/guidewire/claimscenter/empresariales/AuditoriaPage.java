@@ -17,9 +17,8 @@ public class AuditoriaPage extends GeneralPage {
   private WebElementFacade btnEditarProcesoAuditoria;
 
   @FindBy(
-    id =
-        "SIDetails:SIDetailsScreen:SIDetailsDV:SITotalScoreEscalationInputSet:SIinfo_SIescalateSIU-inputEl"
-  )
+      id =
+          "SIDetails:SIDetailsScreen:SIDetailsDV:SITotalScoreEscalationInputSet:SIinfo_SIescalateSIU-inputEl")
   private WebElementFacade cmbRequiereAuditoria;
 
   @FindBy(id = "SIDetails:SIDetailsScreen:Update-btnInnerEl")
@@ -32,9 +31,8 @@ public class AuditoriaPage extends GeneralPage {
   private WebElementFacade msgRechazoPago;
 
   @FindBy(
-    name =
-        "SIDetails:SIDetailsScreen:SIDetailsDV:SITotalScoreEscalationInputSet:SIinfo_SIEscalateSIUNote"
-  )
+      name =
+          "SIDetails:SIDetailsScreen:SIDetailsDV:SITotalScoreEscalationInputSet:SIinfo_SIEscalateSIUNote")
   private WebElementFacade txtAreaComentario;
 
   private static final String COMENTARIO_AUDITORIA = "Requiere marcacion de auditoria";
