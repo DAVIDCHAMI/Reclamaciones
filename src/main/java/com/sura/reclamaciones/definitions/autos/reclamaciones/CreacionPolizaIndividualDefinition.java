@@ -29,18 +29,19 @@ public class CreacionPolizaIndividualDefinition {
   public void consumirServicioExpedicion(
       String planAutos, String tipoVigencia, int cantidadDias, String terminoInicioVigencia)
       throws IOException {
-    final String filtroAsegurado = "asegurado riesgo estándar";
-    final String filtroTomador = "tomador riesgo estándar";
-    final String filtroVehiculo = "vehículo riesgo estándar";
-    final String filtroCoberturas;
+    final String FILTRO_ASEGURADO = "asegurado riesgo estándar";
+    final String FILTRO_TOMADOR = "tomador riesgo estándar";
+    final String FILTRO_VEHICULO = "vehículo riesgo estándar";
+    final String FILTRO_COBERTURAS;
     Asegurado asegurado =
-        new Asegurado(UtilidadesCSV.obtenerPrimerDatoPrueba(ASEGURADO.getValor(), filtroAsegurado));
+        new Asegurado(
+            UtilidadesCSV.obtenerPrimerDatoPrueba(ASEGURADO.getValor(), FILTRO_ASEGURADO));
     Tomador tomador =
-        new Tomador(UtilidadesCSV.obtenerPrimerDatoPrueba(TOMADOR.getValor(), filtroTomador));
+        new Tomador(UtilidadesCSV.obtenerPrimerDatoPrueba(TOMADOR.getValor(), FILTRO_TOMADOR));
     Vehiculo vehiculo =
         new Vehiculo(
-            UtilidadesCSV.obtenerPrimerDatoPrueba(PARAMETROS_VEHICULO.getValor(), filtroVehiculo));
-    filtroCoberturas =
+            UtilidadesCSV.obtenerPrimerDatoPrueba(PARAMETROS_VEHICULO.getValor(), FILTRO_VEHICULO));
+    FILTRO_COBERTURAS =
         String.format(
             "%s%s%s%s%s",
             vehiculo.getClaseVehiculo(),
@@ -50,7 +51,7 @@ public class CreacionPolizaIndividualDefinition {
             vehiculo.getModelo());
     List<CoberturaVehiculo> lstCoberturasVehiculo =
         CoberturaVehiculo.obtenerListaCoberturas(
-            UtilidadesCSV.obtenerDatosPrueba(COBERTURAS_AUTOS.getValor(), filtroCoberturas),
+            UtilidadesCSV.obtenerDatosPrueba(COBERTURAS_AUTOS.getValor(), FILTRO_COBERTURAS),
             UtilidadesCSV.obtenerDatosPrueba(DICCIONARIO_COBERTURAS_AUTOS.getValor(), ""));
     servicioExpedicionAutosIndividualStep.asignarInformacionFechas(
         tipoVigencia, terminoInicioVigencia, cantidadDias);

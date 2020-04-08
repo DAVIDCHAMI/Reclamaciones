@@ -3,7 +3,6 @@ package com.sura.reclamaciones.utils.enums;
 public enum NombresCsv {
   ANULACION_EMPRESARIAL("anulacion_empresarial"),
   ASEGURADO("asegurado"),
-  CIUDADES("ciudades"),
   COBERTURAS_AUTOS("coberturas_autos"),
   CODIGO_FASECOLDA("codigo_fasecolda"),
   CONTRATO("contrato"),

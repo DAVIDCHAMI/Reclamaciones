@@ -1,8 +1,8 @@
-id;idFiltro;placa;claseVehiculo;modelo;marca;linea;motor;chasis;anio;color;tipoVehiculo;codigoFasecolda;numeroVehiculo;marcaLinea;plan;tipoServicio;esCeroKms;transportaCombustible;tieneTrailer;esImportado;tieneInscripcionExtranjera;requiereInspeccion;esBlindado;ciudadCirculacion;valorAsegurado;valorAccesorios;valorAccesoriosEspeciales;grupoTarifa;dispositivoSeguridad;bonificacionComercial;bonificacionTecnica
-1;responsabilidadCivil;LUN222;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;1;;;;No;No;No;No;No;No;No;;0;0;0;;;0;0
-2;archivo;LUN222;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;1;;;;No;No;No;No;No;No;No;;0;0;0;;;0;0;;
-3;subrogacion;LUN222;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;1;;;;No;No;No;No;No;No;No;;0;0;0;;;0;0
-4;soloRC;LUN222;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;1;;;;No;No;No;No;No;No;No;;0;0;0;;;0;0
-5;creacionAvisoMACA;LUN222;vehiculo;TWIZY TECHNIC - MT 13KW ELECTR;RENAULT;;JUBIKIAIKIAS10A502A23A;IOANIOAONISONA156A0;2018;AZUL BLANCO MARFIL;1;08001165;1;;;;No;No;No;No;No;No;No;;0;0;0;;;0;0
-6;Servicio de Maca;OSO222;vehiculo;ONIX [FL] LTZ - MT 1400CC 5P 2;CHEVROLET;;DDD5555;FFFF4444;2019;;1;08001165;1;;;;No;No;No;No;No;No;No;;0;0;0;;;0;0
-7;vehículo riesgo estándar;RANDOM;Automóvil;2020;CHEVROLET;ONIX [FL] LTZ - TP 1400CC 5P 2;HDTYUIS;UYSTHDGYOPSJ;2020;;;01601317;1;12-1-1;Global;Particular;Si;No;No;No;No;No;No;Medellín;51400000;0;0;1;GpsSura;33;0
+id;idFiltro;placa;claseVehiculo;modelo;marca;linea;motor;chasis;anio;color;tipoVehiculo;codigoFasecolda;numeroVehiculo;marcaLinea;plan;tipoServicio;esCeroKms;transportaCombustible;tieneTrailer;esImportado;tieneInscripcionExtranjera;requiereInspeccion;esBlindado;ciudadCirculacion;codigoZonaCirculacion;valorAsegurado;valorAccesorios;valorAccesoriosEspeciales;grupoTarifa;dispositivoSeguridad;bonificacionComercial;bonificacionTecnica
+1;responsabilidadCivil;LUN222;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
+2;archivo;LUN222;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;1;;;
+3;subrogacion;LUN222;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
+4;soloRC;LUN222;vehiculo;Mazda;nose;5850uyhgb;iuhhedsdds;hnaks50a580a;2018;blanco;;;
+5;creacionAvisoMACA;LUN222;vehiculo;TWIZY TECHNIC - MT 13KW ELECTR;RENAULT;;JUBIKIAIKIAS10A502A23A;IOANIOAONISONA156A0;2018;AZUL BLANCO MARFIL;1;08001165
+6;Servicio de Maca;OSO222;vehiculo;ONIX [FL] LTZ - MT 1400CC 5P 2;CHEVROLET;;DDD5555;FFFF4444;2019;;1;08001165
+7;vehículo riesgo estándar;RANDOM;Automóvil;2020;CHEVROLET;ONIX [FL] LTZ - TP 1400CC 5P 2;HDTYUIS;UYSTHDGYOPSJ;;;;01601317;1;12-1-1;Global;Particular;Si;No;No;No;No;No;No;05001000;2;51400000;0;0;1;GpsSura;33;0

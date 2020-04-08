@@ -93,6 +93,9 @@ public final class Utilidades {
   }
 
   public static boolean transformarCadenaValorlogico(String parametro) {
+    if (parametro == null || parametro.isEmpty()) {
+      parametro = "no";
+    }
     switch (parametro.toLowerCase()) {
       case "si":
       case "true":
@@ -128,5 +131,9 @@ public final class Utilidades {
       serieLetras.append(abecedario[aleatorio.nextInt(26)]);
     }
     return serieLetras.toString();
+  }
+
+  public static int transformarCadenaEnteroCondicionado(String valor) {
+    return Integer.parseInt(valor == null || valor.isEmpty() ? "0" : valor);
   }
 }

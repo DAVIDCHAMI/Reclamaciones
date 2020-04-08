@@ -1,12 +1,8 @@
 package com.sura.reclamaciones.models;
 
-import static com.sura.reclamaciones.utils.enums.NombresCsv.CIUDADES;
-
 import com.sura.reclamaciones.utils.Utilidades;
-import com.sura.reclamaciones.utils.UtilidadesCSV;
 import com.sura.reclamaciones.utils.enums.ClaseVehiculo;
 import com.sura.reclamaciones.utils.enums.PlanPolizaAutos;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +33,6 @@ public class Vehiculo {
   private boolean requiereInspeccion;
   private boolean esBlindado;
   private String ciudadCirculacion;
-  private String codigoCiudadCirculacion;
   private String codigoZonaCirculacion;
   private int valorAsegurado;
   private int valorAccesorios;
@@ -50,13 +45,11 @@ public class Vehiculo {
 
   public Vehiculo() {}
 
-  public Vehiculo(List<Map<String, String>> datoVehiculo) throws IOException {
+  public Vehiculo(List<Map<String, String>> datoVehiculo) {
     asignarDatos(datoVehiculo);
   }
 
-  public Vehiculo(Map<String, String> datosVehiculos) throws IOException {
-    List<Map<String, String>> lstCiudades =
-        UtilidadesCSV.obtenerDatosPrueba(CIUDADES.getValor(), "");
+  public Vehiculo(Map<String, String> datosVehiculos) {
     claseVehiculo = datosVehiculos.get("claseVehiculo");
     codigoClaseVehiculo = ClaseVehiculo.obtenerCodigoClaseVehiculo(claseVehiculo);
     linea = datosVehiculos.get("linea");
@@ -69,11 +62,12 @@ public class Vehiculo {
     marca = datosVehiculos.get("marca");
     motor = datosVehiculos.get("motor");
     chasis = datosVehiculos.get("chasis");
-    anio = Integer.parseInt(datosVehiculos.get("anio"));
+    anio = Utilidades.transformarCadenaEnteroCondicionado(datosVehiculos.get("anio"));
     color = datosVehiculos.get("color");
     codigoFasecolda = datosVehiculos.get("codigoFasecolda");
     tipoVehiculo = datosVehiculos.get("tipoVehiculo");
-    numeroVehiculo = Integer.parseInt(datosVehiculos.get("numeroVehiculo"));
+    numeroVehiculo =
+        Utilidades.transformarCadenaEnteroCondicionado(datosVehiculos.get("numeroVehiculo"));
     marcaLinea = datosVehiculos.get("marcaLinea");
     plan = datosVehiculos.get("plan");
     codigoPlan = PlanPolizaAutos.obtenerCodigoPlan(plan);
@@ -89,17 +83,20 @@ public class Vehiculo {
         Utilidades.transformarCadenaValorlogico(datosVehiculos.get("requiereInspeccion"));
     esBlindado = Utilidades.transformarCadenaValorlogico(datosVehiculos.get("esBlindado"));
     ciudadCirculacion = datosVehiculos.get("ciudadCirculacion");
-    codigoCiudadCirculacion =
-        Utilidades.obtenerDatosDiccionario(lstCiudades, ciudadCirculacion, "codigoCiudad");
-    codigoZonaCirculacion =
-        Utilidades.obtenerDatosDiccionario(lstCiudades, ciudadCirculacion, "codigoZonaCiudad");
-    valorAsegurado = Integer.parseInt(datosVehiculos.get("valorAsegurado"));
-    valorAccesorios = Integer.parseInt(datosVehiculos.get("valorAccesorios"));
-    valorAccesoriosEspeciales = Integer.parseInt(datosVehiculos.get("valorAccesoriosEspeciales"));
+    codigoZonaCirculacion = datosVehiculos.get("codigoZonaCirculacion");
+    valorAsegurado =
+        Utilidades.transformarCadenaEnteroCondicionado(datosVehiculos.get("valorAsegurado"));
+    valorAccesorios =
+        Utilidades.transformarCadenaEnteroCondicionado(datosVehiculos.get("valorAccesorios"));
+    valorAccesoriosEspeciales =
+        Utilidades.transformarCadenaEnteroCondicionado(
+            datosVehiculos.get("valorAccesoriosEspeciales"));
     grupoTarifa = datosVehiculos.get("grupoTarifa");
     dispositivoSeguridad = datosVehiculos.get("dispositivoSeguridad");
-    bonificacionComercial = Integer.parseInt(datosVehiculos.get("bonificacionComercial"));
-    bonificacionTecnica = Integer.parseInt(datosVehiculos.get("bonificacionTecnica"));
+    bonificacionComercial =
+        Utilidades.transformarCadenaEnteroCondicionado(datosVehiculos.get("bonificacionComercial"));
+    bonificacionTecnica =
+        Utilidades.transformarCadenaEnteroCondicionado(datosVehiculos.get("bonificacionTecnica"));
   }
 
   public String getClaseVehiculo() {
@@ -206,10 +203,6 @@ public class Vehiculo {
     return ciudadCirculacion;
   }
 
-  public String getCodigoCiudadCirculacion() {
-    return codigoCiudadCirculacion;
-  }
-
   public String getCodigoZonaCirculacion() {
     return codigoZonaCirculacion;
   }
@@ -246,7 +239,7 @@ public class Vehiculo {
     return vehiculos;
   }
 
-  public void asignarDatos(List<Map<String, String>> datoVehiculo) throws IOException {
+  public void asignarDatos(List<Map<String, String>> datoVehiculo) {
     for (Map<String, String> dato : datoVehiculo) {
       vehiculos.add(new Vehiculo(dato));
     }

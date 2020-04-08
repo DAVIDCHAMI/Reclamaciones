@@ -238,7 +238,7 @@ public class ExpedicionAutosIndividualFactory {
     vehicle.setForeignEnrollment(vehiculo.getTieneInscripcionExtranjera());
     vehicle.setArmoredVehicle(vehiculo.getEsBlindado());
     vehicle.setZoneCode(vehiculo.getCodigoZonaCirculacion());
-    vehicle.setCityCirculationCode(vehiculo.getCodigoCiudadCirculacion());
+    vehicle.setCityCirculationCode(vehiculo.getCiudadCirculacion());
     vehicle.setValueAccessories(valueAccessoriesFactory(vehiculo.getValorAccesorios()));
     vehicle.setSpecialValueAccessories(
         specialValueAccessoriesFactory(vehiculo.getValorAccesoriosEspeciales()));
