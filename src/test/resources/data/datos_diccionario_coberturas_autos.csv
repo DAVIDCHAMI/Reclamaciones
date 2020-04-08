@@ -1,0 +1,22 @@
+id;idFiltro;codigoOpcionCobertura
+1;Responsabilidad Civil->Límite->2.440.000.000;zffi6qehh1kvgfc6treb8an46c9
+2;Responsabilidad Civil->Límite->3.040.000.000;z4chomjn3525vcd6ii97l8c1gt9
+3;Responsabilidad Civil->Deducible->0;z76hqrd3u3cp9aq1g9m2koet5k8
+4;Daños->Pérdida Total->0;z6pjkb8qceum07nle2g2r1g9i19
+5;Daños->Pérdida Total->10%;zc8iq5pc82302b51vim9uvg25a8
+6;Daños->Pérdida Parcial->987.000;zl0jg33v86ouq2om5caj8ak4da9
+7;Daños->Gastos de Transporte->40.000/DIA (PT);z9qhunmsn1jt3585799f0grndo8
+8;Daños->Gastos de Transporte->80.000/DIA (PT);zeugcmvsgo94ud5dbi1c8hfk9r9
+9;Hurto->Pérdida Total->0;zemielql52q0476otuqk6tfv1u8
+10;Hurto->Pérdida Total->10%;zuqiomq2077s9aegav18drf1o6b
+11;Hurto->Pérdida Total->15% - 1 SMLMV;zubio2cp38rqn7jghtb3qe0a2fa
+12;Hurto->Pérdida Parcial->987.000;zhfh6to5eo3snd4bbiqotukum68
+13;Hurto->Gastos de Transporte->40.000/DIA (PT);z6rikilvnndl028b68b2l4piu79
+14;Hurto->Gastos de Transporte->80.000/DIA (PT);znehsdtno6apeelaksvjuj02u0b
+15;Vehículo de Reemplazo->Pérdida Parcial->16 días;z0jj0br3ek5h733kk1hcsu2sp9b
+16;Vehículo de Reemplazo->Pérdida Parcial->20 días;zodh6be20juhbdpg8qrg2dh99k8
+17;Vehículo de Reemplazo->Pérdida Total->20 días;zt5ge0kh0v7ca17ge7vsn515uob
+18;Accidentes al Conductor->Accidentes al Conductor->35.000.000;zhlgkfdmkfjs25s5c2935rbikv9
+19;Pérdida de Llaves->Pérdida de Llaves->Si;zhag29lg2dsoobpapb17hlr82bb
+20;Asistencia en Viaje->Asistencia->Asistencia Clásica;z1fiq1dlk8hul4jgrcnt9vpetga
+21;Asistencia en Viaje->Asistencia->Asistencia Global;z6sj47ootplhb4cjuc18jskegg8
