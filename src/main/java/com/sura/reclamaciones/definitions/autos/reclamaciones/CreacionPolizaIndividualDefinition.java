@@ -16,7 +16,6 @@ import com.sura.reclamaciones.utils.UtilidadesCSV;
 import com.sura.reclamaciones.utils.enums.Separador;
 import cucumber.api.java.es.Dado;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
@@ -29,7 +28,7 @@ public class CreacionPolizaIndividualDefinition {
       "^se tiene una póliza de autos individual con plan (.+) de vigencia (.+) con (\\d+) (?:día|días) de (.+)$")
   public void consumirServicioExpedicion(
       String planAutos, String tipoVigencia, int cantidadDias, String terminoInicioVigencia)
-      throws IOException, ParseException {
+      throws IOException {
     final String filtroAsegurado = "asegurado riesgo estándar";
     final String filtroTomador = "tomador riesgo estándar";
     final String filtroVehiculo = "vehículo riesgo estándar";

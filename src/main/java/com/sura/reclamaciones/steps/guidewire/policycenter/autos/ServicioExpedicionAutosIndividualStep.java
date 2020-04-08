@@ -30,7 +30,7 @@ public class ServicioExpedicionAutosIndividualStep {
 
   @Step("Asignar información de fechas")
   public void asignarInformacionFechas(
-      String vigencia, String terminoInicioVigencia, int cantidadDias) throws ParseException {
+      String vigencia, String terminoInicioVigencia, int cantidadDias) {
     final String FORMATO_FECHA_YYYYMMDDTHHMMSSSSSZ = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
     String fechaActual = Fecha.obtenerFechaActualFormato(FORMATO_FECHA_YYYYMMDDTHHMMSSSSSZ);
     String fechaInicioVigencia =
@@ -39,8 +39,12 @@ public class ServicioExpedicionAutosIndividualStep {
     expedicionAutosIndividualFactory.setFechaFinVigencia(
         Fecha.obtenerFechaFinVigencia(fechaInicioVigencia, vigencia));
     expedicionAutosIndividualFactory.setFechaTarifa(fechaInicioVigencia);
-    expedicionAutosIndividualFactory.setFechaActualizacion(
-        Fecha.convertirFechaUnix(fechaActual, FORMATO_FECHA_YYYYMMDDTHHMMSSSSSZ));
+    try {
+      expedicionAutosIndividualFactory.setFechaActualizacion(
+          Fecha.convertirFechaUnix(fechaActual, FORMATO_FECHA_YYYYMMDDTHHMMSSSSSZ));
+    } catch (ParseException e) {
+      LOGGER.error("No se pudo convertir la fecha correctamente", 0);
+    }
   }
 
   @Step("Asignar información del cliente")

@@ -60,7 +60,7 @@ public class Vehiculo {
     claseVehiculo = datosVehiculos.get("claseVehiculo");
     codigoClaseVehiculo = ClaseVehiculo.obtenerCodigoClaseVehiculo(claseVehiculo);
     linea = datosVehiculos.get("linea");
-    if (datosVehiculos.get("placa").equals("RANDOM")) {
+    if ("RANDOM".equals(datosVehiculos.get("placa"))) {
       placa = Utilidades.generarPlacaAleatoria(4, 3);
     } else {
       placa = datosVehiculos.get("placa");

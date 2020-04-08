@@ -472,9 +472,9 @@ public class ExpedicionAutosIndividualFactory {
     person.setLastName(persona.getPrimerApellido());
     person.setSecondLastName(persona.getSegundoApellido());
     person.setPrimaryPhoneType(persona.getTipoTelefono());
-    if (persona.getTipoTelefono().equals("home")) {
+    if ("home".equals(persona.getTipoTelefono())) {
       person.setHomeNumber(persona.getTelefonoPrincipal());
-    } else if (persona.getTipoTelefono().equals("work")) {
+    } else if ("work".equals(persona.getTipoTelefono())) {
       person.setWorkNumber(persona.getTelefonoPrincipal());
     }
     person.setCellNumber(persona.getCelular());
