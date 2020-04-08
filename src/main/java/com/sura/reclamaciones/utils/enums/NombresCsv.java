@@ -2,9 +2,12 @@ package com.sura.reclamaciones.utils.enums;
 
 public enum NombresCsv {
   ANULACION_EMPRESARIAL("anulacion_empresarial"),
+  ASEGURADO("asegurado"),
+  COBERTURAS_AUTOS("coberturas_autos"),
   CODIGO_FASECOLDA("codigo_fasecolda"),
   CONTRATO("contrato"),
   CREDENCIAL("Credencial"),
+  DICCIONARIO_COBERTURAS_AUTOS("diccionario_coberturas_autos"),
   EXPEDICION_AUTOS("expedicion_autos"),
   PAGO_SINIESTRO("pago_siniestro"),
   PARAMETROS_DIRECCION_SINIESTRO("direccion_reclamacion"),
@@ -20,7 +23,8 @@ public enum NombresCsv {
   PARAMETRO_RESPONSABILIDAD_CIVIL_LESIONES("responsabilidad_civil_lesiones"),
   PARAMETRO_RESPONSABILIDAD_CIVIL_VEHICULO("responsabilidad_civil_vehiculo"),
   RECLAMACION_EMPRESARIAL("reclamacion_empresarial"),
-  RECUPERO_SINIESTRO("recupero_siniestro");
+  RECUPERO_SINIESTRO("recupero_siniestro"),
+  TOMADOR("tomador");
 
   private String valor;
 

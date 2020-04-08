@@ -1,0 +1,2 @@
+﻿id;idFiltro;tipoDocumento;numDocumento;primerNombre;segundoNombre;primerApellido;segundoApellido;fechaNacimiento;genero;correoElectronico;codigoPais;codigoDepartamento;ciudad;tipoDireccion;direccion;tipoTelefono;telefonoPrincipal;celular
+1;tomador riesgo estándar;C;1036323989;JUAN;MANUEL;QUINTERO;ESPINOSA;1993-09-17;M;juanm@gmail.com;CO;CO05;05001000;home;Calle 34 #9-32;home;2455456;3103546352

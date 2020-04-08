@@ -18,6 +18,11 @@ public final class UtilidadesCSV {
 
   private UtilidadesCSV() {}
 
+  public static Map<String, String> obtenerPrimerDatoPrueba(String nombreCSV, String filtro)
+      throws IOException {
+    return obtenerDatosPrueba(nombreCSV, filtro).get(0);
+  }
+
   public static List<Map<String, String>> obtenerDatosPrueba(String nombreCSV, String filtro)
       throws IOException {
     TestDataSource datosOrigenCSV =

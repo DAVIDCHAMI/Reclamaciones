@@ -1,0 +1,14 @@
+﻿id;idFiltro;categoria;nombre;termino;opcion
+1;Automóvil~Global~2020;Daños a Terceros;Responsabilidad Civil;Límite;3.040.000.000
+2;Automóvil~Global~2020;Daños a Terceros;Responsabilidad Civil;Deducible;0
+3;Automóvil~Global~2020;Daños al Carro;Daños;Pérdida Total;0
+4;Automóvil~Global~2020;Daños al Carro;Daños;Pérdida Parcial;987.000
+5;Automóvil~Global~2020;Daños al Carro;Daños;Gastos de Transporte;40.000/DIA (PT)
+6;Automóvil~Global~2020;Hurto al Carro;Hurto;Pérdida Total;10%
+7;Automóvil~Global~2020;Hurto al Carro;Hurto;Pérdida Parcial;987.000
+8;Automóvil~Global~2020;Hurto al Carro;Hurto;Gastos de Transporte;80.000/DIA (PT)
+9;Automóvil~Global~2020;Carro de Reemplazo;Vehículo de Reemplazo;Pérdida Parcial;20 días
+10;Automóvil~Global~2020;Carro de Reemplazo;Vehículo de Reemplazo;Pérdida Total;20 días
+11;Automóvil~Global~2020;Accidentes;Accidentes al Conductor;Accidentes al Conductor;35.000.000
+12;Automóvil~Global~2020;Llaves;Pérdida de Llaves;Pérdida de Llaves;Si
+13;Automóvil~Global~2020;Asistencia;Asistencia en Viaje;Asistencia;Asistencia Global
