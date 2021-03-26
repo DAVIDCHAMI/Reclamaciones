@@ -136,9 +136,9 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
         (Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
             .toString());
     cmbNombreConductor.clear();
-    cmbNombreConductor.typeAndTab(
-        Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
-            .toString());
+    cmbNombreConductor.waitUntilEnabled();
+    // cmbNombreConductor.typeAndTab(Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor()).toString());
+    cmbNombreConductor.typeAndTab(nombreConductorTercero).toString();
     realizarEsperaCarga();
   }
 

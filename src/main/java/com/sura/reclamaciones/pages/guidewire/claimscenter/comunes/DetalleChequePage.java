@@ -8,10 +8,13 @@ import org.openqa.selenium.WebDriver;
 
 public class DetalleChequePage extends GeneralPage {
 
+  private Boolean response = true;
+
   public DetalleChequePage(WebDriver wdriver) {
     super(wdriver);
   }
 
+  /*
   public boolean realizarAnulacionCheque() {
     for (int i = 0; i <= Integer.parseInt(ITERACIONES_ANULACION.getValor()); i++)
       if (btnAnular.containsElements(
@@ -24,5 +27,23 @@ public class DetalleChequePage extends GeneralPage {
         return true;
       }
     return false;
+  }
+   */
+
+  public boolean realizarAnulacionCheque() {
+    int contador = 0;
+    while (btnAnular.containsElements(
+        By.xpath(
+            "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'disabled')]"))) {
+      realizarEsperaCarga();
+      driver.navigate().refresh();
+      if (contador >= Integer.parseInt(ITERACIONES_ANULACION.getValor())) {
+        response = false;
+        break;
+      }
+      contador++;
+    }
+    anularTransaccion();
+    return response;
   }
 }
