@@ -14,22 +14,6 @@ public class DetalleChequePage extends GeneralPage {
     super(wdriver);
   }
 
-  /*
-  public boolean realizarAnulacionCheque() {
-    for (int i = 0; i <= Integer.parseInt(ITERACIONES_ANULACION.getValor()); i++)
-      if (btnAnular.containsElements(
-          By.xpath(
-              "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//ancestor::a[contains(@class,'disabled')]"))) {
-        realizarEsperaCarga();
-        driver.navigate().refresh();
-      } else {
-        anularTransaccion();
-        return true;
-      }
-    return false;
-  }
-   */
-
   public boolean realizarAnulacionCheque() {
     int contador = 0;
     while (btnAnular.containsElements(
