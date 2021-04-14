@@ -5,8 +5,6 @@ Característica: Anulación de pagos
   Quiero generar una anulación de un pago
   Para verificar que el proceso de pago sea suspendido y no sea efectuado.
 
-  Antecedentes: Crear poliza
-    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 60 de retroactividad
 
   @estable
   @anulacionPagoAutos
