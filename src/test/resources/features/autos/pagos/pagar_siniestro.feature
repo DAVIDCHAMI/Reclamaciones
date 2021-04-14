@@ -5,6 +5,10 @@ Característica: Realizar pago de un siniestro
   Quiero efectuar un pago a una reclamación
   Para cancelar al asegurado, tercero y/o proveedor involucrados en el siniestro.
 
+  Antecedentes: Crear poliza
+  Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 80 de retroactividad
+
+    @test1
   @pagoLineaReservaAutos
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos uno

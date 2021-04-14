@@ -25,7 +25,7 @@ public class CreacionPolizaIndividualDefinition {
   @Steps ServicioExpedicionAutosIndividualStep servicioExpedicionAutosIndividualStep;
 
   @Dado(
-      "^se tiene una póliza de autos individual con plan (.+) de vigencia (.+) con (\\d+) (?:día|días) de (.+)$")
+      "^se tiene una póliza de autos individual con plan (.+) de vigencia (.+) con (\\d+) de (.+)$")
   public void consumirServicioExpedicion(
       String planAutos, String tipoVigencia, int cantidadDias, String terminoInicioVigencia)
       throws IOException {

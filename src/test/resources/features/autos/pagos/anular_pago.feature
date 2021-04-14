@@ -5,6 +5,9 @@ Característica: Anulación de pagos
   Quiero generar una anulación de un pago
   Para verificar que el proceso de pago sea suspendido y no sea efectuado.
 
+  Antecedentes: Crear poliza
+    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 60 de retroactividad
+
   @estable
   @anulacionPagoAutos
   @claimsEmpresarialSuperUsuario
@@ -22,4 +25,3 @@ Característica: Anulación de pagos
     Ejemplos:
       | Línea de Reserva     | Tipo de pago | Beneficiario de pago               | Método de pago | ¿Es pago soloSura? | Tipo de cobertura   |
       | (2) 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII | Caja Sura      | No                 | Perdida total Daños |
-      | (3) 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII | Caja Sura      | No                 | Perdida total Daños |
