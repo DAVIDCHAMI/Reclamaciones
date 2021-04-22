@@ -5,6 +5,7 @@ Característica: Constitución de una línea de reserva de un siniestro
   Quiero que sea posible crear una línea de reserva a una exposición
   Para que se pueda cubrir los costos y los gastos que se tienen en un siniestro
 
+  @refactor
   @creacionLineaReserva
   @claimsAuto
   Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamación de autos

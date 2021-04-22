@@ -5,6 +5,7 @@ Característica: Crear un recupero de un siniestro
   Quiero crear un recupero a partir de una línea de reserva
   Para que Suramericana recupere una parte del valor pagado sobre el siniestro
 
+
   @claimsAuto
   Esquema del escenario: crear recupero de subrogación o ingreso (otro)
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos

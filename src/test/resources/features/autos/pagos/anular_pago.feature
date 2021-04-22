@@ -5,7 +5,6 @@ Característica: Anulación de pagos
   Quiero generar una anulación de un pago
   Para verificar que el proceso de pago sea suspendido y no sea efectuado.
 
-
   @estable
   @anulacionPagoAutos
   @claimsEmpresarialSuperUsuario

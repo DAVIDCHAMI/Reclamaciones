@@ -193,6 +193,12 @@ public class GeneralPage extends PageObject {
     }
   }
 
+  public void realizarEsperaCargaeElemento() {
+    while (pgrBarCarga.isVisible()) {
+      pgrBarCarga.waitUntilNotVisible();
+    }
+  }
+
   public void realizarTiempoEsperaCarga() {
     int numeroIntentos = Integer.parseInt(NUMERO_INTENTOS_ESPERA_ELEMENTO.getValor());
     while (numeroIntentos > 0) {
