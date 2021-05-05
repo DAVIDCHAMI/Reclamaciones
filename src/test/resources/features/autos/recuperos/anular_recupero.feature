@@ -5,7 +5,6 @@ Característica: Anulacion de recuperos
   Quiero generar una anulación de un recupero
   Para verificar que el proceso de recuperación sea suspendido y no sea efectuado.
 
-  @falla
   @Autos
   @claimsAuto
   Esquema del escenario: anulación de un recupero de autos.

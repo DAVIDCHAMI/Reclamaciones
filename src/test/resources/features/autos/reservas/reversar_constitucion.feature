@@ -5,7 +5,6 @@ Característica: Constitución de una línea de reserva de un siniestro
   Quiero que sea posible realizar ajustes en las reservas
   Para que se pueda cubrir el monto del valor del siniestro
 
-  @estable
   @reversionConstitucion
   @claimsAuto
   Esquema del escenario: reversión de constitución

@@ -5,7 +5,6 @@ Característica: Constitución de una línea de reserva de un siniestro
   Quiero que sea posible crear una línea de reserva a una exposición
   Para que se pueda cubrir los costos y los gastos que se tienen en un siniestro
 
-  @refactor
   @creacionLineaReserva
   @claimsAuto
   Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamación de autos
@@ -18,4 +17,3 @@ Característica: Constitución de una línea de reserva de un siniestro
 
       | Exposición           | Categoría               | Tipo costo                                    | Valor de Pretensión | Deducible | Cobertura           |
       | (2) 1ª parteVehículo | Gastos proceso jurídico | Gasto - D&CC (defensa y contención de gastos) | 4000000             | 0         | Perdida total Daños |
-

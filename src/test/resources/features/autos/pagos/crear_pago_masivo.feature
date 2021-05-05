@@ -5,7 +5,6 @@ Característica: Realizar un pago masivo a un proveedor
   Quiero efectuar uno o varios pagos a un mismo proveedor
   Para pagar al proveedor del taller los presupuestos y/o reparaciones realizadas al beneficiario o al tercero involucrado
 
-  @falla
   @pagoMasivoProveedor
   @claimsEmpresarialSuperUsuario
   Esquema del escenario: Crear pago masivo a un mismo proveedor.

@@ -99,7 +99,6 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   public void consultarInformacionVehiculoAfectado() {
     btnRecuperarInformacion.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCargaeElemento();
-    // realizarEsperaCarga();
   }
 
   public void seleccionarLugarAtencion(String lugarAtencion) {

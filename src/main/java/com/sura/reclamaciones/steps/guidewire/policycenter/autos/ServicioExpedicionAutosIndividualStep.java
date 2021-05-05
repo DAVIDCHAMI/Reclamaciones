@@ -70,8 +70,6 @@ public class ServicioExpedicionAutosIndividualStep {
                 expedicionAutosIndividualFactory.construirRequestExpedicion(),
                 HttpMethod.POST,
                 ExpedicionAutosIndividualResponse.class);
-    System.out.println(responseServicioExpedicion.getBody().getResult());
-    System.out.println(responseServicioExpedicion.getBody().getResult().toString());
   }
 
   @Step("Verificar creación correcta de la póliza")
