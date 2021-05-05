@@ -193,7 +193,7 @@ public class GeneralPage extends PageObject {
     }
   }
 
-  public void realizarEsperaCargaeElemento() {
+  public void esperarCargaElemento() {
     while (pgrBarCarga.isVisible()) {
       pgrBarCarga.waitUntilNotVisible();
     }

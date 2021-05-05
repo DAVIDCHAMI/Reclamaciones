@@ -171,6 +171,6 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   public void seleccionarOpcionDescontarSaldoPrima() {
     realizarEsperaCarga();
     rbtDescontarSaldoPrima.waitUntilClickable().click();
-    realizarEsperaCargaeElemento();
+    esperarCargaElemento();
   }
 }
