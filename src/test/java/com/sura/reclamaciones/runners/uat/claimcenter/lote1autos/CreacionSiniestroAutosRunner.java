@@ -8,5 +8,5 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/features/autos/reclamaciones/crear_aviso_autos.feature",
     glue = {"com.sura.reclamaciones.definitions"},
-    tags = {"@pruebaRegresion"})
+    tags = {"@avisoServicioMaca"})
 public class CreacionSiniestroAutosRunner {}

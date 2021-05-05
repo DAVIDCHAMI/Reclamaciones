@@ -86,6 +86,7 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarOpcionMenuAccionesPrimerNivel(String nombreOpcion) {
+    realizarEsperaCarga();
     mnuPanelOpcionesPrimerNivel
         .iterator()
         .next()
@@ -94,6 +95,7 @@ public class MenuClaimPage extends GeneralPage {
                 "//span[contains(@class,'x-menu-item-text')][contains(text(),'"
                     + nombreOpcion
                     + "')]"))
+        .waitUntilEnabled()
         .click();
     realizarEsperaCarga();
   }

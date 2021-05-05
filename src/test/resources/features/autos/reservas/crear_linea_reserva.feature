@@ -17,4 +17,3 @@ Característica: Constitución de una línea de reserva de un siniestro
 
       | Exposición           | Categoría               | Tipo costo                                    | Valor de Pretensión | Deducible | Cobertura           |
       | (2) 1ª parteVehículo | Gastos proceso jurídico | Gasto - D&CC (defensa y contención de gastos) | 4000000             | 0         | Perdida total Daños |
-

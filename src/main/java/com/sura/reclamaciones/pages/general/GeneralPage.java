@@ -132,7 +132,14 @@ public class GeneralPage extends PageObject {
       Tablas enumRegistroTabla,
       String datoFilaBuscar,
       int posicionDatoDevolver) {
-    final int ENCONTRAR_POSICION_ELEMENTO_TABLA = 2;
+    final int aux = elementoTabla.findElements(By.xpath(enumRegistroTabla.getXpath())).size();
+    final int ENCONTRAR_POSICION_ELEMENTO_TABLA;
+    if (aux >= 3) {
+      ENCONTRAR_POSICION_ELEMENTO_TABLA = 2;
+    } else {
+      ENCONTRAR_POSICION_ELEMENTO_TABLA = 3;
+    }
+
     return elementoTabla
         .findElements(By.xpath(enumRegistroTabla.getXpath()))
         .stream()
@@ -183,6 +190,12 @@ public class GeneralPage extends PageObject {
   public void realizarEsperaCarga() {
     if (pgrBarCarga.isVisible()) {
       pgrBarCarga.waitUntilPresent().waitUntilNotVisible();
+    }
+  }
+
+  public void esperarCargaElemento() {
+    while (pgrBarCarga.isVisible()) {
+      pgrBarCarga.waitUntilNotVisible();
     }
   }
 
@@ -345,13 +358,13 @@ public class GeneralPage extends PageObject {
 
   public void anularTransaccion() {
     realizarEsperaCarga();
-    btnAnular.waitUntilClickable();
+    btnAnular.waitUntilEnabled().waitUntilClickable();
     btnAnular.click();
     realizarEsperaCarga();
-    btnAnular.waitUntilClickable();
+    btnAnular.waitUntilEnabled().waitUntilClickable();
     btnAnular.click();
     realizarEsperaCarga();
-    btnAceptar.waitUntilClickable();
+    btnAceptar.waitUntilEnabled().waitUntilClickable();
     btnAceptar.click();
     realizarEsperaCarga();
   }

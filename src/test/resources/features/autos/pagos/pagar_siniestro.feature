@@ -1,13 +1,12 @@
 # language: es
 Característica: Realizar pago de un siniestro
-
   Como analista de reclamación
   Quiero efectuar un pago a una reclamación
   Para cancelar al asegurado, tercero y/o proveedor involucrados en el siniestro.
 
-  @pagoLineaReservaAutos
+  @pagoLineaReservaAutos1
   @claimsAuto
-  Esquema del escenario: Crear pago del siniestro autos
+  Esquema del escenario: Crear pago del siniestro autos uno
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo y Cobertura>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
@@ -19,6 +18,7 @@ Característica: Realizar pago de un siniestro
     Ejemplos:
       | Línea de Reserva | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
       | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII| Caja Sura       | No                 | Perdida total Daños |
+
 
   @pagoPerdidaTotalAutos
   @claimsAuto
@@ -50,6 +50,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |Número de vehículos involucrados del tercero en el siniestro|
       | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
+
   @pagoPrimaPendiente
   @claimsAuto
   Esquema del escenario: Crear pago a un siniestro con prima pendiente.
@@ -66,4 +67,4 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Origen de siniestro | Línea de Reserva                                                                                                         | Tipo de pago | Beneficiario de pago                | Método de pago | ¿Es pago soloSura? | Tipo de cobertura   |
-      | Servicio de Maca    | (2) 1ª parteVehículo - OSO222  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | ROBIN EDULFO BAUTISTA ALVAREZ CQLII | Caja Sura      | No                 | Perdida total Daños |
+      | Servicio de Maca    | (2) 1ª parteVehículo - AOA009  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | ROBIN EDULFO BAUTISTA ALVAREZ CQLII | Caja Sura      | No                 | Perdida total Daños |

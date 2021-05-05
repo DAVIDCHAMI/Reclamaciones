@@ -24,7 +24,7 @@ public enum Constantes {
   ESTADO_LEGAL("Rematricula a nombre de Suramericana"),
   EXPEDIENTE_CREADO_EXITOSAMENTE("Expediente creado con éxito"),
   EXPOSICIONES("Exposiciones"),
-  ITERACIONES_ANULACION("20"),
+  ITERACIONES_ANULACION("80"),
   ITERACIONES_PAGO("20"),
   ITERACIONES_RECUPERO("3"),
   LABORATORIO("uat"),

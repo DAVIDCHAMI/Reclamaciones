@@ -873,12 +873,12 @@ public class CreacionSiniestroAutosFactory {
     return mainContact;
   }
 
-  PrimaryAddress__ primaryAddress__Factory() {
-    PrimaryAddress__ primaryAddress__ = new PrimaryAddress__();
-    primaryAddress__.setAddressLine1(getAddressLine1MainContact());
-    primaryAddress__.setAddressType(getAddressTypeMainContact());
-    primaryAddress__.setCity(getCityMainContact());
-    return primaryAddress__;
+  PrimaryAddress__ primaryAddressFactoryDos() {
+    PrimaryAddress__ primaryAddressDos = new PrimaryAddress__();
+    primaryAddressDos.setAddressLine1(getAddressLine1MainContact());
+    primaryAddressDos.setAddressType(getAddressTypeMainContact());
+    primaryAddressDos.setCity(getCityMainContact());
+    return primaryAddressDos;
   }
 
   Lobs lobsFactory() {
@@ -928,7 +928,7 @@ public class CreacionSiniestroAutosFactory {
     driver.setPolicyRole(getPolicyRoleDriver());
     driver.setDocumentType(getDocumentTypeDriver());
     driver.setTaxID(getTaxIDDriver());
-    driver.setPrimaryAddress(primaryAddress__Factory());
+    driver.setPrimaryAddress(primaryAddressFactoryDos());
     return driver;
   }
 
@@ -984,7 +984,7 @@ public class CreacionSiniestroAutosFactory {
     injured.setEmailAddress1(getEmailAddress1Injured());
     injured.setDocumentType(getDocumentTypeInjured());
     injured.setTaxID(getTaxIDInjured());
-    injured.setPrimaryAddress(primaryAddress_Factory());
+    injured.setPrimaryAddress(primaryAddressFactoryUno());
     return injured;
   }
 
@@ -1009,12 +1009,12 @@ public class CreacionSiniestroAutosFactory {
     return bodyPartDetail;
   }
 
-  PrimaryAddress_ primaryAddress_Factory() {
-    PrimaryAddress_ primaryAddress_ = new PrimaryAddress_();
-    primaryAddress_.setAddressLine1(getAddressLine1Injured());
-    primaryAddress_.setAddressType(getAddressTypeInjured());
-    primaryAddress_.setCity(getCityInjured());
-    return primaryAddress_;
+  PrimaryAddress_ primaryAddressFactoryUno() {
+    PrimaryAddress_ primaryAddressUno = new PrimaryAddress_();
+    primaryAddressUno.setAddressLine1(getAddressLine1Injured());
+    primaryAddressUno.setAddressType(getAddressTypeInjured());
+    primaryAddressUno.setCity(getCityInjured());
+    return primaryAddressUno;
   }
 
   LossLocation lossLocationFactory() {

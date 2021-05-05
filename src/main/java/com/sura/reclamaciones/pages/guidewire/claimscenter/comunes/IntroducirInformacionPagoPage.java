@@ -64,11 +64,17 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   @FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:Add-btnInnerEl")
   private WebElementFacade btnAgregarPago;
 
+  @FindBy(
+      id =
+          "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Pending_Bonus_Payment_true-inputEl")
+  private WebElementFacade rbtDescontarSaldoPrima;
+
   public IntroducirInformacionPagoPage(WebDriver driver) {
     super(driver);
   }
 
   public void seleccionarLineaReserva(String strLineaReserva) {
+    realizarEsperaCarga();
     cmbLineaReserva.waitUntilClickable().click();
     seleccionarOpcionCombobox(strLineaReserva);
     Serenity.setSessionVariable(SESION_CC_LINEA_RESERVA.getValor()).to(strLineaReserva);
@@ -76,7 +82,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   }
 
   public void seleccionarTipoPago(String strTipoPago) {
-    cmbTipoPago.waitUntilClickable().click();
+    cmbTipoPago.waitUntilVisible().waitUntilClickable().click();
     seleccionarOpcionCombobox(strTipoPago);
     Serenity.setSessionVariable(SESION_CC_TIPO_PAGO.getValor()).to(strTipoPago);
     realizarEsperaCarga();
@@ -160,5 +166,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
                 fila.findElement(
                     By.xpath(String.format("./tr[%d]/td[%d]/div", posicionFila, posicionColumna))))
         .collect(Collectors.toList());
+  }
+
+  public void seleccionarOpcionDescontarSaldoPrima() {
+    realizarEsperaCarga();
+    rbtDescontarSaldoPrima.waitUntilClickable().click();
+    esperarCargaElemento();
   }
 }

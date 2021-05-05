@@ -29,13 +29,13 @@ public enum ValoresServicio {
   PA_CARRO_DEREEMPLAZO("PACarroDeReemplazo"),
   PA_ASISTENCIA("PAAsistencia");
 
-  private final String Codigo;
+  private final String codigo;
 
   private ValoresServicio(String codigo) {
-    this.Codigo = codigo;
+    this.codigo = codigo;
   }
 
   public String getValue() {
-    return this.Codigo;
+    return this.codigo;
   }
 }

@@ -98,7 +98,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
 
   public void consultarInformacionVehiculoAfectado() {
     btnRecuperarInformacion.waitUntilVisible().waitUntilClickable().click();
-    realizarEsperaCarga();
+    esperarCargaElemento();
   }
 
   public void seleccionarLugarAtencion(String lugarAtencion) {
@@ -136,9 +136,8 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
         (Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
             .toString());
     cmbNombreConductor.clear();
-    cmbNombreConductor.typeAndTab(
-        Serenity.sessionVariableCalled(SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO.getValor())
-            .toString());
+    cmbNombreConductor.waitUntilEnabled();
+    cmbNombreConductor.typeAndTab(nombreConductorTercero).toString();
     realizarEsperaCarga();
   }
 
