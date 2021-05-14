@@ -31,6 +31,11 @@ public class BuscarPolizaPage extends GeneralPage {
 
   @FindBy(
       xpath =
+          "//td[.='Tipo de póliza']//div[@class='x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first']")
+  private WebElementFacade mnuTipoPoliza;
+
+  @FindBy(
+      xpath =
           "//input[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:basicSearchSura:FNOLWizardFindPolicyInputSet:ssn-inputEl']")
   private WebElementFacade txtNumeroDocumento;
 
@@ -116,6 +121,13 @@ public class BuscarPolizaPage extends GeneralPage {
   public void buscarPoliza() {
     btnBuscar.waitUntilPresent().waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
+  }
+
+  public void seleccionarTipoPoliza(String tipoDocumento) {
+    mnuTipoPoliza.waitUntilVisible();
+    mnuTipoPoliza.click();
+    auxTipoDocumento = lstTipoDocumento.replace(COMODIN.getValor(), tipoDocumento);
+    $(auxTipoDocumento).click();
   }
 
   public void escribirPlaca(String placa) {

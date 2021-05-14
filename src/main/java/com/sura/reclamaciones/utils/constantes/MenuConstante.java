@@ -12,6 +12,7 @@ public final class MenuConstante {
   public static final String DETALLES_SINIESTRO = "Detalles del siniestro";
   public static final String PLAN_TRABAJO = "Plan de trabajo";
   public static final String POLIZA = "Póliza";
+  public static final String TIPO_POLIZA = "Autos";
 
   private MenuConstante() {}
 }

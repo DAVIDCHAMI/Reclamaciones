@@ -6,6 +6,7 @@ import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.Tomador;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.utils.Fecha;
+import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.expedicionautosindividual.gen.Account;
 import com.sura.service.expedicionautosindividual.gen.Address;
 import com.sura.service.expedicionautosindividual.gen.BillingData;
@@ -91,8 +92,7 @@ public class ExpedicionAutosIndividualFactory {
     pagoAutomatico = false;
     inclusionPoliza = false;
     terminoPoliza = "Closed";
-    // idCustom = Utilidades.generarAleatoriosNumeros(12);
-    idCustom = "11111111111247";
+    idCustom = Utilidades.generarAleatoriosNumeros(4);
     codigoOrganizacionVenta = "Sura";
     codigoPolizaVenta = "PPAutos";
     codigoMetodoVenta = "1";
@@ -471,8 +471,6 @@ public class ExpedicionAutosIndividualFactory {
     person.setMiddleName(persona.getSegundoNombre());
     person.setLastName(persona.getPrimerApellido());
     person.setSecondLastName(persona.getSegundoApellido());
-    person.setPrefixType(persona.getTipoPrefijo());
-    person.setSuffixType(persona.getTipoSufijo());
     person.setPrimaryPhoneType(persona.getTipoTelefono());
     if ("home".equals(persona.getTipoTelefono())) {
       person.setHomeNumber(persona.getTelefonoPrincipal());
@@ -481,13 +479,10 @@ public class ExpedicionAutosIndividualFactory {
     }
     person.setWorkNumber(persona.getTelefonoPrincipal());
     person.setCellNumber(persona.getCelular());
-    // person.setMaritalStatusCode(persona.getCodigoEstadoCivil());
     person.setProfession(persona.getProfesion());
     person.setGenderCode(persona.getGenero());
     person.setEmailAddress1(persona.getCorreoElectronico());
     person.setEmailAddress2(persona.getCorreoElectronicoDos());
-    // person.setOfficialID(persona.getIdentificacionOficial());
-    // person.setOfficialIDType(persona.getTipoIdentificacionOficial());
     person.setPreferredCurrency(moneda);
     person.setAddress(addressPersonFactory(persona));
     return person;

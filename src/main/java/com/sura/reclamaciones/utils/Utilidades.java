@@ -110,15 +110,25 @@ public final class Utilidades {
 
   public static String generarPlacaAleatoria(int cantidadLetras, int cantidadNumeros) {
     return String.format(
-        "%s%s", generarAleatoriosLetras(cantidadLetras), generarAleatoriosNumeros(cantidadNumeros));
+        "%s%s",
+        generarAleatoriosLetras(cantidadLetras), generarAleatoriosNumerosPlaca(cantidadNumeros));
   }
 
-  public static String generarAleatoriosNumeros(int longitudSerie) {
+  public static String generarAleatoriosNumerosPlaca(int longitudSerie) {
     StringBuilder serieNros = new StringBuilder();
     for (int i = 1; i <= longitudSerie; i++) {
       serieNros.append(aleatorio.nextInt(10));
     }
     return serieNros.toString();
+  }
+
+  public static String generarAleatoriosNumeros(int longitudSerie) {
+    String custom = "1111111111";
+    StringBuilder serieNros = new StringBuilder();
+    for (int i = 1; i <= longitudSerie; i++) {
+      serieNros.append(aleatorio.nextInt(10));
+    }
+    return custom + serieNros.toString();
   }
 
   public static String generarAleatoriosLetras(int longitudSerie) {
