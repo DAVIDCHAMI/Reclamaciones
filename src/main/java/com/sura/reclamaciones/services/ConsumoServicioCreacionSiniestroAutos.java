@@ -1,11 +1,11 @@
 package com.sura.reclamaciones.services;
 
-import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_CONDUCTOR_AFECTADO_SINIESTRO;
-import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.*;
 
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.utils.Fecha;
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.service.cliente.siniestro.CreacionSiniestroAutoCliente;
 import com.sura.service.creacionSiniestro.gen.ClaimsRequest;
@@ -47,10 +47,15 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosSiniestro(List<ReclamacionAuto> lstSiniestroParam) {
+    String fechaSiniestro = Fecha.obtenerFechaInicioVigenciaSegunTerminoInicio(1, "retroactividad");
+    String fechaNotificacionSiniestro =
+        Fecha.obtenerFechaInicioVigenciaSegunTerminoInicio(1, "retroactividad");
+
     creacionSiniestroAutosFactory.setPolicyNumber(lstSiniestroParam.get(campoDato).getNumPoliza());
-    creacionSiniestroAutosFactory.setLossDate(lstSiniestroParam.get(campoDato).getFechaSiniestro());
-    creacionSiniestroAutosFactory.setNotificationDate(
-        lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
+    // creacionSiniestroAutosFactory.setLossDate(lstSiniestroParam.get(campoDato).getFechaSiniestro());
+    creacionSiniestroAutosFactory.setLossDate(fechaSiniestro);
+    // creacionSiniestroAutosFactory.setNotificationDate(lstSiniestroParam.get(campoDato).getFechaNotificacionSiniestro());
+    creacionSiniestroAutosFactory.setNotificationDate(fechaNotificacionSiniestro);
     creacionSiniestroAutosFactory.setLossType(lstSiniestroParam.get(campoDato).getTipoPerdida());
     creacionSiniestroAutosFactory.setLossCause(lstSiniestroParam.get(campoDato).getCausaPerdida());
     creacionSiniestroAutosFactory.setDescription(
@@ -61,8 +66,9 @@ public class ConsumoServicioCreacionSiniestroAutos {
     creacionSiniestroAutosFactory.setAuthorUser(
         lstSiniestroParam.get(campoDato).getIdentificacionAutor());
     creacionSiniestroAutosFactory.setIsSuspect(lstSiniestroParam.get(campoDato).getSospechoso());
+    // creacionSiniestroAutosFactory.setSuspectDesc(lstSiniestroParam.get(campoDato).getDescripcionSospecha());
     creacionSiniestroAutosFactory.setSuspectDesc(
-        lstSiniestroParam.get(campoDato).getDescripcionSospecha());
+        Serenity.getCurrentSession().get(SESION_PC_NUMERO_POLIZA).toString());
     creacionSiniestroAutosFactory.setOriginCause(lstSiniestroParam.get(campoDato).getOrigenCausa());
     creacionSiniestroAutosFactory.setSegment(lstSiniestroParam.get(campoDato).getSegmento());
     creacionSiniestroAutosFactory.setAuthorityTransit(
@@ -176,8 +182,9 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosVehiculo(List<Vehiculo> lstVehiculoParam) {
+    // creacionSiniestroAutosFactory.setLicensePlateVehicle(lstVehiculoParam.get(campoDato).getPlaca());
     creacionSiniestroAutosFactory.setLicensePlateVehicle(
-        lstVehiculoParam.get(campoDato).getPlaca());
+        Serenity.getCurrentSession().get(SESION_CC_NUMERO_PLACA).toString());
     creacionSiniestroAutosFactory.setMakeVehicle(lstVehiculoParam.get(campoDato).getMarca());
     creacionSiniestroAutosFactory.setModelVehicle(lstVehiculoParam.get(campoDato).getModelo());
     creacionSiniestroAutosFactory.setEngineNumberVehicle(

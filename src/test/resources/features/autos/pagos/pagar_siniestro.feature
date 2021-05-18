@@ -4,6 +4,10 @@ Característica: Realizar pago de un siniestro
   Quiero efectuar un pago a una reclamación
   Para cancelar al asegurado, tercero y/o proveedor involucrados en el siniestro.
 
+  Antecedentes: Crear poliza
+    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
+
+  @test1
   @pagoLineaReservaAutos1
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos uno
@@ -59,6 +63,7 @@ Característica: Realizar pago de un siniestro
     Y se declara la reclamación como perdida total
     Y la póliza esta marcada como financiada, con prima pendiente por pagar
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura
+    Y se aplique prima pendiente
     Y se apliquen las siguientes retenciones
       | codigos |
       | 099     |
