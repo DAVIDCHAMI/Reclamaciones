@@ -39,6 +39,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva | Tipo de pago | Beneficiario de pago               | Método de pago | Solo Sura | Cobertura           |
       | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII | Caja Sura      | No        | Perdida total Daños |
 
+
   @chequeMultiplesPagosAutos
   @claimsAuto
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
@@ -54,7 +55,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |Número de vehículos involucrados del tercero en el siniestro|
       | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
-
+  @regresion
   @pagoPrimaPendiente
   @claimsAuto
   Esquema del escenario: Crear pago a un siniestro con prima pendiente.

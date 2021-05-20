@@ -5,6 +5,9 @@ Característica: Realizar un pago masivo a un proveedor
   Quiero efectuar uno o varios pagos a un mismo proveedor
   Para pagar al proveedor del taller los presupuestos y/o reparaciones realizadas al beneficiario o al tercero involucrado
 
+  Antecedentes: Crear poliza
+    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
+
   @pagoMasivoProveedor
   @claimsEmpresarialSuperUsuario
   Esquema del escenario: Crear pago masivo a un mismo proveedor.

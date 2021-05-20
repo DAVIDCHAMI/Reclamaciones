@@ -5,6 +5,10 @@ Característica: Crear un recupero de un siniestro
   Quiero crear un recupero a partir de una línea de reserva
   Para que Suramericana recupere una parte del valor pagado sobre el siniestro
 
+  Antecedentes: Crear poliza
+    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
+
+
   @claimsAuto
   Esquema del escenario: crear recupero de subrogación o ingreso (otro)
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
@@ -21,6 +25,7 @@ Característica: Crear un recupero de un siniestro
       | Línea de Reserva                | Tipo de pago | Beneficiario del pago                 | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   | Código de retención recupero |
       | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR                   | Pago por banco  | No                 | RC Lesión a Persona | 0099                         |
 
+  @regresion
   @claimsAuto
   Esquema del escenario: crear recupero de subrogación o ingreso Dos (otro)
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
