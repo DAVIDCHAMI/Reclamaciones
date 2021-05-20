@@ -58,6 +58,7 @@ public class CreacionPolizaIndividualDefinition {
     servicioExpedicionAutosIndividualStep.asignarInformacionCliente(tomador, asegurado);
     servicioExpedicionAutosIndividualStep.asignarInformacionVehiculo(
         vehiculo, lstCoberturasVehiculo);
+
     servicioExpedicionAutosIndividualStep.expedirPolizaIndividual();
     servicioExpedicionAutosIndividualStep.verificarCreacionPoliza();
     Serenity.setSessionVariable(SESION_PC_NUMERO_POLIZA)

@@ -13,6 +13,8 @@ public final class MenuConstante {
   public static final String PLAN_TRABAJO = "Plan de trabajo";
   public static final String POLIZA = "Póliza";
   public static final String TIPO_POLIZA = "Autos";
+  public static final Boolean POLIZA_FINANCIADA = true;
+  public static final Boolean POLIZA_NO_FINANCIADA = false;
 
   private MenuConstante() {}
 }

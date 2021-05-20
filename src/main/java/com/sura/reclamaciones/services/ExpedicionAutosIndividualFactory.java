@@ -86,6 +86,7 @@ public class ExpedicionAutosIndividualFactory {
   private Long fechaActualizacion;
 
   public ExpedicionAutosIndividualFactory() {
+
     planPagos = "paymentPlan:2";
     intencionFinanciacion = false;
     facturacionPersonalizada = true;

@@ -7,9 +7,7 @@ import static com.sura.reclamaciones.utils.enums.Constantes.TIPO_PAGO;
 import static com.sura.reclamaciones.utils.enums.Constantes.VALOR_CERO;
 import static com.sura.reclamaciones.utils.enums.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.utils.enums.Tablas.REGISTROS_PAGOS_CC;
-import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_LINEA_RESERVA;
-import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_TIPO_PAGO;
-import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_VALOR_PAGO;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.*;
 import static org.openqa.selenium.By.xpath;
 
 import com.sura.reclamaciones.pages.general.GeneralPage;
@@ -74,10 +72,16 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   }
 
   public void seleccionarLineaReserva(String strLineaReserva) {
+    String strLineaReservaDos = "";
     realizarEsperaCarga();
     cmbLineaReserva.waitUntilClickable().click();
-    seleccionarOpcionCombobox(strLineaReserva);
-    Serenity.setSessionVariable(SESION_CC_LINEA_RESERVA.getValor()).to(strLineaReserva);
+    if (strLineaReserva.contains("AOA009")) {
+      strLineaReservaDos =
+          strLineaReserva.replace(
+              "AOA009", Serenity.getCurrentSession().get(SESION_CC_NUMERO_PLACA).toString());
+    }
+    seleccionarOpcionCombobox(strLineaReservaDos);
+    Serenity.setSessionVariable(SESION_CC_LINEA_RESERVA.getValor()).to(strLineaReservaDos);
     realizarEsperaCarga();
   }
 

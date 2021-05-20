@@ -5,9 +5,9 @@ Característica: Realizar pago de un siniestro
   Para cancelar al asegurado, tercero y/o proveedor involucrados en el siniestro.
 
   Antecedentes: Crear poliza
-    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
+    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 60 de retroactividad
 
-  @test1
+
   @pagoLineaReservaAutos1
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos uno
@@ -55,6 +55,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |Número de vehículos involucrados del tercero en el siniestro|
       | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
+  @test1
   @regresion
   @pagoPrimaPendiente
   @claimsAuto
@@ -73,4 +74,4 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Origen de siniestro | Línea de Reserva                                                                                                         | Tipo de pago | Beneficiario de pago                | Método de pago | ¿Es pago soloSura? | Tipo de cobertura   |
-      | Servicio de Maca    | (2) 1ª parteVehículo - AOA009  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | ROBIN EDULFO BAUTISTA ALVAREZ CQLII | Caja Sura      | No                 | Perdida total Daños |
+      | Servicio de Maca    | (2) 1ª parteVehículo - AOA009  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII | Caja Sura      | No                 | Perdida total Daños |
