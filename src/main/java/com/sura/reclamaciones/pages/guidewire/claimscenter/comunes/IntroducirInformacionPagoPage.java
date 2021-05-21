@@ -1,5 +1,6 @@
 package com.sura.reclamaciones.pages.guidewire.claimscenter.comunes;
 
+import static com.sura.reclamaciones.utils.constantes.MenuConstante.CAMBIO_PLACA_PRIMA_PENDIENTE;
 import static com.sura.reclamaciones.utils.enums.Constantes.CANTIDAD;
 import static com.sura.reclamaciones.utils.enums.Constantes.CODIGO_RETENCION;
 import static com.sura.reclamaciones.utils.enums.Constantes.PORCENTAJE;
@@ -75,10 +76,10 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     String strLineaReservaDos = "";
     realizarEsperaCarga();
     cmbLineaReserva.waitUntilClickable().click();
-    if (strLineaReserva.contains("AOA009")) {
+    if (strLineaReserva.contains(CAMBIO_PLACA_PRIMA_PENDIENTE)) {
       strLineaReservaDos =
           strLineaReserva.replace(
-              "AOA009", Serenity.getCurrentSession().get(SESION_CC_NUMERO_PLACA).toString());
+                  CAMBIO_PLACA_PRIMA_PENDIENTE, Serenity.getCurrentSession().get(SESION_CC_NUMERO_PLACA).toString());
     }
     seleccionarOpcionCombobox(strLineaReservaDos);
     Serenity.setSessionVariable(SESION_CC_LINEA_RESERVA.getValor()).to(strLineaReservaDos);

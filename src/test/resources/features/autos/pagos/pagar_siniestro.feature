@@ -55,7 +55,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |Número de vehículos involucrados del tercero en el siniestro|
       | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
-  @test1
+
   @regresion
   @pagoPrimaPendiente
   @claimsAuto
