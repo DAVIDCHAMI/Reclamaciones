@@ -15,7 +15,7 @@ public final class MenuConstante {
   public static final String TIPO_POLIZA = "Autos";
   public static final int NUMERO_DIAS_A_RESTAR_DE_FECHA = 1;
   public static final String TIPO_POLIZA_RETROACTIVA = "retroactividad";
-  public static final String CAMBIO_PLACA_PRIMA_PENDIENTE= "AOA009";
+  public static final String CAMBIO_PLACA_PRIMA_PENDIENTE = "AOA009";
 
   private MenuConstante() {}
 }

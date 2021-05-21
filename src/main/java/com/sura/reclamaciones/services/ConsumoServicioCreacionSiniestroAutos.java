@@ -49,9 +49,12 @@ public class ConsumoServicioCreacionSiniestroAutos {
   }
 
   private void asignarParametrosSiniestro(List<ReclamacionAuto> lstSiniestroParam) {
-    String fechaSiniestro = Fecha.obtenerFechaInicioVigenciaSegunTerminoInicio(NUMERO_DIAS_A_RESTAR_DE_FECHA, TIPO_POLIZA_RETROACTIVA);
+    String fechaSiniestro =
+        Fecha.obtenerFechaInicioVigenciaSegunTerminoInicio(
+            NUMERO_DIAS_A_RESTAR_DE_FECHA, TIPO_POLIZA_RETROACTIVA);
     String fechaNotificacionSiniestro =
-        Fecha.obtenerFechaInicioVigenciaSegunTerminoInicio(NUMERO_DIAS_A_RESTAR_DE_FECHA,TIPO_POLIZA_RETROACTIVA );
+        Fecha.obtenerFechaInicioVigenciaSegunTerminoInicio(
+            NUMERO_DIAS_A_RESTAR_DE_FECHA, TIPO_POLIZA_RETROACTIVA);
 
     creacionSiniestroAutosFactory.setPolicyNumber(lstSiniestroParam.get(campoDato).getNumPoliza());
     creacionSiniestroAutosFactory.setLossDate(fechaSiniestro);
