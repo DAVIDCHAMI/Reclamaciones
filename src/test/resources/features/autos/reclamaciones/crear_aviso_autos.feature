@@ -5,6 +5,10 @@ Característica: Generación avisos de siniestros autos
   Quiero que se puedan generar avisos de autos
   Para afectar las coberturas de una póliza, cuando un asegurado tenga un siniestro
 
+  Antecedentes: Crear poliza
+    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
+
+  @regresion
   @claimsAuto
   @pruebaRegresion
   Escenario: generación de reclamación de tipo Responsabilidad Civil
@@ -43,6 +47,7 @@ Característica: Generación avisos de siniestros autos
       |Causa|Culpabilidad|
       |Colisión con vehículo|subrogación|
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
+
 
   @claimsAuto
   @pruebaRegresion

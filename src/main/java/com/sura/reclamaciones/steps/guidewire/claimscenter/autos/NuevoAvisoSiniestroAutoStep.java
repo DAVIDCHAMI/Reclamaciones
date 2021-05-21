@@ -1,6 +1,8 @@
 package com.sura.reclamaciones.steps.guidewire.claimscenter.autos;
 
+import static com.sura.reclamaciones.utils.constantes.MenuConstante.TIPO_POLIZA;
 import static com.sura.reclamaciones.utils.enums.Constantes.EXPOSICIONES;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_PLACA;
 
 import com.sura.reclamaciones.models.ExposicionLesiones;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
@@ -15,6 +17,7 @@ import com.sura.reclamaciones.pages.guidewire.claimscenter.comunes.*;
 import com.sura.reclamaciones.utils.constantes.MenuConstante;
 import com.sura.reclamaciones.utils.constantes.ReclamacionConstante;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
@@ -204,9 +207,12 @@ public class NuevoAvisoSiniestroAutoStep {
   @Step
   public void completarFormularioBuscarPoliza(
       List<ReclamacionAuto> datosReclamacion, List<Vehiculo> datosVehiculo) {
-    for (Vehiculo datoReclamacion : datosVehiculo) {
-      buscarPolizaPage.escribirPlaca(datoReclamacion.getPlaca());
-    }
+
+    buscarPolizaPage.seleccionarTipoPoliza(TIPO_POLIZA);
+
+    buscarPolizaPage.escribirPlaca(
+        Serenity.getCurrentSession().get(SESION_CC_NUMERO_PLACA).toString());
+
     for (ReclamacionAuto dato : datosReclamacion) {
       seleccionarFecha(dato.getFechaSiniestro());
     }

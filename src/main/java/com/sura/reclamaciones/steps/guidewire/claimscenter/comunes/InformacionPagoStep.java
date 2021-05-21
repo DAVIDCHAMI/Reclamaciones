@@ -14,9 +14,13 @@ public class InformacionPagoStep {
   public void ingresarInformacionPago(
       String lineaReserva, String tipoPago, List<PagoSiniestro> lstPago) {
     introducirInformacionPagoPage.seleccionarLineaReserva(lineaReserva);
-    introducirInformacionPagoPage.seleccionarOpcionDescontarSaldoPrima();
     introducirInformacionPagoPage.seleccionarTipoPago(tipoPago);
     introducirInformacionPagoPage.ingresarComentario(lstPago.listIterator().next().getComentario());
+  }
+
+  @Step
+  public void seleccionarPrimaPendiente() {
+    introducirInformacionPagoPage.seleccionarOpcionDescontarSaldoPrima();
   }
 
   @Step

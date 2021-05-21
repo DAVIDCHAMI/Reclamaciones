@@ -173,6 +173,11 @@ public class PagoSiniestroDefinition {
     informacionPagoStep.ingresarInformacionPago(lineaReserva, tipoPago, pagoSiniestro.getLstPago());
   }
 
+  @Cuando("^se aplique prima pendiente$")
+  public void aplicarPrimaPendiente() {
+    informacionPagoStep.seleccionarPrimaPendiente();
+  }
+
   @Cuando("^se apliquen las siguientes retenciones$")
   public void aplicarRetencion(DataTable codigoRetencion) {
     List<String> retencion = codigoRetencion.asList(String.class);

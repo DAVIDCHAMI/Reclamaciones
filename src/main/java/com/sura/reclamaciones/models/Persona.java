@@ -26,6 +26,8 @@ public abstract class Persona {
   private String codigoPais;
   private String codigoDepartamento;
   private String tipoTelefono;
+  private String profesion;
+  private String correoElectronicoDos;
 
   public Persona() {}
 
@@ -49,6 +51,8 @@ public abstract class Persona {
     codigoPais = mapDatosPersona.get("codigoPais");
     codigoDepartamento = mapDatosPersona.get("codigoDepartamento");
     tipoTelefono = mapDatosPersona.get("tipoTelefono");
+    profesion = mapDatosPersona.get("profesion");
+    correoElectronicoDos = mapDatosPersona.get("correoElectronicoDos");
   }
 
   public String getPrimerNombre() {
@@ -125,6 +129,14 @@ public abstract class Persona {
 
   public String getTipoTelefono() {
     return tipoTelefono;
+  }
+
+  public String getProfesion() {
+    return profesion;
+  }
+
+  public String getCorreoElectronicoDos() {
+    return correoElectronicoDos;
   }
 
   public List<Persona> getLstPersona() {

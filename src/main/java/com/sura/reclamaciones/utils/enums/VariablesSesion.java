@@ -20,6 +20,7 @@ public enum VariablesSesion {
   SESION_CC_VALOR_RECUPERO("ValorRecupero"),
   SESION_CC_VALOR_RESERVA("valorReserva"),
   SESION_CC_VALOR_RESERVA_CONSTITUCION("valorReservaConstitución"),
+  SESION_CC_NUMERO_PLACA("numeroPlaca"),
   SESION_PC_NUMERO_POLIZA("numeroPoliza");
 
   private String valor;

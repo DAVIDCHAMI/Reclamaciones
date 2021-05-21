@@ -86,17 +86,18 @@ public class ExpedicionAutosIndividualFactory {
   private Long fechaActualizacion;
 
   public ExpedicionAutosIndividualFactory() {
+
     planPagos = "paymentPlan:2";
     intencionFinanciacion = false;
     facturacionPersonalizada = true;
     pagoAutomatico = false;
     inclusionPoliza = false;
     terminoPoliza = "Closed";
-    idCustom = Utilidades.generarAleatoriosNumeros(12);
+    idCustom = Utilidades.generarAleatoriosNumeros(4);
     codigoOrganizacionVenta = "Sura";
     codigoPolizaVenta = "PPAutos";
     codigoMetodoVenta = "1";
-    codigoAsesor = "10198";
+    codigoAsesor = "10107";
     codigoCanalVenta = "TraditionalChannel";
     tipoPoliza = "IndividualPolicy";
     origenExpedicion = "01";
@@ -477,9 +478,12 @@ public class ExpedicionAutosIndividualFactory {
     } else if ("work".equals(persona.getTipoTelefono())) {
       person.setWorkNumber(persona.getTelefonoPrincipal());
     }
+    person.setWorkNumber(persona.getTelefonoPrincipal());
     person.setCellNumber(persona.getCelular());
+    person.setProfession(persona.getProfesion());
     person.setGenderCode(persona.getGenero());
     person.setEmailAddress1(persona.getCorreoElectronico());
+    person.setEmailAddress2(persona.getCorreoElectronicoDos());
     person.setPreferredCurrency(moneda);
     person.setAddress(addressPersonFactory(persona));
     return person;

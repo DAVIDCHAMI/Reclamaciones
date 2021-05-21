@@ -1,11 +1,14 @@
 package com.sura.reclamaciones.models;
 
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_PLACA;
+
 import com.sura.reclamaciones.utils.Utilidades;
 import com.sura.reclamaciones.utils.enums.ClaseVehiculo;
 import com.sura.reclamaciones.utils.enums.PlanPolizaAutos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import net.serenitybdd.core.Serenity;
 
 public class Vehiculo {
   private String claseVehiculo;
@@ -55,6 +58,7 @@ public class Vehiculo {
     linea = datosVehiculos.get("linea");
     if ("RANDOM".equals(datosVehiculos.get("placa"))) {
       placa = Utilidades.generarPlacaAleatoria(4, 3);
+      Serenity.setSessionVariable(SESION_CC_NUMERO_PLACA).to(placa);
     } else {
       placa = datosVehiculos.get("placa");
     }
