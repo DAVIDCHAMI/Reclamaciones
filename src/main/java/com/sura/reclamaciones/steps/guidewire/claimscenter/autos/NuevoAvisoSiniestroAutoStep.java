@@ -212,8 +212,6 @@ public class NuevoAvisoSiniestroAutoStep {
 
     buscarPolizaPage.escribirPlaca(
         Serenity.getCurrentSession().get(SESION_CC_NUMERO_PLACA).toString());
-    // for (Vehiculo datoReclamacion : datosVehiculo) {
-    // }
 
     for (ReclamacionAuto dato : datosReclamacion) {
       seleccionarFecha(dato.getFechaSiniestro());
