@@ -76,12 +76,12 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     String strLineaReservaDos = "";
     realizarEsperaCarga();
     cmbLineaReserva.waitUntilClickable().click();
-    /* if (strLineaReserva.contains(CAMBIO_PLACA_PRIMA_PENDIENTE)) {
+    if (strLineaReserva.contains(CAMBIO_PLACA_PRIMA_PENDIENTE)) {
       strLineaReservaDos =
           strLineaReserva.replace(
               CAMBIO_PLACA_PRIMA_PENDIENTE,
               Serenity.getCurrentSession().get(SESION_CC_NUMERO_PLACA).toString());
-    } */
+    }
     seleccionarOpcionCombobox(strLineaReserva);
     Serenity.setSessionVariable(SESION_CC_LINEA_RESERVA.getValor()).to(strLineaReservaDos);
     realizarEsperaCarga();
