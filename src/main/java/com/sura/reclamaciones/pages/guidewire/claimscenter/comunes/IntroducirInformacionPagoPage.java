@@ -76,18 +76,21 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     String strLineaReservaDos = "";
     realizarEsperaCarga();
     cmbLineaReserva.waitUntilClickable().click();
-    /* if (strLineaReserva.contains(CAMBIO_PLACA_PRIMA_PENDIENTE)) {
+    if (strLineaReserva.contains(CAMBIO_PLACA_PRIMA_PENDIENTE)) {
       strLineaReservaDos =
           strLineaReserva.replace(
               CAMBIO_PLACA_PRIMA_PENDIENTE,
               Serenity.getCurrentSession().get(SESION_CC_NUMERO_PLACA).toString());
-    } */
-    seleccionarOpcionCombobox(strLineaReserva);
+    } else {
+      strLineaReservaDos = strLineaReserva;
+    }
+    seleccionarOpcionCombobox(strLineaReservaDos);
     Serenity.setSessionVariable(SESION_CC_LINEA_RESERVA.getValor()).to(strLineaReservaDos);
     realizarEsperaCarga();
   }
 
   public void seleccionarTipoPago(String strTipoPago) {
+    esperarCargaElemento();
     cmbTipoPago.waitUntilVisible().waitUntilClickable().click();
     seleccionarOpcionCombobox(strTipoPago);
     Serenity.setSessionVariable(SESION_CC_TIPO_PAGO.getValor()).to(strTipoPago);

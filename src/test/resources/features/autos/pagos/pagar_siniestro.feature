@@ -56,6 +56,7 @@ Característica: Realizar pago de un siniestro
       | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
 
+    @test1
   @regresion
   @pagoPrimaPendiente
   @claimsAuto
