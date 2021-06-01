@@ -211,7 +211,7 @@ public class GeneralPage extends PageObject {
 
   public void aceptarOpcion() {
     btnAceptar.waitUntilVisible();
-    btnAceptar.click();
+    btnAceptar.waitUntilClickable().click();
     realizarEsperaCarga();
   }
 
