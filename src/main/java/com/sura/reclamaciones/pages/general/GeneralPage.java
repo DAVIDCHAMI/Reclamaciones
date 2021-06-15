@@ -95,6 +95,7 @@ public class GeneralPage extends PageObject {
 
   public void seleccionarOpcionCombobox(String opcion) {
     lstOpcionesCombobox.waitUntilVisible().waitUntilClickable();
+    esperarCargaElemento();
     lstOpcionesCombobox
         .findElement(org.openqa.selenium.By.xpath("./li[contains(.,'" + opcion + "')]"))
         .click();

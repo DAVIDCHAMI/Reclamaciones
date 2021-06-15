@@ -92,6 +92,7 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   public void seleccionarTipoPago(String strTipoPago) {
     esperarCargaElemento();
     cmbTipoPago.waitUntilVisible().waitUntilClickable().click();
+    esperarCargaElemento();
     seleccionarOpcionCombobox(strTipoPago);
     Serenity.setSessionVariable(SESION_CC_TIPO_PAGO.getValor()).to(strTipoPago);
     realizarEsperaCarga();
