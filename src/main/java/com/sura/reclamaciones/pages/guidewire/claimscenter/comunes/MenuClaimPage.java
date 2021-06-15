@@ -101,6 +101,7 @@ public class MenuClaimPage extends GeneralPage {
   }
 
   public void seleccionarBotonAcciones() {
+    esperarCargaElemento();
     btnAcciones.waitUntilVisible().waitUntilClickable().click();
   }
 }

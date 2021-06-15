@@ -41,4 +41,4 @@ Característica: Crear un recupero de un siniestro
 
     Ejemplos:
       | Línea de Reserva                | Tipo de pago | Beneficiario del pago                 | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   | Código de retención recupero |
-      | (2) 1ª parteVehículo            | Parcial      | CARLOS ARTURO CEBALLOS NUÑEZ CQLII    | Caja Sura       | No                 | Perdida total Daños | 0099                         |
+      | (2) 1ª parteVehículo            | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII    | Caja Sura       | No                 | Perdida total Daños | 0099                         |

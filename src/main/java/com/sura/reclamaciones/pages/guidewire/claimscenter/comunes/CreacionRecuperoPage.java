@@ -61,6 +61,7 @@ public class CreacionRecuperoPage extends GeneralPage {
   public void seleccionarPagador(String pagador) {
     txtPagador.waitUntilClickable();
     txtPagador.click();
+    esperarCargaElemento();
     seleccionarOpcionCombobox(pagador);
     realizarEsperaCarga();
   }
