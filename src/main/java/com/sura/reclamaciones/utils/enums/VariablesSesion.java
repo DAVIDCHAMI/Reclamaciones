@@ -21,7 +21,8 @@ public enum VariablesSesion {
   SESION_CC_VALOR_RESERVA("valorReserva"),
   SESION_CC_VALOR_RESERVA_CONSTITUCION("valorReservaConstitución"),
   SESION_CC_NUMERO_PLACA("numeroPlaca"),
-  SESION_PC_NUMERO_POLIZA("numeroPoliza");
+  SESION_PC_NUMERO_POLIZA("numeroPoliza"),
+  SESION_CC_NUMERO_PAGOS_INDIVIDUALES("NumeroPagosIndividuales");
 
   private String valor;
 

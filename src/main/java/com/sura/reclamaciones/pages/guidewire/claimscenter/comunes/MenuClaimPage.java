@@ -24,6 +24,9 @@ public class MenuClaimPage extends GeneralPage {
           ".//div[contains(@id,'ext-gen') and @class='x-panel x-layer x-panel-default x-menu x-border-box']")
   private WebElementFacade mnuSegundoNivelEscritorio;
 
+  @FindBy(xpath = "//input[@id='QuickJump-inputEl']")
+  private WebElementFacade txtComandoPolicy;
+
   @FindBy(xpath = " //div[@id='westPanel-innerCt']")
   private WebElementFacade mnuLateralPrimerNivel;
 
@@ -37,6 +40,29 @@ public class MenuClaimPage extends GeneralPage {
       xpath =
           "//table[@class='x-columnmenu-table']//td//a[contains(@id, 'Claim:ClaimMenuActions')]")
   private List<WebElementFacade> mnuPanelOpcionesPrimerNivel;
+
+  @FindBy(xpath = "//span[contains(@class,'x-menu-item-text')][contains(text(),'")
+  private WebElementFacade opcionMenuAcciones;
+
+  @FindBy(
+      id =
+          "Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:NewExposureMenuItemSet_ByCoverage:0:item-textEl")
+  private WebElementFacade mnuNuevaExposicion;
+
+  @FindBy(
+      id =
+          "Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:NewExposureMenuItemSet_ByCoverage")
+  private WebElementFacade mnuExposicion;
+
+  @FindBy(
+      xpath =
+          ".//div[@class='x-panel x-layer x-panel-default x-menu x-border-box x-vertical-scroller x-panel-vertical-scroller x-panel-default-vertical-scroller']")
+  WebElementFacade mnuReclamacion;
+
+  @FindBy(
+      id =
+          "Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:ClaimMenuActions_NewTransaction_CheckSet-textEl")
+  WebElementFacade lblPagos;
 
   public MenuClaimPage(WebDriver wDriver) {
     super(wDriver);

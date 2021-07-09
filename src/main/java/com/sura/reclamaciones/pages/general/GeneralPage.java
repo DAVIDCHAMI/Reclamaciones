@@ -233,6 +233,57 @@ public class GeneralPage extends PageObject {
         .collect(Collectors.toList());
   }
 
+  public List<WebElement> obtenerElementoTablaDatoDesconocidoPagoMasivo(
+      WebElementFacade elemento, int posicionFila) {
+    esperarCargaElemento();
+    List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
+    int prueba = cabeceraTabla.size();
+    esperarCargaElemento();
+    int posicionDatoDevolver = 2;
+    List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
+    return elementoEncontrado
+        .stream()
+        .map(
+            fila ->
+                fila.findElement(
+                    By.xpath(String.format("./td/div/a[contains(@id, 'InvoiceNumber')]"))))
+        .collect(Collectors.toList());
+  }
+
+  public List<WebElement> obtenerElementoTablaDatoDesconocidoDatosFinanciaero(
+      WebElementFacade elemento) {
+    esperarCargaElemento();
+    List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
+    int prueba = cabeceraTabla.size();
+    esperarCargaElemento();
+    int posicionDatoDevolver = 2;
+    List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
+    return elementoEncontrado
+        .stream()
+        .map(
+            fila ->
+                fila.findElement(
+                    By.xpath(String.format("./td/div/a[contains(@id, 'CheckNumber')]"))))
+        .collect(Collectors.toList());
+  }
+
+  public List<WebElement> obtenerElementoTablaDatoDesconocidoDatosFinanciaeroPagoMasivo(
+      WebElementFacade elemento) {
+    esperarCargaElemento();
+    List<String> cabeceraTabla = obtenerCabecerasTabla(elemento, CABECERAS_CC);
+    int prueba = cabeceraTabla.size();
+    esperarCargaElemento();
+    int posicionDatoDevolver = 2;
+    List<WebElement> elementoEncontrado = obtenerFilasTabla(elemento, REGISTROS_CC);
+    return elementoEncontrado
+        .stream()
+        .map(
+            fila ->
+                fila.findElement(
+                    By.xpath(String.format("./td/div/a[contains(@id, 'BulkInvoice')]"))))
+        .collect(Collectors.toList());
+  }
+
   public void seleccionarTipoTransaccion(String tipoTransaccion) {
     txtTransacciones.waitUntilClickable().click();
     seleccionarOpcionCombobox(tipoTransaccion);

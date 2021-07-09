@@ -6,6 +6,7 @@ import static com.sura.reclamaciones.utils.enums.Constantes.PLACA;
 import static com.sura.reclamaciones.utils.enums.Constantes.RECLAMANTE_CONDUCTOR_AFECTADO;
 import static com.sura.reclamaciones.utils.enums.Constantes.VALOR_CERO;
 
+import com.sura.reclamaciones.models.CodigoFasecolda;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.Vehiculo;
 import com.sura.reclamaciones.pages.guidewire.claimscenter.autos.CreacionServicioPage;
@@ -31,11 +32,11 @@ public class ExposicionVehicularManualStep {
 
   @Page NuevoIncidenteVehicularPage nuevoIncidenteVehicularPage;
 
+  @Page CalculadoraCodigoFasecoldaPage calculadoraCodigoFasecoldaPage;
+
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
   @Page CreacionServicioPage crearServicioPage;
-
-  @Page CalculadoraCodigoFasecoldaPage calculadoraCodigoFasecoldaPage;
 
   @Step
   public void consultarPlacaAsegurado() {

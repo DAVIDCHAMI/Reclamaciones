@@ -5,8 +5,8 @@ Característica: Realizar un pago masivo a un proveedor
   Quiero efectuar uno o varios pagos a un mismo proveedor
   Para pagar al proveedor del taller los presupuestos y/o reparaciones realizadas al beneficiario o al tercero involucrado
 
-  Antecedentes: Crear poliza
-    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
+#  Antecedentes: Crear poliza
+#    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
   @pagoMasivoProveedor
   @claimsEmpresarialSuperUsuario
@@ -19,4 +19,4 @@ Característica: Realizar un pago masivo a un proveedor
 
     Ejemplos:
       | Tipo de contacto | Proveedor  | Tipo de moneda | Método de pago |Número de vehículos involucrados del tercero en el siniestro|Coberturas de la póliza          |
-      | Empresa          | ANDAR S.A. | COP            | Pago por banco |1                                                        |Daños al carro y daños a terceros|
+      | Empresa          | AGENCIAUTO | COP            | Pago por banco |1                                                           |Daños al carro y daños a terceros|
