@@ -18,7 +18,6 @@ public class CodigoFasecolda {
     asignarDatos(datosCodigoFasecolda);
   }
 
-
   public CodigoFasecolda(Map<String, String> datosCodigoFasecolda) {
     this.claseVehiculo = datosCodigoFasecolda.get("claseVehiculo");
     this.modelo = datosCodigoFasecolda.get("modelo");
