@@ -6,18 +6,22 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import net.thucydides.core.steps.StepInterceptor;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ArchivoXLS {
 
   private static XSSFSheet hojaXls;
   private static XSSFWorkbook libroXls;
-  private static XSSFCell celda;
   private static XSSFRow fila;
+  private static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
+  private ArchivoXLS() {}
 
   public static void abrirArchivoXls(String rutaArchivoXls, String nombreHojaArchivoXls)
       throws Exception {
@@ -26,7 +30,7 @@ public class ArchivoXLS {
     hojaXls = libroXls.getSheet(nombreHojaArchivoXls);
   }
 
-  public static void setCellData(int RowNum, int ColNum, String valorObtenido) throws Exception {
+  public static void setCellData(int rowNum, int colNum, String valorObtenido) {
     try {
       boolean valorCorrecto =
           valorObtenido.matches("^(?:3[01]|[12][0-9]|0?[1-9])([\\-/.])(0?[1-9]|1[1-2])\\1\\d{4}$");
@@ -34,23 +38,22 @@ public class ArchivoXLS {
         Date date1 = new SimpleDateFormat("dd/mm/yyyy").parse(valorObtenido);
         CellStyle cellStyle = libroXls.createCellStyle();
         cellStyle.setDataFormat(libroXls.createDataFormat().getFormat("dd/mm/yyyy"));
-        hojaXls.getRow(RowNum).createCell(ColNum).setCellValue(date1);
-        hojaXls.getRow(RowNum).getCell(ColNum).setCellStyle(cellStyle);
+        hojaXls.getRow(rowNum).createCell(colNum).setCellValue(date1);
+        hojaXls.getRow(rowNum).getCell(colNum).setCellStyle(cellStyle);
       } else {
-        hojaXls.getRow(RowNum).createCell(ColNum).setCellValue(valorObtenido);
-        hojaXls.getRow(RowNum).getCell(ColNum).setCellStyle(hojaXls.getColumnStyle(ColNum));
+        hojaXls.getRow(rowNum).createCell(colNum).setCellValue(valorObtenido);
+        hojaXls.getRow(rowNum).getCell(colNum).setCellStyle(hojaXls.getColumnStyle(colNum));
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      LOGGER.info("setCellData error", e);
     }
   }
 
-  public static int contarFilas() throws Exception {
-    int NumFilas = hojaXls.getLastRowNum();
-    return NumFilas;
+  public static int contarFilas() {
+    return hojaXls.getLastRowNum();
   }
 
-  public static void removerFilaSinEncabezado() throws Exception {
+  public static void removerFilaSinEncabezado() {
     int numeroFilasLLenas = contarFilas();
     for (int fila = 1; fila <= numeroFilasLLenas; fila++) {
       hojaXls.removeRow(hojaXls.getRow(fila));
@@ -65,22 +68,22 @@ public class ArchivoXLS {
       while (i < lista2.size()) {
         for (String valorObtenido : lista2) {
           setCellData(fila.getRowNum(), i, valorObtenido);
-          Guardar(rutaArchivoXls);
+          guardar(rutaArchivoXls);
           i++;
         }
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      LOGGER.info("setCellData error", e);
     }
   }
 
-  public static void Guardar(String rutaArchivoXls) throws IOException {
+  public static void guardar(String rutaArchivoXls) throws IOException {
     try {
       FileOutputStream outputStream = new FileOutputStream(rutaArchivoXls);
       libroXls.write(outputStream);
       outputStream.close();
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      LOGGER.error(e.getMessage());
     }
   }
 }

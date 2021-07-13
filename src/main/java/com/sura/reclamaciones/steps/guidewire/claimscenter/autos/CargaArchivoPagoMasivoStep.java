@@ -34,7 +34,7 @@ public class CargaArchivoPagoMasivoStep {
       List<PagoSiniestro> datosPagoSiniestroPagoMasivo) {
     menuClaimPage.seleccionarOpcionMenuSegundoNivel(nombreOpcion, subItem);
     cargaArchivoPagoMasivoPage.generarFacturacionMasiva();
-    llenadoArchivoXLS.LlenarArchivoXls(
+    llenadoArchivoXLS.llenarArchivoXls(
         rutaArchivoPagoMasivo,
         datosExposicionPagoMasivo,
         datosReservaPagoMasivo,

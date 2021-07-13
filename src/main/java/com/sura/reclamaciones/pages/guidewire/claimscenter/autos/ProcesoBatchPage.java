@@ -14,10 +14,6 @@ import org.openqa.selenium.WebElement;
 
 public class ProcesoBatchPage extends GeneralPage {
 
-  public ProcesoBatchPage(WebDriver wdriver) {
-    super(wdriver);
-  }
-
   @FindBy(id = "QuickJump-inputEl")
   public WebElementFacade txtBuscarClaim;
 
@@ -30,9 +26,13 @@ public class ProcesoBatchPage extends GeneralPage {
   @FindBy(xpath = "//div[contains(@class, 'x-box-inner x-vertical-box-overflow-body')]")
   private List<WebElementFacade> mnuPanelOpcionesPrimerNivel;
 
+  public ProcesoBatchPage(WebDriver wdriver) {
+    super(wdriver);
+  }
+
   public void ejecutarBatch() {
-    String LETRA_T = "T";
-    String comando = Keys.chord(Keys.ALT, Keys.SHIFT, LETRA_T);
+    String letraT = "T";
+    String comando = Keys.chord(Keys.ALT, Keys.SHIFT, letraT);
     txtBuscarClaim.sendKeys(comando);
     realizarEsperaCarga();
   }

@@ -2,6 +2,7 @@ package com.sura.reclamaciones.utils;
 
 import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_PLACAS_VEHICULOS_INVOLUCRADOS;
+import static org.terracotta.modules.ehcache.ToolkitInstanceFactoryImpl.LOGGER;
 
 import com.sura.reclamaciones.models.Exposicion;
 import com.sura.reclamaciones.models.PagoSiniestro;
@@ -14,7 +15,7 @@ import net.serenitybdd.core.Serenity;
 
 public class LlenadoArchivoXLS {
 
-  public void LlenarArchivoXls(
+  public void llenarArchivoXls(
       String rutaCompleta,
       List<Exposicion> datosExposicionPagoMasivo,
       List<Reserva> datosReservaPagoMasivo,
@@ -22,7 +23,7 @@ public class LlenadoArchivoXLS {
     try {
       ArchivoXLS.abrirArchivoXls(rutaCompleta, "ITEMS");
       ArchivoXLS.removerFilaSinEncabezado();
-      ArchivoXLS.Guardar(rutaCompleta);
+      ArchivoXLS.guardar(rutaCompleta);
       String numeroSiniestro =
           (Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()).toString());
       String placasVehiculos =
@@ -82,7 +83,7 @@ public class LlenadoArchivoXLS {
         }
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      LOGGER.info("setCellData error", e);
     }
   }
 }
