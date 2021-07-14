@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import com.sura.reclamaciones.exceptions.ExceptionAbrirArchivoXls;
 import net.thucydides.core.steps.StepInterceptor;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -24,10 +26,16 @@ public class ArchivoXLS {
   private ArchivoXLS() {}
 
   public static void abrirArchivoXls(String rutaArchivoXls, String nombreHojaArchivoXls)
-      throws Exception {
-    FileInputStream archivoXls = new FileInputStream(rutaArchivoXls);
-    libroXls = new XSSFWorkbook(archivoXls);
-    hojaXls = libroXls.getSheet(nombreHojaArchivoXls);
+      throws ExceptionAbrirArchivoXls {
+  try {
+      FileInputStream archivoXls = new FileInputStream(rutaArchivoXls);
+      libroXls = new XSSFWorkbook(archivoXls);
+      hojaXls = libroXls.getSheet(nombreHojaArchivoXls);
+  } catch (IOException e) {
+
+      LOGGER.info("setCellData error", e);
+  }
+
   }
 
   public static void setCellData(int rowNum, int colNum, String valorObtenido) {
@@ -83,7 +91,7 @@ public class ArchivoXLS {
       libroXls.write(outputStream);
       outputStream.close();
     } catch (Exception e) {
-      LOGGER.error(e.getMessage());
+      LOGGER.error("setCellData error", e);
     }
   }
 }
