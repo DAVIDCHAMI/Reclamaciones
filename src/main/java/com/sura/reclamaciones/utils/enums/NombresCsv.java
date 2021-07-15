@@ -11,6 +11,7 @@ public enum NombresCsv {
   EXPEDICION_AUTOS("expedicion_autos"),
   PAGO_SINIESTRO("pago_siniestro"),
   PARAMETROS_DIRECCION_SINIESTRO("direccion_reclamacion"),
+  PAGO_MASIVO("pago_masivo"),
   PARAMETROS_EXPOSICION_AUTOMATICA("exposicion_automatica"),
   PARAMETROS_NAVEGACION_MENU_ACCIONES("navegacion_menu_acciones"),
   PARAMETROS_PERSONA("parametros_persona"),

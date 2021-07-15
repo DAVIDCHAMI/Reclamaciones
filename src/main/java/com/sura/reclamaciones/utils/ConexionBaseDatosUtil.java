@@ -24,7 +24,7 @@ public class ConexionBaseDatosUtil {
       Class.forName(driver).newInstance();
       conexion = DriverManager.getConnection(url, usuario, clave);
     } catch (SQLException | ReflectiveOperationException e) {
-      Utilidades.getLogger().info("No respondió la base de datos");
+      Utilidades.getLogger().info("No respondió la base de datos",e);
     }
     return conexion;
   }

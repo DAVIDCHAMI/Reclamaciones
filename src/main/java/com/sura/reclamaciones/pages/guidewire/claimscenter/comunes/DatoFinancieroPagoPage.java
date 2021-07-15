@@ -1,15 +1,24 @@
 package com.sura.reclamaciones.pages.guidewire.claimscenter.comunes;
 
 import static com.sura.reclamaciones.utils.enums.Constantes.*;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_PAGO_INDIVIDUAL;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS;
 
 import com.sura.reclamaciones.pages.general.GeneralPage;
 import com.sura.reclamaciones.utils.enums.Variables;
 import java.util.List;
+import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class DatoFinancieroPagoPage extends GeneralPage {
+
+  @FindBy(xpath = ".//div[@class='x-panel x-panel-default x-grid']")
+  private WebElementFacade tblPagoIndividual;
 
   public DatoFinancieroPagoPage(WebDriver wdriver) {
     super(wdriver);
@@ -70,5 +79,28 @@ public class DatoFinancieroPagoPage extends GeneralPage {
     }
     realizarEsperaCarga();
     return estadoTransaccionPantalla;
+  }
+
+  public void validarPagosIndividualesSiniestro() {
+    List<WebElement> numeroPagosIndividuales =
+        obtenerElementoTablaDatoDesconocidoDatosFinanciaero(tblPagoIndividual);
+    List<WebElement> numeroPagosMasivo =
+        obtenerElementoTablaDatoDesconocidoDatosFinanciaeroPagoMasivo(tblPagoIndividual);
+    String contadorPagoIndividual =
+        Serenity.getCurrentSession().get(SESION_CC_NUMERO_PAGO_INDIVIDUAL.getValor()).toString();
+    String numeroPagoIndividuales = String.valueOf(numeroPagosIndividuales.size());
+
+    for (int i = 0; i <= numeroPagosMasivo.size() - 1; i++) {
+      MatcherAssert.assertThat(
+          "El número del pago masivo generado no se encuentra en la consulta de pagos del siniestro",
+          (numeroPagosMasivo.get(i).getText().equals(contadorPagoIndividual)));
+    }
+
+    MatcherAssert.assertThat(
+        "El número del pago masivo generado no se encuentra en la consulta de pagos del siniestro",
+        (numeroPagoIndividuales.equals(
+            Serenity.getCurrentSession()
+                .get(SESION_CC_NUMERO_PLACAS_PARTES_IMPLICADAS.getValor())
+                .toString())));
   }
 }

@@ -31,11 +31,11 @@ public class ExposicionVehicularManualStep {
 
   @Page NuevoIncidenteVehicularPage nuevoIncidenteVehicularPage;
 
+  @Page CalculadoraCodigoFasecoldaPage calculadoraCodigoFasecoldaPage;
+
   @Page DetalleVehiculoPage detalleVehiculoPage;
 
   @Page CreacionServicioPage crearServicioPage;
-
-  @Page CalculadoraCodigoFasecoldaPage calculadoraCodigoFasecoldaPage;
 
   @Step
   public void consultarPlacaAsegurado() {

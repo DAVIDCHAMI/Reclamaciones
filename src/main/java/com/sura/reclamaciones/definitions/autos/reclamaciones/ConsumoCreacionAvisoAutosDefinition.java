@@ -7,11 +7,14 @@ import static com.sura.reclamaciones.utils.enums.Filtros.PERSONA_LESIONADA;
 import static com.sura.reclamaciones.utils.enums.NombresCsv.PARAMETROS_RECLAMACION_PERSONA_AUTO;
 import static com.sura.reclamaciones.utils.enums.NombresCsv.PARAMETROS_SINIESTRO_AUTOS;
 import static com.sura.reclamaciones.utils.enums.NombresCsv.PARAMETROS_VEHICULO;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_SINIESTRO;
 import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 
 import com.sura.reclamaciones.models.PersonaReclamacion;
 import com.sura.reclamaciones.models.ReclamacionAuto;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.comunes.GenericStep;
+import com.sura.reclamaciones.steps.guidewire.claimscenter.comunes.MenuClaimsStep;
 import com.sura.reclamaciones.steps.maca.autos.ConsumoServicioCreacionAvisoSiniestroAutoStep;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -22,10 +25,13 @@ import net.thucydides.core.annotations.Steps;
 
 public class ConsumoCreacionAvisoAutosDefinition {
 
-  ReclamacionAuto parametroAviso;
-  PersonaReclamacion parametroPersonaReclamacionAuto;
-  PersonaReclamacion parametroPersonaConductorAuto;
-  Vehiculo reclamacionVehiculo;
+  ReclamacionAuto parametroAviso = new ReclamacionAuto();
+  PersonaReclamacion parametroPersonaReclamacionAuto = new PersonaReclamacion();
+  PersonaReclamacion parametroPersonaConductorAuto = new PersonaReclamacion();
+  Vehiculo reclamacionVehiculo = new Vehiculo();
+  GenericStep genericStep = new GenericStep();
+
+  @Steps MenuClaimsStep menuClaimsStep;
 
   @Steps ConsumoServicioCreacionAvisoSiniestroAutoStep creacionAvisoSiniestroAutoStep;
 
@@ -57,6 +63,8 @@ public class ConsumoCreacionAvisoAutosDefinition {
         parametroPersonaReclamacionAuto.getLstPersonaReclamacion(),
         parametroPersonaConductorAuto.getLstPersonaReclamacion(),
         reclamacionVehiculo.getLstVehiculos());
+    menuClaimsStep.consultarNumeroReclamacion(
+        Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()));
   }
 
   @Entonces("^se le brindará al reclamante el número de reclamación$")
