@@ -113,7 +113,7 @@ test {
 }
 
 wrapper {
-    gradleVersion = '4.9'
+    gradleVersion = '5.5'
 }
 
 task icTest(type: Test) {

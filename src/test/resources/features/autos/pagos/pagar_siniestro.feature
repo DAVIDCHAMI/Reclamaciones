@@ -56,7 +56,6 @@ Característica: Realizar pago de un siniestro
       | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
 
-  @regresion
   @pagoPrimaPendiente
   @claimsAuto
   Esquema del escenario: Crear pago a un siniestro con prima pendiente.
