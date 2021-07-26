@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.runners.uat.claimcenter.lote2empresariales;
+package com.sura.reclamaciones.runners.uat.reclamaciones.lote2empresariales;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
@@ -8,5 +8,5 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/features/empresariales/pagos/pagar_siniestro.feature",
     glue = {"com.sura.reclamaciones.definitions"},
-    tags = {"@riesgoConsultableEmpresarial"})
-public class PagoRiesgoConsultableEmpresarialesRunner {}
+    tags = {"@pagoLineaReservaEmpresariales"})
+public class PagoLineaReservaEmpresarialesRunner {}

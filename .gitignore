@@ -12,7 +12,6 @@ classes/
 
 # Gradle
 log/
-gradle/
 target/
 hooks/pre-push
 
