@@ -19,7 +19,6 @@ hooks/pre-push
 build/
 out/
 *.class
-*.jar
 *.war
 *.ear
 
