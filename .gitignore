@@ -12,7 +12,6 @@ classes/
 
 # Gradle
 log/
-gradle/
 target/
 hooks/pre-push
 
@@ -20,7 +19,6 @@ hooks/pre-push
 build/
 out/
 *.class
-*.jar
 *.war
 *.ear
 
