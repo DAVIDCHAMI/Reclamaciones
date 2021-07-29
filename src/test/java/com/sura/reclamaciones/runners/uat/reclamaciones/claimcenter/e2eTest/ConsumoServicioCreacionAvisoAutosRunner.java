@@ -1,4 +1,4 @@
-package com.sura.reclamaciones.runners.uat.reclamaciones.claimcenter.integrationTest;
+package com.sura.reclamaciones.runners.uat.reclamaciones.claimcenter.e2eTest;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
