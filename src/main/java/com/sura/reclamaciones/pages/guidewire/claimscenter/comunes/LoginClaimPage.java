@@ -21,10 +21,10 @@ public class LoginClaimPage extends GeneralPage {
   @FindBy(xpath = "//li[@class='ui-state-default ui-corner-top']/a")
   private WebElementFacade btnEmpleado;
 
-  @FindBy(id = "suranetName")
+  @FindBy(id = "ctl00_ContentMain_txtUser1")
   private WebElementFacade txtusuario;
 
-  @FindBy(id = "suranetPassword")
+  @FindBy(id = "ctl00_ContentMain_txtPassword1")
   private WebElementFacade txtcontrasena;
 
   @FindBy(id = "session-enterprise")
@@ -50,7 +50,6 @@ public class LoginClaimPage extends GeneralPage {
   }
 
   public void iniciarSesionLAB(String usuario, String contrasena) {
-    btnEmpleado.click();
     txtusuario.type(usuario);
     txtcontrasena.type(contrasena).sendKeys(Keys.ENTER);
   }
