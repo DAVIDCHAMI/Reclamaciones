@@ -150,7 +150,7 @@ task unitTest(type: Test) {
     reports.html.destination = file("${reporting.baseDir}/${name}")
 }
 
-task installCerts(type: Exec) {
+task installCertsLinux(type:Exec){
     def java_home = System.getenv("JAVA_HOME")
-    commandLine "\"${java_home}\\bin\\keytool.exe\"", '-importcert', '-v', '-noprompt', '-trustcacerts', '-storepass', 'changeit', '-keystore', "${java_home}\\jre\\lib\\security\\cacerts", '-file', "certs\\artifactory.cer", '-alias', "artifactory"
+    commandLine "${java_home}/bin/keytool", '-importcert', '-v', '-noprompt', '-trustcacerts', '-storepass', 'changeit', '-keystore', "${java_home}/jre/lib/security/cacerts", '-file', "certs/artifactory.cer", '-alias', "artifactory"
 }
