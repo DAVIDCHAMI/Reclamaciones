@@ -123,7 +123,7 @@ public final class Utilidades {
   }
 
   public static String generarAleatoriosNumeros(int longitudSerie) {
-    String custom = "4444444444";
+    String custom = "5555555555";
     StringBuilder serieNros = new StringBuilder();
     for (int i = 1; i <= longitudSerie; i++) {
       serieNros.append(aleatorio.nextInt(10));
