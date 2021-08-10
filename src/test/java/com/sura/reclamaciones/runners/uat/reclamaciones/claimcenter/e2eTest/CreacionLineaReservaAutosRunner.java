@@ -8,5 +8,5 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/features/autos/reservas/crear_linea_reserva.feature",
     glue = {"com.sura.reclamaciones.definitions"},
-    tags = {"@claimsAuto"})
+    tags = {"@testUno"})
 public class CreacionLineaReservaAutosRunner {}

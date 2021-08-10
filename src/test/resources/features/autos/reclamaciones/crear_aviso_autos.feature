@@ -47,7 +47,7 @@ Característica: Generación avisos de siniestros autos
       |Colisión con vehículo|subrogación|
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
-
+  @testUno
   @claimsAuto
   @pruebaRegresion
   Escenario: generación de reclamación de tipo Solo Responsabilidad Civil
@@ -61,6 +61,7 @@ Característica: Generación avisos de siniestros autos
     Entonces se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva
 
 
+  @testUno
   @avisoServicioMaca
   @claimsAuto
   Escenario: Consumo servicio maca, para la creación de Siniestro autos
