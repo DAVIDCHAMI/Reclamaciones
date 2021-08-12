@@ -7,7 +7,7 @@ Característica: Realizar pago de un siniestro
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 60 de retroactividad
 
-
+  @testUno
   @pagoLineaReservaAutos1
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos uno
@@ -23,7 +23,7 @@ Característica: Realizar pago de un siniestro
       | Línea de Reserva | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
       | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII| Caja Sura       | No                 | Perdida total Daños |
 
-
+  @testUno
   @pagoPerdidaTotalAutos
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos
@@ -39,7 +39,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva | Tipo de pago | Beneficiario de pago               | Método de pago | Solo Sura | Cobertura           |
       | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No        | Perdida total Daños |
 
-  @testUno
+
   @chequeMultiplesPagosAutos
   @claimsAuto
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
@@ -55,7 +55,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |Número de vehículos involucrados del tercero en el siniestro|
       | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
-  @testUno
+
   @pagoPrimaPendiente
   @claimsAuto
   Esquema del escenario: Crear pago a un siniestro con prima pendiente.
