@@ -8,7 +8,7 @@ Característica: Anulación de pagos
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
-  @anulacionPagoAutos1
+  @anulacionPagoAutos
   @claimsEmpresarialSuperUsuario
   Esquema del escenario: anulación de un pago de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
