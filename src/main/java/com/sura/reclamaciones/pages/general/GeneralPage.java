@@ -315,6 +315,7 @@ public class GeneralPage extends PageObject {
 
   public void continuarSiguientePantalla() {
     btnSiguiente.waitUntilClickable();
+    realizarEsperaCarga();
     btnSiguiente.click();
     realizarEsperaCarga();
   }
