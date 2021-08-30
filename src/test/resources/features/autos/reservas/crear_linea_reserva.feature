@@ -9,7 +9,7 @@ Característica: Constitución de una línea de reserva de un siniestro
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
   @regresion
-  @claimsAuto
+  @claimsAut
   Esquema del escenario: creación de nueva línea de reserva por honorarios en una reclamación de autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
