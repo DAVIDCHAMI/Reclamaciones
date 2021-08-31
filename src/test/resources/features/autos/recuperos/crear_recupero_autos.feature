@@ -9,7 +9,7 @@ Característica: Crear un recupero de un siniestro
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
 
-  @claimsAut
+  @claimsAuto
   Esquema del escenario: crear recupero de subrogación o ingreso (otro)
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
@@ -26,7 +26,7 @@ Característica: Crear un recupero de un siniestro
       | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR                   | Pago por banco  | No                 | RC Lesión a Persona | 0099                         |
 
 
-  @claimsAut
+  @claimsAuto
   Esquema del escenario: crear recupero de subrogación o ingreso Dos (otro)
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>

@@ -8,7 +8,7 @@ Característica: Realizar pago de un siniestro
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 60 de retroactividad
 
   @pagoLineaReservaAutos1
-  @claimsAut
+  @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos uno
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo y Cobertura>
@@ -23,7 +23,7 @@ Característica: Realizar pago de un siniestro
       | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII| Caja Sura       | No                 | Perdida total Daños |
 
   @pagoPerdidaTotalAutos
-  @claimsAut
+  @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
@@ -39,7 +39,7 @@ Característica: Realizar pago de un siniestro
 
 
   @chequeMultiplesPagosAutos
-  @claimsAut
+  @claimsAuto
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>

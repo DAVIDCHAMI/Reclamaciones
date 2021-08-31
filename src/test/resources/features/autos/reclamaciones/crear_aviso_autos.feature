@@ -8,7 +8,7 @@ Característica: Generación avisos de siniestros autos
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
-  @claimsAut
+  @claimsAuto
   @pruebaRegresion
   Escenario: generación de reclamación de tipo Responsabilidad Civil
     Dado que se tiene una póliza con las coberturas
@@ -21,7 +21,7 @@ Característica: Generación avisos de siniestros autos
       |Colisión con vehículo|responsabilidad Civil|peaton daños persona|conductor daños vehículo|
     Entonces se obtendrán exposiciones automáticas y cada una con su respectiva reserva, según la culpabilidad marcada Responsabilidad Civil
 
-  @claimsAut
+  @claimsAuto
   @pruebaRegresion
   Escenario: generación de reclamación de tipo Archivo
     Dado que se tiene una póliza con las coberturas para Daños
@@ -33,7 +33,7 @@ Característica: Generación avisos de siniestros autos
       |Amit, Disturbios o desorden civil|archivo|
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
-  @claimsAut
+  @claimsAuto
   @pruebaRegresion
   Escenario: generación de reclamación de tipo Subrogación
     Dado que se tiene una póliza con las coberturas para Subrogación
@@ -45,7 +45,7 @@ Característica: Generación avisos de siniestros autos
       |Colisión con vehículo|subrogación|
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
-  @claimsAut
+  @claimsAuto
   @pruebaRegresion
   Escenario: generación de reclamación de tipo Solo Responsabilidad Civil
     Dado que se tiene una póliza con las coberturas para Solo Responsabilidad Civil
@@ -58,8 +58,8 @@ Característica: Generación avisos de siniestros autos
     Entonces se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva
 
 
-  @avisoServicioMac
-  @claimsAut
+  @avisoServicio
+  @claimsAuto
   Escenario: Consumo servicio maca, para la creación de Siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Cuando se genera un aviso que afecta la cobertura de Responsabilidad civil
