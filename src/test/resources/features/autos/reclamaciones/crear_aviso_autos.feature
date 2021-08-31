@@ -58,7 +58,7 @@ Característica: Generación avisos de siniestros autos
     Entonces se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva
 
 
-  @avisoServicioMaca
+  @avisoServicio
   @claimsAuto
   Escenario: Consumo servicio maca, para la creación de Siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
