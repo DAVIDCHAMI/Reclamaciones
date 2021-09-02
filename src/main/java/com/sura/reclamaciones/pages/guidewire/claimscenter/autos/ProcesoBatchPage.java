@@ -50,6 +50,7 @@ public class ProcesoBatchPage extends GeneralPage {
         tblNombreProcesoBatch.waitUntilPresent();
         esperarCargaElemento();
         tblNombreProcesoBatch.findBy("//tr[@data-recordindex='" + i + "']//a").click();
+        esperarCargaElemento();
         realizarEsperaCarga();
         break;
       }
