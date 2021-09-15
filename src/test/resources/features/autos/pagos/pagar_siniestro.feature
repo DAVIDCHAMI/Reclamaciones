@@ -5,7 +5,7 @@ Característica: Realizar pago de un siniestro
   Para cancelar al asegurado, tercero y/o proveedor involucrados en el siniestro.
 
   Antecedentes: Crear poliza
-    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 60 de retroactividad
+    Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
   @pagoLineaReservaAutos1
   @claimsAuto

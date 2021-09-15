@@ -88,6 +88,7 @@ public class MenuClaimPage extends GeneralPage {
 
   public void seleccionarOpcionMenuLateralPrimerNivel(String nombreOpcion) {
     realizarTiempoEsperaCarga();
+    esperarCargaElemento();
     mnuLateralPrimerNivel
         .findElement(
             By.xpath(
@@ -95,6 +96,7 @@ public class MenuClaimPage extends GeneralPage {
                     "//span[contains(@class,'x-tree-node-text')][contains(text(),'%s')]",
                     nombreOpcion)))
         .click();
+    esperarCargaElemento();
     realizarEsperaCarga();
   }
 
