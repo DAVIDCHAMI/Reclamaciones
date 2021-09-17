@@ -75,7 +75,7 @@ public class ServicioExpedicionAutosIndividualStep {
   @Step("Verificar creación correcta de la póliza")
   public void verificarCreacionPoliza() {
     MatcherAssert.assertThat(
-        "No se obtuvo el número de póliza correctamente",
+        "No se obtuvo el número de póliza correctamente" + responseServicioExpedicion.getBody().getResult(),
         responseServicioExpedicion.getBody().getResult().getQuotingData().getPolicyNumber()
             != null);
   }
