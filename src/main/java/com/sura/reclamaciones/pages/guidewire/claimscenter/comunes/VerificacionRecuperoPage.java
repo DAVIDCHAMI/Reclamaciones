@@ -24,6 +24,7 @@ public class VerificacionRecuperoPage extends GeneralPage {
   }
 
   public boolean verificarRecupero(String datoValidar, List<WebElement> lstFilaRecupero) {
+      realizarEsperaCarga();
     for (WebElement cantidadDatosListaRecupero : lstFilaRecupero) {
       if (cantidadDatosListaRecupero.getText().equals(datoValidar)) {
         return true;
