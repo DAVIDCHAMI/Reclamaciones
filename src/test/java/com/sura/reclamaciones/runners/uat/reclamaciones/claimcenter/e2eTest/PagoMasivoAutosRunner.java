@@ -8,5 +8,5 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/features/autos/pagos/crear_pago_masivo.feature",
     glue = {"com.sura.reclamaciones.definitions"},
-    tags = {"@pagoMasivoProveedor"})
+    tags = {"@pagoMasivoProveedor1"})
 public class PagoMasivoAutosRunner {}

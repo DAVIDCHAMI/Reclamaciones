@@ -37,7 +37,6 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva | Tipo de pago | Beneficiario de pago               | Método de pago | Solo Sura | Cobertura           |
       | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No        | Perdida total Daños |
 
-
     @prueba
   @chequeMultiplesPagosAutos
   @claimsAuto

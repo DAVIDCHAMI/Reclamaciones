@@ -50,6 +50,10 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   @FindBy(xpath = "//textarea")
   private WebElementFacade txtComentarioPago;
 
+
+    @FindBy(id = "simplecombo-1510-inputEl")
+    private WebElementFacade txtCodigoRetencion;
+
   @FindBy(
       xpath =
           "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]")
@@ -90,12 +94,10 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   }
 
   public void seleccionarTipoPago(String strTipoPago) {
-    esperarCargaElemento();
     cmbTipoPago.waitUntilVisible().waitUntilClickable().click();
     esperarCargaElemento();
     seleccionarOpcionCombobox(strTipoPago);
     Serenity.setSessionVariable(SESION_CC_TIPO_PAGO.getValor()).to(strTipoPago);
-    realizarEsperaCarga();
   }
 
   public void ingresarComentario(String strComentario) {
@@ -152,13 +154,13 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     List<WebElement> elementoEncontrado =
         obtenerElementoTablaDatoDesconocidoPago(
             tblElementoLinea, CODIGO_RETENCION.getValor(), posicion);
+    realizarEsperaCarga();
     elementoEncontrado.forEach(
         elemento -> {
           elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
-          lstCodigoRetencion.waitUntilVisible();
-          lstCodigoRetencion
-              .findBy(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
-              .click();
+          //lstCodigoRetencion.waitUntilVisible();
+            txtCodigoRetencion.click();
+          lstCodigoRetencion.findBy(xpath("//li[contains(.,'" + strCodigoRetencion + "')]")).waitUntilEnabled().click();
         });
     realizarEsperaCarga();
   }

@@ -8,7 +8,6 @@ Característica: Anulacion de recuperos
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
-  @prueba
   @Autos
   @claimsAuto
   Esquema del escenario: anulación de un recupero de autos.

@@ -293,13 +293,11 @@ public class GeneralPage extends PageObject {
 
   public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
     String auxiliarReemplazo = "";
-    realizarEsperaCarga();
     mnuDinamico
         .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
         .click();
     auxiliarReemplazo = lstDinamico.replace(COMODIN.getValor(), ubicacion);
     $(auxiliarReemplazo).click();
-    realizarEsperaCarga();
   }
 
   public void irUltimaPagina() {

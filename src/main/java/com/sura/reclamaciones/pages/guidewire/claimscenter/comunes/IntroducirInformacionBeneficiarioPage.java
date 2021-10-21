@@ -41,7 +41,6 @@ public class IntroducirInformacionBeneficiarioPage extends GeneralPage {
 
   public void seleccionarNombreBeneficiario(String strNombreBeneficiario) {
     cmbNombreBeneficiario.click();
-    esperarCargaElemento();
     seleccionarOpcionCombobox(strNombreBeneficiario);
     realizarEsperaCarga();
   }
