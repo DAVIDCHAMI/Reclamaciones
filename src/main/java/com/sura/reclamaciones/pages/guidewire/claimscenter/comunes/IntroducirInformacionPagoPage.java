@@ -50,9 +50,8 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
   @FindBy(xpath = "//textarea")
   private WebElementFacade txtComentarioPago;
 
-
-    @FindBy(id = "simplecombo-1510-inputEl")
-    private WebElementFacade txtCodigoRetencion;
+  @FindBy(id = "simplecombo-1510-inputEl")
+  private WebElementFacade txtCodigoRetencion;
 
   @FindBy(
       xpath =
@@ -158,9 +157,11 @@ public class IntroducirInformacionPagoPage extends GeneralPage {
     elementoEncontrado.forEach(
         elemento -> {
           elementoEncontrado.get(Integer.parseInt(VALOR_CERO.getValor())).click();
-          //lstCodigoRetencion.waitUntilVisible();
-            txtCodigoRetencion.click();
-          lstCodigoRetencion.findBy(xpath("//li[contains(.,'" + strCodigoRetencion + "')]")).waitUntilEnabled().click();
+          txtCodigoRetencion.click();
+          lstCodigoRetencion
+              .findBy(xpath("//li[contains(.,'" + strCodigoRetencion + "')]"))
+              .waitUntilEnabled()
+              .click();
         });
     realizarEsperaCarga();
   }

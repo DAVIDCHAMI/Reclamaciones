@@ -22,7 +22,6 @@ public class LlenadoArchivoXLS {
       List<PagoSiniestro> datosPagoSiniestroPagoMasivo) {
     try {
       ArchivoXLS.abrirArchivoXls(rutaCompleta, "ITEMS");
-      ArchivoXLS.removerFilaSinEncabezado();
       ArchivoXLS.guardar(rutaCompleta);
       String numeroSiniestro =
           (Serenity.sessionVariableCalled(SESION_CC_NUMERO_SINIESTRO.getValor()).toString());
@@ -39,6 +38,7 @@ public class LlenadoArchivoXLS {
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
       String fechaFormateada = formatter.format(fecha);
       List<String> listaInformacion = new ArrayList(26);
+      int aux = 1;
       for (int i = 0; i < placasVehiculosInvolucradosSiniestro.size(); i++) {
         LocalDateTime numeroFactura = LocalDateTime.now();
         DateTimeFormatter formatear = DateTimeFormatter.ofPattern("ddMMyyyyHHmmssSSS");
@@ -75,8 +75,8 @@ public class LlenadoArchivoXLS {
         listaInformacion.add(23, datosPagoSiniestroPagoMasivo.get(j).getDescripcion());
         listaInformacion.add(24, datosPagoSiniestroPagoMasivo.get(j).getCondicionPago());
         listaInformacion.add(25, datosPagoSiniestroPagoMasivo.get(j).getCodigoCondicionTipoPago());
-
-        ArchivoXLS.escribirExcelXfila(listaInformacion, rutaCompleta);
+        ArchivoXLS.escribirExcelXfila(listaInformacion, rutaCompleta, aux);
+        aux = aux + 1;
         for (int k = listaInformacion.size() - 1; k >= 0; k--) {
 
           listaInformacion.remove(k);

@@ -102,6 +102,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   }
 
   public void seleccionarLugarAtencion(String lugarAtencion) {
+    realizarEsperaCarga();
     cmbLugar.clear();
     cmbLugar.typeAndTab(lugarAtencion);
     realizarEsperaCarga();
