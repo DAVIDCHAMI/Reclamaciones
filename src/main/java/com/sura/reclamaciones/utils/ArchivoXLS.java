@@ -40,15 +40,13 @@ public class ArchivoXLS {
     try {
       boolean valorCorrecto =
           valorObtenido.matches("^(?:3[01]|[12][0-9]|0?[1-9])([\\-/.])(0?[1-9]|1[1-2])\\1\\d{4}$");
+
       if (valorCorrecto) {
         Date date1 = new SimpleDateFormat("dd/mm/yyyy").parse(valorObtenido);
         CellStyle cellStyle = libroXls.createCellStyle();
         cellStyle.setDataFormat(libroXls.createDataFormat().getFormat("dd/mm/yyyy"));
-        hojaXls.getRow(rowNum).createCell(colNum).setCellValue(date1);
-        hojaXls.getRow(rowNum).getCell(colNum).setCellStyle(cellStyle);
       } else {
-        hojaXls.getRow(rowNum).createCell(colNum).setCellValue(valorObtenido);
-        hojaXls.getRow(rowNum).getCell(colNum).setCellStyle(hojaXls.getColumnStyle(colNum));
+        hojaXls.getRow(rowNum).getCell(colNum).setCellValue(valorObtenido);
       }
     } catch (Exception e) {
       LOGGER.info("setCellData error", e);
@@ -66,15 +64,16 @@ public class ArchivoXLS {
     }
   }
 
-  public static void escribirExcelXfila(List<String> lista2, String rutaArchivoXls) {
+  public static void escribirExcelXfila(List<String> lista2, String rutaArchivoXls, int aux) {
     try {
-      int numeroFilaLLenas = contarFilas();
-      fila = hojaXls.createRow(numeroFilaLLenas + 1);
+      fila = hojaXls.getRow(aux);
       int i = 0;
       while (i < lista2.size()) {
         for (String valorObtenido : lista2) {
-          setCellData(fila.getRowNum(), i, valorObtenido);
-          guardar(rutaArchivoXls);
+          if (i <= 1 || i == 21) {
+            setCellData(fila.getRowNum(), i, valorObtenido);
+            guardar(rutaArchivoXls);
+          }
           i++;
         }
       }

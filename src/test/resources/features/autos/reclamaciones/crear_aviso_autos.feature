@@ -45,6 +45,7 @@ Característica: Generación avisos de siniestros autos
       |Colisión con vehículo|subrogación|
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
+
   @claimsAuto
   @pruebaRegresion
   Escenario: generación de reclamación de tipo Solo Responsabilidad Civil
@@ -56,7 +57,6 @@ Característica: Generación avisos de siniestros autos
       |Causa|Culpabilidad|Responsabilidad civil daños persona|Responsabilidad civil daños vehículo|
       |Colisión con vehículo|solo RC|peaton daños persona|conductor daños vehículo|
     Entonces se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva
-
 
   @avisoServicio
   @claimsAuto
