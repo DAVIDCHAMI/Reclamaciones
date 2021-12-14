@@ -22,6 +22,7 @@ public abstract class Persona {
   private String direccion;
   private String tipoDireccion;
   private String fechaNacimiento;
+  private String fechaIngresoSura;
   private String genero;
   private String codigoPais;
   private String codigoDepartamento;
@@ -47,6 +48,7 @@ public abstract class Persona {
     direccion = mapDatosPersona.get("direccion");
     tipoDireccion = mapDatosPersona.get("tipoDireccion");
     fechaNacimiento = mapDatosPersona.get("fechaNacimiento");
+    fechaIngresoSura = mapDatosPersona.get("fechaIngresoSura");
     genero = mapDatosPersona.get("genero");
     codigoPais = mapDatosPersona.get("codigoPais");
     codigoDepartamento = mapDatosPersona.get("codigoDepartamento");
@@ -137,6 +139,10 @@ public abstract class Persona {
 
   public String getCorreoElectronicoDos() {
     return correoElectronicoDos;
+  }
+
+  public String getFechaIngresoSura() {
+    return fechaIngresoSura;
   }
 
   public List<Persona> getLstPersona() {

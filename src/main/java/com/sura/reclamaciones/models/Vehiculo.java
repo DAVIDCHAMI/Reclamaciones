@@ -25,6 +25,13 @@ public class Vehiculo {
   private String codigoFasecolda;
   private int numeroVehiculo;
   private String marcaLinea;
+  private String potencia;
+  private String capacidadCilindro;
+  private String tipoCajaCambios;
+  private String numeroBolsasAire;
+  private String pasajeros;
+  private String numeroEjeTransmision;
+  private String tipoCombustible;
   private String plan;
   private String codigoPlan;
   private String tipoServicio;
@@ -73,6 +80,13 @@ public class Vehiculo {
     numeroVehiculo =
         Utilidades.transformarCadenaEnteroCondicionado(datosVehiculos.get("numeroVehiculo"));
     marcaLinea = datosVehiculos.get("marcaLinea");
+    potencia = datosVehiculos.get("potencia");
+    capacidadCilindro = datosVehiculos.get("capacidadCilindro");
+    tipoCajaCambios = datosVehiculos.get("tipoCajaCambios");
+    numeroBolsasAire = datosVehiculos.get("numeroBolsasAire");
+    pasajeros = datosVehiculos.get("pasajeros");
+    numeroEjeTransmision = datosVehiculos.get("numeroEjeTransmision");
+    tipoCombustible = datosVehiculos.get("tipoCombustible");
     plan = datosVehiculos.get("plan");
     codigoPlan = PlanPolizaAutos.obtenerCodigoPlan(plan);
     tipoServicio = datosVehiculos.get("tipoServicio");
@@ -241,6 +255,34 @@ public class Vehiculo {
 
   public List<Vehiculo> getLstVehiculos() {
     return vehiculos;
+  }
+
+  public String getPotencia() {
+    return potencia;
+  }
+
+  public String getCapacidadCilindro() {
+    return capacidadCilindro;
+  }
+
+  public String getTipoCajaCambios() {
+    return tipoCajaCambios;
+  }
+
+  public String getNumeroBolsasAire() {
+    return numeroBolsasAire;
+  }
+
+  public String getPasajeros() {
+    return pasajeros;
+  }
+
+  public String getNumeroEjeTransmision() {
+    return numeroEjeTransmision;
+  }
+
+  public String getTipoCombustible() {
+    return tipoCombustible;
   }
 
   public void asignarDatos(List<Map<String, String>> datoVehiculo) {
