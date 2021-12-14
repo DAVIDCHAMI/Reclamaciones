@@ -5,27 +5,28 @@ import com.sura.reclamaciones.models.CoberturaVehiculo;
 import com.sura.reclamaciones.models.Persona;
 import com.sura.reclamaciones.models.Tomador;
 import com.sura.reclamaciones.models.Vehiculo;
+import com.sura.reclamaciones.models.comunes.*;
+import com.sura.reclamaciones.models.comunes.Account;
+import com.sura.reclamaciones.models.comunes.Address;
+import com.sura.reclamaciones.models.comunes.BillingData;
+import com.sura.reclamaciones.models.comunes.CostNew;
+import com.sura.reclamaciones.models.comunes.CoverageRequest;
+import com.sura.reclamaciones.models.comunes.Driver;
+import com.sura.reclamaciones.models.comunes.ExpedicionAutosIndividualRequest;
+import com.sura.reclamaciones.models.comunes.Lobs;
+import com.sura.reclamaciones.models.comunes.Modifier;
+import com.sura.reclamaciones.models.comunes.Param;
+import com.sura.reclamaciones.models.comunes.Person;
+import com.sura.reclamaciones.models.comunes.PersonalAuto;
+import com.sura.reclamaciones.models.comunes.PrimaryInsured;
+import com.sura.reclamaciones.models.comunes.SpecialValueAccessories;
+import com.sura.reclamaciones.models.comunes.StateValue;
+import com.sura.reclamaciones.models.comunes.TermRequest;
+import com.sura.reclamaciones.models.comunes.ValueAccessories;
+import com.sura.reclamaciones.models.comunes.Vehicle;
+import com.sura.reclamaciones.models.comunes.VehicleCoverage;
 import com.sura.reclamaciones.utils.Fecha;
 import com.sura.reclamaciones.utils.Utilidades;
-import com.sura.service.expedicionautosindividual.gen.Account;
-import com.sura.service.expedicionautosindividual.gen.Address;
-import com.sura.service.expedicionautosindividual.gen.BillingData;
-import com.sura.service.expedicionautosindividual.gen.CostNew;
-import com.sura.service.expedicionautosindividual.gen.CoverageRequest;
-import com.sura.service.expedicionautosindividual.gen.Driver;
-import com.sura.service.expedicionautosindividual.gen.ExpedicionAutosIndividualRequest;
-import com.sura.service.expedicionautosindividual.gen.Lobs;
-import com.sura.service.expedicionautosindividual.gen.Modifier;
-import com.sura.service.expedicionautosindividual.gen.Param;
-import com.sura.service.expedicionautosindividual.gen.Person;
-import com.sura.service.expedicionautosindividual.gen.PersonalAuto;
-import com.sura.service.expedicionautosindividual.gen.PrimaryInsured;
-import com.sura.service.expedicionautosindividual.gen.SpecialValueAccessories;
-import com.sura.service.expedicionautosindividual.gen.StateValue;
-import com.sura.service.expedicionautosindividual.gen.TermRequest;
-import com.sura.service.expedicionautosindividual.gen.ValueAccessories;
-import com.sura.service.expedicionautosindividual.gen.Vehicle;
-import com.sura.service.expedicionautosindividual.gen.VehicleCoverage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -207,6 +208,7 @@ public class ExpedicionAutosIndividualFactory {
 
   private PersonalAuto personalAutoLobFactory() {
     PersonalAuto personalAuto = new PersonalAuto();
+    personalAuto.setInformacionAdicionalAsegurado(informacionAdicionalAseguradoFactory());
     personalAuto.setVehicles(lstVehiclesFactory());
     personalAuto.setDrivers(lstDriversFactory());
     return personalAuto;
@@ -251,6 +253,13 @@ public class ExpedicionAutosIndividualFactory {
     vehicle.setModifiers(lstModifiersFactory(vehiculo));
     vehicle.setLobs(lobsVehicleFactory());
     vehicle.setBrandCode(vehiculo.getMarcaLinea());
+    vehicle.setPotency(vehiculo.getPotencia());
+    vehicle.setCylinderCapacity(vehiculo.getCapacidadCilindro());
+    vehicle.setGearboxType(vehiculo.getTipoCajaCambios());
+    vehicle.setNumberAirBag(vehiculo.getNumeroBolsasAire());
+    vehicle.setPassengers(vehiculo.getPasajeros());
+    vehicle.setNumberDriveShaft(vehiculo.getNumeroEjeTransmision());
+    vehicle.setFuelType(vehiculo.getTipoCombustible());
     vehicle.setKeyCode1(tipoFinanciacionSufi);
     vehicle.setKeyCode3(tipoFinanciacionLeasing);
     vehicle.setKeyCode4(tipoFinanciacionRenting);
@@ -267,22 +276,22 @@ public class ExpedicionAutosIndividualFactory {
 
   private SpecialValueAccessories specialValueAccessoriesFactory(int valorAccesoriosEspeciales) {
     SpecialValueAccessories specialValueAccessories = new SpecialValueAccessories();
-    specialValueAccessories.setAmount(valorAccesoriosEspeciales);
-    specialValueAccessories.setCurrency(moneda);
+    specialValueAccessories.setAmountSpecial(valorAccesoriosEspeciales);
+    specialValueAccessories.setCurrencySpecial(moneda);
     return specialValueAccessories;
   }
 
   private CostNew costNewFactory(int valorVehiculo) {
     CostNew costNew = new CostNew();
-    costNew.setAmount(valorVehiculo);
-    costNew.setCurrency(moneda.toLowerCase());
+    costNew.setAmountCost(valorVehiculo);
+    costNew.setCurrencyCost(moneda.toLowerCase());
     return costNew;
   }
 
   private StateValue stateValueFactory(int valorVehiculo) {
     StateValue stateValue = new StateValue();
-    stateValue.setAmount(valorVehiculo);
-    stateValue.setCurrency(moneda.toLowerCase());
+    stateValue.setAmountState(valorVehiculo);
+    stateValue.setCurrencyState(moneda.toLowerCase());
     return stateValue;
   }
 
@@ -450,6 +459,18 @@ public class ExpedicionAutosIndividualFactory {
     return driver;
   }
 
+  private InformacionAdicionalAsegurado informacionAdicionalAseguradoFactory() {
+    InformacionAdicionalAsegurado informacionAdicionalAsegurado =
+        new InformacionAdicionalAsegurado();
+    informacionAdicionalAsegurado.setDocumentNumber(asegurado.getNumDocumento());
+    informacionAdicionalAsegurado.setDocumentType(asegurado.getTipoDocumento());
+    informacionAdicionalAsegurado.setDateOfBirth(
+        Fecha.obtenerFechaFormatoISO(asegurado.getFechaNacimiento()));
+    informacionAdicionalAsegurado.setDateOfEntry(
+        Fecha.obtenerFechaFormatoISO(asegurado.getFechaIngresoSura()));
+    return informacionAdicionalAsegurado;
+  }
+
   private Account accountFactory(Persona persona) {
     Account account = new Account();
     account.setProducerCode(codigoAsesor);
@@ -468,6 +489,7 @@ public class ExpedicionAutosIndividualFactory {
     person.setDocumentType(persona.getTipoDocumento());
     person.setDocumentNumber(persona.getNumDocumento());
     person.setDateOfBirth(Fecha.obtenerFechaFormatoISO(persona.getFechaNacimiento()));
+
     person.setFirstName(persona.getPrimerNombre());
     person.setMiddleName(persona.getSegundoNombre());
     person.setLastName(persona.getPrimerApellido());
