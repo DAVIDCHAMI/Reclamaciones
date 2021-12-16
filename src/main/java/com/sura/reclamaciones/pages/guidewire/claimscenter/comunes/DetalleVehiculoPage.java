@@ -63,6 +63,7 @@ public class DetalleVehiculoPage extends GeneralPage {
   }
 
   public void buscarProveedor() {
+    esperarCargaElemento();
     btnBuscarProveedor.waitUntilVisible().click();
     realizarEsperaCarga();
   }
@@ -78,14 +79,17 @@ public class DetalleVehiculoPage extends GeneralPage {
   }
 
   public void agregarTaller() {
+    esperarCargaElemento();
     btnAgregarTaller.waitUntilVisible().click();
   }
 
   public void seleccionarServicioTaller() {
+    esperarCargaElemento();
     chkServicioTaller.waitUntilVisible().click();
   }
 
   public void volverPasoAnterior() {
+    esperarCargaElemento();
     aceptarOpcion();
     realizarEsperaCarga();
   }
