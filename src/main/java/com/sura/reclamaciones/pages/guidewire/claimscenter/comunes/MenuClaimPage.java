@@ -109,7 +109,6 @@ public class MenuClaimPage extends GeneralPage {
   public void buscarReclamacion(String strOpcionMenu, String strReclamacion) {
     seleccionarOpcionMenuPrimerNivel(strOpcionMenu);
     mnuBuscar.click();
-    esperarCargaElemento();
     mnuBuscar.typeAndEnter(strReclamacion);
     realizarEsperaCarga();
   }
