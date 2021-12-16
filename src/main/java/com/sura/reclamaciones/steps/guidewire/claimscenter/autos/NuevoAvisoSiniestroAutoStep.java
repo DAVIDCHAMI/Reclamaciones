@@ -2,7 +2,7 @@ package com.sura.reclamaciones.steps.guidewire.claimscenter.autos;
 
 import static com.sura.reclamaciones.utils.constantes.MenuConstante.TIPO_POLIZA;
 import static com.sura.reclamaciones.utils.enums.Constantes.EXPOSICIONES;
-import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_NUMERO_PLACA;
+import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_PC_NUMERO_POLIZA;
 
 import com.sura.reclamaciones.models.ExposicionLesiones;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
@@ -207,11 +207,10 @@ public class NuevoAvisoSiniestroAutoStep {
   @Step
   public void completarFormularioBuscarPoliza(
       List<ReclamacionAuto> datosReclamacion, List<Vehiculo> datosVehiculo) {
-
     buscarPolizaPage.seleccionarTipoPoliza(TIPO_POLIZA);
 
-    buscarPolizaPage.escribirPlaca(
-        Serenity.getCurrentSession().get(SESION_CC_NUMERO_PLACA).toString());
+    buscarPolizaPage.escribirNumeroPoliza(
+        Serenity.getCurrentSession().get(SESION_PC_NUMERO_POLIZA).toString());
 
     for (ReclamacionAuto dato : datosReclamacion) {
       seleccionarFecha(dato.getFechaSiniestro());
