@@ -8,5 +8,5 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/features/autos/recuperos/crear_recupero_autos.feature",
     glue = {"com.sura.reclamaciones.definitions"},
-    tags = {"@claimsAuto"})
+    tags = {"@claimsAutoNO"})
 public class RecuperoSiniestroAutosRunner {}

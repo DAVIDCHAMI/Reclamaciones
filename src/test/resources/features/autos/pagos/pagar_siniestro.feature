@@ -7,6 +7,7 @@ Característica: Realizar pago de un siniestro
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
+  @testUno
   @pagoLineaReservaAutos
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos uno
@@ -52,6 +53,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |Número de vehículos involucrados del tercero en el siniestro|
       | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
+  @testUno
   @pagoPrimaPendiente
   @claimsAuto
   Esquema del escenario: Crear pago a un siniestro con prima pendiente.
