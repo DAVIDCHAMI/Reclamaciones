@@ -119,6 +119,7 @@ public class GeneralPage extends PageObject {
       Tablas enumRegistroTabla,
       String datoEnFilaABuscar,
       int posicionDatoADevolver) {
+    realizarEsperaCarga();
     return elementoTabla
         .findElements(By.xpath(enumRegistroTabla.getXpath()))
         .stream()
