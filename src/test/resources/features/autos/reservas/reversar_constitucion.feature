@@ -8,7 +8,6 @@ Característica: Constitución de una línea de reserva de un siniestro
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
-  @pruebaUno
   @reversionConstitucion
   @claimsAuto
   Esquema del escenario: reversión de constitución
@@ -20,4 +19,4 @@ Característica: Constitución de una línea de reserva de un siniestro
     Ejemplos:
 
       | Monto del ajuste | Deducible       | Cobertura           |
-      | 990000           | -987000         | Perdida total Daños |
+      | 990000           | 0         | Perdida total Daños |
