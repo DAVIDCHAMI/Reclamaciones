@@ -120,7 +120,7 @@ public class DetalleFacturaVolumenPage extends GeneralPage {
     esperarCargaElemento();
     esperarCargaElemento();
     MatcherAssert.assertThat(
-        "El número de registros de la pantalla no es igual al número de registros del archivo XLS",
+        "El estado del pago es incorrecto, estado diferente a Solicitando o Solicitado",
         (estadoPagoMasivo.equals(lblEstadoPagoMasivo.getText())));
     esperarCargaElemento();
     lblIrAFacturaPorVolumen.click();
