@@ -8,6 +8,8 @@ Característica: Realizar un pago masivo a un proveedor
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
+  @pruebaUno
+  @claimsAuto
   @pagoMasivoProveedor
   @claimsEmpresarialSuperUsuario
   Esquema del escenario: Crear pago masivo a un mismo proveedor.
