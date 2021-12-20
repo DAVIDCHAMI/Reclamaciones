@@ -58,7 +58,6 @@ Característica: Generación avisos de siniestros autos
       |Colisión con vehículo|solo RC|peaton daños persona|conductor daños vehículo|
     Entonces se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva
 
-  @pruebaUno
   @avisoServicio
   @claimsAuto
   Escenario: Consumo servicio maca, para la creación de Siniestro autos
