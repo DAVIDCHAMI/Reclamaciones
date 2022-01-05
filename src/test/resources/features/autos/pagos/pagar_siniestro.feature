@@ -9,7 +9,7 @@ Característica: Realizar pago de un siniestro
 
   @pagoLineaReservaAutos
   @claimsAuto
-  Esquema del escenario: Crear pago del siniestro autos uno
+  Esquema del escenario: Crear pago del siniestro autos pago parcial
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo y Cobertura>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
@@ -24,7 +24,7 @@ Característica: Realizar pago de un siniestro
 
   @pagoPerdidaTotalAutos
   @claimsAuto
-  Esquema del escenario: Crear pago del siniestro autos
+  Esquema del escenario: Crear pago del siniestro autos pago final
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
     Cuando se genere un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de reserva> donde el responsable <Solo Sura> es Sura
@@ -35,7 +35,7 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de reserva | Tipo de pago | Beneficiario de pago               | Método de pago | Solo Sura | Cobertura           |
-      | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No        | Perdida total Daños |
+      | 1ª parteVehículo | Final      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No        | Perdida total Daños |
 
   @chequeMultiplesPagosAutos
   @claimsAuto

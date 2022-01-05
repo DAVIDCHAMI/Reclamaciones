@@ -9,7 +9,6 @@ Característica: Generación avisos de siniestros autos
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
   @claimsAuto
-  @pruebaRegresion
   Escenario: generación de reclamación de tipo Responsabilidad Civil
     Dado que se tiene una póliza con las coberturas
       |coberturas|
@@ -23,7 +22,6 @@ Característica: Generación avisos de siniestros autos
 
 
   @claimsAuto
-  @pruebaRegresion
   Escenario: generación de reclamación de tipo Archivo
     Dado que se tiene una póliza con las coberturas para Daños
       |coberturas|
@@ -35,7 +33,6 @@ Característica: Generación avisos de siniestros autos
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
   @claimsAuto
-  @pruebaRegresion
   Escenario: generación de reclamación de tipo Subrogación
     Dado que se tiene una póliza con las coberturas para Subrogación
       |coberturas|
@@ -47,7 +44,6 @@ Característica: Generación avisos de siniestros autos
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
   @claimsAuto
-  @pruebaRegresion
   Escenario: generación de reclamación de tipo Solo Responsabilidad Civil
     Dado que se tiene una póliza con las coberturas para Solo Responsabilidad Civil
       |coberturas|
