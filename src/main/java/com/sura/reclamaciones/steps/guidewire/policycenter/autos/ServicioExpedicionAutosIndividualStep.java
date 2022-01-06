@@ -14,6 +14,7 @@ import com.sura.service.util.enums.EnumUrlBase;
 import java.text.ParseException;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import org.hamcrest.MatcherAssert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +25,9 @@ public class ServicioExpedicionAutosIndividualStep {
 
   private static final Logger LOGGER =
       LoggerFactory.getLogger(ServicioExpedicionAutosIndividualStep.class);
-  ExpedicionAutosIndividualFactory expedicionAutosIndividualFactory =
+    @Steps ExpedicionAutosIndividualFactory expedicionAutosIndividualFactory =
       new ExpedicionAutosIndividualFactory();
-  ResponseEntity<ExpedicionAutosIndividualResponse> responseServicioExpedicion;
+    @Steps ResponseEntity<ExpedicionAutosIndividualResponse> responseServicioExpedicion;
 
   @Step("Asignar información de fechas")
   public void asignarInformacionFechas(
