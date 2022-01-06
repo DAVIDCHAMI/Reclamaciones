@@ -25,7 +25,7 @@ public class ServicioExpedicionAutosIndividualStep {
 
   private static final Logger LOGGER =
       LoggerFactory.getLogger(ServicioExpedicionAutosIndividualStep.class);
-    @Steps ExpedicionAutosIndividualFactory expedicionAutosIndividualFactory =
+   ExpedicionAutosIndividualFactory expedicionAutosIndividualFactory =
       new ExpedicionAutosIndividualFactory();
     @Steps ResponseEntity<ExpedicionAutosIndividualResponse> responseServicioExpedicion;
 
