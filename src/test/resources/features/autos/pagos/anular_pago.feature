@@ -10,7 +10,6 @@ Característica: Anulación de pagos
 
   @claimsAuto
   @anulacionPagoAutos
-  @claimsEmpresarialSuperUsuario
   Esquema del escenario: anulación de un pago de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
