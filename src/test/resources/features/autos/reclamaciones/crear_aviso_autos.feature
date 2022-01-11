@@ -32,7 +32,7 @@ Característica: Generación avisos de siniestros autos
       |Amit, Disturbios o desorden civil|archivo|
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
-  @claimsAuto
+  @claimsAutoDos
   Escenario: generación de reclamación de tipo Subrogación
     Dado que se tiene una póliza con las coberturas para Subrogación
       |coberturas|
@@ -43,7 +43,7 @@ Característica: Generación avisos de siniestros autos
       |Colisión con vehículo|subrogación|
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
-  @claimsAuto
+  @claimsAutoDos
   Escenario: generación de reclamación de tipo Solo Responsabilidad Civil
     Dado que se tiene una póliza con las coberturas para Solo Responsabilidad Civil
       |coberturas|
