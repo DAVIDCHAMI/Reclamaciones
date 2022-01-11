@@ -122,6 +122,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
 
   public void seleccionarCiudadAtencion(String ciudad) {
     cmbCiudad.clear();
+    realizarEsperaCarga();
     cmbCiudad.typeAndTab(ciudad);
     realizarEsperaCarga();
   }

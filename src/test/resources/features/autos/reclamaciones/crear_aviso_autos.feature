@@ -33,6 +33,7 @@ Característica: Generación avisos de siniestros autos
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
   @claimsAutoDos
+  @claimsAuto
   Escenario: generación de reclamación de tipo Subrogación
     Dado que se tiene una póliza con las coberturas para Subrogación
       |coberturas|
@@ -44,6 +45,7 @@ Característica: Generación avisos de siniestros autos
     Entonces se obtendrán exposiciones automáticas de exposición, y cada una con su respectiva reserva, según la culpabilidad marcada Archivo
 
   @claimsAutoDos
+  @claimsAuto
   Escenario: generación de reclamación de tipo Solo Responsabilidad Civil
     Dado que se tiene una póliza con las coberturas para Solo Responsabilidad Civil
       |coberturas|
@@ -55,6 +57,7 @@ Característica: Generación avisos de siniestros autos
     Entonces se obtendrán las exposiciones automáticas para cada tipo de responsabilidad, con su respectiva reserva
 
   @avisoServicio
+  @claimsAuto
   Escenario: Consumo servicio maca, para la creación de Siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Cuando se genera un aviso que afecta la cobertura de Responsabilidad civil
