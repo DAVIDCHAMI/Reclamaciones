@@ -8,5 +8,5 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/features/autos/pagos/anular_pago.feature",
     glue = {"com.sura.reclamaciones.definitions"},
-    tags = {"@claimsAutoUno"})
+    tags = {"@anulacionPagoAutos"})
 public class AnulacionPagoAutosRunner {}

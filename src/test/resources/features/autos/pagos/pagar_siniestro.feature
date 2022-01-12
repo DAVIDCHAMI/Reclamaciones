@@ -7,7 +7,7 @@ Característica: Realizar pago de un siniestro
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
-  @pagoLineaReservaAutos
+  @pagoSiniestro
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos pago parcial
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
@@ -22,7 +22,7 @@ Característica: Realizar pago de un siniestro
       | Línea de Reserva | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
       | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII| Caja Sura       | No                 | Perdida total Daños |
 
-  @pagoPerdidaTotalAutos
+  @pagoSiniestro
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos pago final
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
@@ -37,7 +37,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva | Tipo de pago | Beneficiario de pago               | Método de pago | Solo Sura | Cobertura           |
       | 1ª parteVehículo | Final      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No        | Perdida total Daños |
 
-  @chequeMultiplesPagosAutos
+  @pagoSiniestro
   @claimsAuto
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
@@ -52,7 +52,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |Número de vehículos involucrados del tercero en el siniestro|
       | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
-  @pagoPrimaPendiente
+  @pagoSiniestro
   @claimsAuto
   Esquema del escenario: Crear pago a un siniestro con prima pendiente.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de <Origen de siniestro> de autos
