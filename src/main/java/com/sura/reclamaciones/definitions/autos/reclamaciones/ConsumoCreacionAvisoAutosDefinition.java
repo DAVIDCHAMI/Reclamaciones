@@ -56,7 +56,6 @@ public class ConsumoCreacionAvisoAutosDefinition {
 
   @Cuando("^se genera un aviso que afecta la cobertura de (.*)$")
   public void siniestrarPolizaServicio(String tipoCobertura) {
-
     Serenity.setSessionVariable(SESION_CC_TIPO_COBERTURA_AFECTADA.getValor()).to(tipoCobertura);
     creacionAvisoSiniestroAutoStep.siniestrarPolizaAutos(
         parametroAviso.getLstReclamacionAuto(),

@@ -8,6 +8,7 @@ Característica: Crear un recupero de un siniestro
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
+  @crearRecupero
   @claimsAuto
   Esquema del escenario: crear recupero de subrogación o ingreso RC Lesión a Persona
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
@@ -24,6 +25,7 @@ Característica: Crear un recupero de un siniestro
       | Línea de Reserva                | Tipo de pago | Beneficiario del pago                 | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   | Código de retención recupero |
       | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR                   | Pago por banco  | No                 | RC Lesión a Persona | 0099                         |
 
+  @crearRecupero
   @claimsAuto
   Esquema del escenario: crear recupero de subrogación o ingreso perdida total daños
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
