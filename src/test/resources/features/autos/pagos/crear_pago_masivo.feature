@@ -14,10 +14,11 @@ Característica: Realizar un pago masivo a un proveedor
   Esquema del escenario: Crear pago masivo a un mismo proveedor.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
+    Y se valida en sarlaft el beneficiario <Beneficiario de pago>
     Cuando se registra la información de las facturas del pago masivo a un proveedor de <Número de vehículos involucrados del tercero en el siniestro> vehículos involucrados en el siniestro con coberturas <Coberturas de la póliza>
     Y se ingresa el tipo de proveedor <Tipo de contacto> y el nombre del proveedor <Proveedor> con el tipo de moneda <Tipo de moneda> de la factura y el método de pago <Método de pago> del cheque
     Entonces se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado
 
     Ejemplos:
-      | Tipo de contacto | Proveedor  | Tipo de moneda | Método de pago |Número de vehículos involucrados del tercero en el siniestro|Coberturas de la póliza          |
-      | Empresa          | AGENCIAUTO | COP            | Pago por banco |1                                                           |Daños al carro y daños a terceros|
+      | Tipo de contacto | Proveedor  | Tipo de moneda | Método de pago |Número de vehículos involucrados del tercero en el siniestro|Coberturas de la póliza          |Beneficiario de pago                 |
+      | Empresa          | AGENCIAUTO | COP            | Pago por banco |1                                                           |Daños al carro y daños a terceros| CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII |
