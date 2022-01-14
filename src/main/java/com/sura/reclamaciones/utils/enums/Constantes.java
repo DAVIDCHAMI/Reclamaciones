@@ -58,7 +58,9 @@ public enum Constantes {
   USD("USD"),
   USUARIO("GW_CONF"),
   VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
-  VALOR_CERO("0");
+  VALOR_CERO("0"),
+  SIN_VALIDAR_SARLAFT("Sin validar"),
+  COLUMNA_VALIDACION_SARLAFT("Validación Sarlaft");
 
   private String valor;
 

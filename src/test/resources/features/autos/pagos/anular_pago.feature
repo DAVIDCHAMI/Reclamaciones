@@ -14,6 +14,7 @@ Característica: Anulación de pagos
   Esquema del escenario: anulación de un pago de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
+    Y se valida en sarlaft el beneficiario <Beneficiario de pago>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |

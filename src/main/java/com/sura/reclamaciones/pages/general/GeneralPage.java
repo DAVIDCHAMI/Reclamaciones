@@ -124,8 +124,8 @@ public class GeneralPage extends PageObject {
         .findElements(By.xpath(enumRegistroTabla.getXpath()))
         .stream()
         .filter(fila -> fila.getText().contains(datoEnFilaABuscar))
-        .map(columnas -> columnas.findElement(By.xpath("./td[" + posicionDatoADevolver + "]")))
-        .findFirst()
+        .map(columnas -> columnas.findElement(By.xpath(".//td[" + posicionDatoADevolver + "]")))
+        .findAny()
         .get();
   }
 
