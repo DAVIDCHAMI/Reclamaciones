@@ -87,6 +87,7 @@ public class CreacionRecuperoPage extends GeneralPage {
   public void seleccionarCategoriaRecuperacion(String recupero) {
     String auxiliarSeleccionarOpcion = "";
     txtCategoriaRecuperacion.click();
+    realizarEsperaCarga();
     auxiliarSeleccionarOpcion = seleccionarOpcion.replace(COMODIN.getValor(), recupero);
     $(auxiliarSeleccionarOpcion).click();
     realizarEsperaCarga();

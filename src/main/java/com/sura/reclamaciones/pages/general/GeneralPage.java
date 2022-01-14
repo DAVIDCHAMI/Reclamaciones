@@ -294,6 +294,7 @@ public class GeneralPage extends PageObject {
 
   public void seleccionarElementoListado(String elementoEtiqueta, String ubicacion) {
     String auxiliarReemplazo = "";
+    realizarEsperaCarga();
     mnuDinamico
         .findElement(By.xpath(String.format("//input[contains(@id,'%s')]", elementoEtiqueta)))
         .click();

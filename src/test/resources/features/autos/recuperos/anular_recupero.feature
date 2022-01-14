@@ -8,8 +8,9 @@ Característica: Anulacion de recuperos
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
-  @Autos
+
   @claimsAuto
+    @anulacionRecupero
   Esquema del escenario: anulación de un recupero de autos.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
