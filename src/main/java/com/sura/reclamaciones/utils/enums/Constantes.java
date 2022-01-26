@@ -60,7 +60,10 @@ public enum Constantes {
   VALIDADOR_NUEVA_RECLAMACION("Nueva reclamación guardada"),
   VALOR_CERO("0"),
   SIN_VALIDAR_SARLAFT("Sin validar"),
-  COLUMNA_VALIDACION_SARLAFT("Validación Sarlaft");
+  COLUMNA_VALIDACION_SARLAFT("Validación Sarlaft"),
+  TIPO_DOCUMENTO_CEDULA("C"),
+  TIPO_DOCUMENTO_NIT("A"),
+  CODIGO_REGION_COLOMBIA("Colombia (57)");
 
   private String valor;
 

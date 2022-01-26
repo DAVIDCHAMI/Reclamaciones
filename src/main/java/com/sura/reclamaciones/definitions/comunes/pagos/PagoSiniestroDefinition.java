@@ -208,7 +208,7 @@ public class PagoSiniestroDefinition {
   }
 
   @Y("^se valida en sarlaft el beneficiario (.*)$")
-  public void validarSarlaftBeneficiario(String beneficiarioPago) {
+  public void validarSarlaftBeneficiario(String beneficiarioPago) throws IOException {
     validacionSarlaftStep.validarSarlaft(beneficiarioPago);
   }
 }
