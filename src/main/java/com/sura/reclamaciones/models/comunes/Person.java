@@ -99,10 +99,10 @@ public class Person {
   private String preferredCurrency;
 
   @JsonProperty("stablishmentCountry_Ext")
-  private String stablishmentCountry_Ext;
+  private String stablishmentCountryExt;
 
   @JsonProperty("DocumentIssueQote_Ext")
-  private String documentIssueQote_Ext;
+  private String documentIssueQoteExt;
 
   @JsonProperty("address")
   private Address address;
@@ -330,23 +330,23 @@ public class Person {
   }
 
   @JsonProperty("stablishmentCountry_Ext")
-  public String getStablishmentCountry_Ext() {
-    return this.stablishmentCountry_Ext;
+  public String getStablishmentCountryExt() {
+    return this.stablishmentCountryExt;
   }
 
   @JsonProperty("stablishmentCountry_Ext")
-  public void setStablishmentCountry_Ext(String stablishmentCountry_Ext) {
-    this.stablishmentCountry_Ext = VALORES_SERVICIO_EDGE.get(stablishmentCountry_Ext);
+  public void setStablishmentCountryExt(String stablishmentCountryExt) {
+    this.stablishmentCountryExt = VALORES_SERVICIO_EDGE.get(stablishmentCountryExt);
   }
 
   @JsonProperty("DocumentIssueQote_Ext")
-  public String getDocumentIssueQote_Ext() {
-    return this.documentIssueQote_Ext;
+  public String getDocumentIssueQoteExt() {
+    return this.documentIssueQoteExt;
   }
 
   @JsonProperty("DocumentIssueQote_Ext")
-  public void setDocumentIssueQote_Ext(String documentIssueQote_Ext) {
-    this.documentIssueQote_Ext = documentIssueQote_Ext;
+  public void setDocumentIssueQoteExt(String documentIssueQoteExt) {
+    this.documentIssueQoteExt = documentIssueQoteExt;
   }
 
   @JsonProperty("address")

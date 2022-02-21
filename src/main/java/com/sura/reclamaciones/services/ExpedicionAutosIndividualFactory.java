@@ -507,8 +507,8 @@ public class ExpedicionAutosIndividualFactory {
     person.setEmailAddress1(persona.getCorreoElectronico());
     person.setEmailAddress2(persona.getCorreoElectronicoDos());
     person.setPreferredCurrency(moneda);
-    person.setStablishmentCountry_Ext(persona.getNacionalidad());
-    person.setDocumentIssueQote_Ext(
+    person.setStablishmentCountryExt(persona.getNacionalidad());
+    person.setDocumentIssueQoteExt(
         Fecha.obtenerFechaFormatoISO(persona.getFechaExpedicionDocumento()));
     person.setAddress(addressPersonFactory(persona));
     return person;
