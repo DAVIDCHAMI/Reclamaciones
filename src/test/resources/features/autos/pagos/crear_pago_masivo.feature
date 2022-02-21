@@ -21,4 +21,4 @@ Característica: Realizar un pago masivo a un proveedor
 
     Ejemplos:
       | Tipo de contacto | Proveedor  | Tipo de moneda | Método de pago |Número de vehículos involucrados del tercero en el siniestro|Coberturas de la póliza          |Beneficiario de pago                 |
-      | Empresa          | AGENCIAUTO | COP            | Pago por banco |1                                                           |Daños al carro y daños a terceros| CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII |
+      | Empresa          | AGENCIAUTO | COP            | Pago por banco |1                                                           |Daños al carro y daños a terceros| NESTOR IVAN GAMBOA CONTRERAS CQLII |

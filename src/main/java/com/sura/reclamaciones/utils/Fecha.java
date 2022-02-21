@@ -50,4 +50,17 @@ public final class Fecha {
     String hora = new DateTime().toLocalTime().toString();
     return new DateTime(fecha + "T" + hora).toString();
   }
+
+  public static String obtenerFechaConFormato(String fecha, String formato, String formatoInicial) {
+    SimpleDateFormat parseador = new SimpleDateFormat(formatoInicial);
+    SimpleDateFormat formateador = new SimpleDateFormat(formato);
+    String fechaFormateada = "";
+    try {
+      Date date = parseador.parse(fecha);
+      fechaFormateada = formateador.format(date);
+    } catch (ParseException e) {
+
+    }
+    return fechaFormateada;
+  }
 }

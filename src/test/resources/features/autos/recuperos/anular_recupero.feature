@@ -27,4 +27,4 @@ Característica: Anulacion de recuperos
 
     Ejemplos:
       | Línea de Reserva                | Tipo de pago | Beneficiario del pago | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   | Tipo de recupero | Código de retención recupero |
-      | (2) 1ª parteVehículo            | Parcial      |  CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII       | Caja Sura       | No                 | Perdida total Daños | Subrogación      | 0099                         |
+      | (2) 1ª parteVehículo            | Parcial      |  NESTOR IVAN GAMBOA CONTRERAS CQLII       | Caja Sura       | No                 | Perdida total Daños | Subrogación      | 0099                         |

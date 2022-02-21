@@ -24,4 +24,4 @@ Característica: Anulación de pagos
 
     Ejemplos:
       | Línea de Reserva     | Tipo de pago | Beneficiario de pago               | Método de pago | ¿Es pago soloSura? | Tipo de cobertura   |
-      | (2) 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No                 | Perdida total Daños |
+      | (2) 1ª parteVehículo | Parcial      | NESTOR IVAN GAMBOA CONTRERAS CQLII | Caja Sura      | No                 | Perdida total Daños |

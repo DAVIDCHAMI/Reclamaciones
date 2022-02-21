@@ -4,12 +4,15 @@ import static com.sura.reclamaciones.utils.enums.Constantes.CODIGO_REGION_COLOMB
 import static com.sura.reclamaciones.utils.enums.Constantes.COLUMNA_VALIDACION_SARLAFT;
 import static com.sura.reclamaciones.utils.enums.Constantes.SIN_VALIDAR_SARLAFT;
 import static com.sura.reclamaciones.utils.enums.Constantes.TIPO_DOCUMENTO_CEDULA;
+import static com.sura.reclamaciones.utils.enums.EnumFormatos.FORMATO_FECHA_DDMMYYYY;
+import static com.sura.reclamaciones.utils.enums.EnumFormatos.FORMATO_FECHA_YYYYMMDD;
 import static com.sura.reclamaciones.utils.enums.NombresCsv.TOMADOR;
 import static com.sura.reclamaciones.utils.enums.Tablas.CABECERAS_CC;
 import static com.sura.reclamaciones.utils.enums.Tablas.REGISTROS_CONTACTOS_CC;
 
 import com.sura.reclamaciones.models.Tomador;
 import com.sura.reclamaciones.pages.general.GeneralPage;
+import com.sura.reclamaciones.utils.Fecha;
 import com.sura.reclamaciones.utils.UtilidadesCSV;
 import java.io.IOException;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -106,7 +109,12 @@ public class PartesImplicadasPage extends PageObject {
     Tomador tomador =
         new Tomador(UtilidadesCSV.obtenerPrimerDatoPrueba(TOMADOR.getValor(), FILTRO_TOMADOR));
     if (tomador.getTipoDocumento().equalsIgnoreCase(TIPO_DOCUMENTO_CEDULA.getValor())) {
-      txtFechaExpedicionDocuumento.sendKeys(tomador.getFechaExpedicionDocumento());
+      String fechaExpedicionDocumento =
+          Fecha.obtenerFechaConFormato(
+              tomador.getFechaExpedicionDocumento(),
+              FORMATO_FECHA_DDMMYYYY.getValor(),
+              FORMATO_FECHA_YYYYMMDD.getValor());
+      txtFechaExpedicionDocuumento.sendKeys(fechaExpedicionDocumento);
       cmbPaisNacinacimiento.click();
       generalPage.seleccionarOpcionCombobox(tomador.getNacionalidad());
     } else {

@@ -21,7 +21,7 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de Reserva | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
-      | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII| Caja Sura       | No                 | Perdida total Daños |
+      | 1ª parteVehículo | Parcial      | NESTOR IVAN GAMBOA CONTRERAS CQLII| Caja Sura       | No                 | Perdida total Daños |
 
   @pagoSiniestro
   @claimsAuto
@@ -37,7 +37,7 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de reserva | Tipo de pago | Beneficiario de pago               | Método de pago | Solo Sura | Cobertura           |
-      | 1ª parteVehículo | Final      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No        | Perdida total Daños |
+      | 1ª parteVehículo | Final      | NESTOR IVAN GAMBOA CONTRERAS CQLII | Caja Sura      | No        | Perdida total Daños |
 
   @pagoSiniestro
   @claimsAuto
@@ -53,7 +53,7 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |Número de vehículos involucrados del tercero en el siniestro|
-      | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
+      | Perdida total Daños pago por en EFECTIVO | Final        | NESTOR IVAN GAMBOA CONTRERAS CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
   @pagoSiniestro
   @claimsAuto
@@ -73,4 +73,4 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Origen de siniestro | Línea de Reserva                                                                                                         | Tipo de pago | Beneficiario de pago                | Método de pago | ¿Es pago soloSura? | Tipo de cobertura   |
-      | Servicio de Maca    | (2) 1ª parteVehículo - AOA009  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No                 | Perdida total Daños |
+      | Servicio de Maca    | (2) 1ª parteVehículo - AOA009  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | NESTOR IVAN GAMBOA CONTRERAS CQLII | Caja Sura      | No                 | Perdida total Daños |

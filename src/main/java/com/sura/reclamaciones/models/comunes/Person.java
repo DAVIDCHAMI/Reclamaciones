@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({
@@ -28,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "officialID",
   "officialIDType",
   "preferredCurrency",
+  "stablishmentCountry_Ext",
+  "DocumentIssueQote_Ext",
   "address"
 })
 public class Person {
@@ -94,8 +98,20 @@ public class Person {
   @JsonProperty("preferredCurrency")
   private String preferredCurrency;
 
+  @JsonProperty("stablishmentCountry_Ext")
+  private String stablishmentCountry_Ext;
+
+  @JsonProperty("DocumentIssueQote_Ext")
+  private String documentIssueQote_Ext;
+
   @JsonProperty("address")
   private Address address;
+
+  private static final Map<String, String> VALORES_SERVICIO_EDGE = new HashMap<>();
+
+  static {
+    VALORES_SERVICIO_EDGE.put("Colombia", "CO");
+  }
 
   private static final long serialVersionUID = -6020822696484823296L;
 
@@ -311,6 +327,26 @@ public class Person {
   @JsonProperty("preferredCurrency")
   public void setPreferredCurrency(String preferredCurrency) {
     this.preferredCurrency = preferredCurrency;
+  }
+
+  @JsonProperty("stablishmentCountry_Ext")
+  public String getStablishmentCountry_Ext() {
+    return this.stablishmentCountry_Ext;
+  }
+
+  @JsonProperty("stablishmentCountry_Ext")
+  public void setStablishmentCountry_Ext(String stablishmentCountry_Ext) {
+    this.stablishmentCountry_Ext = VALORES_SERVICIO_EDGE.get(stablishmentCountry_Ext);
+  }
+
+  @JsonProperty("DocumentIssueQote_Ext")
+  public String getDocumentIssueQote_Ext() {
+    return this.documentIssueQote_Ext;
+  }
+
+  @JsonProperty("DocumentIssueQote_Ext")
+  public void setDocumentIssueQote_Ext(String documentIssueQote_Ext) {
+    this.documentIssueQote_Ext = documentIssueQote_Ext;
   }
 
   @JsonProperty("address")

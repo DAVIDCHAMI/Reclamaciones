@@ -65,6 +65,9 @@ public class GeneralPage extends PageObject {
   @FindBy(xpath = "//span[@class='x-btn-button']//span[contains(text(),'Anular')]//parent::span")
   public WebElementFacade btnAnular;
 
+  @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton")
+  public WebElementFacade btnBorrar;
+
   private String tblPago =
       "//tr//td//div//a[contains(text(),'%s')]//parent::div//parent::td//parent::tr//td";
 
@@ -220,6 +223,10 @@ public class GeneralPage extends PageObject {
   public void finalizarProceso() {
     btnFinalizar.waitUntilVisible().waitUntilClickable().click();
     realizarEsperaCarga();
+    if (btnBorrar.isVisible()) {
+      btnFinalizar.waitUntilVisible().waitUntilClickable().click();
+      realizarEsperaCarga();
+    }
   }
 
   public List<WebElement> obtenerElementoTablaDatoDesconocido(
