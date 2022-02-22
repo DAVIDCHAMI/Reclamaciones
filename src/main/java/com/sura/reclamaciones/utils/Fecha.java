@@ -3,7 +3,6 @@ package com.sura.reclamaciones.utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import net.thucydides.core.steps.StepInterceptor;
 import org.joda.time.DateTime;
 import org.slf4j.LoggerFactory;
@@ -64,7 +63,7 @@ public final class Fecha {
       fechaFormateada = formateador.format(date);
     } catch (ParseException e) {
       LOGGER.info(
-              String.format("Excepción ocurrida obteniendo la fecha en el formato: %s", formato));
+          String.format("Excepción ocurrida obteniendo la fecha en el formato: %s", formato));
     }
     return fechaFormateada;
   }
