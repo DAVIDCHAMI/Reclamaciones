@@ -14,6 +14,7 @@ Característica: Crear un recupero de un siniestro
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
     Y se declara la reclamación como perdida total
+    Y se valida en sarlaft el beneficiario <Beneficiario del pago>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
@@ -31,6 +32,7 @@ Característica: Crear un recupero de un siniestro
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
     Y se declara la reclamación como perdida total
+    Y se valida en sarlaft el beneficiario <Beneficiario del pago>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
@@ -41,4 +43,4 @@ Característica: Crear un recupero de un siniestro
 
     Ejemplos:
       | Línea de Reserva                | Tipo de pago | Beneficiario del pago                 | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   | Código de retención recupero |
-      | (2) 1ª parteVehículo            | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII    | Caja Sura       | No                 | Perdida total Daños | 0099                         |
+      | (2) 1ª parteVehículo            | Parcial      | NESTOR IVAN GAMBOA CONTRERAS CQLII    | Caja Sura       | No                 | Perdida total Daños | 0099                         |

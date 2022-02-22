@@ -12,6 +12,7 @@ import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_LINEA
 import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_TIPO_COBERTURA_AFECTADA;
 import static com.sura.reclamaciones.utils.enums.VariablesSesion.SESION_CC_TIPO_PAGO;
 
+import com.sura.reclamaciones.definitions.comunes.ValidacionSarlaftStep;
 import com.sura.reclamaciones.models.ExposicionVehiculoTercero;
 import com.sura.reclamaciones.models.PagoSiniestro;
 import com.sura.reclamaciones.models.Vehiculo;
@@ -52,6 +53,8 @@ public class PagoSiniestroDefinition {
   @Steps NuevaReclamacionGuardadaStep nuevaReclamacionGuardadaStep;
 
   @Steps PagoPrimaPendienteStep pagoPrimaPendienteStep;
+
+  @Steps ValidacionSarlaftStep validacionSarlaftStep;
 
   @Dado("^el asegurado o algún tercero de la póliza tiene marca de riesgo consultable$")
   public void identificarRiesgoConsultable() {
@@ -202,5 +205,10 @@ public class PagoSiniestroDefinition {
   @Y("^otro con el valor del pago menos la prima pendiente")
   public void verificarValorPago() {
     pagoPrimaPendienteStep.verificarValorPagoMenosPrimaPendiente();
+  }
+
+  @Y("^se valida en sarlaft el beneficiario (.*)$")
+  public void validarSarlaftBeneficiario(String beneficiarioPago) throws IOException {
+    validacionSarlaftStep.validarSarlaft(beneficiarioPago);
   }
 }

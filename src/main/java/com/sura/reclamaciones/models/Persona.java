@@ -29,6 +29,8 @@ public abstract class Persona {
   private String tipoTelefono;
   private String profesion;
   private String correoElectronicoDos;
+  private String fechaExpedicionDocumento;
+  private String nacionalidad;
 
   public Persona() {}
 
@@ -55,6 +57,8 @@ public abstract class Persona {
     tipoTelefono = mapDatosPersona.get("tipoTelefono");
     profesion = mapDatosPersona.get("profesion");
     correoElectronicoDos = mapDatosPersona.get("correoElectronicoDos");
+    fechaExpedicionDocumento = mapDatosPersona.get("fechaExpedicionDocumento");
+    nacionalidad = mapDatosPersona.get("nacionalidad");
   }
 
   public String getPrimerNombre() {
@@ -143,6 +147,14 @@ public abstract class Persona {
 
   public String getFechaIngresoSura() {
     return fechaIngresoSura;
+  }
+
+  public String getFechaExpedicionDocumento() {
+    return fechaExpedicionDocumento;
+  }
+
+  public String getNacionalidad() {
+    return nacionalidad;
   }
 
   public List<Persona> getLstPersona() {

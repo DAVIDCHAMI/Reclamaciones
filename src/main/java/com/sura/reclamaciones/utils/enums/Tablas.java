@@ -8,7 +8,9 @@ public enum Tablas {
   REGISTROS_PAGOS_CC(
       ".//div[contains(@class,'x-grid-body')]//table/tbody[contains(@id, 'gridview')]"),
 
-  PIE_PC_BC(".//table/tfoot/tr");
+  PIE_PC_BC(".//table/tfoot/tr"),
+  REGISTROS_CONTACTOS_CC(
+      ".//div[contains(@class,'x-grid-body')]//table/tbody/tr[contains(@id, 'gridview')]");
 
   private String xpath;
 

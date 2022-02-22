@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({
@@ -28,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   "officialID",
   "officialIDType",
   "preferredCurrency",
+  "stablishmentCountry_Ext",
+  "DocumentIssueQote_Ext",
   "address"
 })
 public class Person {
@@ -94,8 +98,20 @@ public class Person {
   @JsonProperty("preferredCurrency")
   private String preferredCurrency;
 
+  @JsonProperty("stablishmentCountry_Ext")
+  private String stablishmentCountryExt;
+
+  @JsonProperty("DocumentIssueQote_Ext")
+  private String documentIssueQoteExt;
+
   @JsonProperty("address")
   private Address address;
+
+  private static final Map<String, String> VALORES_SERVICIO_EDGE = new HashMap<>();
+
+  static {
+    VALORES_SERVICIO_EDGE.put("Colombia", "CO");
+  }
 
   private static final long serialVersionUID = -6020822696484823296L;
 
@@ -311,6 +327,26 @@ public class Person {
   @JsonProperty("preferredCurrency")
   public void setPreferredCurrency(String preferredCurrency) {
     this.preferredCurrency = preferredCurrency;
+  }
+
+  @JsonProperty("stablishmentCountry_Ext")
+  public String getStablishmentCountryExt() {
+    return this.stablishmentCountryExt;
+  }
+
+  @JsonProperty("stablishmentCountry_Ext")
+  public void setStablishmentCountryExt(String stablishmentCountryExt) {
+    this.stablishmentCountryExt = VALORES_SERVICIO_EDGE.get(stablishmentCountryExt);
+  }
+
+  @JsonProperty("DocumentIssueQote_Ext")
+  public String getDocumentIssueQoteExt() {
+    return this.documentIssueQoteExt;
+  }
+
+  @JsonProperty("DocumentIssueQote_Ext")
+  public void setDocumentIssueQoteExt(String documentIssueQoteExt) {
+    this.documentIssueQoteExt = documentIssueQoteExt;
   }
 
   @JsonProperty("address")

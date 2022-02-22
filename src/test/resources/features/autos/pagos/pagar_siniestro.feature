@@ -12,6 +12,7 @@ Característica: Realizar pago de un siniestro
   Esquema del escenario: Crear pago del siniestro autos pago parcial
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Tipo y Cobertura>
+    Y se valida en sarlaft el beneficiario <Beneficiario del pago>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método del pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo y Cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
@@ -20,13 +21,14 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de Reserva | Tipo de pago | Beneficiario del pago             | Método del pago | ¿Es pago soloSura? | Tipo y Cobertura    |
-      | 1ª parteVehículo | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII| Caja Sura       | No                 | Perdida total Daños |
+      | 1ª parteVehículo | Parcial      | NESTOR IVAN GAMBOA CONTRERAS CQLII| Caja Sura       | No                 | Perdida total Daños |
 
   @pagoSiniestro
   @claimsAuto
   Esquema del escenario: Crear pago del siniestro autos pago final
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
+    Y se valida en sarlaft el beneficiario <Beneficiario de pago>
     Cuando se genere un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de reserva> donde el responsable <Solo Sura> es Sura
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
@@ -35,13 +37,14 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de reserva | Tipo de pago | Beneficiario de pago               | Método de pago | Solo Sura | Cobertura           |
-      | 1ª parteVehículo | Final      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No        | Perdida total Daños |
+      | 1ª parteVehículo | Final      | NESTOR IVAN GAMBOA CONTRERAS CQLII | Caja Sura      | No        | Perdida total Daños |
 
   @pagoSiniestro
   @claimsAuto
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
+    Y se valida en sarlaft el beneficiario <Beneficiario del pago>
     Cuando se genere un pago por siniestro de auto <Tipo de pago> al beneficiario <Beneficiario del pago> por el medio de pago de <Método de Pago> sobre las líneas de reserva <Línea de reserva 1> cuyo responsable <Pago Solo Sura> es Sura donde existe <Número de vehículos involucrados del tercero en el siniestro> vehículo involucrado del tercero en el siniestro
     Y se apliquen las siguientes retenciones
       | Codigos_Retenciones |
@@ -50,7 +53,7 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Línea de reserva 1                       | Tipo de pago | Beneficiario del pago               | Método de Pago | Cobertura           | Pago Solo Sura |Número de vehículos involucrados del tercero en el siniestro|
-      | Perdida total Daños pago por en EFECTIVO | Final        | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
+      | Perdida total Daños pago por en EFECTIVO | Final        | NESTOR IVAN GAMBOA CONTRERAS CQLII  | Pago por banco | Perdida total Daños | No             |1                                                           |
 
   @pagoSiniestro
   @claimsAuto
@@ -59,6 +62,7 @@ Característica: Realizar pago de un siniestro
     Y se genera un aviso que afecta la cobertura de <Tipo de cobertura>
     Y se declara la reclamación como perdida total
     Y la póliza esta marcada como financiada, con prima pendiente por pagar
+    Y se valida en sarlaft el beneficiario <Beneficiario de pago>
     Cuando se realiza un pago <Tipo de pago> al beneficiario <Beneficiario de pago> por el medio de pago de <Método de pago> sobre la línea de reserva <Línea de Reserva> con cobertura de  <Tipo de cobertura> donde el responsable <¿Es pago soloSura?> es Sura
     Y se aplique prima pendiente
     Y se apliquen las siguientes retenciones
@@ -69,4 +73,4 @@ Característica: Realizar pago de un siniestro
 
     Ejemplos:
       | Origen de siniestro | Línea de Reserva                                                                                                         | Tipo de pago | Beneficiario de pago                | Método de pago | ¿Es pago soloSura? | Tipo de cobertura   |
-      | Servicio de Maca    | (2) 1ª parteVehículo - AOA009  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | CARLOS ARTURO CEBALLOS NUÑÑEZ CQLII | Caja Sura      | No                 | Perdida total Daños |
+      | Servicio de Maca    | (2) 1ª parteVehículo - AOA009  - JHON FEOR FEOR FEOR; Costo de reclamación/Perdida total Daños pago por en EFECTIVO; COP | Parcial      | NESTOR IVAN GAMBOA CONTRERAS CQLII | Caja Sura      | No                 | Perdida total Daños |
