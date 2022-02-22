@@ -10,7 +10,7 @@ Característica: Realizar un pago masivo a un proveedor
 
 
   @claimsAuto
-  @pagoMasivoProveedor
+    @pagoMasivoProveedor
   Esquema del escenario: Crear pago masivo a un mismo proveedor.
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos
     Y se genera un aviso que afecta la cobertura de <Cobertura>
@@ -20,5 +20,5 @@ Característica: Realizar un pago masivo a un proveedor
     Entonces se genera un número de pago individual por cada uno de los pagos registrados en el archivo de pagos masivos con un estado de pago solicitado
 
     Ejemplos:
-      | Tipo de contacto | Proveedor  | Tipo de moneda | Método de pago |Número de vehículos involucrados del tercero en el siniestro|Coberturas de la póliza          |Beneficiario de pago                 |
-      | Empresa          | AGENCIAUTO | COP            | Pago por banco |1                                                           |Daños al carro y daños a terceros| NESTOR IVAN GAMBOA CONTRERAS CQLII |
+      | Tipo de contacto | Proveedor  | Tipo de moneda | Método de pago | Número de vehículos involucrados del tercero en el siniestro | Coberturas de la póliza           | Beneficiario de pago |
+      | Empresa          | AGENCIAUTO | COP            | Pago por banco | 1                                                            | Daños al carro y daños a terceros | JHON FEOR FEOR FEOR  |

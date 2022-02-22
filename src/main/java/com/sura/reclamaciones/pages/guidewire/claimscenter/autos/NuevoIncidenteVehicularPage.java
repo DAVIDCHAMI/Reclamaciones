@@ -109,6 +109,7 @@ public class NuevoIncidenteVehicularPage extends GeneralPage {
   }
 
   public void seleccionarPaisAtencion(String pais) {
+    realizarEsperaCarga();
     cmbPais.clear();
     cmbPais.typeAndTab(pais);
     realizarEsperaCarga();

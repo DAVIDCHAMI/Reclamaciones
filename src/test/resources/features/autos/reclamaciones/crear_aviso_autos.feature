@@ -8,7 +8,7 @@ Característica: Generación avisos de siniestros autos
   Antecedentes: Crear poliza
     Dado se tiene una póliza de autos individual con plan Global de vigencia anual con 5 de retroactividad
 
-  @creacionSiniestroUno
+  @creacionSiniestro
   @claimsAuto
   Escenario: generación de reclamación de tipo Responsabilidad Civil
     Dado que se tiene una póliza con las coberturas

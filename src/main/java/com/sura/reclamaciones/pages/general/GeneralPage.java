@@ -422,14 +422,16 @@ public class GeneralPage extends PageObject {
     realizarEsperaCarga();
     btnAnular.waitUntilEnabled().waitUntilClickable();
     btnAnular.click();
-    /*
+
     realizarEsperaCarga();
     btnAnular.waitUntilEnabled().waitUntilClickable();
     btnAnular.click();
+
     realizarEsperaCarga();
     btnAceptar.waitUntilEnabled().waitUntilClickable();
     btnAceptar.click();
-    realizarEsperaCarga(); */
+    realizarEsperaCarga();
+
   }
 
   public void seleccionarPais(String pais) {
