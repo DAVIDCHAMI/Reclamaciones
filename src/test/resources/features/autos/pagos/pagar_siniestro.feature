@@ -39,7 +39,7 @@ Característica: Realizar pago de un siniestro
       | Línea de reserva | Tipo de pago | Beneficiario de pago               | Método de pago | Solo Sura | Cobertura           |
       | 1ª parteVehículo | Final      | NESTOR IVAN GAMBOA CONTRERAS CQLII | Caja Sura      | No        | Perdida total Daños |
 
-  @pagoSiniestroUno
+  @pagoSiniestro
   @claimsAuto
   Esquema del escenario: Crear cheque con múltiples pagos a diferentes líneas de reserva de un siniestro autos
     Dado que se tiene una póliza con coberturas vigentes, se ingresa la reclamación a través de creacionAvisoMACA de autos

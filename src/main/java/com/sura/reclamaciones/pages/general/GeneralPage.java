@@ -431,7 +431,6 @@ public class GeneralPage extends PageObject {
     btnAceptar.waitUntilEnabled().waitUntilClickable();
     btnAceptar.click();
     realizarEsperaCarga();
-
   }
 
   public void seleccionarPais(String pais) {
