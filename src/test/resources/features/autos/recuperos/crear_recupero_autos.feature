@@ -24,7 +24,7 @@ Característica: Crear un recupero de un siniestro
     Entonces se obtiene un ingreso de dinero sobre el siniestro
     Ejemplos:
       | Línea de Reserva                | Tipo de pago | Beneficiario del pago                 | Método del pago | ¿Es pago soloSura? | Tipo de cobertura   | Código de retención recupero |
-      | (1) 3ª parteLesiones corporales | Parcial      | JHON FEOR FEOR FEOR                   | Pago por banco  | No                 | RC Lesión a Persona | 0099                         |
+      | (1) 3ª parteLesiones corporales | Parcial      | NESTOR IVAN GAMBOA CONTRERAS CQLII                   | Pago por banco  | No                 | RC Lesión a Persona | 0099                         |
 
   @crearRecupero
   @claimsAuto
